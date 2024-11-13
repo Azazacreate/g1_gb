@@ -1,0 +1,187 @@
+<html>
+
+<head>
+<title>Visual Prolog 4.x Upgrade Notes</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b><a name="5.2upgrade"></a>Upgrading Visual Prolog from 4.x to 5.0 version</b><!--mstheme--></font></h1>
+<p>Release 5.0 of Visual Prolog is almost 100% compatible with release 4.0 and
+4.1. We have added some new predicates, renamed a single predicate, carefully
+modified the behavior of a couple of VPI predicates and moved some VPI header
+files into subdirectories.</p>
+<p>Before using the new Visual Prolog 5.0 please back up all your files to a
+safe place !</p>
+<h2><!--mstheme--><font color="#000000">VPI Header files have been moved since version 4.0<!--mstheme--></font></h2>
+<p>The main thing that will give compilation problems is that we moved the VPI
+header files from the VPI\INCLUDE directory down into the following
+subdirectories:</p>
+<blockquote>
+  <p><code>VPI\INCLUDE\DIALOG\DIALOG<br>
+  VPI\INCLUDE\TREE\VPITREE<br>
+  VPI\INCLUDE\MESSAGES\MESSAGES<br>
+  VPI\INCLUDE\OWNDRAW\OWNDRAW<br>
+  VPI\INCLUDE\TOOLBAR\TOOLBAR</code></p>
+</blockquote>
+<p>If you compile an old project immediately after installation of VIP 5.0, you
+will get a number of error messages. To compile your project you must use one of
+the following strategies:</p>
+<h4><!--mstheme--><font color="#000000">Strategy 1) Copy the header files back to the root directory !<!--mstheme--></font></h4>
+<p>The file UPGRADE\VPI_OLD.BAT can perform this task. This is the easiest
+solution, and is maybe a good idea if you need to compile your 4.0 project for
+the first time.</p>
+<h4><!--mstheme--><font color="#000000">Strategy 2) Change the include path in the VDE<!--mstheme--></font></h4>
+<p>If you add:</p>
+<p>&quot;VPI\INCLUDE\DIALOG; VPI\INCLUDE\TREE; VPI\INCLUDE\MESSAGES;
+VPI\INCLUDE\TOOLBAR; VPI\INCLUDE\OWNDRAW&quot;</p>
+<p>to the include path, the project will compile. However we recommend that the
+include path to the VPI is only VPI\INCLUDE, because there are several VPI tools
+in subdirectories,</p>
+<h4><!--mstheme--><font color="#000000">Strategy 3) UPDATE the source code<!--mstheme--></font></h4>
+<p>We have supplied an upgrade program that can update your source code, so the
+includes will be modified from, for example,. &quot;DIALOG.PRE&quot; to
+&quot;DIALOG\\DIALOG.PRE&quot;. However you should note that after this change
+you can not directly compile your project with Visual Prolog 4.0.</p>
+<h2><!--mstheme--><font color="#000000">Using the new PDClinker for old projects<!--mstheme--></font></h2>
+<p>Visual Prolog 5.0 does not include the SLR OptLink linker, but instead the
+newly developed PDC linker !</p>
+<p>To use the new linker in an old project, the scripts must be regenerated. The
+easiest way to to this is to change target to WIN32 and back to WIN16 again.</p>
+<h2><!--mstheme--><font color="#000000">Procedure/Determ/nondeterm declarations for all included tools<!--mstheme--></font></h2>
+<p>Together with the new fail detection possibility, we have gone through all
+the tools to see whether the tool predicates should be declared as a predicate
+or as a procedure (a predicate that can never fail). We have modified a couple
+of predicates in the dialog package, so these can no longer fail. If you are
+using the dialog_Get predicates and the specified control does not exist, you
+will now get a runtime error. To support runtime error reaction it is needed to
+add the inclusion of the ERROR.CON file to the Project module, which includes
+VPI TOOLS. It is generated default as the VPITOOLS.PRO file. Upgrade procedure
+makes it automatically.</p>
+<h2><!--mstheme--><font color="#000000">New Grid tool not fully backwards compatible<!--mstheme--></font></h2>
+<p>The Grid tool has been considerably improved, however it is not fully
+backwards compatible. If you have used the 4.0 version please look in the
+\VPI\INCLUDE\GRID\DOC directory for upgrade notes.</p>
+<h2><!--mstheme--><font color="#000000">.HAM files needs a conversion<!--mstheme--></font></h2>
+<p>The .HAM database must be converted from the 4.0 to 5.0 version using
+VIPCONV.EXE tool in two steps: converting to the text format and back.</p>
+<h2><!--mstheme--><font color="#000000">dde_Init<!--mstheme--></font></h2>
+<p>Will now give a run-time error if the DDE cannot be initialized.</p>
+<h2><!--mstheme--><font color="#000000">Take a look at the new default code-gen for dialogs<!--mstheme--></font></h2>
+<p>We have enhanced the default code generated for dialogs. If you have a dialog
+in your project, select Resource-&gt;Preview .PRO code to see the code we
+generate now.</p>
+<h2><!--mstheme--><font color="#000000">vpi_ProcessEvents/1<!--mstheme--></font></h2>
+<p>If you move from a Visual Prolog 4.0 program, you should check calls to this
+predicate. The argument did not have any effect in VIP 4.0, but now it is
+implemented and makes a difference.</p>
+<h2><!--mstheme--><font color="#000000">win_GetActiveWindow<!--mstheme--></font></h2>
+<p>In VIP 4.0 this predicate returned a Zero if no Windows had focus. This was a
+dangerous behavior so now the predicate will exit in this situation. To be safe
+please make a search for all uses of this predicate.</p>
+<h2><!--mstheme--><font color="#000000">More strict syntax in predicate declarations<!--mstheme--></font></h2>
+<p>Because it is now possible to specify the predicate type (determ, procedure
+etc.) before the flowpattern of a predicate, the syntax of the predicate
+declarations are now a bit more strict, but still compatible with the old
+documentation.</p>
+<h2><!--mstheme--><font color="#000000">failure, procedure, erroneous, multi predicate types<!--mstheme--></font></h2>
+<p>The new predicate types can give a syntax error in a few domain declarations,
+if a functor from the above names are used. The reason is conflict with the
+syntax of declaring a procedure domain like in:</p>
+<blockquote>
+  <p>EHANDLER = determ (WINDOW,EVENT,LONG); other_alternative</p>
+</blockquote>
+<p>A quick workaround is to move this alternative to the back like in:</p>
+<blockquote>
+  <p>EHANDLER = other_alternative; determ (WINDOW,EVENT,LONG)</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000">e_MouseMove<!--mstheme--></font></h2>
+<p>The event e_MouseMove carries an argument that specifies which MouseKeys are
+pressed while the mouse is being moved. The argument had no effect in VIP 4.0,
+but now it works, and the mouse keys are returned in a list.</p>
+<h1><!--mstheme--><font color="#000000">UPGRADE PROGRAM<!--mstheme--></font></h1>
+<p>Use the UPGRADE.EXE program to upgrade the source files of projects created
+with Visual Prolog 4.0 to the new VIP 5.0 include strategy</p>
+<p>UPGRADE.EXE performs text substitutions in the source files. Additional
+substitutions that UPGRADE.EXE should perform may be specified in the
+UPGRADE.INP file. This file must be placed in the same directory as UPGRADE.EXE.</p>
+<h3><!--mstheme--><font color="#000000">UPGRADE.INP<!--mstheme--></font></h3>
+<p>Each line of UPGRADE.INP corresponds to a single substitution. The following
+two formats can be used:</p>
+<blockquote>
+  <!--mstheme--></font><pre>/*FIND/SUBSTITUTION/
+replace all occurrences of FIND by SUBSTITUTION,
+/FIND/SUBSTITUTION/
+replace all occurrences of FIND (treated as WHOLE word) by
+SUBSTITUTION.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<h3><!--mstheme--><font color="#000000">COMMAND LINE SYNTAX<!--mstheme--></font></h3>
+<!--mstheme--></font><pre>UPGRADE.EXE [flags] [filenames]    </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>filenames multiple filenames (separated by spaces) are supported, wild format
+can be used. If no filename is specified then UPGRADE.EXE uses:</p>
+<blockquote>
+  <!--mstheme--></font><pre>*.PRO *.PRE *.CON *.DOM *.INC
+flags -i show information about each substitution
+-b beep after ending
+-p set the start directory for the search
+-d search in subdirectories
+-? help message</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<h3><!--mstheme--><font color="#000000">EXAMPLE<!--mstheme--></font></h3>
+<p>Suppose that C:\TEST directory contains a 4.0 project you want to upgrade.
+Take the following steps:</p>
+<blockquote>
+  <p>1) Change the current directory to:<br>
+  &lt;VISUAL Directory Prolog&gt;\UPGRADE</p>
+  <p>2) Type the command line:<br>
+  UPGRADE -i -d -pC:\TEST</p>
+  <p>3) Press &lt;<font size="1" color="#800080">ENTER</font><font size="1" color="#000000">&gt;</p>
+  </font>
+</blockquote>
+<p>UPGRADE.EXE will use the default filenames ( *.PRO, *.PRE, *.CON, *.DOM,
+*.INC ), therefore, it will make substitutions in all files with these
+extensions that exist in the C:\TEST directory (and it's subdirectories).
+UPGRADE.EXE will report each substitution.</p>
+<p><font size="1" color="#000000">&nbsp;</font>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

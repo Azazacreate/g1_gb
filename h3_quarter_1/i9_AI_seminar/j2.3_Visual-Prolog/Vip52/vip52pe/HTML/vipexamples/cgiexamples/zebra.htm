@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>The Zebra Problem</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">The Zebra Problem <!--mstheme--></font></h1>
+
+<h4><!--mstheme--><font color="#000000">Using Prolog's list handling capabilities to solve the Zebra problem<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>Another very good example of Prolog's general purpose problem solving capabilities as
+  well as its list-handling-facilities is the Zebra program. </p>
+  <p>The problem is a classic constraint-resolution problem. In 5 houses, each with a
+  different color, live 5 persons of different nationalities, who each prefer different
+  brands of cigarettes, drinks, pets etc. To start with You are given a number of facts and
+  a question like &quot;Who lives in the house to the left of the man that has a pet zebra
+  ?&quot;.</p>
+  <p>Have a look at the program and see how elegant the Prolog solution is. Everything,
+  including the constraints, is represented as lists (e.g. &quot;in the 3<sup>rd</sup> house
+  they smoke cigars&quot;).</p>
+  <p>To help solve the puzzle a small toolbox of list-handling predicates has been created.
+  These tools solve the problem. Note that it is a general-purpose program that can easily
+  be adapted to similar kinds of problems. </p>
+</blockquote>
+
+<p><i>A PROLOG program to solve the &quot;5 houses&quot; problem using a &quot;verify and
+choose&quot; method. A candidate solution is any of the (5!)**5 ways of distributing 5
+colours, 5 drinks, 5 nationalities, 5 cigarettes, and 5 pets amongst 5 houses. By Lewis
+Baxter</i></p>
+
+<blockquote>
+  <p>There are five houses with five different colours, in each house lives a person of
+  different nationality having favorite drinks, cigarettes and pets, the information is:</p>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Englishman </i>lives in the <i>Red</i> house.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Spaniard </i>owns the <i>Dog</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Norwegian </i>lives in the <i>first house on the left</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Kools </i>are smoked in the <i>Yellow</i> house.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The man who smokes <i>Chesterfields </i>lives in the <i>house next to </i>the man with
+      the F<i>ox</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Norwegian</i> lives next to the <i>Blue </i>house.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Winston </i>smoker owns <i>Snails</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Lucky Strike</i> smoker drinks <i>orange juice</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Ukrainian </i>drinks <i>tea</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Japanese </i>smokes <i>Parliaments</i>.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Kools </i>are smoked in the <i>house next to the house</i> where the <i>Horse </i>is
+      kept.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Coffee </i>is drunk in the <i>Green </i>house.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The <i>Green </i>house is immediately to the right (your right) of the <i>Ivory </i>house.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Milk </i>is drunk in the middle house.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p><b>The question is then:</b><i> Where does the <b>Zebra</b> live, and in which house do
+  they drink <b>water </b>?</i></p>
+</blockquote>
+
+<p>To execute the program as a CGI&nbsp;script press the &quot;<b>Solve</b>&quot; button
+below </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form METHOD="GET" ACTION="http://vip.pdc.dk/vipexamples/cgiexamples/bin/zebra.exe">
+    <p><br>
+    <input TYPE="SUBMIT" VALUE="Solve">&nbsp;<br>
+    </p>
+  </form>
+  <p>Show <a href="src/zebra.htm">Source</a> to the Zebra-application.</p>
+  <p>Show <a href="src/zebracgisource.htm">Source</a> to the Zebra-application incl.
+  cgi-support.</p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

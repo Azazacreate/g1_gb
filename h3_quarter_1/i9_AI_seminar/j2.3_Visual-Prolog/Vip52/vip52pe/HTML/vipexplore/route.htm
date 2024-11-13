@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Prototyping:</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Prototyping: A Simple Routing Problem<!--mstheme--></font></h1>
+<p>Suppose you want to construct a computer system to help decide the best route
+between two U.S. cities. You could first use Visual Prolog to build a miniature
+version of the system (see 2), since it will then become easier to investigate
+and explore different ways of solving the problems involved. You will use the
+final system to investigate questions such as:</p>
+<p>Is there a direct road from one particular town to another?</p>
+<p>Which towns are situated less than ten miles from a particular town?</p>
+<p>The following program is a classic example of using backtracking and
+recursion to solve route planning.</p>
+<!--mstheme--></font><pre>
+<strong>DOMAINS</strong>
+  town = symbol
+  distance = integer
+
+<strong>PREDICATES</strong>
+  nondeterm road(town,town,distance)
+  nondeterm route(town,town,distance)
+
+<strong>CLAUSES</strong>
+  road(tampa,houston,200).
+  road(gordon,tampa,300).
+  road(houston,gordon,100).
+  road(houston,kansas_city,120).
+  road(gordon,kansas_city,130).
+
+  route(Town1,Town2,Distance):-
+    road(Town1,Town2,Distance).
+
+  route(Town1,Town2,Distance):-
+	road(Town1,X,Dist1),
+	route(X,Town2,Dist2),
+	Distance=Dist1+Dist2,!.
+      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>The following Figure shows a simplified map for the prototype.</p>
+<p align="center"><img src="route.gif" width="352" height="194"></p>
+<p align="center">Prototype Map</p>
+<p>Each clause for the road predicate is a fact that describes a road of a
+certain length (in miles) that goes from one town to another.</p>
+<p>The route clauses indicate that it is possible to make a route from one town
+to another over several stretches of road. Following the route, the driver
+travels a distance given by the third parameter, distance.</p>
+<p>The route predicate is defined recursively; a route can simply consist of one
+single stretch of road, as in the first clause. In this case, the total distance
+is merely the length of the road.</p>
+<p>You can also construct a route from Town1 to Town2 by driving first from
+Town1 to X, then following some other route from X to Town2. The total distance
+is the sum of the distance from Town1 to X and the distance from X to Town2, as
+shown in the second clause for route.</p>
+<p>Try the program with the goal:</p>
+<blockquote>
+  <!--mstheme--></font><pre>
+route(tampa,kansas_city, X).
+    </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>Can the program handle all possible combinations of starting point and
+destination? If not, can you modify the program to avoid any omissions?</p>
+<p>The next example will give you ideas about how to get this routing program to
+make a list of towns visited enroute. Making such a list prevents Visual Prolog
+from choosing a route that involves visiting the same town twice, thereby
+avoiding going around in circles, and ensures that the program doesn't go into
+an infinite loop. When you've solved problems of this type, you can enlarge the
+program by adding more cities and roads.</p>
+<p><a href="../../examples/route.prj">ROUTE.PRJ (Use win32 VDE)</a></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

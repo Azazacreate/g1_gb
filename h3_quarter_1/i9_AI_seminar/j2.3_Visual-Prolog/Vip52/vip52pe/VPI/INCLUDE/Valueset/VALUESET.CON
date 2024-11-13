@@ -1,0 +1,17 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prpolog
+
+ FileName: VALUESET.CON
+ PURPOSE: Constant definitions for valueset object
+ Written by: Yuri Illin
+ Comments:
+
+******************************************************************************/
+constants
+  valueset_con_included = 1
+
+constants
+ valueset_range = "Index out of range"

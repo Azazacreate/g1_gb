@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Sourse Code for FAMILY Example</title>
+</head>
+<body bgcolor="#FFFFFF">
+<h2>Sourse Code for FAMILY Example</h2>
+<hr>
+<pre>
+DATABASE - tmp
+  son(STRING,STRING)
+  sister(STRING,STRING)
+  brother(STRING,STRING)
+  married(STRING,STRING)
+
+CLAUSES
+  son("John", "Dan").
+  sister("Mary","Suzan").
+  brother("Harold", "Larry").
+  married("John", "Mary").
+  married("Larry", "Sue").
+
+PREDICATES
+  father(STRING father,STRING child)
+  grandfather(STRING grandfather,STRING grandchild)
+  sister_in_law(STRING,STRING)
+
+CLAUSES
+  father(A,B):-son(B,A).
+
+  grandfather(A,B):-father(A,C), father(C,B).
+
+  sister_in_law(A,B):-married(A,C), sister(C,B).
+  sister_in_law(A,B):-brother(A,C), married(C,B).
+
+GOAL sister_in_law("John",Z).
+</pre>
+</body>
+</html>

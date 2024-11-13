@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="repeat">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>repeat</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">repeat/0</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>repeat</b> </p>
+
+<p align="left">Nondetermenistic loop. </p>
+
+<p align="left"><b>Remark</b> </p>
+
+<p align="left">The predicate <b>repeat</b> will always succeed,
+but because of its nondeterminism it will raise the new subgoal
+at the each loop. <b>repeat</b> is defined as: </p>
+
+<pre>repeat.
+repeat :- repeat.
+</pre>
+
+<p>Usualy the <b>repeat</b> is used for the fail-controlled
+loops. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>loop :- 
+   repeat,
+     write (&quot;Yet more loop ?&quot;),
+     read (YN),
+   (YN = &quot;N&quot;;YN=&quot;n&quot;).
+</pre>
+</body>
+</html>

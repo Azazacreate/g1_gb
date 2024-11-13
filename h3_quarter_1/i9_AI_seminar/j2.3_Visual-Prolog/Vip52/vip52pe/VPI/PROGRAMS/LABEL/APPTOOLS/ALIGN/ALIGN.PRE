@@ -1,0 +1,14 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	ALIGN.PRE
+ Purpose:	Global predicate for ALIGN object
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  WINDOW align_create(WINDOW Parent,PNT LeftTopPos,ALIGN_CALLBACK) - (i,i,i)
+  align_destroy() - ()

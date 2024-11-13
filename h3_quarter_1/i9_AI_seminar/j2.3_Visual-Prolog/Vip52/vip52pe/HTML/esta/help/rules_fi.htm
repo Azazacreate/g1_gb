@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<TITLE>Rules Field</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Rules Field'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Rules Field</FONT>
+<P ALIGN=LEFT>The rules field is used when a parameter value should be determined by rules and not by a question. The rules field has the following <A HREF='BNF_SYNT.HTM'>syntax</A> : 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;rules field&gt;     ::=  rules  &lt;parameter rules&gt; . 
+<P ALIGN=LEFT>&lt;parameter rules&gt; ::=  &lt;parameter rule&gt; {,&lt;parameter rules&gt;} 
+<P ALIGN=LEFT>&lt;parameter rule&gt;  ::=  &lt;<A HREF='EXPRESSI.HTM'>expression</A>&gt; [if &lt;<A HREF='BOOLEAN_.HTM'>boolean-expression</A>&gt;]</FONT> 
+<P ALIGN=LEFT>For instance consider a rules field like this: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>rules 
+<P ALIGN=LEFT>  &lt;expression&gt; if &lt;boolean-expression&gt;, 
+<P ALIGN=LEFT>  &lt;expression&gt; if &lt;boolean-expression&gt;, 
+<P ALIGN=LEFT>  &lt;expression&gt; if &lt;boolean-expression&gt;, 
+<P ALIGN=LEFT>  &lt;expression&gt; .</FONT> 
+<P ALIGN=LEFT>The parameter will in this case receive the value of the first &lt;expression&gt; if the first &lt;boolean-expression&gt; is satisfied, and so on. Notice that the optional last &lt;expression&gt; has no corresponding &lt;boolean-expression&gt;. It is a catch all &lt;expression&gt; which is used to determine a value for the given parameter if none of the &lt;boolean-expression&gt;s are fullfilled. 
+<P ALIGN=LEFT>Note that all the rules must be wellformed and thus, when evaluated, every &lt;<A HREF='EXPRESSI.HTM'>expression</A>&gt; must give a value which conforms to the type of the <A HREF='PARAMETE.HTM'>parameter</A>.
+<P ALIGN=LEFT>Note also that a parameter with a <A HREF='RULES_FI.HTM'>rules field</A> may <B>NOT</B> contain a <A HREF='QUESTION.HTM'>question field</A>. When there is a rules field, any existing <A HREF='EXPLANAT.HTM'>explanation field</A> can never be accessed by the expert system user and it is therefore only present for the convenience of the knowledge engineer. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>  rules  
+<P ALIGN=LEFT>      'blue'       if frequency &lt; 1000, 
+<P ALIGN=LEFT>      'orange'     if frequency &gt;= 1000 and frequency &lt; 2000, 
+<P ALIGN=LEFT>      'red'        if frequency &gt; 2000 and frequency &lt; 3000, 
+<P ALIGN=LEFT>      'invisible'. 
+<P ALIGN=LEFT>   
+<P ALIGN=LEFT>  rules 
+<P ALIGN=LEFT>      (height * (length + width)) * 2 if shape = box, 
+<P ALIGN=LEFT>       height * width * width / 2     if shape = pyramid, 
+<P ALIGN=LEFT>       4 / 3 * 22 * radius * radius   if shape = ball.</FONT>
+<P ALIGN=LEFT>       
+</BODY>
+</HTML>

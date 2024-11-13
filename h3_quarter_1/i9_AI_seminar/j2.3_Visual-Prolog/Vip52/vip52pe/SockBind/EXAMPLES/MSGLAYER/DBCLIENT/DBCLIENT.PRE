@@ -1,0 +1,33 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DBCLIENT
+ FileName: DBCLIENT.PRE
+ Purpose: Predicate definitions for DBCLIENT.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+%END_DECL
+  sendRequest(socket,db_messages)
+ 
+
+Global database
+  active_sockets(string,integer,socket)
+  db_list(socket,sList)
+  determ currentDB(integer) 
+  determ currentSocket(socket)
+  determ ed_mode(boolean)
+  determ add_database(string)
+  determ accessDB(socket,window)
+  determ helpDialog(window)
+
+  

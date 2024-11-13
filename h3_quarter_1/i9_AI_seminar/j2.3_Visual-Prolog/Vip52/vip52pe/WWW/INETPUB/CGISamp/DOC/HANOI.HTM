@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Towers of Hanoi</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p><a name="_Toc342996018"><font size="5"><b>Towers of Hanoi</b></font></a></p>
+
+<p><font size="3">The solution to the Towers of Hanoi puzzle is a
+classic example of recursion. The ancient puzzle of the Towers Of
+Hanoi consists of a number of wooden disks mounted on three
+poles, which are in turn attached to a baseboard. The disks each
+have different diameters and a hole in the middle large enough
+for the poles to pass through. In the beginning, all the disks
+are on the left pole as shown in:</font></p>
+
+<p align="center"><font size="2"><img src="hanoi.gif" width="341"
+height="92"></font></p>
+
+<p><font size="3">The object of the puzzle is to move all the
+disks over to the right pole, one at a time, so that they end up
+in the original order on that pole. You can use the middle pole
+as a temporary resting place for disks, but at no time is a
+larger disk to be on top of a smaller one. It's easy to solve the
+Towers of Hanoi with two or three disks, but the process becomes
+more difficult with four or more disks.</font></p>
+
+<p><font size="3">A simple strategy for solving the puzzle is as
+follows:</font></p>
+
+<ul>
+    <li><font size="2">You can move a single disk directly.</font></li>
+    <li><font size="2">You can move <i>N</i> disks in three
+        general steps:</font></li>
+    <li><font size="2">Move <i>N</i>-1 disks to the middle pole.</font></li>
+    <li><font size="2">Move the last (<i>N</i>th) disk directly
+        over to the right pole.</font></li>
+    <li><font size="2">Move the <i>N</i>-1 disks from the middle
+        pole to the right pole.</font></li>
+</ul>
+
+<p><font size="3">The Visual Prolog program to solve the Towers
+Of Hanoi puzzle uses three predicates:</font></p>
+
+<ul>
+    <li><font size="2"><b><i>hanoi</i></b>, with one parameter
+        that indicates the total number of disks you are working
+        with.</font></li>
+    <li><font size="2"><b><i>move</i></b>, which describes the
+        moving of <i>N</i> disks from one pole to another--using
+        the remaining pole as a temporary resting place for
+        disks.</font></li>
+    <li><font size="2"><b><i>inform</i></b>, which displays what
+        has happened to a particular disk.</font></li>
+</ul>
+
+</body>
+</html>

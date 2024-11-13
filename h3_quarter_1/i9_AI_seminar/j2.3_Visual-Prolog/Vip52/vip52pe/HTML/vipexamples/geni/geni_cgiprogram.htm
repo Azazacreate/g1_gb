@@ -1,0 +1,204 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page 1</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><pre>/*****************************************************************************
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) Prolog Development Center A/S
+
+Project: GENI CGI-version
+FileName: GENI.PRO
+Purpose: No description
+Written by: Visual Prolog
+******************************************************************************/
+
+include &quot;geni.inc&quot;
+include &quot;cgitools.pre&quot;
+
+DOMAINS
+CONDITIONS = CNO*
+HISTORY = RNO*
+RNO, CNO, FNO = INTEGER
+CATEGORY = STRING
+
+DATABASE - geni
+rule(RNO,CATEGORY,CATEGORY,CONDITIONS,STRING)
+cond(CNO,STRING,STRING OPTIONS) 
+topic(STRING maingoal,STRING purpose)
+head(STRING headline, STRING helptopic) 
+default_startpage(STRING FILENAME)
+
+DATABASE - tmp
+determ kb(STRING)
+yes(CNO)
+no(CNO)
+fact(FNO,CATEGORY,CATEGORY)
+whymeet
+
+DATABASE - htmltekst
+tekstblok(STRING)
+
+PREDICATES
+% Inferences engine
+infer()
+nondeterm go(HISTORY,CATEGORY,STRING ruleExplanation)
+determ check(RNO,HISTORY,CONDITIONS)
+determ notest(CNO)
+inpq(HISTORY,RNO,CNO,STRING,STRING OPTIONS)
+
+% Answer the WHY Question
+gen_why(HISTORY,RNO,STRING,CNO)
+
+% Explanations
+sub_cat(CATEGORY,CATEGORY,CATEGORY)
+show_conditions(CONDITIONS,string)
+show_rule(RNO,string)
+report(HISTORY,string)
+% evalans(string) 
+reverse(CONDITIONS,CONDITIONS)
+reverse1(CONDITIONS,CONDITIONS,CONDITIONS)
+determ is_htmlfile(STRING)
+consult_htm(STRING FileName,STRING HtmlContent)-(i,o)
+gethtmlbody(STRING InputHtml,STRING TheBody)
+
+endpage(string)
+endpage_Why()
+
+clauses
+infer():-
+&nbsp;&nbsp;&nbsp; topic(Maingoal,_),
+&nbsp;&nbsp;&nbsp; go([],MainGoal,&quot;&quot;),!.
+infer():-
+&nbsp;&nbsp;&nbsp; errorexit.
+
+go( _, Mygoal, Rulexpl ):-
+&nbsp;&nbsp;&nbsp; is_htmlfile(Rulexpl),!,
+&nbsp;&nbsp;&nbsp; consult_htm(Rulexpl,HTMLtext),
+&nbsp;&nbsp;&nbsp; gethtmlbody(HTMLtext,Bodytext),
+&nbsp;&nbsp;&nbsp; not(rule(_,Mygoal,_,_,_)),!,nl,
+&nbsp;&nbsp;&nbsp; write(&quot;I think the answer is : &quot;,Mygoal),nl,
+&nbsp;&nbsp;&nbsp; write(Bodytext),nl,
+&nbsp;&nbsp;&nbsp; endpage(&quot;&quot;).
+go( _, Mygoal, Rulexpl ):-
+&nbsp;&nbsp;&nbsp; not(rule(_,Mygoal,_,_,_)),!,nl,
+&nbsp;&nbsp;&nbsp; write(&quot;I think the answer is : &quot;,Mygoal),nl,
+&nbsp;&nbsp;&nbsp; write(Rulexpl),nl,
+&nbsp;&nbsp;&nbsp; endpage(&quot;&quot;).
+go( HISTORY, Mygoal,_ ):-
+&nbsp;&nbsp;&nbsp; rule(RNO,Mygoal,NY,COND,Rulexpl),
+&nbsp;&nbsp;&nbsp; check(RNO,HISTORY, COND),
+&nbsp;&nbsp;&nbsp; go([RNO|HISTORY],NY,Rulexpl).
+go( _, Mygoal,_ ):-
+&nbsp;&nbsp;&nbsp; rule(_RNO,Mygoal,_NY,_COND,_Rulexpl),!,true,
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;H&gt; Sorry, but I have no answer for this problem! &lt;/H&gt;\n&quot;),
+&nbsp;&nbsp;&nbsp; endpage(&quot;&quot;).
+
+check( RNO, HISTORY, [CNO|REST] ):-
+&nbsp;&nbsp;&nbsp; yes(CNO),!,
+&nbsp;&nbsp;&nbsp; check(RNO, HISTORY, REST).
+check( _, _, [CNO|_]):-
+&nbsp;&nbsp;&nbsp; no(CNO),
+&nbsp;&nbsp;&nbsp; !,fail.
+check( RNO, HISTORY, [CNO|REST]):-
+&nbsp;&nbsp;&nbsp; cond(CNO,NCOND,OPTIONS),
+&nbsp;&nbsp;&nbsp; fronttoken(NCOND,&quot;not&quot;,_COND),
+&nbsp;&nbsp;&nbsp; frontchar(_COND,_,COND),
+&nbsp;&nbsp;&nbsp; cond(CNO1,COND,OPTIONS),
+&nbsp;&nbsp;&nbsp; notest(CNO1), !, 
+&nbsp;&nbsp;&nbsp; check(RNO, HISTORY, REST).
+check(_,_, [CNO|_] ):-
+&nbsp;&nbsp;&nbsp; cond(CNO,NCOND,OPTIONS),
+&nbsp;&nbsp;&nbsp; fronttoken(NCOND,&quot;not&quot;,_COND),
+&nbsp;&nbsp;&nbsp; frontchar(_COND,_,COND),
+&nbsp;&nbsp;&nbsp; cond(CNO1,COND,OPTIONS),
+&nbsp;&nbsp;&nbsp; yes(CNO1),
+&nbsp;&nbsp;&nbsp; !,
+&nbsp;&nbsp;&nbsp; fail.
+check( RNO, HISTORY, [CNO|REST] ):-
+&nbsp;&nbsp;&nbsp; cond(CNO,TEXT,OPTIONS),!,
+&nbsp;&nbsp;&nbsp; inpq(HISTORY,RNO,CNO,TEXT,OPTIONS),
+&nbsp;&nbsp;&nbsp; check(RNO, HISTORY, REST).
+check( _, _, []).
+
+notest(CNO):-no(CNO),!.
+notest(CNO):-not(yes(CNO)),!.
+
+is_htmlfile(FILE):-
+&nbsp;&nbsp;&nbsp; filenameext(File,_Name,Mask),
+&nbsp;&nbsp;&nbsp; Mask = &quot;.htm&quot;,!.
+is_htmlfile(FILE):-
+&nbsp;&nbsp;&nbsp; filenameext(File,_Name,Mask),
+&nbsp;&nbsp;&nbsp; Mask = &quot;.html&quot;,!.
+
+consult_htm(FileName,HTMLTEKST):-
+&nbsp;&nbsp;&nbsp; syspath(ExeStartupPath,_ProgName),
+&nbsp;&nbsp;&nbsp; filenamepath(FullName,ExeStartupPath,FileName),
+&nbsp;&nbsp;&nbsp; trap(file_str(FullName,HTMLTEKST),_,writef(&quot;File % is not found! Correct problem!\n&quot;,FullName)),!.
+consult_htm(_,&quot;&quot;):-
+&nbsp;&nbsp;&nbsp; errorexit.
+
+
+gethtmlbody(TEXT,BODY):-
+&nbsp;&nbsp;&nbsp; upper_lower(TEXT,LOWERTEXT),
+&nbsp;&nbsp;&nbsp; searchstring(LOWERTEXT,&quot;&lt;body&quot;,LEN1),
+&nbsp;&nbsp;&nbsp; frontstr(LEN1,LOWERTEXT,_,TXT1),
+&nbsp;&nbsp;&nbsp; searchchar(TXT1,'&gt;',BODY_TAG_LEN),
+&nbsp;&nbsp;&nbsp; STARTPOS = LEN1+BODY_TAG_LEN+1,
+&nbsp;&nbsp;&nbsp; searchstring(LOWERTEXT,&quot;&lt;/body&gt;&quot;,ENDPOS),
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

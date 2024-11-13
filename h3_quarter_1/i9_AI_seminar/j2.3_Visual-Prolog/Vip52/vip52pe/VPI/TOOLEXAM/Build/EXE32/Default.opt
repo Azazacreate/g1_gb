@@ -1,0 +1,3 @@
+compileropt("dll_exmp.pro")
+fileopt("dll_exmp.pro")
+linkeropt("-TPD -SCUI -E_PDCPrologDLLStart@12 -odll_exmp.dll -Mdll_exmp.map ..\\..\\..\\..\\LIB\\WIN32\\MSC\\INIT32d.OBJ ..\\..\\..\\..\\LIB\\WIN32\\MSC\\INITDLL.OBJ dll_exmp.obj dll_exmp.sym dll_exmp.def ..\\..\\..\\..\\LIB\\WIN32\\PROLOG.LIB ..\\..\\..\\..\\LIB\\WIN32\\MSC\\WIN32.LIB")

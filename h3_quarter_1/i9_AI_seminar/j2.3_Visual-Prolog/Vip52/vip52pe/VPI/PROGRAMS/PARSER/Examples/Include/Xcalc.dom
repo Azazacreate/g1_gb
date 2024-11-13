@@ -1,0 +1,41 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALC
+ FileName: XCALC.DOM
+ Purpose: Global domains for XCalc and XCalc2 examples
+ Written by: Eugene Akimov
+ Comments:
+		Abbreviations used in this file:
+			cursorpos	= cursor position
+			tok		= token
+			ttok		= token and cursor position
+			tokl		= list of ttoks
+******************************************************************************/
+
+global domains
+  EXPR            = add(EXPR Expression,EXPR Expression);
+		    subtract(EXPR Expression,EXPR Expression);
+		    multiply(EXPR Expression,EXPR Expression);
+		    divide(EXPR Expression,EXPR Expression);
+		    power(EXPR Expression,EXPR Expression);
+		    parenthetical(EXPR Expression);
+		    number(real Number)
+
+  TOK		  = plus();
+		    minus();
+		    mult();
+		    div();
+		    power();
+		    lpar();
+		    rpar();
+		    number(real Number);
+		    nill
+
+  CURSORPOS	= integer
+  TTOK 		= t(TOK Token,CURSORPOS CursorPos)
+  RESULT	= real
+  TOKL 		= TTOK*
+  MESSAGE	= string
+  SOURCE	= string

@@ -1,0 +1,122 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	ODBC.PRE
+ Purpose:	Global predicates for ODBC binding
+ Written by:	Sergey Alexeev
+ Build:		010.000309
+ Comments:
+******************************************************************************/
+ifndef odbc_Dom_Included
+ #ERROR: file odbc.dom must be included
+enddef 
+constants
+ odbc_Pre_Included = 1
+
+global predicates
+  procedure odbcInit() language C
+  procedure odbcDestroy() language C
+
+  procedure odbcGetError(INTEGER ErrCode,STRING ErrFunc,STRING ErrMess) - (o,o,o) language C
+  procedure odbcAllocConnect(HENV,HDBC) - (i,o) language C
+  procedure odbcAllocEnv(HENV) - (o) language C
+  procedure odbcAllocStmt(HENV,HDBC,HSTMT) - (i,i,o) language C
+  procedure odbcBindCol(HENV,HDBC,HSTMT,UNSIGNED Column,UNSIGNED DataType,UNSIGNED BufferLen,
+	HAM Ham) - (i,i,i,i,i,i,o) language C
+  procedure odbcBindParameter(HENV,HDBC,HSTMT,UNSIGNED Ipar,UNSIGNED ParamType,
+	UNSIGNED DataType,LONG Precision,INTEGER Scale,LONG BufferLen,
+	HAM Ham) - (i,i,i,i,i,i,i,i,i,o) language C
+  procedure odbcBrowseConnect(HENV,HDBC,STRING ConnStrIn,STRING ConnStrOut) - (i,i,i,o) language C
+  procedure odbcCancel(HENV,HDBC,HSTMT) - (i,i,i) language C
+  procedure odbcColAttributes(HENV,HDBC,HSTMT,UNSIGNED Column,UNSIGNED ColumnType,
+  	ODBC_COLUMN_DATA Data) - (i,i,i,i,i,o) language C
+  procedure odbcColumnPrivileges(HENV,HDBC,HSTMT,STRING TableQualifier,STRING TableOwner,
+	STRING TableNames,STRING ColumnNames) - (i,i,i,i,i,i,i) language C
+  procedure odbcColumns(HENV,HDBC,HSTMT,STRING TableQualifier,STRING TableOwner,STRING TableNames,
+  	STRING TableColumnNames) - (i,i,i,i,i,i,i) language C
+  procedure odbcConnect(HENV,HDBC,STRING BaseName,STRING UserId,STRING Password) - (i,i,i,i,i) language C
+  procedure odbcDataSources(HENV,UNSIGNED Direction,STRING Name,STRING Description) - (i,i,o,o) language C
+  procedure odbcDescribeCol(HENV,HDBC,HSTMT,UNSIGNED Column,STRING Name,UNSIGNED DataType,LONG Precision,
+	INTEGER Scale,INTEGER Nullable) - (i,i,i,i,o,o,o,o,o) language C
+  procedure odbcDescribeParam(HENV,HDBC,HSTMT,UNSIGNED Ipar,UNSIGNED DataType,LONG Precision,
+	INTEGER Scale,INTEGER Nullable) - (i,i,i,i,o,o,o,o) language C
+  procedure odbcDisconnect(HENV,HDBC) - (i,i) language C
+  procedure odbcDriverConnect(HENV,HDBC,WINDOW Parent,STRING ConnStrIn,UNSIGNED DriverCompletion,
+	STRING ConnStrOut) - (i,i,i,i,i,o) language C
+  procedure odbcDrivers(HENV,UNSIGNED Direction,STRING DriverDescription,
+	STRING DriverAttributes) - (i,i,o,o) language C
+  procedure odbcExecute(HENV,HDBC,HSTMT) - (i,i,i) language C
+  procedure odbcExecDirect(HENV,HDBC,HSTMT,STRING SqlStr) - (i,i,i,i) language C
+  procedure odbcExtendedFetch(HENV,HDBC,HSTMT,UNSIGNED Direction,LONG FetchRow,
+	LONG RowFetched) - (i,i,i,i,i,o) language C
+  procedure odbcFetch(HENV,HDBC,HSTMT) - (i,i,i) language C
+  procedure odbcForeignKeys(HENV,HDBC,HSTMT,
+	STRING PkTableQualifier,STRING PkTableOwner,STRING PkTableName,
+	STRING FkTableQualifier,STRING FkTableOwner,STRING FkTableName) - (i,i,i,i,i,i,i,i,i) language C
+  procedure odbcFreeConnect(HENV,HDBC) - (i,i) language C
+  procedure odbcFreeEnv(HENV) - (i) language C
+  procedure odbcFreeStmt(HENV,HDBC,HSTMT,INTEGER Option) - (i,i,i,i) language C
+  procedure odbcGetConnectOption(HENV,HDBC,UNSIGNED Option,ODBC_CO_DATA Param) - (i,i,i,o) language C
+  procedure odbcGetCursorName(HENV,HDBC,HSTMT,STRING Cursor) - (i,i,i,o) language C
+  procedure odbcGetData(HENV,HDBC,HSTMT,UNSIGNED Column,UNSIGNED DataType,UNSIGNED SizeData,
+	ODBC_DATA Data,UNSIGNED OutSizeData) - (i,i,i,i,i,i,o,o) language C
+  procedure odbcGetFunctions(HENV,HDBC,UNSIGNED Function,BOOLEAN Exists) - (i,i,i,o) language C
+  procedure odbcGetInfo(HENV,HDBC,UNSIGNED InfoType,ODBC_INFO_DATA Data) - (i,i,i,o) language C
+  procedure odbcGetStmtOption(HENV,HDBC,HSTMT,UNSIGNED Option,LONG Param) - (i,i,i,i,o) language C
+  procedure odbcGetTypeInfo(HENV,HDBC,HSTMT,UNSIGNED DataType) - (i,i,i,i) language C
+  procedure odbcMoreResults(HENV,HDBC,HSTMT) - (i,i,i) language C
+  procedure odbcNativeSql(HENV,HDBC,STRING SqlStrIn,STRING SqlStr) - (i,i,i,o) language C
+  procedure odbcNumParams(HENV,HDBC,HSTMT,INTEGER NumPar) - (i,i,i,o) language C
+  procedure odbcNumResultCols(HENV,HDBC,HSTMT,INTEGER NumCol) - (i,i,i,o) language C
+  procedure odbcParamData(HENV,HDBC,HSTMT,HAM) - (i,i,i,o) language C
+  procedure odbcParamOptions(HENV,HDBC,HSTMT,LONG Crow,HUL Irow) - (i,i,i,i,i) language C
+  procedure odbcPrepare(HENV,HDBC,HSTMT,STRING SqlStr) - (i,i,i,i) language C
+  procedure odbcPrimaryKeys(HENV,HDBC,HSTMT,STRING TableQualifier,STRING TableOwner,
+	STRING TableNames) - (i,i,i,i,i,i) language C
+  procedure odbcProcedureColumns(HENV,HDBC,HSTMT,STRING ProcQualifier,STRING ProcOwner,
+	STRING ProcName,STRING ColumnName) - (i,i,i,i,i,i,i) language C
+  procedure odbcProcedures(HENV,HDBC,HSTMT,STRING ProcQualifier,STRING ProcOwner,
+	STRING ProcName) - (i,i,i,i,i,i) language C
+  procedure odbcPutData(HENV,HDBC,HSTMT,HAM) - (i,i,i,i) language C
+  procedure odbcRowCount(HENV,HDBC,HSTMT,LONG NumRow) - (i,i,i,o) language C
+  procedure odbcSetConnectOption(HENV,HDBC,UNSIGNED Option,ODBC_CO_DATA Param) - (i,i,i,i) language C
+  procedure odbcSetCursorName(HENV,HDBC,HSTMT,STRING Cursor) - (i,i,i,i) language C
+  procedure odbcSetParam(HENV,HDBC,HSTMT,UNSIGNED Ipar,UNSIGNED DataType,LONG Precision,
+	INTEGER Scale,LONG BufferLen,HAM Ham) - (i,i,i,i,i,i,i,i,o) language C
+  procedure odbcSetPos(HENV,HDBC,HSTMT,UNSIGNED Row,UNSIGNED Option,UNSIGNED Lock) - (i,i,i,i,i,i) language C
+  procedure odbcSetScrollOptions(HENV,HDBC,HSTMT,UNSIGNED Concurrency,LONG CrowKeyset,
+	UNSIGNED CrowRowset) - (i,i,i,i,i,i) language C
+  procedure odbcSetStmtOption(HENV,HDBC,HSTMT,UNSIGNED Option,LONG Param) - (i,i,i,i,i) language C
+  procedure odbcSpecialColumns(HENV,HDBC,HSTMT,UNSIGNED ColType,STRING TableQualifier,
+	STRING TableOwner,STRING TableName,UNSIGNED Scope,
+	UNSIGNED Nullable) - (i,i,i,i,i,i,i,i,i) language C
+  procedure odbcStatistics(HENV,HDBC,HSTMT,STRING TableQualifier,STRING TableOwner,STRING TableName,
+	UNSIGNED Unique,UNSIGNED Accuracy) - (i,i,i,i,i,i,i,i) language C
+  procedure odbcTablePrivileges(HENV,HDBC,HSTMT,STRING TableQualifier,STRING TableOwner,
+	STRING TableNames) - (i,i,i,i,i,i) language C
+  procedure odbcTables(HENV,HDBC,HSTMT,STRING TableQualifier,STRING TableOwner,
+	STRING TableNames,STRING TableTypes) - (i,i,i,i,i,i,i) language C
+  procedure odbcTransact(HENV,HDBC,UNSIGNED Type) - (i,i,i) language C
+
+  procedure odbcReleaseHam(HAM HandleAllocMemory) - (i) language C
+  procedure odbcGetHam(HAM HandleAllocMemory,ODBC_DATA Data) - (i,o) language C
+  procedure odbcPutHam(HAM Ham,ODBC_DATA Data) - (i,i) language C
+
+  procedure odbcAllocHul(HUL HandleAllocULong) - (o) language C
+  procedure odbcReleaseHul(HAM HandleAllocULong) - (i) language C
+  procedure odbcGetHul(HUL HandleAllocULong,ULONG Data) - (i,o) language C
+  procedure odbcPutHul(HUL HandleAllocULong,ULONG Data) - (i,i) language C
+
+% ODBC Errors
+%*******************************************************************************
+constants
+  odbc_invalid_handle_err		= 8800
+  odbc_async_function_executing_err	= 8801
+  odbc_need_data_err			= 8802
+  odbc_no_data_found_err		= 8803
+  odbc_function_failed_err		= 8804
+  odbc_illegal_call_err			= 8805
+  odbc_funtion_not_supported		= 8806
+
+

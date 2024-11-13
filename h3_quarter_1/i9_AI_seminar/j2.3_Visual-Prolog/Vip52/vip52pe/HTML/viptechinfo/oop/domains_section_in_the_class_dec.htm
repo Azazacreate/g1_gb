@@ -1,0 +1,152 @@
+<html>
+
+<head>
+<title>Domains Section in the Class Declaration</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>DOMAINS Section in the Class Declaration<!--mstheme--></font></h1>
+</b>The <b>domains</b> sections in the <a href="class_declaration.htm">class
+declaration</a> declare domains - members of the class. The default <a href="class_access_control.htm">access
+rights</a> of domains declared in the class declaration are <a href="class_access_control.htm#b792e204">public</a>.
+<h2><!--mstheme--><font color="#000000"><b>Syntax<!--mstheme--></font></h2>
+</b>
+<!--mstheme--></font><pre>[PROTECTED] <b>DOMAINS</b> &lt;<i>domains_declarations</i>&gt;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+where:
+<!--mstheme--></font><table border="0" width="100%" style="border-style: double">
+  <tr>
+    <td width="36%"><!--mstheme--><font face="verdana, Arial, Helvetica">DOMAINS<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">declares the domains
+      section<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="36%" style="border-top-style: double; border-bottom-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">PROTECTED<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double; border-top-style: double; border-bottom-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">changes
+      the <a href="class_access_control.htm">access rights</a> of domains
+      declared in the section from <a href="class_access_control.htm#b792e204">public</a>
+      (default) to <a href="class_access_control.htm#57ab4a15">protected</a>. A
+      protected domain can be used only inside the class in which it is declared
+      and in the classes that directly inherit from this class.<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="36%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt;<i>domains_declarations</i>&gt;<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">a list of <a href="#a38517b3">declarations
+      of domains</a>.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><b>Remarks<!--mstheme--></font></h2>
+</b>Possibility to declare domains in classes is supported beginning with Visual
+Prolog v.5.2. It is possible to declare domains both in the class declaration
+and in the implementation.
+<p>Public domains declared in a class declaration are global domains and can be
+used outside the class. Notice that public domains declared in non-abstract
+classes do not even have to be visible in the main module (if they are not
+really used in the main module) like &quot;ordinary&quot; global domains have
+to.
+<p>A public domain declared in a class declaration can be used directly in all
+classes that inherit (transitively) from that class (including the class
+itself). The domain can be used both in the declarations and in the
+implementations of these classes.
+<p>A protected domain declared in a class declaration can be used directly in
+this class and in all classes directly inherit from that class (i.e. explicitly
+specify this class in the base class list). The domain can be used both in the
+declarations and in the implementations of these classes.
+<p>From the other hand, domains declared in a class implementation are private
+and can be used only inside that implementation. In other words, domains
+declared in a class implementation are local to that implementation.
+<p>In classes that do not inherit (transitively) from the class class_name
+declaring the public domain, the domain and functors of the domain alternatives
+have to be qualified with the class name of the declaring class.
+<!--mstheme--></font><pre>[class_name]::&lt;domain_name&gt;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+The qualification have to go to the class that really declares the domain, it
+cannot go to a class that merely inherit from that class. In other words, the
+derived classes only &quot;inherit&quot; the ability to use a domain.
+<p>Notice that all domains declared in classes are static/class entities. That
+is the domain belongs to the class not to the individual objects. Thus if a
+class declares a domain this means that there will exist one domain, rather than
+one per object.
+<p>Being able to declare domains in classes opens the possibility to use classes
+as modules.
+<h2><!--mstheme--><font color="#000000"><b>Example<!--mstheme--></font></h2>
+</b>
+<!--mstheme--></font><pre>class xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>domains</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>myDom =string % public domain</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>obj_dom = object procedure (myDom) - (i) % object predicate domain</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>pv : obj_dom</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>endclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>implement xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>clauses</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>pv(S):- write(S),nl.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>endclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>goal</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>O = xclass::new,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:pv(&quot;Hello world!&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>PredValue = O:pv,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:PredValue(&quot;I am object predicate value!&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:delete.<b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <h5><!--mstheme--><font color="#000000"><a href="toc.htm">See also</a><!--mstheme--></font></h5>
+</b>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,173 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			 VISUAL Prolog
+
+ Written by Yuri Ilyin
+ FileName: OWNDRAW.PRE
+ PURPOSE: Owner Draw Handling
+ Comments:
+
+******************************************************************************/
+ifndef owndraw_dom_included
+ Error: this file requires include: owndraw.dom
+enddef 
+constants
+  owndraw_pre_included = 1
+
+
+global predicates
+/********************************************************************************
+* ownerdraw_CreateControl( - function creates buttons and registers its size 	*
+*  WINTYPE Type 	- type of button,				     	*
+*  UNSIGNED CtlId 	- Identificator of control,				*
+*  RCT OwnRectangle 	- Rectangle - border of button,				*
+*  STRING Title		- Head of button,					*
+*  WINDOW ParentWin	- Window where button is to create)			*
+********************************************************************************/
+  procedure ownerdraw_CreateControl(WINTYPE Type,UNSIGNED CtlId,RCT OwnRectangle,
+  	STRING Title,WINDOW ParentWin) - (i,i,i,i,i)
+
+  procedure ownerdraw_CreateControl(WINTYPE Type,UNSIGNED CtlId,RCT OwnRectangle,INTEGER BaseUnits,
+  	STRING Title,WINDOW ParentWin) - (i,i,i,i,i,i)
+
+/********************************************************************************
+* ownerdraw_CreateGroupBox( - function only registers group box for handling    *
+*                             with radio button                                 *
+*  RCT OwnRectangle 	- Rectangle - border of box,				*
+*  WINDOW ParentWin	- Window where group box is to register )		*
+********************************************************************************/
+  procedure ownerdraw_CreateGroupBox(RCT OwnRectangle,WINDOW ParentWin) - (i,i)
+
+/********************************************************************************
+* ownerdraw_CreateListBox( - function creates listbox and registers its size 	*
+*  UNSIGNED CtlId 	- Identificator of listbox,				*
+*  RCT OwnRectangle 	- Rectangle - border of listbox,			*
+*  STRING Title		- Head of listbox,					*
+*  WINDOW ParentWin	- Window where listbox is to create,			*
+*  SLIST ListOfVariants - List of variants for listbox,				*
+*  INTEGER StartIndex	- Index of item which is pushed first,			*
+*  INTEGER NumVisibleItems - Number of items sumiltaneously visible)		*
+********************************************************************************/
+  procedure ownerdraw_CreateListBox(UNSIGNED CtlId,RCT OwnRectangle,STRING Title,
+  	WINDOW ParentWin,SLIST ListOfVariants,INTEGER StartIndex,
+  	INTEGER NumVisibleItems) - (i,i,i,i,i,i,i)
+
+  procedure ownerdraw_CreateListBox(UNSIGNED CtlId,RCT OwnRectangle,INTEGER BaseUnits,STRING Title,
+  	WINDOW ParentWin,SLIST ListOfVariants,INTEGER StartIndex,
+  	INTEGER NumVisibleItems) - (i,i,i,i,i,i,i,i)
+
+/********************************************************************************
+* ownerdraw_CreateMenu( - function only registered size menu,			*
+* 			you should create menu with VPIfunction "menu_PopUp"	*
+*  OWNER_DRAW_MENU	- menu with sizes of items				*
+*  MENU UserMenu	- VPImenu for use in creating)				*
+********************************************************************************/
+  procedure ownerdraw_CreateMenu(OWNERDRAW_MENU,MENU UserMenu) - (i,o)
+
+/********************************************************************************
+* ownerdraw_DrawButton( - function draw push button				*
+*  ITEMACTION		- action from OwnerDraw event,				*
+*  ITEMSTATE		- state from OwnerDraw event,				*
+*  RCT ButtonRect	- rectangle from OwnerDraw event,			*
+*  WINDOW ParentWINDOW	- window which is parent for button			*
+*  OWNERDRAW_BUT_FUNC	- user function to draw button)				*
+* 			use "no_any_draw_but" if need not drawing		*
+********************************************************************************/
+  procedure ownerdraw_DrawButton(OD_ITEMACTION,OD_ITEMSTATE,RCT ButtonRect,WINDOW ParentWINDOW,
+  	OWNERDRAW_BUT_FUNC) - (i,i,i,i,i)
+
+/********************************************************************************
+*  ownerdraw_DrawCheck( - function draw check button				*
+*  ITEMACTION		- action from OwnerDraw event,				*
+*  ITEMSTATE		- state from OwnerDraw event,				*
+*  RCT CheckWinRect	- rectangle from OwnerDraw event,			*
+*  RCT CheckedRect	- rectangle in which cross will be drawn,		*
+*  WINDOW ParentWINDOW	- window which is parent for button			*
+*  WINDOW CtlWINDOW	- window from OwnerDraw event(Control Window),		*
+*  OWNERDRAW_CHECK_FUNC - user function to draw button)				*
+* 			use "no_any_draw_check" if need not drawing		*
+********************************************************************************/
+  procedure ownerdraw_DrawCheck(OD_ITEMACTION,OD_ITEMSTATE,RCT CheckWinRect, RCT CheckedRect,
+  	WINDOW ParentWINDOW,WINDOW CtlWINDOW,OWNERDRAW_CHECK_FUNC) - (i,i,i,i,i,i,i)
+
+/********************************************************************************
+* ownerdraw_DrawRadio( - function draw radio button				*
+*  ITEMACTION		- action from OwnerDraw event,				*
+*  ITEMSTATE		- state from OwnerDraw event,				*
+*  RCT WinRect		- rectangle from OwnerDraw event,			*
+*  RCT RadioRect	- rectangle in which point will be drawn,		*
+*  WINDOW ParentWINDOW	- window which is parent for button			*
+*  WINDOW CtlWINDOW	- window from OwnerDraw event(Control Window),		*
+*  UNSIGNED CtlId	- Control identificator from OwnerDraw event,		*
+*  OWNERDRAW_RADIO_FUNC - user function to draw button)				*
+* 			use "no_any_draw_radio" if need not drawing		*
+********************************************************************************/
+  procedure ownerdraw_DrawRadio(OD_ITEMACTION,OD_ITEMSTATE,RCT WinRect, RCT RadioRect,
+  	WINDOW ParentWINDOW,WINDOW CTRLWIN,UNSIGNED CtlId,
+  	OWNERDRAW_RADIO_FUNC) - (i,i,i,i,i,i,i,i)
+
+/********************************************************************************
+* ownerdraw_DrawListBox( - function draw listbox				*
+*  ITEMACTION		- action from OwnerDraw event,				*
+*  ITEMSTATE		- state from OwnerDraw event,				*
+*  RCT 	LBoxRect	- rectangle from OwnerDraw event,			*
+*  WINDOW ParentWINDOW	- window which is parent for listbox			*
+*  WINDOW CtlWINDOW	- window from OwnerDraw event(Control Window),		*
+*  UNSIGNED CtlId	- Control identificator from OwnerDraw event,		*
+*  UNSIGNED Index 	- index item from OwnerDraw event,			*
+*  OWNERDRAW_LBOX_FUNC - user function to draw listbox)				*
+* 			use "no_any_draw_lbox" if need not drawing		*
+*  IsGrayUsed		- set 'b_true' if item's background is GRAY		*
+*			set 'b_false' for no background				*
+********************************************************************************/
+  procedure ownerdraw_DrawListBox(OD_ITEMACTION,OD_ITEMSTATE,RCT LBoxRect,WINDOW ParentWINDOW,
+  	WINDOW CtlWINDOW,UNSIGNED Index,OWNERDRAW_LBOX_FUNC,
+  	BOOLEAN IsGrayUsed) - (i,i,i,i,i,i,i,i)
+
+/********************************************************************************
+* ownerdraw_DrawMenu( - function draw menus					*
+*  ITEMACTION		- action from OwnerDraw event,				*
+*  ITEMSTATE		- state from OwnerDraw event,				*
+*  WINDOW ParentWINDOW	- window which is parent for menu			*
+*  MENU_TAG 	 	- menu tag from OwnerDraw event,			*
+*  OWNERDRAW_MENU_FUNC - user function to draw menu)				*
+* 			use "no_any_draw_menu" if need not drawing		*
+********************************************************************************/
+  procedure ownerdraw_DrawMenu(OD_ITEMACTION,OD_ITEMSTATE,WINDOW ParentWINDOW,
+  	MENU_TAG,OWNERDRAW_MENU_FUNC) - (I,I,I,I,I)
+
+%+++++ dummy predicates +++++
+  ownerdraw_no_button :  OWNERDRAW_BUT_FUNC
+  ownerdraw_no_check :   OWNERDRAW_CHECK_FUNC
+  ownerdraw_no_radio :   OWNERDRAW_RADIO_FUNC
+  ownerdraw_no_lbox :    OWNERDRAW_LBOX_FUNC
+  ownerdraw_no_menu :    OWNERDRAW_MENU_FUNC
+
+/********************************************************************************
+* ownerdraw_MeasureControl( - function return size any control			*
+* UNSIGNED CtlId	- Identificator of control or tag menus,		*
+* LONG Size		- Size (for put in event handler))			*
+********************************************************************************/
+  procedure ownerdraw_MeasureControl(UNSIGNED CtlId,LONG Size) - (I,O)
+
+/********************************************************************************
+* ownerdraw_Destroy( - function clear internal database for one control        	*
+* WINDOW   ParentWindow - Parent window 					*
+* UNSIGNED CtlId	- Identificator of control or tag menus,		*
+********************************************************************************/
+  procedure ownerdraw_Destroy(WINDOW ParentWindow, UNSIGNED CtlId) - (i,i)
+
+/********************************************************************************
+* ownerdraw_Destroy( - function clear internal database                       	*
+* WINDOW   ParentWindow - Parent window 					*
+********************************************************************************/
+  procedure ownerdraw_Destroy(WINDOW ParentWindow) - (i)
+/********************************************************************************
+* ownerdraw_GroupControls  - groups ownerdraw radiobuttons			*
+* groupId - Group Identifyer - the first radiobutton in the group		*
+* groupList - List of radiobuttons						*
+* WINDOW   ParentWindow - Parent window 					*
+********************************************************************************/
+  procedure ownerdraw_GroupControls(SHORT,ILIST,WINDOW)  - (i,i,i)

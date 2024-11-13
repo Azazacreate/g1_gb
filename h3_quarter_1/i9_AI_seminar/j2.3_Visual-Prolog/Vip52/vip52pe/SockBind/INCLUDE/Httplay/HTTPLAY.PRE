@@ -1,0 +1,23 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  ---
+ FileName: ===
+ Purpose: A file for HTTP layer
+ Written by: Konstantin Ivanov
+ Comments: Include it in your project!
+******************************************************************************/
+
+GLOBAL PREDICATES
+
+  determ httplay_GetAnswer(HTTPLAY_ANSWERS Answer) - (o)
+  procedure httplay_CancelPrevious()
+  procedure httplay_SendRequests(WINDOW WinHandl,
+  			UNSIGNED Message,
+  			STRING Server,
+  			USHORT Port,
+  			HTTPLAY_REQUEST_LIST Requests,
+  			USHORT NumberOfConnections ) - (i,i,i,i,i,i)
+  procedure httplay_CloseSession()
+  determ httplay_GetLastError(UNSIGNED Error) - (o)

@@ -1,0 +1,109 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  WEBAGENT
+ FileName: WEBAGENT.PRE
+ Purpose: Predicate definitions for WEBAGENT.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+ifndef platform_32bit
+  #Error: This project for Windows 32bit only
+elsedef
+  ifndef ws_win
+    #Error: This project for Windows 32bit only
+  enddef
+enddef
+
+CONSTANTS
+  hlp_wa_WebAgent_Help = 1
+  hlp_wa_What_is_WebAgent = 2
+  hlp_wa_WebAgent_window = 3
+  hlp_wa_Options_dialog	=4
+  hlp_wa_Log_Information_window =5
+  hlp_wa_Debug_Information_window = 6
+  hlp_wa_Entry_Settings_dialog = 7
+  hlp_wa_Notify_Persons_dialog = 8
+  hlp_wa_About_dialog = 9
+  hlp_wa_How_to_interact_with_WebAgent = 10
+  hlp_wa_Stop = 11
+  hlp_wa_Wait = 12
+  hlp_wa_Fetch = 13
+  hlp_wa_See_also = 14
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_webagent_Create(WINDOW Parent) - (i)
+  dlg_options_Create(WINDOW Parent) - (i)
+  dlg_test_Create(WINDOW Parent) - (i)
+%END_DECL
+
+%conv
+  INTEGER conv( WA_REFS_LIST Already_lst,
+  		STRING Current_sheme,
+  		STRING Current_host,
+  		STRING Current_path,
+  		STRING TargetPath,
+  		STRING Learning_file_name,
+  		INTEGER NextLevelNumber,
+  		STRING OriginalPath,
+  		BOOLEAN FetchPath,
+  		WA_REFS_LIST Common_Res_lst	%All refs from page
+  		) - (i,i,i,i,i,i,i,i,i,o)
+  make_unique_cache_name(STRING TargetDir, STRING Cache_name) - (i,o)  
+  
+%dcbase64
+  code_base64(STRING,STRING) - (i,o),(o,i)	%plain/coded
+
+%dir_proc
+  check_row_dir()
+  del_dirry(STRING) - (i)
+  delete_dirs(STRING) - (i)
+  
+%gridproc  
+  grid_handler : EHANDLER
+  proc_state(INTEGER,STRING) - (i,i)
+
+%http_con
+  make_done_lst()
+  restart_timer(INTEGER) - (i)
+  start_fetch(INTEGER) - (i)
+  stop_fetch(INTEGER) - (i)
+  stop_timer(INTEGER) - (i)
+  test_entry_timer(INTEGER) - (i)
+  wa_init()  
+  procedure wa_errproc(INTEGER,UNSIGNED) - (i,i)
+  what_ext(STRING) - (i)
+  
+%log_wnd
+  log_win_eh : EHANDLER
+  dbg_win_eh : EHANDLER
+  procedure write_log(INTEGER Kind, STRING) - (i,i)	%Kind 0 - High priority (e.g. errors), 1 - Low Priority
+  write_state(STRING) - (i)
+  
+%set&stat
+  is_md( STRING, UNSIGNED ) - (i,i)
+  
+%set_dir
+  setdir_handler : EHANDLER
+  set_dir_init(WINDOW,STRING) - (i,i)
+  set_dir_set(WINDOW,STRING) - (i,i)
+  set_dir_get(WINDOW,STRING) - (i,o)
+  set_dir_event_proc(WINDOW,EVENT) - (i,i)
+  set_dir_setProc(WINDOW, SETDIRPROC ) - (i,i)
+  
+%uri_proc
+  parse_uri(STRING Uri, STRING Sheme, STRING Host, USHORT Port, STRING Path) - (i,o,o,o,o)  % Path has / at beg
+  parse_path(STRING Path,STRING RelPath,SLIST Params,STRING Query) - (i,o,o,o)
+  parse_absuri(STRING Uri,STRING Sheme,STRING Rest) - (i,o,o)
+  wa_strip_leading_spaces(STRING,STRING) - (i,o)
+
+%webagent
+  getsysdir(STRING Path) - (o)
+  change_to_en(WINDOW,ILIST) - (i,i)
+  change_to_dis(WINDOW,ILIST) - (i,i)
+  wa_setDirCallBack : SETDIRPROC

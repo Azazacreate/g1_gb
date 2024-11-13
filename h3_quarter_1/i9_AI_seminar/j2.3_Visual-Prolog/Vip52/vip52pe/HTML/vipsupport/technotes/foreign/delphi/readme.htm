@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Template" content="C:\microsoft office\Office\html.dot">
+<title></title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../";</script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Using Visual Prolog DLLs from Borland Delphi<!--mstheme--></font></h1>
+<p>The directory \Foreign\Examples\Delphi contains examples of how to use a
+Dynamic Link Library (DLL) created with Visual Prolog in Borland Delphi (see <a href="../foreign.htm">Using
+Visual Prolog DLLs from other languages</a> for an overview of the examples).</p>
+<p>All these examples use the same <a href="../dlls/readme.htm">Visual Prolog
+DLLs</a> that are found in the DLLS directory, so these have to be compiled
+before any of the examples are compiled and run.</p>
+<p>These examples should be compiled with Borland Delphi 3.0 or later.</p>
+<h2><!--mstheme--><font color="#000000">Notes for Delphi<!--mstheme--></font></h2>
+<p>Please also read the <a href="../foreign.htm#notes">common notes</a>.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The type of the import function in the Delphi code should be:<br>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<dl>
+  <dd><b>procedure</b> - if the predicate does not have a return value, and<br>
+    <b>function</b> - if the predicate has a return value</dd>
+  <dt>&nbsp;</dt>
+</dl>
+<p>The following table maps Visual Prolog types to Delphi types:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <div align="center">
+    <center>
+    <!--mstheme--></font><table border="1" cellspacing="1" cellpadding="7" width="425" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Visual Prolog</b><!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Delphi</b><!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">integer<!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Integer<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">real<!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Double<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">long<!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Longint<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">string<!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Pchar<!--mstheme--></font></td>
+      </tr>
+    </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </center>
+  </div>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Output arguments corresponds to <i>var</i> arguments of appropriate types,
+example:<br>
+</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <div align="center">
+    <center>
+    <!--mstheme--></font><table border="1" cellspacing="1" cellpadding="7" width="425" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Visual Prolog</b><!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Delphi</b><!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="47%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">getReal(real) - (o)<!--mstheme--></font></td>
+        <td width="53%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">getReal(var OutReal: Double)<!--mstheme--></font></td>
+      </tr>
+    </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </center>
+  </div>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>A Visual Prolog structure corresponds to a record in Delphi, and record
+arguments are <i>var</i> arguments to appropriate record types.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <h2><!--mstheme--><font color="#000000">Examples<!--mstheme--></font></h2>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <p>NONGUI: Delphi project uses a non-GUI Visual Prolog DLL.</p>
+      <p>USEVPI: Delphi project uses a Visual Prolog DLL with VPI.</p>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

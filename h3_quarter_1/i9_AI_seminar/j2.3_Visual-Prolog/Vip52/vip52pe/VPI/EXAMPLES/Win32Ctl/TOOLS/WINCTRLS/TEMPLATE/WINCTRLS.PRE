@@ -1,0 +1,14 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	WINCTRLS.DOM
+ Purpose:	Windows controls template file
+ Written by:	Sergey Alexeev
+ Version:	1.0
+ Build:		002.000316
+ Tested with:   Visual Prolog v.5.0 build 533
+ Comments:
+******************************************************************************/
+% Replace WINCTRLS_DIR with actual path to WINCTRLS tool:
+include "WINCTRLS_DIR\\winctrls.pre"

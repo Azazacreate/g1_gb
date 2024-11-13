@@ -1,0 +1,68 @@
+{\rtf1\ansi\ansicpg1251\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+{\f16\froman\fcharset238\fprq2 Times New Roman CE;}{\f17\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f19\froman\fcharset161\fprq2 Times New Roman Greek;}{\f20\froman\fcharset162\fprq2 Times New Roman Tur;}
+{\f21\froman\fcharset186\fprq2 Times New Roman Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;
+\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\widctlpar\adjustright \fs20\lang2057\cgrid \snext0 
+Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\*\listtable{\list\listtemplateid-1\listsimple{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat0\levelspace0\levelindent0{\leveltext\'01*;}{\levelnumbers;}}{\listname ;}\listid-2}
+{\list\listtemplateid67698689\listsimple{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li360\jclisttab\tx360 }{\listname ;}\listid166021067}
+{\list\listtemplateid67698689\listsimple{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li360\jclisttab\tx360 }{\listname ;}\listid1564558122}}
+{\*\listoverridetable{\listoverride\listid-2\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent283{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-283\li283 }}
+\ls1}{\listoverride\listid1564558122\listoverridecount0\ls2}{\listoverride\listid166021067\listoverridecount0\ls3}}{\info{\title RESPONSIBLE: Carsten Jorgensen}{\author KI}{\operator Konstantin Ivanov}{\creatim\yr1997\mo1\dy27\hr19\min12}
+{\revtim\yr1998\mo7\dy13\hr19\min17}{\version11}{\edmins43}{\nofpages1}{\nofwords170}{\nofchars972}{\*\company Prolog Development Center A/S}{\nofcharsws0}{\vern89}}
+\widowctrl\ftnbj\aenddoc\lytprtmet\hyphcaps0\formshade\viewkind4\viewscale100\pgbrdrhead\pgbrdrfoot \fet0\sectd \linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2
+\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang
+{\pntxtb (}{\pntxta )}}\pard\plain \widctlpar\adjustright \fs20\lang2057\cgrid {\b RESPONSIBLE}{: Konstantin Ivanov
+\par }{\b TOOLNAME}{: FTP Layer.
+\par }{\b PURPOSE}{: This is a layer on top of the socket module and Message Layer. Allows to interact with FTP servers.
+\par }{\b VERSION}{: 008.980713
+\par 
+\par }{\b HISTORY
+\par }\trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw15 \trbrdrl\brdrs\brdrw15 \trbrdrb\brdrs\brdrw15 \trbrdrr\brdrs\brdrw15 \trbrdrh\brdrs\brdrw15 \trbrdrv\brdrs\brdrw15 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr
+\brdrs\brdrw15 \cltxlrtb \cellx567\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx1418\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr
+\brdrs\brdrw15 \cltxlrtb \cellx8364\pard \widctlpar\intbl\adjustright {Build\cell Date\cell Comment\cell }\pard \widctlpar\intbl\adjustright {\row }\trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw15 \trbrdrl\brdrs\brdrw15 \trbrdrb\brdrs\brdrw15 \trbrdrr
+\brdrs\brdrw15 \trbrdrh\brdrs\brdrw15 \trbrdrv\brdrs\brdrw15 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx567\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx1418\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx8364\pard \widctlpar\intbl\adjustright {001\cell 960901\cell Tool started\cell 
+}\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell \cell \'85\'85..A lot of different changes\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {002\cell 970125\cell Tool finished\cell 
+}\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 970131\cell A number of parameters to ftplay_conn_initial changes - now instead of ftplay_handl  - WINDOW WinHndl and UNSIGNED Message\cell }\pard 
+\widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {003\cell 970227\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0
+\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {Predicates that simplify FTP interconnection have new argument - BOOLEAN P
+asvmode. If it is b_true than a connection will be established by a client (PASV FTP command), else a connection will be established by server (PORT FTP command).
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+Data socket is no more an argument for some predicates. At one time every control connection can have only one data socket - no matter for sending or receiving.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+A new argument for ftplay_recvfile and ftplay_retr_comm - a length of a requested file at a remote host.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+New predicates ftplay_set_data_socket_send_pasv and ftplay_set_data_socket_recv_pasv. They establish data connection with a remote host.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+Predicates ftplay_set_data_socket_send and ftplay_set_data_socket_recv don\rquote t return sockets.
+\par }\pard \widctlpar\intbl\adjustright {\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {004\cell 970319\cell A predicate ftplay_Params was added. It allows to set a callback predicate for receiving FTP Lay
+er debug information and a FTP timeout period - a maximum period of time between FTP client command and FTP server reply or any other actions.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {005\cell 970723\cell 
+FTP Layer was tested in 16-bit app. Necessary corrections were done.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {006\cell 980126\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7
+\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {Every control connec
+tion has its own list of created directories during a session. So directory at the remote host is not created if it has been already created.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+Some calls to Sockets layer predicates are trapped and properly handled.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+No debug handler is used if ftplay_MiscOptions was called with null pointer\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {007\cell 980430\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid 
+\loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+Alternative of FTPLAY_REPLY domain was changed from error( UNSIGNED ) to error( UNSIGNED, STRING ).
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+New internal timers were added, they handle accepting of a connection.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+Internal error handling was changed and improved.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+All data connections are closed when control connection is closed.\cell }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\row }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {008\cell 980713
+\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+Some internal timers are not killed when an error occurs while establishing a connection;
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+A socket is not closed if an error occurs while receiving data;
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {A handling 
+of close event with error was added;
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+Some internal facts are asserted twice in error conditions => not trapped 1041 error.
+\par }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cell }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\row }\trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw15 \trbrdrl\brdrs\brdrw15 \trbrdrb
+\brdrs\brdrw15 \trbrdrr\brdrs\brdrw15 \trbrdrh\brdrs\brdrw15 \trbrdrv\brdrs\brdrw15 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx567\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl
+\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx1418\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx8364\pard 
+\widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cell \cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl
+\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\adjustright {
+\par }}

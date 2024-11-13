@@ -1,0 +1,66 @@
+/******************************************************************************
+
+                              COMUTIL.DOM
+
+
+   VP COM domains definition.
+   
+******************************************************************************/
+ifndef  vpcC_ComutilDomFileIncluded
+
+CONSTANTS
+        vpcC_ComutilDomFileIncluded = 1
+
+ifndef  vpcC_DomFileIncluded
+include "ms_com.dom"
+enddef
+
+GLOBAL DOMAINS
+
+
+  vpcD_CY       =       struct cy(long,long)
+  vpcD_OLEDATE  =       real
+
+  vpcD_VariantArg =
+        vpcD_VT_EMPTY ;                     % nothing
+        vpcD_VT_NULL  ;                     % NULL
+        vpcD_VT_I2(short) ;                 % 2 byte signed int
+        vpcD_VT_I4(long) ;                  % 4 byte signed int
+        vpcD_VT_R4(real) ;                  % 4 byte real
+        vpcD_VT_R8(real) ;                  % 8 byte real
+        vpcD_VT_CY(vpcD_CY) ;               % currency
+        vpcD_VT_DATE(vpcD_OLEDATE) ;        % date
+        vpcD_VT_BSTR(string) ;              % OLE Automation string
+        vpcD_VT_DISPATCH(dword) ;           % IDispatch*
+        vpcD_VT_ERROR(long) ;               % SCODE
+        vpcD_VT_BOOL(integer) ;             % True=-1  False=0
+        vpcD_VT_VARIANT(dword) ;            % variant*
+        vpcD_VT_UNKNOWN(dword) ;            % IUnknown*
+        vpcD_VT_UI1(byte)      ;            % unsigned char
+        vpcD_VT_ARRAY(dword)   ;            % SAFEARRAY*
+        vpcD_VT_I2REF(dword) ;              % Pointer to 2 byte signed int
+        vpcD_VT_I4REF(dword) ;              % Pointer to 4 byte signed int
+        vpcD_VT_R4REF(dword) ;              % Pointer to 4 byte real
+        vpcD_VT_R8REF(dword) ;              % Pointer to 8 byte real
+        vpcD_VT_CYREF(dword) ;              % Pointer to currency
+        vpcD_VT_DATEREF(dword) ;            % Pointer to date
+        vpcD_VT_BSTRREF(dword) ;            % Pointer to OLE Automation string
+        vpcD_VT_DISPATCHREF(dword) ;        % Pointer to IDispatch*
+        vpcD_VT_ERRORREF(dword) ;           % Pointer to SCODE
+        vpcD_VT_BOOLREF(dword) ;            % Pointer to INTEGER ( True=-1  False=0 )
+        vpcD_VT_VARIANTREF(dword) ;         % Pointer to variant*
+        vpcD_VT_UNKNOWNREF(dword) ;         % Pointer to IUnknown*
+        vpcD_VT_UI1REF(dword)      ;        % Pointer to unsigned char
+        vpcD_VT_ARRAYREF(dword)             % Pointer to SAFEARRAY*
+
+  vpcD_VariantArgList = vpcD_VariantArg*
+
+  vpcD_InvokeFlag =
+        vpcD_disp_property_get ;
+        vpcD_disp_property_put ;
+        vpcD_disp_method ;
+        vpcD_disp_property_putref ;
+        vpcD_disp_property_get_method
+
+
+enddef

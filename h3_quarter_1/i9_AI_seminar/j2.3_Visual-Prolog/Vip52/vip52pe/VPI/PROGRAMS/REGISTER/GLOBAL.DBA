@@ -1,0 +1,39 @@
+/*****************************************************************************
+
+		Copyright (c) 1986,98 Prolog Development Center
+
+			VISUAL Prolog
+
+ Project:  REGISTER
+ FileName: GLOBAL.DBA
+ Purpose: Global Database
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+GLOBAL DATABASE - db1
+  first_Name(STRING)
+  last_Name(STRING)
+  street(STRING)
+  zip_Code(STRING)
+  city_Name(STRING)
+  person_Code(STRING)
+  cityno(STRING)
+  cityname(STRING)
+  search_flag
+  edit_flag
+
+GLOBAL DATABASE - db
+  arch1(BT_SELECTOR)
+  stop
+  no_first
+  flag_open_dba(string)
+  count(integer)
+  count_Page(integer)
+  run
+	
+GLOBAL DATABASE - globscrhnd
+  indexes(INDEXNAME,BT_SELECTOR)
+  field(FNAME,TYPE,ROW,COL,LEN)
+  value(FNAME,STRING)
+

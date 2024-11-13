@@ -1,0 +1,4 @@
+2020-11-05 22:02:22,498 CRITICAL config_server_log.py Критическая ошибка
+2020-11-05 22:02:22,507 ERROR config_server_log.py Ошибка
+2020-11-05 22:02:22,507 DEBUG config_server_log.py Отладочная информация
+2020-11-05 22:02:22,507 INFO config_server_log.py Информационное сообщение

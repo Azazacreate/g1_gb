@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<title>How can I find the day of the week for a given date</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h4><!--mstheme--><font color="#000000"><a name="How can I find the day of the week for a given date.">How can I find the day
+of the week for a given date.</a><!--mstheme--></font></h4>
+
+<dl>
+  <dd>You can use a couple of predicates from our DATE package from ..VPI\INCLUDE\DATE
+    directory. </dd>
+  <dd>Date package is a collection of&nbsp; useful predicates for the conversion of different
+    date and time formats into each other. It supplies an&nbsp; application programmer with
+    &nbsp; methods to make different calculations with dates including support for the date
+    and time format strings.</dd>
+  <dd><!--mstheme--></font><pre>dt_date_to_offset(MY_Year, MY_Month, MY_Day, DATE_OFFSET)<b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p ALIGN="JUSTIFY"></b>Flow pattern: (i,i,i,o)</p>
+    <!--mstheme--></font><pre>dt_offset_to_date(DATE_OFFSET, _Year, _Month, _Week, _DayOfMonth,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>MY_DayOfWeek)<b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p ALIGN="JUSTIFY"></b>Flow pattern: (i,o,o,o,o, o)</p>
+  </dd>
+</dl>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

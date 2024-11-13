@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="concat">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>concat</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">concat/3</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left">Concatenate two strings </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>concat/3</b> works as if defined by the
+equation </p>
+
+<p align="left">String3 = String1 + String2 </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>concat(&quot;aaa&quot;,&quot;bbb&quot;,X)
+X=aaabbb
+1 Solution
+concat(&quot;aaa&quot;,X,&quot;aaa----bbb&quot;)
+X=----bbb
+1 Solution
+concat(X,&quot;bbb&quot;,&quot;aaa----bbb&quot;)
+X=aaa----
+1 Solution
+concat(&quot;aaa&quot;,&quot;bbb&quot;,&quot;aaabbb&quot;)
+Yes
+concat(&quot;aaa&quot;,&quot;bbb&quot;,&quot;aaa----bbb&quot;)
+No </pre>
+</body>
+</html>

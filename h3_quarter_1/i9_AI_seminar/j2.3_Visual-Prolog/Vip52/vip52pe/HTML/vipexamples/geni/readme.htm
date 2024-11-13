@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>The WWW-GENIE-example</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Template" CONTENT="D:\software\OFFICE95\Office\html.dot">
+<meta NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+<font SIZE="+1" FACE="Arial"><b>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+</b></font><font SIZE="+1" FACE="Arial"><b>
+
+<h2><!--mstheme--><font color="#000000">WWWGENI - An expert system on the WEB<!--mstheme--></font></h2>
+
+<p>In the Visual Prolog subdirectory WWW\WWWGENI on the Visual Prolog distribution CD-ROM
+you will find an example that show how to create a small expert system that works on the
+Internet as a CGI Script through a WEB server. You can try out this example on the Visual
+Prolog homepages by clicking Demo examples and Geni.&nbsp; </p>
+
+<p>GENI is an extremely simple knowledge representation also shown under \TXTEXAMP and
+VPI\PROGRAMS. In GENI there are some rules that are satisfied if a number of conditions
+are true. </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>rule(1,&quot;carnivore&quot;,&quot;cheetah&quot;,[1,2],&quot;&quot;)<br>
+    rule(2,&quot;carnivore&quot;,&quot;tiger&quot;,[1,3],&quot;&quot;)<br>
+    rule(3,&quot;ungulate&quot;,&quot;giraffe&quot;,[5,2,4],&quot;&quot;)<br>
+    cond(1,&quot;it has tawny color&quot;,&quot;&quot;)<br>
+    cond(2,&quot;it has dark spots&quot;,&quot;&quot;)<br>
+    cond(3,&quot;it has black stripes&quot;,&quot;&quot;)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>GENI can primarily be used for classification. The goal of GENI is to illustrate how
+things are working, not to implement an advanced inference engine. However, the same
+principles can be used to build more complex shells like the ESTA expert system that is
+included with Visual Prolog.</p>
+
+<p>The example is supplied along with 3 knowledge bases (*.GNI files): Animals , Starting,
+and Tyreproblem. </p>
+
+<p>In the non-web based version of GENIE, questions are asked and answers given while the
+program is running a recursive procedure. This is not possible when working with a
+GCI&nbsp;script on the net because a CGI program cannot run constantly during the
+consultation. The big problem is how and where to store the previous state of the
+consultation!</p>
+
+<p>The solution used here is to store the states as&nbsp; hidden fields in the HTML form
+which are sent to the browser each time an anwer is returned from the application. So it
+is the user who carries the information from page to page. As the CGI program GENI.EXE is
+restarted each time an answer is recieved, it must reinitialize the answers from the
+hidden parameters. The list of parameters is retrieved by the predicate call
+cgi_GetString, and the call to assert_conditions asserts yes/no facts for all previous
+answered conditions.</p>
+
+<p>The very first hidden parameter specifies the name of the knowledge base as a .GNI file
+which must be consulted.</p>
+
+<p>The following is a summary of the operations of GENI on the WEB (take a look at the
+source code):&nbsp; </p>
+
+<ol>
+  <li>Retrieval of the CGI parameter list cgi_GetString.</li>
+  <li>Conversion of the String to a list of parameter names together with values.</li>
+  <li>Consultation of the knowledge base specified in the first hidden parameter.</li>
+  <li>Asserting the conditions from the hidden parameters.</li>
+  <li>Re-invoking the inference engine.</li>
+</ol>
+
+<p>The result of running the inference engine is an HTML page which contains a FORM with
+the hidden parameters and the question relating to the next condition.</p>
+
+<p>When a solution is found, GENI writes a final HTML page containing an answer.</p>
+
+<p>For each condition it is possible to specify either some HTML code or a file in order
+to customize the question.</p>
+
+<p>One of the special feaures in expert systems is the possibility of asking WHY. In this
+case GENI prints out the rules it is using and the conditions already answered.</p>
+
+<p>We send our special thanks to Mr Leo Jensen, who is the head of Prolog Development
+Center, and who was very helpful to us during this project.</p>
+
+<p>The students :</p>
+
+<p>Abdirazak Hersi, Throstur Gudmundsson, and Niels Hass.</p>
+</b></font><font SIZE="+1" FACE="Arial"><b>&nbsp;</b></font>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,42 @@
+11.02.97 Program WebAgent was finished.
+23.02.97 Now version 1.1
+23.02.97 A bug under Windows NT w/o "hosts." file fixed.
+03.03.97 A way of minimazing of a window was changed.
+07.03.97 Every entry has its own directory "Save results in"
+10.03.97 If-Modified-Since header is formed in a right way (GMT, not local)
+20.03.97 Log file can be saved in user-defined directory
+27.03.97 Add capability to view result file of addresses using current browser
+27.03.97 Add a choice between MS IE anf Netscape Navigator as a current browser
+01.04.97 List entries automatically start when WebAgent starts
+01.04.97 Size of colums are saved as list parameter
+02.04.97 Bugs with dialog "Set directory" fixed
+03.04.97 User can clear or not "Save result in" directory at start up
+03.04.97 Result file of addresses can be saved in user-defined directory
+03.04.97 Now Version 1.2
+09.04.97 User can clear log window or log file from Log Window menu
+11.04.97 Relative references at last level are transformed to absolute
+15.05.97 Persons can be notified with the help of Messege service when WebAgent fetches new information.
+15.05.97 Target directory is not cleared if a target host can not be found (e.g. network down ).
+15.05.97 Every entry has its own number of levels for search.
+03.06.97 Now version 1.3
+03.06.97 Every entry has its own settings ( target directory, number of levels for search, notify persons list and etc.)
+03.06.97 A new structure of cached documents is used - a-la Netscape.
+03.06.97 A bug with setting timer to none was fixed.
+03.06.97 A Basic authentication sheme can be used for authentication. Every entry can have its own authentication parameters.
+19.06.97 A bug with fetching references to .zip files was fixed.
+19.06.97 A bug with incorrect references in fetched documents was fixed (same original references were written in different case).
+20.06.97 An update of WebAgent window is done much more frequently.
+30.06.97 A bug with hanging of WebAgent when a response for cgi script has wrong format was fixed.
+01.07.97 A bug with wrongly formed references with query information was fixed.
+02.07.97 A new option was added to entry settings: "Fetch documents only from the given path".
+04.07.97 A incorrect behaviour of WebAgent when server responds with 200 answer and empty body was fixed.
+07.07.97 Log information was divided into log and debug information. An option to log debug information was added.
+25.07.97 An error of IE that it can not open files with extension other than .htm/.html was fixed.
+06.08.97 E-mail support was added to WebAgent.
+26.08.97 A bug with an attempt to send mail notification when no persons are specified was fixed.
+26.08.97 A bug with endless circle of authentications when password or name are wrong was fixed.
+21.10.97 If webagent.ini file can not be found then correct message will appear.
+21.10.97 Filters are used in "Open File" dialogs - custom SetDir control was changed.
+22.10.97 302 code processing was changed.
+22.10.97 Some files that contains nohref tag argument were processed in a wrong way. Fixed.
+24.10.97 Dialog Options saves changes even if Cancel was pressed. Fixed.

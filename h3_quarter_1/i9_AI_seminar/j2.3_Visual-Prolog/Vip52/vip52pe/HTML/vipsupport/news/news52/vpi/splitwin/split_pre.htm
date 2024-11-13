@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0043)http://www.pdc.dk/splitwin/header_split.htm -->
+<html>
+
+<head>
+<title>SPLIT</title>
+<meta content="text/html" http-equiv="Content-Type">
+<meta content="Microsoft FrontPage 4.0" name="GENERATOR">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../../";</script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">SPLIT.PRE<!--mstheme--></font></h1>
+<!--msthemeseparator--><p align="center"><img src="../../../../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<!--mstheme--></font><pre>/********************************************************************
+
+                Copyright (c)1999 Prolog Development Center A/S
+
+ FileName:      SPLIT.PRE
+ Purpose:       Split window object. Top level. Global predicates.
+ Written by:    Carsten Kehler Holst
+ Version:	1.0
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:        
+*********************************************************************/
+
+Global Predicates
+%* split_Create ******************************************************
+% Works like splitwin_Create but set up default handling for
+% drawing of resizebars and allowable resize.
+%*********************************************************************
+    window  split_Create(
+        wintype WinType, 
+        rct Rectangle, 
+        string Title, 
+        menu Menu, 
+        window ParentWindow, 
+        wsflags Flags, 
+        split_events_cb EventsCallback,  
+        integer Columns, 
+        integer Rows)
+    - procedure (i, i, i, i, i, i, i, i, i)    
+
+%* split_CreateInWindow *********************************************
+% Works like split_Create but in an already created window,
+% for use with custom controls or created window.
+% The created window should not contain the wsf_ClipChildren flag.
+%********************************************************************
+    split_CreateInWindow(
+        window SplitWin,
+        integer Columns,
+        integer Rows)
+    - procedure (i,i,i)
+
+%* split_Show *******************************************************
+% split_Show makes the splitwin Visible
+%********************************************************************
+    split_Show(window SplitWin) - procedure (i)
+
+%* split_SetPane ****************************************************
+% Works like splitwin_SetPane.
+% Sets the pane (column, row) to be the childwindow PaneWin.
+% Returns the previous child window contained in that pane or NULL if
+% the pane previously was empty.
+%********************************************************************
+    window /* PaneWin */ split_SetPane(
+        window SplitWin, 
+        integer Column, 
+        integer Row, 
+        window PaneWin)
+    - procedure (i, i, i, i)
+
+%* split_GetPane ****************************************************
+% Works like splitwin_GetPane.
+% Returns the child window contained in pane (Column, Row)
+%********************************************************************
+    window /* PaneWin */ split_GetPane(
+        window SplitWin, 
+        integer Column, 
+        integer Row)
+    - procedure (i, i, i)
+        
+%* split_GetPaneCoordinate ******************************************
+% Works like splitwin_GetPaneCoordinate.
+% Returns the coordinates of the pane containing the PaneWin.
+%********************************************************************
+    pnt /* Coordicates */ split_GetPaneCoordinate(
+        window SplitWin, 
+        window PaneWin)
+    - procedure (i, i)
+
+%* split_SetStyle / split_GetStyle **********************************
+% Sets/Gets resize bar 2d/3d Style.
+% Default is split_style_3D
+%********************************************************************
+    split_SetStyle(
+        window SplitWin, 
+        split_style Style)
+    - procedure (i, i)
+  
+    split_GetStyle(
+        window SplitWin, 
+        split_style Style)
+    - procedure (i, o)  
+
+%* split_SetMarginWidth *********************************************
+% Works like splitwin_SetMarginWidth.
+% Sets the margin width in pixels
+% Defailt is 1 pixels
+%********************************************************************
+    split_SetMarginWidth(
+        window SplitWin, 
+        integer WidthInPixels)
+    - procedure (i, i)
+  
+    split_GetMarginWidth(
+        window SplitWin, 
+        integer WidthInPixels)
+    - procedure (i, o)
+
+%* split_SetResizeBarWidth ******************************************
+% Works like splitwin_SetResizeBarWidth.
+% Default is 6 pixels
+%********************************************************************
+    split_SetResizeBarWidth(
+        window SplitWin, 
+        integer WidthInPixels)
+    - procedure (i, i)
+  
+%* split_GetResizeBarWidth ******************************************
+% Works like splitwin_GetResizeBarWidth.
+%********************************************************************
+
+    split_GetResizeBarWidth(
+        window SplitWin, 
+        integer WidthInPixels)
+    - procedure (i, o)
+
+%* split_SetResizeBarColor ******************************************
+% Sets the color of the resize bars
+% Default is btn_face_color
+%********************************************************************
+    split_SetResizeBarColor(
+        window SplitWin, 
+        color ResizeBarColor)
+    - procedure (i, i)
+  
+    split_GetResizeBarColor(
+        window SplitWin, 
+        color ResizeBarColor)
+    - procedure (i, o)
+
+%* split_ClearPane **************************************************
+% Works like splitwin_ClearPane.
+% Returns the child window contained in pane (Column, Row)
+% and deletes the Pane from the split window
+%********************************************************************
+     window /* PaneWin */ split_ClearPane(
+        window SplitWin, 
+        integer Column, 
+        integer Row)
+     - procedure (i, i, i)
+
+%* split_DeleteColumn ***********************************************
+% Works like splitwin_DeleteColumn.
+% Deletes a column and destroys all the pane windows in that column.
+% The contents of the columns to the right moves one to the left.
+% The column to the immediate right takes up the freed space unless
+% Column is the rightmost column in which case the column to the
+% immediate left gets the space.
+% Exits if Column is not a legal column or if SplitWin is not a
+% legal splitwin.
+%********************************************************************
+    split_DeleteColumn(
+        window SplitWin, 
+        integer Column)
+     - procedure (i, i)
+
+%* split_DeleteRow **************************************************
+% Works like splitwin_DeleteRow
+%********************************************************************
+    split_DeleteRow(
+        window SplitWin, 
+        integer Row)
+    - procedure (i, i)
+
+%* split_SetColumnWidth *********************************************
+% Works like splitwin_SetColumnWidth
+%********************************************************************
+    split_SetColumnWidth(
+        window SplitWin, 
+        integer Column, 
+        integer Width)
+    - procedure (i, i, i)
+
+%* split_GetColumnWidth *********************************************
+% Works like splitwin_GetColumnWidth
+%********************************************************************
+    split_GetColumnWidth(
+        window SplitWin, 
+        integer Column, 
+        integer Width)
+    - procedure (i, i, o)
+
+%* split_SetRowHeight ***********************************************
+% Works like splitwin_SetRowHeight
+%********************************************************************
+    split_SetRowHeight(
+        window SplitWin, 
+        integer Row, 
+        integer Height)
+    - procedure (i, i, i)
+
+%* split_GetRowHeight ***********************************************
+% Works like splitwin_GetRowHeight
+%********************************************************************
+    split_GetRowHeight(
+        window SplitWin, 
+        integer Row, 
+        integer Height)
+    - procedure (i, i, o)
+
+%* split_InsertColumnAt *********************************************
+% Works like splitwin_InsertColumnAt
+% Creates a new column. Moves the contents of the old column and all
+% the columns to the right of it one to the right.
+% It makes room for the new column by pushing the column to
+% the right unless it's the rightmost columns in which case it pushes
+% the the column to the left.
+% If width is too big it makes the column as big as possible.
+%********************************************************************
+    split_InsertColumnAt(
+        window SplitWin, 
+        integer Column, 
+        integer Width)
+    - procedure (i, i, i)
+
+%* split_InsertRowAt ************************************************
+% Works like split_InsertColumnAt
+%********************************************************************
+    split_InsertRowAt(
+        window SplitWin, 
+        integer Row, 
+        integer Height)
+     - procedure (i, i, i)
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The WWW-GENIE-example</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="Template" CONTENT="D:\software\OFFICE95\Office\html.dot">
+   <META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+</HEAD>
+<BODY TEXT="#FFFF00" BGCOLOR="#008080" LINK="#0000FF" VLINK="#800080">
+
+<CENTER><P><B><FONT FACE="Arial"><FONT SIZE=+1>WWWGENI - An expert system
+on the WEB</FONT></FONT></B></P></CENTER>
+
+<P>In the &lt;<i>VIP_root</i>&gt;\ WWW\Programs\GENI sub-directory you will find an example,
+that demonstrates, how to create a little expert system that works on the Internet
+as a CGI Script through a WEB server.<br>
+GENI is extremely simple knowledge representation also shown under
+\TXTEXAMP and VPI\PROGRAMS, where there are some rules that are satisfied
+if a list of conditions are true.</P>
+
+<DIR>
+<DIR>
+<P>rule(1,&quot;carnivore&quot;,&quot;cheetah&quot;,[1,2],&quot;&quot;)<BR>
+rule(2,&quot;carnivore&quot;,&quot;tiger&quot;,[1,3],&quot;&quot;)<BR>
+rule(3,&quot;ungulate&quot;,&quot;giraffe&quot;,[5,2,4],&quot;&quot;)<BR>
+cond(1,&quot;it has tawny color&quot;,&quot;&quot;)<BR>
+cond(2,&quot;it has dark spots&quot;,&quot;&quot;)<BR>
+cond(3,&quot;it has black stripes&quot;,&quot;&quot;)</P>
+</DIR>
+</DIR>
+
+<P>GENI can primarily be used for classification. The goal of GENI is to
+illustrate, how things are working, not to implement an advanced inference
+engine. However the same principles can be used to build more complex shells
+like the ESTA expert system included with Visual Prolog.</P>
+
+<P>The example is supplied along with 3 knowledge bases (*.GNI files):
+Animals , Starting and Tyreproblem. </P>
+
+<P>In the non-web based version of GENIE, questions are asked and answers
+given while the program is using recursion. This is not possible, when
+working, with a GCI&nbsp;script, on the net, because a CGI program cannot
+run constantly during the consultation. The big problem is how and where
+to store the previous state of the consultation!</P>
+
+<P>The solution used here is that the state stored as hidden fields in
+the HTML form which are sent to the browser each time an answer is returned
+from the application. So it is the user who carries the information from
+page to page. When the CGI program GENI.EXE is restarted each time an answer
+is received, it must reinitialize the answers from the hidden parameters.
+The list of parameters is retrieved by the predicate call cgi_GetString,
+and the call to assert_conditions assert yes/no facts for all previous
+answered conditions.</P>
+
+<P>The very first hidden parameter specifies the name of the knowledge
+base as a .GNI file which must be consulted.</P>
+
+<P>A summary of the operation of GENI on the WEB is: (Take a look at the
+source code)</P>
+
+<OL>
+<LI>Retrieve the CGI parameter list cgi_GetString.</LI>
+
+<LI>Convert the String to a list of parameter names together with values.</LI>
+
+<LI>Consult the knowledge base specified in the first hidden parameter.</LI>
+
+<LI>Assert the conditions from the hidden parameters.</LI>
+
+<LI>Re-invoke the inference engine.</LI>
+</OL>
+
+<P>The result of running the inference engine is that it writes out an
+HTML page which contains a FORM with the hidden parameters and the question
+relating to the next condition.</P>
+
+<P>When a solution is found GENI writes a final HTML page containing an
+answer.</P>
+
+<P>For each condition it is possible to specify either some HTML code or
+a file in order to customize the question.</P>
+
+<P>A specialty of expert systems is that it must be possible to ask WHY.
+In this case GENI prints out the rules it is using and the conditions already
+answered.</P>
+
+<P>We send our special thanks to Mr. Leo Jensen, who is the head of Prolog
+Development Center, and who was very helpful to us during this project.</P>
+
+<P>The students :</P>
+
+<P>Abdirazak Hersi, Throstur Gudmundsson and Niels Hass.</P>
+
+</BODY>
+</HTML>

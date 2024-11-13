@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="fail">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>fail</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">fail/0</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>fail</b> </p>
+
+<p align="left">Will invoke backtracking. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>fail</b> forces failure of a predicate and,
+hence, always causes backtracking. In a clause ended with a <b>fail</b>,
+it is not necessary to bind the output arguments for the clause. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>person(&quot;Leo&quot;,&quot;Copenhagen&quot;).
+person(&quot;Victor&quot;,&quot;St.Petersburg&quot;).
+
+print_all():-
+   person(Name,Addr),
+   write(&quot;\nName=&quot;,Name,&quot;,Address=&quot;,Addr),
+   fail.
+</pre>
+</body>
+</html>

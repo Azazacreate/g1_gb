@@ -1,0 +1,44 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	LAYOUTED.PRE
+ Purpose:	Global predicates for Layout Editor
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  le_init_module(LE_CALLBACK) - (i)
+  le_close_module() - ()
+  WINDOW le_create(WINDOW ParentWin,BOOLEAN Maximized,STRING PageName,REAL LabelWidth, REAL LabelHeight,
+	UNSIGNED NoHor,UNSIGNED NoVert,BOOLEAN Page_Roll,BOOLEAN Landscape,FONT,STRING Title,
+	INTEGER PixInMM,RCT RectInMM,INTEGER ScaleThick,LAYOUT_PAGE,LE_CALLBACK) - (i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i)
+  le_init(WINDOW LEWin,STRING PageName,REAL LabelWidth,REAL LabelHeight,
+	UNSIGNED NoHor,UNSIGNED NoVert,BOOLEAN Page_Roll,BOOLEAN Landscape,INTEGER PixInMM,
+	INTEGER ScaleThick,LAYOUT_PAGE,BOOLEAN Stretch) - (i,i,i,i,i,i,i,i,i,i,i,i)
+  le_Invalidate(WINDOW LEWin) - (i)
+  le_fields(WINDOW LEWin,LE_FIELD_INFORMATIONLIST,FONT LabelFont,STRING LabelFontName) - (i,o,o,o) (i,i,i,i)
+  le_SetMode(WINDOW LEWin,LE_MODE) - (i,i)
+  le_BringToFront(WINDOW LEWin) - (i)
+  le_SendToBack(WINDOW LEWin) - (i)
+
+  le_property_create() - ()
+  le_align_create() - ()
+  le_palette_create() - ()
+
+  le_property_destroy() - ()
+  le_align_destroy() - ()
+  le_palette_destroy() - ()
+
+  le_property_on() - ()
+  le_align_on() - ()
+  le_palette_on() - ()
+
+  le_property_off() - ()
+  le_align_off() - ()
+  le_palette_off() - ()
+
+  le_controls_off() - ()
+  le_controls_on() - ()

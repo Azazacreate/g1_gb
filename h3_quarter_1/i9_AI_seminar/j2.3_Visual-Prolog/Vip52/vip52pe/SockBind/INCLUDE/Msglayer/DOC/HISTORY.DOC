@@ -1,0 +1,152 @@
+{\rtf1\ansi\ansicpg1251\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f16\froman\fcharset238\fprq2 Times New Roman CE;}{\f17\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f19\froman\fcharset161\fprq2 Times New Roman Greek;}
+{\f20\froman\fcharset162\fprq2 Times New Roman Tur;}{\f21\froman\fcharset186\fprq2 Times New Roman Baltic;}{\f22\fswiss\fcharset238\fprq2 Arial CE;}{\f23\fswiss\fcharset204\fprq2 Arial Cyr;}{\f25\fswiss\fcharset161\fprq2 Arial Greek;}
+{\f26\fswiss\fcharset162\fprq2 Arial Tur;}{\f27\fswiss\fcharset186\fprq2 Arial Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;
+\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\widctlpar\adjustright 
+\fs20\lang2057\cgrid \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\*\listtable{\list\listtemplateid-1\listsimple{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat0\levelspace0\levelindent0{\leveltext\'01*;}{\levelnumbers;}}
+{\listname ;}\listid-2}{\list\listtemplateid201916417\listsimple{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li360\jclisttab\tx360 }{\listname 
+;}\listid203835769}{\list\listtemplateid67698689\listsimple{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li360\jclisttab\tx360 }{\listname ;}\listid903024865
+}}{\*\listoverridetable{\listoverride\listid-2\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent283{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-283\li283 
+}}\ls1}{\listoverride\listid203835769\listoverridecount0\ls2}{\listoverride\listid903024865\listoverridecount0\ls3}}{\info{\title RESPONSIBLE: Carsten Jorgensen}{\author KI}{\operator Konstantin Ivanov}{\creatim\yr1997\mo5\dy19\hr16\min53}
+{\revtim\yr1998\mo7\dy13\hr18\min31}{\version4}{\edmins12}{\nofpages3}{\nofwords830}{\nofchars4735}{\*\company Prolog Development Center A/S}{\nofcharsws0}{\vern89}}
+\widowctrl\ftnbj\aenddoc\lytprtmet\hyphcaps0\formshade\viewkind4\viewscale100\pgbrdrhead\pgbrdrfoot \fet0\sectd \linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2
+\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang
+{\pntxtb (}{\pntxta )}}\pard\plain \widctlpar\adjustright \fs20\lang2057\cgrid {\b RESPONSIBLE}{: Carsten Kehler Holst, Dimitri Gr\'e4del and Konstantin Ivanov
+\par }{\b TOOLNAME}{: Messages Layer.
+\par }{\b PURPOSE}{: This is a layer on top of the socket module. The layer sets up a event-handling-predicate for a socket. The event-handling-predicate receives e_ReadBin, e_ReadStr, e_Connect, e_Close and  e_Error events.
+\par }{\b VERSION}{: 018.980713
+\par 
+\par }{\b HISTORY
+\par }\trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw15 \trbrdrl\brdrs\brdrw15 \trbrdrb\brdrs\brdrw15 \trbrdrr\brdrs\brdrw15 \trbrdrh\brdrs\brdrw15 \trbrdrv\brdrs\brdrw15 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr
+\brdrs\brdrw15 \cltxlrtb \cellx567\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx1418\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr
+\brdrs\brdrw15 \cltxlrtb \cellx8364\pard \widctlpar\intbl\adjustright {Build\cell Date\cell Comment\cell }\pard \widctlpar\intbl\adjustright {\row }\trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw15 \trbrdrl\brdrs\brdrw15 \trbrdrb\brdrs\brdrw15 \trbrdrr
+\brdrs\brdrw15 \trbrdrh\brdrs\brdrw15 \trbrdrv\brdrs\brdrw15 \clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx567\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb
+\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx1418\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx8364\pard \widctlpar\intbl\adjustright {001\cell 960801\cell Tool started\cell 
+}\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 960901\cell Error in socket_event_eh, corrected.  DG.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 960911\cell 
+Port type changed from integer to unsigned\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 960911\cell Domain longlist changed to msglay_longlist\cell }\pard \widctlpar\intbl\adjustright {\row }\pard 
+\widctlpar\intbl\adjustright {\cell \cell Msglay_writeStr has been added.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {002\cell 960930\cell Type of msglay_Listen changed.\cell }\pard \widctlpar\intbl\adjustright {
+\row }\pard \widctlpar\intbl\adjustright {\cell 961009\cell Asyncselect moved in msglay_listen and msglay_connect\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 961009\cell 
+In socket_errConect is err_sockwouldblock removed\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 961021\cell Socket_errWrite fails if the error is err_socketwouldblock\cell }\pard \widctlpar\intbl\adjustright {
+\row }\pard \widctlpar\intbl\adjustright {\cell 961021\cell Asyncselect  for fd_write, fd_read and fd_close is moved into the handling of the fd_connect event.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 
+961021\cell The error event err_socketconnreset is treadet as a fd_close event\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {003\cell 961115\cell I have extended the predicate msglayer_setOption. (DG)
+\par The e_read event is changed to e_readBin and e_readStr.
+\par The msglay_write is changed to msglay_writeStr and msglayBin.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 961119\cell Changed the handling of fd_accept. The call to Handle was moved DG\cell }\pard 
+\widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {\cell 961120\cell Changed msgl_writeLength. DG.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {004\cell 961121\cell 
+Changes to the predicates handling writing and reading. Since the performance was to bad. DG. \cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {005\cell 960512\cell 
+For the packed messages a header and end field has been added. 
+\par The predicates msgl_getWrongMsgStr and msgl_getWrongMsgBin has been added.
+\par DG.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {006\cell 970112\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard 
+\fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {An name of a server for msglay_connect predicate may be its IP address.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+a number of arguments for e_Connect changed - remote host name was added}{\i .}{
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+Msglay_kind_error has new alternative : msglay_errEvent(fd_Event).
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {New predicate msglay_GetOptions.
+
+\par }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {KI\cell }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\row }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+007\cell 970115\cell An internal predicate msgl_ready_write was changed - available to send large binary blocks.
+\par KI\cell }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\row }\pard \widctlpar\intbl{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {008\cell 970126\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid 
+\loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+An alternative in errors msglay_errConn now has two arguments - Host and Port - to identify for what host and port connection failed.
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-283\li283\widctlpar\intbl{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+Msglay_connect returns a value of a socket for which a connection is trying to be established.
+\par }\pard \widctlpar\intbl\adjustright {KI\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {009\cell 970131\cell }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{
+ Add semaphore msgl_treadDataInProcess_db, and change msgl_data_read and msgl_read_ready.
+\par }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{ Changed msgl_ready_write.
+\par }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{ Changed the place where vpi_processevent is automatically called.
+\par DG.\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {010\cell 970212\cell An error in Message Layer when some network event comes after fd_close fixed.
+\par KI\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {011\cell 970214\cell }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{
+ Changes since Msglayer couldn't handle new incoming messages until the event-handling predicate returned from the e_Read* events.
+\par DG. \cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {013\cell 970401\cell Message Layer  was changed according to  a new version of SockBind\cell }\pard \widctlpar\intbl\adjustright {\row }\pard 
+\widctlpar\intbl\adjustright {014\cell 970515\cell DIMI - write here about changes for OS/2\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {015\cell 970519\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid 
+\loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {The new predicate was added - msglay_GetRemoteInf
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {A lookup fo
+r remote hostname under Windows is done asynchronously
+\par }\pard \widctlpar\intbl\adjustright {KI\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {017\cell 980430\cell Bug fixed: bin. Block is not added to a queue if it is written directly and nothing is sent.
+\par KI\cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\intbl\adjustright {018\cell 980713\cell {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl
+\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {If the resolving of a target host\rquote s name is done async. and a connection canno
+t be established then the error msglay_errConnect is fired and user app. cannot trap it;
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {
+Internal event queue is not cleared when user app changes socket\rquote s message layer handler;
+\par {\pntext\pard\plain\intbl\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li360\widctlpar\intbl\jclisttab\tx360{\*\pn \pnlvlblt\ilvl0\ls3\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls3\adjustright {Mess
+age layer processes packed data with length  > 1677216 incorrectly.
+\par }\pard \widctlpar\intbl\adjustright {KI\cell }\pard \widctlpar\intbl\adjustright {\row }\trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw15 \trbrdrl\brdrs\brdrw15 \trbrdrb\brdrs\brdrw15 \trbrdrr\brdrs\brdrw15 \trbrdrh\brdrs\brdrw15 \trbrdrv\brdrs\brdrw15 
+\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx567\clvertalt\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx1418\clvertalt
+\clbrdrt\brdrs\brdrw15 \clbrdrl\brdrs\brdrw15 \clbrdrb\brdrs\brdrw15 \clbrdrr\brdrs\brdrw15 \cltxlrtb \cellx8364\pard \widctlpar\intbl\adjustright {\cell \cell \cell }\pard \widctlpar\intbl\adjustright {\row }\pard \widctlpar\adjustright {
+\par 
+\par 970131:
+\par 
+\par }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{ I have added a semaphore msgl_treadDataInProcess_db to ens
+ure that msgl_treadData do not start treading a new incomming message before it has finished the previous one. This has changed the predicates msgl_data_read and msgl_read_ready.
+\par 
+\par }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{ msgl_ready_write(Socket) is changed such that we don't assert more msgl_write_ready_db() facts for the same socket.
+\par 
+\par }{{\field{\*\fldinst SYMBOL 183 \\f "Symbol" \\s 10}{\fldrslt\f3\fs20}}}{
+ Instead of calling vpi_processEvents after each call to socket_SendInt, I first call vpi_processEvents after sending a hole message. This has changed msglay_WriteBin, msglay_WriteStr, and msgl_ready_write. 
+\par 
+\par 970115:
+\par 
+\par msgl_ready_write tests is whole block e\\was sent or not. If not then a rest part will be added to a database of blocks to send msgl_write_que_db.
+\par 
+\par 
+\par 961115:
+\par 
+\par The msglay_setOption predicate is used to set the following options:
+\par 
+\par \tab - Send buffer size and receive buffer size.
+\par \tab - The mode for sending using msglay_writeStr 
+\par \tab - The mode for sending using msglay_writeBin.
+\par \tab - The mod for receiving messages.
+\par \tab - If the message layer should call vpi_processevents or not.
+\par 
+\par 
+\par 961021:
+\par 
+\par The error event err_sockconnreste : "Connection reset by the remote side", is treated as a fd_close event.
+\par 
+\par 961021:
+\par 
+\par }{\f1 Adding events notification for connected socket fd_write, fd_read  and fd_close was moved from msglay_connect to socket_event_processing(\'85..,fd_connect), because while wor
+king with message layer there was a strange and suspicious situation when fd_write was processed before fd_connect by message layer. Such situation certainly was wrong and I found only this way to solve it. (Konstantin Ivanov)}{\b\f1\ul 
+\par }{\f1 
+\par }{
+\par 
+\par 961021:
+\par 
+\par If socket_send returns an err_sockwouldblock error the message is kept in the write-queue, therefor socket_ErrWrite do not propagate this error.
+\par 
+\par 
+\par 961009:
+\par 
+\par msglay_listen and msglaay_connect is changed because of a timing problem on Win NT. This makes the socket non-blocking. Therefor the wouldblock errors are removed. The connection is established when the socket receives an e_connect event.
+\par 
+\par 960930:
+\par 
+\par The predicate msglay_Listen now returns the socket that it creates.
+\par 
+\par 960901:
+\par 
+\par }{\b Error:
+\par }{\f1\lang1030 In next fragment variable LParam received the long type value,
+\par than it is used in bitright(LParam,16,Er) predicate us unsigned type. It is
+\par not correct under 16-bit
+\par platform. No error occur, but always Er = 0 and error processing will be not
+\par right.
+\par 
+\par   socket_event_eh(Win,e_Native(wm_socket,WParam,LParam),0):-
+\par     bitright(LParam,16,Er),
+\par     Er = 0x0, !, % no error
+\par     trap(Socket = socket_Message2Socket(WParam), _, fail),!,
+\par     socket_event_processing(Win,Socket,LParam),
+\par     !.
+\par   socket_event_eh(_Win,e_Native(wm_socket,WParam,LParam),0):-
+\par     bitright(LParam,16,Err),
+\par     trap(Socket = socket_Message2Socket(WParam), _, fail),
+\par     socket_ErrEvent(Socket, Err, errEvent),
+\par     !.
+\par }{
+\par }{\b Correction:}{
+\par The bitright calls has bin altered to socket_GetSelectEvent and socket_GetSelectError.
+\par 
+\par }}

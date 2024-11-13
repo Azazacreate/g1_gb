@@ -1,0 +1,17 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	GRID.PRE
+ Purpose:	GRID custom control template file
+ Written by:	Sergey Alexeev
+ Version:	2.0
+ Build:		009.970220
+ Tested with:	Visual Prolog v. 4.1 build 509
+ Comments:
+******************************************************************************/
+ifdef use_grid
+ #Error: Simultaneous inclusion tool by templates and by Application Expert is impossible
+enddef 
+% Replace GRID_DIR with actual path to GRID tool:
+include "grid\\grid.pre"

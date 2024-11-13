@@ -1,0 +1,111 @@
+<html>
+
+<head>
+<title>Static Class Members</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><a name="1c808421"></a><b>Static Class Members<!--mstheme--></font></h1>
+</b>Class member predicates and facts can be declared being <b>static</b>.
+Notice that all domains declared in classes are static class entities.
+<p>The keyword <b>static</b> specified before the keyword PREDICATES or FACTS
+specifies that all predicates or facts declared in the section are static. For
+example:
+<blockquote>
+  <!--mstheme--></font><pre>STATIC PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>procedure get_counter(integer)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>STATIC FACTS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>determ counter(integer)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+Static class members belong to the class, not to the individual objects. This
+means that when a class declares a static member, then only one such member
+exists for a class, rather than one per each object (like it is for object class
+members). Static class members do not have any reference to personal objects of
+the class. Therefore, static class members (public) can be used outside the
+class in which they are declared without references to objects of this class.
+They can be used in any place where the class is visible (in modules including
+the class declaration) even without creation of objects of the class.
+<p>In classes that do not inherit (transitively) the static class member, it can
+be qualified using the following syntax:
+<!--mstheme--></font><pre>class_name <b>::</b> static_class_member_name[(arguments)]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+For example, one can access static fact counter like this:
+<!--mstheme--></font><pre>goal</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>...</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>xclass::counter(Current_Counter)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<!--mstheme--></font><pre>...</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+In opposite, non-static (<b>object</b>) class members belong to the class
+objects (instances). Therefore, to use an object class member outside the class
+implementation an object of the class should be created, and the object
+identifier should be specified in the call of object class member.
+<p><b>Static</b> facts are not generated for each instance of a class. Only one
+version of each static fact exists for the class and it is accessible for all
+instances of the class. This is useful, for example, to count the number of
+instances of a class.
+<p><b>Static</b> <a href="predicate_values.htm">predicate values</a> do not
+carry any internal reference to class instances. Therefore, &quot;ordinary&quot;
+predicate domains can be used for declarations of static predicate values (see <b>Example</b>).
+<p>On the other hand, <b>object</b> predicate values carry the hidden extra
+parameter pointing to the actual instance (object) of the class. Therefore,
+object predicate values can be declared only inside a class, and to declare <b>non-static</b>
+predicate values the special <a href="object_predicate_domains_declara.htm">object
+predicate domains</a> should be used.
+<p>Note that it is impossible to declare <b>static</b> predicates in abstract
+classes.<b>
+<h5><!--mstheme--><font color="#000000"><a href="pdcindex.htm">See also</a><!--mstheme--></font></h5>
+</b>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

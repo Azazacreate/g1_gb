@@ -1,0 +1,32 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+			
+ FileName: RES.DOM
+ Purpose: declaration of domains to bind with res.lib
+ Written by: Yuri Illin
+ Comments:
+
+******************************************************************************/
+
+global domains
+  VERSIONINFO_HEAD = struct verinfo_h( 
+  	DWORD Fileversion1,
+  	DWORD Fileversion2,
+  	DWORD Productversion1,
+  	DWORD Productversion2,
+  	DWORD Fileflags,
+  	DWORD Fileos,
+  	DWORD Filetype,
+  	DWORD Subtype )
+
+  VERSIONINFO_VALUE = struct verinfo_val( STRING Field, STRING Value )
+
+  VERSIONINFO_VALUELIST = VERSIONINFO_VALUE*
+  
+  VERSIONINFO_BLOCK = struct verinfo_block( WORD Language, WORD Sublanguage, VERSIONINFO_VALUELIST )
+  
+  VERSIONINFO_BLOCKLIST = VERSIONINFO_BLOCK*
+  

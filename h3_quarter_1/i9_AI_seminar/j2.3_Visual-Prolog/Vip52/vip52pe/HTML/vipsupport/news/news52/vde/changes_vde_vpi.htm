@@ -1,0 +1,289 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Changes from Visual Prolog 5.1 to Visual Prolog 5.2: VDE, VPI, Debugger</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../";</script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Changes from Visual Prolog 5.1 to Visual Prolog 5.2<!--mstheme--></font></h1>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde">VDE</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi">VPI</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#debugger">Debugger</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="VDE"></a>VDE<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">VDE Now Handles Filenames with Spaces<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>Beginning with Visual Prolog 5.2, it is possible under 32-bit Windows to
+  place Visual Prolog projects into the directories, which names contain
+  spaces.&nbsp;</p>
+  <p>Please see <a href="../../../upgrade/upgrade51to52.htm">Upgrade Notes</a></p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">New Default Structure of a Project<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>Vpitools.DOM and Vpitools.PRE are now generated. These files are included
+  by default into the &quot;User's Declarations&quot; section of a
+  &lt;project.INC&gt;.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000"><a href="new_module_view_in_the_project_w.htm">New Module View in the
+    Project Window.&nbsp;</a><!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000"><a href="browser.htm">New &quot;Browse&quot; Dialog</a><!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Browse Information is not Lost, when Errors Occur<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Faster Rebuilt of Large Projects<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>Large multi-module projects are rebuilt faster than in previous versions of
+  Visual Prolog.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Changes in the &quot;Application Expert&quot;<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <ol>
+    <li>In Visual Prolog 5.2 the VDE does not support Borland C as Main Program
+      for Windows and DOS Platforms.<br>
+      See <a href="../../../upgrade/upgrade51to52.htm#problems of upgrading projects with borland c as the main program for windows and dos platforms">Upgrade
+      Notes</a>.</li>
+    <li>In Visual Prolog 5.2 the VDE also does not support BGI (Borland Graphics
+      Interface)&nbsp; as UI Strategy.</li>
+    <li>The default setting for the &quot;Help Compiler&quot; option in the <b>Help
+      Maker </b>sheet has been changed from &quot;HC31&quot; to &quot;HCW&quot;.</li>
+  </ol>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000"><a href="directories_dialog.htm">Changes in the &quot;<b>Directories&quot;</b>
+    Dialog</a><!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Changes in the &quot;Compiler Options&quot; Dialog<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>The &quot;Unreachable Code&quot; checkbox has been added to the Compiler
+  Options|Warnings dialog. By default the checkbox is unchecked. <!--webbot
+  bot="PurpleText" preview="R980408.01" --></p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">New &quot;Warning!&quot; Dialog<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>The <a href="warning.htm">&quot;Warning!&quot; dialog</a> provides the
+    possibility to regenerate build scripts of the projects created by previous
+    versions of Visual Prolog.</p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Changes in the &quot;Create Mail to PDC Support&quot; Dialog<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  The product serial number, inserted by a user during installation, is
+  automatically included into the &quot;Create Mail to the PDC Support&quot;
+  dialog under Win32. This makes it easy to send a request to Visual Prolog
+  Technical Support.<!--webbot bot="PurpleText" preview="R990917.01" -->
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Changes in the Text Editor<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  If multiple lines are selected at the point of “Replace” invocation,
+  then&nbsp; “selected text” is now chosen<br>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">The Possibility to Specify the Stack Size<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>The possibility to <a href="stacksize.htm">specify the Stack Size<!--webbot
+  bot="PurpleText" preview="Check" --> </a>has been added.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Visual Prolog 5.2 VDE Preserves Original Filename Case.<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>&nbsp;Previously it turned filenames into&nbsp;the upper case.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">A New Menu Item<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>A new menu item <b>Window|Close All Editor Windows</b> (F11) has been
+  added.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Improved Work with Maximized Windows&nbsp;<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>VDE now works much better with maximized windows.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Error Window<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>The Error window functioning has been improved, e.g., when the error list
+  is updated the current selection is not lost.</p>
+  <p>Both compiler and linker errors can be viewed now in the Error window.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Better File Pattern for the File|Open command<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>Prolog source files of the following types can be simalteneously viewed in
+  the &quot;<b>Load a File to Edit&quot; </b>dialog: *.dom; *.con; *.pre; *.pro,
+  *.inc.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Better File Pattern for the Open|OpenProject command&nbsp;<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <p>Prolog project files of the following types can be simalteneously viewed in
+  the &quot;<b>Load Project</b>&quot;<b> </b>dialog: *.vpr, *.prj.<br>
+  </p>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Improved &quot;Window | More windows...&quot; Dialog<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>Window | More windows... dialog, provides now the possibility to see, what
+  files to choose even if a path is long.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">New Names of INI-files in Visual Prolog 5.2<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>In order to provide simultaneous safe work of Visual Prolog 5.2 and a
+  previous version of Visual Prolog, the names of INI files used in Visual
+  Prolog 5.2 are supplied with &quot;_52&quot; suffix:</p>
+  <!--mstheme--></font><table border="0" width="80%" style="border-style: solid">
+    <tr>
+      <td width="33%" align="center" style="background-color: #C0C0C0; border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">
+        <h5><!--mstheme--><font color="#000000">Platform<!--mstheme--></font></h5>
+      <!--mstheme--></font></td>
+      <td width="33%" align="center" style="background-color: #C0C0C0; border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">
+        <h5><!--mstheme--><font color="#000000">Name in Previous Versions<!--mstheme--></font></h5>
+      <!--mstheme--></font></td>
+      <td width="34%" align="center" style="background-color: #C0C0C0; border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">
+        <h5><!--mstheme--><font color="#000000">Name in VIP 5.2<!--mstheme--></font></h5>
+      <!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">Windows 32<!--mstheme--></font></td>
+      <td width="33%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">vip32.ini<!--mstheme--></font></td>
+      <td width="34%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">vip32_52.ini<!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">Windows 16<!--mstheme--></font></td>
+      <td width="33%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">vip16.ini<!--mstheme--></font></td>
+      <td width="34%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">vip16_52.ini<!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">OS/2<!--mstheme--></font></td>
+      <td width="33%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">vip.ini<!--mstheme--></font></td>
+      <td width="34%" align="center" style="border-style: solid"><!--mstheme--><font face="verdana, Arial, Helvetica">vip_52.ini<!--mstheme--></font></td>
+    </tr>
+  </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="VPI"></a>VPI<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h4><!--mstheme--><font color="#000000">Status Line Customizing<!--mstheme--></font></h4>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <p>A possibility to customize status line has been added. The following VPI
+  predicates have been implemented:</p>
+  <p><a href="../vpi/edit_setstatuslinecaptions.htm">edit_SetStatusLineCaptions</a></p>
+  <p><a href="../vpi/edit_setstatuslinecaptionsoffsets.htm">edit_SetStatusLineCaptionsOffsets</a></p>
+  <p><a href="../vpi/edit_setstatuslinecolor.htm">edit_SetStatusLineColor&nbsp;</a></p>
+  <p><a href="../vpi/edit_setstatuslinefont.htm">edit_SetStatusLineFont</a>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="Debugger"></a>Debugger<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Debugger can now load projects with classes.&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Debugger supports now 32-bit text mode applications.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some other improvements have been included.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some bugs have been fixed.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p align="center"><i><a href="../examples52/changes_pack_ex.htm">Next</a> </i>| <i><a href="../news52det.htm">Previous</a></i>
+|&nbsp; <i><a href="../news52det.htm#list">Back to the list of sections</a>&nbsp;</i></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

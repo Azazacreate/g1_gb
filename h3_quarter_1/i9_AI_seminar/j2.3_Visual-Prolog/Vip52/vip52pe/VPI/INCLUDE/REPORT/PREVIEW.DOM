@@ -1,0 +1,30 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	PREVIEW.DOM
+ Purpose:	Project's global domains
+ Written by:	Alexander Grachev
+ Version:	1.3
+ Build:		019.990201
+ Tested with:	Visual Prolog v.5.1 build 563
+ Comments:
+*****************************************************************************/
+constants
+  repw_Zoomed	 = 	301
+  repw_Maximized =	302
+  repw_Icon	 =	303
+  repw_Invisible =	304
+
+global domains
+PROCESS_PRED 	= nondeterm (STRING,SLIST,SLIST)   - (i,i,o)
+PROGRESS_STATUS = 	starting;
+			progressing;
+			finish;
+			path(STRING)
+PROGRESS_PRED	= determ (PROGRESS_STATUS,UNSIGNED,BOOLEAN) - (i,i,o)
+REPTOOL_PRINT_DOM   = 	print(INTEGER NumberOfCopies,PAGE_DEF);
+			preview(STRING,RCT,ILIST);
+			convert_rtf(STRING)
+PAGE_DEF = 	page(INTEGER);
+		band(INTEGER,INTEGER)

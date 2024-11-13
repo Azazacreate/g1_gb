@@ -1,0 +1,23 @@
+/*****************************************************************************
+
+	(c) Copyright 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SETUP
+ FileName: SETUPDDE.PRE
+ Purpose: Predicate definitions for SETUPDDE.PRO
+ Written by: Zaichenko Michael
+ Comments:
+******************************************************************************/
+global domains
+ program_Item  = pGroup(STRING groupTitle);
+	         pItem(INTEGER group_Id,STRING description,STRING cmd_Line,STRING path)
+ program_ItemL = PROGRAM_Item*
+ 
+global predicates
+ifdef ws_win
+ ifdef platform_16bit
+  procedure DWORD winapi_GetVersion()  language stdcall as "GETVERSION"
+ enddef
+enddef  
+  procedure setupDDE_register()-()
+  determ setupDDE_CreateGroup(PROGRAM_ItemL)-(i)

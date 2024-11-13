@@ -1,0 +1,413 @@
+/***************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+
+ FileName: PDCSOCK.CON
+ PURPOSE: Interface to the native Sockets
+ Written by: Compiler Group, PDC Russia
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ        Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    08/05/97    บ  KI  บ  A support for WSAAsyncGetXByY and other Windows 
+    		บ      บ  specific routines was added.
+***************************************************************************/
+
+ifndef pdcsock_con_included
+
+  ifndef ws_win
+    ifdef platform_32bit
+      ifndef os_os2
+	#error: Unsupported platform
+      enddef
+    elsedef
+      #error: Unsupported platform
+    enddef
+  enddef
+
+  CONSTANTS
+
+    pdcsock_con_included = 1
+
+  include "source\\psockimp.con"
+
+        	/**********************/
+		/*   Socket options   */
+		/**********************/
+  CONSTANTS
+
+    /* Options can be used both in Get/Set */
+    so_broadcast   = 0x0020	/* bool: permit sending of broadcast msgs */
+    so_debug       = 0x0001	/* bool: turn on debugging info recording */
+    so_acceptconn  = 0x0002     /* socket has had listen() 		  */
+    so_dontlinger  = 0xFF7F	/* bool: if true, SO_LINGER is disabled   */
+    so_dontroute   = 0x0010	/* bool: just use interface addresses     */
+    so_keepalive   = 0x0008	/* bool: keep connections alive           */
+    so_linger	   = 0x0080	/* linger on close if data present	  */
+    so_oobinline   = 0x0100	/* bool: leave received OOB data in line  */
+    so_rcvbuf      = 0x1002	/* int : receive buffer size              */
+    so_reuseaddr   = 0x0004	/* bool: allow local address reuse        */
+    so_sndbuf      = 0x1001	/* int : send buffer size                 */
+    so_error       = 0x1007     /* get error status and clear             */
+    so_type        = 0x1008     /* get socket type 			  */
+    tcp_nodelay    = 0x0001	/* bool: disable Nagle algorithm for send */
+
+    sol_socket	   = 0xFFFF	/* get/set options for socket level	  */
+
+		/************************/
+		/*   Address families   */
+		/************************/
+  CONSTANTS
+
+    af_unspec		= 0	/* unspecified */
+    af_unix		= 1	/* local to host (pipes, portals)	*/
+    af_inet		= 2	/* internetwork: UDP, TCP, etc.		*/
+    af_implink		= 3	/* arpanet imp addresses		*/
+    af_pup		= 4	/* pup protocols: e.g. BSP		*/
+    af_chaos		= 5	/* mit CHAOS protocols			*/
+
+    ifndef os_os2
+      af_ipx		= 6	/* IPX and SPX				*/
+    enddef
+
+    af_ns		= 6	/* XEROX NS protocols			*/
+
+    ifdef os_os2
+      af_nbs		= 7	/* nbs protocols			*/
+    elsedef
+      af_iso		= 7	/* ISO protocols			*/
+    enddef
+
+    af_ecma		= 8	/* european computer manufacturers	*/
+    af_datakit		= 9	/* datakit protocols			*/
+    af_ccitt		= 10	/* CCITT protocols, X.25 etc		*/
+    af_sna		= 11	/* IBM SNA				*/
+    af_decnet		= 12	/* DECnet				*/
+    af_dli		= 13	/* Direct data link interface		*/
+    af_lat		= 14	/* LAT					*/
+    af_hylink		= 15	/* NSC Hyperchannel			*/
+    af_appletalk	= 16	/* AppleTalk				*/
+    af_netbios		= 17	/* NetBios-style addresses		*/
+    af_max		= 18
+
+		/*****************/
+		/*   Protocols   */
+		/*****************/
+  CONSTANTS
+
+    ipproto_ip		= 0	/* dummy for IP			*/
+    ipproto_icmp	= 1	/* control message protocol	*/
+
+    ifdef os_os2
+      ipproto_ggp	= 3	/* gateway^2 (deprecated)	*/
+    elsedef
+      ipproto_ggp	= 2	/* gateway^2 (deprecated)	*/
+    enddef
+
+    ipproto_tcp		= 6	/* tcp				*/
+
+    ifdef os_os2
+      ipproto_egp	= 8	/* exterior gateway protocol	*/
+    enddef
+
+    ipproto_pup		= 12	/* pup				*/
+    ipproto_udp		= 17	/* user datagram protocol	*/
+    ipproto_idp		= 22	/* xns idp			*/
+
+    ifndef os_os2
+      ipproto_nd	= 77	/* UNOFFICIAL net disk proto	*/
+    enddef
+
+    ipproto_raw		= 255	/* raw IP packet		*/
+    ipproto_max		= 256
+
+		/***************************/
+		/*   Port/socket numbers   */
+		/***************************/
+  CONSTANTS
+
+    ifndef os_os2
+      /* Network standard functions */
+      ipport_echo		= 7
+      ipport_discard		= 9
+      ipport_systat		= 11
+      ipport_daytime		= 13
+      ipport_netstat		= 15
+      ipport_ftp		= 21
+      ipport_telnet		= 23
+      ipport_smtp		= 25
+      ipport_timeserver		= 37
+      ipport_nameserver		= 42
+      ipport_whois		= 43
+      ipport_mtp		= 57
+
+      /* Host specific functions */
+      ipport_tftp		= 69
+      ipport_rje		= 77
+      ipport_finger		= 79
+      ipport_ttylink		= 87
+      ipport_supdup		= 95
+
+      /* UNIX TCP sockets */
+      ipport_execserver		= 512
+      ipport_loginserver	= 513
+      ipport_cmdserver		= 514
+      ipport_efsserver		= 520
+
+      /* UNIX UDP sockets */
+      ipport_biffudp		= 512
+      ipport_whoserver		= 513
+      ipport_routeserver	= 520	/* 520+1 also used */
+    enddef
+
+    /* Ports < IPPORT_RESERVED are reserved for privileged processes (e.g. root) */
+    ipport_reserved		= 1024
+
+    ifdef os_os2
+      /* Ports > IPPORT_USERRESERVED are reserved for servers */
+      ipport_userreserved	= 5000
+    enddef
+
+		/**********************/
+		/*   IOCTL commands   */
+		/**********************/
+  CONSTANTS
+
+    ifdef os_os2
+
+      cmd_FionBio	= 0x667E	/* ('f' << 8) | 126 */
+      cmd_FionRead	= 0x667F	/* ('f' << 8) | 127 */
+      cmd_SioCatMark	= 0x7307	/* ('s' << 8) | 007 */
+
+    elsedef
+
+      cmd_FionBio	= 0x8004667E	/* ('f' << 8) | 126 */
+      cmd_FionRead	= 0x4004667F	/* ('f' << 8) | 127 */
+      cmd_SioCatMark	= 0x40047307	/* ('s' << 8) | 007 */
+
+    enddef
+
+		/***********************/
+		/*   RECV/SEND flags   */
+		/***********************/
+  CONSTANTS
+
+    msg_Deflt_Flag	= 0	/* default settings			*/
+    msg_OOB_Flag	= 0x1	/* process out-of-band data		*/
+    msg_Peek_Flag	= 0x2	/* peek at incoming message		*/
+    msg_DontRoute_Flag	= 0x4	/* send without using routing tables	*/
+
+		/**************************/
+		/*   How to do SHUTDOWN   */
+		/**************************/
+  CONSTANTS
+
+    how_Recv_Disable	= 0	/* Subsequent receives will be disallow.*/
+    how_Send_Disable	= 1	/* Subsequent sends will be disallowed	*/
+    how_Both_Disable	= 2	/* Receives & sends will be disallowed	*/
+
+		/********************/
+		/*   Socket types   */
+		/********************/
+  CONSTANTS
+
+    sock_Stream		= 1	/* Stream socket		*/
+    sock_DGram		= 2	/* Datagram socket		*/
+    sock_Raw		= 3	/* Raw-protocol interface	*/
+    sock_RDM		= 4	/* Reliably-delivered message	*/
+    sock_SeqPacket	= 5	/* Sequenced packet stream	*/
+
+		/**********************/
+		/*   Miscellaneous   */
+		/**********************/
+  CONSTANTS
+
+    sock_MaxConnect	= 5	/* Max value for Listen's 2nd parameter	*/
+
+    ifdef os_os2
+
+      indef_TimeOut	= -1	/* Value for sck_ASelectTimeOut()	*/
+
+    enddef
+
+		/*******************************************/
+		/*   Socket's functions for direct calls   */
+		/*******************************************/
+  CONSTANTS
+
+    ifdef os_os2
+
+      lang_StdCall     		= c
+
+      htonl_FNS			= "LSWAP"
+      htons_FNS			= "BSWAP"
+      ntohl_FNS			= "LSWAP"
+      ntohs_FNS			= "BSWAP"
+
+      lastError_FNS		= "SOCK_ERRNO"
+      lastNetDbError_FNS	= "TCP_H_ERRNO"
+
+    elsedef
+
+      ifdef platform_32bit
+
+	lang_StdCall		= stdcall
+
+	ifdef use_omf_objformat
+
+	  htonl_FNS		= "htonl"
+	  htons_FNS		= "htons"
+	  ntohl_FNS		= "ntohl"
+	  ntohs_FNS		= "ntohs"
+
+	  lastError_FNS		= "WSAGetLastError"
+	  wsa_setLastError_FNS	= "WSASetLastError"
+	  wsa_isBlocking_FNS	= "WSAIsBlocking"
+
+	elsedef
+
+	  htonl_FNS		= "_htonl"
+	  htons_FNS		= "_htons"
+	  ntohl_FNS		= "_ntohl"
+	  ntohs_FNS		= "_ntohs"
+
+	  lastError_FNS		= "_WSAGetLastError"
+	  wsa_setLastError_FNS	= "_WSASetLastError"
+	  wsa_isBlocking_FNS	= "_WSAIsBlocking"
+
+	enddef
+
+      elsedef
+
+	lang_StdCall		= pascal
+
+	htonl_FNS		= "htonl"
+	htons_FNS		= "htons"
+	ntohl_FNS		= "ntohl"
+	ntohs_FNS		= "ntohs"
+
+	lastError_FNS		= "WSAGetLastError"
+	wsa_setLastError_FNS	= "WSASetLastError"
+	wsa_isBlocking_FNS	= "WSAIsBlocking"
+
+      enddef
+
+    enddef
+
+        	/******************************************/
+		/*   Events for asynchronous selections   */
+        	/******************************************/
+  CONSTANTS
+
+    fd_none			= 0x00
+    fd_read			= 0x01
+    fd_write			= 0x02
+    fd_oob			= 0x04
+    fd_accept			= 0x08
+    fd_connect			= 0x10
+    fd_close			= 0x20
+
+	     	/***************************************************************************/
+		/*   Define constant based on rfc883, used by AsyncGetHostByxxxx() calls   */
+        	/***************************************************************************/
+
+    sck_MaxGetHostStruct	= 1024		/* MAXGETHOSTSTRUCT */
+     
+      
+        	/****************************/
+        	/*   Native Socket errors   */
+        	/****************************/
+  CONSTANTS
+
+    ifdef os_os2
+      err_sockperm		= 10001	/* Not owner			*/
+      err_socksrch		= 10003	/* No such process		*/
+    enddef
+
+    err_sockintr		= 10004	/* Interrupted system call	*/
+
+    ifdef os_os2
+      err_socknxio		= 10006	/* No such device or address	*/
+    enddef
+
+    err_sockbadf		= 10009	/* Bad file number		*/
+    err_sockacces		= 10013	/* Permission denied		*/
+    err_sockfault		= 10014	/* Bad address			*/
+    err_sockinval		= 10022	/* Invalid argument		*/
+    err_sockmfile		= 10024	/* Too many open files		*/
+
+    ifdef os_os2
+      err_sockpipe		= 10032	/* Broken pipe			*/
+    enddef
+
+    err_sockwouldblock		= 10035	/* Operation would block	*/
+    err_sockinprogress		= 10036	/* Operation now in progress	*/
+    err_sockalready		= 10037	/* Operation already in progress*/
+    err_socknotsock		= 10038	/* Socket operation (non-socket)*/
+    err_sockdestaddrreq		= 10039	/* Destination address required	*/
+    err_sockmsgsize		= 10040	/* Message too long		*/
+    err_sockprototype		= 10041	/* Protocol wrong type		*/
+    err_socknoprotoopt		= 10042	/* Protocol not available	*/
+    err_sockprotonosupport	= 10043	/* Protocol not supported	*/
+    err_socksocktnosupport	= 10044	/* Socket type not supported	*/
+    err_sockopnotsupp		= 10045	/* Operation not supported	*/
+    err_sockpfnosupport		= 10046	/* Protocol not supported	*/
+    err_sockafnosupport		= 10047	/* Address family not supported	*/
+    err_sockaddrinuse		= 10048	/* Address already in use	*/
+    err_sockaddrnotavail	= 10049	/* Can't assign requested addr.	*/
+    err_socknetdown		= 10050	/* Network is down		*/
+    err_socknetunreach		= 10051	/* Network is unreachable	*/
+    err_socknetreset		= 10052	/* Network drop connect. (reset)*/
+    err_sockconnaborted		= 10053	/* Soft. caused connect. abort	*/
+    err_sockconnreset		= 10054	/* Connection reset by peer	*/
+    err_socknobufs		= 10055	/* No buffer space available	*/
+    err_sockisconn		= 10056	/* Socket is already connected	*/
+    err_socknotconn		= 10057	/* Socket is not connected	*/
+    err_sockshutdown		= 10058	/* Can't send after shutdown	*/
+    err_socktoomanyrefs		= 10059	/* Too many references		*/
+    err_socktimedout		= 10060	/* Connection timed out		*/
+    err_sockconnrefused		= 10061	/* Connection refused		*/
+    err_sockloop		= 10062	/* Too many levels of sym. links*/
+    err_socknametoolong		= 10063	/* File name too long		*/
+    err_sockhostdown		= 10064	/* Host is down			*/
+    err_sockhostunreach		= 10065	/* No route to host		*/
+    err_socknotempty		= 10066	/* Directory not empty		*/
+
+    ifdef ws_win
+      err_sockproclim		= 10067	/* Too many processes		*/
+      err_sockusers		= 10068
+      err_sockdquot		= 10069
+      err_sockstale		= 10070
+      err_sockremote		= 10071
+      err_socksysnotready	= 10091	/* Network subsystem is unusable*/
+      err_sockvernotsupport	= 10092	/* WinSockets can't support app.*/
+      err_socknotinitialised	= 10093	/* WinSockets not initialised	*/
+      err_sockdiscon		= 10101
+    enddef
+
+    ifdef os_os2
+      err_sockos2err		= 10100	/* OS/2 Error			*/
+    enddef
+
+    err_sockhostnotfound	= 11001	/* Author. Answer Host not found*/
+    err_socktryagain		= 11002	/* Non-Auth. Host not found	*/
+    err_socknorecovery		= 11003	/* FORMERR/REFUSED/NOTIMP	*/
+    err_socknodata		= 11004	/* Valid name, no data record	*/
+
+        	/*********************************/
+        	/*   PDC error for the Sockets   */
+        	/*********************************/
+  CONSTANTS
+
+    ifdef os_os2
+
+%      err_SckDoubleInit	= 8901	/* C support was already initiated	  */
+%      err_SckNotInit		= 8902	/* C support wasn't initiated		  */
+
+    enddef
+
+%    err_SckInvalidParms	= 8903	/* Invalid parameters for a predicate	  */
+%    err_SckGeneral		= 8904	/* Reject from the native Sockets	  */
+
+enddef	/* pdcsock_con_included */

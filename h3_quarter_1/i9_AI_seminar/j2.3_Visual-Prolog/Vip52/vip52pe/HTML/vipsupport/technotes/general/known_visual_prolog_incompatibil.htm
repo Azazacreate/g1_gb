@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Known Visual Prolog Incompatibilities</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Known Visual Prolog Hardware and Software Incompatibilities<!--mstheme--></font></h1>
+<h2><!--mstheme--><font color="#000000">Hardware Incompatibility<!--mstheme--></font></h2>
+<p>We have only one report about hardware incompatibility with some <b>Dell</b>
+computers.<br>
+Prolog exception handling engine (in 32-bit VPI programs) cannot correctly catch
+division by zero like:</p>
+<blockquote>
+  <!--mstheme--></font><pre>X = 0,
+_Y = 5 div X,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>Instead of the error 1032 &quot;Division by zero&quot;, a program generates
+the error 1009 &quot;General protection fault&quot; or even silently disappears.
+The error was seen under Windows 98 and Windows NT Service Pack 3/4.</p>
+<h2><!--mstheme--><font color="#000000">Software Incompatibility<!--mstheme--></font></h2>
+<p>We have received only few complaints about Visual Prolog incompatibility with
+other software. Namely, only the following problems were reported:</p>
+<ol>
+  <li>The VDE in Visual Prolog 5.1, 5.2 conflicts with QDCSPI.DLL from
+    QarterDeck's CleanSweep (only under Windows 95). The problem is seen like
+    GPF, while compiling some files. The problem can be fixed by removing
+    QDCSPI.DLL from the WIN95\SYSTEM directory.<br>
+    Note: CleanSweep can use QDCSPI.DLL from its home directory.<br>
+  </li>
+  <li>Visual Prolog Debugger in VIP Visual Prolog 5.1 conflicts with some old
+    versions of POINT32 software (only under Windows 95). Note that Microsoft
+    MSDN documentation (ID: Q148137) reports about conflicts of this
+    IntelliMouse software with some other products. For instance, with CorelDraw
+    version 6 and even with Microsoft Visual Basic. The problem is seen as GPF
+    in the Debugger.</li>
+</ol>
+<h3><!--mstheme--><font color="#000000">Symptoms<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The problem is reproducible.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The problem does not disappear after Visual Prolog reinstallation.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The problem disappears, when you start Windows in Safe mode.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>If you have such problems, please, contact <a href="mailto:support@visual-prolog.com">Visual
+Prolog Support Group</a>.</p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

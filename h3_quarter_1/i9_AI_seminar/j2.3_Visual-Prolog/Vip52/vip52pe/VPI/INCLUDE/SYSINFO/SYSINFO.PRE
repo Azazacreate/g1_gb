@@ -1,0 +1,14 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName: SYSTINFO.PRE
+ Purpose: Predicate definitions for SYSTEST.PRO
+ Written by: Eugene Akimov
+ Comments:
+******************************************************************************/
+constants
+  sysinfo_pre_included = 1
+
+global predicates
+procedure info_Create(WINDOW Parent) - (i)

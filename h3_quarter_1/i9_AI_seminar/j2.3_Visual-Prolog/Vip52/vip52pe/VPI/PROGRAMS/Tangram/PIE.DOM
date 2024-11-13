@@ -1,0 +1,26 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: PIE.DOM
+ Purpose: Domain definitions for PIE.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+global domains
+	SET = SYMBOL
+	PIEID = pieId(	WINDOW,		% window to draw it in
+			SET,		% tangram set
+			INTEGER) 	% piece id within set and window
+	PIELIST = PIEID*
+	MODE = 	normal ; 	% standard, way of drawing
+		detail ; 	% standard, show border
+		selected ; 	% standard, selected
+		moving ;	% when dragging with mouse
+		locked ;	% not moveable, but show outline
+		secret ;	% not moveable, no outline
+		hide		% no show at all
+		
+	PIEPROCESS = determ (PIEID)	- (i)
+	

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Source Code for Farmer, Wolf, Goat and Cabbage</title>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Source Code for Farmer, Wolf, Goat and Cabbage<!--mstheme--></font></h2>
+
+<!--mstheme--></font><pre>DOMAINS
+  LOC   = east ; west
+  STATE = state(LOC farmer,LOC wolf,LOC goat,LOC cabbage)
+  PATH  = STATE*
+  
+PREDICATES
+  go(STATE,STATE)               % Start of the algorithm
+  path(STATE,STATE,PATH,PATH)   % Finds a path from one state to another
+  nondeterm move(STATE,STATE)   % Transfer a system from one side to another
+  opposite(LOC,LOC)             % Gives a location on the opposite side
+  nondeterm unsafe(STATE)       % Gives the unsafe states
+  nondeterm member(STATE,PATH)  % Checks if the state is already visited
+  write_path(PATH)
+  write_move(STATE,STATE)
+
+GOAL
+        go(state(east,east,east,east),state(west,west,west,west)),
+        write(&quot;solved&quot;).
+
+CLAUSES
+  go(StartState,GoalState):-
+        path(StartState,GoalState,[StartState],Path),
+        write(&quot;A solution is:\n&quot;),
+        write_path(Path).
+
+  path(StartState,GoalState,VisitedPath,Path):-
+        move(StartState,NextState),                     % Find a move
+        not( unsafe(NextState) ),                       % Check that it is not unsage
+        not( member(NextState,VisitedPath) ),           % Check that we have not had this situation before
+        path( NextState,GoalState,[NextState|VisitedPath],Path),!.
+  path(GoalState,GoalState,Path,Path).                  % The final state is reached
+                       
+  move(state(X,X,G,C),state(Y,Y,G,C)):-opposite(X,Y). % Move FARMER + WOLF
+  move(state(X,W,X,C),state(Y,W,Y,C)):-opposite(X,Y). % Move FARMER + GOAT
+  move(state(X,W,G,X),state(Y,W,G,Y)):-opposite(X,Y). % Move FARMER + CABBAGE
+  move(state(X,W,G,C),state(Y,W,G,C)):-opposite(X,Y). % Move ONLY FARMER
+
+  opposite(east,west).
+  opposite(west,east).
+
+  unsafe( state(F,X,X,_) ):- opposite(F,X),!.  % The wolf eats the goat
+  unsafe( state(F,_,X,X) ):- opposite(F,X),!.  % The goat eats the cabbage
+  
+  member(X,[X|_]):-!.
+  member(X,[_|L]):-member(X,L).
+
+  write_path( [H1,H2|T] ) :-
+        write_move(H1,H2),
+        write_path([H2|T]).
+  write_path( [] ).
+
+  write_move( state(X,W,G,C), state(Y,W,G,C) ) :-!,
+    write(&quot;The farmer crosses the river from &quot;,X,&quot; to &quot;,Y),nl.
+  write_move( state(X,X,G,C), state(Y,Y,G,C) ) :-!,
+    write(&quot;The farmer takes the Wolf from &quot;,X,&quot; of the river to &quot;,Y),nl.
+  write_move( state(X,W,X,C), state(Y,W,Y,C) ) :-!,
+    write(&quot;The farmer takes the Goat from &quot;,X,&quot; of the river to &quot;,Y),nl.
+  write_move( state(X,W,G,X), state(Y,W,G,Y) ) :-!,
+    write(&quot;The farmer takes the cabbage from &quot;,X,&quot; of the river to &quot;,Y),nl.
+
+  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

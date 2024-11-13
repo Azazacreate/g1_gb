@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="readchar">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>readchar</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">readchar/1</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>readchar</b>(<i>Char</i>) </p>
+
+<p align="left">Read a single character </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>readchar/1</b> reads a single character from
+the current input device (which is the keyboard, unless changed
+via <b>see/1</b>). When reading from the keyboard, a number of
+keys, including the function and cursor keys, will return two
+characters, where the first is ASCII 0. </p>
+
+<p align="left">In Windows and OS/2 PM programs, <b>readchar/1</b>
+will only work if the current input device is redirected to a
+file. </p>
+
+<p align="left">Notice the different behavior of readchar in OS/2
+textmode programs when the current input device is the keyboard.
+The first called <b>readchar/1</b> does not obtains the first
+typed char immediately, it will wait until the Enter will be
+pressed. Only then OS/2 makes input stream accessible to <b>readchar/1</b>.
+From this moment all characters, typed before the Enter, become
+immediately accessible to consequently called <b>readchar/1</b>
+predicates (if they are). When all typed (before the Enter) chars
+are taken away from the input stream, then <b>readchar/1</b> (if
+one is called) will again waiting for the Enter before receiving
+char from input stream. For example, the below fragment </p>
+
+<pre>counter(0,99,I),        % (i,i,o); every time add 1 to I;
+write(&quot;Line %&quot;, I),nl,
+readchar(_),
+fail.
+</pre>
+
+<pre>can have the following output: </pre>
+
+<pre>Line 0     % is printed immediately
+123&lt;Enter&gt; % user types 123 and then press &lt;Enter&gt;
+Line 1     % Lines 1,2 and 3 will be printed
+Line 2     % immedaiately after &lt;Enter&gt; is pressed
+Line 3     %
+% readchar again will waiting for &lt;Enter&gt;
+... </pre>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>write(&quot;\nEnter a character: &quot;),
+readchar(CH1),
+write(&quot;\nThe character was: &quot;,CH1),
+CH1=0,
+write(&quot;\nIt was a function key&quot;),
+readchar(CH2),
+writef(&quot;\nKey code1=%d:'%c', Key code2=%d:'%c'&quot;,CH1,CH1,CH2,CH2). </pre>
+</body>
+</html>

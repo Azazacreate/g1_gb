@@ -1,0 +1,446 @@
+<html>
+
+<head>
+<title>Developing a Software Coach with Prolog</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font size="2">
+
+<h1><!--mstheme--><font color="#000000"></font><font size="5">Developing a Software Coach with Prolog<!--mstheme--></font></h1>
+
+<p></font><font size="2">by Phil Seyer</p>
+</font>
+
+<p>&nbsp;</p>
+<font size="2">
+
+<p></font><font size="3">MagicBrain is an intelligent, Windows application I created with
+prolog to help business people get organized, set goals, and stay focused. MagicBrain uses
+a new approach called &quot;Software Coaching Technology.&quot; In this approach, the
+program is a special kind of software agent: a coach. The software coach
+&quot;watches&quot; the user and gathers information about the user's current mental
+focus. It then coaches the user to apply practices shown to improve productivity and make
+work more enjoyable. For example, it may encourage the user to exercise, make a plan for
+the day, set priorities, reminders or evaluate teamwork efforts, or offer guidance on a
+current area of mental focus.</p>
+
+<p>I chose prolog as the development language because with prolog it is easy to:</p>
+
+<ol>
+  <li>Quickly model concepts with prolog &quot;facts.&quot;</li>
+  <li>Capture and retrieve knowledge (facts and rules)</li>
+  <li>Match patterns</li>
+  <li>Get results quickly with little coding.</li>
+</ol>
+
+<p>As a PCAI reader, you are probably quite familiar with prolog. Still, you might benefit
+from a brief review. Colmerauer and his coworkers created the first version of Prolog in
+France at the University of Marseilles in the 1970's. Clocksin and Mellish, of the
+University of Edinburgh further developed prolog. Today, most prolog advocates consider
+their version of prolog a standard. At first prolog could only handle non-numeric
+information processing, but today prolog can do just about anything that's required. In
+the early 80&#146;s, American's were still slow to accept prolog; it wasn't regarded as
+practical and LISP was the established language for AI work. In the meantime, Europeans
+and the Japanese were becoming increasingly excited about the use of prolog for AI work.
+In 1986, Borland introduced Turbo Prolog as one of the first practical versions of prolog
+for IBM PCs. Turbo Prolog later became PDC Prolog and was refined and distributed by the
+Prolog Development Center. Many other prologs have also evolved for more information on
+various prologs, you may want to see PC AI magazine's prolog site:</p>
+
+<p>http://www.pcai.com/pcai/New_Home_Page/ai_info/pcai_prolog.html</p>
+
+<p>For an easy-to follow, online tutorial on prolog, you may want to see:</p>
+
+<p>http://kti.ms.mff.cuni.cz/~bartak/prolog/learning/LearningProlog6.html</p>
+
+<p>Another way to learn about prolog is to lurk in the news groups. A handy way to access
+the news groups is via http://www.deja.com . Just go to this site and do a search for
+&quot;prolog&quot;. </p>
+
+<p>There is something pleasurable about programming in prolog that I can't put my finger
+on. Maybe it has to do with prolog being based on predicate logic. Often you can just make
+statements and prolog's built in inference engine comes up with the solution. It seems
+magical and makes programming fun. You also get the feeling that you are on the cutting
+edge, that somehow you are filling in the technology gap by using prolog. The technology
+gap is the difference between what most people are doing and a &quot;better way&quot; of
+doing things that can result in substantial increases in productivity and income. (For an
+interesting discussion of the &quot;technology gap&quot; concept, you may want to see the
+book Unlimited Wealth by Paul Zane Pilzer.)</p>
+
+<p>Although there are other fine prologs for Windows, I found that Visual Prolog (VIP) was
+a good choice for me. The developers of VIP had the goal of creating a practical prolog --
+one that could be used for real world applications, rather than just for research and
+experimentation. Consequently, VIP has a fast compiler that generates programs fully
+compatible with all versions of Microsoft Windows as well as other platforms. I had
+previously had a lot of experience with Turbo Prolog (a Borland product) and with PDC
+Prolog, a successor to Turbo Prolog. Because most of the code in PDC Prolog also works in
+VIP, I was able to leverage my existing knowledge. In addition, VIP has many features that
+speed up windows development. For example, it is very easy to develop a Multi-Document
+Interface MDI based text editor with Visual Prolog because of the many built-in
+predicates. Not only that, but it is easy to customize the way the editor behaves. You can
+do this with the built-in &quot;edit_&quot; predicates. Here a list of some useful ones:</p>
+
+<p>edit_AppendStr Let's you append text to the end of text already in an edit window.
+Handy for making custom message windows.</p>
+
+<p>edit_GetSelection Grab the text the user has selected in the editor; I used this to do
+Internet searches directly from MagicBrain!</p>
+
+<p>edit_GetPos Find out exactly where the cursor is; useful for manipulating text in
+various ways.</p>
+
+<p>edit_GotoPos Useful in creating hypertext jumps to points within a text file.</p>
+
+<p>edit_SetTitle Useful to send various messages to the user in the titlebar of the edit
+window.</p>
+
+<p>edit_GetText Lets you get all or specified parts of the text in the edit window.</p>
+
+<p>There are many other such predicates, but those are my favorites. They enabled me to
+make the built-in VIP editor my own!</p>
+
+<p>Because MagicBrain is a coach, it builds on itself. That is, as I develop and test
+MagicBrain, MagicBrain encourages me to develop new content and work habits that result in
+a better MagicBrain. A better MagicBrain then improves my focusing skills even more which
+results in a better MagicBrain, which....you get the picture. Here's an example. One of
+the features of MagicBrain is a &quot;radiant Internet search&quot; to expand knowledge. A
+radiant search works like this. You can highlight an entire paragraph of text and press a
+hot key. MagicBrain then feeds the paragraph to a software agent on the Internet
+(Inference Find). Next, Inference Find prepares the text so it is suitable for various
+search engines and then does a fast, parallel search using 6 Internet search engines. By
+highlighting the introductory paragraph of this article and pressing a hotkey, I was able
+to quickly find a fascinating, free online book on &quot;sensate focusing&quot; by Ilan
+Shalif. So MagicBrain will now be able to offer this book as a resource to users when they
+indicating they are having difficulty with tension, pain or unpleasant sensations or
+feelings. I developed the radiant search literally in a few minutes because of built-in
+predicates like edit_GetSelection, which returns the currently selected text in the
+built-in editor, and cb_getString, which returns a string stored on the clipboard. I also
+found this predicate invaluable:</p>
+
+<p>ApplicationId = vpi_CreateProcess(ReceiveMsgWin, Program, Param, TaskWinInitFlag)</p>
+
+<p>The vpi_CreateProcess predicate lets you activate another Windows program from VIP. It
+returns a value identifying the external program. You can later use this value, if you,
+want to close the external program or see if it is still running.
+&quot;ReceiveMsgWin&quot; is an input argument that tells which window will receive the
+&quot;ApplicationID.&quot; &quot;Program&quot; is the complete path to the program you
+want to run from the VIP application. &quot;Parmam&quot; may contain a parameter that you
+want to send to the exxternal program. Finally, &quot;TaskWinInitFlag&quot; is a variable
+you can use to specify the kind of window that you want the external program opened in
+(maximized, normal, or minimized).</p>
+
+<p>To enable users to easily create new knowledge, I decided to use simple text files. If
+a user has a text file that she wants to easily find later, she can simply copy the file
+in the MagicBrain data folder. Each time MagicBrain starts up, she looks for any files
+that she has not yet indexed. It's easy to code &quot;looking &quot; for files in VIP. For
+example, this call is all it takes to get a list of files that match a file specificaton:</p>
+
+<p>getfiles(FileSpecification,ListOfFiles)</p>
+
+<p>The predicate that actually does the work is just one line of code.</p>
+
+<p>getfiles(WildSpec,StrList) if</p>
+
+<p>findall( Fnam, dirfiles(WildSpec,32,FNam,_,_,_,_,_,_,_,_), StrList), !.</p>
+
+<p>I won't go into detail explaining how this code, here, except to say that it is concise
+and efficient because VIP provides the built-in predicates &quot;findall&quot; and
+&quot;dirfiles.&quot; Findall creates a list using the fact in the second argument. The
+first argument to findall tells what to use for the list, the third argument is the output
+list, itself.</p>
+
+<p>VIP makes it easy to read a file into memory, too, with a predicate called file_str.
+You just give file_str a file name and the name of an unbound variable and, it set the
+variable to the contents of the file. There's no need to explicitly open the file, use a
+pointer, find out the size of the file and so on. This predicate works for both binary and
+text files, by the way. You can also create and or write to files simply by providing a
+variable that has already been instantiated (set to some string value). Here's an example:</p>
+
+<p>To read the autoexec.bat file, you could just say:</p>
+
+<p>file_str(&quot;C:\\autoexec.bat&quot;,WindowsIniFile)</p>
+
+<p>(You may be wondering about the two backslashes before the file name. Two backslashes
+are used in VIP, because a single backslash is used for special purposes. For example \t
+means &quot;tab&quot; and &quot;\n&quot; means &quot;newline character.&quot; </p>
+
+<p>May of the predicate I used to create MagicBrain are available in the previous DOS
+versions of prolog from PDC. However, programming in Windows can be a lot more complicated
+than programming in DOS. VIP simplifies that with what are called &quot;Code
+Experts.&quot; </p>
+
+<p>MagicBrain lets the user edit multiple text files simultaneously. That was easy to
+setup because VIP comes with a sample editor project that already has a MDI (multiple
+document interface). An MDI lets the user easily display and edit multiple documents. </p>
+
+<p>Code Experts</p>
+
+<p>VIP features Code Experts, which are sort of like Microsoft Wizards, but they are more
+closely tied to the code and you can use them to help you locate as well as create code.
+For example, I wanted to let the user click on a window and then set a reminder so that
+the file in this &quot;current window&quot; would automatically popup when a reminder was
+activated by the system. I needed to find some event that was triggered whenever the user
+clicked on an editor window. The Code Expert made that easy.</p>
+
+<p>To use a &quot;Code Expert&quot; you first select the type of component you want to
+work with and then click the &quot;Code Expert.&quot; Fig. 1 shows me clicking on the
+&quot;Code Expert&quot; button for a window in my project called &quot;Editor.&quot;</p>
+
+<p>===============================</p>
+
+<p>Insert Fig 1.: Activating a Code Expert</p>
+
+<p>===============================</p>
+
+<p>Fig. 2 shows the Code Expert dialgo. In the left drop down list box, you can see a list
+of the various Event TYPES available. The list just to the right shows the actual events
+for the selected event type. In Fig. 2, I've selected the e_GetFocus event. Because I
+wanted to capture the name of the file when an editor window was activated, I then clicked
+on the Create Event Button as you can see in Fig. 3. This event fires every time a user
+activates a editor window -- either by clicking on it or by opening a new window for
+editing a file from the disk. It was then simple to write some code to capture the name of
+the file associated with the window. Then create reminder predicate can then use this file
+name to store knowledge about what file is to popup when a reminder fires. I've found this
+feature quite useful. In fact, I am writing this paragraph now because of a MagicBrain
+reminder that automatically pops up every night around 6 PM. When the reminder fires, I am
+invited to work on the article. When I click &quot;OK&quot; MagicBrain loads the article
+and I can immediately begin work. Some how this works for me. If I have to think about
+where the file is located and manually load it, well, that's extra effort and I find that
+instead of working on the articles I'd like to write, I'm doing something else, like
+checking by email or surfing the Internet.</p>
+
+<p>VIP's capabilities have let me add many features quite quickly and also revise my
+approach quite quickly. Some examples are: </p>
+
+<p>Hypertext. While browsing various text file I found that I had the urge to click on a
+reference button at the top of the file and have the cursor jump to a proper
+&quot;bookmark&quot; within the file. But I didn't want to mess with HTML code or deal
+with embedded hidden codes in the text. Built-in VIP editor predicates made it easy to
+bring this feature to life. For example, here's the code that returns whatever
+&quot;word&quot; the user has doubleclicked on in the editor.</p>
+
+<p>&nbsp;</p>
+
+<p>hyperword(WindowHandle,Word) if</p>
+
+<p>% Get text in edit window.</p>
+
+<p>String = edit_GetText(WinHandle),</p>
+
+<p>% Simulate doubleclick to select word.</p>
+
+<p>SelectedOK = edit_SelectWord(WinHandle),</p>
+
+<p>SelectedOK = b_true,</p>
+
+<p>% Get positions for selected word.</p>
+
+<p>edit_GetSelection(WinHandle, PosBegin, PosEnd),</p>
+
+<p>% Calculate length</p>
+
+<p>Length = PosEnd - PosBegin,</p>
+
+<p>% Extract selected word.</p>
+
+<p>substring(String,PosBegin,Length,TWord),</p>
+
+<p>upper_lower(Tword,Word), !.</p>
+
+<p>Special Messages, Reminders. VIP makes it easy to create and deal with Windows timers.
+One innovative feature of MagicBrain is that she keeps changing her title bar. On a random
+basis, she displays various inspiring or instructional messages, which the user can define
+by editing a simple text file. I like to capture various aphorims and have MagicBrain
+remind me of them from time to time on a random basis. Some of my favorites are:</p>
+
+<p>Silence is sometimes the best answer. 100</p>
+
+<p>Smile when picking up the phone. 90</p>
+
+<p>Spend time alone once in a while. 50</p>
+
+<p>Chew more and eat less. 80</p>
+
+<p>Read between the lines. 25</p>
+
+<p>Eat a salad with every meal. 75</p>
+
+<p>If you cannot do great things, you can at least do small things in a great way. 70</p>
+
+<p>The smallest good deed is better than the grandest intention. 60</p>
+
+<p>Great opportunities come to those who make the most of small ones. 92</p>
+
+<p>I use the number at the end of the aphorism to tell MagicBrain how important I think
+the message is. MagicBrain displays the messages randomly but picks messages with a high
+importance more often.</p>
+
+<p>Other features that prolog made it relatively easy for me to include in MagicBrian
+include:</p>
+
+<p>Related words search. MagicBrain uses prolog's built-in backtracking mechanism to
+search for synomyms. For example, if I search for &quot;fun,&quot; MagicBrain pulls up
+items that are not explicitly indexed with the word &quot;fun,&quot; but which are defined
+as &quot;related to fun.&quot; To make this work, MagicBrain reads a simple text file.
+Each line of the file contains related words. For example, the line dealing with fun is:</p>
+
+<p>fun;entertainment;movie;dance;video;girlfriend;boyfriend;friend;beach;todo;</p>
+
+<p>MagicBrain reads this line and generates a related words prolog fact:</p>
+
+<p>related_words(&quot;fun;entertainment;movie;dance;video;girlfriend;boyfriend;friend;beach;todo;&quot;)</p>
+
+<p>When a user searchs for &quot;fun&quot;, MagicBrain then reviews all of the related
+words facts and she when finds that</p>
+
+<p>there is a fact containing the word &quot;fun,&quot; she extracts all of the related
+words and uses each of them in turn in her search. The prolog code for this is elegantly
+simple.</p>
+
+<p>makerelatedwordsFacts(Word) if</p>
+
+<p>related_words(RelatedWords),</p>
+
+<p>stringsearch(RelatedWords,Word,_Pos),</p>
+
+<p>assertRelatedWords(RelatedWords).</p>
+
+<p>makerelatedWordsFacts(_) if !.</p>
+
+<p>I'm not showing all of the code detail, here. My intent is just to show you the general
+idea and communicate that prolog code is concise and easy to write. Note that the user can
+easily &quot;teach&quot; MagicBrain new related words combinations by editing the related
+words text file.</p>
+
+<p>Capturing History. Because prolog has such a easy to use structure for capturing facts
+and relationships between facts, I find it easy to include historical features often
+missing in other applications. For example, every single file left open when you exit
+MagicBrain is automatically reloaded when you restart. This is easy because MagicBrain can
+store facts like:</p>
+
+<p>fileatexit(&quot;\\data\\magicbrain\\sys\\weekly_goals.txt&quot;)</p>
+
+<p>fileatexit(&quot;c:\\data\\magicbrain\\pcai_2.txt&quot;)</p>
+
+<p>fileatexit(&quot;c:\\data\\magicbrain\\thoughts_1.txt&quot;)</p>
+
+<p>These facts tell MagicBrain which files to reload when she first starts up.</p>
+
+<p>Other things that prolog facts make it easy for MagicBrain to &quot;remember&quot;
+include:</p>
+
+<p>Previous Internet searches and searches of the local MagicBrain knowledgebase</p>
+
+<p>Text files previously edited (not just the last 8 to 10!)</p>
+
+<p>Brief description of items user was focusing on in his her to do list.</p>
+
+<p>Detailed notes about each to-do list item.</p>
+
+<p>Tasks accomplished including date and time.</p>
+
+<p>How well things were going on each item, including date, time.</p>
+
+<p>Any guidelines for current and future work that user created for each item.</p>
+
+<p>Review notes concerning teamwork methodology related to each to-do item.</p>
+
+<p>Any guidelines developed for teamwork methodology.</p>
+
+<p>Self-study questions and answers that can popup in MagicBrain's titlebar.</p>
+
+<p>When the user last edited the to-do list.</p>
+
+<p>Whether the user accessed the to-do list today.</p>
+
+<p>Whether details notes have been created for to-do list items.</p>
+
+<p>MagicBrain uses this &quot;knowlege&quot; to coach the user. For example, if things are
+not going well on a to-do list item, MagicBrain invites the user to step back and do a
+review. The user is invited to think about what *is* going well (even though not much is)
+and to think about how things could be done differently. MagicBrain then follows up by
+asking the user to enter some guidelines for current and future work related to the
+substance of the troublesome to-do item. Next, she invites the user to think about these
+same questions, but this time with regard to teamwork methodology. This fills in a gap
+often missing in the review process. Often we think only about our substantive efforts,
+but not about howe we can work together more effective and improve our communication.</p>
+
+<p>Trying it Out Yourself</p>
+
+<p>======================</p>
+
+<p>If you've read this far, perhaps I've peaked your interest in prolog and stimulated you
+to think of some ways you might use it for developing intelligent business applications.
+If you'd like to experiment with Visual Prolog, you can download a freeware version (for
+educational purposes only) from ___________. If you'd like to try out MagicBrain, a fully
+functional, shareware version is available. Just send a request to
+MagicBrain@SendFree.com.</p>
+
+<p>=================</font><font size="2"></p>
+</font>
+
+<blockquote>
+  <div><font size="2"><p>&nbsp;</p>
+  <p>Philip Seyer is an author, composer, dance teacher, and software developer living in
+  San Francisco. His favorite computer languages include Winbatch, TASM, Visual Basic,
+  PowerBuilder, FoxPro, and last but not least, Visual Prolog. You may want to visit his
+  website at http://www.ilovemusic.com.</p>
+  </font></div><div><font size="2"><p>||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||<br>
+  Experience Software Coaching Technology(tm)&nbsp; Be your best, be inspired, and coached
+  by MagicBrain (tm)&nbsp; Do a fast, intelligent,&nbsp; search of the Internet using the 6
+  best search engines at once!.&nbsp; Get MagicBrain -- an intelligent hypertext software
+  coach for Windows 95/98/NT developed with Visual Prolog&nbsp; Write to <a href="mailto:magicbrain@sendfree.com">MagicBrain@SendFree.com</a> -- see <a href="http://www.ilovemusic.com/shareware.htm">http://www.ilovemusic.com/shareware.htm</a>
+  and <a href="http://www.pdc.dk/vip/">http://www.pdc.dk/vip/</a>&nbsp; <br>
+  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||<br>
+  </font></p>
+  </div>
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

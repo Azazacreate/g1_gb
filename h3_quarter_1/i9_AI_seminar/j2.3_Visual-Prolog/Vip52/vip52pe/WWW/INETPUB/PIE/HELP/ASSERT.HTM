@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="assert">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>assert</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">assert/1,asserta/1,assertz/1</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>assert</b>(<i>Fact</i>) <b><br>
+asserta</b>(<i>Fact</i>) <br>
+<b>assertz</b>(<i>Fact</i>) </p>
+
+<p align="left">Insert a fact in the internal database. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>asserta/1</b> inserts a <i>Fact</i> in the
+internal database before any other stored facts for the
+corresponding predicate. </p>
+
+<p align="left"><b>assert/1</b> and <b>assertz/1</b> insert a <i>Fact</i>
+in the internal database after any other stored facts for the
+corresponding predicate. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>asserta(person(&quot;Leo&quot;, 31, &quot;&quot;,2605)),
+asserta(person(&quot;Per&quot;, 29, &quot;&quot;,2605)),
+assertz(person(&quot;Michael&quot;, 36,&quot;&quot;, 30318)),
+asserta(city(2605, &quot;Br¢ndby,Copenhagen&quot;)),
+assertz(city(30318, &quot;Atlanta&quot;)).
+</pre>
+</body>
+</html>

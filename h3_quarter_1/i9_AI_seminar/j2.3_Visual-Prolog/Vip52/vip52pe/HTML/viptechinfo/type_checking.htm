@@ -1,0 +1,86 @@
+<html>
+
+<head>
+<title>Type checking system that detects mistakes at compile time</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Type Checking Detects Mistakes at Compile Time<!--mstheme--></font></h1>
+
+<p>Many Prologs are un-typed interpreters, but a distinguishing characteristic of PDC's
+version of Prolog is its type system that provides an extra level of security in
+programming. The type declarations document the code and allow the compiler to helpfully
+point out, at the early stages of development, common typing mistakes as well as more
+serious errors in logic. Moreover, by serving as a type of contract between programmer and
+development system, type declarations help ensure the integrity of a program over the
+entire product life cycle. Further, the declarations help the compiler to generate
+programs that are more efficient and save memory space during execution. </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><!--mstheme--></font><pre><small>DOMAINS
+</b>  DETER = none ; deter(string)
+  NOUNP = nounp(DETER,string,RELCL)
+  RELCL = none ; relcl(string,VERBP)
+  VP    = vp(string,string)
+  NP    = np(string)
+  SENTENCE = sent(NOUNP,VERBP) ;
+             question(VP,NP)
+  TOKL =string*
+  VERBP = verb(string) ; verbp(string,NOUNP)
+
+<b>PREDICATES
+</b>  append(slist,slist,slist)
+  fillbox(slist)
+  tokl(string,TOKL) </small>        </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="read">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>read</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">read/1</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>read</b>(<i>Term</i>) </p>
+
+<p align="left">Read a term </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>read/1</b> reads a term from the current input
+device. However, the term must be in exactly the same format as
+if it were written out by <b>write/1</b> from a single variable. <b>read/1</b>
+is normally used to access facts placed in disk files. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>my_consult(FileName) :-
+   see(FileName),
+   repeat,
+     read(Term),
+     assertz(Term),
+   eof. </pre>
+</body>
+</html>

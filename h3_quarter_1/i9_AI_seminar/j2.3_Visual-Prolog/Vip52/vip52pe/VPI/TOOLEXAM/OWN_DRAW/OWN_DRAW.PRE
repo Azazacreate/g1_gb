@@ -1,0 +1,17 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  OWN_DRAW
+ FileName: OWN_DRAW.PRE
+ Purpose: Predicate definitions for OWN_DRAW.PRO
+ Written by: Ilyin Yuri
+ Comments:
+
+******************************************************************************/
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  win_window_Create(WINDOW Parent) - (i)
+  dlg_dialog_Create(WINDOW Parent) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

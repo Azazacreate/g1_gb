@@ -1,0 +1,6 @@
+String1 sdjklsdflk
+String2 stroka number2
+String3 string number3. I want sleep
+String
+String5 I hope it's last string.
+String6 -> Continue

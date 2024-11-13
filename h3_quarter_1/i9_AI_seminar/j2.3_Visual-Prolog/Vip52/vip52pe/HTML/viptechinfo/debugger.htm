@@ -1,0 +1,251 @@
+<html>
+
+<head>
+<title>Visual Prolog Debugger</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1 align="left"><!--mstheme--><font color="#000000">Visual Prolog Debugger<!--mstheme--></font></h1>
+
+<h3><!--mstheme--><font color="#000000">Introduction<!--mstheme--></font></h3>
+
+<p>Debugging is the process of finding errors in programs. Some have estimated that
+correcting errors in program takes about 90% of the total development time. This proves
+that good tools for debugging is very important. </p>
+
+<p>The debugger allows inspection of variables, facts and callstack, as well as setting
+breakpoints and stepping through the source code. </p>
+
+<p><a href="images/debug1.gif"><img src="images/debug1_small.gif" width="100" height="59"></a></p>
+
+<h3><!--mstheme--><font color="#000000">Debugging an Application<!--mstheme--></font></h3>
+
+<p>The first thing to do is to turn on the generation of the debugger information in the
+compiler options dialog.</p>
+
+<p><a href="images/debug2.gif"><img src="images/debug2_small.gif" width="100" height="68"></a></p>
+
+<p>Turning on the &quot;Generate Debug Information&quot; checkbox will force the compiler
+to generate .DEB files in the .OBJ directory. These .DEB files are used by the debugger to
+locate Source, Variables, Facts etc. during execution of the program.</p>
+
+<p>When Visual Prolog is installed by the setup Program, the setup program will install an
+icon for the debugger. The debugger is an executable placed under BIN\WIN\32\VIPDEBUG.EXE.
+There is currently only a WIN32 version of the debugger that can run under Win95 and
+Windows NT.</p>
+
+<p>Debugging is normally started from inside the Visual Development Environment, by
+activating the menu Project-&gt;Debug, or pushing the corresponding button in the toolbar.</p>
+
+<p>When a program has been loaded into the debugger, the starting point and several other
+informations can be viewed (which modules has been loaded, which of them can be debugged,
+etc.) from the Message-window in the bottom of the screen. </p>
+
+<p>&nbsp;<a href="images/debug4.gif"><img src="images/debug4_small.gif" width="100" height="59"></a></p>
+
+<p>The program can be started, using the Run-menu or the buttons in the panel.</p>
+
+<h3><!--mstheme--><font color="#000000">The Modules View<!--mstheme--></font></h3>
+
+<p>When the debugger is started and a program is loaded, the program is displayed in the<i>
+Modules Window</i> and the structure of the files can be examined by the explore tree.</p>
+
+<p>&nbsp;<a href="images/debug5.gif"><img src="images/debug5_small.gif" width="100" height="97"></a></p>
+
+<p>In this View it is possible to double click on the files, the project consists of, and
+double click on the individual predicates. The result will be that a source code window
+opens up at the selected position.</p>
+
+<p>Note that to be able to see the source code, the program must be written in Visual
+Prolog. All other programs can though be seen directly in assembler in the
+disassembly-window.</p>
+
+<p>It isn&#146;t possible to edit code in the PDC-debugger, because it is stand-alone. The
+most convenient way to correct errors is probably to find the correspondent predicates in
+both the debugger and Visual Prolog.</p>
+
+<h3><!--mstheme--><font color="#000000">Source Code View<!--mstheme--></font></h3>
+
+<p>The menu command View-&gt;Source at Current position, sets a cursor to a position of
+current instruction pointer.</p>
+
+<p>&nbsp;The source code-windows can be opened from almost any menu entry in the Debugger.</p>
+
+<p>&nbsp;<a href="images/debug6.gif"><img src="images/debug6_small.gif" width="100" height="62"></a></p>
+
+<p>The code will appear in white color at the locations where it is possible to set
+breakpoints.</p>
+
+<p>With the right mousebutton or the Edit, it is possible to copy sourcecode to the
+clipboard (Copy command), find text (Search command), goto a specific position or line (Go
+to Line number and Go to position, respectively). The absolute position in the code can be
+found, by Show Position.</p>
+
+<h3><!--mstheme--><font color="#000000">The Run Menu<!--mstheme--></font></h3>
+
+<p>The Run menu is used to control execution of the program to be debugged.</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Run (F9) Issuing the command will start execution of the application. This is normally
+    used in conjunction with setting of breakpoints.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Break Program When a program is running under the debugger, it is possible to break the
+    program to go into the debugger. Then it is possible to inspect the call stack to see what
+    the program is actually doing - or to set a break point where to catch the execution.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Trace Into This is used to step through the source code call by call.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Step Over This is used to skip the execution of a given predicate call.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Run to Cursor This works at setting a breakpoint at the current source position and then
+    doing Run.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h3><!--mstheme--><font color="#000000">Setting Breakpoints<!--mstheme--></font></h3>
+
+<p>Setting of breakpoints is very important to isolate errors or to verify that parts of a
+program executes correctly. When a source window is open, it is possible to right click on
+the line. This will bring up a menu, from where a breakpoint can be set. When RUN(F9) is
+chosen the program will execute only to this point.</p>
+
+<p>&nbsp;More control over breakpoints can be achieved, by using the Breakpoints-Window.
+This window can be opened by choosing Breakpoints from the View-menu.</p>
+
+<p>&nbsp;<a href="images/debug7.gif"><img src="images/debug7_small.gif" width="100" height="63"></a></p>
+
+<p>In this list, all breakpoints can be seen and their status can be changed. A status
+change is removal or toggle. Both are done with the right mousebutton. The first removes
+the breakpoint, the latter switches between enabled/disabled. With the menu point Go to
+Code, it is possible to go to the source file, where this breakpoint is placed. Another
+very useful possibility in the right mouse menu is the breakpoint control, which is done
+by choosing Properties.</p>
+
+<p>&nbsp;<a href="images/debug8.gif"><img src="images/debug8_small.gif" width="100" height="52"></a></p>
+
+<p>Here it is possible to se how many times, this breakpoint is reached (in the
+Counterrectangle), and control, if it is reached XX times, then it is eliminated (in the
+Current Count).</p>
+
+<p>Another possibility is use to the menu entry &quot;Run-&gt;Run to cursor&quot; (F4).
+Place the cursor an appropriate place in the source code, and activate the command.</p>
+
+<h3><!--mstheme--><font color="#000000">Variables View<!--mstheme--></font></h3>
+
+<p>During execution it is possible to inspect the variables values by opening
+View-&gt;Local Variables</p>
+
+<p><a href="images/debug9.gif"><img src="images/debug9_small.gif" width="100" height="92"></a></p>
+
+<p>Also, when the mouse cursor is pointed at some variable in the source code, it is
+possible after a short while to see the value of this variable. This can be a handy way to
+inspect the values without opening the Variables View.</p>
+
+<h3><!--mstheme--><font color="#000000">Viewing Facts<!--mstheme--></font></h3>
+
+<p>An important issue in correcting Prolog programs is to ensure, that the correct facts
+has been asserted. The facts of the program can be viewd in the Facts-windows. This window
+is selected by choosing FACTS from the View menu.</p>
+
+<p><a href="images/debug10.gif"><img src="images/debug10_small.gif" width="100" height="100"></a></p>
+
+<h3><!--mstheme--><font color="#000000">Call Stack<!--mstheme--></font></h3>
+
+<p>Call Stack window shows a list of predicates that have been already called in a
+debugging program. Double click on a predicate shows the code where a call to a selected
+predicate occurred.</p>
+
+<p><a href="images/callstack.gif"><img src="images/callstack_small.gif" alt="Untitled.gif (5888 bytes)" width="100" height="17"></a></p>
+
+<h3><!--mstheme--><font color="#000000">Trap Points Window<!--mstheme--></font></h3>
+
+<p>Trap Points window shows a list of trap points of debugging program. Double click on a
+trap point shows a code where this point is placed.</p>
+
+<h3><!--mstheme--><font color="#000000">Backtrack Points Window<!--mstheme--></font></h3>
+
+<p>Backtrack Points window shows a list of backtrack points of debugging program. Double
+click on a backtrack point shows a code where this point is placed.</p>
+
+<h3><!--mstheme--><font color="#000000">Machine Level Views<!--mstheme--></font></h3>
+
+<p>It is possible to view assemblercodes directly in PDC Debugger, see the register or
+memory contents.</p>
+
+<p>The main purpose of these is when inspecting non Prolog code.</p>
+
+<h3><!--mstheme--><font color="#000000">Debugger Options<!--mstheme--></font></h3>
+
+<p>The options are found under View-&gt;Options.</p>
+
+<p><a href="images/debug11.gif"><img src="images/debug11_small.gif" width="100" height="71"></a></p>
+
+<h4><!--mstheme--><font color="#000000">Show Startup Code<!--mstheme--></font></h4>
+
+<p>Allows debugging of a program code before a call to Goal.</p>
+
+<h4><!--mstheme--><font color="#000000">Scanning Call Stack from Goal<!--mstheme--></font></h4>
+
+<p>If checked then Call Stack window will only contain calls that occurred after a call to
+Goal.</p>
+
+<h4><!--mstheme--><font color="#000000">Save Breakpoints<!--mstheme--></font></h4>
+
+<p>Allows to save breakpoints for a current project in debugger &quot;.ini&quot; file.</p>
+
+<h4><!--mstheme--><font color="#000000">Do not show Assembler if possible<!--mstheme--></font></h4>
+
+<p>References to assembler code and assembler code itself are not shown as much as
+possible.</p>
+
+<h4><!--mstheme--><font color="#000000">Gray source lines that contain no code<!--mstheme--></font></h4>
+
+<p>Lines of source code of a program are grayed where breakpoint can not be set.</p>
+
+<h4><!--mstheme--><font color="#000000">Fonts<!--mstheme--></font></h4>
+
+<p>Allows to change fonts for windows of a debugger.</p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

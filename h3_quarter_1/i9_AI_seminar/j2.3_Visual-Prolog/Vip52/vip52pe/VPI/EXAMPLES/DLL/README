@@ -1,0 +1,25 @@
+The PRO16 example is the WIN16 application with the DLL using
+pure Prolog (no VPI).
+
+The PRO32 example is the WIN32 application with the DLL using
+pure Prolog (no VPI).
+
+The VPI16 example is the WIN16 application with the DLL using
+VPI.
+
+The VPI32 example is the WIN32 application with the DLL using
+VPI.
+
+NOTES:
+
+1. Symbols Script and Build Script (as a reference info) for each 
+   platform are placed to the root directories of the each example
+   project. Sript files have general name 'script.txt'.
+
+2. DLL library for the WIN32 platform must be added to the Symbol Scripts
+   as it is shown in the example. For the Win16 platform it is possible
+   to add the DLL library file to the Project Window.
+
+3. To run examples it is needed to compile first the 'dll1' and 'dd2' projects 
+   and then compile the projects in 'calldll' directory.
+   The libraries and final exe files will be created in the .EXE directory.

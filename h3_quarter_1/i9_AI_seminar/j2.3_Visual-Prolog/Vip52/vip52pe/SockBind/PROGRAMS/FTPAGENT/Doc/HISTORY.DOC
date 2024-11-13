@@ -1,0 +1,97 @@
+8.01.97 New/Edit Dialog can be closed through close box.
+8.01.97 Text in About Dialog changed.
+8.01.97 Remote host name can be IP address.
+9.01.97 Run-time errors are retrieved from ftpagent.err.
+9.01.97 Interface of Main window was changed.
+9.01.97 Only one Log Window can be created.
+10.01.97 Fixed error that appeared when there is no connection to a host for several times.
+10.01.97 Corrected a saving of contents of list boxes in a file.
+10.01.97 Enable to send information through a proxy.
+10.01.97 Profile name for every entry in New/Edit Dialog is shown always.
+10.01.97 If there is a profile with a same name then user can overwrite it.
+10.01.97 An initial path in Browse dialog depends on content of "Local directory" field.
+11.01.97 Help updated.
+14.01.97 Enable to receive information through a proxy.
+14.01.97 New program option - Debug info.
+16.01.97 New program option - Synchronization retry.
+16.01.97 New program option - Network timeout.
+16.01.97 Help updated.
+26.01.97 Fixed error if there are no files ftpagent.ini and/or ftpagent.opt.
+26.01.97 One profile names list for sending and receiving.
+26.01.97 Profile content saves when pressing OK in New/Edit dialog if there is
+         no a profile with the same name. If such profile exists when you will
+         be asked for overwriting.
+26.01.97 Log window is updated automatically.
+26.01.97 Help updated.
+06.02.97 If there is no possibility to detect a name of a server with whom a 
+         connection is established or accepted using its address then an address 
+	 of this server will be returned. 
+27.02.97 Abitity to save or don't save User password. Password is saved in an 
+	 encrypted format.
+27.02.97 Passive transfers check box was added. Allows to FTPAgent to use active
+	 establishing of data connections.
+27.02.97 Synchronization can be stoped while Sending/Receiving information.
+14.03.97 Time of next activation is shown when an entry has status "Wait"
+19.03.97 Log and debug information can be saved in seperate files.
+19.03.97 A state line added to the main FTPAgent window.
+04.04.97 Ver. 2.2
+09.04.97 User can clear log window or log file from Log Window menu
+30.04.97 Ver. 2.3
+30.04.97 A format of storing of program settings was changed
+20.10.97 Informational notes in error dialogs were changed.
+20.10.97 Anonymous password is saved in any case.
+20.10.97 A changes in entry profile are saved automatically.
+20.10.97 If no remote directory specified then root directory "/" is used.
+21.10.97 FTPAgent verifies names of log and debug files and tries to create them if they were deleted.
+21.10.97 A bug fixed: if directory contains only subdirectories then they are not retrieved and an erro 7003 appears.
+21.10.97 A bug fixed: if edit an entry with an index more than 0 then information of 0 entry is shown.
+29.01.98 Ver. 2.4
+29.01.98 Informational string at the bottom of main window shows how sending\receiving is going.
+29.01.98 While sending: a remote directory is created only once. Previously all directories in a path of sending file were created.
+29.01.98 An option "Include subdirectories" was added to entry's options.
+29.01.98 A bug fixed: if debug log option was not checked then no timeout was set at all.
+20.02.98 Ver. 2.41
+20.02.98 A bug fixed: if "Delete files after sending" option is checked then directory structure at a target path is also deleted.
+30.04.98 Ver. 2.42
+30.04.98 The bug fixed: timers of several list entries influence to each other, their values decreased to lowest.
+30.04.98 Internal databases of transferred files are kept between sessions.
+30.04.98 The bug fixed: "Select file" dialog does not appear if path does not exist.
+30.04.98 Transferring of files will not stop if hard error occurs (only for error_file_not_found, error_path_not_found, error_access_denied, error_sharing_violation )
+30.04.98 Connection is broken gracefully if program error occurs.
+12.05.98 Ver. 2.43
+12.05.98 Bug fixed: internal timer was not killed when connection have not been established.
+12.05.98 Every entry in .log and .dbg files have date\time stamp.
+12.05.98 Copyright information is added to .dbg and .log files when program starts.
+13.07.98 Ver 2.44
+13.07.98 Bug fixed: determ facts asserted twice.
+13.07.98 An option "Use filename match only" was added to entry's options.
+13.07.98 Two entries become active when "Stop" and "Start" are pressed and there is another active entry.
+13.07.98 Also some corrections inside used packages.
+29.10.98 Ver 2.45r1
+29.10.98 Bug fixed: An error 6260 is generated if the optiion "Delete files after sending" is checked.
+29.10.98 Program options and entry settings are saved each time they are modified.
+29.10.98 Bug fixed: Error 6120 is shown during startup.
+29.10.98 Bug fixed: connection is broken while a large file is transferred
+29.10.98 A format of internal databases was changed: filenames can contain spaces, but not directories.
+29.10.98 Bugs fixed: an entry hangs up during a phase of establishing a connection.
+18.12.98 Ver 2.46
+18.12.98 New option "Do full synchronization" was added.
+18.12.98 Two new internal option were added.
+18.12.98 The bug fixed: an entry hangs up after an attempt to establsh a connection failed.
+08.01.99 Help was updated.
+18.02.99 Ver 2.5
+18.02.99 Bug fixed: FTPAgent UI is displayed wrongly at screens with high resolution and large font.
+18.02.99 Element status was renamed: "Vacant" -> "Stopped".
+18.02.99 Bugs fixed: button of Main Window are greyed properly when program starts 
+         and when any of list boxes get focus without a select on an element.
+18.02.99 New feature: if ftpagent.ini is corrupted and ftpagent.bak does not exist then a content of
+	 ftpagent.ini is copied to ftpagent.bak.
+22.02.99 Ver 2.51
+22.02.99 Bug fixed: if the programm is run at the first time then buttons "Options", "Log" don't work.
+22.02.99 Column names for list boxes are displayed above columns when Large fonts are used
+24.02.99 The program is supplied with "prolog.err", not "ftpagent.err".
+18.03.99 Ver 2.52
+18.03.99 Bug fixed: a file is deleted and then transferred if it was changed between syncs. Now no delete operation.
+18.05.99 Ver  2.53
+18.05.99 Bug fixed: a file is deleted at local directory when "Do full sync." option is turned off and it was removed
+	 at remote host. Now file is not deleted when the option is off.

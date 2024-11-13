@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="reconsult">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>reconsult</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">reconsult/1</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>reconsult</b>(<i>Filename</i>) </p>
+
+<p align="left">Read facts and rules from a text file into the
+internal database and replace the existing ones. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>reconsult/1</b> reads facts and rules from the
+text file <i>FileName</i> (created by saving a database with the <b>save/1</b>
+predicate) and asserts them in the internal database. If the
+corresponding predicates already exists in the database, <b>reconsult/1</b>
+will replace them. </p>
+
+<p align="left">If the file contains any syntactic errors,
+reconsult/1 generates an error. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>p1(1,'a',44.44,&quot;PC&quot;,&quot;Prolog&quot;,[1,2,3,4])
+p1(2,'b',-4.444E-98,&quot;---&quot;,&quot;++++&quot;,[])
+
+reconsult(&quot;DD.DBA&quot;).
+--- Contents of &quot;DD.DBA&quot; might be ---
+p1(1,'a',44.44,&quot;PDC&quot;,&quot;Prolog&quot;,[5,6,7,8])
+p1(2,'b',-4.444E-98,&quot;---&quot;,&quot;++++&quot;,[])
+p2(88)
+p2(99)
+</pre>
+</body>
+</html>

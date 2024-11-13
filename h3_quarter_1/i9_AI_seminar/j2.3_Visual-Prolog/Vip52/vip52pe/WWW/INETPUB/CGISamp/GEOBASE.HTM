@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Prolog CGI Sample</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Geobase</h2>
+
+<p><a href="./doc/geobase.htm">Description</a>
+<p><a href="./src_htm/geobase.htm">Source Code</a>
+<hr>
+<p>The database contains the following information:
+<p>Information about states:
+<ul>
+  <li>Area of the state in square kilometers
+  <li>Population of the state in citizens
+  <li>Capital of the state
+  <li>Which states border a given state
+  <li>Rivers in the state
+  <li>Cities in the state
+  <li>Highest and lowest point in the state in meters
+</ul>
+<p>Information about rivers:
+<ul>
+  <li>Length of river in kilometers
+</ul>
+<p>Information about cities:
+<ul>
+  <li>Population of the city in citizens
+</ul>
+
+<p>You can retrieve any or all of this information by asking questions
+in normal English. Some sample queries:
+<ul>
+   <li><i>states</i>
+   <li><i>give me the cities in california</i>
+   <li><i>what is the biggest city in california</i>
+   <li><i>what is the longest river in the usa</i>
+   <li><i>which rivers are longer than 1 thousand kilometers</i>
+   <li><i>what is the name of the state with the lowest point</i>
+   <li><i>which states border alabama</i>
+   <li><i>which rivers do not run through texas</i>
+   <li><i>which rivers run through states that border the state
+     with the capital austin</i>
+</ul>
+<form action="geobase.exe" method="POST">
+   	<p>Query: <input type="text" name="query" size=70>
+   	<p><input type="submit">
+</form>
+
+</body>
+</html>

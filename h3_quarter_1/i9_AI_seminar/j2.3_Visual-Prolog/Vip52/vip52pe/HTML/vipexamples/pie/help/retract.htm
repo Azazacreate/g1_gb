@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="retract">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>retract</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+
+<h3 align="left"><!--mstheme--><font color="#000000"><font color="#0000FF" size="4" face="Arial">retract/1</font><font color="#0000FF"> </font><!--mstheme--></font></h3>
+
+<p align="left"><b>retract</b>(<i>Fact</i>) </p>
+
+<p align="left">Remove facts from the internal database. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>retract/1</b> deletes the first <i>Fact</i> in
+the database that matches the given <i>Fact</i>. During
+backtracking, the rest of the matching facts are deleted. The <i>Fact</i>
+is matched with the facts in the database, which means that any
+free variables will be bound in the call to retract. </p>
+
+<p align="left"><b>Fail</b> </p>
+
+<p align="left">When there are no more matches. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<!--mstheme--></font><pre>fact1(1,&quot;fact1&quot;,[1,2,3]).
+fact1(2,&quot;fact2&quot;,[1,3]).
+fact1(3,&quot;fact2&quot;,[3,2,1]).
+fact2(1,&quot;one&quot;).
+fact2(1,&quot;one once more&quot;).
+fact2(2,&quot;two&quot;).
+-------- Dialog --------
+fact1(X,Y,Z)
+X=1, Y=fact1, Z=[1,2,3]
+X=2, Y=fact2, Z=[1,3]
+X=3, Y=fact2, Z=[3,2,1]
+3 Solutions
+retract(fact1(X,Y,[_,2|Z]))
+X=1, Y=fact1, Z=[3]
+X=3, Y=fact2, Z=[1]
+2 Solutions
+retract(fact1(X,Y,Z))
+X=2, Y=fact2, Z=[1,3]
+1 Solution
+fact1(X,Y,Z)
+No Solution
+retract(fact2(1,X))
+X=one
+X=one once more
+2 Solutions 
+</pre><!--mstheme--><font face="Verdana">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

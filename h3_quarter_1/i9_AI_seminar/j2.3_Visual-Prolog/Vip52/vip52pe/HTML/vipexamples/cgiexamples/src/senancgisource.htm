@@ -1,0 +1,439 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) My Company<br>
+<br>
+Project: SEN_AN<br>
+FileName: SEN_AN.PRO<br>
+Purpose: No description<br>
+Written by: Visual Prolog<br>
+Comments:<br>
+******************************************************************************/<br>
+include &quot;cgiexam.inc&quot;<br>
+<br>
+DATABASE - sen<br>
+det( STRING )<br>
+noun( STRING )<br>
+rel( STRING )<br>
+verb( STRING )<br>
+determ nocopy screen(integer,integer,string)<br>
+<br>
+DOMAINS<br>
+DETERM = none ; determ( STRING )<br>
+NOUNP = nounp( DETERM, STRING, RELCL)<br>
+RELCL = none ; relcl( STRING, VERBP )<br>
+SENTENCE = sent( NOUNP, VERBP )<br>
+VERBP = verb( STRING ) ; verbp( STRING, NOUNP )<br>
+TOKL = STRING*<br>
+<br>
+ROW = integer<br>
+COL = integer<br>
+ATTR = integer<br>
+<br>
+% Domains for the tree with positions<br>
+d_SENTENCE = sent( d_NOUNP, d_VERBP )<br>
+d_NOUNP = nounp( d_DETERM, COL, d_RELCL)<br>
+d_DETERM = none ; determ( COL )<br>
+d_RELCL = none ; relcl( COL, d_VERBP )<br>
+d_VERBP = verb( COL ) ; verbp( COL, d_NOUNP )<br>
+<br>
+COLL = COL*<br>
+<br>
+PREDICATES<br>
+% Recognition of words in different forms<br>
+is_det( STRING )<br>
+is_noun( STRING )<br>
+is_rel( STRING )<br>
+is_verb( STRING )<br>
+<br>
+% Parser<br>
+nondeterm s_determ( TOKL, TOKL, COLL, COLL, DETERM, d_DETERM )<br>
+nondeterm s_nounp( TOKL, TOKL, COLL, COLL, NOUNP, d_NOUNP )<br>
+nondeterm s_relcl( TOKL, TOKL, COLL, COLL, RELCL, d_RELCL )<br>
+nondeterm s_sentence( TOKL, TOKL, COLL, COLL, SENTENCE, d_SENTENCE )<br>
+nondeterm s_verbp( TOKL, TOKL, COLL, COLL, VERBP, d_VERBP )<br>
+<br>
+% Scanner<br>
+check(STRING)<br>
+tokl( COL, COLL, STRING, TOKL )<br>
+tom(TOKL).<br>
+<br>
+<br>
+PREDICATES<br>
+nondeterm member(parm,parmlist)<br>
+runme(parmlist)<br>
+plus_to_blank(string,string,string)<br>
+<br>
+% draw a sentence tree<br>
+draw_nounp( ROW, ROW, d_NOUNP, NOUNP, COL )<br>
+draw_relcl( ROW, ROW, d_RELCL, RELCL, COL )<br>
+draw_sentence( ROW, ROW, d_SENTENCE, SENTENCE )<br>
+draw_verbp( ROW, ROW, d_VERBP, VERBP, COL )<br>
+<br>
+% Miscellaneous drawing predicates<br>
+lin(ROW,COL,ROW,COL)<br>
+line_hor(COL,COL,ROW)<br>
+line_ver(ROW,ROW,COL)<br>
+mark(ROW,COL,STRING,ATTR)<br>
+mark2(ROW,COL,STRING,ATTR)<br>
+markfinal(ROW,COL,STRING,STRING)<br>
+mk_ulin(STRING,STRING)<br>
+scr_tegn(ROW,COL,CHAR)<br>
+scr_char(ROW,COL,CHAR)<br>
+assignNLs(string,integer,integer)<br>
+writetext(ROW,COL,STRING,ATTR)<br>
+<br>
+CLAUSES<br>
+member (X,[X|_]).<br>
+member (X,[_|Y]):-member(X,Y).<br>
+&nbsp;&nbsp;&nbsp; <br>
+runme(Parmlist) :-<br>
+&nbsp;&nbsp;&nbsp; consult(&quot;sen_an.dba&quot;,sen),<br>
+&nbsp;&nbsp;&nbsp; member (parm(&quot;sent&quot;,STR),ParmList),<br>
+&nbsp;&nbsp;&nbsp; plus_to_blank (STR,&quot;&quot;,STR1),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;&lt;b&gt;Source
+sentence:&lt;/b&gt;&lt;br&gt;\n&quot;,STR1),<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; tokl(5,POSL,STR1,TOKL),<br>
+&nbsp;&nbsp;&nbsp; s_sentence( TOKL, _, POSL, _, SENT, POS ),<br>
+<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;p&gt;&lt;b&gt;Parsed
+sentence:&lt;/b&gt;&lt;br&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(SENT),!,<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;PRE&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; draw_sentence( 4, 0, POS, SENT ),<br>
+&nbsp;&nbsp;&nbsp; screen(_,_,ScreenStr),<br>
+&nbsp;&nbsp;&nbsp; write(ScreenStr),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/PRE&gt;&quot;).<br>
+runme (_) :-<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;Error while executing Sen_an.exe\n&quot;).<br>
+&nbsp;&nbsp;&nbsp; <br>
+plus_to_blank (&quot;&quot;,STR,STR) :-!.<br>
+plus_to_blank (STR,BUFF,STR1) :-<br>
+&nbsp;&nbsp;&nbsp; searchchar(STR,'+',POS),<br>
+&nbsp;&nbsp;&nbsp; P = POS-1,<br>
+&nbsp;&nbsp;&nbsp; frontstr(P,STR,FRONT,REST),<br>
+&nbsp;&nbsp;&nbsp; frontchar(REST,_,REST1),<br>
+&nbsp;&nbsp;&nbsp; concat (BUFF,FRONT,B1),<br>
+&nbsp;&nbsp;&nbsp; concat (B1,&quot; &quot;,B2),!,<br>
+&nbsp;&nbsp;&nbsp; plus_to_blank (REST1,B2,STR1).<br>
+plus_to_blank (STR,BUFF,STR1) :-!,<br>
+&nbsp;&nbsp;&nbsp; concat(BUFF,STR,STR1).<br>
+<br>
+GOAL<br>
+write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; ParmList = cgi_GetParmList(), <br>
+&nbsp;&nbsp;&nbsp; runme(ParmList),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).<br>
+<br>
+CLAUSES<br>
+<br>
+tokl(POS,[POS1|POSL],STR,[TOK|TOKL]) :-<br>
+fronttoken(STR,TOK,STR1),<br>
+check(TOK),!,<br>
+str_len(TOK,LEN),<br>
+POS1=POS+(LEN+1) div 2,<br>
+POS2=POS+5+LEN,<br>
+tokl(POS2,POSL,STR1,TOKL).<br>
+tokl(_,[],_,[]).<br>
+<br>
+s_sentence(TOKL,TOKL2,COLL,COLL2,sent(NOUNP,VERBP),<br>
+sent(D_NOUNP,D_VERBP)):-<br>
+s_nounp(TOKL,TOKL1,COLL,COLL1,NOUNP,D_NOUNP),<br>
+s_verbp(TOKL1,TOKL2,COLL1,COLL2,VERBP,D_VERBP),<br>
+tom(TOKL2),!.<br>
+s_sentence(_,_,_,_,_,_):-<br>
+write(&quot;&gt;&gt; Sentence not recognized (Use F8 to get the old line)\n&quot;),fail.<br>
+<br>
+tom([]).<br>
+<br>
+s_nounp(TOKL,TOKL2,COLL,COLL2,nounp(DETERM,NOUN,RELCL),<br>
+nounp(D_DETERM,COL,D_RELCL)):-<br>
+s_determ(TOKL,[NOUN|TOKL1],COLL,[COL|COLL1],DETERM,D_DETERM),<br>
+is_noun(NOUN),<br>
+s_relcl(TOKL1,TOKL2,COLL1,COLL2,RELCL,D_RELCL).<br>
+<br>
+s_determ([DETERM|TOKL],TOKL,[COL|COLL],COLL,determ(DETERM),<br>
+determ(COL)):-<br>
+is_det(DETERM).<br>
+s_determ(TOKL,TOKL,COLL,COLL,none,none).<br>
+<br>
+s_relcl([REL|TOKL],TOKL1,[COL|COLL],COLL1,relcl(REL,VERBP),<br>
+relcl(COL,D_VERBP) ):-<br>
+is_rel(REL),<br>
+s_verbp(TOKL,TOKL1,COLL,COLL1,VERBP,D_VERBP).<br>
+s_relcl(TOKL,TOKL,COLL,COLL,none,none).<br>
+<br>
+s_verbp([VERB|TOKL],TOKL1,[COL|COLL],COLL1,verbp(VERB,NOUNP),<br>
+verbp(COL,D_NOUNP)):-<br>
+is_verb(VERB),<br>
+s_nounp(TOKL,TOKL1,COLL,COLL1,NOUNP,D_NOUNP).<br>
+s_verbp([VERB|TOKL],TOKL,[COL|COLL],COLL,verb(VERB),verb(COL)):-<br>
+is_verb(VERB).<br>
+<br>
+check(WORD):-is_noun(WORD),!.<br>
+check(WORD):-is_det(WORD),!.<br>
+check(WORD):-is_rel(WORD),!.<br>
+check(WORD):-is_verb(WORD),!.<br>
+check(WORD):- write(&quot;&gt;&gt; Unknown word: &quot;,WORD),<br>
+nl, readchar(_).<br>
+<br>
+is_noun(X):-noun(X),!.<br>
+is_noun(X):-noun(Y),concat(Y,&quot;s&quot;,X),!.<br>
+<br>
+is_det(X):-det(X),!.<br>
+<br>
+is_rel(X):-rel(X),!.<br>
+<br>
+is_verb(X):-verb(X),!.<br>
+is_verb(X):-verb(Y),concat(Y,&quot;s&quot;,X),!.<br>
+is_verb(X):-verb(Y),concat(Y,&quot;ed&quot;,X),!.<br>
+is_verb(X):-verb(Y),concat(Y,&quot;es&quot;,X),!.<br>
+is_verb(X):-verb(Y),concat(Y,&quot;ing&quot;,X),!.<br>
+<br>
+% * * * * * * * * * * * * * * * * * * * * * * * *<br>
+% Draw the sentence<br>
+% * * * * * * * * * * * * * * * * * * * * * * * *<br>
+<br>
+draw_sentence(STEP,DEPT,sent(D_NOUNP,D_VERBP),sent(NOUNP,VERBP)):-<br>
+<br>
+NoOfLines = 80,<br>
+LineLen = 80,<br>
+StrLen = NoOfLines * (LineLen+1),<br>
+str_len(ScreenStr,StrLen),<br>
+assignNLs(ScreenStr,NoOfLines,LineLen),<br>
+assert(screen(NoOfLines,LineLen,ScreenStr)),<br>
+<br>
+DEPT1=DEPT+STEP,<br>
+draw_nounp(STEP,DEPT1,D_NOUNP,NOUNP,COL1),<br>
+draw_verbp(STEP,DEPT1,D_VERBP,VERBP,COL2),<br>
+COL=(COL1+COL2) div 2,<br>
+lin(DEPT,COL,DEPT1,COL1),<br>
+lin(DEPT,COL,DEPT1,COL2),<br>
+mark(DEPT,COL,&quot;SENTENCE&quot;,33).<br>
+<br>
+draw_nounp(STEP,DEPT,nounp(none,COL,none),nounp(_,NOUN,_),COL):-<br>
+DEPT1=DEPT+STEP div 2,<br>
+lin(DEPT1,COL,DEPT,COL),<br>
+markfinal(DEPT1,COL,&quot;NOUN&quot;,NOUN),<br>
+mark(DEPT,COL,&quot;NOUNP&quot;,33).<br>
+draw_nounp(STEP,DEPT,nounp(determ(COL1),COL2,none),<br>
+nounp(determ(DET),NOUN,_),COL):-<br>
+DEPT1=DEPT+STEP,<br>
+COL=(COL1+COL2) div 2,<br>
+lin(DEPT1,COL1,DEPT,COL),<br>
+lin(DEPT1,COL2,DEPT,COL),<br>
+markfinal(DEPT1,COL1,&quot;DETERM&quot;,DET),<br>
+markfinal(DEPT1,COL2,&quot;NOUN&quot;,NOUN),<br>
+mark(DEPT,COl,&quot;NOUNP&quot;,33).<br>
+draw_nounp(STEP,DEPT,nounp(none,COL1,relcl(REL,VERBP)),<br>
+nounp(none,NOUN,RELCL),COL):-<br>
+DEPT1=DEPT+STEP,<br>
+draw_relcl(STEP,DEPT1,relcl(REL,VERBP),RELCL,COL2),<br>
+COL=(COL1+COL2) div 2,<br>
+lin(DEPT1,COL1,DEPT,COL),<br>
+lin(DEPT1,COL2,DEPT,COL),<br>
+markfinal(DEPT1,COL1,&quot;NOUN&quot;,NOUN),<br>
+mark(DEPT,COL,&quot;NOUNP&quot;,33).<br>
+draw_nounp(STEP,DEPT,nounp(determ(COL1),COL2,relcl(REL,VERBP)),<br>
+nounp(determ(DET),NOUN,RELCL),COL):-<br>
+DEPT1=DEPT+STEP,<br>
+draw_relcl(STEP,DEPT1,relcl(REL,VERBP),RELCL,COL3),<br>
+COL=(COL1+COL2+COL3) div 3,<br>
+lin(DEPT1,COL1,DEPT,COL),<br>
+lin(DEPT1,COL2,DEPT,COL),<br>
+lin(DEPT1,COL3,DEPT,COL),<br>
+markfinal(DEPT1,COL1,&quot;DETERM&quot;,DET),<br>
+markfinal(DEPT1,COL2,&quot;NOUN&quot;,NOUN),<br>
+mark(DEPT,COL,&quot;NOUNP&quot;,33).<br>
+<br>
+draw_verbp(STEP,DEPT,verb(COL),verb(VERB),COL):-<br>
+DEPT1=DEPT+STEP div 2,<br>
+lin(DEPT1,COL,DEPT,COL),<br>
+markfinal(DEPT1,COL,&quot;VERB&quot;,VERB),<br>
+mark(DEPT,COL,&quot;VERBP&quot;,33).<br>
+draw_verbp(STEP,DEPT,verbp(COL1,D_NOUNP),verbp(VERB,NOUNP),COL):-<br>
+DEPT1=DEPT+STEP,<br>
+draw_nounp(STEP,DEPT1,D_NOUNP,NOUNP,COL2),<br>
+COL=(COL1+COL2) div 2,<br>
+lin(DEPT1,COL1,DEPT,COL),<br>
+lin(DEPT1,COL2,DEPT,COL),<br>
+markfinal(DEPT1,COL1,&quot;VERB&quot;,VERB),<br>
+mark(DEPT,COL,&quot;VERBP&quot;,33).<br>
+<br>
+draw_relcl(STEP,DEPT,relcl(COL1,D_VERBP),relcl(REL,VERBP),COL):-<br>
+DEPT1=DEPT+STEP,<br>
+draw_verbp(STEP,DEPT1,D_VERBP,VERBP,COL2),<br>
+COL=(COL1+COL2) div 2,<br>
+lin(DEPT1,COL1,DEPT,COL),<br>
+lin(DEPT1,COL2,DEPT,COL),<br>
+markfinal(DEPT1,COL1,&quot;REL&quot;,REL),<br>
+mark(DEPT,COL,&quot;RELCL&quot;,33).<br>
+<br>
+lin(R1,C,R2,C):-!,<br>
+line_ver(R1,R2,C).<br>
+lin(R1,C1,R2,C2):-<br>
+RM=(R1+R2) div 2,<br>
+line_ver(R1,RM,C1),<br>
+line_hor(C1,C2,RM),<br>
+line_ver(RM,R2,C2),<br>
+scr_tegn(RM,C1,'+'),<br>
+scr_tegn(RM,C2,'+').<br>
+<br>
+line_ver(R,R,_):-!.<br>
+line_ver(R1,R2,C):-<br>
+R2&gt;R1,!,<br>
+scr_tegn(R1,C,'|'),<br>
+R=R1+1,<br>
+line_ver(R,R2,C).<br>
+line_ver(R2,R1,C):-<br>
+scr_tegn(R1,C,'|'),<br>
+R=R1+1,<br>
+line_ver(R,R2,C).<br>
+<br>
+line_hor(C,C,_):-!.<br>
+line_hor(C1,C2,R):-<br>
+C2&gt;C1,!,<br>
+scr_tegn(R,C1,'-'),<br>
+C=C1+1,<br>
+line_hor(C,C2,R).<br>
+line_hor(C2,C1,R):-<br>
+scr_tegn(R,C1,'-'),<br>
+C=C1+1,<br>
+line_hor(C,C2,R).<br>
+<br>
+mark(ROW,COL,TEXT,ATTR):-<br>
+str_len(TEXT,LEN),<br>
+C=COL-(LEN-1) div 2,<br>
+writetext(ROW,C,TEXT,ATTR).<br>
+<br>
+mark2(ROW,COL,TEXT,ATTR):-<br>
+str_len(TEXT,LEN),<br>
+C=COL-LEN div 2,<br>
+writetext(ROW,C,TEXT,ATTR).<br>
+<br>
+markfinal(ROW,COL,TEXT1,TEXT2):-<br>
+str_len(TEXT1,L1),<br>
+str_len(TEXT2,L2),<br>
+L2&gt;L1,!,<br>
+R1=ROW+1, R2=ROW+2,<br>
+mk_ulin(TEXT1,ULINE),<br>
+mark2(ROW,COL,TEXT1,33),<br>
+mark2(R1,COL,ULINE,7),<br>
+mark(R2,COL,TEXT2,112).<br>
+<br>
+markfinal(ROW,COL,TEXT1,TEXT2):-<br>
+str_len(TEXT1,L),<br>
+str_len(TEXT2,L),!,<br>
+R1=ROW+1,<br>
+R2=ROW+2,<br>
+mk_ulin(TEXT1,ULINE),<br>
+mark(ROW,COL,TEXT1,33),<br>
+mark(R1,COL,ULINE,7),<br>
+mark(R2,COL,TEXT2,112).<br>
+<br>
+markfinal(ROW,COL,TEXT1,TEXT2):-<br>
+R1=ROW+1,<br>
+R2=ROW+2,<br>
+mk_ulin(TEXT1,ULINE),<br>
+mark(ROW,COL,TEXT1,33),<br>
+mark(R1,COL,ULINE,7),<br>
+mark2(R2,COL,TEXT2,112).<br>
+<br>
+mk_ulin(STR1,STR2):-<br>
+frontchar(STR1,_,REST),!,<br>
+mk_ulin(REST,ULI1),<br>
+concat(ULI1,&quot;-&quot;,STR2).<br>
+mk_ulin(&quot;&quot;,&quot;&quot;).<br>
+<br>
+scr_tegn(R,C,CH):-<br>
+R&lt;79,<br>
+C&lt;80,!,<br>
+scr_char(R,C,CH).<br>
+scr_tegn(_,_,_).<br>
+<br>
+writetext(ROW,COL,TEXT,_ATTR):-<br>
+ROW&lt;79,<br>
+COL&lt;80,<br>
+frontchar(TEXT,CH,REST),!,<br>
+scr_char(ROW,COL,CH),<br>
+% scr_attr(ROW,COL,ATTR),<br>
+COL1=COL+1,<br>
+writetext(ROW,COL1,REST,_ATTR).<br>
+writetext(_,_,_,_).<br>
+<br>
+scr_char(Line,Col,Char):-<br>
+screen(NoOfLines,LineLen,ScreenStr),<br>
+Line&lt;NoOfLines,<br>
+Col&lt;LineLen,<br>
+Pos=Line*(LineLen+1)+Col,<br>
+StrPos=cast(LONG,ScreenStr)+Pos,<br>
+PSTR = cast(STRING,StrPos),<br>
+membyte(PStr,Char).<br>
+<br>
+assignNLs(_,0,_):-!.<br>
+assignNLs(Str,Line,LineLen) :-<br>
+&nbsp;&nbsp;&nbsp; Pos=Line*(LineLen+1)+LineLen,<br>
+&nbsp;&nbsp;&nbsp; StrPos=cast(LONG,Str)+Pos,<br>
+&nbsp;&nbsp;&nbsp; PSTR = cast(STRING,StrPos),<br>
+&nbsp;&nbsp;&nbsp; membyte(PStr,'\n'),<br>
+&nbsp;&nbsp;&nbsp; Line1=Line-1,<br>
+&nbsp;&nbsp;&nbsp; assignNLs(Str,Line1,LineLen).</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

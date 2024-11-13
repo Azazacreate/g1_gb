@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE>Assign Action</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Assign Action'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Assign Action</FONT>
+<P ALIGN=LEFT>The assign action is used to assign values to <A HREF='PARAMETE.HTM'>parameters</A>. The <A HREF='BNF_SYNT.HTM'>syntax</A> for the assign action is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;assign&gt; ::= assign &lt;<A HREF='NAME.HTM'>parameter-name</A>&gt; := &lt;<A HREF='EXPRESSI.HTM'>expression</A>&gt;</FONT> 
+<P ALIGN=LEFT>To be well formed, the &lt;expression&gt; must result in a value that conforms to the type of the parameter. 
+<P ALIGN=LEFT><B>NOTE</B> 
+<P ALIGN=LEFT>Readers familiar with AI techniques may already have realized that use of assign makes it possible to combine forward chaining capabilities of <A HREF='SECTIONS.HTM'>sections</A> with the backward chaining capabilities in the parameter <A HREF='RULES_FI.HTM'>rules</A>. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start 'a very short section to illustrate assign' 
+<P ALIGN=LEFT>    assign n := 7 + 8 / 2 
+<P ALIGN=LEFT>    advice 'evaluation of 7 + 8 / 2 gives ' n 
+<P ALIGN=LEFT>    assign n := (7 + 8) / 2 
+<P ALIGN=LEFT>    advice 'evaluation of (7 + 8) / 2 gives ' n  
+<P ALIGN=LEFT>           'as / has higher priority than +.' &amp;  
+<P ALIGN=LEFT>           'Notice that the parameter indeed did change the value' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>parameter n 'n' 
+<P ALIGN=LEFT>type number </FONT>
+<P ALIGN=LEFT>Note the ESTA always begins evaluation from the start section and further on. Thus if you for instance change the value of parameter 'n' by choosing the menu item &quot;What if parameter changes its value&quot; in the Parameter menu during a consultation, this changed value will always be overwritten by the assignments in the start section, meaning that the what-if change command would not have any effect. 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

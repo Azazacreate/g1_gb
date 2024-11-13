@@ -1,0 +1,9 @@
+stlevel = 2
+
+logger.debug('Запущена функция %s. Входные параметры: args: %s, kwargs: %s',
+                func.__name__,
+                args,
+                kwargs, 
+                stacklevel=2)
+
+'''

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>sem_an_txt</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Sentence Analyzer <!--mstheme--></font></h1>
+
+<blockquote>
+  <p>The file SEN_AN is a very good example of an English sentence analyzer. The program
+  can, just as the GEOBASE, easily be modified to be able to parse more types of sentences.
+  The input to the semantic analyzer is of course a sentence, and the output is a list of
+  Prolog clauses, that shows that every part of the sentence has been recognized as a
+  grammatical component: verbp (for verbphrase), nounp (for nounphrase) etc.</p>
+  <p>The program SEN_AN.PRO demonstrates the basics of how a programmer can put together an
+  English sentence analyzer in Prolog. When run, the sentence analyzer prompts the user to
+  enter an English sentence. The program then attempts to parse (break apart) the sentence
+  into a form that the analyzer can understand.</p>
+  <p>The resulting data object&nbsp; is known as a parse tree. After the parser creates a
+  parse tree successfully, it can pass the tree on to a routine that specifies a task to be
+  performed. SEN_AN passes the parse tree on to a routine that draws a graphic
+  representation of the user's sentence input. If SEN_AN cannot parse the sentence
+  successfully, it will display an error message indicating the failure. If you enter a word
+  that is not part of the dictionary, SEN_AN will show an error message indicating the word
+  not recognized.</p>
+  <p>The syntax shows that an English sentence (In the Sen_an microworld) is made up of a
+  noun phrase and a verb phrase. A noun phrase is made up of an optional determiner,
+  followed by a noun, followed by a relational clause. A determiner can be empty (no
+  determiner), or it can be one of the determiners found in the dictionary. A noun must be
+  listed in the dictionary. The relational clause can be empty, or it can be a relative
+  followed by a verb phrase. A verb phrase can either be a verb or a verb followed by a noun
+  phrase.</p>
+  <p>For example, if you enter the sentence a mother loves her children, the parser will
+  break this sentence down into the following Prolog data object:</p>
+  <p><i>sent(nounp(determ(&quot;a&quot;), &quot;mother&quot;, none),</i></p>
+  <p><i>verbp(&quot;loves&quot;, nounp(determ(&quot;her&quot;), &quot;children&quot;,
+  none)))</i></p>
+  <p>This data object shows that the sentence is made up of the noun phrase <i>a mother</i>
+  and the verb phrase <i>loves her children</i>. </p>
+  <p>In order to parse the sentences SEN_AN uses a context-free grammar. A more complex
+  grammar can be specified, which would enable the parser to break down more complex
+  sentences. Take a look at the parser code; you may want to start creating a parser that
+  accepts more complex English sentences.</p>
+  <p>SEN_AN.PRO uses a limited set of English grammar rules to parse sentences. More complex
+  sentences will need to have more rules of the English language coded into the parser.
+  These rules, known as productions, are the heart of the analyzing procedure. Detailed
+  productions make for a more thorough parser (or analyzer). Although intricate productions
+  can be created to deal with the more complicated parts of English, the complexity of the
+  English language creates a domain in which even the most specific productions have
+  exceptions. For this reason, natural language processing (or NLP--not to be confused with
+  Neuro Linguistic Programming) is a heavily-studied branch of Artificial Intelligence.</p>
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

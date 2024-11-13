@@ -1,0 +1,35 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  Progress bar
+ FileName: PROGRESS.PRE
+ Purpose: Predicate definitions for PROGRESS.PRO
+ Written by: Lars Juul
+ Comments:
+******************************************************************************/
+constants
+  progress_pre_included = 1
+
+% The class name is "PROGRESS"
+
+% The progressbar will normally fill the given window from left to right, but if
+% the window is higher than wide it will fill it from the buttom and up.
+
+global predicates
+  progress_register()- procedure()
+  progress_Unregister()- procedure()
+
+  progress_bar_set_colors(WINDOW,COLOR FillColor,COLOR BackColor,PATSTYLE) - procedure(i,i,i,i)
+  % default is: color_Red, color_White, pat_Hollow
+  % or the colors set in the constants below
+
+  progress_bar_set_value(WINDOW,ULONG MaxValue,ULONG CurrentValue)- determ(i,i,i)
+
+
+constants
+% Set these constants somewhere in your application and they will be used as default
+
+%progressBar_FillColor = color_Red
+%progressBar_BackColor = color_White
+%progressBar_PatStyle  = pat_Hollow

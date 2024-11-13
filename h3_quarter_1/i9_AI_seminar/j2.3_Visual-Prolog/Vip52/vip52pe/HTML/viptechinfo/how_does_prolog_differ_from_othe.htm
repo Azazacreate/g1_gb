@@ -1,0 +1,164 @@
+<html>
+
+<head>
+<title>How Does Prolog Differ From Other Languages</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">How Does Prolog Differ From Other Languages?<!--mstheme--></font></h1>
+
+<p>The traditional computer languages, such as C, BASIC and Pascal, are procedural
+languages. In a procedural language, the programmer must provide step by step instructions
+that tell the computer exactly how to solve a given problem. In other words, the
+programmer must know how to solve the problem before the computer can do it. The Prolog
+programmer, on the other hand, only needs to supply a description of the problem and the
+ground rules for solving it. From there, the Prolog system is left to determine how to
+find a solution.</p>
+
+<p>Here's a short look at how Prolog works.</p>
+
+<h3><!--mstheme--><font color="#000000">Prolog uses facts and rules.<!--mstheme--></font></h3>
+
+<p>Apart from some initial declarations, a Prolog program essentially consists of a list
+of logical statements, either in the form of facts, such as</p>
+
+<!--mstheme--></font><table border="0" cellPadding="7" cellSpacing="0" width="698">
+<tbody>
+  <tr>
+    <td vAlign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>father(&quot;John&quot;,&quot;Mary&quot;)</i><!--mstheme--></font></td>
+    <td vAlign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;John is the father to Mary&quot;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td vAlign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>father(&quot;John&quot;,&quot;Sally&quot;)</i><!--mstheme--></font></td>
+    <td vAlign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;John is the father to Sally&quot;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td vAlign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>father(&quot;John&quot;,&quot;Sam&quot;)</i><!--mstheme--></font></td>
+    <td vAlign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;John is the father to Sam&quot;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td vAlign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>mother(&quot;Jeanette&quot;,&quot;Mary&quot;)</i><!--mstheme--></font></td>
+    <td vAlign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;Jeanette is the mother to Mary&quot;&quot;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td vAlign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>mother(&quot;Mary&quot;,&quot;Tom&quot;)</i><!--mstheme--></font></td>
+    <td vAlign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;Mary is the mother to Tom&quot;<!--mstheme--></font></td>
+  </tr>
+</tbody>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>or in the form of rules, such as</p>
+
+<!--mstheme--></font><table border="0" cellPadding="7" cellSpacing="0" width="732">
+<tbody>
+  <tr>
+    <td vAlign="top" width="38%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>sister(X,Y) :- father(Z,X), father(Z,Y).</i><!--mstheme--></font></td>
+    <td vAlign="top" width="62%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>&quot;</b>X and Y are sisters if they have the same
+    father&quot;<!--mstheme--></font></td>
+  </tr>
+</tbody>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>X, Y, Z are here variables, which are used to specify bindings between the different
+relations. Variables can be any name starting with an uppercase letter.</p>
+
+<h3><!--mstheme--><font color="#000000">Prolog can make deductions<!--mstheme--></font></h3>
+
+<p>You can give the Prolog program some goals, for example to conditions:</p>
+
+<!--mstheme--></font><table border="0" cellPadding="7" cellSpacing="0" width="732">
+<tbody>
+  <tr>
+    <td vAlign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Goal father(&quot;John&quot;,&quot;Mary&quot;).</i><!--mstheme--></font></td>
+    <td vAlign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica">Prolog will answer <i>true</i> because the goal matches the
+    stored facts.<!--mstheme--></font></td>
+  </tr>
+</tbody>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>If you use a variable in the goals, Prolog will find the value for the variable:</p>
+
+<!--mstheme--></font><table border="0" cellPadding="7" cellSpacing="0" width="732">
+<tbody>
+  <tr>
+    <td vAlign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Goal father(X,&quot;Mary&quot;).</i><!--mstheme--></font></td>
+    <td vAlign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica">Prolog will answer <i>X=&quot;John&quot;</i> because it can
+    look it up in the facts.<!--mstheme--></font></td>
+  </tr>
+</tbody>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>There is no difference between using facts and rules, for example if the goal is:</p>
+
+<!--mstheme--></font><table border="0" cellPadding="7" cellSpacing="0" width="732">
+<tbody>
+  <tr>
+    <td vAlign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><i>Goal sister(X,&quot;Mary&quot;).</i><!--mstheme--></font></td>
+    <td vAlign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica">Prolog will answer <i>X=&quot;Sally&quot;</i> because
+    &quot;Sally&quot; can satisfy the rule for sister.<!--mstheme--></font></td>
+  </tr>
+</tbody>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Similarly, Prolog can use its deductive ability to find all solutions to the problem:</p>
+<i>
+
+<p>Goal father(&quot;John&quot;,X).</i> </p>
+
+<p>Prolog will answer<br>
+X=&quot;Mary&quot;<br>
+X=&quot;Sally&quot;<br>
+X=&quot;Sam&quot;</p>
+
+<p>The solutions are found through backtracking where all combinations are tried. This
+automatic backtracking mechanism combined with the built-in database (the facts) is one of
+Visual Prolog's most powerful tools. </p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

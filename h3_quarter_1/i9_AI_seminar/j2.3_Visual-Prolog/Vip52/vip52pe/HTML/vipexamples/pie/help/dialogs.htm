@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Dialogs</title>
+<meta HTTP-EQUIV="Keywords" CONTENT="dlg_term;dlg_savefilename;dlg_openfilename;dlg_note;dlg_ask;Dialog" </HEAD>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p ALIGN="LEFT"><font FACE="Arial" SIZE="4">Dialogs</font>
+<p ALIGN="LEFT"><b>dlg_ask</b>(<i>Prompt,ButtonList,Result</i>)
+<p ALIGN="LEFT">Prompts user for a Yes/No response.
+<p ALIGN="LEFT"><i>Prompt</i> contains the text that is displayed in the dialog.
+<p ALIGN="LEFT"><i>ButtonList</i> must not be empty. The first three strings are used to specify the texts in the buttons, others (if exist) are ignored. If a string is empty, the corresponding button is invisible. If one or two strings are specified, then only one or two buttons are displayed.
+<p ALIGN="LEFT"><i>Result</i> returns the user choice.
+<p ALIGN="LEFT"><b>dlg_term</b>(<i>Term</i>)
+<p ALIGN="LEFT">Read the term througn dialog exactly as <b>read/1</b> does.
+<p ALIGN="LEFT"><b>dlg_str</b>(<i>Prompt,InitStr,Result</i>)
+<p ALIGN="LEFT">A dialog to prompt the user for a string response
+<p ALIGN="LEFT">Returns user string response if the OK button is pressed. The <i>InitStr</i> is the initial contents of the string. The title <i>Prompt</i> must be given but it may be an empty string.
+<p ALIGN="LEFT"><b>dlg_note</b>(<i>Title,Msg</i>)
+<p ALIGN="LEFT">Pop up a box containing a message <i>Msg</i> and OK button. Default title is &quot;Note&quot; if <i>Title</i> is an empty string.
+<p ALIGN="LEFT"><b>dlg_openfilename</b>(<i>Title,FileType,FileExt,FileName</i>)
+<p ALIGN="LEFT"><b>dlg_savefilename</b>(<i>Title,FileType,FileExt,FileName</i>)
+<p ALIGN="LEFT">Activates dialog box to select a filename.
+<p ALIGN="LEFT"><i>Title</i> Specifies the title of the dialog.
+<p ALIGN="LEFT"><i>FileType</i> Specifies the file type description (for example, &quot;Prolog Files&quot;).
+<p ALIGN="LEFT"><i>FileExt</i> Specifies the file extension (for example &quot;*.PRO&quot;).
+<p ALIGN="LEFT"><i>FileName</i> Contains the choosen filename, if the OK button is pressed
+<p ALIGN="LEFT">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

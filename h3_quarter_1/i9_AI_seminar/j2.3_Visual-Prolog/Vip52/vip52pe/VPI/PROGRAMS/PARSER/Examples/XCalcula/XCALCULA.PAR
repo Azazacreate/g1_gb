@@ -1,0 +1,161 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALCULA
+ FileName: XCALCULA.PAR
+ Purpose: Parsing Predicates
+ Written by: Eugene Akimov
+ Comments: Use Parsing predicates
+******************************************************************************/
+
+PREDICATES
+  s_program(TOKL Tokl,TOKL Tokl,PROGRAM Statement) - determ (i,o,o)
+  s_program1(TOKL Tokl,TOKL Tokl,PROGRAM Statement) - procedure (i,o,o)
+  s_output_terms(TOKL Tokl,TOKL Tokl,OUTPUT_TERMS OutputTerms) - determ (i,o,o)
+  s_output_terms1(TOKL Tokl,TOKL Tokl,OUTPUT_TERMS OutputTerms) - determ (i,o,o)
+  s_vars(TOKL Tokl,TOKL Tokl,VARS Variabls) - determ (i,o,o)
+  s_vars1(TOKL Tokl,TOKL Tokl,VARS Variabls) - determ (i,o,o)
+  s_cond(TOKL Tokl,TOKL Tokl,COND Condition) - determ (i,o,o)
+  s_expr(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,i),(i,o,o)
+  s_expr1(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,i),(i,o,o)
+  s_expr5(TOKL Tokl,TOKL Tokl,EXPR Expression,EXPR expression) - determ (i,o,i,i),(i,o,i,o)
+  s_expr2(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_expr6(TOKL Tokl,TOKL Tokl,EXPR Expression,EXPR Expression) - determ (i,o,i,o)
+  s_expr3(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_expr7(TOKL Tokl,TOKL Tokl,EXPR Expression,EXPR Expression) - determ (i,o,i,o)
+  s_expr4(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_oper(TOKL Tokl,TOKL Tokl,OPER Oper) - determ (i,o,o),(i,o,i)
+  s_output_term(TOKL Tokl,TOKL Tokl,OUTPUT_TERM OutputTerm) - determ (i,o,o)
+  s_stmnt(TOKL Tokl,TOKL Tokl,STMNT Statement) - determ (i,o,o)
+  s_var(TOKL Tokl,TOKL Tokl,VAR Variable) - determ (i,o,o),(i,o,i)
+
+CLAUSES
+  s_cond(LL1,LL0,condition(Expr,Oper,Expr1)):-
+	s_expr(LL1,LL2,Expr),
+	s_oper(LL2,LL3,Oper),
+	s_expr(LL3,LL0,Expr1),!.
+
+  s_expr(LL1,LL0,Expr):-
+	s_expr1(LL1,LL0,Expr).
+
+  s_expr1(LL1,LL0,OutExpr):-
+	s_expr2(LL1,LL2,Expr),
+	s_expr5(LL2,LL0,Expr,OutExpr).
+
+  s_expr2(LL1,LL0,OutExpr):-
+	s_expr3(LL1,LL2,Expr),
+	s_expr6(LL2,LL0,Expr,OutExpr).
+
+  s_expr3(LL1,LL0,OutExpr):-
+	s_expr4(LL1,LL2,Expr),
+	s_expr7(LL2,LL0,Expr,OutExpr).
+
+  s_expr4([t(lpar,_)|LL1],LL0,parenthetical(Expr)):-!,
+	s_expr(LL1,LL2,Expr),
+	expect(t(rpar,_),LL2,LL0).
+  s_expr4([t(number(Real),_)|LL],LL,number(Real)):-
+	!.
+  s_expr4(LL1,LL0,var(Var)):-
+	s_var(LL1,LL0,Var),
+	!.
+  s_expr4(LL,_,_):-syntax_error("expr4",LL),fail.
+
+  s_oper([t(op(OP),Position)|LL],LL,operator(OP,Position)):-!.
+  s_oper(LL,_,_):-syntax_error("oper",LL),fail.
+
+  s_output_term(LL1,LL0,expr(Expr)):-
+	s_expr(LL1,LL0,Expr),!.
+  s_output_term([t(str(String),_)|LL],LL,str(String)):-!.
+  s_output_term(LL,_,_):-syntax_error("output_term",LL),fail.
+
+  s_stmnt(LL1,LL0,bind(Var,Oper,Expr)):-
+	s_var(LL1,LL2,Var),
+	s_oper(LL2,LL3,Oper),
+	s_expr(LL3,LL0,Expr),!.
+  s_stmnt([t(clear,_)|LL],LL,clear):-!.
+  s_stmnt([t(while,_)|LL1],LL0,do_while(Cond,Program)):-!,
+	s_cond(LL1,LL2,Cond),
+	expect(t(do,_),LL2,LL3),
+	s_program(LL3,LL4,Program),
+	expect(t(enddo,_),LL4,LL0).
+  s_stmnt([t(for,_)|LL1],LL0,for(Var,Oper,Expr,Expr1,Program)):-!,
+	s_var(LL1,LL2,Var),
+	s_oper(LL2,LL3,Oper),
+	s_expr(LL3,LL4,Expr),
+	expect(t(to,_),LL4,LL5),
+	s_expr(LL5,LL6,Expr1),
+	expect(t(do,_),LL6,LL7),
+	s_program(LL7,LL8,Program),
+	expect(t(enddo,_),LL8,LL0).
+  s_stmnt([t(if_,_)|LL1],LL0,if_then(Cond,Program)):-
+	s_cond(LL1,LL2,Cond),
+	expect(t(then,_),LL2,LL3),
+	s_program(LL3,LL4,Program),
+	expect(t(endif,_),LL4,LL0),!.
+  s_stmnt([t(if_,_)|LL1],LL0,if_then_else(Cond,Program,Program1)):-!,
+	s_cond(LL1,LL2,Cond),
+	expect(t(then,_),LL2,LL3),
+	s_program(LL3,LL4,Program),
+	expect(t(else,_),LL4,LL5),
+	s_program(LL5,LL6,Program1),
+	expect(t(endif,_),LL6,LL0).
+  s_stmnt([t(input,_)|LL1],LL0,input(Vars)):-!,
+	s_vars(LL1,LL0,Vars).
+  s_stmnt([t(memory,_)|LL],LL,memory):-!.
+  s_stmnt([t(nl,_)|LL],LL,nl):-!.
+  s_stmnt([t(output,_)|LL1],LL0,output(Output_Terms)):-!,
+	s_output_terms(LL1,LL0,Output_Terms).
+  s_stmnt([t(time,_)|LL],LL,time):-!.
+  s_stmnt(LL,_,_):-syntax_error("stmnt",LL),fail.
+
+  s_var([t(name(String),Position)|LL],LL,var(String,Position)):-!.
+  s_var(LL,_,_):-
+	syntax_error("var",LL),
+	fail.
+
+  s_expr5([t(plus,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr2(LL1,LL2,Expr1),
+	s_expr5(LL2,LL0,add(Expr,Expr1),OutExpr).
+  s_expr5([t(minus,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr2(LL1,LL2,Expr1),
+	s_expr5(LL2,LL0,subtract(Expr,Expr1),OutExpr).
+  s_expr5(LL,LL,Expr,Expr).
+
+  s_expr6([t(mult,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr3(LL1,LL2,Expr1),
+	s_expr6(LL2,LL0,multiply(Expr,Expr1),OutExpr).
+  s_expr6([t(div,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr3(LL1,LL2,Expr1),
+	s_expr6(LL2,LL0,divide(Expr,Expr1),OutExpr).
+  s_expr6(LL,LL,Expr,Expr).
+
+  s_expr7([t(power,_)|LL1],LL0,Expr,power(Expr,Expr1)):-!,
+	s_expr3(LL1,LL0,Expr1).
+  s_expr7(LL,LL,Expr,Expr).
+
+  s_program(LL1,LL0,[Stmnt|Program]):-
+	s_stmnt(LL1,LL2,Stmnt),
+	s_program1(LL2,LL0,Program).
+
+  s_program1(LL1,LL0,[Stmnt|Program]):-
+	s_stmnt(LL1,LL2,Stmnt),!,
+	s_program1(LL2,LL0,Program).
+  s_program1(LL,LL,[]).
+
+  s_output_terms(LL1,LL0,[Output_Term|Output_Terms]):-
+	s_output_term(LL1,LL2,Output_Term),
+	s_output_terms1(LL2,LL0,Output_Terms).
+
+  s_output_terms1([t(comma,_)|LL1],LL2,Output_Terms):-!,
+	s_output_terms(LL1,LL2,Output_Terms).
+  s_output_terms1(LL,LL,[]).
+
+  s_vars(LL1,LL0,[Var|Vars]):-
+	s_var(LL1,LL2,Var),
+	s_vars1(LL2,LL0,Vars).
+
+  s_vars1([t(comma,_)|LL1],LL2,Vars):-!,
+	s_vars(LL1,LL2,Vars).
+  s_vars1(LL,LL,[]).
+

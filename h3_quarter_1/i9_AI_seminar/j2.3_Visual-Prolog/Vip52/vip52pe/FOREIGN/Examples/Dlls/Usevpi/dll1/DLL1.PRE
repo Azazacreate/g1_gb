@@ -1,0 +1,26 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DLL1
+ FileName: DLL1.PRE
+ Purpose: Predicate definitions for DLL1.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+ifndef ws_win
+ #Error: This examples works under Windows-32 platform only
+enddef 
+ifndef platform_32bit
+ #Error: This examples works under Windows-32 platform only
+enddef 
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+%END_DECL
+ PROCEDURE dll_mark_gstack(STACKMARK) - (o) language stdcall as "dll1_mark_gstack"
+ PROCEDURE dll_release_gstack(STACKMARK) - (i) language stdcall as "dll1_release_gstack"
+
+ PROCEDURE WINDOW dll1_custom_Create(WINDOW Parent,RCT, INTEGER Id) - (i,i,i) language stdcall as "dll1_custom_Create"
+ PROCEDURE  dll1_custom_Destroy(WINDOW) - (i) language stdcall as "dll1_custom_Destroy"

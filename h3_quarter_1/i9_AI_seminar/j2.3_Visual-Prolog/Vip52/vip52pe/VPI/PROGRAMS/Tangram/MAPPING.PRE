@@ -1,0 +1,20 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: MAPPING.PRE
+ Purpose: Predicate definitions for MAPPING.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+global predicates
+	scaleSet(WINDOW,REAL,REAL,REAL,REAL)	 - (i,i,i,i,i)
+	scaleGet(WINDOW,REAL,REAL,REAL,REAL)	 - (i,o,o,o,o)
+  	mapSet(WINDOW)		 	- (i)
+  	mapDP2LP(WINDOW,PNT,PT)	 	- (i,i,o) (i,i,pt(o,o))
+  	mapLP2DP(WINDOW,PT,PNT)	 	- (i,i,o) (i,i,pnt(o,o))
+  	mapLL2DL(WINDOW,PTLIST,PNTLIST) - (i,i,o)
+  	
+  	
+  

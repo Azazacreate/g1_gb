@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Symbolic differentiation</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Symbolic differentiation <!--mstheme--></font></h1>
+
+<p><b>Visual Prolog</b> is well suited for symbolic mathematics because it is easy and
+elegant to handle expressions as Prolog structures.</p>
+
+<h3><!--mstheme--><font color="#000000">A typical dialog with the system could be:<!--mstheme--></font></h3>
+
+<blockquote>
+  <p><i>Write an expression</i>:<i> </i><b>10*x^4</b></p>
+  <p><i>Differentiated expression</i>: <b>0*x^4+10*4*x^3*1</b></p>
+  <p><i>Reduced expression</i>:<i> </i><b>40*x^3 </b></p>
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">&nbsp;The Diff program consists of the following parts:<!--mstheme--></font></h3>
+
+<blockquote>
+  <ol>
+    <li>Scanning and parsing a string into the EXPression structure.</li>
+    <li>The actual differentation.</li>
+    <li>Reducing an expression.</li>
+    <li>Converting an expression back to a string.</li>
+  </ol>
+  <p>Reducing an expression is the most complicated part. From the Goal-section<br>
+  the main parts of the program can be examined.</p>
+  <blockquote>
+    <p><i>tokl(STR,TOKL) </i>: converts the string to a list of tokens.<br>
+    <i>s_exp(TOKL,OL,EXP) </i>: used by the parser.<br>
+    <i>d(EXP,&quot;x&quot;,EXP1)</i> : differentiates the expression.<br>
+    <i>reduce(EXP1,EXP2)</i> : the expression is reduced. </p>
+  </blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>Execute the program as a CGI script by pressing the &quot;<b>Differentiate</b>&quot;
+button on the form below </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form METHOD="POST" ACTION="http://vip.pdc.dk/vipexamples/cgiexamples/bin/diff.exe">
+    <p><br>
+    <input TYPE="SUBMIT" VALUE="Differentiate">&nbsp;&nbsp;<input TYPE="text" SIZE="25" NAME="exp" VALUE="10*x^4">&nbsp;<input TYPE="SUBMIT" VALUE="Differentiate"><br>
+    </p>
+  </form>
+  <p>Show <a href="src/diff.htm">Source</a> for the Diff-application.</p>
+  <p>Show <a href="src/diffcgisource.htm">Source</a> for the Diff-application incl.
+  cgi-source.<br>
+  </p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

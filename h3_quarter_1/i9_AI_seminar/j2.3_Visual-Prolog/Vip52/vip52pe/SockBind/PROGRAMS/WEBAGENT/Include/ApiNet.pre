@@ -1,0 +1,58 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:
+ FileName: APINET.PRE
+ Purpose: A Visual Prolog interface to API NET calls
+ Written by: Konstantin Ivanov & Compiler Group
+ Comments: FOR INTERNAL USE ONLY
+******************************************************************************/
+
+ifndef ws_win
+  ifdef platform_32bit
+    ifndef os_os2
+      #error Unsupported platform
+    enddef
+  elsedef
+    #error Unsupported platform
+  enddef
+enddef
+
+ifndef apinet_dom_included
+  #Error : apinet.dom must be included
+enddef
+
+ifndef apinet_con_included
+  #Error : apinet.con must be included
+enddef
+
+ifndef apinet_pre_included
+
+  CONSTANTS
+
+    apinet_pre_included = 1
+
+  ifdef os_nt
+
+    GLOBAL PREDICATES
+
+     procedure		api_NetInit()
+     %MUST BE CALLED
+     procedure		api_NetTerminate()
+
+     % Lan Manager Message predicates
+     % Specify empty string "" instead of NULL in original call
+     procedure DWORD	api_NetMessageBufferSend( STRING ServerName,
+     						  STRING MsgName,
+     						  STRING FromName,
+     						  STRING Buffer )		- (i,i,i,i)
+     procedure DWORD	api_NetMessageNameAdd( STRING ServerName,
+     					       STRING MsgName )			- (i,i)
+     procedure DWORD	api_NetMessageNameDel( STRING ServerName,
+     					       STRING MsgName )			- (i,i)     					       
+     
+     
+  enddef
+  
+enddef

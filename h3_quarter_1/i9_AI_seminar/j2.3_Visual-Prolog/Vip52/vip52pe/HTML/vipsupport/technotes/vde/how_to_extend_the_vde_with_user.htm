@@ -1,0 +1,146 @@
+<html>
+
+<head>
+<title>How to extend the VDE with user</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">How to Extend the VDE with User-Defined Commands?<!--mstheme--></font></h1>
+
+<p>To extend the VDE with user-defined commands, please, follow the instructions:</p>
+
+<ol>
+  <li>From the ..\VDESRC directory load a project file depending on your platform: </li>
+</ol>
+
+<blockquote>
+  <!--mstheme--></font><table border="1" width="50%" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+    <tr>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><h5><!--mstheme--><font color="#000000">Platform<!--mstheme--></font></h5>
+      <!--mstheme--></font></td>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><h5><!--mstheme--><font color="#000000">Project File<!--mstheme--></font></h5>
+      <!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Win32<!--mstheme--></font></td>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">VIP32.VPR<!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Win16<!--mstheme--></font></td>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">VIP.VPR<!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">OS/2<!--mstheme--></font></td>
+      <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">VIPOS2.VPR<!--mstheme--></font></td>
+    </tr>
+  </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<ol start="2">
+  <li>Add a new menu item with an arbitrary name and with the constant =<em> id_user_command</em>
+    <br>
+    into all VDE menus that should contain it;</li>
+  <li>Insert the following text into VIS.PRO:</li>
+</ol>
+
+<blockquote>
+  <!--mstheme--></font><pre>main_event(TWin,e_Menu(id_user_command,_),0):-  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>Comm = &quot;UserToolFile.exe command line&quot;
+% It is user's tool command - WRITE YOUR COMMAND HERE</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>vip_write(Comm),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>dir(&quot;inter&quot;,ObjDirPath,_),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>syspath(SYSPATH,_),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>disk(CurrentDir),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>filenamepath(FullCapdosOutFileName,ObjDirPath,&quot;CAPDOS.OUT&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>ifdef os_os2</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>filenamepath(CapdosTXTin,SYSPATH,&quot;..\\CAPDOS.TXT&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>filenamepath(CapdosBATFileName,ObjDirPath,&quot;CAPDOS.CMD&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>elsedef</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>filenamepath(CapdosTXTin,SYSPATH,&quot;..\\..\\CAPDOS.TXT&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>filenamepath(CapdosBATFileName,ObjDirPath,&quot;CAPDOS.BAT&quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>enddef</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>trap(deletefile(FullCapdosOutFileName),_,fail),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>trap(deletefile(CapdosBATFileName),_,fail),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>filenamereduce(CapdosTXTin,CurrentDir,CapdosTXTinReduced),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>filenamereduce(FullCapdosOutFileName,CurrentDir,
+       FullCapdosOutFileNameReduced),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>format(CommWithInputFlow,&quot;%s &lt;%s &gt;&gt;%s\necho ...&gt;&gt;%s&quot;,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <blockquote>
+        <!--mstheme--></font><pre>Comm,CapdosTXTinReduced,FullCapdosOutFileNameReduced,
+FullCapdosOutFileNameReduced),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+    </blockquote>
+    <!--mstheme--></font><pre>set_current_path(),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>file_str(CapdosBATFileName,CommWithInputFlow),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>vpi_ProcessEvents(),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>AppId = vpi_CreateProcess(TWin,CapdosBATFileName,&quot;&quot;,wsf_Invisible),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>retractall(capdosRunning(_)),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>assert(capdosRunning(AppId)),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>wait(FullCapdosOutFileName),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>trap(file_str(FullCapdosOutFileName,OUT),_,fail),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>vip_write(OUT),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>trap(deletefile(FullCapdosOutFileName),_,fail),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>trap(deletefile(CapdosBATFileName),_,fail),!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+
+<ol start="4">
+  <li>Build a new VDE.</li>
+  <li>Save&nbsp; a new version of&nbsp; Visual Prolog at a temprorary place.</li>
+  <li>Close Visual Prolog.</li>
+  <li>Move a new version of&nbsp; Visual Prolog&nbsp; to ..\Bin directory. </li>
+</ol>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,52 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  CAPSVPI
+ FileName: BRWSLIST.DOM
+ Purpose: Domain definitions for BRWSLIST\BRWSLIST.PRO
+ Written by: CAPS team
+ Comments:
+******************************************************************************/
+constants
+  treebrws_dom_included = 1
+
+constants
+	browselist_maxTextWidth=3000
+  browselist_lineheight=16
+  browselist_itemwidth=15
+
+/* Users itemkey domain*/
+/*********************************************
+global domains
+  BROWSELIST_USERITEMKEY = INTEGER
+*********************************************/
+
+/* BROWSELIST */
+global domains
+  BROWSELIST_LIST = BROWSELIST_ITEM*
+    BROWSELIST_ITEM = browselistItem(BROWSELIST_USERITEMKEY,STRING,BROWSELIST_NODE,PICTURE)
+      BROWSELIST_NODE=leaf;node(BROWSELIST_STATE,BROWSELIST_LIST Children)
+        BROWSELIST_STATE = open;close
+
+
+/* browselist eventtypes */
+
+global domains
+
+  BROWSELIST_INFORMATIONTYPE =   create(long);
+                                destroy;
+                                closeRequest;
+                                actualWindowProperties(RCT,WSFLAGS);
+                                node_open(BROWSELIST_USERITEMKEY,ILIST);
+                                node_close(BROWSELIST_USERITEMKEY,ILIST);
+                                cursor_got(BROWSELIST_USERITEMKEY,ILIST);
+                                cursor_lost(BROWSELIST_USERITEMKEY,ILIST);
+                                char(INTEGER Char, INTEGER ShiftCtlAlt);
+                                key_down(INTEGER Char, INTEGER ShiftCtlAlt);
+                                key_up(INTEGER Char, INTEGER ShiftCtlAlt);
+                                mouse_down(PNT Point, INTEGER ShiftCtlAlt, INTEGER Button);
+                                mouse_up(PNT Point, INTEGER ShiftCtlAlt, INTEGER Button);
+                                mouse_dbl(PNT Point, INTEGER ShiftCtlAlt, INTEGER Button)
+
+   BROWSELIST_INFORMATIONCALLBACK = determ (WINDOW, BROWSELIST_INFORMATIONTYPE) - (i,i)

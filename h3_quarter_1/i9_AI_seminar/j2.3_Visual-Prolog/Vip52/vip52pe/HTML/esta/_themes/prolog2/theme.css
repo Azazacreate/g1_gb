@@ -1,0 +1,40 @@
+.mstheme
+{
+	top-bar-button: url(modglob.gif);
+	navbutton-background-color: rgb(255,255,255);
+}
+.mstheme-topbar-font
+{
+	font-family: arial, Arial, Helvetica;
+	color: rgb(0,0,0);
+	font-size: 1;
+}
+body
+{
+	font-family: verdana, Arial, Helvetica;
+	background-image: url(modtextb.gif);
+}
+h1
+{
+	font-family: verdana, Arial, Helvetica;
+}
+h2
+{
+	font-family: verdana, Arial, Helvetica;
+}
+h3
+{
+	font-family: verdana, Arial, Helvetica;
+}
+h4
+{
+	font-family: verdana, Arial, Helvetica;
+}
+h5
+{
+	font-family: verdana, Arial, Helvetica;
+}
+h6
+{
+	font-family: verdana, Arial, Helvetica;
+}

@@ -1,0 +1,196 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./Readme_files/filelist.xml">
+<title>Using Visual Prolog DLL’s from other languages</title>
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>117</w:Zoom>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<meta name=Template content="C:\Program Files\Microsoft Office\Office\html.dot">
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<h1>Using Visual Prolog DLL’s from other languages</h1>
+
+<p>This directory contains several examples showing how to use Visual Prolog
+DLL’s from other languages (VB, C, Delphi, Java).</p>
+
+<p>All examples uses the same Visual Prolog DLL’s that are in the <a
+href="DLLS\readme.htm">DLLS</a> directory, so these have to be compiled before
+any of these examples can run.</p>
+
+<h2><a name=notes>Common notes for all languages</a></h2>
+
+<span style='mso-bookmark:notes'></span>
+
+<p>If a string (or other term stored in Prolog GStack) is returned from a DLL
+to the calling program then the calling program should release GStack memory.
+If, for example, a program calls <b><span style='font-family:"Courier New"'>getString</span></b>
+predicate in a DLL, which returns a string, then the calling program should
+have the following structure:</p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;
+margin-bottom:.0001pt'><span style='font-size:10.0pt;font-family:"Courier New";
+mso-fareast-font-family:"Courier New"'>dll_mark_gstack(Stack);<br>
+getString(String);<br>
+... // saving String in variable of calling program<br>
+dll_release_gstack(Stack);<o:p></o:p></span></p>
+
+<p>See <a href="#DLLs_manageStack">memory management</a>.</p>
+
+<h2>Examples</h2>
+
+<p>The examples are organized in subdirectories corresponding to the programming
+languages:</p>
+
+<p><a href="DELPHI\readme.htm">Borland Delphi</a> main programs using Visual
+Prolog DLL's.</p>
+
+<p style='margin-left:1.0in'>NONGUI: Delphi project uses a non-GUI Visual
+Prolog DLL.</p>
+
+<p style='margin-left:1.0in'>USEVPI: Delphi project uses VPI based Visual
+Prolog DLLs.</p>
+
+<p><a href="JAVA\readme.htm">Java</a> (Microsoft and Sun) main programs using a
+non-GUI Visual Prolog DLL.</p>
+
+<p style='margin-left:1.0in'>MSVJ example: Microsoft Visual Java program, which
+uses a non-GUI Visual Prolog DLL.</p>
+
+<p style='margin-left:1.0in'>SunJava example: Sun Java program, which uses a
+non-GUI Visual Prolog DLL.</p>
+
+<p><a href="MSVB\readme.htm">Microsoft Visual Basic</a> main programs using
+Visual Prolog DLL's</p>
+
+<p style='margin-left:1.0in'>NONGUI: Microsoft Visual Basic project uses a non-GUI
+Visual Prolog DLL.</p>
+
+<p style='margin-left:1.0in'>USEVPI: Microsoft Visual Basic project uses VPI
+based Visual Prolog DLLs.</p>
+
+<p><a href="MSVC\readme.htm">Microsoft Visual C++</a> main program using Visual
+Prolog DLL's</p>
+
+<p style='margin-left:1.0in'>NONGUI: Visual Prolog project with MSVC as Main
+Program, which uses a non-GUI Visual Prolog DLL.</p>
+
+<p style='margin-left:1.0in'>USEVPI: Microsoft Visual C++ MFC project using VPI
+based Visual Prolog DLLs.</p>
+
+<p style='margin-left:1.0in'>ActiveX: Microsoft Visual C++ MFC ActiveX project using
+VPI based Visual Prolog DLLs.</p>
+
+<p style='margin-left:1.0in'>&nbsp;</p>
+
+<h2>Notes for DLLs</h2>
+
+<h3>No fail and no errors in exported predicates</h3>
+
+<p>Predicate, which is exported from a Prolog DLL should be declared as <b>procedure</b>.
+All possible run time errors should be trapped by <b>trap</b> predicate.</p>
+
+<h3>Exporting predicates</h3>
+
+<p>The predicates to be called from outside a DLL must be defined as <u>GLOBAL
+PREDICATES</u>. The predicate names <b>MUST</b> be added to the <u>EXPORT</u>
+section of the DLL's module-definition (.DEF) file. The following language
+calling conventions should be used: <o:p></o:p></p>
+
+<pre><span style='mso-tab-count:1'>         </span><b>DLL Platform<span
+style='mso-tab-count:1'>   </span><span style='mso-tab-count:1'>         </span>Calling Convention<o:p></o:p></b></pre><pre><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></pre><pre><span
+style='mso-tab-count:1'>         </span>32-bit Windows<span style='mso-tab-count:
+1'> </span><span style='mso-tab-count:1'>         </span>language stdcall<o:p></o:p></pre><pre><span
+style='mso-tab-count:1'>         </span>16-bit Windows<span style='mso-tab-count:
+1'> </span><span style='mso-tab-count:1'>         </span>language pascal</pre>
+
+<h3><a name="DLLs_manageStack">Managing the DLL's Global Stack</a></h3>
+
+<p>Releasing of the DLL's GStack is done by <b>mem_MarkGStack</b> and <b>mem_ReleaseGStack</b>
+predicates inside DLL. In an application releasing of the DLL's GStack should
+be done by <b>dll_mark_gstack</b> and <b>dll_release_gstack</b> functions that should
+surround each call of DLL's predicates, which return output variables allocated
+on DLL's GStack. Memory management predicates should be included into DLL if
+there is no output argument with memory allocation.</p>
+
+<p>In Visual Prolog DLLs these GStack releasing predicates are defined like
+this:</p>
+
+<pre style='margin-left:1.0in'><b>global predicates<o:p></o:p></b></pre><pre
+style='margin-left:1.0in'>dll_mark_gstack(stackmark) - procedure (o) language stdcall</pre><pre
+style='margin-left:1.0in'>dll_release_gstack(stackmark) - procedure (i) language stdcall</pre><pre
+style='margin-left:1.0in'><b>clauses<o:p></o:p></b></pre><pre style='margin-left:
+1.0in'>dll_mark_gstack(STACKMARK):- STACKMARK=mem_MarkGStack().</pre><pre
+style='margin-left:1.0in'>dll_release_gstack(STACKMARK):-mem_ReleaseGStack(STACKMARK).</pre>
+
+<p>Predicates <b>mem_MarkGStack</b> and <b>mem_ReleaseGStack</b> are parts of
+the Prolog run-time library. They are declared in PDCRUNT.PRE. It will be
+included into your project if you select PDCRUNT in the Application Expert's
+Other Tools dialog.</p>
+
+<h3>Link the DLL</h3>
+
+<p>Visual Prolog DLLs can be linked to a project via import library (statically)
+or can be loaded dynamically in run time.</p>
+
+</div>
+
+</body>
+
+</html>

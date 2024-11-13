@@ -1,0 +1,15 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	LABEL.PRE
+ Purpose:	Global predicate for LABEL.PRO
+ Written by:	Visual Prolog
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)

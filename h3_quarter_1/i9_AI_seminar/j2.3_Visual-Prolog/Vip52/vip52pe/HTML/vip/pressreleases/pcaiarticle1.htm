@@ -1,0 +1,509 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Domain-Specific Languages</title>
+<meta NAME="Template" CONTENT="D:\Program Files\Microsoft Office\Office\html.dot">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1 align="left"><!--mstheme--><font color="#000000">Domain-Specific Languages<!--mstheme--></font></h1>
+
+<p align="left">by Paul Morrow and Michael Alexander<br>
+Prolog Development Center, Atlanta, GA<br>
+</p>
+
+<h2><!--mstheme--><font color="#000000">1 Introduction<!--mstheme--></font></h2>
+
+<p>Modern day general-purpose programming languages (BASIC, C/C++, Java, Pascal, etc.) are
+high-powered tools for software development. Yet today's top programmers often choose
+special-purpose, Domain-Specific Languages (DSLs), such as HTML or SQL, for large portions
+of their applications. Their reasoning is simply that using a language designed
+specifically for a particular task appreciably increases programmer productivity and the
+reliability of the resulting applications. </p>
+
+<p>But if DSLs offer significant productivity and reliability benefits, why don't
+programmers create <i>new</i> DSLs as a natural part of application development? One
+reason is that many developers believe that creating programming languages is a
+necessarily difficult and time-consuming task, and therefore only makes sense when
+considerable reuse is anticipated. Others simply aren't familiar with advanced language
+design and implementation techniques. But fortunately, because of their restricted and
+focused nature, DSLs are relatively easy to design and implement. </p>
+
+<p>In this paper we look at why DSLs are important and consider some popular (and
+not-so-popular) examples of them. We then argue that creating DSLs should be part of basic
+software engineering, and describe a framework for implementing declarative DSLs.&nbsp; So
+read on and discover how your development strategy can benefit from this exciting
+technology! <br>
+&nbsp; </p>
+
+<h2><!--mstheme--><font color="#000000">2 What are DSLs and why should we use them?<!--mstheme--></font></h2>
+
+<p>A DSL is a programming language designed to support applications in a narrow subject
+area (domain). As such, a DSL contains constructs that <i>directly</i> represent concepts
+in the application domain, thereby raising the level of abstraction. And when programmers
+work at high levels of abstraction, they are more productive, typically write less code,
+and their programs are generally more reliable, verifiable, and maintainable. </p>
+
+<p>To appreciate this point, imagine having to write an assembly language program that
+calculates and displays the result of a mathematical expression such as </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><pre>14*2.33/4</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>It would require many lines of code and, upon examination, it would not be immediately
+apparent that the program is correct. If instead you used a higher level language, like
+BASIC, the program would become simply </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><pre>print 14*2.33/4</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>But now suppose that a requirement of the application domain is that, anytime the
+result of an expression is printed, it must also be accompanied by the expression itself,
+the time at which the expression was evaluated, and the name of the user running the
+program, each separated by a comma. In BASIC this would become </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><pre>print 14*2.33/4; &quot;,&quot;; &quot;14*2.33/4,&quot;; TIME$; &quot;,&quot;; USER$</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>which is certainly an error-prone and verbose way to do it (and assumes that TIME$ and
+USER$ are variables which somehow contain the current time and user respectively). If
+instead a DSL was crafted for applications of this sort, the statement could once again be
+simply </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><pre>print 14*2.33/4</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>but would have the required semantics. Of course this is a contrived example, but one
+which hopefully captures your imagination as to the potential power of DSL technology. </p>
+
+<p>There are many commercially available DSLs in use today. Two of the more popular
+examples are HTML (document formatting) and SQL (relational databases). </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Using HTML, the programmer is freed from low-level details normally associated with
+    document layout such as font management and text justification --- the HTML language
+    processor handles these details (and many others).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">With SQL, productivity is improved in that tedium such as opening and closing files and
+    maintaining/using indexes is handled automatically. It&#146;s also worth noting that SQL
+    programs are so small (relative to the same program written in a general purpose language)
+    that it becomes feasible to transmit the program source code from a client machine to the
+    server for remote execution. Doing so allows the program to execute on the machine(s)
+    where the data resides, thereby considerably improving the performance of the program.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>DSLs have proven themselves as powerful technology and clearly deserve a place in every
+programmer&#146;s repertoire. <br>
+&nbsp; </p>
+
+<h2><!--mstheme--><font color="#000000">3 The Perfect DSL for Every Application<!--mstheme--></font></h2>
+
+<p>If you take the previous section&#146;s discussion of abstraction to it&#146;s natural
+conclusion, it becomes clear that the best DSL in which to develop a given application is
+one specifically designed for that application domain. But what do you do when this <i>ideal</i>
+DSL doesn&#146;t already exist (which will typically be the case)? You build it.
+That&#146;s right, you design and implement a language perfectly suited for the domain. </p>
+
+<p>Before you dismiss this proposal as outrageous, consider the advantages of this
+approach to application development. In addition to the productivity and reliability
+benefits we&#146;ve already talked about, your domain-experts (your customers) can examine
+application code and verify that it is correct, even if they&#146;re not programmers. In
+fact, they can actually write and maintain significant portions of the application code
+themselves! </p>
+
+<p>And your customers will save money and time over the long run because of the ease with
+which you or they can make changes to their applications. Remember that programs <i>always</i>
+have more than one version. Every application undergoes numerous changes throughout its
+lifetime, even before the first official version is released. If prior to developing an
+application, you first develop a DSL for the application&#146;s domain, changes to the
+application will be much easier to make. </p>
+
+<p>We have successfully used this technique a number of times in our consulting practice. </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">In one project from the pre-Windows era, the goal was to develop an application that
+    produced correct and efficient overlay scripts for Plink86&#153; (a popular DOS overlaying
+    linker of that era). Our solution was to implement a DSL which the programmer would use to
+    describe various properties of the application to be overlaid (e.g. the files which
+    comprise the application, the functions which contain hidden calls to other functions, and
+    those functions which should always be resident in memory). The DSL language processor
+    would analyze the application to be overlaid, produce an optimized overlay script, and
+    then invoke the overlay linker, resulting in an overlaid executable that was safe and
+    efficient.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">In another project, the setting was a Unix/Oracle environment which hosted the
+    information system software of a large Air Force R&amp;D Laboratory. The goal was to
+    devise a means of standardizing reports generated by the system (e.g. giving them all a
+    common look and layout) and of improving programmer productivity. The solution was a
+    report description DSL whose language processor managed the details of constructing each
+    report, including all database access and formatting. Hundreds of reports were written in
+    this DSL, most by junior programmers, where a single programmer could produce several
+    reports per day.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">We&#146;re currently developing a personality testing system, a Windows 95/98
+    application. The program presents questions to the end-user, collects and tabulates the
+    responses, and then presents the personality assessment. DSL technology is a particularly
+    nice fit for this application, which we&#146;ll later illustrate as we develop a DSL for a
+    simplified example patterned after this system.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">4 So what&#146;s the problem? Why isn&#146;t everyone doing it?<!--mstheme--></font></h2>
+
+<p>Some developers think it&#146;s generally too costly and time-consuming to develop
+languages, and that it only makes sense when considerable re-use is anticipated. Others
+are simply unfamiliar with advanced language design and implementation techniques. </p>
+
+<h3><!--mstheme--><font color="#000000">Design<!--mstheme--></font></h3>
+
+<p>Granted, good language design can be challenging. But the same is true of good
+application design. For some domains it&#146;s difficult; for others, trivial. Although a
+thorough treatment of language design is beyond the scope of this paper, the key idea
+behind creating an effective DSL is to identify the <i>variant</i> concepts of the
+application domain, and those <i>invariant</i> concepts that require extensive discovery
+and experimentation to clarify. You then define language constructs which directly
+represent these concepts. Often, these constructs will take the form of parameterizations
+of some underlying mechanism, such that the resulting DSL has a declarative flavor (as
+opposed to procedural). In our experience, domain experts find declarative languages
+considerably easier to use than procedural. </p>
+
+<p>In Section 6 we show an example of designing a simple DSL. </p>
+
+<h3><!--mstheme--><font color="#000000">Implementation<!--mstheme--></font></h3>
+
+<p>Several strategies are effective at simplifying DSL implementation. One is to use a
+parser generator and a high-level, high-performance language especially suited for
+language implementation (such as Visual Prolog --- see the sidebar at the end of this
+paper). Another strategy is to develop a generic DSL framework and then use this framework
+for each new DSL. In the next section we present one such framework we&#146;ve recently
+developed. <br>
+&nbsp; </p>
+
+<h2><!--mstheme--><font color="#000000">5 A Framework For Implementing Declarative DSLs<!--mstheme--></font></h2>
+
+<p>We have developed a DSL framework (DSLX) which simplifies the implementation of
+declarative DSLs. To accomplish this, there is the restriction that each DSL have the same
+base syntax, one strongly resembling core XML. By making this requirement, all DSLs can
+share a common infrastructure such that, for example, a parser need be implemented only
+once, and end-user training and documentation is minimized. Additionally, since DSLX
+syntax is essentially XML, each new DSL is simple to parse and simple to teach (a
+non-programmer could probably learn how to read it within a few minutes). </p>
+
+<p>An application developed with the DSLX framework has four primary components: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A Driver which initiates processing and controls the application. The Driver will also
+    provide answers to questions asked by the framework (e.g. In order to display a form to
+    the user, the framework might need to know which window handle should be the parent of the
+    form.).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A Document Manager which supports the creation and editing of, and access to, DSLX
+    documents (DSLX programs are also referred to as &quot;documents&quot;). The Document
+    Manager can also create new documents by parsing DSLX source code and can convert
+    documents to textual form.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A Dispatcher which routes each DSLX program to the appropriate Document Processor, and<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">One or more Document Processors responsible for &quot;executing&quot; (processing) DSLX
+    programs (documents).<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Figure 1 is an illustration of the generic DSLX framework and shows communication
+between the various components. <br>
+&nbsp; </p>
+
+<p><a href="pcai1_figure1.gif"><img src="../articles/pdc_atlanta/pcai1_figure1_small.gif" alt="pcai1_figure1.gif (34991 bytes)" width="100" height="76"></a></p>
+
+<p><em><font SIZE="2"><b>Figure 1: DSLX Framework. The framework is comprised of a Driver,
+a Document Manager, a Dispatcher, and one or more Document Processors. A) Driver interacts
+with Document Manager to create a new document, optionally passing DSLX source-text to be
+parsed. Document Manager returns a DocId to Driver. B) Driver passes the DocId plus the
+address of a callback function to Dispatcher. The callback function will be used by the
+framework to obtain additional info and to post statuses. C) Dispatcher forwards the DocId
+and callback address to the appropriate Document Processor. D) Document Processor
+interacts with Document Manager to read and/or modify a document or to create a new
+document. E) Document Processor calls Driver&#146;s callback as necessary. F) Document
+Processor contacts Dispatcher to obtain the services of other Document Processors.</b></font></em></p>
+
+<p>To develop an application using the framework, you would generally do the following: </p>
+
+<ol>
+  <li>Study your application domain and define a DSL within the boundaries of DSLX syntax.</li>
+  <li>Create a Document Processor for the language.</li>
+  <li>Register the DSL and Document Processor with the framework.</li>
+  <li>Create the application&#146;s Driver.</li>
+  <li>Write a program in the new DSL.</li>
+</ol>
+
+<p>In the following section, we illustrate the use of the DSLX framework as we implement a
+simple personality testing system. <br>
+&nbsp; </p>
+
+<h2><!--mstheme--><font color="#000000">6 Using the DSLX Framework: Creating a Personality Testing System<!--mstheme--></font></h2>
+
+<p>Suppose that your customer wants to develop an application that assesses the degree to
+which someone can tolerate stress. The application should ask the user a series of
+multiple-choice questions, then score the answers and present the assessment. So three
+obvious variant concepts in this domain are <em>questions</em>, <em>answers</em>, and <em>assessments</em>.
+And to tie answers to assessments, each answer could have a score associated with it,
+where each assessment would be keyed by a range of scores (low to high). This analysis
+leads to a simple DSL, where Figure 2 shows a possible document in this language. <br>
+&nbsp; </p>
+
+<p><img src="pcai1_figure2.gif" alt="pcai1_figure2.gif (29027 bytes)" WIDTH="568" HEIGHT="387"></p>
+
+<p><em><font SIZE="2"><b>Figure 2: Sample DSL Statements of Personality Testing System.
+Each question has two parts, the text of the question itself (possibly containing special
+formatting information, e.g. &lt;emphasize&gt;) and each possible answer. Each possible
+answer has answer text and a score. Each assessment has a low and high range and the text
+of the assessment (which also may contain special formatting instructions).</b></font></em></p>
+
+<p>Now let&#146;s briefly look at how the framework might be used to construct this system
+(please refer to Figure 1). The Driver would be responsible for the overall user-interface
+and flow of the application. So it might be coded to load a file containing DSL
+source-text and then pass this text to the Document Manager. The Document Manager would
+parse the source-text, create a document (an abstract syntax tree) representing the
+source-text, and then return the document id (DocId) of the newly created document to the
+Driver. (A of Figure 1) </p>
+
+<p>The Driver could then pass this DocId and a callback function (which responds to
+messages from the framework) to the Dispatcher for processing. The Dispatcher, in turn,
+would pass the DocId and callback to the appropriate Document Processor; the one we create
+for processing documents written in our new DSL. (B and C of Figure 1) </p>
+
+<p>Our language&#146;s Document Processor would be responsible for three functions: 1)
+numbering, formatting, and presenting each question to the user, 2) collecting and scoring
+the answers, and 3) presenting the assessment to the user. To simplify the Document
+Processor&#146;s construction, it could use an embedded HTML viewer for all I/O with the
+user. </p>
+
+<p>So to present a question to the user, the Document Processor would first retrieve a
+question from the document by interacting with the Document Manager via its API (D of
+Figure 1). It would then write HTML code that represents the formatted question and pass
+this HTML to the HTML viewer (see Figure 3). <br>
+&nbsp; </p>
+
+<p><a href="stress0.gif"><img src="../articles/pdc_atlanta/stress0_small.gif" alt="stress0.gif (38331 bytes)" width="100" height="75"></a></p>
+
+<p><em><font SIZE="2"><b>Figure 3: Stress Test Document Processor presents questions to
+user. Compare the contents of the center window with the &lt;question&gt; statements in
+Figure 2. Note that by having the Document Processor make most formatting decisions, the
+DSL can be greatly simplified and the high level of abstraction preserved.</b></font></em></p>
+
+<p>When the user has finished answering all of the questions, the Document Processor would
+score the test and then search the document (again via interacting with the Document
+Manager) for the assessment that matches the score. The text associated with the
+assessment would be retrieved, converted to HTML, and presented to the user via the HTML
+viewer (see Figure 4). <br>
+&nbsp; </p>
+
+<p><a href="stress.gif"><img src="../articles/pdc_atlanta/stress_small.gif" alt="stress.gif (35224 bytes)" width="100" height="75"></a></p>
+
+<p><em><font SIZE="2"><b>Figure 4: Stress Test Document Processor displays assessment to
+user. After totaling the user&#146;s score (60 in this case), the Document Processor
+searched the possible assessments for the one in the proper range (refer to Figure 2). It
+then formatted and displayed the assessment.</b></font></em></p>
+
+<p>&nbsp; </p>
+
+<h2><!--mstheme--><font color="#000000">7 Conclusion<!--mstheme--></font></h2>
+
+<p>All programmers use programming languages. The best programmers maximize their
+productivity as well as the reliability and maintainability of their applications by
+choosing the right language for each job. The best language will <i>always</i> be a DSL
+specifically designed for the programming task at hand. But unfortunately, the ideal DSL
+doesn&#146;t always exist. When it doesn&#146;t, we believe that developers should
+consider creating it, right then and there. </p>
+
+<p>You know what your customers want. They want projects completed on time and within
+budget. But they also want reliability, maintainability, and extensibility. You can give
+them these things by taking a DSL approach to application development. It&#146;s a
+different way of thinking about software engineering, but we believe it&#146;s the best
+way. Give DSLs a try in your next project, and you may never build an application with
+purely conventional languages again! <br>
+&nbsp; </p>
+
+<h2><!--mstheme--><font color="#000000">Additional Reading<!--mstheme--></font></h2>
+
+<p>Bentley, J. (1986)<i> </i>Programming Pearls: Little Languages.<i> Communications of
+the ACM</i>, Vol. 29, 8, pp. 711--721. </p>
+
+<p>Pelin, A. and Morrow, P. (1987) Automatic Program Generation from Specifications Using
+Prolog. In Proceedings of the<i> Third Conference on Artificial Intelligence for Space
+Applications</i>. </p>
+
+<p>Spinellis, D. and Guruprasad, V. (1997) Lightweight languages as software engineering
+tools. In <i>USENIX Conference on Domain-Specific Languages</i>, pages 67-76. </p>
+
+<p>Thibault, S., Marlet, R., and Consel, C. (1997) A Domain-Specific Language for Video
+Device Drivers: from Design to Implementation.<i> IRISA technical report PI-1112</i>. </p>
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="4" CELLPADDING="7" WIDTH="590" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><h2><!--mstheme--><font color="#000000">Sidebar: Language Implementation in Visual Prolog&nbsp;<!--mstheme--></font></h2>
+    <p>If you&#146;re trying to implement a language processor using tools that aren&#146;t
+    right for the job, you can expect a frustrating and time-consuming experience (anyone
+    who&#146;s hand-coded a substantial parser in C will testify to this). But by using tools
+    suited to language implementation, you&#146;ll likely find this a straightforward and even
+    enjoyable activity. </p>
+    <p>For example, using Visual Prolog and its parser generator tool, implementing a language
+    processor would require four basic steps: </p>
+    <ol>
+      <li>Create a Backus-Naur Form (BNF) representation of the language&#146;s grammar.</li>
+      <li>Convert the BNF into the syntax of the parser generator, which is simply an extended
+        form of BNF (note that the parser generator input language is itself a DSL).</li>
+      <li>Execute the parser generator to produce the actual parser.</li>
+      <li>Add the surrounding application code, including that which will &quot;execute&quot; the
+        term produced by the parser.</li>
+    </ol>
+    <p>As a simplified example of this process, suppose you were developing a language that
+    could accept statements like </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>print 12 + 7.3 * 5</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>where the semantics (meaning) of such statements would be to evaluate the mathematical
+    expression and then display the result. The BNF for this simple language might be </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>
+&lt;stmt&gt; ::= print &lt;expr&gt;
+&lt;expr&gt; ::= &lt;expr&gt; + &lt;expr&gt;
+         | &lt;expr&gt; - &lt;expr&gt;
+         | &lt;expr&gt; * &lt;expr&gt;
+         | &lt;expr&gt; / &lt;expr&gt;
+         | &lt;number&gt;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>which would allow for any expression involving the addition, subtraction,
+    multiplication, and division of numeric literals (note that &lt;number&gt; is not defined
+    and is assumed to represent any numeric literal). Converting this BNF into parser
+    generator input would result in </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>
+productions
+   STMT = print EXPR      -&gt; print(EXPR)
+
+   EXPR = EXPR plus EXPR  -&gt; add(EXPR,EXPR),
+          EXPR minus EXPR -&gt; subtract(EXPR,EXPR)
+          --
+          EXPR mult EXPR  -&gt; multiply(EXPR,EXPR),
+          EXPR div EXPR   -&gt; divide(EXPR,EXPR)
+          --
+          number(REAL)    -&gt; number(REAL)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>Which specifies not only the legal statements of the language and how precedence should
+    be handled (i.e. that multiplication and division should be performed before addition and
+    subtraction), but also the Prolog terms that would be created when the various patterns
+    are encountered in the source text.&nbsp; </p>
+    <p>For example, given the above parser generator input, if the source text was </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>print 12 + 7.3 * 5</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>then the term </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>print(add(number(12.0),multiply(number(7.3),number(5.0))))</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>would be returned by the generated parser (for those of you who are unfamiliar with
+    Prolog, the term is displayed here using the syntax of a Prolog literal). As another
+    example, the term returned for the source text </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>print 13.7</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>would be simply </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>print(number(13.7))</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>Once the parser has finished, and your language processor now has a term that
+    represents the source text, the language processor would execute the term. For our sample
+    language, the following Prolog predicates could serve this purpose: </p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><pre>
+execute_stmt(print(Expr)) :-
+   evaluate_expr(Expr, Result),
+   write(&quot;The result of the expression is &quot;, Result).</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>evaluate_expr(add(Expr1, Expr2), Result) :-
+   evaluate_expr(Expr1, Result1),
+   evaluate_expr(Expr2, Result2),
+   Result = Result1 + Result2.
+evaluate_expr(subtract(Expr1, Expr2), Result) :-
+   evaluate_expr(Expr1, Result1),
+   evaluate_expr(Expr2, Result2),
+   Result = Result1 - Result2.
+evaluate_expr(multiply(Expr1, Expr2), Result) :-
+   evaluate_expr(Expr1, Result1),
+   evaluate_expr(Expr2, Result2),
+   Result = Result1 * Result2.
+evaluate_expr(divide(Expr1, Expr2), Result) :-
+   evaluate_expr(Expr1, Result1),
+   evaluate_expr(Expr2, Result2),
+   Result = Result1 / Result2.
+evaluate_expr(number(Number), Number).
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>You can hopefully see from this example that the code which recursively walks this term
+    (which represents the semantics of the parsed input language statement) could easily be
+    undertaking the tasks of any particular domain, whether as an interpreter, as illustrated
+    here, or as a pre-processor emitting code statements in some more generic language.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<p>For more information on DSL technology, see <a href="http://www.pdcatlanta.com/html/dsls.htm">www.pdcAtlanta.com/html/dsls.htm</a> </p>
+
+<p>Paul Morrow (<a href="mailto:paul@pdcatlanta.com">paul@pdcAtlanta.com</a>) and Michael
+Alexander (<a href="mailto:michael@pdcatlanta.com">michael@pdcAtlanta.com</a>) are
+software consultants and the directors of the Prolog Development Center / Atlanta. </p>
+
+<p>A version of this paper appears in the Jan/Feb '99 issue of <em>PCAI Magazine</em>.</p>
+
+<p align="left"><font SIZE="2"><b><em>Copyright © 1998, Prolog Development Center /
+Atlanta<br>
+</em><br>
+</b></font>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

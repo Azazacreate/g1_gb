@@ -1,0 +1,16 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  GENI
+ FileName: CGITOOLS.PRE
+ Purpose: Predicate definitions for CGITOOLS.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+GLOBAL PREDICATES
+  procedure STRING cgi_GetString()
+  determ STRING cgi_TryGetValue(STRING CGI_String,STRING Name)
+  procedure STRING cgi_DecodeValue(STRING EncodedString)
+  procedure str_namelist(STRING STR,PARMLIST)-(i,o)

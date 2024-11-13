@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>Number Expression</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Number Expression'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Number Expression</FONT>
+<P ALIGN=LEFT>Number expressions are used in rules fields of a number parameter declaration and in boolean expressions. The mathematical operators : 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>+     addition 
+<P ALIGN=LEFT>-     subtraction 
+<P ALIGN=LEFT>*     multiplication 
+<P ALIGN=LEFT>/     division between reals 
+<P ALIGN=LEFT>div   division between integers 
+<P ALIGN=LEFT>mod   modulus</FONT> 
+<P ALIGN=LEFT>can be used with eventually parantheses in number expressions. The priority of the mathematical operators determines when they are used in the evaluation of an expression: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>( )            
+<P ALIGN=LEFT>- + /* single precedings signs */ 
+<P ALIGN=LEFT>* /   
+<P ALIGN=LEFT>- +</FONT> 
+<P ALIGN=LEFT>Operators having the same priority are evaluated from left to right.
+<P ALIGN=LEFT>ESTA includes a range of mathematical functions which may also be used in forming complex mathematical expressions: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2><B>Function      Description </B>
+<P ALIGN=LEFT>abs(X)        Returns the absolute value of X 
+<P ALIGN=LEFT>arctan(X)     Returns the arctangent of the decimal number X    
+<P ALIGN=LEFT>cf_add(X,Y)   Returns a probability which is a combination of X and Y 
+<P ALIGN=LEFT>cf_and(X,Y)   Returns the smallest probability between X and Y 
+<P ALIGN=LEFT>cf_not(X)     Returns the negated probability of X 
+<P ALIGN=LEFT>cf_or(X,Y)    Returns the biggest probability of X and Y 
+<P ALIGN=LEFT>cos(X)        Returns the cosine of X
+<P ALIGN=LEFT>exp(X)        Returns the natural exponent of X  
+<P ALIGN=LEFT>int(X)        Returns the integer part of number X 
+<P ALIGN=LEFT>ln(X)         Returns the natural logarithm of X 
+<P ALIGN=LEFT>log(X)        Returns the logarithm of X with base 10 
+<P ALIGN=LEFT>min(X,Y)      Returns the smaller of the numbers X and Y 
+<P ALIGN=LEFT>max(X,Y)      Returns the bigger of the numbers X and Y 
+<P ALIGN=LEFT>power(X,Y)    Returns X raised to Y 
+<P ALIGN=LEFT>sin(X)        Returns the sine of X
+<P ALIGN=LEFT>sqrt(X)       Returns the square root of X 
+<P ALIGN=LEFT>strlen(X)     Returns the number of characters N in the string X 
+<P ALIGN=LEFT>tan(X)        Returns the tangent of X
+<P ALIGN=LEFT>trunc(X)      Returns X truncated</FONT> 
+<P ALIGN=LEFT>The arguments for trigonometric functions must be specified in degrees.
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for a number expression is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;number-expression&gt;::= 
+<P ALIGN=LEFT>         &lt;number-expression&gt; &lt;number-op&gt; &lt;number-expression&gt; | 
+<P ALIGN=LEFT>         &lt;number-function&gt; ( &lt;argumentlist&gt; ) | 
+<P ALIGN=LEFT>         &lt;<A HREF='NAME.HTM'>parameter-name</A>&gt; | 
+<P ALIGN=LEFT>         &lt;<A HREF='NUMBER.HTM'>number</A>&gt;  
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>&lt;number-op&gt; ::= + | - | / | * | div | mod 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>&lt;number-function&gt; ::= 
+<P ALIGN=LEFT>         abs | arctan | cf_add | cf_and | cf_not | cf_or | 
+<P ALIGN=LEFT>         cos | exp | int | ln | log | max | min |  
+<P ALIGN=LEFT>         power | sin | sqrt | strlen | tan | trunc 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>&lt;argumentlist&gt; ::= &lt;argument&gt; {, &lt;argumentlist&gt; } 
+<P ALIGN=LEFT>&lt;argument&gt;     ::= &lt;number-expression&gt; </FONT>
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>salary - tax 
+<P ALIGN=LEFT>number_of_years * year 
+<P ALIGN=LEFT>5 * 8 / x - 7 + y 
+<P ALIGN=LEFT>2 * (3 + 4)  /* = 14 */ 
+<P ALIGN=LEFT>(sqrt(cos(x)*cos(x)+sin(x)*sin(x)) + 3) / 2  /* = 2 */</FONT>
+</BODY>
+</HTML>

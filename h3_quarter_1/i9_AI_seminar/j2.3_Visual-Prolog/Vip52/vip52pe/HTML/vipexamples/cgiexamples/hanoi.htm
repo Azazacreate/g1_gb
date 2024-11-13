@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>The Towers of Hanoi Problem</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><a NAME="_Toc342996018"></a><b><font SIZE="+2">Towers of Hanoi</font></b><!--mstheme--></font></h1>
+
+<p><font SIZE="+0">The solution to the Towers of Hanoi puzzle is a classic example of
+recursion. The ancient puzzle of the Towers Of Hanoi consists of a number of wooden disks
+mounted on three poles, which are in turn attached to a baseboard. The disks each have
+different diameters and a hole in the middle large enough for the poles to pass through.
+In the beginning all the disks are on the left pole as shown in:</font></p>
+
+<p align="center"><img src="hanoi.gif" WIDTH="341" HEIGHT="92"></p>
+
+<p><font SIZE="+0">The object of the puzzle is to move all the disks over to the right
+pole, one at a time, so that they end up in the original order on that pole. You can use
+the middle pole as a temporary resting place for disks, but at no time is a larger disk to
+be on top of a smaller one. It's easy to solve the Towers of Hanoi with two or three
+disks, but the process becomes more difficult with four or more disks.</font></p>
+
+<p><font SIZE="+0">A simple strategy for solving the puzzle is as follows:</font> </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1">You can move a single disk directly.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1">You can move <i>N</i> disks in three general steps.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1">Move <i>N</i>-1 disks to the middle pole.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1">Move the last (<i>N</i>th) disk directly over to the right pole.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1">Move the <i>N</i>-1 disks from the middle pole to the right pole.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><font SIZE="+0">The Visual Prolog program to solve the Towers Of Hanoi puzzle uses
+three predicates:</font> </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1"><b><i>hanoi</i></b>, with one parameter that indicates the total number
+    of disks you are working with.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1"><b><i>move</i></b>, which describes the moving of <i>N</i> disks from
+    one pole to another--using the remaining pole as a temporary resting place for disks.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="-1"><b><i>inform</i></b>, which displays what has happened to a particular
+    disk.</font><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Execute the program as a CGI script by pressing the &quot;<b>Solve</b>&quot; button on
+the form below: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form METHOD="POST" ACTION="http://vip.pdc.dk/vipexamples/cgiexamples/bin/hanoi.exe">
+    <p><br>
+    <input TYPE="SUBMIT" VALUE="Solve">&nbsp;for&nbsp;<select NAME="nd" size="1">
+      <option SELECTED>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+    </select>&nbsp;disks<br>
+    </p>
+  </form>
+  <p>Show <a href="src/hanoi.htm">Source</a> for Hanoi-application.</p>
+  <p>Show <a href="src/hanoicgisource.htm">Source</a> for Hanoi-application, inclusive
+  cgi-support.<br>
+  </p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,105 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName: 		TABDLG.PRE
+ Purpose: 		Predicate definitions for TABDLG.PRO
+ Written by: 	Ole Kjær Christensen
+ Last revised: 21/4/1984 - 2000
+
+******************************************************************************/
+
+% DESIGNING TABBED DIALOGS:
+% The tabbed dialogs are implemented via window class controls as follows:
+% Create a custom control of class "PDCTAB" in the dialog in which you want
+% "tabs". This control will contain both the tabs and each of the associated
+% sheets. There can be other controls in the dialog containing the tab class
+% control, even other tab class controls.
+%
+% USING TABBED DIALOGS:
+% First of all tabdlg_Register must be called (e.g. on e_Create in the task
+% handler), this registers the window class "PDCTAB" on which the tabbed
+% dialogs are based.
+% Then, on the e_Create of the dialog containing the tab class control calls
+% tabdlg_Create below specifying the list of these tab sheets.
+% When the user "clicks on a tab", an e_User(PrevSheetID,b_false) event is sent
+% to the dialog's handler (i.e. a "lose focus" event). If the dialog handler
+% succeeds, the click is ignored, and the new sheet is NOT selected; this can
+% be used for validation. If the dialog handler fails at the above event, the
+% new sheet is selected and an e_User(NewSheetID,b_true) is sent to the dialog
+% handler (i.e. a "get focus" event).
+
+ifndef tabdlg_dom_included
+ #Error: this file requires include: tabdlg.dom
+enddef 
+
+constants
+  tabdlg_pre_included = 1
+
+global predicates
+
+% tabdlg_Register must be called before opening any dialogs using the tabbed
+% dialogs (e.g. in the task handlers e_Create):
+
+procedure tabdlg_Register
+
+% tabdlg_Unregister should be called at the task handlers e_Destroy:
+
+procedure tabdlg_Unregister
+
+% tabdlg_Create creates the tab sheets in the tab class control:
+
+procedure tabdlg_Create
+	(	WINDOW			Parent,			% Parent dialog/window of window class control.
+		CTLID			ControlID,		% Window class control ID.
+		FONT			TabFont,		% Font used for tabs.
+		TABDLG_STYLE		Style,			% Style, i.e. top,left,bottom,right.
+		UNSIGNED		Width,			% Width of tabs.
+		UNSIGNED		Height,			% Height of tabs.
+		TABDLG_LIST		TabSheets,		% List of the various tabs/sheets.
+		INTEGER			FirstSheetID	% Initially selected tab sheet.
+	) - (i,i,i,i,i,i,i,i)
+
+procedure tabdlg_Create
+	(	WINDOW			Parent,			% Parent dialog/window of window class control.
+		CTLID			ControlID,		% Window class control ID.
+		FONT			TabFont,		% Font used for tabs.
+		BOOLEAN			HasRadio,		% Draw radio buttons on tabs?
+		TABDLG_STYLE		Style,			% Style, i.e. top,left,bottom,right.
+		UNSIGNED		Width,			% Width of tabs.
+		UNSIGNED		Height,			% Height of tabs.
+		TABDLG_LIST		TabSheets,		% List of the various tabs/sheets.
+		INTEGER			FirstSheetID		% Initially selected tab sheet.
+	) - (i,i,i,i,i,i,i,i,i)
+
+% tabdlg_Select selects the specified tab dialog, just as if the user had
+% clicked on the corresponding tab (i,i,i). It can also be used to get the ID
+% of the currently selected sheet (i,i,o).
+
+procedure tabdlg_Select
+	(	WINDOW			Parent,
+		CTLID			TabID,
+		INTEGER			SheetID
+	) - (i,i,i)(i,i,o)
+
+% tabdlg_GetSheetID retrieves the sheet ID of a specified control:
+
+procedure tabdlg_GetSheetID
+	(	WINDOW			Parent,
+		CTLID			CtrlID,
+		INTEGER			SheetID
+	) - (i,i,o)
+
+% tabdlg_GetSheetControls returns the controls of a given sheet:
+
+nondeterm tabdlg_GetSheetControls
+	(	WINDOW			Parent,
+		INTEGER			SheetID,
+		CTLID			CtrlID
+	) - (i,i,o)
+
+% tabdlg_SetState change enable/show state for controls
+procedure  tabdlg_SetState
+	(	WINDOW			Parent,
+		TABDLG_ENABLE_LIST	StateList
+	) - (i,i)

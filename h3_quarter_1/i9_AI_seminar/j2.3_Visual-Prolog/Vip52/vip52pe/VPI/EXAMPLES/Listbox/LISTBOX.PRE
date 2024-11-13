@@ -1,0 +1,20 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  LISTBOX
+ FileName: LISTBOX.PRE
+ Purpose: Predicate definitions for LISTBOX.PRO
+ Written by: PDC
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  win_multicol_Create(WINDOW Parent) - (i)
+  dlg_list_test_Create(WINDOW Parent) - (i)
+  dlg_multi_selection_Create(WINDOW Parent) - (i)
+%END_DECL

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content>
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title></title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>Farmer, Wolf, Goat Cabbage</h1>
+
+<p>Prolog's powerful problem-solving capabilities can be seen
+with an example, the classic farmer-goat-cabbage-problem. </p>
+
+<p>The problem: A farmer and his goat, wolf and cabbage come to a
+river that they wish to cross. There is a boat, but it only has
+room for two, and the farmer is the only one that can row. If the
+goat and cabbage get in the boat at the same time, the cabbage
+gets eaten. Similarly, if the wolf and goat are together without
+the farmer, the goat is eaten. </p>
+
+<p>Devise a series of crossings of the river so that all
+concerned make it across safely. The state of the system is
+indicated by stating where the farmer, the goat the wolf and the
+cabbage are located. state( Farmer, Wolf, Goat, Cabbage) The
+problem is that a state must only be visited once, and some
+states are illegal. This is checked by 'unsafe' and 'member'. The
+Predicate &quot;go&quot; can be called with a start state and a
+final state</p>
+
+<p>A farmer with his goat, wolf and cabbage come to a river that
+they wish to cross. There is a boat, but it only has room for
+two, and the farmer is the only one that can row. If the goat and
+cabbage get in the boat at the same time, the cabbage gets eaten.
+Similarly, if the wolf and goat are together without the farmer,
+the goat is eaten. Devise a series of crossings of the river so
+that all concerned make it across safely.<br>
+<br>
+The state of the system is indicated by a structure STATE stating
+where the farmer, the goat the wolf and the cabbage are located.
+The goal is then how to transform the start state to the endstate
+through a series of valid states.<br>
+<br>
+The valid states are checked by the predicate 'unsafe'<br>
+<br>
+The problem is that a state must only be visited once, this is
+handled by collecing the visited stetes in a list, and checking
+that a new state isnot already in the list.<br>
+<br>
+The Predicate &quot;go&quot; can be called with a start state and
+a final state<br>
+<br>
+go( state(east,east,east,east), state(west,west,west,west) ).<br>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName:	Palette.PRE
+ PURPOSE:	Predicate definitions for Palette
+ Written by:	Written by: Andrey Skobelev
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+******************************************************************************/
+
+ifndef palette_dom_included
+ #Error: this file requires include: palette.dom
+enddef 
+
+constants
+	palette_pre_included = 1
+
+global predicates
+/**** global ***************************************************************
+  palette_Create/6 - Creates Palette modeless dialog with 16 color buttons and
+				 default ColorList containing 16 the most common colors.
+
+  WINDOW palette_Create(WINDOW,	% Parent window
+ 	  		PNT,	% LeftTopCorner position
+	  		PALETTE_CALLBACK,	% Palette callback function
+	  		STRING,	% Title string
+	  		BOOLEAN,% Have title bar
+	  		BOOLEAN)% Have close button
+
+  RETURN	Palette dialog window
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+procedure WINDOW palette_Create(WINDOW,PNT,PALETTE_CALLBACK,STRING,BOOLEAN,BOOLEAN) -(i,i,i,i,i,i)
+
+/**** global ***************************************************************
+
+  palette_Create/8 - Creats Palette modeless dialog with 
+				 custom colorlist and variable number of visible color buttons
+
+  WINDOW palette_Create(WINDOW,	% Parent window
+	  		PNT,	% LeftTopCorner position
+	  		PALETTE_CALLBACK,	% Palette callback function
+	  		STRING,	% Title string
+	  		BOOLEAN,	% Have title bar
+	  		BOOLEAN,	% Have close button
+	  		INTEGER,	% Number of color buttons
+	  		COLORLIST)	% List of user defined colors
+
+  RETURN	Palette dialog window
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+procedure WINDOW palette_Create(WINDOW,PNT,PALETTE_CALLBACK,STRING,BOOLEAN,BOOLEAN,INTEGER,COLORLIST) - (i,i,i,i,i,i,i,i)
+
+/**** global ***************************************************************
+	palette_SetPreviewPen/2 - Set PEN for preview
+	palette_SetPreviewPen(DlgWin,PEN)
+
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+procedure palette_SetPreviewPen(WINDOW,PEN) - (i,i)
+
+/**** global ***************************************************************
+	palette_SetPreviewBrush/2 - Set Brush for preview
+	palette_SetPreviewBrush(DlgWin,BRUSH)
+
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+procedure palette_SetPreviewBrush(WINDOW,BRUSH) - (i,i)
+
+/**** global ***************************************************************
+	palette_GetPreview/3 - Get PEN and BRUSH from preview 
+	palette_GetPreview(DlgWin,PEN,BRUSH)
+
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+determ  palette_GetPreview(WINDOW,PEN,BRUSH) - (i,o,o)
+
+/**** global ***************************************************************
+	palette_SetPreview/3
+	palette_SetPreview(DlgWin,PEN,BRUSH)
+
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+procedure palette_SetPreview(WINDOW,PEN,BRUSH) - (i,i,i)
+
+/**** global ***************************************************************
+	palette_Setup/2
+	palette_Setup(WINDOW,PALETTE_SET)
+
+  ERRORS	Bad parent window
+  FAIL		Never fails
+***************************************************************************/
+procedure palette_Setup(WINDOW,PALETTE_SET) - (i,i)

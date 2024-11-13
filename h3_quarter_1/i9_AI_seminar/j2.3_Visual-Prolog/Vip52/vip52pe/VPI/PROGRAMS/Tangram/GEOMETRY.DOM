@@ -1,0 +1,35 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: GEOMETRY.DOM
+ Purpose: Domain definitions for GEOMETRY.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+global domains	
+	PT = pt(REAL,REAL)		% We use floating point geometry
+	PTLIST = PT*
+		
+	VECTOR  = vector(REAL,REAL)	% A vector is the X and Y components
+	
+	POLYGON = pol(PTLIST)		% Must be clockwise defined
+					% Must be convex
+					% Must have at least three points
+					% Points called pnt(Xi,Yi), i=1..N
+	POLLIST = POLYGON*
+	
+	ORIENTATION = right ; left
+	
+	
+	LINE = line(	VECTOR, 	% Normal vector
+			PT)		% Arbitrary point P0 on line
+			% A line is defined as V dot (P-P0) = 0
+					
+	PARITY = even ; odd		
+			
+	ANGLE = angle(REAL) 		% 0-360 degrees
+	
+	LINEPROCESS = determ (LINE,PT)	- (i,i)
+		

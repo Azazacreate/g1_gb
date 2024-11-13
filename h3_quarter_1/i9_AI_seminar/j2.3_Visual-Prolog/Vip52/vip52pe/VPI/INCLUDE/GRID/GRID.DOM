@@ -1,0 +1,129 @@
+/******************************************************************************
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	GRID.DOM
+ Purpose:	GRID custom control global declarations
+ Written by:	Sergey Alexeev
+ Version:	2.0
+ Build:		025.991028
+ Tested with:   Visual Prolog v.5.1 build 563
+Comments:
+******************************************************************************/
+constants
+	grid_dom_included	= 1
+	grid_key_enter		= '\r'
+	grid_key_tab		= '\t'
+	grid_max_length		= 0xffff
+
+  grid_xor_markers = 1
+
+global domains
+
+GRID_KEY = INTEGER
+
+GRID_KEY_ACTION = grid_left;
+		  grid_right;
+                  grid_up;
+                  grid_down;
+                  grid_none
+
+GRID_HORALIGNMENT = grid_left_align;
+                    grid_right_align;
+                    grid_center
+GRID_VERALIGNMENT = grid_top_align;
+                    grid_bottom_align;
+                    grid_center
+
+GRID_CELLS_STYLE = 	grid_raised;
+			grid_plain;
+			grid_raisedplain
+
+GRID_STYLE = grid_style(GRID_CELLS_STYLE,
+			COLOR DefaultCellColor,
+			COLOR BackGroundColor,
+                        COLOR EmptyCellColor,
+                        COLOR BackGroundTitleColor,
+                        COLOR ForeGroundTitleColor)
+
+GRID_ROW_SELECTOR = grid_number;
+		    grid_nothing
+
+GRID_ROWSTYLE = grid_rowstyle(INTEGER RowSelectorAreaWidth,
+			      INTEGER MaxRows,
+                              INTEGER MaxTextLinesInRow,
+                              GRID_ROW_SELECTOR,
+                              BOOLEAN ActiveRowPointer)
+
+GRID_COLUMN = grid_col(STRING Title,INTEGER ColumnWidthInPixels,
+                       GRID_HORALIGNMENT,GRID_VERALIGNMENT,
+                       INTEGER DX,INTEGER DY,
+                       INTEGER MaxTextLengthInChars)
+GRID_COLUMN_LIST = GRID_COLUMN*
+GRID_COLUMNSTYLE = grid_columnstyle(UNSIGNED NonScrolColumns,GRID_COLUMN_LIST)
+
+GRID_LINE=gl(INTEGER FromRowColumn,INTEGER ToRowColumn)
+GRID_LINELIST=GRID_LINE*
+
+GRID_AREA=ga(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn)
+GRID_AREALIST=GRID_AREA*
+
+GRID_MARKER = grid_row_marker(GRID_LINELIST);
+              grid_col_marker(GRID_LINELIST);
+              grid_area_marker(GRID_AREALIST);
+              grid_all_marker;
+              grid_edit_cell(INTEGER Row,
+                             INTEGER Column);
+              grid_no_marker
+
+GRID_USER_ACTION = modified(INTEGER Row,INTEGER Column,STRING NewValue);
+		   grid_marker(GRID_MARKER,BOOLEAN MarkUnMark);
+                   grid_row_marker_beg(INTEGER Row);
+                   grid_col_marker_beg(INTEGER Column);
+                   grid_area_marker_beg(INTEGER Row,INTEGER Column);
+		   grid_all_marker_beg;
+		   grid_edit_cell_beg(INTEGER Row,INTEGER Column);
+                   grid_resize_column_beg(INTEGER Column);
+                   grid_resize_column(INTEGER Column,INTEGER Width);
+                   grid_hscroll_create;
+                   grid_vscroll_create;
+                   grid_hscroll_destroy;
+                   grid_vscroll_destroy
+
+GRID_DATA_AREA = grid_all;				% For grid_invalidate
+                 grid_area(INTEGER FromRow,
+                           INTEGER ToRow,
+                           INTEGER FromColumn,
+                           INTEGER ToColumn)
+
+GRIDMESS  = event(EVENT);
+	    user_action(GRID_USER_ACTION);
+            data_request(GRID_DATA_AREA)
+
+GRIDTEXT = textatr(STRING,COLOR ForeColor,COLOR BackColor);
+	   picture(PICTURE,BOOLEAN Stretch);
+           empty_answer
+GRIDLIST = GRIDTEXT*
+GRIDLIST2D = GRIDLIST*
+
+GRID_DATA_ANSWER = grid_area_answer(GRIDLIST2D);
+                   empty_answer
+
+GRID_EVENT_ANSWER = stop;			% Stop action
+                    continue;			% Default action
+                    editCtrl(STRING InitString);
+                    lBoxButton(SLIST InitStrings,STRING InitString);
+                    lBoxEdit(SLIST InitStrings,STRING InitString);
+                    custom_ctrl(STRING ClassName,CTL_FLAGS Ctl_Flags,
+                    	GRID_PUT_CUSTOM_DATA,GRID_GET_CUSTOM_DATA,STRING InitString)
+
+GRIDANSWER = data_answer(GRID_DATA_ANSWER);
+             event_answer(GRID_EVENT_ANSWER)
+
+GRID_CALLBACK = determ (WINDOW GridWin,
+                        GRIDMESS What,
+                        GRIDANSWER Answer) - (i,i,o)
+
+GRID_GET_CUSTOM_DATA = determ (WINDOW CustWin,STRING OutStr) - (i,o)
+GRID_PUT_CUSTOM_DATA = determ (WINDOW CustWin,STRING OutStr) - (i,i)
+

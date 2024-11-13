@@ -1,0 +1,34 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			 VISUAL Prolog
+
+ Written by Yuri Ilyin
+ FileName: OWNDRAW.DOM
+ PURPOSE: Owner Draw Handling
+ Comments:
+
+******************************************************************************/
+constants
+  owndraw_dom_included = 1
+
+global domains
+  MENUTAGS=MENU_TAG*
+
+global domains
+%  OWNERDRAW_ITEM = ownerdraw_item_def(MENU_TAG,WidthItem,HeightItem,SubMENU)
+  OWNERDRAW_ITEM = ownerdraw_item_def(MENU_TAG,INTEGER,INTEGER,OWNERDRAW_MENU)
+  OWNERDRAW_MENU = OWNERDRAW_ITEM*
+
+%  OWNERDRAW_BUT_FUNC  = determ(WINDOW,SHIFT IN HORIZONT,SHIFT IN VERTIC,CtlRect)
+  OWNERDRAW_BUT_FUNC  = determ(WINDOW,SHORT,SHORT,RCT)- (i,i,I,I)
+% OWNERDRAW_CHECK_FUNC  = determ(WINDOW,CtlRCT,CheckedRCT)
+  OWNERDRAW_CHECK_FUNC  = determ(WINDOW,RCT,RCT,BOOLEAN)- (i,i,I,I)
+% OWNERDRAW_RADIO_FUNC  = determ(CtrlID,WINDOW,CtlRCT,RadioRCT)
+  OWNERDRAW_RADIO_FUNC  = determ(UNSIGNED,WINDOW,RCT,RCT,BOOLEAN)- (I,i,i,I,I)
+%  OWNERDRAW_LBOX_FUNC  = determ(WINDOW,CtlRCT,Shift in Vert,SelectItem,Index)
+  OWNERDRAW_LBOX_FUNC  = determ(WINDOW,RCT,SHORT,STRING,INTEGER)- (i,i,I,I,I)
+%  OWNERDRAW_MENU_FUNC = determ(WINDOW,MENU_TAG,TagRect,Selected)
+  OWNERDRAW_MENU_FUNC = determ(WINDOW,MENU_TAG,RCT,BOOLEAN) - (I,I,I,I)
+

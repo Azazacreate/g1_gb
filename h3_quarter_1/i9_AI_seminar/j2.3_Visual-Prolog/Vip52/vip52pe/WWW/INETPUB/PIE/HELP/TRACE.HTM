@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="trace">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>trace</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">trace/0</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>trace</b> </p>
+
+<p align="left">Turns trace mode on. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>member(X,[X|_]).
+member(X,[_|L]):-member(X,L).
+------- Dialog -------------
+trace
+1 Solution
+member(X,[1,abc]).
+Trace: &gt;&gt; CALL: member(1,[1,abc])
+Trace: &gt;&gt; RETURN: member(1,[1,abc])
+X= 1
+Trace: &gt;&gt; REDO: member(1,[1,abc])
+Trace: &gt;&gt; FAIL: member(1,[])
+Trace: &gt;&gt; FAIL: member(1,[abc])
+Trace: &gt;&gt; CALL: member(abc,[abc])
+Trace: &gt;&gt; RETURN: member(abc,[abc])
+Trace: &gt;&gt; CALL: member(abc,[1,abc])
+Trace: &gt;&gt; CALL: member(abc,[abc])
+Trace: &gt;&gt; RETURN: member(abc,[abc])
+Trace: &gt;&gt; RETURN: member(abc,[1,abc])
+X= abc
+Trace: &gt;&gt; REDO: member(abc,[1,abc])
+Trace: &gt;&gt; REDO: member(abc,[abc])
+Trace: &gt;&gt; FAIL: member(abc,[])
+Trace: &gt;&gt; FAIL: member(abc,[])
+Trace: &gt;&gt; FAIL: member(abc,[abc])
+Trace: &gt;&gt; REDO: member(abc,[abc])
+Trace: &gt;&gt; FAIL: member(abc,[])
+Trace: &gt;&gt; FAIL: member(_,[])
+Trace: &gt;&gt; FAIL: member(_,[abc])
+Trace: &gt;&gt; FAIL: member(_,[1,abc])
+2 Solutions
+</pre>
+</body>
+</html>

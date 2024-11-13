@@ -1,0 +1,394 @@
+<html>
+
+<head>
+<title>Known Problems with Visual Prolog Packages</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="packages"></a> Visual Prolog Packages and Examples
+Problems&nbsp;<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">PDC's Document Handling Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#report">Report and&nbsp; Own_Draw Packages</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#tree">Tree Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#treebrowser">TreeBrowser Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#sockbind">SOCKBIND</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#directory_browser">Directory Browser</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#dialog">Dialog Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#grid">GRID Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples">Examples</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3 align="left"><!--mstheme--><font color="#000000"><a name="DOC_TOOL"></a> DOC_TOOL<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Outdated Description of the&nbsp; Document Handling Package in the Visual
+  Prolog 5.1 Help&nbsp;<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990217.03:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>The topic &quot;How to Include the Document Handling Package into a
+  Project&quot; includes incorrect recommendation to include&nbsp; YYWRAP.PRE
+  and YYWRAP.PRO files into a project. These files do not exist.</p>
+  <p>According to the Visual Prolog 5.1 Help topic concerning the DOC domain,
+  the DOC_FLOW_ELEMENT can still assume a value called &quot;lang&quot;. It says
+  so even though &quot;lang&quot; has been removed from the DOCSTR.DOM file. In
+  DOCSTR.DOM there's a comment explaining that it has been removed due to the
+  fact that it has become obsolete.<br>
+  <br>
+  On the other hand, the following domains are missing from the VIP Help file
+  about the DOC domain: OPTION_LIST &amp; DOC_OPTION, PARAMLIST &amp; PARAM,
+  FRAMELIST &amp; FRAME. These are all included in the DOCSTR.DOM file.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1 and previous
+  versions.&nbsp;<br>
+  The information has been updated in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000">The .RTF parser bug in using colored fonts<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>There is a little bug: if a colored phrase in an .RTF document is followed
+  by a table (right after), this table is colored as well.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround:</strong><!--mstheme--></font></h5>
+  <p>Add any uncolored char (a single blank) just after a colored phrase.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.2 and previous
+  versions.&nbsp;</p>
+  <h4><!--mstheme--><font color="#000000">Loosing of special&nbsp; characters&nbsp; embedded in the RTF while RTF
+  -&gt; DOC -&gt; HTM conversion.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>The problem with special charactares is a known problem in the MS Word.
+  Word stores special RTF tokens for these characters, which&nbsp; both DOC_TOOL
+  and any Microsoft Windows Help Compiler cannot process.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround:</strong><!--mstheme--></font></h5>
+  <p>In order to avoid this problem, format the character with the Symbol font
+  (without using Insert | Symbol command). This is the only way to make
+  DOC_TOOL&nbsp; correctly process special characters.</p>
+  <h4><!--mstheme--><font color="#000000">Bug in the HTML Parser error handling<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990217.01<!--mstheme--></font></h6>
+  <p>HTML Parser reports wrong line and position numbers.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, and previous
+  versions.<br>
+  Fixed in Visual Prolog 5.2.</p>
+</blockquote>
+<h3 align="left"><!--mstheme--><font color="#000000"><a name="Report"></a> Report and&nbsp; Own_Draw Packages<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the Report and the Own_Draw packages in one module<!--mstheme--></font></h4>
+  <p>The problem of incompatibility of the Report and the Own_Draw packages is
+  &nbsp;caused by intersecting&nbsp;names.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the Report package with examples and applications
+  created by previous versions of Visual Prolog<!--mstheme--></font></h4>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, build 565. See <a href="../upgrade/upgrade5to5.1.htm">Upgrade
+  Notes</a>.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Tree"></a> Tree Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Runtime error while printing big trees<!--mstheme--></font></h4>
+  <p>Runtime overflow error in the internal Tree package procedure of&nbsp; page
+  size calculating for printing&nbsp; trees in 16 bit applications.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to the versions 5.01 and 5.02 only. The problem is
+  solved in Visual Prolog 5.1</p>
+  <h4><!--mstheme--><font color="#000000">Bug in a big tree display<!--mstheme--></font></h4>
+  <p>If a tree width or height exceeds 32767 pixels, the tree is not displayed
+  properly:</p>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Under OS/2 it is impossible to scroll a big tree.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Under Windows, one cannot use a thumb for scrolling. However, it is
+      possible to scroll using scroll-bar direction arrows.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+  <h4><!--mstheme--><font color="#000000">The Print Status dialog determines a number of a printing page for a
+  Project tree incorrectly<!--mstheme--></font></h4>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="TreeBrowser"></a> TreeBrowser Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">512 error while building a project including the TreeBrowser package&nbsp;<!--mstheme--></font></h4>
+  <p>The 512 Type error: &quot;Wrong object type&quot; is generated, while
+  building a project including the TreeBrowser package.</p>
+  <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <ol>
+    <li>Copy PLUS.ICO and MINUS.ICO files from VPI\ICLUDE\TREEBRWS into your
+      project's RES\WIN subdirectory.&nbsp;</li>
+    <li>&nbsp;Using the Project window's &quot;Icon&quot; button add these icons
+      to your project. To add these icons press the &quot;New&quot; button. The
+      &nbsp;<b>Icon Attributes</b> dialog will be invoked.</li>
+    <li>Using the &quot;Browse&quot; button&quot; in the &nbsp;<b>Icon
+      Attributes </b>dialog:</li>
+  </ol>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Show the path to an appropriate icon.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Specify a name of the image that will appear in the list of the Project
+      window (&quot;plus&quot; or &quot;minus&quot;).<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Specify a constant that is used to identify the image in your
+      program.&nbsp;&nbsp;<br>
+      You can either input it directly from the keyboard or allow the VDE to
+      create a default value.&nbsp;<br>
+      The default values for icon constants are: idi_&lt;icon name&gt;.&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <ol start="4">
+    <li>Click on the &quot;Modules&quot; button of the Project window. Select
+      VPITOOLS.PRO. Double-click.&nbsp;</li>
+    <li>In the VPITOOLS.PRO after IFDEF use_treebrowser add:&nbsp;<br>
+      <code>include &quot;&lt;your_project_name&gt;.con&quot;</code></li>
+    <li>Build a project.</li>
+  </ol>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; all versions of Visual Prolog.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="SOCKBIND"></a> SOCKBIND<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#sockbind_previous versions of the ftpagent are incompatible visual prolog 5.1">Previous
+    versions of the FTPAgent are incompatible with Visual Prolog 5.1</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#sockbind_ftpagent issues an extra ftp command">FTPAgent issues
+    an extra FTP command</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#sockbind_the ftpagent main window is distorted when large fonts are set.">The
+    FTPAgent Main Window is distorted when large fonts are set.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#sockbind_the source directory is missed in the web version of visual prolog 5.1 personal edition.">The
+    ..\SOCKBIND\SOURCE directory is missed in the WEB version of Visual Prolog
+    5.1 Personal Edition</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="SOCKBIND_Previous versions of the FTPAgent are incompatible Visual Prolog 5.1"></a>Previous
+  versions of the FTPAgent are incompatible with Visual Prolog 5.1<!--mstheme--></font></h4>
+  <p>The incompatibility is due to the fact that an additional parameter has
+  been added to an alternative <i>error</i> of the FTPlayer domain <i>ftplay_reply
+  (</i>\SOCKBIND\INCLUDE\FTPLAYER\FTPLAYER.DOM)<i>.</i></p>
+  <p>The following error is generated while compiling:</p>
+  <!--mstheme--></font><pre>E:SOCK_TR.pro, Pos:5125, 507</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, 565.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround</strong><!--mstheme--></font></h5>
+  <p>To avoid the compiling error, while building old examples with&nbsp; Visual
+  Prolog 5.1, downloaded from WEB, a user should add an argument to this
+  alternative in a source code. To do this, it is necessary to replace:</p>
+  <blockquote>
+    <!--mstheme--></font><pre>scan_process_answer(S,error(ErrStr)):-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <p>with</p>
+  <blockquote>
+    <!--mstheme--></font><pre>scan_process_answer(S,error(<b>_ErrNumber, </b>ErrStr)):-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="SOCKBIND_FTPAgent issues an extra FTP command"></a>FTPAgent
+  issues an extra FTP command<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990216.04<!--mstheme--></font></h6>
+  <p>If the option &quot;Do Full Synchronization&quot; is turned on, an old
+  version of a file is deleted at a target site before transferring of a new
+  version, instead of simple transferring of a new file version without a delete
+  operation. The described problem does not influence the results of
+  synchronization.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1 and previous
+  versions.&nbsp;<br>
+  Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="SOCKBIND_The FTPAgent Main Window is distorted when large fonts are set."></a>The
+  FTPAgent Main Window is distorted when large fonts are set.<!--mstheme--></font></h4>
+  <p>The FTPAgent Main Window is distorted when high resolution and large fonts
+  are set in the Display Properties.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="SOCKBIND_The SOURCE directory is missed in the WEB version of Visual Prolog 5.1 Personal Edition."></a>The
+  ..\SOCKBIND\SOURCE directory is missed in the WEB version of Visual Prolog 5.1
+  Personal Edition.<!--mstheme--></font></h4>
+  <p>It is impossible to compile projects and examples that use SOCKBIND (eg.
+  WEBAGENT), because the ..\Sockbind\Source directory is missed.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround</strong><!--mstheme--></font></h5>
+  <p>Download the <a href="ftp://www.visual-prolog.com/pub/patches/pe/sockbind/source.zip">Source.zip</a>
+  (18 KB)</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp;the WEB version of Visual Prolog 5.1
+  Personal Edition.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Directory_Browser"></a> Directory Browser<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Directory browser does not work with a network path under Win16<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990222.01<!--mstheme--></font></h6>
+  <p>The Directory browser uses <strong>disk</strong> predicate that does not
+  support the network path under Win16.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Dialog"></a> Dialog Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="VPI_A problem with setting Enabled"></a>A problem with setting
+  Enabled/Disabled and Visible/Invisible flags for controls in inactive sheets.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>Using of a standard VPI predicate <strong>win_SetState</strong>&nbsp; or a
+  Dialog package predicate <strong>dialog_SetState</strong> for setting
+  Enabled/Disabled and Visible/Invisible flags for controls in inactive sheets
+  does not lead to the expected result.</p>
+</blockquote>
+<blockquote>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+  <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+</blockquote>
+<blockquote>
+  <ol>
+    <li>Beginning from&nbsp; Visual Prolog 5.1 (build 565) it is possible to use
+      <a href="../news/news51add/tabdlg_setstate.htm">tabdlg_SetState predicate</a>.
+      This predicate correctly handles controls in inactive sheets.</li>
+    <li>To set Enabled/Disabled and Visible/Invisible flags in the 564 build, a
+      programmer can use the following event<strong> </strong>coming in the
+      moment of activating of the sheet including the control:
+      <!--mstheme--></font><pre>e_User (SheetId, SheetState)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><table border="1" width="30%" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+        <tr>
+          <td width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+            <h5 align="center"><!--mstheme--><font color="#000000">State<!--mstheme--></font></h5>
+          <!--mstheme--></font></td>
+          <td width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+            <blockquote>
+              <h5><!--mstheme--><font color="#000000">Value<!--mstheme--></font></h5>
+            </blockquote>
+          <!--mstheme--></font></td>
+        </tr>
+        <tr>
+          <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Active<!--mstheme--></font></td>
+          <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">1<!--mstheme--></font></td>
+        </tr>
+        <tr>
+          <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Inactive<!--mstheme--></font></td>
+          <td width="50%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">0<!--mstheme--></font></td>
+        </tr>
+      </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </li>
+  </ol>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="GRID"></a> GRID Package<!--mstheme--></font></h3>
+<blockquote>
+  <p>If a programmer checks the type of data that is allowed for a certain
+  column, an&nbsp; error occurs in an application in the case, when
+  type-checking fails and the maximum allowed input length for a column is
+  reached. In this case, the error message does not disappear after pressing
+  &quot;OK&quot;.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build and previous
+  versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="Examples"></a> Examples<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples_visual prolog 5.1  is not fully compatible with some examples from visual prolog 5.02">Visual
+    Prolog 5.1&nbsp; is not fully compatible with some examples from Visual
+    Prolog 5.02</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples_isapi examples from the personal edition hang a server">The
+    WEB version of ESTA and other ISAPI examples from the Personal Edition hang
+    a server</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#esta">The WEB version of ESTA example does not work properly
+    under Netscape Navigator</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples_problem with 16bit examples under 32bit vde">Problem
+    with 16-bit examples under 32-bit VDE</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="examples_Visual Prolog 5.1  is not fully compatible with some examples from Visual Prolog 5.02"></a>Visual
+  Prolog 5.1&nbsp; is not fully compatible with some examples from Visual Prolog
+  5.02<!--mstheme--></font></h4>
+  <p>Read <a href="../upgrade/upgrade5to5.1.htm">Upgrade Notes</a>.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1</p>
+  <h4><!--mstheme--><font color="#000000"><a name="examples_Problem with 16bit examples under 32bit VDE"></a>Problem
+  with 16-bit examples under 32-bit VDE<!--mstheme--></font></h4>
+  <p>One cannot open 16-bit examples from the 32-bit VDE.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1, build 564 and previous
+  versions.</p>
+  <h5><!--mstheme--><font color="#000000">More information<!--mstheme--></font></h5>
+  Beginning with Visual Prolog 5.1, build 565, the problem does not exist,
+  because .VPR files in the examples from WINBIND and TXTEXAMP directories have
+  been replaced with the .PRJ files.
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround</strong><!--mstheme--></font></h5>
+  Use VPICONV to convert .VPR files in the build 564.
+  <h4><!--mstheme--><font color="#000000"><a name="ESTA"></a>The WEB version of ESTA example does not work properly
+  under Netscape Navigator. &nbsp;<!--mstheme--></font></h4>
+  <p>Under Netscape Navigator 4 pressing the &quot;Load&quot; button causes the
+  &quot;Save As&quot; dialog instead of running a program.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp; Visual Prolog 5.1.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="examples_ISAPI examples from the Personal Edition hang a server"></a>The
+  WEB version of ESTA and other ISAPI examples from the Personal Edition hang a
+  server<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R000229.001<!--mstheme--></font></h6>
+  <p>The WEB version of ESTA and other ISAPI examples from the Personal Edition
+  hang and crash a server.<br>
+  The &quot;depth of hanging&quot; depends on a WEB server and operating
+  system.&nbsp;<br>
+  For example, if the Internet Information Server under Windows NT 4.0 is used,
+  these applications hang the sever. It is impossible to run any other WEB
+  applications in this case.&nbsp;&nbsp;</p>
+  <p>If the Personal WEB server&nbsp; is used under Windows 2000, the ISAPI
+  application is hanged and cannot be killed. Visual Prolog cannot rebuild this
+  application. Other web application can run normally.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround</strong><!--mstheme--></font></h5>
+  <p>Users of the Personal Edition can <font face="verdana, Arial, Helvetica">try
+  the <a href="http://vip.pdc.dk/vipexamples/esta/pdcindex.htm">ESTA</a> expert
+  system shell directly from the WEB.</font></p>
+  <p><font face="verdana, Arial, Helvetica">To run Visual Prolog ISAPI
+  applications, it is necessary to use the Professional version of Visual
+  Prolog.</font></p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies only to the Personal Editions of Visual Prolog 5.1
+  and 5.2.&nbsp;<br>
+  The problem does not exist in Visual Prolog Professional Editions.</p>
+</blockquote>
+<!--msthemeseparator--><p align="center"><img src="../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<h5><!--mstheme--><font color="#000000">See also:<!--mstheme--></font></h5>
+<p><a href="pdcindex.htm">Known Problems&nbsp; </a>|&nbsp; <a href="../upgrade/upgrade51to52.htm">Upgrade
+Notes</a> | <a href="../patches/pdcindex.htm">Patches</a> | <a href="../technotes/pdcindex.htm">Technical
+Notes</a> |<a href="../faq/pdcindex.htm"> Support_FAQ</a></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

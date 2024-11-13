@@ -1,0 +1,25 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  CHUTE
+ FileName: COLSETUP.DOM
+ Purpose: Domain definitions for COLSETUP.PRO
+ Written by: Lars Henrik Jacobsen
+ Comments:
+******************************************************************************/
+constants
+  colsetup_dom_included = 1
+
+global domains
+  COLOR_LIST = COLOR_ELEM*
+  COLOR_ELEM = elem(STRING,BRUSH)
+/*             elem(DISPLAY_ELEMENT,IT'S_COLOR) */
+  COLOR_CALLBACK = determ (WINDOW,INTEGER Cb,INTEGER ItemID,STRING ItemName,BRUSH ItemBrush) - (i,i,i,i,i)
+
+constants
+  color_cb_ok = 1
+  color_cb_cancel = 2
+  color_cb_apply = 3
+  color_cb_accept = 4
+  color_cb_cancel_current = 5

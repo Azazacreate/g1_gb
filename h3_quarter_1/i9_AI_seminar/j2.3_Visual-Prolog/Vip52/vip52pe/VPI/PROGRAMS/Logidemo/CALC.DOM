@@ -1,0 +1,10 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	CALC.DOM
+ Purpose:	TRANSPORT OPTIMIZATION template file
+ Written by:	Sergey Alexeev
+ Comments:
+******************************************************************************/
+include "tools\\calc\\calc.dom"

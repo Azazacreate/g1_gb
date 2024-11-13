@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="assert">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>assert</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+
+<h3 align="left"><!--mstheme--><font color="#000000"><font color="#0000FF" size="4" face="Arial">assert/1,asserta/1,assertz/1</font><font color="#0000FF"> </font><!--mstheme--></font></h3>
+
+<p align="left"><b>assert</b>(<i>Fact</i>) <b><br>
+asserta</b>(<i>Fact</i>) <br>
+<b>assertz</b>(<i>Fact</i>) </p>
+
+<p align="left">Insert a fact in the internal database. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>asserta/1</b> inserts a <i>Fact</i> in the
+internal database before any other stored facts for the
+corresponding predicate. </p>
+
+<p align="left"><b>assert/1</b> and <b>assertz/1</b> insert a <i>Fact</i>
+in the internal database after any other stored facts for the
+corresponding predicate. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<!--mstheme--></font><pre>asserta(person(&quot;Leo&quot;, 31, &quot;&quot;,2605)),
+asserta(person(&quot;Per&quot;, 29, &quot;&quot;,2605)),
+assertz(person(&quot;Michael&quot;, 36,&quot;&quot;, 30318)),
+asserta(city(2605, &quot;Brўndby,Copenhagen&quot;)),
+assertz(city(30318, &quot;Atlanta&quot;)).
+</pre><!--mstheme--><font face="Verdana">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

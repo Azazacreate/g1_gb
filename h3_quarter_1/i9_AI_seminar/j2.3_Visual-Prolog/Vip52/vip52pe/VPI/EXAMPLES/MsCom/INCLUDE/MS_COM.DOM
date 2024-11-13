@@ -1,0 +1,62 @@
+/******************************************************************************
+
+
+				MS_COM.DOM
+				
+Microsoft COM Domains				
+
+******************************************************************************/
+ifndef	vpcC_DomFileIncluded
+
+CONSTANTS
+	vpcC_DomFileIncluded = 1
+	
+ifndef	vpcC_ConFileIncluded
+	include "MS_COM.CON"
+enddef	
+
+%% VPRO\INCLUDE
+ifndef types_dom_included
+	include "types.dom"
+enddef
+
+ifndef pdcrunt_dom_included
+	include "pdcrunt.dom"
+enddef
+
+/*
+ifndef system_dom_included
+	include "system.dom"
+enddef
+*/
+
+CONSTANTS % DOMAINS redefinitions
+
+  vpcD_CLSID	= vpcD_GUID
+  vpcD_IID	= vpcD_GUID
+  vpcD_IPOINTER = ULONG
+  vpcD_MPOINTER = ULONG     
+  vpcD_IVTBL 	= ULONG
+
+GLOBAL DOMAINS
+  HWND = dword
+  HDC  = dword
+
+  vpcD_BSTR     = ULONG
+  vpcD_IPLIST 	= vpcD_IPOINTER*
+  vpcD_MPLIST 	= vpcD_MPOINTER*
+  vpcD_RESULT	= LONG
+
+  vpcD_GUID = struct guid(dword,word,word,byte,byte,byte,byte,byte,byte,byte,byte)
+  vpcD_IVTBLstr = struct ivtbl(vpcD_IVTBL)
+
+  % IUnknown  methods 
+  IUnknown_QueryInterface = PROCEDURE vpcD_RESULT (vpcD_IPOINTER comObjectPTR,vpcD_IID,vpcD_IPOINTER) - (i,i,o) vpcC_StdCallType
+  IUnknown_AddRef = PROCEDURE ULONG (vpcD_IPOINTER)	- (i) vpcC_StdCallType
+  IUnknown_Release = PROCEDURE ULONG (vpcD_IPOINTER)	- (i) vpcC_StdCallType
+
+GLOBAL DOMAINS
+  iUn_Qi = struct iUn_Qi(IUnknown_QueryInterface)
+  iUn_Ar = struct iUn_Ar(IUnknown_AddRef)
+  iUn_Re = struct iUn_Re(IUnknown_Release)
+enddef % vpcC_DomFileIncluded

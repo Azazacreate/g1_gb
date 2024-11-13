@@ -1,0 +1,252 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) My Company<br>
+<br>
+Project: ZEBRA<br>
+FileName: ZEBRA.PRO<br>
+<br>
+A PROLOG program to solve the &quot;5 houses&quot; problem<br>
+using a &quot;verify and choose&quot; method.<br>
+A candidate solution is any of the (5!)**5 ways of distributing 5 colours,<br>
+5 drinks, 5 nationalities, 5 cigarettes, and 5 pets amongst 5 houses.<br>
+By Lewis Baxter<br>
+<br>
+There are five houses with five different colours, in each house lives a person of<br>
+different nationality having favorite drinks, cigaretes and pets, the information is:<br>
+&nbsp;&nbsp;&nbsp; The Englishman lives in the red house<br>
+&nbsp;&nbsp;&nbsp; The Spaniard owns the dog<br>
+&nbsp;&nbsp;&nbsp; The Norwegian lives in the first house on the lleft<br>
+&nbsp;&nbsp;&nbsp; Kools are smoked in the yellow house.<br>
+&nbsp;&nbsp;&nbsp; The man who smokes Chesterfields lives in the house<br>
+&nbsp;&nbsp;&nbsp; next to the man with the fox.<br>
+&nbsp;&nbsp;&nbsp; The Norwegian lives next to the blue house<br>
+&nbsp;&nbsp;&nbsp; The Winston smoker owns snails.<br>
+&nbsp;&nbsp;&nbsp; The lucky strike smoker drinks orange juice<br>
+&nbsp;&nbsp;&nbsp; The Ukrainian drinks tea<br>
+&nbsp;&nbsp;&nbsp; The Japanese smokes parliaments<br>
+&nbsp;&nbsp;&nbsp; Kools are smoked in the house next to the house where the horse is
+kept.<br>
+&nbsp;&nbsp;&nbsp; Coffee is drunk in the green house<br>
+&nbsp;&nbsp;&nbsp; The green house is immediately to the right (your right) of the ivory
+house<br>
+&nbsp;&nbsp;&nbsp; Milk is drunk in the middle house.<br>
+The question is then: Where does the zebra live, and in which house do they<br>
+drink water ?<br>
+<br>
+Drinks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pets&nbsp;&nbsp;&nbsp; Cigarettes
+&nbsp;&nbsp;&nbsp; Nations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colours<br>
+----------------------------------------------------------------------------<br>
+water&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zebra&nbsp;&nbsp;&nbsp; kools
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; englishman&nbsp;&nbsp;&nbsp; ivory<br>
+tea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fox&nbsp;&nbsp;&nbsp; chesterfields
+&nbsp;&nbsp;&nbsp; norvegian&nbsp;&nbsp;&nbsp; green<br>
+cofee&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dog&nbsp;&nbsp;&nbsp; lucky_strike
+&nbsp;&nbsp;&nbsp; ukrainian&nbsp;&nbsp;&nbsp; blue<br>
+milk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; horse&nbsp;&nbsp;&nbsp; parliaments
+&nbsp;&nbsp;&nbsp; japanese&nbsp;&nbsp;&nbsp; yellow<br>
+orange_juice&nbsp;&nbsp;&nbsp; snails&nbsp;&nbsp;&nbsp; winston
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; spaniard&nbsp;&nbsp;&nbsp; red<br>
+<br>
+******************************************************************************/<br>
+<br>
+GLOBAL DOMAINS<br>
+HOUSE = h(SYMBOL,NO)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % A house is identified by
+a number<br>
+HLIST = reference HOUSE*&nbsp;&nbsp;&nbsp; % A list of houses<br>
+NO = INTEGER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % HOUSE
+Number<br>
+NOLIST = NO*<br>
+CHARLIST = CHAR*<br>
+CHARLISTS = CHARLIST*<br>
+<br>
+DATABASE - houses<br>
+the_house (symbol Color,<br>
+symbol Cigar,<br>
+symbol Nation,<br>
+symbol Drink,<br>
+symbol Pet)<br>
+<br>
+color (symbol)<br>
+<br>
+PREDICATES<br>
+nondeterm solve<br>
+nondeterm candidate(HLIST,HLIST,HLIST,HLIST,HLIST)<br>
+nondeterm perm(HLIST)<br>
+nondeterm constraints(HLIST,HLIST,HLIST,HLIST,HLIST)<br>
+nondeterm permutation(NOLIST,NOLIST)<br>
+nondeterm delete(NO,NOLIST,NOLIST)<br>
+nondeterm next(NO,NO)<br>
+nondeterm lleft(NO,NO)<br>
+nondeterm member(HOUSE,HLIST)<br>
+<br>
+GOAL&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+<br>
+&nbsp;&nbsp;&nbsp; solve,<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).<br>
+<br>
+CLAUSES<br>
+solve() :-<br>
+&nbsp;&nbsp;&nbsp; constraints(Colours,Drinks,Nationalities,Cigarettes,Pets),<br>
+&nbsp;&nbsp;&nbsp; candidate(Colours,Drinks,Nationalities,Cigarettes,Pets),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;table border&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write
+(&quot;&lt;tr&gt;&lt;th&gt;House&lt;th&gt;Pet&lt;th&gt;Drink&lt;th&gt;Nationality&lt;th&gt;Cigarettes&lt;/tr&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; member(h(water,WaterHouse), Drinks),member(h(_WaterColour,WaterHouse),
+Colours),<br>
+&nbsp;&nbsp;&nbsp; member(h(zebra,ZebraHouse), Pets),member(h(_ZebraColour,ZebraHouse),
+Colours),<br>
+&nbsp;&nbsp;&nbsp; %write(&quot;&lt;p&gt;They drink vodka in the &quot;,WaterColour,&quot;
+house\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; %write(&quot;&lt;p&gt;The parrot lives in the &quot;,ZebraColour,&quot;
+house\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; color(ColToTest),<br>
+&nbsp;&nbsp;&nbsp; member(h(ColToTest,TestHouse),Colours),<br>
+&nbsp;&nbsp;&nbsp; member(h(Pet,TestHouse),Pets),<br>
+&nbsp;&nbsp;&nbsp; member(h(Cigar,TestHouse),Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; member(h(Drink,TestHouse),Drinks),<br>
+&nbsp;&nbsp;&nbsp; member(h(Nation,TestHouse),Nationalities),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;tr&gt;&lt;td&gt;&quot;,ColToTest,&quot;&lt;td&gt;&quot;,Pet,&quot;&lt;td&gt;&quot;,Drink,&quot;&lt;td&gt;&quot;,Nation,&quot;&lt;td&gt;&quot;,Cigar,&quot;&lt;/tr&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; %write(&quot;&lt;p&gt;House:&quot;,ColToTest,&quot;
+Pet:&quot;,Pet,&quot;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; fail.<br>
+solve() :-<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;/table&gt;\n&quot;).<br>
+&nbsp;&nbsp;&nbsp; <br>
+<br>
+color(red). color(yellow). color(blue). color(green). color(ivory).<br>
+<br>
+candidate(L1, L2, L3, L4, L5) :-<br>
+&nbsp;&nbsp;&nbsp; perm(L1),perm(L2),perm(L3),perm(L4),perm(L5).<br>
+<br>
+perm([h(_,A),h(_,B),h(_,C),h(_,D),h(_,E)]) :-<br>
+&nbsp;&nbsp;&nbsp; permutation([A,B,C,D,E],[1,2,3,4,5]). <br>
+<br>
+constraints(Colours, Drinks, Nationalities, Cigarettes, Pets) :- <br>
+&nbsp;&nbsp;&nbsp; % The Englishman lives in the red house<br>
+&nbsp;&nbsp;&nbsp; member(h(englishman,H1), Nationalities),<br>
+&nbsp;&nbsp;&nbsp; member(h(red,H1), Colours),<br>
+&nbsp;&nbsp;&nbsp; % The Spaniard owns the dog<br>
+&nbsp;&nbsp;&nbsp; member(h(spaniard,H2), Nationalities),<br>
+&nbsp;&nbsp;&nbsp; member(h(dog,H2), Pets),<br>
+&nbsp;&nbsp;&nbsp; % The Norwegian lives in the first house on the lleft<br>
+&nbsp;&nbsp;&nbsp; member(h(norwegian,1), Nationalities),<br>
+&nbsp;&nbsp;&nbsp; % Kools are smoked in the yellow house.<br>
+&nbsp;&nbsp;&nbsp; member(h(kools,H3), Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; member(h(yellow,H3), Colours),<br>
+&nbsp;&nbsp;&nbsp; % The man who smokes Chesterfields lives in the house<br>
+&nbsp;&nbsp;&nbsp; % next to the man with the fox.<br>
+&nbsp;&nbsp;&nbsp; member(h(chesterfields,H4), Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; next(H4, H5),<br>
+&nbsp;&nbsp;&nbsp; member(h(fox,H5), Pets),<br>
+&nbsp;&nbsp;&nbsp; % The Norwegian lives next to the blue house<br>
+&nbsp;&nbsp;&nbsp; member(h(norwegian,H6), Nationalities),<br>
+&nbsp;&nbsp;&nbsp; next(H6, H7),<br>
+&nbsp;&nbsp;&nbsp; member(h(blue,H7), Colours),<br>
+&nbsp;&nbsp;&nbsp; % The Winston smoker owns snails.<br>
+&nbsp;&nbsp;&nbsp; member(h(winston,H8), Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; member(h(snails,H8), Pets),<br>
+&nbsp;&nbsp;&nbsp; % The lucky strike smoker drinks orange juice<br>
+&nbsp;&nbsp;&nbsp; member(h(lucky_strike,H9), Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; member(h(orange_juice,H9), Drinks),<br>
+&nbsp;&nbsp;&nbsp; % The Ukrainian drinks tea<br>
+&nbsp;&nbsp;&nbsp; member(h(ukrainian,H10), Nationalities),<br>
+&nbsp;&nbsp;&nbsp; member(h(tea,H10), Drinks),<br>
+&nbsp;&nbsp;&nbsp; % The Japanese smokes parliaments<br>
+&nbsp;&nbsp;&nbsp; member(h(japanese,H11), Nationalities),<br>
+&nbsp;&nbsp;&nbsp; member(h(parliaments,H11), Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; % Kools are smoked in the house next to the house where the horse is
+kept.<br>
+&nbsp;&nbsp;&nbsp; member(h(kools,H12), Cigarettes),<br>
+&nbsp;&nbsp;&nbsp; next(H12, H13),<br>
+&nbsp;&nbsp;&nbsp; member(h(horse,H13), Pets),<br>
+&nbsp;&nbsp;&nbsp; % Coffee is drunk in the green house<br>
+&nbsp;&nbsp;&nbsp; member(h(coffee,H14), Drinks),<br>
+&nbsp;&nbsp;&nbsp; member(h(green,H14), Colours),<br>
+&nbsp;&nbsp;&nbsp; % The green house is immediately to the right (your right) of the ivory
+house<br>
+&nbsp;&nbsp;&nbsp; member(h(green,H15), Colours),<br>
+&nbsp;&nbsp;&nbsp; lleft(H16, H15),<br>
+&nbsp;&nbsp;&nbsp; member(h(ivory,H16), Colours),<br>
+&nbsp;&nbsp;&nbsp; % Milk is drunk in the middle house.<br>
+&nbsp;&nbsp;&nbsp; member(h(milk,3), Drinks).<br>
+<br>
+permutation([],[]).<br>
+permutation([A|X],Y) :- delete(A,Y,Y1), permutation(X,Y1).<br>
+<br>
+delete(A,[A|X],X).<br>
+delete(A,[B|X],[B|Y]) :- delete(A,X,Y).<br>
+<br>
+member(A,[A|_]) :- !.<br>
+member(A,[_|X]) :- member(A,X).<br>
+<br>
+next(X,Y) :- lleft(X,Y).<br>
+next(X,Y) :- lleft(Y,X).<br>
+<br>
+lleft(1,2).<br>
+lleft(2,3).<br>
+lleft(3,4).<br>
+lleft(4,5).<br>
+</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,30 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  USEDLL
+ FileName: USEDLL.PRE
+ Purpose: Predicate definitions for USEDLL.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  dlg_usedll_Create(WINDOW Parent) - (i)
+%END_DECL
+
+GLOBAL PREDICATES
+  procedure dll_mark_gstack(STACKMARK)     - (o) language stdcall
+  procedure dll_release_gstack(STACKMARK) - (i) language stdcall
+  procedure setInteger(integer In ) - (i) language stdcall
+  procedure getInteger(integer Out) - (o) language stdcall
+  procedure setReal(real In ) - (i) language stdcall
+  procedure getReal(real Out ) - (o) language stdcall
+  procedure setString(string In) - (i) language stdcall
+  procedure getString(string Out) - (o) language stdcall

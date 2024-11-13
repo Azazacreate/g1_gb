@@ -1,0 +1,94 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Source code to database declarations</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="none, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body>
+
+<h1>Source code to database declarations.</h1>
+
+<pre>
+/*****************************************************************************
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c)1998 Prolog Development Center
+
+Project: license
+FileName: license.PRO
+Purpose: No description
+Written by: Leo Schou-Jensen
+******************************************************************************/
+
+CONSTANTS
+  err_memo_used			 = 9001
+  err_descr_used		 = 9002
+  err_emptymemo			 = 9003
+  err_emptydescr		 = 9004
+  err_unknown_memo_in_update	 = 9005
+  err_nooflicensesmustbepositive = 9006
+  err_unknown_user		 = 9007
+  err_unknown_software		 = 9008
+  err_license_alreadyfound	 = 9009
+  err_license_notfound		 = 9010
+  err_nooflicenses_must_be_zero	 = 9011
+
+GLOBAL PREDICATES
+  software(softwareId,string SoftwareName)
+ 	- nondeterm (o,o)
+ 	  determ (i,o)
+
+  software(softwareId,string SoftwareName,integer LegalNoOfLicenses,integer UsedNoOfLicenses)
+	- nondeterm (o,o,o,o)
+	  determ (i,o,o,o)
+
+  software(softwareId,string SoftwareName,integer LegalNoOfLicenses,integer UsedNoOfLicenses,parmList)
+	- nondeterm (o,o,o,o,o)
+	  determ (i,o,o,o,o)
+
+  user(userId,string UserName)
+	- nondeterm (o,o)
+	  determ (i,o)
+
+  user(userId,string UserName,parmList)
+	  - nondeterm (o,o,o)
+	    determ (i,o,o)
+
+  license(userId,softwareId)
+	- nondeterm (i,o)
+	  nondeterm (o,i)
+	  determ (i,i)
+
+  software_licensecount(softwareId,string SoftwareName,integer LegalNoOfLicenses,integer UsedNoOfLicenses)
+	- determ (i,o,o,o)
+
+  software_user(softwareId,userId,string UserName)
+	- nondeterm (i,o,o)
+
+  user_software(userId,softwareId,string SoftwareName,string LicenseProblem)
+	- nondeterm (i,o,o,o)
+
+  procedure add_software(softwareId,string SoftwareName,integer NoOfLicenses,parmList)-(i,i,i,i)
+  procedure update_software(softwareId,string SoftwareName,integer NoOfLicenses,parmList)-(i,i,i,i)
+  procedure remove_software(softwareId)-(i)
+
+  procedure add_user(userId,string UserName,parmList)-(i,i,i)
+  procedure update_user(userId,string UserName,parmList)-(i,i,i)
+  procedure remove_user(userId)-(i)
+
+  procedure add_license(userId,softwareId)-(i,i)
+  procedure remove_license(userId,softwareId)-(i,i)
+
+  procedure db_load(string DBFileName)-(i)
+  procedure db_save()-()
+
+  procedure integer getnewid()
+
+ </pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  STARTUP
+ FileName: STARTUP.PRE
+ Purpose: Predicate definitions for STARTUP.PRO
+ Written by: Eugene Akimov
+ Comments:
+******************************************************************************/
+constants
+  startup_pre_included = 1
+
+global predicates
+procedure	Window  startup_Create(WINDOW Parent,STRING FullBmpFileName) - (i,i)
+procedure	startup_Close(STRING) - (i)

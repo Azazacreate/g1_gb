@@ -1,0 +1,237 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prpolog
+
+ FileName: TOOLBAR.PRE
+ PURPOSE: Predicate definitions for toolbar object
+ Written by: Alexander Butovsky
+ Comments:
+
+******************************************************************************/
+ifndef toolbar_dom_included
+ Error: this file requires include: toolbar.dom
+enddef 
+constants
+  toolbar_pre_included = 1
+
+global predicates
+
+/********************************************************/
+/*                                                      */
+/* Create a toolbar inside Task Window or any child     */
+/* window.                                              */
+/*                                                      */
+/* toolbar_create                                       */
+/*      (TOOLBAR_STYLE,       i top|left|bottom|right|  */
+/*                              |inside|moveable        */
+/*       COLOR,               i background color,       */
+/*       WINDOW,              i parent window           */
+/*       TOOLBAR_LIST)        i list of controls        */
+/*                                                      */
+/* NOTE: Events from toolbar will be passed in parent   */
+/*       window                                         */
+/*                                                      */
+/* RETURN VALUE: Toolbar window                         */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure WINDOW toolbar_create(TOOLBAR_STYLE,COLOR,WINDOW,TOOLBAR_LIST) - (i,i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Create a toolbar inside Task Window or any child     */
+/* window.                                              */
+/*                                                      */
+/* toolbar_create                                       */
+/*      (TOOLBAR_STYLE,       i top|left|bottom|right|  */
+/*                              |inside|moveable        */
+/*       COLOR,               i background color,       */
+/*       WINDOW,              i parent window           */
+/*       TOOLBAR_LIST,        i list of controls        */
+/*       TOOLBAR_ACTION_FUNC) i user defined function   */
+/*                              to call when button is  */
+/*                              pressed or item is      */
+/*                              selected in listbutton  */
+/*                                                      */
+/* RETURN VALUE: Toolbar window                         */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure WINDOW toolbar_create(TOOLBAR_STYLE,COLOR,WINDOW,TOOLBAR_LIST,
+  				  TOOLBAR_ACTION_FUNC) - (i,i,i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Reload a toolbar inside Task Window or any child     */
+/* window.                                              */
+/*                                                      */
+/* toolbar_reload                                       */
+/*      (WINDOW,              i toolbar window          */
+/*       TOOLBAR_LIST)        i list of controls        */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_reload(WINDOW,TOOLBAR_LIST) - (i,i)
+
+/********************************************************/
+/*                                                      */
+/* Resize a toolbar. User should call this predicate    */
+/* during E_SIZE event of parent window.                */
+/*                                                      */
+/* toolbar_resize(WINDOW) i     parent window           */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_resize(WINDOW) - (i)
+
+/********************************************************/
+/*                                                      */
+/* Changes static text or changes initial value of      */
+/* context sensitive text for tb_text controls. Changes */
+/* enable/disable or pressed/released status for tb_ctrl*/
+/* controls.Changes selected position for listbuttons.  */
+/*                                                      */
+/* toolbar_SetValue( WINDOW,        i   parent window   */
+/*                   MENU_TAG,      i   control id      */
+/*                   TOOLBAR_VALUE) i   new value       */
+/*                                                      */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_SetValue(WINDOW,MENU_TAG,TOOLBAR_VALUE) - (i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Returnes current status of toolbar control.          */
+/*                                                      */
+/* toolbar_GetValue( WINDOW,        i   parent window   */
+/*                   MENU_TAG,      i   control id      */
+/*                   TOOLBAR_VALUE) o   current value   */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_GetValue(WINDOW,MENU_TAG,TOOLBAR_VALUE) - (i,i,o)
+
+/********************************************************/
+/*                                                      */
+/* Returns current bounding rectangle of toolbar.       */
+/*                                                      */
+/* toolbar_GetRect( WINDOW,         i   parent window   */
+/*                  STYLE)          i   style           */
+/*                  RECT)           o   rectangle       */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: if window has no toobar with Style             */
+/*                                                      */
+/********************************************************/
+
+determ toolbar_GetRect(WINDOW,TOOLBAR_STYLE,RCT) - (i,i,o)
+
+/********************************************************/
+/*                                                      */
+/* Groups toolbar controls.                             */
+/*  If 'GroupNumber' = 0  function disgroups controls   */
+/*                                                      */
+/* toolbar_GroupControls(WINDOW,    i   parent window   */
+/*                       INTEGER,   i   GroupNumber     */
+/*                       MENU_TAGS) i   List of control */
+/*                                       identifiers    */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_GroupControls(WINDOW,INTEGER,TOOLBAR_MENU_TAGS) - (i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Returnes pressed toolbar control in group.           */
+/*                                                      */
+/* toolbar_GetPressedButton(WINDOW, i   parent window   */
+/*                       INTEGER,   i   GroupNumber     */
+/*                       MENU_TAG)  o   Pressed control */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: If 'GroupNumber' = 0,                          */
+/*       if no any control is pressed                   */
+/*       or if such group does not exist                */
+/*                                                      */
+/********************************************************/
+
+determ toolbar_GetPressedButton(WINDOW,INTEGER,MENU_TAG) - (i,i,o)
+
+/********************************************************/
+/*                                                      */
+/* Sets pressed toolbar control in group.               */
+/*                                                      */
+/* toolbar_SetPressedButton(WINDOW, i   parent window   */
+/*                       INTEGER,   i   GroupNumber     */
+/*                       MENU_TAG)  i   Pressed control */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: if such control does not exist                 */
+/*                                                      */
+/********************************************************/
+
+determ  toolbar_SetPressedButton(WINDOW,INTEGER,MENU_TAG) - (i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Removes all toolbars in window			*/
+/*                                                      */
+/* toolbar_remove(	WINDOW)    i   parent window    */
+/*                                                      */
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_remove(WINDOW)                - (i)
+
+/********************************************************/
+/*                                                      */
+/* Removes all toolbars in window			*/
+/*                                                      */
+/* toolbar_MesRedirect( WINDOW	i	parent window	*/
+/*			WINDOW	i	focus window	*/
+/* RETURN VALUE: None                                   */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+procedure toolbar_MesRedirect(WINDOW,WINDOW)	- (i,i)
+
+/********************************************************/
+/*                                                      */
+/*  Dummy predicate to represent no user action.        */
+/*                                                      */
+/********************************************************/
+
+ toolbar_no_action	:	TOOLBAR_ACTION_FUNC

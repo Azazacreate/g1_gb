@@ -1,0 +1,55 @@
+userdefined domains
+  OP
+
+productions
+  PROGRAM	= STMNT+
+
+  COND		= EXPR OPER EXPR	-> condition(EXPR, OPER, EXPR)
+
+  EXPR		= EXPR plus EXPR	-> add(EXPR, EXPR),
+		  EXPR minus EXPR	-> subtract(EXPR, EXPR)
+		  --
+		  EXPR mult EXPR	-> multiply(EXPR, EXPR),
+		  EXPR div  EXPR	-> divide(EXPR, EXPR)
+		  --
+       rightassoc EXPR power EXPR	-> power(EXPR, EXPR)
+		  --
+		  lpar EXPR rpar	-> parenthetical(EXPR),
+		  number(REAL)		-> number(REAL),
+		  VAR			-> var(VAR)
+
+  OPER		= op(OP):CURSOR		-> operator(OP, CURSOR)
+
+  OUTPUT_TERM	= EXPR			-> expr(EXPR),
+  		  str(STRING)		-> str(STRING)
+
+  OUTPUT_TERMS	= OUTPUT_TERM+ 
+  		    separator comma
+
+  STMNT		= VAR OPER EXPR		-> bind(VAR, OPER, EXPR),
+  		  clear 		-> clear,
+
+		  while COND 
+		    do PROGRAM enddo	-> do_while(COND, PROGRAM),
+		  
+		  for VAR OPER 
+		    EXPR to EXPR 
+		    do PROGRAM enddo	-> for(VAR, OPER, EXPR, EXPR, PROGRAM),
+  		  
+  		  if_ COND then 
+  		    PROGRAM endif	-> if_then(COND, PROGRAM),
+  		  
+  		  if_ COND then 
+  		    PROGRAM else 
+  		    PROGRAM endif	-> if_then_else(COND, PROGRAM, PROGRAM),
+  		  
+  		  input VARS		-> input(VARS),
+  		  memory		-> memory,
+		  nl			-> nl,
+  		  output OUTPUT_TERMS	-> output(OUTPUT_TERMS),
+  		  time			-> time
+  		  					
+  VAR		= name(STRING):CURSOR	-> var(STRING, CURSOR)
+
+  VARS		= VAR+ separator comma
+  

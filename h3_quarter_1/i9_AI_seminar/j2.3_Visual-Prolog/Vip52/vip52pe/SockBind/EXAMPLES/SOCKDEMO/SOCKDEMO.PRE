@@ -1,0 +1,25 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SOCKDEMO
+ FileName: SOCKDEMO.PRE
+ Purpose: Predicate definitions for SOCKDEMO.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_test_Create(WINDOW Parent,INTEGER Test_pred) - (i,i)
+  dlg_event_Create(WINDOW Parent,UNSIGNED,UNSIGNED,LONG) - (i,i,i,i)
+  dlg_service_Create(WINDOW Parent,STRING,SCK_SLIST,SHORT,STRING) - (i,i,i,i,i)
+%dlg_service_Create(WINDOW Parent,STRING,STRING,SHORT,STRING) - (i,i,i,i,i)
+  dlg_host_Create(WINDOW Parent,STRING,SCK_SLIST,SHORT,SHORT,SCK_ALIST) - (i,i,i,i,i,i)
+%dlg_host_Create(WINDOW Parent,STRING,STRING,SHORT,SHORT,STRING) - (i,i,i,i,i,i)  
+  dlg_proto_Create(WINDOW Parent,STRING,SCK_SLIST,SHORT) - (i,i,i,i)
+%dlg_proto_Create(WINDOW Parent,STRING,STRING,SHORT) - (i,i,i,i)
+%END_DECL

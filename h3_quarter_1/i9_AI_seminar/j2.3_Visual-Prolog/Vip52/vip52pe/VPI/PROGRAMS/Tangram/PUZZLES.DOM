@@ -1,0 +1,13 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+ 
+ Project:  TANGRAM
+ FileName: PUZZLES.DOM
+ Purpose: Domain definitions for PUZZLES.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+global domains
+	
+	FILE = tangramfile ; puzzlefile

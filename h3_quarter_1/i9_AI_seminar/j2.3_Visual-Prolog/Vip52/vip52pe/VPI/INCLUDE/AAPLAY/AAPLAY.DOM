@@ -1,0 +1,81 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  
+ FileName: AAPLAY.DOM
+ Purpose: 
+ Written by: PDC
+ Comments:
+******************************************************************************/
+constants
+  aaplay_dom_included = 1
+
+global domains
+  AAHANDLE = WORD
+
+
+constants % Wmode
+  aa_MEMORYLOAD = 0x1        % Load into memory
+  aa_HIDEWINDOW = 0x2        % Hide the animation window
+  aa_NOPALETTE = 0x4         % Prevent palette animation
+  aa_RESERVEPALETTE = 0x8    % Reserve entire palette at start
+  aa_LOOPFRAME = 0x10        % Loaded with a loop frame
+  aa_FULLSCREEN = 0x20       % Use full screen for playing
+  aa_STOPNOTIFY = 0x40       % Prevent any notification messages
+  aa_STOPSTATUS = 0x80       % Prevent status messages
+  aa_NOFAIL = 0x100          % Reduce load type on fail
+  aa_DONTPAINT = 0x200       % Don't paByVal animation when loading
+  aa_BUILDSCRIPT = 0x400     % lpzFileName is script not name
+  aa_ALLMODES = 0xFF
+
+
+global domains
+  AAPARMS = struct aaparms(
+        BYTE aa_status,			% Current status of animation }
+        BYTE aa_filetype,		% Type of file on disk }
+        BYTE aa_mode,			% Flags (such as aa_MEMORYLOAD) }
+        BYTE aa_bitpix,			% bits per pixel }
+        INTEGER aa_window,		% Handle of window for status messages }
+        INTEGER aa_x,			% left of display window }
+        INTEGER aa_y,			% top of display window }
+        INTEGER aa_cx,			% width of display window }
+        INTEGER aa_cy,			% height of display window }
+        INTEGER aa_orgx,		% left offset of flic }
+        INTEGER aa_orgy,		% top offset of flic }
+        INTEGER aa_speed,		% msec per frame }
+        INTEGER aa_designspeed,		% designed msec per frame }
+        INTEGER aa_width,		% width of animation in pixels }
+        INTEGER aa_height,		% heigth of animation in pixels }
+        INTEGER aa_frames,		% number of frames }
+        INTEGER aa_position,		% current frame position }
+        INTEGER aa_loops,		% end of animation position }
+        INTEGER aa_rptsound,		% number of times to repeat sound }
+        INTEGER aa_pause,		% number of milliseconds to hold last frame }
+        INTEGER aa_delaysnd,		% delay sound in milliseconds }
+        BYTE aa_transin,		% transition at start of animation }
+        BYTE aa_transout,		% transition at end of animation }
+        INTEGER aa_timein,		% length of transition in, milliseconds }
+        INTEGER aa_timeout,		% length of transition out, milliseconds }
+        INTEGER aa_callback,		% message callback window }
+        INTEGER aa_animw		% Animation window handle }
+	)
+
+constants
+ %  Definitions for aa_status above :
+    aa_STOPPED = 1 %;                { loaded but not playing }
+    aa_QUEUED = 2 %;                 { Animation is waiting to play }
+    aa_PLAYING = 3 %;                { Animation is playing }
+    aa_PAUSED = 4 %;                 { Animation is paused }
+    aa_DONE = 5 %;                   { Animation has ended playing, and is awaiting an aastop call }
+
+%  Definitions for aa_filetype above :
+    aa_FLI = $1 %;                   { Autodesk Animator FLI format }
+    aa_DIB = $2 %;                   { Windows DIB format }
+    aa_NUMTYPES = $2 %;              { Number of types (same as aa_DIB?) }
+    aa_SCRIPT = $3 %;                { Script without and animation }
+
+%  Definitions for aa_transin and aa_transout above :
+    aa_CUT = $0 %;                   { Just stop one and start another }
+    aa_FADEBLACK = 1 %;              { Fade In/Out from to black }
+    aa_FADEWHITE = 2 %;              { Fade In/Out from to white }

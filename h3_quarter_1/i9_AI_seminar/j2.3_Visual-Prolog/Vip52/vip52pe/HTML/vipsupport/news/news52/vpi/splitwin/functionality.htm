@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://www.pdc.dk/splitwin/functionality.htm -->
+<html>
+
+<head>
+<title>Functionality</title>
+<meta content="text/html" http-equiv="Content-Type">
+<meta content="Microsoft FrontPage 4.0" name="GENERATOR">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../../";</script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Functionality<!--mstheme--></font></h1>
+<!--msthemeseparator--><p align="center"><img src="../../../../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<h2><!--mstheme--><font color="#000000">Geometry<!--mstheme--></font></h2>
+<p>The split window is a window split into an N times M grid of child windows.</p>
+<font size="2">
+<p><img src="../../../../images/geometry.gif" width="547" height="361"></font></p>
+<p>The figure above demonstrates several things about the geometry of the split
+window. It's a splitwindow with a 3 times 2 grid where the panes are numbered
+(0,0) to (2,1). All the resize bars have the same size [rbWidth]. There is a
+margin [mWidth].</p>
+<h2><!--mstheme--><font color="#000000">Visual elements<!--mstheme--></font></h2>
+<h3><!--mstheme--><font color="#000000">Panes<!--mstheme--></font></h3>
+<p>The panes are child windows of the split window and the visual appearance of
+these are their own responsibility.</p>
+<h3><!--mstheme--><font color="#000000">Margins<!--mstheme--></font></h3>
+<p>The margins are meant to look like half a resize bar. This is only of
+importance if a 3D look is used for the resize bars. The margins are drawn
+together with the resize bars. [see properties: marginWidth]</p>
+<h3><!--mstheme--><font color="#000000">Resize bars<!--mstheme--></font></h3>
+<p>The resize bars are either flat or 3D. [see properties: resizebarWidth,
+resizeBarColor]</p>
+<h3><!--mstheme--><font color="#000000">Active resize bar<!--mstheme--></font></h3>
+<p>The active resize bar is a line the same size as the resize bar going across
+the window. It is drawn when the user clicks on a resize bar and follows the
+cursor when the user drags the mouse. [Example] look in Word or Outlook.</p>
+<h3><!--mstheme--><font color="#000000">Resize cursor<!--mstheme--></font></h3>
+<p>When the cursor is above one of the resize bars it changes to a resize
+cursor. The look of the resize cursor depends on what the resize bar callback
+predicate returns. Typically it will depend on whether the cursor is above a
+horizontal resize bar, a vertical resize bar or one of the crosses.</p>
+<h2><!--mstheme--><font color="#000000">Behaviour<!--mstheme--></font></h2>
+<h3><!--mstheme--><font color="#000000">Resizing using the resize bars<!--mstheme--></font></h3>
+<ol>
+  <li>We aim at a model of the split window where the split bars can be thought
+    of as sticks. So when you grab a resize bare and move it only that resize
+    bar moves changing the size of the two windows adjacent to the resize bar.
+  <li>If the resizing is greater than the width (or height) of the pane the next
+    pane is resized as well.
+  <li>The resize bars are always visible even when the adjacent panes have a
+    width or height of zero.</li>
+</ol>
+<h3><!--mstheme--><font color="#000000">Visual feedback on resizing<!--mstheme--></font></h3>
+<p>If resizing is allowed (the splitwin_resize_cb doesn't fail) a resize cursor
+is drawn. When the mouse is pressed an active resize bar is drawn which follows
+the cursor, but stays inside the allowable resize area.</p>
+<h3><!--mstheme--><font color="#000000">Resizing the window<!--mstheme--></font></h3>
+<ol>
+  <li>We treat resizing of the window as if the right and the bottom part of the
+    window was an extra resize bar. The fact that the top or the left side of
+    the window is use to resize the window doesn't change this it will always be
+    the rightmost column and the bottom row that is resized.
+  <li>What happens if the window gets smaller than the administrative space? The
+    administrative space is the space taken by the resize bars and the margins.
+    We just cut of from the right and the bottom. This is the standard behaviour
+    of windows so no special treatment is needed.</li>
+</ol>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

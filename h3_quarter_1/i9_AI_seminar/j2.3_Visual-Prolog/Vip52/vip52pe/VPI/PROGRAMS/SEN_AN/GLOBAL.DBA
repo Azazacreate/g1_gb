@@ -1,0 +1,20 @@
+/*****************************************************************************
+
+		Copyright (c) 1986,97 Prolog Development Center
+			
+			VISUAL Prolog
+
+ Project:  SEN_AN
+ FileName: GLOBAL.DBA
+ Purpose: Global Database
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+GLOBAL DATABASE 
+	det(string)
+	noun(string)
+	rel(string)
+	verb(string)
+	sen(string)
+

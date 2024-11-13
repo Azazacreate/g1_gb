@@ -1,0 +1,87 @@
+%  ****************************************************************************
+%                                 REPORT ENGINE
+%                         Report source text example
+%                                   28-Aug-1997
+% *****************************************************************************
+
+report  myFirstReport
+  orientation = landscape;
+  margins(0.5,1.0,0.5,0.0);
+  units logical(920 1024);
+%  units logical(620 1024);
+  fontname=helvetica
+  script 
+    get_first_key(;indx,k1);
+
+    Headday := "Period: 17 Feb to 23 Feb 1997";
+    Headstr := "Week of Year	Monday	Tuesday	Wedensday	Thursday	Friday	Saturday	Sunday	";
+    ForStr :=  "Mettingplan for: ";
+    RelFontSize:=0;
+    BreakByGroup:="no";
+    PersonNr:=0;
+  end_script
+  header alignment=left
+    text "Horizontal Report expansion: change 'units logical(920,1024) to -> units logical(620,1024) to look what happens"  at (  5, 0,440,20) wrap
+    	forecolor =  16711808;
+  end_header
+
+  while k1><"" do
+      fontstyle=normal border=0
+ 
+    header fontstyle=bold var_font(10+RelFontSize)
+      text "Personal weekplan" at (10,10,500,60) forecolor=8388672 var_font(22+RelFontSize) fontstyle=bold 
+      	recurrent alignment=center;
+    end_header
+
+    begin
+      script
+        get_term_list(k1;fn,ln,st,ci);
+        get_next_key(indx;k1);
+ 
+        PersonNr := PersonNr + 1;
+        Week := 0;
+        NextWeek := 1
+      end_script
+   block at(0,10,0,0) 
+      begin
+	script
+            Namestr := ForStr + ln + ", " + fn
+        end_script
+       text Namestr at (0, 0,120, 20) alignment=left;
+       text Headday at (0, 20,120,50) alignment=left fontstyle=bold;
+       text Headstr at (0,50,700,70) border=1 tabs=0,120,220,320,420,520,620,720,820 fontsize=8;
+
+      if BreakByGroup="no" then
+         begin
+
+      while get_interest(;INTER,Color) do at(0,70,0,0)
+      border=1 %keep_together
+        begin
+          script
+            iterno:=0;
+            Week := NextWeek;
+            NextWeek := NextWeek + 1;
+          end_script
+
+          text INTER  at (0,0,120,18);
+          text "8-20	8-18	10-21	8-20	8-17	out	out	" at(0,0,820,18) tabs=120,220,320,420,520,620,720,820;
+              while iterno < 4 and ln <> "Long" do at (0,18,120,18)
+                begin
+                  script iterno:=iterno+1;
+		    t1 := "Iterate No "+iterno
+		  end_script
+                  text t1 at (0,0,120,18);
+    text "day out	9-17	9-17	9-17	9-18	10-16	out	" at(0,0,800,18) tabs=120,220,320,420,520,620,720,820 clip;
+                end;
+    text "Total Line	day out	9-17	9-17	9-17	9-18	10-16	out	" at(0,18,800,38) tabs=0,120,220,320,420,520,620,720,820 clip;
+            end;
+    	end
+      end;
+    end
+   footer fontsize=10
+      script date(;D); page(;P); time(;T) end_script
+      text D at(0,40,80,60);
+      text "Page "+P at(200,40,260,60) fontsize=10;
+      text T at(450,40,470,60)
+    end_footer
+end_report

@@ -1,0 +1,427 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>WebSolverSrc</title>
+<meta NAME="Version" CONTENT="8.0.3410">
+<meta NAME="Date" CONTENT="10/11/96">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+
+<!--mstheme--></font><pre>/*****************************************************************************
+
+		Copyright (c) 1997 Prolog Development Center A/S
+
+ Project:  SOLVER32
+ FileName: SOLVER32.PRO
+ Purpose: The demonstration of the Solver
+ Written by: Victor Yukhtenko
+ Comments:
+******************************************************************************/
+
+include &quot;solver32.inc&quot;
+include &quot;pdcrunt.pre&quot;
+include &quot;solver.pre&quot;
+include &quot;cgitools.pre&quot;
+include &quot;cgitools.pro&quot;
+
+CONSTANTS
+  htmC_VarPreset		= 1000
+  htmC_VarVoid			= 1010
+  htmC_VarSolved		= 1020
+  htmC_VarNotSolved		= 1030
+  htmC_SrcDataConflict 		= 1040
+  htmC_FinalDataConflict 	= 1050
+  htmC_InvalidData		= 1060
+  htmC_VarNegative		= 1070
+  htmC_VarZero			= 1080
+  
+/******************************************************
+	Some predicate to debug CGI application
+******************************************************/
+
+PREDICATES
+  makePage(STRING message,STRING page)
+  sendPage(STRING message)
+CLAUSES
+  makePage(Message,Page):-
+	Head1=&quot;Content-type: text/html\n\n&quot;,
+        Head2=&quot;&lt;html&gt;\n&quot;,
+        Head3=&quot;&lt;body&gt;\n&quot;,
+	Head4=&quot;&lt;/body&gt;\n&quot;,
+	Head5=&quot;&lt;/html&gt;\n&quot;,
+	format(Page,&quot;%s%s%s%s\n%s%s&quot;,Head1,Head2,Head3,Message,Head4,Head5).
+  sendPage(Message):-
+	makePage(Message,Page),
+	write(Page).
+
+
+DATABASE - htmDB_InputData
+determ  htmB_TemplateFileName(STRING fileName)
+  htmB_VarValue(STRING varName,STRING varValue)
+  htmB_UserData(INTEGER solvingCase,STRING userTextForReplacement)
+
+DATABASE - htmDB_OutputData
+  htmB_OutputVar(STRING varName,STRING varValue)
+  htmB_VarError(STRING varName,STRING msg)
+  htmB_RuleError(STRING msg)
+  htmB_OutputVarMark(STRING varName,STRING toBeReplacedToThis)
+  htmB_SrcDataConflict(STRING ruleNo,SLIST varList)
+  htmB_FinalDataConflict(STRING ruleNo,SLIST varList)
+  htmB_MSG(STRING)
+
+PREDICATES
+  nondeterm htmP_Member(parm,parmlist)
+  nondeterm htmP_Member(SlvD_Var,SlvD_VarList)
+  nondeterm htmP_Member(STRING,SLIST)
+CLAUSES
+
+  htmP_Member(X,[X|_]).
+  htmP_Member(X,[_|Y]):-htmP_Member(X,Y).
+
+PREDICATES
+  htmP_Message : SlvPD_Message
+  htmP_ErrAndWarn : SlvPD_ErrAndWarn
+
+CLAUSES
+
+  htmP_Message(slvErrC_InvalidSourceSetData,StrListStr):-
+  	term_str(slist,DataList,StrListStr),
+  	DataList=[RuleNo|VarNameList],!,
+	assert(htmB_SrcDataConflict(RuleNo,VarNameList)).
+  htmP_Message(slvErrC_InvalidFinalSetData,StrListStr):-
+  	term_str(slist,DataList,StrListStr),
+  	DataList=[RuleNo|VarNameList],!,
+	assert(htmB_FinalDataConflict(RuleNo,VarNameList)).
+  htmP_Message(888,_MSG):-!.
+  htmP_Message(999,_MSG):-!.
+  htmP_Message(_MesageId,_StrMessage):-
+  	format(MSG,&quot;SLV: %&quot;,_StrMessage),
+	assert(htmB_MSG(MSG)).
+
+  htmP_ErrAndWarn(Pos,MessageText):-
+	ActualPos=Pos+1,
+	format(MSG,&quot;Error in Pos %. %&quot;,ActualPos,MessageText),
+	assert(htmB_MSG(MSG)).
+
+PREDICATES
+procedure htmP_GetCaseReaction(REAL varValue,INTEGER CaseCode,STRING onCaseReaction)
+CLAUSES
+  htmP_GetCaseReaction(Value,htmC_VarSolved,OnCaseReaction):-
+	Value&lt;0,
+	htmB_UserData(htmC_VarNegative,OnCaseReaction),!.
+  htmP_GetCaseReaction(Value,htmC_VarSolved,OnCaseReaction):-
+	Value=0,
+	htmB_UserData(htmC_VarZero,OnCaseReaction),!.
+  htmP_GetCaseReaction(_AnyValue,Case,OnCaseReaction):-
+	htmB_UserData(Case,OnCaseReaction),!.
+  htmP_GetCaseReaction(_AnyValue,_AnyCase,&quot;&quot;).
+
+PREDICATES
+procedure htmP_MakeHTMLpage( STRING templateStr,STRING stringCollector,STRING outHTMLStr)
+  htmP_SearchKeyString(STRING templateStr,STRING prefix,STRING varName,STRING suffix)
+procedure  htmP_GetVarValue(STRING varName,STRING varValue)
+
+CLAUSES
+
+  htmP_GetVarValue(VarName,VarValue):-
+	htmB_OutputVar(VarName,VarValue),!.
+  htmP_GetVarValue(_VarName,&quot;&quot;).
+
+  htmP_SearchKeyString(TemplateStr,Prefix,VarName,Suffix):-
+	searchChar(TemplateStr,'$',FoundPos),
+	NeededFoundPos=FoundPos-1,
+	frontstr(NeededFoundPos,TemplateStr,Prefix,RestString),
+	frontChar(RestString,_,IncludedVarNameStr),
+	searchChar(IncludedVarNameStr,'$',EndOfFieldPos),!,
+	frontStr(EndOfFieldPos,IncludedVarNameStr,VarNameWithDollar,Suffix),
+	concat(VarName,&quot;$&quot;,VarNameWithDollar).
+
+  htmP_MakeHTMLpage(TemplateStr,Collector,OutHTMLStr):-
+	htmP_SearchKeyString(TemplateStr,Prefix,VarName,Suffix),
+	htmP_GetVarValue(VarName,VarValue),
+	format(NewCollector,&quot;%s%s%s&quot;,Collector,Prefix,VarValue),!,
+	htmP_MakeHTMLpage(Suffix,NewCollector,OutHTMLStr).
+  htmP_MakeHTMLpage(Suffix,Collector,OutHTMLStr):-
+	format(OutHTMLStr,&quot;%s%s&quot;,Collector,Suffix).
+
+PREDICATES
+nondeterm htmP_MarkConflictedVariables(INTEGER conflictType,STRING varName,SLIST varNameList)
+CLAUSES
+  htmP_MarkConflictedVariables(ConflictType,VarName,VarNameList):-
+	htmP_Member(VarName,VarNameList),
+		concat(&quot;c&quot;,VarName,C_VarName),
+		htmP_GetCaseReaction(0.0,ConflictType,OnCaseReaction),
+		asserta(htmB_OutputVarMark(C_VarName,OnCaseReaction)).
+
+PREDICATES
+  htmP_BuildPage(STRING htmPage)
+  htmP_StoreMessage(STRING msg)
+CLAUSES
+  htmP_StoreMessage(NewMsg):-
+	retract(htmB_OutputVar(&quot;mMsg&quot;,OldMsg)),!,
+	format(MSG,&quot;%s\n%s&quot;,OldMsg,NewMsg),
+	assert(htmB_OutputVar(&quot;mMsg&quot;,MSG)).
+  htmP_StoreMessage(NewMsg):-
+	assert(htmB_OutputVar(&quot;mMsg&quot;,NewMsg)).
+
+  htmP_BuildPage(&quot;&quot;):-
+	htmB_VarError(VarName,Msg),
+		htmP_StoreMessage(Msg),
+		htmP_GetCaseReaction(0.0,htmC_InvalidData,OnCaseReaction),
+		concat(&quot;c&quot;,VarName,C_VarName),
+		assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)),
+	fail.
+  htmP_BuildPage(&quot;&quot;):-
+	htmB_RuleError(Msg),
+		htmP_StoreMessage(Msg),
+	fail.
+  htmP_BuildPage(&quot;&quot;):-
+	htmB_SrcDataConflict(RuleNo,VarNameList),
+		findall(VarName,htmP_MarkConflictedVariables(htmC_SrcDataConflict,VarName,VarNameList),_DummyL),
+		format(Msg,&quot;Source Data Conflict in RuleNo: %&quot;,RuleNo),
+		htmP_StoreMessage(Msg),
+	fail.
+  htmP_BuildPage(&quot;&quot;):-
+	htmB_FinalDataConflict(RuleNo,VarNameList),
+		findall(VarName,htmP_MarkConflictedVariables(htmC_FinalDataConflict,VarName,VarNameList),_DummyL),
+		format(Msg,&quot;Solution Data Conflict in RuleNo: %&quot;,RuleNo),
+		htmP_StoreMessage(Msg),
+	fail.
+  htmP_BuildPage(&quot;&quot;):-
+	htmB_MSG(Msg),
+		htmP_StoreMessage(Msg),
+	fail.
+  htmP_BuildPage(&quot;&quot;):-
+	htmB_OutputVarMark(C_VarName,OnCaseReaction),
+		assert(htmB_OutputVar(C_VarName,OnCaseReaction)),
+	fail.
+  htmP_BuildPage(HtmPage):-
+	htmB_TemplateFileName(TemlateFileName),
+	trap(file_str(TemlateFileName,_TemplateStr),_,fail),!,
+	htmP_MakeHTMLpage(_TemplateStr,&quot;&quot;,HtmPage),!.
+  htmP_BuildPage(HtmPage):-
+	makePage(&quot;Nothing Done. The Reason Unknown.&quot;,HtmPage).
+
+PREDICATES
+  htmP_BuildOutputPage(STRING htmPage)
+CLAUSES
+
+  htmP_BuildOutputPage(HtmPage):-
+	not(htmB_VarError(_,_)),
+	not(htmB_RuleError(_)),
+	not(htmB_SrcDataConflict(_,_)),
+	htmP_BuildPage(HtmPage),!.
+% Error situation handling
+  htmP_BuildOutputPage(&quot;&quot;):-
+	retractall(htmB_OutputVar(_,_)),
+	fail.
+  htmP_BuildOutputPage(&quot;&quot;):- % restoring User's input Data
+	htmB_VarValue(VarName,VarValue),
+		concat(&quot;v&quot;,VarName,V_VarName),
+		assert(htmB_OutputVar(V_VarName,VarValue)),
+	fail.
+  htmP_BuildOutputPage(&quot;&quot;):- % prepearing Case Marking
+	htmB_OutputVarMark(C_VarName,OnCaseReaction),
+		assert(htmB_OutputVar(C_VarName,OnCaseReaction)),
+	fail.
+  htmP_BuildOutputPage(HtmPage):- % building Error Reaction Page
+	htmP_BuildPage(HtmPage),!.
+  htmP_BuildOutputPage(HtmPage):-
+	makePage(&quot;Nothing Done. The Reason Unknown.&quot;,HtmPage).
+
+PREDICATES
+procedure  htmP_StoreVarData(
+			STRING 	varName,
+  			INTEGER varSrcStatus,
+  			INTEGER varResultStatus,
+  			REAL 	varValue)
+CLAUSES
+  htmP_StoreVarData(VarName,slvC_SourceIsVoid,slvC_CurrentlyIsEmpty,Value):-!,
+	concat(&quot;v&quot;,VarName,V_VarName),
+	assert(htmB_OutputVar(V_VarName,&quot;&quot;)),
+	htmP_GetCaseReaction(Value,htmC_VarVoid,OnCaseReaction),
+	concat(&quot;c&quot;,VarName,C_VarName),
+	assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).
+  htmP_StoreVarData(VarName,slvC_SourceIsVoid,slvC_CurrentlyResolved,Value):-!,
+	str_real(ValueStr,Value),
+	concat(&quot;v&quot;,VarName,V_VarName),
+	assert(htmB_OutputVar(V_VarName,ValueStr)),
+	htmP_GetCaseReaction(Value,htmC_VarSolved,OnCaseReaction),
+	concat(&quot;c&quot;,VarName,C_VarName),
+	assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).
+  htmP_StoreVarData(VarName,slvC_SourceIsSet,slvC_CurrentlyResolved,Value):-!,
+	str_real(ValueStr,Value),
+	concat(&quot;v&quot;,VarName,V_VarName),
+	assert(htmB_OutputVar(V_VarName,ValueStr)),
+	htmP_GetCaseReaction(Value,htmC_VarPreset,OnCaseReaction),
+	concat(&quot;c&quot;,VarName,C_VarName),
+	assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).
+  htmP_StoreVarData(VarName,slvC_SourceIsVoid,slvC_CurrentlyIsNeeded,Value):-!,
+	concat(&quot;v&quot;,VarName,V_VarName),
+	assert(htmB_OutputVar(V_VarName,&quot;&quot;)),
+	htmP_GetCaseReaction(Value,htmC_VarNotSolved,OnCaseReaction),
+	concat(&quot;c&quot;,VarName,C_VarName),
+	assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).
+  htmP_StoreVarData(_VarName,_VarSrcStatus,_VarResStatus,_Value).
+
+PREDICATES
+procedure htmP_GetSolverResults
+CLAUSES
+  htmP_GetSolverResults:-
+	slvP_GetVarList(VarList),
+	htmP_Member(slvT_Var(VarName,VarSrcStatus,VarCurStatus,Value),VarList),
+		htmP_StoreVarData(VarName,VarSrcStatus,VarCurStatus,Value),
+	fail.
+  htmP_GetSolverResults.
+	
+PREDICATES
+procedure htmP_RunSolver
+CLAUSES
+  htmP_RunSolver:-
+	not(htmB_VarError(_,_)), % valid Input Data
+	not(htmB_RuleError(_)),	 % valid Rule Script
+	slvP_ResolveNet,!,
+	htmP_GetSolverResults. % data stored in the internalDB
+  htmP_RunSolver:- % No proper solution.
+	assert(htmB_MSG(&quot;No Solution.&quot;)).
+
+PREDICATES
+  htmP_TransformData(STRING varName,STRING srcValue,INTEGER varStatus,REAL value) % (i,i,o,o)
+CLAUSES
+  htmP_TransformData(VarName,ValueSrc,slvC_SourceIsVoid,0.0):-
+  	assert(htmB_VarValue(VarName,ValueSrc)),
+  	fail.
+  htmP_TransformData(_VarName,&quot;&quot;,slvC_SourceIsVoid,0.0):-!.
+  htmP_TransformData(_VarName,ValueSrc,slvC_SourceIsSet,ValueReal):-
+	trap(str_real(ValueSrc,ValueReal),_,fail),!.
+  htmP_TransformData(VarName,ValueSrc,slvC_SourceIsVoid,0.0):-
+	format(MSG,&quot;The wrong Variable '%s' input. Must be a number instead of '%s'.&quot;,VarName,ValueSrc),
+	assert(htmB_VarError(VarName,MSG)),
+	fail.
+
+PREDICATES
+  htmP_InputData(STRING varName,STRING inputValue)
+procedure htmP_InsertUsrDescriptor(STRING usrEventName,STRING varValue)
+CLAUSES
+
+% User predefined Variables to mark results:
+% Wrong Data Cases:
+% 	usrOnInvalidData
+% 	usrOnSrcConflict
+% 	usrOnResConflict
+% Resolvation Results:
+%	usrOnPreset
+%	usrOnVoid
+%	usrOnNotSolved
+%	usrOnSolved
+%		usrOnNegative
+%		usrOnZero
+% Special Results marking:
+
+  htmP_InsertUsrDescriptor(&quot;invaliddata&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_InvalidData,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;preset&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_VarPreset,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;void&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_VarVoid,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;solved&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_VarSolved,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;notsolved&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_VarNotSolved,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;srcconflict&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_SrcDataConflict,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;resconflict&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_FinalDataConflict,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;negative&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_VarNegative,VarValue)).
+  htmP_InsertUsrDescriptor(&quot;zero&quot;,VarValue):-!,
+	assert(htmB_UserData(htmC_VarZero,VarValue)).
+  htmP_InsertUsrDescriptor(_EventName,_VarValue).
+
+  htmP_InputData(VarName,VarValue):-
+	frontstr(5,VarName,UsrOn,RestString),
+	UsrOn=&quot;usrOn&quot;,!,
+	upper_lower(RestString,UsrVar),
+	htmP_InsertUsrDescriptor(UsrVar,VarValue).
+  htmP_InputData(&quot;slvINFO&quot;,_Any):-!.
+  htmP_InputData(&quot;slvMSG&quot;,_Any):-!.
+  htmP_InputData(&quot;slvTEMPL&quot;,TempFileName):-!,
+	syspath(SolverExeStartupPath,_ProgName),
+        filenamepath(DataFileName,SolverExeStartupPath,TempFileName),
+	assert(htmB_TemplateFileName(DataFileName)).
+
+  htmP_InputData(&quot;slvRULE&quot;,RuleSetScript):-!,
+	trap(slvP_SetRules(RuleSetScript),_,assert(htmB_RuleError(&quot;Wrong rule script&quot;))).
+  htmP_InputData(VarName,VarValueSrc):-
+	htmP_TransformData(VarName,VarValueSrc,VarSourcStatus,VarValueReal),
+	slvP_SetVarList([slvT_Var(VarName,VarSourcStatus,VarSourcStatus,VarValueReal)]),!.
+
+PREDICATES
+procedure htmP_LoadSolver(ParmList)
+CLAUSES
+  htmP_LoadSolver(ParmList):-
+  	htmP_Member(parm(ParamName,ParamVal),Parmlist),
+		htmP_InputData(ParamName,ParamVal),
+	fail.
+  htmP_LoadSolver(_ParmList).
+  	
+GOAL	
+	slvP_SetProperty(slvT_MessageCB(htmP_Message)),
+	slvP_SetProperty(slvT_ErrAndWarnCB(htmP_ErrAndWarn)),
+	ParmList = cgi_GetParmList(),   
+	htmP_LoadSolver(ParmList),
+	htmP_RunSolver,
+	htmP_BuildOutputPage(HtmPage), % takes data from the internal DB
+	write(HtmPage).
+</pre><!--mstheme--><font face="Verdana">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,35 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  Build
+ FileName: COMPILE.PRO
+ Purpose: Supports the runtime Build process using PDC Prolog Compiler
+ 	  and PDC Link
+ Written by: Victor Yukhtenko
+ Comments:
+******************************************************************************/
+ifndef bldC_DOM_file
+  #Error file vpi\include\build\build.Dom must be included
+enddef
+
+constants
+ bldC_PRE_file = 1
+
+global predicates
+
+ procedure bldP_SetProperty(BldD_Property) - (i)
+ procedure INTEGER bldP_CompileFile(BldD_Argument,BldPD_Update callBack,BldPD_CompErrAndWarn callBack,BldPD_Message callBack) - (i,i,i,i)
+ procedure INTEGER bldP_CompileFile(BldD_Argument) - (i)
+ procedure INTEGER bldP_LinkTarget(BldD_Argument,BldPD_Update callBack,BldPD_Message callBack) - (i,i,i)
+ procedure INTEGER bldP_LinkTarget(BldD_Argument) - (i)
+ determ bldP_IsToolAccessable(BldD_ToolType) - (i)
+ procedure BOOLEAN bldP_Build()
+ procedure bldP_Stop(BldD_ToolType) - (i)
+ procedure bldP_Stop
+
+constants
+
+bldC_ERR_CmpRunning = 1 % Invoked compilation while compiler is running
+bldC_ERR_LnkRunning = 2 % Invoked linking while linker is running
+ 

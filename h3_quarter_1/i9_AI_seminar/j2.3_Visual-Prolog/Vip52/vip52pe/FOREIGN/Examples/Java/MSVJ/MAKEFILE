@@ -1,0 +1,7 @@
+JVCATTR = h:\SDK-Java.201\Bin\jvc.exe -nologo
+DEST_DIR= .
+
+all: 
+    copy ..\..\Dlls\exe\testdll.dll .\*.*
+    $(JVCATTR) -d $(DEST_DIR) *.java
+

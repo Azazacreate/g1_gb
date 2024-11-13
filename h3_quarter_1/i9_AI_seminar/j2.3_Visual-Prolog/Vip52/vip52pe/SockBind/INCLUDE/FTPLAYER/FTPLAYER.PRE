@@ -1,0 +1,75 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Tool:  FTP layer
+ FileName: ftplayer.pre
+ Purpose: A layer over Message layer for FTP using applications
+ Written by: Konstantin Ivanov
+ Comments: Include it in your project!
+******************************************************************************/
+GLOBAL PREDICATES
+  procedure ftplay_SetConnection(STRING Host,USHORT Port,WINDOW UserWin,UNSIGNED Message) 	- (i,i,i,i)
+  procedure ftplay_LastError(UNSIGNED Err,STRING ErrText) 					- (o,o)
+  determ FTPLAY_REPLY ftplay_GetAnswer(SOCKET Sock) 						- (i)
+  procedure ftplay_Close(SOCKET Sock) 								- (i)
+  procedure ftplay_CloseAll()
+  procedure ftplay_Bye()
+  procedure ftplay_MiscOptions(FTPLAY_DEBUG_HNDL, INTEGER NetworkTimeout)					- (i,i)
+  procedure ftplay_SetDataSocketSend(SOCKET Sock,USHORT LocalPort)				- (i,i)
+  procedure ftplay_SetDataSocketRecv(SOCKET Sock,USHORT LocalPort)				- (i,i)
+  procedure ftplay_SetDataSocketSendPasv(SOCKET Sock,STRING HostName,USHORT RemotePort)		- (i,i,i)
+  procedure ftplay_SetDataSocketRecvPasv(SOCKET Sock,STRING HostName,USHORT RemotePort)		- (i,i,i)
+
+  procedure ftplay_Login(SOCKET Sock,STRING UserId,STRING UserPwd,STRING UserAcct)		- (i,i,i,i)
+  procedure ftplay_Logout(SOCKET Sock) - (i)
+  procedure ftplay_SendFile(SOCKET Sock,STRING LocalName,STRING RemoteName,BOOLEAN PassiveTrans)- (i,i,i,i) % b_true - passive;b_false - normal
+  procedure ftplay_RecvFile(SOCKET Sock,STRING LocalName,STRING RemoteName,ULONG FileLength,BOOLEAN PassiveTrans) - (i,i,i,i,i)
+  procedure ftplay_ListFile(SOCKET Sock,STRING ListFileName,STRING RemoteName,BOOLEAN PassiveTrans) - (i,i,i,i)
+  procedure ftplay_AppendFile(SOCKET Sock,STRING LocalName,STRING RemoteName,BOOLEAN PassiveTrans) - (i,i,i,i)
+  procedure ftplay_SendUnFile(SOCKET Sock,STRING LocalName,BOOLEAN PassiveTrans)		- (i,i,i)
+  procedure ftplay_RenameFile(SOCKET Sock,STRING RemoteFileNameOld,STRING RemoteFileNameNew) 	- (i,i,i)
+
+  procedure ftplay_UserCommand(SOCKET Sock,STRING User) 					- (i,i)
+  procedure ftplay_PassCommand(SOCKET Sock,STRING Password)					- (i,i)
+  procedure ftplay_AcctCommand(SOCKET Sock,STRING Account)					- (i,i)
+  procedure ftplay_CdupCommand(SOCKET Sock)							- (i)
+  procedure ftplay_CwdCommand(SOCKET Sock,STRING Directory)					- (i,i)
+  procedure ftplay_SmntCommand(SOCKET Sock,STRING StruMount)					- (i,i)
+
+  procedure ftplay_QuitCommand(SOCKET Sock)							- (i)
+  procedure ftplay_ReinCommand(SOCKET Sock)							- (i)
+
+  procedure ftplay_TypeCommand(SOCKET Sock,STRING Type)						- (i,i)
+  procedure ftplay_PortCommand(SOCKET Sock,USHORT Port)						- (i,i)
+  procedure ftplay_ModeCommand(SOCKET Sock,CHAR Mode)						- (i,i)
+  procedure ftplay_StruCommand(SOCKET Sock,CHAR Stru)						- (i,i)
+  procedure ftplay_PasvCommand(SOCKET Sock)							- (i)
+
+  procedure ftplay_StorCommand(SOCKET Sock,STRING LocalName,STRING RemoteName)			- (i,i,i)
+  procedure ftplay_AppeCommand(SOCKET Sock,STRING LocalName,STRING RemoteName)			- (i,i,i)
+  procedure ftplay_RetrCommand(SOCKET Sock,STRING LocalName,STRING RemoteName,ULONG FileLength) - (i,i,i,i)
+  procedure ftplay_StouCommand(SOCKET Sock,STRING LocalName)					- (i,i)
+  procedure ftplay_RnfrCommand(SOCKET Sock,STRING Oldname)					- (i,i)
+  procedure ftplay_RntoCommand(SOCKET Sock,STRING Newname)					- (i,i)
+  procedure ftplay_DeleCommand(SOCKET Sock,STRING Filename)					- (i,i)
+  procedure ftplay_ListCommand(SOCKET Sock,STRING ListFile,STRING Path)				- (i,i,i)
+  procedure ftplay_NlstCommand(SOCKET Sock,STRING NListFile,STRING Path)			- (i,i,i)
+  procedure ftplay_RestCommand(SOCKET Sock,STRING Marker)					- (i,i)
+  % Marker is a string of printable characters, any ASCII code 33 through 126 - only for block
+  % & compressed modes
+  procedure ftplay_AlloCommand(SOCKET Sock,INTEGER NumberOfBytes,INTEGER NumberOfBytes1)	- (i,i,i)
+  procedure ftplay_AlloCommand(SOCKET Sock,INTEGER NumberOfBytes)				- (i,i)
+  procedure ftplay_AborCommand(SOCKET Sock)							- (i)
+  procedure ftplay_PwdCommand(SOCKET Sock)							- (i)
+  procedure ftplay_RmdCommand(SOCKET Sock,STRING Path)						- (i,i)
+  procedure ftplay_MkdCommand(SOCKET Sock,STRING Path)						- (i,i)
+
+  procedure ftplay_SystCommand(SOCKET Sock)							- (i)
+  procedure ftplay_StatCommand(SOCKET Sock)							- (i)
+  procedure ftplay_StatCommand(SOCKET Sock,STRING Filename)					- (i,i)
+  procedure ftplay_HelpCommand(SOCKET Sock)							- (i)
+  procedure ftplay_HelpCommand(SOCKET Sock,STRING Command)					- (i,i)
+
+  procedure ftplay_NoopCommand(SOCKET Sock)							- (i)
+  procedure ftplay_SiteCommand(SOCKET Sock,STRING Command)					- (i,i)

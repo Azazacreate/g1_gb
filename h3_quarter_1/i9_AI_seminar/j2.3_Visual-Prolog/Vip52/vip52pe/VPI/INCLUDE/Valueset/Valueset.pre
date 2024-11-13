@@ -1,0 +1,129 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prpolog
+
+ FileName: VALUESET.PRE
+ PURPOSE: Predicate definitions for valueset object
+ Written by: Yuri Illin
+ Comments:
+
+******************************************************************************/
+ifndef valueset_dom_included
+ #Error: this file requires include: valueset.dom
+enddef 
+
+constants
+  valueset_pre_included = 1
+
+global predicates
+
+/********************************************************/
+/*                                                      */
+/* Create a valuset                                     */
+/*                                                      */
+/* valueset_CreateSubClass                              */
+/*      (WINDOW,              i custom controls window  */
+/*       Row,                 i number of rows          */
+/*       Col,                 i number of columns       */
+/*       VALSET_CTRL_LIST)    i list of controls        */
+/*                                                      */
+/* RETURN VALUE: No                                     */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+  valueset_CreateSubClass( WINDOW, INTEGER Row, INTEGER Col, VALSET_CTRL_LIST) 
+                 - (i,i,i,i)  
+  
+/********************************************************/
+/*                                                      */
+/* Set or get item in valueset control                  */
+/*                                                      */
+/* valueset_Item                                        */
+/*       WINDOW,              i valueset window         */
+/*       Id,                  i item identifier         */
+/*       VALSET_VALUE         i new value               */
+/*       VALSET_VALUE         o current value           */
+/*                                                      */
+/* RETURN VALUE: No                                     */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+valueset_Item( WINDOW, INTEGER Id, VALSET_VALUE ) - (i,i,i),(i,i,o)
+
+/********************************************************/
+/*                                                      */
+/* Set item in valueset control                         */
+/*                                                      */
+/* valueset_SetItem                                     */
+/*       WINDOW,              i valueset window         */
+/*       Row,                 i row number              */
+/*       Col,                 i column number           */
+/*       Id,                  i new identifier for item */
+/*                             in (Col,Row) place       */
+/*       VALSET_VALUE         i new value               */
+/*       VALSET_PAINT_INFO    i paint callback for item */
+/*                                                      */
+/* RETURN VALUE: No                                     */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+  valueset_SetItem( WINDOW, INTEGER Row, INTEGER Col, INTEGER Id, VALSET_VALUE, VALSET_PAINT_INFO ) - (i,i,i,i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Change selection or get current selection            */
+/* in valueset control                                  */
+/*                                                      */
+/* valueset_SelectItem                                  */
+/*       WINDOW,              i valueset window         */
+/*       Id,                  i new selection           */
+/*       Id                   o current selection       */
+/*                                                      */
+/* RETURN VALUE: No                                     */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+valueset_SelectItem( WINDOW, INTEGER Id) - (i,i),(i,o)
+
+/********************************************************/
+/*                                                      */
+/* Set new paint callback in item                       */
+/*                                                      */
+/* valueset_SetPaint                                    */
+/*       WINDOW,              i valueset window         */
+/*       Id,                  i item identifier         */
+/*       VALSET_PAINT_INFO    i new paint callback      */
+/*                                                      */
+/* RETURN VALUE: No                                     */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+valueset_SetPaint( WINDOW, INTEGER Id, VALSET_PAINT_INFO ) - (i,i,i)
+
+/********************************************************/
+/*                                                      */
+/* Change of get valueset attributes                    */
+/*                                                      */
+/* valueset_Attributes                                  */
+/*       WINDOW,              i valueset window         */
+/*       Row,                i,o number of rows         */
+/*       Col,                i,o number of columns      */
+/*       Dx,                 i,o horizontal space       */
+/*				     between items      */
+/*       Dy                  i,o vertical space         */
+/*				     between items      */
+/*                                                      */
+/* RETURN VALUE: No                                     */
+/*                                                      */
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+valueset_Attributes( WINDOW, INTEGER Row, INTEGER Col, INTEGER Dx, INTEGER Dy ) - (i,i,i,i,i),(i,o,o,o,o)
+          

@@ -1,0 +1,92 @@
+<html>
+
+<head>
+<title>Security</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font face="arial, arial, helvetica">
+
+<h1><!--mstheme--><font color="#000000"><small><a name="Security"></a></small>Security<small> </small><!--mstheme--></font></h1>
+
+<p>A distinguishing characteristic of PDC's version of Prolog is its type system which
+provides an extra level of security in programming. The type declarations document the
+code and allow the compiler to helpfully point out common typing mistakes as well as more
+serious mistakes in logic at the early stages of development. And by serving as a type of
+contract between programmer and development system, type declarations help ensure the
+integrity of a program over the entire product lifecycle. </p>
+
+<blockquote>
+  <!--mstheme--></font><pre><small>domains
+   sentence = sentence(nounphrase,verbphrase)
+   nounphrase = noun(article,noun); name(name)
+   verbphrase = verb(verb); verbphrase(verb,nounphrase)
+   article,noun,name,ver = symbol
+predicates
+   handle_sentence(sentence)
+   handle_nounphrase(nounphrase)
+   handle_verbphrase(verbphrase)
+</small></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>Declaration of domains (data types) and predicates (procedures) improves the
+readability of source code, decreases the number of programming errors, and allows the
+compiler to generate faster and more efficient machine code. </p>
+</font>
+
+<h3><!--mstheme--><font color="#000000"><font face="arial, arial, helvetica"><b>Error and Exception Handling</b> </font><!--mstheme--></font></h3>
+
+<p><font face="arial, arial, helvetica">Run-time error and exception handling is critical
+to providing a bulletproof program that users feel they can rely on. Visual Prolog has
+predicates to trap run-time errors and exceptions as well as to maintain complete control
+over and detection of user-generated exceptions.</font></p>
+
+<p><font face="arial, arial, helvetica">&nbsp;</font> 
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,264 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>News in Visual Prolog 5.1</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Enhancements in Visual Prolog 5.1<!--mstheme--></font></h1>
+<p>In this section we present&nbsp; new features of Visual Prolog 5.1. One of
+the main aims of Visual Prolog 5.1 was to fix problems found in Visual Prolog,
+version 5.02. Visual Prolog 5.1 does also include a number of&nbsp;
+improvements.</p>
+<ol>
+  <li>Visual Prolog suggests now a <a href="#vde">direct access to the Visual
+    Prolog WEB sites and PDC Technical Support services</a> while you work in
+    the&nbsp; VDE.</li>
+  <li>Another Visual Prolog issue is that new <a href="#interfacing">examples
+    demonstrating Visual Prolog interfacing with other languages</a> have been
+    added.</li>
+  <li>The predicate mode checking is now fully implemented, and the compiler can
+    now do a much better job to test whether a predicate can fail.</li>
+  <li>The <a href="#debugger">debugger</a> has been improved. It is now more
+    tightly integrated with the VDE.</li>
+  <li>The problem of incompatibility of some tools and packages in one project,
+    caused by intersecting names of domains, predicates, etc., has been solved.</li>
+</ol>
+<p>For more detailed description of changes in Visual Prolog 5.1, please, see
+the following sections.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler">Compiler</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog_library">Prolog Library</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde">VDE</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi">VPI</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#debugger">Debugger</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker">Linker</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#interfacing">Interfacing with other Languages</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#packages">Visual Prolog Packages</a>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">PDC's Document Handling Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#esta">ESTA</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#msglayer">Message Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#ftp">FTP Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#http_layer">HTTP Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#tabdlg">TabDlg Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#report">Report Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#odbcbind">ODBCBIND</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples">Examples</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="Compiler"></a>Compiler<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The predicate mode checking is now fully implemented, and the compiler can
+    now do a much better job to test whether a predicate can fail.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Bugs in global single facts handling have been fixed.&nbsp; Please, see: <a href="../fixes/fixes51.htm#compiler">Compiler
+    Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="Prolog_Library"></a>Prolog Library<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Visual Prolog 5.1 provides more efficient&nbsp; and fast work HEAP,
+    allowing to assert millions of Facts.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="VDE"></a>VDE<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Visual Prolog suggests now a direct access to the Visual Prolog WEB sites
+    while you work in the&nbsp; VDE.<br>
+    The <strong>Help | Visual Prolog on the Web</strong> command&nbsp; provides
+    additional commands that take you to helpful Visual Prolog Web pages.<br>
+    For example, click:
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Home Page</strong> - to visit Visual Prolog Home Page<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Ordering</strong> - to order a registered version of Visual
+        Prolog.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>News about Visual Prolog</strong> -to display an up-to-date
+        listing of changes to our site. We also place notices here regarding
+        product updates, releases, or problems and work-arounds that may affect
+        all customers.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Support - </strong>to go to the Visual Prolog Support Home
+        Page<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Frequently Asked Questions</strong> - to get answers to the
+        most common questions about Visual Prolog.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Patches - </strong>to download the latest version of Visual
+        Prolog.<br>
+      <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">VDE provides now a very convenient way to contact with&nbsp; PDC Visual
+    Prolog technical support service that is responsible for answering questions
+    concerning problems of using Visual Prolog language, VPI, VDE, and other
+    tools, and packages supplied with Visual Prolog.<br>
+    Just&nbsp; choose the <strong>Help | Feedback to VIPSupport </strong>command.<br>
+    The &quot;Create Mail&nbsp; to PDC Support&quot; feature will automatically
+    create a letter, insert the Visual Prolog technical support address and
+    gather information that can be required for correct understanding of your
+    problem, e.g. Visual Prolog version, platform, compiler, and other options,
+    etc.<br>
+    You will need only to give a short informative description of the problem in
+    the Subject field and a detailed description of the problem in the Message
+    field.
+    <h4><!--mstheme--><font color="#000000">Remarks<!--mstheme--></font></h4>
+    <ol type="a">
+      <li>One should open the&nbsp; project concerning the problem before
+        choosing <strong>Feedback to VIPSupport </strong>command.</li>
+      <li>The &quot;Create Mail&nbsp; to PDC Support&quot; feature is available
+        only to registered users.</li>
+    </ol>
+    <p>Please, see the &quot;Feedback to VIPSupport&quot; topic in the online
+    Help for details.</p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Help | Introduction to Visual Prolog </strong>command provides now
+    reading &quot;Introduction to Visual Prolog&quot; (Intro.HTM) from VDE.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><strong>Help | Read License </strong>command provides now reading
+    &quot;License Agreement&quot;&nbsp; from VDE.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="VPI"></a>VPI<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some bugs have been fixed.&nbsp; Please, see: <a href="../fixes/fixes51.htm#vpi">VPI
+    Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">New predicate dlg_GetFileName/7<br>
+    STRING /*FirstFile =*/ dlg_GetFileName( STRING InitMask, SLIST FileTypes,
+    STRING Title, ILIST Flags, STRING StartPath, SLIST OutFiles, INTEGER
+    FilterIndex) - (i,i,i,i,i,o,o)<br>
+    The Last additional output parameter FilterIndex returns zero-based index of
+    a chosen file type.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">New improved Grep version.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="Debugger"></a>Debugger<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The debugger has again been heavily updated. It is now more tightly
+    integrated with the VDE. There is now a button on the VDE toolbar to start
+    debugging of a Program.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">In the debugger editor window Alt-F2 have been implemented, so it is
+    possible to fast locate a position back in the VDE.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The debugger does now handle runtime errors correctly.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Debugger Configuration Dialog has been changed. New options have been
+    added.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some other improvements have been included.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some bugs have been fixed.&nbsp; Please, see: <a href="../fixes/fixes51.htm#debugger">Debugger
+    Fixes</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="Linker"></a>Linker<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A bug&nbsp; has been fixed.&nbsp; Please see: <a href="../fixes/fixes51.htm#linker">Linker
+    Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Interfacing"></a>Interfacing with other Languages<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p align="left">New <a href="../technotes/foreign/foreign.htm">examples</a>,
+    all showing how to use Visual Prolog DLLs from other languages have been
+    included into the VIP\FOREIGN\EXAMPLES directory. The examples are organized
+    in subdirectories corresponding to the programming language.<br>
+    All the examples use the same Visual Prolog DLLs that are found in the DLLS
+    directory, so these have to be compiled before any of the examples are
+    compiled and run.</p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="Packages"></a>Visual Prolog Packages<!--mstheme--></font></h2>
+<h3><!--mstheme--><font color="#000000"><a name="DOC_TOOL"></a>PDC's Document Handling Package<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A bug&nbsp; has been fixed.&nbsp; Please see: <a href="../fixes/fixes51.htm#doc_tool">DOC_TOOL
+    Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="ESTA"></a>ESTA<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">ESTA *.KB example files have been restored.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="MSGLayer"></a>Message Layer Package<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some bugs have been fixed.&nbsp; Please, see: <a href="../fixes/fixes51.htm#msglayer">Message
+    Layer Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="FTP"></a>FTP Layer Package<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some bugs have been fixed.&nbsp; Please, see: <a href="../fixes/fixes51.htm#ftp">FTP
+    Layer Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Handling of close event with error has been added.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="HTTP_Layer"></a>HTTP Layer Package<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">In order to avoid intersection of domain names in the HTTP Layer Package
+    and the Document Handling Package, the <b>URI </b>domain of the HTTP Layer
+    Package has been renamed <strong>httplay_URI</strong>.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some bugs have been fixed.&nbsp; Please, see:<a href="#http_layer"> </a><a href="../fixes/fixes51.htm#http_layer">HTTP
+    Layer Fixes</a>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="TabDlg"></a>TabDlg Package<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">New predicate <a href="news51add/tabdlg_setstate.htm">tabdlg_SetState</a>.
+    It is recommended to use this predicate instead of <strong>dialog_SetState</strong>
+    and <strong>win_SetState</strong>, when it is necessary to&nbsp; handle
+    controls in inactive sheets correctly.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="Report"></a>Report Package<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The Report package has been change in order to avoid incompatibility of
+    the Report and the Own_Draw packages in one module. However, it is not fully
+    backwards compatible. Please, read <a href="../upgrade/upgrade5to5.1.htm">Upgrade
+    Notes</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="ODBCBIND"></a>ODBCBIND<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">MAK files has been added to ODBCBIND/LIB directory.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="Examples"></a>Examples<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Some examples have been improved.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">In the build 565 .VPR files in the examples included into WINBIND and
+    TXTEXAMP directories have been replaced with the .PRJ files. This gives a
+    possibility to open 16-bit examples from&nbsp; 32-bit VDE.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemeseparator--><p align="center"><img src="../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<h5><!--mstheme--><font color="#000000">See also:<!--mstheme--></font></h5>
+<p><a href="../fixes/fixes51.htm">Solved Problems</a> | <a href="../upgrade/upgrade5to5.1.htm">Upgrade
+Notes</a> | <a href="../knownbugs/pdcindex.htm">Known problems </a>| <a href="../patches/pdcindex.htm">Patches</a>
+| <a href="../technotes/pdcindex.htm">Technical Notes</a> |<a href="../faq/pdcindex.htm">
+Support FAQ</a></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

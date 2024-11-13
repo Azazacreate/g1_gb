@@ -1,0 +1,18 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  BRWSLIST
+ FileName: BRWSLIST.PRE
+ Purpose: Predicate definitions for BRWSLIST.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+%END_DECL

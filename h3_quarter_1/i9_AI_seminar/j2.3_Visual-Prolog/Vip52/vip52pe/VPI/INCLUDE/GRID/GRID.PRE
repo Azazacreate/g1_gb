@@ -1,0 +1,72 @@
+/******************************************************************************
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	GRID.PRE
+ Purpose:	GRID custom control global predicates
+ Written by:	Sergey Alexeev
+ Version:	2.0
+ Build:		025.991028
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:
+******************************************************************************/
+ifndef grid_dom_included
+ #Error: this file requires include: grid.dom
+enddef 
+
+constants
+	grid_pre_included = 1
+
+global predicates
+%---- Init Grid custom control ----
+procedure grid_Init(WINDOW GridWin,
+	  GRID_STYLE,
+	  GRID_ROWSTYLE,
+	  GRID_COLUMNSTYLE,
+	  GRID_CALLBACK) - (i,i,i,i,i)
+
+% --- Causes data requery and redrawing of the certain Grid control area. ------
+procedure grid_Invalidate(WINDOW GridWin,GRID_DATA_AREA) - (i,i)
+
+%---- Get/Set marker ----
+procedure grid_Marker(WINDOW GridWin,GRID_MARKER) - (i,i), (i,o)
+
+%---- Get/Set Active row ----
+procedure grid_ActiveRow(WINDOW GridWin,INTEGER ActiveRows) - (i,i), (i,o)
+
+%---- Change/get number of rows in Grid custom control. -------
+procedure grid_Rows(WINDOW GridWin,INTEGER MaxRows) - (i,i), (i,o)
+
+%---- Change/get column style definitions in the Grid custom control. ------
+procedure grid_ColumnStyle(WINDOW GridWin,GRID_COLUMNSTYLE) - (i,i), (i,o)
+
+%---- Change/get row style definitions in the Grid custom control. ------
+procedure grid_RowStyle(WINDOW GridWin,GRID_ROWSTYLE) - (i,i), (i,o)
+
+%---- Change/get Grid style definitions in the Grid custom control. ------
+procedure grid_Style(WINDOW GridWin,GRID_STYLE) - (i,i), (i,o)
+
+procedure grid_invisible_markers(WINDOW GridWin,BOOLEAN InvisibleVisible) - (i,i), (i,o)
+
+%---- Sets the callback function for a Grid custom control (i,i). -------
+%---- Returns the callback function for a Grid custom control (i,o). ----
+determ grid_CallBackFunc(WINDOW GridWin,GRID_CALLBACK) - (i,i), (i,o)
+
+%---- X/Y position to Row/Column converting. ------
+determ grid_get_pos(WINDOW GridWin,INTEGER X,INTEGER Y,INTEGER Row,INTEGER Column) - (i,i,i,o,o)
+
+%---- Changes the action, performed by grid control when user presses Enter key
+%---- or Tab key or exceeds the maximum number of symbols typing the data into the cell (i,i,i). 
+%---- Get current action settings (i,i,o).
+determ grid_VisitOrder(WINDOW,GRID_KEY,GRID_KEY_ACTION) - (i,i,i), (i,i,o)
+
+%---- Changes the action, performed by grid control when user presses Enter key
+%---- or Tab key or exceeds the maximum number of symbols typing the data into the cell (i,i,i,i). 
+%---- Get current action settings (i,i,i,o).
+determ grid_VisitOrder(WINDOW,GRID_KEY,INTEGER ShiftCtlAlt,GRID_KEY_ACTION) - (i,i,i,i), (i,i,i,o)
+
+procedure  grid_draw(WINDOW GridWin,INTEGER From_Row,INTEGER To_Row,INTEGER From_Column,INTEGER To_Column,GRIDANSWER) - (i,i,i,i,i,i)
+
+%---- Global predicate handles all Grid custom control events.
+determ grid_HandleEvent(WINDOW,EVENT) - (i,i)
+

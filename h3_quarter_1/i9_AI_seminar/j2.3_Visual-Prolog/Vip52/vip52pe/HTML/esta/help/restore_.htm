@@ -1,0 +1,13 @@
+<HTML>
+<HEAD>
+<TITLE>RESTORE_VALUES Procedure</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='RESTORE_VALUES Procedure'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>RESTORE_VALUES Procedure</FONT>
+<P ALIGN=LEFT>See also: <A HREF='CALL_ACT.HTM'>Call Action</A>
+<P ALIGN=LEFT>The built-in procedure <B>restore_values</B>(&lt;<A HREF='FILENAME.HTM'>filename</A>&gt;) restores the ESTA parameters to settings previously saved in a data file (See <A HREF='SAVE_VAL.HTM'>save_values</A>). The single argument is the full file name of this datafile. This may be used in several situations: when a standard set of parameter values are known in advance; if an external program, called from ESTA via the system procedure, needs to communicate with ESTA; or in combination with <A HREF='CHAIN_AC.HTM'>chaining</A> from one knowledge base to another.  
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>call restore_values('c:\esta\setup.dat')</FONT>
+</BODY>
+</HTML>

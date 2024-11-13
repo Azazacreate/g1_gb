@@ -1,0 +1,53 @@
+// mycalc3.odl : type library source for mycalc3.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (mycalc3.tlb).
+
+[ uuid(FB1AE906-4A0B-11D1-B1F7-00AA0019F5FB), version(1.0) ]
+library Mycalc3
+{
+        importlib("stdole32.tlb");
+
+
+        //  Primary dispatch interface for CMycalc3Doc
+
+        [
+                uuid(FB1AE907-4A0B-11D1-B1F7-00AA0019F5FB),
+                oleautomation,
+                dual
+        ]
+        interface IMycalc3 : IDispatch
+        {
+                //properties:
+                        // NOTE - ClassWizard will maintain property information here.
+                        //    Use extreme caution when editing this section.
+                        //{{AFX_ODL_PROP(CMycalc3DlgAutoProxy)
+                        [id(1), propput] HRESULT Accumulator([in] long l);
+                        [id(1), propget] HRESULT Accumulator([out,retval] long* l);
+                        [id(2), propput] HRESULT Operand([in] long l);
+                        [id(2), propget] HRESULT Operand([out,retval] long* l);
+                        [id(3), propput] HRESULT Operator([in] long l);
+                        [id(3), propget] HRESULT Operator([out,retval] long* l);
+                        //}}AFX_ODL_PROP
+
+                //methods:
+                        // NOTE - ClassWizard will maintain method information here.
+                        //    Use extreme caution when editing this section.
+                        //{{AFX_ODL_METHOD(CMycalc3DlgAutoProxy)
+                        [id(4)] void Button(BSTR b);
+                        [id(5)] void Quit();
+                        //}}AFX_ODL_METHOD
+
+        };
+
+        //  Class information for CMycalc3Doc
+
+        [ uuid(FB1AE905-4A0B-11D1-B1F7-00AA0019F5FB) ]
+        coclass Mycalc3
+        {
+                [default] interface IMycalc3;
+        };
+
+        //{{AFX_APPEND_ODL}}
+        //}}AFX_APPEND_ODL}}
+};

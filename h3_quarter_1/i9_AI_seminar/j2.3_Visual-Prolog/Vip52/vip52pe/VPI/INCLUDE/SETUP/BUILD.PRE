@@ -1,0 +1,80 @@
+/*****************************************************************************
+
+	(c) Copyright 1984 - 2000 Prolog Development Center A/S
+
+ Project:  BUILD
+ FileName: BUILD.PRE
+ Purpose: Predicate definitions for BUILD.PRO
+ Written by: Michael Alexander
+ Comments:
+******************************************************************************/
+constants
+  build_pre_included = 1
+
+constants
+ init32 = 0xFFFFFFFF
+ init16 = 0
+
+global domains
+ crc16 = UNSIGNED WORD
+ crc32 = DWORD
+ cmd_switch= make_DSet;
+ 		p(char,char);% p16,p32
+ 		use_mm ;make_image ;v(ULONG)
+
+
+
+global database - switches
+  have_sw(cmd_switch)
+
+%include "iodecl.con"
+
+%INCLUDE "script.con"
+
+constants
+   %max_Disks=20
+   binary_filemode_flag=0
+   blockSize=0xFE80
+  % imageName = "WINDOWS.IMG"
+
+
+/************************************************************************
+	Some Global domains
+*************************************************************************/
+global domains
+  stringlist = STRING*
+  file = infile; archive; fdir;fdir_32;fdir_u;diskfile;log_File
+  arcfpos, filesize = ULONG
+  udate, utime, blksize = USHORT
+
+  directory = DIR_ENTRY*
+  dir_entry = small_file(STRING, FILESIZE, UDATE,UTIME,ULONG CRC32,ARCFPOS,BLKSIZE);
+	     large_file(STRING, FILESIZE, UDATE,UTIME,ULONG CRC32,ARCFPOS,BINARY);
+	     subdir(STRING, DIRECTORY)
+
+  install_script=IGRP*
+  igrp=struct igroup(INTEGER, ARCFPOS, FILESIZE, ULONG CRC32)
+  igrp2=struct install_group(INTEGER, DIRECTORY)
+
+
+domains
+  file_or_directory	= file(STRING) ; directory(STRING)
+  include_list  	= file_or_directory*
+  from_path		= fromInstallRoot; startFromPath(STRING)
+  local_excludes	= no_Exclusions; excluding(STRINGLIST)
+  mgrp  		= struct group(INTEGER, FROM_PATH, LOCAL_EXCLUDES, INCLUDE_LIST)
+  make_script		= mgrp*
+
+database - local
+  temp_files_size(LONG)
+  fdir32_IS(igrp)
+  fdir16_IS(igrp)
+  volume_size(LONG)
+
+/************************************************************************
+	The User defined Make Script
+*************************************************************************/
+predicates
+  procedure  exclude_all(STRINGLIST)
+  procedure  make_script(MAKE_SCRIPT)
+  determ  copy_files_script(STRINGLIST,INTEGER)

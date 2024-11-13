@@ -1,0 +1,176 @@
+/*****************************************************************************
+
+                Copyright (c) 1984 - 2000 Prolog Development Center
+
+ Project:
+ FileName: HTTPEXT.PRE
+ Purpose: Definition of Server Extension Entry Points and HTTP Layer Predicates
+ Written by: PDC
+ Comments:
+******************************************************************************/
+
+ifndef  _HTTPEXT_PRE_
+
+constants
+        _HTTPEXT_PRE_   =       1
+
+
+ifndef  _HTTPEXT_CON_
+include "httpext.con"
+enddef
+
+ifndef  _HTTPEXT_DOM_
+include "httpext.dom"
+enddef
+
+
+GLOBAL PREDICATES
+
+
+/*==============================================================================
+
+   User defined Extension Entry Points
+
+==============================================================================*/
+
+%
+%  Return the version this extension is built for.
+%  Is called when extension activates .
+%  This function is required by the spec.
+%
+
+        http_ExtensionVersion( string ) - (o)           language c
+
+
+%
+%  Is called for each client request .
+%  This function is also required by the spec.
+%
+
+   DWORD http_ExtensionProc ( EXTENSION_CONTROL_BLOCK ) -       (i)     language c
+
+
+%  Is called when Server wants to unload the extension
+%  Flags :
+%    HSE_TERM_ADVISORY_UNLOAD - Server wants to unload the extension,
+%          extension can return b_true if OK, b_false if the server should not
+%          unload the extension
+%    HSE_TERM_MUST_UNLOAD - Server indicating the extension is about to be
+%          unloaded, the extension cannot refuse.
+%
+
+   boolean http_TerminateExtension( DWORD flags )       -       (i) language c
+
+
+/*==============================================================================
+
+   HTTP Layer Predicates
+
+==============================================================================*/
+
+
+%========  Access to different EXTENSION_CONTROL_BLOCK fields  ============
+
+% Conn Id
+
+     DWORD http_ConnID (
+                EXTENSION_CONTROL_BLOCK
+                       )  -  (i) language c
+
+
+% Sets the value for request status code
+
+     http_SetStatusCode (
+                   EXTENSION_CONTROL_BLOCK ,
+                   DWORD   StatusCode
+                        )   -  (i,i) language c
+
+% Request method
+
+     http_Method ( EXTENSION_CONTROL_BLOCK , STRING )  -  (i,o) language c
+
+
+% Query String
+
+     http_QueryString ( EXTENSION_CONTROL_BLOCK , STRING )  -  (i,o) language c
+
+
+% Content Type
+
+     http_ContentType ( EXTENSION_CONTROL_BLOCK , STRING )  -  (i,o) language c
+
+
+% Content Length  ( == TotalBytes )
+
+    DWORD http_ContentLength ( EXTENSION_CONTROL_BLOCK )        -       (i)  language c
+
+
+% Available Bytes
+
+    DWORD http_AvailableBytes ( EXTENSION_CONTROL_BLOCK ) -  (i) language c
+
+
+% User data in BINARY form
+
+      http_Data ( EXTENSION_CONTROL_BLOCK , BINARY )  -  (i,o) language c
+
+
+
+% User data in STRING form
+
+      http_DataString ( EXTENSION_CONTROL_BLOCK , STRING )  -  (i,o)  language c
+
+
+
+%=============== Interface to Server Callback Functions =====================
+
+%   GetServerVariable
+
+      INTEGER http_GetServerVariable (
+                  EXTENSION_CONTROL_BLOCK ,
+                  STRING  name ,
+                  STRING  value
+                                      )  -  (i,i,o)  language c
+
+
+%   ReadClient
+
+      INTEGER http_ReadClient (
+                  EXTENSION_CONTROL_BLOCK ,
+                  DWORD  bytes_req ,
+                  BINARY data ,
+                  DWORD  bytes_read
+                              )         - (i,i,o,o)  language c
+
+
+%   WriteClient
+
+      INTEGER http_WriteClient (
+                  EXTENSION_CONTROL_BLOCK ,
+                  DWORD  bytes_req ,
+                  BINARY data ,
+                  DWORD  bytes_written
+                               )        - (i,i,i,o)  language c
+
+
+      INTEGER http_WriteClientString (
+                  EXTENSION_CONTROL_BLOCK ,
+                  STRING data ,
+                  DWORD  bytes_written
+                                     )        - (i,i,o)  language c
+
+
+
+%  ServerSupportFunction
+
+      INTEGER http_ServerSupportFunction (
+                  EXTENSION_CONTROL_BLOCK  ,
+                  DWORD   request ,
+                  DWORD   bytes_req ,
+                  STRING  data ,
+                  STRING  data_type ,
+                  DWORD   bytes_act
+                                         )     -  (i,i,i,i,i,o)  language c
+
+
+enddef

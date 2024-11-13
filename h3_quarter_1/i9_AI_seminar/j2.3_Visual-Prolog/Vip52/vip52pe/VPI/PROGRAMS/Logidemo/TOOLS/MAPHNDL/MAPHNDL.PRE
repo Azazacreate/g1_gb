@@ -1,0 +1,16 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	MAPHNDL.PRE
+ Purpose:	Map viewer and editor for TRANS project. Global predicates.
+ Written by:	Alexander Butovsky
+ Comments:
+******************************************************************************/
+
+global predicates
+  mapctrl_class_handler : EHANDLER
+determ  mv_ShowMap(WINDOW TaskWin) - (i)
+determ  mv_EditMap(WINDOW TaskWin) - (i)
+procedure  mv_StoreLayout()
+procedure  mv_MapRefresh()

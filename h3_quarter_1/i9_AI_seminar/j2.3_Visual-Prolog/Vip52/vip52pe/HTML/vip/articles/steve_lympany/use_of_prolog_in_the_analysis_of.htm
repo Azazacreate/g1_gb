@@ -1,0 +1,453 @@
+<html>
+
+<head>
+<title>The Use of Prolog in the Analysis of Safety Critical Software</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b><font SIZE="5">
+
+<p ALIGN="CENTER">The Use of Prolog in the Analysis of Safety Critical Software</p>
+</font>
+
+<p ALIGN="CENTER">Steve Lympany</b></p>
+
+<p ALIGN="CENTER">Analytical Databases Ltd.,<br>
+Westlands, Two Mile Ash, Horsham, RH13 7LA England<br>
++44 (0)1403 730071 </p>
+
+<p ALIGN="CENTER">steve@analytical-databases.co.uk</p>
+<b><font SIZE="4">
+
+<p ALIGN="CENTER">Abstract</font></b><font SIZE="3"></p>
+</font>
+
+<p>&nbsp;</p>
+<font SIZE="2">
+
+<p></font><font size="3">High integrity software and safety critical applications need to
+be formally and rigorously specified, designed and implemented. Minimising the probability
+of failure of such applications is vital, since failures can lead to hazards that result
+in injury or death. This paper outlines some methods that have been used to analyse the
+safety critical software developed for a rail transport system, supporting the Safety Case
+that our client has submitted to HMRI (Railways Inspectorate). In particular it describes
+how Prolog has been used to develop software tools that support such analyses. The method
+can be used effectively in the development of robust, 'error free', commercial and
+financial applications.</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="3">1. INTRODUCTION<!--mstheme--></font></h1>
+
+<p>Currently, several railways worldwide are considering upgrading their signaling system
+from a &quot;fixed block&quot; system to &quot;moving block&quot;. The moving block system
+is rather more than a signal system, and essentially provides automatic train control. </p>
+
+<p>Fixed block rail systems i.e. existing rail systems, involve fixed segments of track in
+which the signaling system controls the movement of trains, allowing only one train to be
+present in a segment at any time. In a moving block system, the usual trackside signals
+are dispensed with, and are replaced with computers that control the movement of trains.
+The &quot;block&quot; now moves along with the train (this is analogous to what car
+drivers practice by just keeping a safe distance from the car in front). Trackside and
+on-board computers communicate with each other, and trains know the positions and speeds
+of trains in front and behind them and also the properties of the track itself (e.g. track
+slopes in order to calculate braking distances). Fixed block systems typically limit the
+throughput of trains to 24 trains per hour. A moving block system could achieve a
+throughput of 36 trains per hour. </p>
+
+<p>The system for which this work was undertaken is likely to be the first fully-fledged
+moving block system in the world. There are some partial systems currently working, such
+as Docklands Light Rail, Bay Area Rapid Transit (San Francisco), and currently Westcoast
+Main Line is considering upgrading to moving block. </p>
+
+<p>For the moving block system, our client is designing and developing both computer
+hardware and software that will control the trains and, at some stations, platform doors.
+Hardware is based on Motorola 680x0 chips, and software is primarily written in ADA-83 -
+the usual platform for safety critical applications.</p>
+
+<p>Primarily there are four products (computers) that together control the trains and
+manage communications. Two products reside on the trains, and two are trackside, scattered
+up and down the track and at the stations, continuously communicating with each other.</p>
+
+<p>Each product has one primary application running on it, together with some secondary
+applications such as Built In Test software that continually checks for hardware faults,
+communications software, schedulers etc.. There is also the &quot;operating system&quot;
+that is common to all products. The analysis described here concerns the primary
+application software.</p>
+
+<p>First, a simulator was developed (in Prolog) that is equivalent to the safety critical
+application in one of the products, but which runs under MS Windows. Next, a method for
+systematically injecting faults into the simulator was added. The simulator was run (for
+the many conditions the trains are to run under), systematically injecting single faults,
+and creating a database that contains sequences that result in hazards (for example, where
+the train doors open and the platform doors remain closed). The analysis helped to locate
+potential weaknesses in design, therefore indicating where designs should be modified
+(e.g. additional code added) to reduce the risk of failure, and make the application more
+robust. The results from safety analyses therefore fed back into software design. The
+simulator was also used to analyse how the application behaves when it runs under
+improbable conditions (i.e. conditions that may not have been foreseen when specifying the
+product requirements), resulting in an ultra-safe software design. </p>
+
+<p>The simulators are specific to a particular moving block design, but the analysis
+method can be applied to any safety critical or other &quot;risky&quot; software.</font><font SIZE="2"></p>
+
+<p>&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="3">2. THE BUSINESS ISSUE<!--mstheme--></font></h1>
+
+<p>The objective of the work was to perform a hazard analysis and to provide a safety
+report on the application software that will control the trains, and finally to recommend
+design changes to the applications that would maximise safety and robustness of software.
+The objective of this paper is to demonstrate how Prolog is used to support the analyses
+and the software safety analysts.</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="3">3. BACKGROUND<!--mstheme--></font></h1>
+
+<h2><!--mstheme--><font color="#000000">3.1 Software Design<!--mstheme--></font></h2>
+
+<p>It is clear that the system being delivered is safety critical, and as such the design
+of the system is both formal and rigorous. The safety analysis of the hardware follows
+methods that have matured in other safety critical systems, such as in the aviation
+industry.</p>
+
+<p>Safety Critical Software has been designed by our client using the Shlaer-Mellor method
+[5], which is an object-oriented method. Objects are designed, and are specified in PDL -
+Program Design Language - before being implemented in ADA-83. It is the fact that the
+Shlaer-Mellor method was employed that allows systematic safety analyses described in this
+paper to be carried out, so the salient points of this method are now described. </p>
+
+<p>The notation used for software development is an important constraint on which analysis
+method is appropriate. The three common notations are:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Data Flow Diagrams<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">State Transition Diagrams (used in this work)<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Procedural Language<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The Shlaer-Mellor Method is object-oriented, and all applications were designed using
+this method. Software objects can send and receive messages to and from other objects (and
+eventually to other products). Each instance of an object may be in one state only. When
+an object receives a message from some other object, the action it performs will depend on
+its state, and the action may generate new messages and possibly change the state of the
+object. The design of the object can be encapsulated in a State Transition Table. The
+table relates object states, messages (incoming) and actions. </p>
+
+<p>For example, consider [some invented] database object (named DBO) that can have
+messages Open, Close and List, for example. The State Transition Table may look like:</p>
+
+<!--mstheme--></font><table border="1" width="100%" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    </font><font size="4"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"></font><font size="3">&nbsp;<!--mstheme--></font></td>
+    <td width="80%" colspan="4" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"></font><font size="4"><strong>Object States</strong></font><font size="3"><!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+  <tr>
+    </font><font size="3"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Incoming Messages<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">IS OPEN<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">IS CLOSED<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">IS OPENING<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">IS CLOSING<!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+  <tr>
+    </font><font size="3"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">OPEN<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 1<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Ignore<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Ignore<!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+  <tr>
+    </font><font size="3"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">CLOSE<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 2<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Ignore<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Ignore<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Ignore<!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+  <tr>
+    </font><font size="3"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">LIST<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 3<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 4<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 5<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 6<!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+  <tr>
+    </font><font size="3"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">HAS OPENED<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error <!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 7<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error<!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+  <tr>
+    </font><font size="3"><td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">HAS CLOSED<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Error<!--mstheme--></font></td>
+    <td width="20%" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica">Action 8<!--mstheme--></font></td>
+    </font><font SIZE="2">
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p></font><font size="3">Table 1 - Object State Transition Table</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<p></font><font size="3">The actions for DBO are appropriately designed. For example,
+Action 1 (which is just a function, or in Prolog, a predicate) is called when DBO is in
+state IS CLOSED, and it receives the message OPEN:</p>
+
+<p><font face="Courier">odb_action(1):-<br>
+&nbsp;&nbsp;&nbsp; is_in_state(&quot;IS CLOSED&quot;),!,%double check this object is
+closed<br>
+&nbsp;&nbsp;&nbsp; set_state(&quot;IS OPENING&quot;),<br>
+&nbsp;&nbsp;&nbsp; open_database.</font></p>
+
+<p><font face="Courier">odb_action(7):-<br>
+&nbsp;&nbsp;&nbsp; is_in_state(&quot;IS OPENING),!,<br>
+&nbsp;&nbsp;&nbsp; set_state(&quot;IS OPEN&quot;).</font></p>
+
+<p><font face="Courier">open_database:-<br>
+&nbsp;&nbsp;&nbsp; % file manipulations that may take some time <br>
+&nbsp;&nbsp;&nbsp; send_message_to_self(&quot;HAS OPENED&quot;).</font></p>
+
+<p><font face="Courier">timer:-%or interrupt<br>
+&nbsp;&nbsp;&nbsp; Process_messages. %i.e. send next message in stack and perform
+appropriate actions</font></p>
+
+<p>The actual applications have from around 50 software objects to several hundred objects
+each. </p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="3">3.2 Safety Integrity Level - SIL<!--mstheme--></font></h2>
+
+<p>The definitions described here are not rigorous but are presented to give a flavour of
+the safety critical software industry. Some of the ideas presented can be applied to other
+platforms such as PCs and workstations to develop high integrity and fault tolerant
+applications (e.g. financial systems).</p>
+
+<p>Software safety analysis takes place within the context of a wider product-level safety
+analysis, which in turn forms part of the system-level safety analysis of the system as a
+whole. The analyses at these higher levels define a hazard risk assessment with each
+product that is reflected in its assigned Safety Integrity Level (SIL). Our client has
+used the IEC-1508 standard - this defines the Safety Integrity Level. A component's SIL
+defines the potential severity of any hazards that can be potentially caused by the
+product, and indicates the required probability of occurrence of any random failure.</p>
+
+<p>The lowest SIL level, SIL0, would be usually assigned to Windows applications - an
+application causing a general protection fault will not cause direct injury or death. Even
+Windows itself is not safety-aware and could not normally be used (at least as a single
+controlling PC) for running high integrity applications.</p>
+
+<p>The highest level, SIL4, has an associated hazard severity of &quot;catastrophic&quot;
+and requires a probability of failure of 10-4 - 10-5 per year. For further reading, see
+References [1-4]. </p>
+
+<p>In the aviation industry, the Federal Aviation Administration (FAA) defines five
+categories of failure conditions and five software level definitions ranging from Level A
+(Catastrophic) to Level E (no effect). ISO 9000 guidelines do not address the production
+of Safety Critical Software.</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="3">3.3 Failures<!--mstheme--></font></h2>
+
+<p>It is interesting to note that hardware failures are random, and these are handled in a
+probabilistic way. Contacts or wires may be broken, for example, after prolonged vibration
+of the computers. Memory chips may develop faults over a period of time.</p>
+
+<p>Software failures, on the other hand, are systematic. They may appear to be random, but
+given the same conditions when the code is run, a software error will consistently
+manifest itself. However, isolating (and therefore being able to repeat) these conditions
+is tedious, and this is what these safety analyses are meant to achieve.</p>
+
+<p>Of course, software may fail because of a hardware failure (e.g. a memory fault), but
+it is also necessary for the software to cope with this in a safe manner.</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="3">3.4 Single Point Failures<!--mstheme--></font></h2>
+
+<p>It is a stated objective of our client's System Safety Implementation Strategy that a
+product should not contain any single random or systematic failure condition that can
+cause a potentially catastrophic hazard. To explain to readers who have experience in this
+area, this requirement can be met by ensuring that the fault trees for all product failure
+conditions that are potentially catastrophic have at least one AND-gate in every fault
+tree path. For software subsystems, protection mechanisms that introduce AND-gates into
+the corresponding software fault trees include:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Addition of a separate Protection/Monitor Object in the software architecture that
+    cross-checks objects output data items before they propagate to the Product output signals
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Addition of guarding conditions embedded into software objects that protect explicitly
+    against specific conditions that might cause a hazard.</font><font SIZE="2"><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="3">3.5 Safety Analysis<!--mstheme--></font></h2>
+
+<p>There are several analysis methods that may be employed: Threads Analysis, Event Tree
+Analysis, Fault Tree Analysis, Transaction Analysis and Failure Modes and Effects Analysis
+(FMEA). There are two reasoning modes for performing analyses:</p>
+
+<p><strong>Forwards Analysis,</strong> or &quot;bottom up&quot;/ &quot;inductive&quot;
+analysis. The FMEA and Event tree analyses are inductive analyses. It requires the
+systematic injection of faults into the software and discovering what hazards are
+produced. This is the method used in the Prolog simulators described below.</p>
+
+<p><strong>Backwards Analyses</strong> or &quot;top down&quot;/ &quot;deductive&quot;
+analysis. Here we start with a hazard and work back to discover what object conditions can
+cause it. Fault tree analysis is deductive.</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="3">4. The Simulator - Threads Analysis<!--mstheme--></font></h1>
+
+<p>It is difficult to systematically inject software faults into the actual products
+(hardware faults are easier to test, by breaking connections etc.). For software safety
+analysis, the analyst has many documents ranging from requirements, design, and
+specifications that he must manually review and analyse to try to discover weaknesses and
+errors. It is very tedious to systematically check the cascade of messages sent between
+objects when an event occurs. The analyses of the message cascades need to be repeated for
+various combinations of software object states, and repeated again for each injected fault
+(the system must not result in a hazard for any single fault). This will usually result in
+many tens or hundreds of thousands of analyses.</p>
+
+<p>A full analysis needs to be systematic, and the object-oriented design of the system
+software lent itself to the development of simulators that also allow faults to be
+injected systematically for every single condition (e.g. train arrives at station, driver
+presses open doors etc.). It should be noted that the simulators do not replace the safety
+analysts, but instead help them perform a more complete and more rigorous analysis than
+could practically be achieved manually.</p>
+
+<p>Two simulators have been/are being developed. The first simulator was used to test the
+method on one particular product. Only three software failures were catered for:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Message not sent<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Message sent when not required<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Message corrupted<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>As such, this simulator could only support a SIL2 analysis (which is what was required
+for this product).</p>
+
+<p>The second simulator (currently under development) is designed so that all products can
+be analysed as an integrated signal system system. It is supported by a parser generator
+(also written in Prolog). The parser generator reads the PDL and creates much of the
+equivalent Prolog source code - but it needs a fair amount of manual modification. (The
+PDL is procedural; if-then-else blocks, do-while blocks and case blocks are converted into
+Prolog predicates. The parser-generator is not intelligent enough to assign the correct
+arguments to the clauses). The Prolog source is then compiled within the simulator, and
+effectively allows a full equivalent source code to be analysed, but effectively supports
+a SIL4 analysis. In addition, there is sufficient information in the simulator to allow
+the automatic generation of fault trees.</p>
+
+<p>When the simulators run, all object states, messages and actions are stored in a
+database (basically &quot;threads&quot; analysis), and printed in a form suitable for
+inclusion in the Safety Case. </p>
+
+<p>On screen, the simulators graphically display physical objects i.e. the trains and
+platform doors, and their states (i.e. opening doors, rotating wheels) and software
+objects. State transition tables can be displayed, and object states highlighted. Product
+windows display the message stack of the product, and also a history of messages processed
+by the products. Messages can be processed manually, one at a time, or controlled by a
+timer (when used as a simulator), or can be processed immediately in order to maximise the
+speed at which systematic fault injection is performed.</p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="3">5. THE OUTCOME AND BUSINESS BENEFITS<!--mstheme--></font></h1>
+
+<p>One product analysis has been completed and accepted by the client. A systematic and
+complete analysis was performed in a cost-effective manner. It would have been an
+impossible task to manually analyse every software fault for every combination of object
+states; normally engineering judgement is used to select the most sensitive cases and to
+restrict the analyses to these cases. To perform a complete analysis manually would have
+taken several tens of man-years, whereas the design, development of the tool/simulator,
+and the analysis of the product using the tool, took less than 6 man months. A manual
+analysis is also prone to errors. The automatic analyses performed using this software
+tool was thorough, and gave confidence in the design of the safety critical product that
+was analysed. </p>
+
+<p>The second simulator, which can support a safety case for the whole of the moving block
+signaling software, is currently under development.</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="4">6. COMPILER</font><font size="3"><!--mstheme--></font></h1>
+
+<p>The compiler used for this work was Visual Prolog 5, (VPRO5) developed by the Prolog
+Development Center, Denmark (www.pdc.dk). The simulator currently being developed is also
+written in VPRO5, but uses the object oriented features built into the language. </p>
+
+<p></font><font SIZE="2">&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000"></font><font size="4">7. REFERENCES <!--mstheme--></font></h1>
+
+<p></font><font size="3">[1] CENELEC prEN 50128 (Final Draft January 1997)</p>
+
+<p>[2] Def-Stan 0055 - Requirements for Safety Related Software in Defence Equipment</p>
+
+<p>[3] IEC 61508 (International Electrotechnical Commission) - Functional safety: Safety
+Related Systems.</p>
+
+<p>[4] RIA Specification No.23 (Consultative Document 1991) </p>
+
+<p>[5] Sally Shlaer/Stephen Mellor - Object Lifecycles - Modeling the world in States.
+1992 Prentice-Hall ISBN 0-13-629940-7</p>
+</font>&nbsp;
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

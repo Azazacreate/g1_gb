@@ -1,0 +1,63 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	SPLITWIN.DOM
+ Purpose:	Split window object. Bottom level. Global domains.
+ Written by:	Carsten Kehler Holst
+ Version:	1.0
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:	
+******************************************************************************/
+
+GLOBAL DOMAINS
+% Handle on horizontal or vertical direction
+    splitwin_direction =
+        horizontal;
+        vertical
+
+    splitwin_movedirection =
+        left_up;
+        right_down
+
+% noreduce mode - The reduction
+% of column width (row height) is impossible.
+% reduce mode - The reduction of column width (row height) is possible.
+    splitwin_PossibleToReduce =
+        reduce;
+        noreduce
+
+%- splitwin_resize_cb ---------------------------------------------------------
+% Are called when the cursor are placed over at resize bar
+% Fails if resizing isn't allowed using that bar.
+% Succeeds and returns the range of legan movements and the resize cursor
+% if resizing with that resize bar is allowed.
+% The cursor can be placed i a cross,  a vertical or a horizontal resize bar.
+% If the cursor is in a horizontal resize bar VertResizeBar is -1.
+% If the cursor is in a vertical resize bar the HorzResizeBar is -1.
+%------------------------------------------------------------------------------  
+    splitwin_resize_cb = determ(
+        window SplitWin, 
+        integer VertResizeBar, 
+        integer HorzResizeBar, 
+        long LeftWards, 
+        long Rightwards, 
+        long UpWards, 
+        long DownWards, 
+        cursor ResizeCursor)
+    - (i, i, i, o, o, o, o, o)
+
+%- splitwin_update_cb ---------------------------------------------------------
+% Should draw the resize bars and the margins.
+%------------------------------------------------------------------------------  
+    splitwin_update_cb = procedure (window SplitWin) - (i)
+
+%- splitwin_events_cb ---------------------------------------------------------
+% Passing events to top level or application.
+%------------------------------------------------------------------------------  
+    splitwin_events_cb = determ(
+        window SplitWin,
+        event Event,
+        long RetCode)
+    - (i, i, o)

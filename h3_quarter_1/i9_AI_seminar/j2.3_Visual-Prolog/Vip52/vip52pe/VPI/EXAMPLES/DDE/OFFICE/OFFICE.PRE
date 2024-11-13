@@ -1,0 +1,18 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  OFFICE
+ FileName: OFFICE.PRE
+ Purpose: Predicate definitions for OFFICE.PRO
+ Written by: PDC
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_excel_Create(WINDOW Parent,INTEGER Row,INTEGER Col,STRING Val) - (i,o,o,o)
+%END_DECL

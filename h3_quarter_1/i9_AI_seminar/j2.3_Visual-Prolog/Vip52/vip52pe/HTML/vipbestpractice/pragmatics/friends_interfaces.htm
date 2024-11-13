@@ -1,0 +1,257 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Friends Interfaces</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1 style="mso-layout-grid-align:none;text-autospace:none"><!--mstheme--><font color="#000000">Friends Interfaces<!--mstheme--></font></h1>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">Sometimes
+you design a number of classes so that they can work together on some task.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">In
+this case it is often the case that the classes need functionality from each
+other that have little or no interest to the users of the classes.<span style="mso-spacerun: yes">&nbsp;
+</span>In fact, it might even be problematic if the users use that
+&quot;inter-class&quot; functionality, because it is used to maintain some
+&quot;inter-class&quot; invariant which the user might end-up breaking.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">In
+C++ you can define such classes as &quot;friends&quot;.<span style="mso-spacerun: yes">&nbsp;
+</span>A C++ friend classes have unlimited access to your objects; they can
+manipulate the internal structure of the object.<span style="mso-spacerun: yes">&nbsp;
+</span>This is used to make such &quot;inter-class&quot; functionality work,
+without giving the user any extra access .</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">The
+C++ solution is not very preferable, because you do <b>not</b> really want to
+provide <b>unlimited</b> access.<span style="mso-spacerun: yes">&nbsp; </span>What
+you would like to provide is some extra <b>but clearly defined </b>access.<span style="mso-spacerun: yes">&nbsp;
+</span>In fact you would like to support additional interfaces for this
+inter-class operation.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">My
+suggestion is to provide additional functionality by returning an interface
+(i.e. an object supporting an interface) in a predicate.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">Let
+me illustrate the idea with an example:</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">I
+have in mind a world with three entities: windows, menus and menu items.<span style="mso-spacerun: yes">&nbsp;
+</span>Represented by the three interfaces <i>window</i>, <i>menu</i> and <i>menuItem</i>.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">We
+can make deeply nested menus because menus are themselves menuItems.<span style="mso-spacerun: yes">&nbsp;
+</span>So the interfaces look like:</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+window</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span><span style="mso-bidi-language: AR-SA"> </span><span style="color:olive;mso-bidi-language:AR-SA"><b>predicates<br>
+</b></span><span style="mso-bidi-language:AR-SA">&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="mso-bidi-language:AR-SA">show : ()<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">setMenu
+: (menu <span style="color:green">Menu</span>)<br>
+</span><b><span style="color:olive;mso-bidi-language:AR-SA">end interface </span></b><span style="mso-bidi-language:AR-SA">window</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+menuItem</span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp;&nbsp; predicates</span></b><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">setText
+: (string <span style="color:green">Text</span>)<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...</span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+end interface </span></b><span style="mso-bidi-language:AR-SA">menuItem</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+menu <b><span style="color:olive">supports</span></b> menuItem<br>
+</span><span style="color:olive;mso-bidi-language:AR-SA"><b>&nbsp;&nbsp; </b></span><span style="mso-bidi-language: AR-SA">
+</span><span style="color:olive;mso-bidi-language:AR-SA"><b>predicates</b></span><br>
+<span style="mso-bidi-language:AR-SA">&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="mso-bidi-language:AR-SA">addMenuItem : (menuItem <span style="color:green">Item</span>)<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">...</span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+end interface </span></b><span style="mso-bidi-language:AR-SA">menu</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">I
+have corresponding classes <i>cWindow</i>, <i>cMenu</i> and <i>cMenuItem</i>.<span style="mso-spacerun: yes">&nbsp;
+</span>In this example the classes just have default constructors.<span style="mso-spacerun: yes">&nbsp;
+</span>In this set up can create a window with a menu by the following code:</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">goal</span></b><span style="color:green;mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span> <span style="color:green;mso-bidi-language:AR-SA">Window</span><span style="color:black;mso-bidi-language:AR-SA">
+= cWindow::new(),<br>
+</span><span style="color:green;mso-bidi-language:AR-SA">&nbsp;&nbsp; </span> <span style="color:green;mso-bidi-language:AR-SA">MenuBar</span><span style="color:black;mso-bidi-language:AR-SA">
+= cMenu::new(),<br>
+&nbsp;&nbsp; </span> <span style="color:green;mso-bidi-language:AR-SA">FileMenu</span><span style="color:black;mso-bidi-language:AR-SA">
+= cMenu::new(),<br>
+</span><span style="color:green;mso-bidi-language:AR-SA">&nbsp;&nbsp; </span><span style="color: black; mso-bidi-language: AR-SA">
+</span><span style="color:green;mso-bidi-language:AR-SA">FileMenu</span><span style="color:black;mso-bidi-language:AR-SA">:setText(</span><span style="color:blue;mso-bidi-language:AR-SA">&quot;&amp;File&quot;</span><span style="color:black;mso-bidi-language:AR-SA">),<br>
+</span><span style="color:green;mso-bidi-language:AR-SA">&nbsp;&nbsp; </span><span style="color: black; mso-bidi-language: AR-SA">
+</span><span style="color:green;mso-bidi-language:AR-SA">FileNew</span><span style="color:black;mso-bidi-language:AR-SA">
+= cMenuItem::new(),<br>
+</span><span style="color:green;mso-bidi-language:AR-SA">&nbsp;&nbsp; </span><span style="color: black; mso-bidi-language: AR-SA">
+</span><span style="color:green;mso-bidi-language:AR-SA">FileNew</span><span style="color:black;mso-bidi-language:AR-SA">:setText(</span><span style="color:blue;mso-bidi-language:AR-SA">&quot;&amp;New&quot;</span><span style="color:black;mso-bidi-language:AR-SA">),<br>
+</span><span style="color:green;mso-bidi-language:AR-SA">&nbsp;&nbsp; </span><span style="color: black; mso-bidi-language: AR-SA">
+</span><span style="color:green;mso-bidi-language:AR-SA">FileMenu</span><span style="color:black;mso-bidi-language:AR-SA">:addMenuItem(</span><span style="color:green;mso-bidi-language:AR-SA">FileNew</span><span style="color:black;mso-bidi-language:AR-SA">),</span><span style="color:green;mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp;&nbsp;MenuBar</span><span style="color:black;mso-bidi-language:AR-SA">:addMenuItem(</span><span style="color:green;mso-bidi-language:AR-SA">FileMenu</span><span style="color:black;mso-bidi-language:AR-SA">),</span><span style="color:green;mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp;&nbsp;Window</span><span style="color:black;mso-bidi-language:AR-SA">
+:addMenu(</span><span style="color:green;mso-bidi-language:AR-SA">MenuBar</span><span style="color:black;mso-bidi-language:AR-SA">),<br>
+</span><span style="color:green;mso-bidi-language:AR-SA">&nbsp;&nbsp; </span><span style="color: black; mso-bidi-language: AR-SA">
+</span><span style="color:green;mso-bidi-language:AR-SA">Window</span><span style="color:black;mso-bidi-language:AR-SA">:show().</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black;mso-bidi-language:AR-SA">Now
+comes the &quot;friend&quot; stuff.<span style="mso-spacerun: yes">&nbsp; </span>The
+problem is that when I say <i>Window:show()</i></span><span style="mso-bidi-language:AR-SA">
+I actually have to construct a MS Windows menu and a MS Windows window.<span style="mso-spacerun: yes">&nbsp;
+</span>Therefore,<span style="color:black"> <i>Window:show()</i></span> will ask
+the menu to construct the MS Windows menu, this menu will in turn ask each of
+its menu items to construct a MS Windows menu item, and so forth.<span style="mso-spacerun:
+yes">&nbsp; </span>This construction of the MS Windows structures are only
+relevant for the interaction of <i>cWindow</i>, <i>cMenu</i> and <i>cMenuItem</i>,
+it has no relevance to the user.<span style="mso-spacerun: yes">&nbsp; </span>So
+MS Windows structure construction is considered &quot;friends&quot; stuff.<span style="mso-spacerun: yes">&nbsp;
+</span>We will put the friends stuff in to special interfaces:</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+mswMenu</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span><span style="mso-bidi-language: AR-SA"> </span><span style="color:olive;mso-bidi-language:AR-SA"><b>predicates</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">getHMenu
+: () -&gt; MSWindows::hMenu <span style="color:green">HMenu<br>
+</span></span><span style="color:olive;mso-bidi-language:AR-SA"><b>end interface
+</b></span><span style="mso-bidi-language:AR-SA">mswMenu</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+mswMenuItem</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span><span style="mso-bidi-language: AR-SA"> </span><span style="color:olive;mso-bidi-language:AR-SA"><b>predicates<br>
+</b></span><span style="mso-bidi-language:AR-SA">&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="mso-bidi-language:AR-SA">getHMenuItem : () -&gt;
+MSWindows::hMenuItem <span style="color:green">HMenuItem</span></span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+end interface </span></b><span style="mso-bidi-language:AR-SA">mswMenuItem</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black;mso-bidi-language:AR-SA">For
+menus and menu items to work together with window, the classes<span style="mso-spacerun: yes">&nbsp;
+</span>will have to support these interfaces somehow.<span style="mso-spacerun: yes">&nbsp;&nbsp;
+</span>But since these interfaces are not of primary concern we will let the
+support be indirect: we will add a predicate to the <i>menu</i> interface that
+returns a <i>mswMenu</i> supporting object, and likewise for <i>menuItem</i> and
+<i>mswMenuItem</i></span><span style="mso-bidi-language:AR-SA">:</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+menuItem</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span> <span style="color:olive;mso-bidi-language:AR-SA"><b>predicates</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">setText
+: (string <span style="color:green">Text</span>)<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">...</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span> <span style="color:olive;mso-bidi-language:AR-SA"><b>predicates</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">getMswMenuItem
+: () -&gt; mswMenuItem <span style="color:green">MSWMenuItem</span></span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+end interface </span></b><span style="mso-bidi-language:AR-SA">menuItem</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-bidi-language:AR-SA">&nbsp;</span><b><span style="color:olive;mso-bidi-language:AR-SA">interface</span></b><span style="mso-bidi-language:AR-SA">
+menu <b><span style="color:olive">supports</span></b> menuItem</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span> <span style="color:olive;mso-bidi-language:AR-SA"><b>predicates</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">addMenuItem
+: (menuItem <span style="color:green">Item</span>)<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">...</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span> <span style="color:olive;mso-bidi-language:AR-SA"><b>predicates</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">getMswMenu
+: () -&gt; mswMenu <span style="color:green">MSWMenu</span></span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+end interface </span></b><span style="mso-bidi-language:AR-SA">menu</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">In
+another mail I have described how you can return <i><span style="color:green">This</span></i>
+as such an object.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">The
+implementation of <i>window::show()</i> in <i>cWindow</i> will look like:</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive;mso-bidi-language:AR-SA">implement</span></b><span style="mso-bidi-language:AR-SA">
+cWindow</span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span> <span style="color:olive;mso-bidi-language:AR-SA"><b>facts</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">menu
+: (menu <span style="color:green">Menu</span>) <span style="color:purple">determ</span></span><span style="color:olive;mso-bidi-language:AR-SA"><b><br>
+&nbsp;&nbsp; </b></span> <span style="color:olive;mso-bidi-language:AR-SA"><b>clauses</b></span><span style="mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">show()
+:-<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">...<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">&nbsp;&nbsp;
+</span> <span style="mso-bidi-language:AR-SA">menu(<span style="color:green">Menu</span>),</span><span style="color:green;mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:green;mso-bidi-language:AR-SA">MSWMenu</span><span style="mso-bidi-language:AR-SA">
+= <span style="color:green">Menu</span>:getMswMenu(),</span><span style="color:green;mso-bidi-language:AR-SA"><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:green;mso-bidi-language:AR-SA">HMenu</span><span style="mso-bidi-language:AR-SA">
+= MSWMenu:getHMenu(),<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">...<br>
+&nbsp;&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="mso-bidi-language:AR-SA">...</span><b><span style="color:olive;mso-bidi-language:AR-SA"><br>
+end implement</span></b><span style="mso-bidi-language:AR-SA"> cWindow</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">&nbsp;That
+is, <i>window::show()</i> will first obtain the friend interface from the menu,
+and then use this to construct the &quot;hMenu&quot;.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">The
+advantages of this approach are</span>:</p>
+<p class="MsoNormal" style="margin-left:19.0pt;text-indent:-19.0pt;mso-list:l0 level1 lfo1;
+mso-layout-grid-align:none;text-autospace:none"><span style="font-family:Symbol;mso-bidi-language:AR-SA">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="mso-bidi-language:AR-SA">There is a clear distinction
+between user interfaces and friend interfaces (a single class can provide
+several friend interfaces).</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;text-indent:-19.0pt;mso-list:l0 level1 lfo1;
+mso-layout-grid-align:none;text-autospace:none"><span style="font-family:Symbol;mso-bidi-language:AR-SA">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="mso-bidi-language:AR-SA">The description of the
+interfaces are not mixed because none supports the other.</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;text-indent:-19.0pt;mso-list:l0 level1 lfo1;
+mso-layout-grid-align:none;text-autospace:none"><span style="font-family:Symbol;mso-bidi-language:AR-SA">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="mso-bidi-language:AR-SA">It is more unlikely that a
+user unintended calls a predicate in a friends interface, because the extra
+indirection will automatically alarm the user.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">&nbsp;Compared
+to C++ this friend notion differs in two ways:</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">&nbsp;</span><span style="font-family:Symbol;mso-bidi-language:AR-SA">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="mso-bidi-language:AR-SA">In C++ you have full control
+of who your friends are, we have no such control</span></p>
+<p class="MsoNormal" style="margin-left:19.0pt;text-indent:-19.0pt;mso-list:l0 level1 lfo1;
+mso-layout-grid-align:none;text-autospace:none"><span style="font-family:Symbol;mso-bidi-language:AR-SA">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="mso-bidi-language:AR-SA">In C++ you have no control
+of what you reveal to your friends, we have full control on that matter.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-bidi-language:AR-SA">I
+think that our &quot;control&quot; is much better than C++, because providing
+full control &quot;locks&quot; your code: every aspect of your code can be used
+by the friend classes, and having full control over who your friends are prevent
+others from re-implement some of the classes but keeping others, because the
+&quot;new&quot; classes are not friends of the old ones.</span></p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"></p>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

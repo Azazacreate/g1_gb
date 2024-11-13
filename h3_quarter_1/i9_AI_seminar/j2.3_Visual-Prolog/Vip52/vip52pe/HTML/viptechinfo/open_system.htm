@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<title>Open System</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Open System<!--mstheme--></font></h1>
+
+<p>Visual Prolog programs can be easily interfaced with code from any other language that produces standard format object files, including Borland C and C++, Microsoft C and Assembler. Not only can Visual Prolog call routines written in other languages,
+but routines in other languages can also call Visual Prolog predicates, providing even non-Prolog programmers with access to a powerful logic-programming subsystem. This allows you to use each language where it is most appropriate, or simply to integrate existing modules from previous work. </p>
+
+<p>Also, Visual Prolog programs can both call .DLL's and also be placed in .DLL's.</p>
+
+<p>All non-Prolog procedures can be declared to the Prolog compiler as predicates, and PDC's argument type-checking helps guarantee safe and consistent call of foreign functions. Such declarations also form a reference document for coordinating a number of programmers in a multi-language project. </p>
+
+<p>It is possible to call the foreign language routines directly (as if they were Prolog) without any special glue
+code by: </p>
+
+<ol>
+  <li>declaring Global 'prolog' predicates as being of language C, Pascal, stdcall atc. &nbsp; calling convention,&nbsp;</li>
+  <li>declaring the argument types and the input/output flow patterns,&nbsp;&nbsp;</li>
+</ol>
+<p>This interface works in both directions, when the predicates are being declared as language XX, they can be called directly from the XX language routines! </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><!--mstheme--></font><pre>GLOBAL PREDICATES
+</b>  <b>procedure</b> LONG vpi_LoadDll( STRING ) - (I) <b>language</b> c
+  <b>procedure</b> vpi_FreeDll( LONG ) - (I) <b>language</b> c
+  <b>procedure</b> LONG vpi_GetDllProc( LONG, STRING ProcName ) - (I,I) <b>language</b> c               </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

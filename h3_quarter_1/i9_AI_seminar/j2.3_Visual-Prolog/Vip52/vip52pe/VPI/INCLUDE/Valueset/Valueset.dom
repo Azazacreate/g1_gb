@@ -1,0 +1,29 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prpolog
+
+ FileName: VALUESET.dom
+ PURPOSE: Domain definitions for valueset object
+ Written by: Yuri Illin
+ Comments:
+
+******************************************************************************/
+constants
+  valueset_dom_included = 1
+
+global domains
+
+  VALSET_VALUE	= bitmap(RESID);
+  		  icon(RESID);
+		  text(STRING);
+		  empty
+		  
+  VALSET_PAINT = determ ( WINDOW, RCT, VALSET_VALUE ) - (i,i,i)
+  
+  VALSET_PAINT_INFO = p(VALSET_PAINT);
+  		      dummy
+
+  VALSET_CTRL  = c( INTEGER Id, VALSET_VALUE )
+  VALSET_CTRL_LIST = VALSET_CTRL*

@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<TITLE>Text Expression</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Text Expression'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Text Expression</FONT>
+<P ALIGN=LEFT>Text expressions are used in the explanation field, question field and in text rules of a parameter declaration. In sections text expressions are used as advice. 
+<P ALIGN=LEFT>Text expressions can be a mixture of strings and the values of some parameters and text functions. Using the name of a parameter causes the value of that parameter to be displayed as part of the compound text. The &amp; character can be used to insert new lines in the text. The syntax for a text expression is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;text-expression&gt; ::= &lt;simple-text&gt; { &lt;text-expression&gt; } 
+<P ALIGN=LEFT>&lt;simple-text&gt;     ::= &lt;string&gt; | &lt;parameter-name&gt; | &amp; |  
+<P ALIGN=LEFT>                      &lt;text-function&gt;( &lt;argumentlist&gt; ) 
+<P ALIGN=LEFT>&lt;text-function&gt;   ::= concat | startstr | endstr  
+<P ALIGN=LEFT>&lt;argumentlist&gt;    ::= &lt;argument&gt; {, &lt;argumentlist&gt; } 
+<P ALIGN=LEFT>&lt;argument&gt;        ::= &lt;text-expression&gt;</FONT> 
+<P ALIGN=LEFT>The text functions are: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>concat(X,Y)   returns the string X concatenated with Y 
+<P ALIGN=LEFT>startstr(N,X) returns the first N characters from the string X 
+<P ALIGN=LEFT>endstr(N,X)   returns the last N characters from the string X</FONT> 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>'this text' &amp; 'will be displayed on' &amp; 'three seperate lines'</FONT> 
+<P ALIGN=LEFT>The following example uses three strings and the value of two parameters - animal and favourite_food: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>'The favourite food of the ' animal ' is ' favourite_food '.'</FONT> 
+<P ALIGN=LEFT>The resulting display on the screen might be: 
+<P ALIGN=LEFT><B>The favourite food of the koala is eucalyptus leaves.</B> 
+<P ALIGN=LEFT>The following test will only accept those days of the week starting with a 't', i.e. tuesday or thursday: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>startstr(1,name_of_day) = 't'</FONT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

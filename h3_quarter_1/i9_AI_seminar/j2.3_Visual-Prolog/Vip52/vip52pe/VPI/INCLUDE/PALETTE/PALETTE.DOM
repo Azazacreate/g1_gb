@@ -1,0 +1,46 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName:	Palette.DOM
+ PURPOSE:	Domain declarations for Palette 
+ Written by:	Written by: Andrey Skobelev
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+******************************************************************************/
+
+constants
+	palette_dom_included = 1
+
+global domains
+
+PALETTE_ONOFF = 
+	off;
+	on(PNT Position)
+
+PALETTE_SET = 
+	preview(PALETTE_ONOFF);
+	pen(PALETTE_ONOFF);
+	pattern(PALETTE_ONOFF);
+	color(PALETTE_ONOFF)
+
+% Callback Events
+PALETTE_EVENT = 
+	change_PATSTYLE(PATSTYLE);	% PATSTYLE button is pressed
+	change_PEN(PENSTYLE,PENWIDTH);	% PENSTYLE/PENWIDTH button is pressed
+	%    mouse button
+	change_PenColor(COLOR); 	% COLOR button is pressed with right
+	%    mouse button
+	change_BrushColor(COLOR);	% COLOR button is pressed with left
+	is_ToBeDestroyed		% Palette is about to be destroyed
+
+
+% Callback
+PALETTE_CALLBACK = determ (WINDOW,PALETTE_EVENT) - (i,i)
+
+% Color List
+COLORLIST = COLOR *
+

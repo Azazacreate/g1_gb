@@ -1,0 +1,94 @@
+%  ****************************************************************************
+%                                 REPORT ENGINE
+%                         Report source text example
+%                                   14-Feb-1996
+% *****************************************************************************
+
+report  myFirstReport
+    margins(2.0,1.0,1.0,1.0);
+    orientation=landscape;
+    units logical(1000 1024);
+    fontname=helvetica fontsize=8 alignment=left
+    leftindent=10
+    script 
+    get_first_key(;indx,k1); zk1:=0 end_script
+ header   fontstyle = bold
+    script x0 := 20* (60+40);
+      Z:=x0+"	Intelligence Bank, St. Petersburg	"
+    end_script
+  text Z at(0,0,0,40)
+  tabs = 0,100,270,600;
+  line at(0,45,980,45);
+  line at(0,50,980,50)
+ end_header
+ bitmap nw at(60,10,0,0);
+ block at(0,110,0,0)
+   begin
+        text "Report example"  at(180,0,360,30) fontsize=16; 
+        text "DOCUMENT No 1" at(180,50,360,80)
+        fontname=times   fontstyle=bold, italic fontsize=10;
+    	text "TABLE HEADER" at(180,80,380,80) fontsize=14 fontstyle=bold;
+    end;
+    while k1><"" do at(0,240,0,0) outer_rectangle 
+    border=0
+      header fontsize = 10 fontstyle=bold outer_rectangle
+    	     forecolor =16777215 backcolor= 8388736
+    	     text "Customer's
+First
+Name" at(0,0,120,70);
+    	     text "Last
+Name
+" at(120,0,220,70);
+    	     text "Street,
+City" at(220,0,370,70);
+    	     text "PCode" at(370,0,470,70)
+      end_header
+    	begin
+    	   script
+    	    get_term_list(k1;fn,ln,st,ci);
+    	    get_next_key(indx;k1); zk1:=zk1 + 1
+    	   end_script
+    	   text fn at(0,0,120,25);
+    	   text ln at(120,0,220,25);
+    	   text st at(220,0,400,25);
+    	   text ci at(400,0,470,25);
+	   while get_interest(;INTER,Color) do at(0,25,0,0)
+	   outer_rectangle
+%	    keep_together
+	     begin
+		script iterno:=0;
+		           if Color ><16777215 then FColor:=65535;
+		    				    Bord:=0	
+		    	   else FColor:=0; Bord:=1 end_if
+		end_script
+	     text INTER at(0,0,110,25) var_backcolor(Color) 
+			var_forecolor(FColor); %var_border(Bord);
+             if INTER = "Prolog" then at(110,0,0,0) outer_rectangle
+%keep_together
+		begin
+		 text "I like it" at(10,0,100,25);
+		 while iterno < 4 do at(100,0,0,0)
+		  begin
+			script iterno:=iterno+1 end_script
+		  text "Iterate No " + iterno at(10,0,130,25)
+		  end
+		 end;
+	      if INTER >< "Prolog" then at(110,0,0,0) outer_rectangle
+%keep_together
+		 begin
+		  text "It is a pleasure" at(10,0,100,25);
+		  while iterno < 2 do at(100,0,0,0)
+		   begin
+			script iterno:=iterno+1 end_script
+		   text "Iterate No " + iterno at(10,0,130,25)
+		   end
+		  end
+             end
+    	end
+   footer fontsize=10
+      script date(;D); page(;P); time(;T) end_script
+      text D at(0,40,120,60);
+      text "Page "+P at(200,40,290,60) fontsize=10;
+      text T at(550,40,670,60)
+    end_footer
+end_report

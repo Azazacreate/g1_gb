@@ -1,0 +1,41 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			 VISUAL Prolog
+
+ FileName:  DLGDIR.CON
+ PURPOSE:
+ Written by: Belov Boris
+ Comments: Version 1.02
+
+******************************************************************************/
+constants
+
+% If you need to change texts of controls in the Directory Dialog, than you should add the 
+% following include statement:
+%    include "dlgdir\\DLGDIR.CON"
+% into your project before including of "DLGDIR.PRO"
+% usually it is done in VPITOOLS.PRO file of your project 
+%
+% You can uncomment and redefine any of the following constants.
+% If a constant is commented then the "Default Title" is used. 
+% "Max Char Number" specifies the approximate number of chars that can be correctly displayed 
+% in a control Title.
+
+% Constant			Default Title				Max Char Number  
+
+% dlgdir_defaulttitle         = "Set New Directory"			% 40
+% dlgdir_ok                   = "&OK"					% 13
+% dlgdir_cancel               = "&Cancel"				% 13
+% dlgdir_path                 = "Path:"					% 25
+% dlgdir_directories          = "Di&rectories:"				% 15
+% dlgdir_drives               = "&Drives:"				% 13
+% dlgdir_subdirectory         = "&Subdirectory:"			% 13
+% dlgdir_networkdrives        = "&Network Drives:"			% 22
+% dlgdig_retrieveNetworkPaths = "Wait! Retrieving network paths"	% 30
+% dlgdir_networkUnavailable   = "Network is unavailable"		
+
+% dlgdir_FontFace             = "MS Sans Serif"
+% dlgdir_FontSize             = 8
+

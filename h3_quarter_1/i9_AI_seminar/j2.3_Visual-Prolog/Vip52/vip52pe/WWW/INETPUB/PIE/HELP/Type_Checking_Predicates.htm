@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="var;nonvar;integer">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Type Checking Predicates</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">The
+type checking predicates </font></h3>
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">integer/1,
+var/1, nonvar/1</font><font color="#0000FF"> </font></h3>
+
+<p align="left"><b>integer</b>(<i>Term</i>) <b><br>
+var</b>(<i>Term</i>) <br>
+<b>nonvar</b>(<i>Term</i>) </p>
+
+<p align="left">Check the type of a <i>Term</i> </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>integer</b>(<i>Term</i>) succeeds if the <i>Term</i>
+can be unified with integer value. </p>
+
+<p align="left"><b>var</b>(<i>Term</i>) succeeds if the <i>Term</i>
+is free variable. </p>
+
+<p align="left"><b>nonvar</b>(<i>Term</i>) succeeds if the <i>Term</i>
+is bound. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>A is 3
+var(A)
+No
+nonvar(A)
+Yes
+integer(A)
+Yes </pre>
+</body>
+</html>

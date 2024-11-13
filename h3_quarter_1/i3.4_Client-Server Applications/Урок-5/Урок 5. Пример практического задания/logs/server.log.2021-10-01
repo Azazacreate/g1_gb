@@ -1,0 +1,4 @@
+2021-10-01 00:18:32,442 CRITICAL config_server_log.py Критическая ошибка
+2021-10-01 00:18:32,451 ERROR config_server_log.py Ошибка
+2021-10-01 00:18:32,451 DEBUG config_server_log.py Отладочная информация
+2021-10-01 00:18:32,451 INFO config_server_log.py Информационное сообщение

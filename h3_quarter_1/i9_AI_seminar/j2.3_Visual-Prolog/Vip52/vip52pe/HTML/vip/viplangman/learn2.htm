@@ -1,0 +1,1354 @@
+<html>
+
+<head>
+<title>Visual Prolog Language manual 2</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body stylesrc="http://carsten-c2/test/standard_page.htm" bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><font size="5"><b>Chapter 2. Visual Prolog Programs</b></font><!--mstheme--></font></h1>
+
+<p>The syntax of Visual Prolog is designed to express knowledge about properties and
+relationships. You've already seen the basics of how this is done; in Chapter 2 you
+learned about clauses (facts and rules), predicates, variables, and goals. </p>
+
+<p>Unlike other versions of Prolog, Visual Prolog is a typed Prolog compiler; you declare
+the <i>types</i> of the objects that each predicate applies to. The type declarations
+allow Visual Prolog programs to be compiled right down to native machine code, giving
+execution speeds similar to those of compiled C and pascal.</p>
+
+<p>We discuss the four basic sections of a Visual Prolog program--where you declare and
+define the predicates and arguments, define rules, and specify the program's goal--in the
+first part of this chapter. In the second part of this chapter we take a closer look at
+declarations and rule syntax. Then, at the end of this chapter, we briefly introduce the
+other sections of a Visual Prolog program, including the <b>facts</b>, <b>constants</b>,
+and various <b>global</b> sections, and compiler directives.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381473"><font size="5"><b>Visual Prolog's Basic Program Sections</b></font></a><!--mstheme--></font></h2>
+
+<p>Generally, a Visual Prolog program includes four basic program sections. These are the <b>clauses</b>
+section, the <b>predicates</b> section, the <b>domains</b> section, and the <b>goal</b>
+section.</p>
+
+<p>The <b>clauses</b> section is the heart of a Visual Prolog program; this is where you
+put the facts and rules that Visual Prolog will operate on when trying to satisfy the
+program's goal.</p>
+
+<p>The <b>predicates</b> section is where you declare your predicates and the domains
+(types) of the arguments to your predicates. (You don't need to declare Visual Prolog's
+built-in predicates.)</p>
+
+<p>The <b>domains</b> section is where you declare any domains you're using that aren't
+Visual Prolog's standard domains. (You don't need to declare standard domains.)</p>
+
+<p>The <b>goal</b> section is where you put the starting goal for a Visual Prolog program.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381474"><font size="4"><b>The Clauses Section</b></font></a><!--mstheme--></font></h2>
+
+<p>The <b>clauses</b> section is where you put all the facts and rules that make up your
+program. Most of the discussion in Chapter <b>2</b> was centered around the clauses (facts
+and rules) in your programs; what they convey, how to write them, and so on. </p>
+
+<p>If you understand what facts and rules are and how to write them in Prolog, you know
+what goes in the <b>clauses</b> section. Clauses for a given predicate must be placed
+together in the <b>clauses</b> section; a sequence of clauses defining a predicate is
+called a <i>procedure</i>.</p>
+
+<p>When attempting to satisfy a goal, Visual Prolog will start at the top of the <b>clauses</b>
+section, looking at each fact and rule as it searches for a match. As Visual Prolog
+proceeds down through the <b>clauses</b> section, it places internal pointers next to each
+clause that matches the current subgoal. If that clause is not part of a logical path that
+leads to a solution, Visual Prolog returns to the set pointer and looks for another match
+(this is <i>backtracking</i>, which we mentioned in Chapter <b>2</b>).</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381475"><font size="4"><b>The Predicates Section</b></font></a><!--mstheme--></font></h2>
+
+<p>If you define your own predicate in the <b>clauses</b> section of a Visual Prolog
+program, you <i>must</i> declare it in a <b>predicates</b> section, or Visual Prolog won't
+know what you're talking about. When you declare a predicate, you tell Visual Prolog which
+domains the arguments of that predicate belong to. </p>
+
+<p>Visual Prolog comes with a wealth of built-in predicates. You don't need to declare any
+of Visual Prolog's built-in predicates that you use in your program. The <i>Visual Prolog</i>
+on-line help gives a full explanation of the built-in predicates.</p>
+
+<p>Facts and rules define predicates. The <b>predicates</b> section of the program simply
+lists each predicate, showing the types (domains) of its arguments. Although the <b>clauses</b>
+section is the heart of your program, Visual Prolog gets much of its efficiency from the
+fact that you also declare the types of objects (arguments) that your facts and rules
+refer to.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381476"><b>How to Declare User-Defined Predicates</b></a><!--mstheme--></font></h3>
+
+<p>A <i>predicate declaration</i> begins with the predicate name, followed by an open
+(left) parenthesis. After the predicate name and the open parenthesis come zero or more
+arguments to the predicate. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>predicateName(argument_type1, argument_type2, ...,
+    argument_typeN)</em></font></dd>
+</dl>
+
+<p>Each argument type is followed by a comma, and the last argument type is followed by
+the closing (right) parenthesis. Note that, unlike the clauses in the <b>clauses</b>
+section of your program, a predicate declaration is not followed by a period. The argument
+types are either standard domains or domains that you've declared in the <b>domains</b>
+section.</p>
+
+<p><i>Predicate Names</i></p>
+
+<p>The name of a predicate must begin with a letter, followed by a sequence of letters,
+digits, and underscores. The case of the letters does not matter, but we strongly
+recommend using only a lower-case letter as the first letter in the predicate name. (Other
+versions of Prolog don't allow predicate names to begin with upper-case letters or
+underscores, and future versions of Visual Prolog might not, either.) Predicate names can
+be up to 250 characters long. </p>
+
+<p>You can't use spaces, the minus sign, asterisks, slashes, or other non-alphanumeric
+characters in predicate names. Valid naming charactersnaming characters in Visual Prolog
+consist of the following:</p>
+
+<!--mstheme--></font><table border="0" cellpadding="7" cellspacing="0" width="489">
+  <tr>
+    <td valign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Upper-case Letters<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">: A, B, ... , Z</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Lower-case Letters<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">: a, b, ... , z</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Digits<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">: 0, 1, ... , 9</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="35%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Underscore character<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="65%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">: _</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>All predicate names and arguments can consist of combinations of these characters, as
+long as you obey the rules for forming both predicate and argument names.</p>
+
+<p>Below are a few examples of legal and illegal predicate names.</p>
+
+<!--mstheme--></font><table border="1" cellpadding="7" cellspacing="1" width="472" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Legal Predicate Names</b><!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Illegal Predicate Names</b><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">fact<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">[fact]<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">is_a<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">*is_a*<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">has_a<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">has/a<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">patternCheckList<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">pattern-Check-List<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">choose_Menu_Item<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">choose Menu Item<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">predicateName<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">predicate&lt;Name&gt;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">first_in_10<!--mstheme--></font></td>
+    <td valign="top" width="50%"><!--mstheme--><font face="verdana, Arial, Helvetica">&gt;first_in_10<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><i>Predicate Arguments</i></p>
+
+<p>The <i>arguments</i> to the predicates must belong to known Visual Prolog domains. A
+domain can be a <i>standard domain</i>, or it can be one you declare in the <b>domains</b>
+section.</p>
+
+<p><a name="_Toc325381477"><b>Examples</b></a></p>
+
+<p>If you declare a predicate <font size="1" face="Courier New">my_predicate(symbol,
+integer)</font> in the <b>predicates</b> section, like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>my_predicate(symbol, integer)</em></font></dd>
+</dl>
+
+<p>you don't need to declare its arguments' domains in a <b>domains</b> section, because <b><i>symbol</i></b>
+and <b><i>integer</i></b> are standard domains. But if you declare a predicate <font size="1" face="Courier New">my_predicate(name, number)</font> in the <b>predicates</b>
+section, like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>my_predicate(name, number)</em></font></dd>
+</dl>
+
+<p>you will need to declare suitable domains for <i>name</i> and <i>number</i>. Assuming
+you want these to be <b><i>symbol</i></b> and <b><i>integer</i></b> respectively, the
+domain declaration looks like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>name = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>number = integer</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>my_predicate(name, number)</em></font></dd>
+</dl>
+
+<p>This program excerpt shows some more predicate and domain declarations: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person, activity = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car, make, color = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>mileage, years_on_road, cost = integer</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(person, activity)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>parent(person, person)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>can_buy(person, car)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(make, mileage, years_on_road, color, cost)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>green(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>ranking(symbol, integer)</em></font></dd>
+</dl>
+
+<p>This excerpt specifies the following information about these predicates and their
+arguments:</p>
+
+<p>The predicate <b><i>likes</i></b> takes two arguments (<i>person</i> and <i>activity</i>),
+both of which belong to unique <b><i>symbol</i></b> domains (which means that their values
+are names rather than numbers).</p>
+
+<p>The predicate <b><i>parent</i></b> takes two <i>person</i> arguments, where <i>person</i>
+is a <b><i>symbol</i></b> type.</p>
+
+<p>The predicate <b><i>can_buy</i></b> takes two arguments, <i>person</i> and <i>car</i>,
+which are also both <b><i>symbol</i></b> types.</p>
+
+<p>The predicate <b><i>car</i></b> takes five arguments: <i>make</i> and <i>color</i> are
+of unique <b><i>symbol</i></b> domains, while <i>mileage</i>, <i>years_on_road</i>, and <i>cost</i>
+are of unique <b><i>integer</i></b> domains.</p>
+
+<p>The predicate <b><i>green</i></b> takes one argument, a symbol: there is no need to
+declare the argument's type, because it's of the standard domain <b><i>symbol</i></b>.</p>
+
+<p>The predicate <b><i>ranking</i></b> takes two arguments, both of which belong to
+standard domains (<b><i>symbol</i></b> and <b><i>integer</i></b>), so there is no need to
+declare the argument types.</p>
+
+<p>Chapter 5, &quot;Simple and Compound Objects,&quot; gives more detail about domain
+declarations.</p>
+
+<p><a name="_Toc325381478"><font size="4"><b>The Domains Section</b></font></a></p>
+
+<p>In traditional Prolog there is only one type; the term. We have the same in Visual
+Prolog, but we are declaring what the domains of the arguments to the predicates actually
+are.</p>
+
+<p>Domains enable you to give distinctive names to different kinds of data that would
+otherwise look alike. In a Visual Prolog program, objects in a relation (the arguments to
+a predicate) belong to domains; these can be pre-defined domains, or special domains that
+you specify.</p>
+
+<p>The <b>domains</b> section serves two very useful purposes. First, you can give
+meaningful names to domains even if, internally, they are the same as domains that already
+exist. Second, special domain declarations are used to declare data structures that are
+not defined by the standard domains.</p>
+
+<p>It is sometimes useful to declare a domain when you want to clarify portions of the <b>predicates</b>
+section. Declaring your own domains helps document the predicates that you define by
+giving a useful name to the argument type.</p>
+
+<p><a name="_Toc325381479"><b>Examples</b></a></p>
+
+<p>Here's an example to illustrate how declaring domains helps to document your
+predicates: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Frank is a male who is 45 years old.</em></font></dd>
+</dl>
+
+<p>With the pre-defined domains, you come up with the following predicate declaration: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>person(symbol, symbol, integer)</em></font></dd>
+</dl>
+
+<p>This declaration will work fine for most purposes. But suppose you want to maintain
+your code months after you've finished writing it. The preceding predicate declaration
+won't mean much to you in six months. Instead, the following declarations will help you
+understand what the arguments in the predicate declaration stand for: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>name, sex = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>age = integer</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(name, sex, age)</em></font></dd>
+</dl>
+
+<p>One of the main advantages of this declarations, is that Visual Prolog can catch type
+errors, like the following obvious mistake </p>
+
+<dl>
+  <dd><em><font size="1" face="Courier New">same_sex(X, Y) <b>:-</b></font></em></dd>
+  <dd><font size="1" face="Courier New"><em>person(X, Sex, _),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(Sex, Y, _).</em></font></dd>
+</dl>
+
+<p>Even though <b><i>name</i></b> and <b><i>sex</i></b> are both defined as <b><i>symbol</i></b>,
+they are not equivalent to each other. This enables Visual Prolog to detect an error if
+you accidentally swap them. This feature is very useful when your programs get large and
+complex.</p>
+
+<p>You might be wondering why we don't use special domains for all argument declarations,
+since special domains communicate the meaning of the argument so much better. The answer
+is that once an argument is typed to a specific domain, that domain can't be mixed with
+another domain you have declared, even if the domains are the same! So, even though <b><i>name</i></b>
+and <b><i>sex</i></b> are of the same domain (<b><i>symbol</i></b>), they can't be mixed.
+However, all user-defined domains <u>can</u> be matched with the pre-defined domains.</p>
+
+<p>This next example program will yield a <i>type error</i> when run: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>product,sum = integer</em></font></dd>
+  <dt>&nbsp;</dt>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>add_em_up(sum,sum,sum)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>multiply_em(product,product,product)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>add_em_up(X,Y,Sum):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Sum=X+Y.</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>multiply_em(X,Y,Product):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Product=X*Y.</em></font></dd>
+</dl>
+
+<p>This program does two things: It adds and it multiplies. Given the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>add_em_up(32, 54, Sum).</em></font></dd>
+</dl>
+
+<p>Visual Prolog will come up with </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Sum=86</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<p>which is the sum of the two integers you supplied the program.</p>
+
+<p>On the other hand, this program will also multiply two arguments with the <b><i>multiply_em</i></b>
+predicate. Now experiment with this program. If you need to figure out what the product of
+31 and 13 is, you could enter the goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>multiply_em(31, 13, Product).</em></font></dd>
+</dl>
+
+<p>Visual Prolog would then respond with the correct answer. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Product=403</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<p>But suppose you need the sum of 42 and 17; the goal for this would be </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>add_em_up(42, 17, Sum).</em></font></dd>
+</dl>
+
+<p>Now you need to double the product of 31 and 17, so you write the following goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>multiply_em(31, 17, Sum), add_em_up(Sum, Sum,
+    Answer).</em></font></dd>
+</dl>
+
+<p>You might expect Visual Prolog to return </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Sum=527, Answer=1054</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<p>But, instead, you get a type error. What happened is that you tried to pass the
+resulting value of multiply_em (that is, of domain product), into the first and second
+arguments in <b><i>add_em_up</i></b>, which have domains of <b><i>sum</i></b>. This yields
+a type error because <b><i>product</i></b> is a different domain than <b><i>sum</i></b>.
+Even though both domains are really of type <b><i>integer</i></b>, they are different
+domains, and are treated as such.</p>
+
+<p>So, if a variable is used in more than one predicate within a clause, it must be
+declared the same in each predicate. Be sure that you fully understand the concept behind
+the type error given here; knowing the concept will avoid frustrating compiler error
+messages. Later in this chapter we will describe the different automatic and explicit
+type-conversions Visual Prolog offers.</p>
+
+<p>To further understand how you can use domain declarations to catch type errors,
+consider the following program example: </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch03e02.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>brand,color = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>age = byte</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>price, mileage = ulong</em></font></dd>
+  <dt>&nbsp;</dt>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm car(brand,mileage,age,color,price)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(chrysler,130000,3,red,12000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(ford,90000,4,gray,25000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(datsun,8000,1,black,30000).</em></font></dd>
+</dl>
+
+<p>Here, the <b><i>car</i></b> predicate declared in the <b>predicates</b> section takes
+five arguments. One belongs to the <b><i>age</i></b> domain, which is of <b><i>byte</i></b>
+type. On the 'x86 family of CPUs, a <b><i>byte</i></b> is an 8-bit unsigned integer, which
+can take on values between 0 and 255, both inclusive. Similarly, the domains <b><i>mileage</i></b>
+and <b><i>price</i></b> are of type <b><i>ulong</i></b>, which is a 32-bit unsigned
+integer, and the domains <b><i>brand</i></b> and <b><i>color</i></b> are of type <b><i>symbol</i></b>.</p>
+
+<p>We'll discuss the built-in domains in greater detail in a moment. For now, load and run
+this program and try each of the following goals in turn. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>car(renault, 13, 40000, red, 12000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(ford, 90000, gray, 4, 25000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(1, red, 30000, 80000, datsun).</em></font></dd>
+</dl>
+
+<p>Each goal produces a domain error. In the first case, for example, it's because <b><i>age</i></b>
+must be a byte. Hence, Visual Prolog can easily detect if someone typing in this goal has
+reversed the <b><i>mileage</i></b> and <b><i>age</i></b> objects in predicate <b><i>car</i></b>.
+In the second case, <b><i>age</i></b> and <b><i>color</i></b> have been swapped, and in
+the third case you get to find out for yourself where the mixups are.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381480"><font size="4"><b>The Goal Section</b></font></a><!--mstheme--></font></h2>
+
+<p>Essentially, the <b>goal</b> section is the same as the body of a rule: it's simply a
+list of subgoals. There are two differences between the <b>goal</b> section and a rule:</p>
+
+<p>The <b>goal</b> keyword is <i>not</i> followed by :-.</p>
+
+<p>Visual Prolog automatically executes the goal when the program runs.</p>
+
+<p>It's as if Visual Prolog makes a call to <b>goal</b>, and the program runs, trying to
+satisfy the body of the goal rule. If the subgoals in the <b>goal</b> section all succeed,
+then the program terminates successfully. If, while the program is running, a subgoal in
+the <b>goal</b> section fails, then the program is said to have failed. (Although, from an
+external point of view, there isn't necessarily any difference; the program simply
+terminates.)</p>
+
+<p>&nbsp;</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381482"><font size="5"><b>A Closer Look at Declarations and Rules</b></font></a><!--mstheme--></font></h2>
+
+<p>Visual Prolog has several built-in standard domains. You can use standard domains when
+declaring the types of a predicate's arguments. Standard domains are already known to
+Visual Prolog and should not be defined in the <b>domains</b> section.</p>
+
+<p>We'll first look at all the integral ones, shown in Table 3.1.</p>
+
+<p align="center"><i>Table 3.<a name="i_standdomain">1</a>:Integral Standard Domains</i></p>
+
+<!--mstheme--></font><table border="1" cellpadding="7" cellspacing="1" width="520" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>Domain</i></b> <!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>Description and implementation</i></b><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>short</i></b> <!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A small,
+    signed, quantity.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms </font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16 bits,2s comp </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32768 .. 32767</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>ushort</i></b> <!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A small,
+    unsigned, quantity.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms </font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16 bits </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 65535</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>long</i></b> <!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A large signed
+    quantity</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms</font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32 bits,2s comp </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">-2147483648 .. 2147483647</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>ulong</i></b> <!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A large,
+    unsigned quantity</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms </font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32 bits </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 4294967295</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>integer</i></b><!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A signed
+    quantity, having the natural size for the machine/platform architecture in question.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16bit platforms</font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16 bits,2s comp </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">-32768 .. 32767</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32bit platforms</font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32 bits,2s comp </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">-2147483648 .. 2147483647</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="2" width="17%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>unsigned</i></b><!--mstheme--></font></td>
+    <td valign="top" colspan="3" width="83%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">An unsigned
+    quantity, having the natural size for the machine/platform architecture in question.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16bit platforms</font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16 bits</font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 65535</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32bit platforms</font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32 bits </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 4294967295</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>byte</i></b><!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms </font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">³ 8 bits </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 255</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>word</i></b><!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms </font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">16 bits</font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 65535</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="14%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>dword</i></b><!--mstheme--></font></td>
+    <td valign="top" colspan="4" width="86%"><!--mstheme--><font face="verdana, Arial, Helvetica">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" colspan="3" width="21%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">All platforms </font><!--mstheme--></font></td>
+    <td valign="top" width="24%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">32 bits </font><!--mstheme--></font></td>
+    <td valign="top" width="55%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">0 .. 4294967295</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<p>Syntactically, a value belonging in one of the integral domains is written as a
+sequence of digits, optionally preceded by a minus-sign for the signed domains, with no
+white-space. There are also octal and hexadecimal syntaces for the integral domains; these
+will be illustrated in the language, chapter <b>9</b>.</p>
+
+<p>The <b><i>byte</i></b>, <b><i>word</i></b>, and <b><i>dword</i></b> domains are most
+useful when dealing with machine-related quantities, except perhaps for the <b><i>byte</i></b>;
+an 8-bit integral quantity can prove quite relevant, as we have already seen. For general
+use, the <b><i>integer</i></b> and <b><i>unsigned</i></b> quantities are the ones to use,
+augmented by the <b><i>short</i></b> and <b><i>long</i></b> (and their unsigned
+counterparts) for slightly more specialized applications. Generally, the most efficient
+code results from using what's natural for the machine; a <b><i>short</i></b> is not as
+efficient on a '386 platform as a <b><i>long</i></b>, and a <b><i>long</i></b> is not as
+efficient on a '286 platform as a <b><i>short</i></b>, hence the different implementations
+of <b><i>integer</i></b> and <b><i>unsigned</i></b>.</p>
+
+<p>In domain declarations, the <b><i>signed</i></b>, and <b>unsigned</b> keywords may be
+used in conjunction with the <b><i>byte</i></b>, <b><i>word</i></b>, and <b><i>dword</i></b>
+built-in domains to construct new integral domains, as in </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>i8 = signed byte</em></font></dd>
+</dl>
+
+<p>creating a new integral domain having a range of -128 to +127.</p>
+
+<p>The other basic domains are shown in table 3.2. Visual Prolog recognizes several other
+standard domains, but we cover them in other chapters, after you've got a good grasp of
+the basics.</p>
+
+<p align="center"><i>Table 3.<a name="b_standdomain">2</a>: Basic Standard Domains</i></p>
+
+<!--mstheme--></font><table border="1" cellpadding="7" cellspacing="1" width="479" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td valign="top" width="15%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Domain </b><!--mstheme--></font></td>
+    <td valign="top" width="85%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Description and implementation</b><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="15%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>Char</i></b> <!--mstheme--></font></td>
+    <td valign="top" width="85%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A character, implemented as
+    an unsigned byte. Syntactically, it is written as a character surrounded by single
+    quotation marks: 'a'.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="15%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>Real</i></b><!--mstheme--></font></td>
+    <td valign="top" width="85%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A floating-point number,
+    implemented as 8 bytes in accordance with IEEE conventions; equivalent to C's </font><font size="1"><b><i>double</i></b></font><font size="1" face="Courier New">. Syntactically, a
+    real is written with an optional sign (+ or -) followed by some digits <i>DDDDDDD</i>,
+    then an optional decimal point (.) followed by more digits <i>DDDDDDD</i>, and an optional
+    exponential part (e(+ or -)DDD):</font><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">&lt;+|-&gt; DDDDD &lt;.&gt; DDDDDDD &lt;e &lt;+|-&gt;
+        DDD&gt;</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><font size="1" face="Courier New">Examples of real numbers:</font></p>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">42705 9999 86.72</font><p><font size="1" face="Courier New">9111.929437521e238 79.83e+21</font></p>
+      <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><font size="1" face="Courier New">Here 79.83e+21 means 79.83 x 10^21, just as in other
+    languages.</font></p>
+    <p><font size="1" face="Courier New">The permitted number range is 1 &nbsp;) 10-307 to 1
+    &nbsp;) 10308 (1<i>e</i>-307 to 1<i>e</i>+308). Values from the integral domains are
+    automatically converted to real numbers when necessary.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="15%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>String</i></b> <!--mstheme--></font></td>
+    <td valign="top" width="85%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A sequnce of characters,
+    implemented as a pointer to a zero-terminated byte array, as in C. Two formats are
+    permitted for strings:</font><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">1. a sequence of letters, numbers and underscores,
+            provided the first character is lower-case; or</font><p><font size="1" face="Courier New">2.
+            a character sequence surrounded by a pair of double quotation marks.</font></p>
+          <!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><font size="1" face="Courier New">Examples of strings:</font></p>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">telephone_number &quot;railway ticket&quot;
+        &quot;Dorid Inc&quot;</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><font size="1" face="Courier New">Strings that you write in the program can be up to
+    255 characters long. Strings that the Visual Prolog system reads from a file or builds up
+    internally can be up to 64K characters long on 16-bit platforms, and (theoretically) up to
+    4G long on 32-bit platforms.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="15%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b><i>Symbol</i></b><!--mstheme--></font></td>
+    <td valign="top" width="85%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">A sequence of characters,
+    implemented as a pointer to an entry in a hashed symbol-table, containing strings. The
+    syntax is the same as for strings.</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Symbols and strings are largely interchangeable as far as your program is concerned,
+but Visual Prolog stores them differently. Symbols are kept in a look-up table, and their
+addresses, rather than the symbols themselves, are stored to represent your objects. This
+means that symbols can be matched very quickly, and if a symbol occurs repeatedly in a
+program, it can be stored very compactly. Strings are not kept in a look-up table; Visual
+Prolog examines them character-by-character whenever they are to be matched. You must
+determine which domain will give better performance in a particular program.</p>
+
+<p>The following table gives some examples of simple objects that belong to the basic
+standard domains.</p>
+
+<p align="center"><i>Table 3.3: Simple Objects</i></p>
+
+<!--mstheme--></font><table border="1" cellpadding="7" width="453" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td valign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">&quot;&amp;&amp;&quot;, caitlin, &quot;animal
+        lover&quot;, b_l_t</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">(symbol or string)<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">-1, 3, 5, 0</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">(integer)<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">3.45, 0.01, -30.5, 123.4e+5</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">(real)<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="66%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">'a', 'b', 'c' '/', '&amp;'</font><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+    <td valign="top" width="34%"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">(char)<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><a name="_Toc325381483"><b>Typing Arguments in Predicate Declarations</b></a></p>
+
+<p>Declaring the domain of an argument in the <b>predicates</b> section is called <i>typing</i>
+the argument. For example, suppose you have the following relationship and objects: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Frank is a male who is 45 years old.</em></font></dd>
+</dl>
+
+<p>The Prolog fact that corresponds to this natural language relation might be </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>person(frank, male, 45).</em></font></dd>
+</dl>
+
+<p>In order to declare <b><i>person</i></b> as a predicate with these three arguments, you
+could place the following declaration in the <b>predicates</b> section: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>person(symbol, symbol, unsigned)</em></font></dd>
+</dl>
+
+<p>Here, you have used standard domains for all three arguments. Now, whenever you use the
+predicate <b><i>person</i></b>, you must supply three arguments to the predicate; the
+first two must be of type <b><i>symbol</i></b>, while the third argument must be an <b><i>integer</i></b>.</p>
+
+<p>If your program only uses standard domains, it does not need a <b>domains</b> section;
+you have seen several programs of this type already. </p>
+
+<p>Or, suppose you want to define a predicate that will tell you the position of a letter
+in the alphabet. That is, </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>alphabet_position(Letter, Position)</em></font></dd>
+</dl>
+
+<p>will have <i>Position</i> = 1 if <i>Letter</i> = a, <i>Position</i> = 2 if <i>Letter</i>
+= b, and so on. The clauses for this predicate would look like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>alphabet_position(A_character, N).</em></font></dd>
+</dl>
+
+<p>If standard domains are the only domains in the predicate declarations, the program
+does not need a <b>domains</b> section. Suppose you want to define a predicate so that the
+goal will be true if <i>A_character</i> is the <i>N</i>th letter in the alphabet. The
+clauses for this predicate would look like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('a', 1).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('b', 2).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('c', 3).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>...</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('z', 26).</em></font></dd>
+</dl>
+
+<p>You can declare the predicate as follows: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position(char, unsigned)</em></font></dd>
+</dl>
+
+<p>and there is no need for a <b>domains</b> section. If you put the whole program
+together, you get </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position(char, integer)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('a', 1).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('b', 2).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('c', 3).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* ... other letters go here ... */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('z', 26).</em></font></dd>
+</dl>
+
+<p>Here are a few sample goals you could enter: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('a', 1).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position(X, 3).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>alphabet_position('z', What).</em></font></dd>
+</dl>
+
+<p><i>Exercises</i></p>
+
+<p>Program 4 is a complete Visual Prolog program that functions as a mini telephone
+directorytelephone directory. The <b>domains</b> section is not needed here, since only
+standard domains are used. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch03e04.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm phone_number(symbol,symbol)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>phone_number(&quot;Albert&quot;,&quot;EZY-3665&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>phone_number(&quot;Betty&quot;,&quot;555-5233&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>phone_number(&quot;Carol&quot;,&quot;909-1010&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>phone_number(&quot;Dorothy&quot;,&quot;438-8400&quot;).</em></font></dd>
+</dl>
+
+<p>Load and run the program 4, then try each of these goals in turn:</p>
+
+<p><font size="1" face="Arial">a.</font><font size="1"> </font><font size="1" face="Courier New">phone_number(&quot;Carol&quot;, Number).</font></p>
+
+<p><font size="1" face="Arial">b.</font><font size="1"> </font><font size="1" face="Courier New">phone_number(Who, &quot;438-8400&quot;).</font></p>
+
+<p><font size="1" face="Arial">c.</font><font size="1"> </font><font size="1" face="Courier New">phone_number(&quot;Albert&quot;, Number).</font></p>
+
+<p><font size="1" face="Arial">d.</font><font size="1"> </font><font size="1" face="Courier New">phone_number(Who, Number).</font></p>
+
+<p>Now update the clauses. Suppose that Kim shares a condo with Dorothy and so has the
+same phone number. Add this fact to the <b>clauses</b> section and try the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>phone_number(Who, &quot;438-8400&quot;).</em></font></dd>
+</dl>
+
+<p>You should get two solutions to this query: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Who=Dorothy</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Who=Kim</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>2 Solutions</em></font></dd>
+</dl>
+
+<p>To illustrate the <b><i>char</i></b> domain, program 5 defines <b><i>isletter</i></b>,
+which, when given the goals </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>isletter('%').</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>isletter('Q').</em></font></dd>
+</dl>
+
+<p>will return No and Yes, respectively. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch03e05.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm isletter(char)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* When applied to characters, '&lt;=' means */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* &quot;alphabetically precedes or is the same
+    as&quot; */</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>isletter(Ch):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>'a' &lt;= Ch,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Ch &lt;= 'z'.</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>isletter(Ch):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>'A' &lt;= Ch,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Ch &lt;= 'Z'.</em></font></dd>
+</dl>
+
+<p>Load and run Program 5 and try each of these goals in turn: </p>
+
+<dl>
+  <dd><em><font size="1" face="Arial">a</font><font size="1">.</font><font size="1" face="Courier New"> isletter('x').</font></em></dd>
+  <dd><em><font size="1" face="Arial">b.</font><font size="1" face="Courier New">
+    isletter('2').</font></em></dd>
+  <dd><em><font size="1" face="Arial">c.</font><font size="1" face="Courier New">
+    isletter(&quot;hello&quot;).</font></em></dd>
+  <dd><em><font size="1" face="Arial">d.</font><font size="1" face="Courier New"> isletter(a).</font></em></dd>
+  <dd><em><font size="1" face="Arial">e.</font><font size="1" face="Courier New"> isletter(X).</font></em></dd>
+</dl>
+
+<p>Goals (c) and (d) will result in a type error message, and (e) will return an <font size="1" face="Courier New">Free variable</font> message, because you can't test whether
+an unidentified object follows <i>a</i> or precedes <i>z</i>.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381484"><b>Multiple Arity</b></a><!--mstheme--></font></h3>
+
+<p>The <i>arity</i> of a predicate is the number of arguments that it takes. You can have
+two predicates with the same name but different arity. You must group different arity
+versions of a given predicate name together in both the <b>predicates</b> and <b>clauses</b>
+sections of your program; apart from this restriction, the different arities are treated
+as completely different predicates. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch03e06.pro */</em></font></p>
+  </dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>DOMAINS</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>person = symbol</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>PREDICATES</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>father(person) % This
+    person is a father</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>father(person, person) %
+    One person is the father of the other person</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>CLAUSES</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>father(Man):-</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>father(Man,_).</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>father(adam,seth).</em></font></a></dd>
+  <dd><a name="_Toc325381485"><font size="1" face="Courier New"><em>father(abraham,isaac).</em></font></a></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc342123192"><b>Rule Syntax</b></a><!--mstheme--></font></h3>
+
+<p>Rules are used in Prolog when a fact depends upon the success (truth) of another fact
+or group of facts. As we explained in Chapter <b>2</b>, a Prolog rule has two parts: the <i>head</i>
+and the <i>body</i>. This is the generic syntax for a Visual Prolog rule: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>HEAD :- &lt;Subgoal&gt;, &lt;Subgoal&gt;, ...,
+    &lt;Subgoal&gt;.</em></font></dd>
+</dl>
+
+<p>The body of the rule consists of one or more subgoals. Subgoals are separated by
+commas, specifying conjunction, and the last subgoal in a rule is terminated by a period.</p>
+
+<p>Each subgoal is a call to another Prolog predicate, which may succeed or fail. In
+effect, calling another predicate amounts to evaluating <u>its</u> subgoals, and,
+depending on their success or failure, the call will succeed or fail. If the current
+subgoal can be satisfied (proven true), the call returns, and processing continues on to
+the next subgoal. Once the final subgoal in a rule succeeds, the call returns
+successfully; if any of the subgoals fail, the rule immediately fails.</p>
+
+<p>To use a rule successfully, Prolog must satisfy all of the subgoals in it, creating a
+consistent set of variable bindings as it does so. If one subgoal fails, Prolog will back
+up and look for alternatives to earlier subgoals, then proceed forward again with
+different variable values. This is called <i>backtracking</i>. A full discussion of
+backtracking and how Prolog finds solutions is covered in Chapter <b>4</b>.</p>
+
+<p><i>Prolog if Symbol vs. IF in Other Languages</i></p>
+
+<p>As we have mentioned earlier, the <b>:-</b> separating the head and the body of a rule,
+is read &quot;if&quot;. However, a Prolog <b>if</b> differs from the <b>IF</b> written in
+other languages, such as Pascal.</p>
+
+<p>In Pascal, for instance, the condition contained in the <b>IF</b> statement must be met
+<i>before</i> the body of the statement can be executed; in other words, </p>
+
+<p align="center">&quot;if HEAD is true, then BODY is true (or: then do BODY)&quot;</p>
+
+<p>This type of statement is known as an <i>if/then conditional</i>. Prolog, on the other
+hand, uses a different form of logic in its rules. The head of a Prolog rule is concluded
+to be true if (<i>after</i>) the body of the rule succeeds; in other words, </p>
+
+<p align="center">&quot;HEAD is true if BODY is true (or: if BODY can be done)&quot;</p>
+
+<p>Seen in this manner, a Prolog rule is in the form of a <i>then/if conditional</i>.</p>
+
+<p><a name="_Toc325381486"><b>Automatic Type Conversions</b></a></p>
+
+<p>When Visual Prolog matches two variables, it's not always necessary that they belong to
+the same domain. Also, variables can sometimes be bound to constants from other domains.
+This (selective) mixing is allowed because Visual Prolog performs automatic type
+conversion (from one domain to another) in the following circumstances:</p>
+
+<p>Between <b><i>string</i></b>s and <b><i>symbol</i></b>s.</p>
+
+<p>Between all the integral domains, and also <b><i>real</i></b>. When a character is
+converted to a numeric value, the number is the ASCII value for that character.</p>
+
+<p>An argument from a domain <b><i>my_dom</i></b> declared in this form </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>my_dom = &lt;base domain&gt; /*&lt;base domain&gt;
+    is a standard domain */</em></font></dd>
+</dl>
+
+<p>can mix freely with arguments from that base domain and all other standard domains that
+are compatible with that base domain. (If the base domain is <b><i>string</i></b>,
+arguments from the <b><i>symbol</i></b> domain are compatible; if the base domain is <b><i>integer</i></b>,
+arguments from the <b><i>real</i></b>, <b><i>char</i></b>, <b><i>word</i></b>, etc.,
+domains are compatible.</p>
+
+<p>These type conversions mean, for example, that you can</p>
+
+<p>call a predicate that handles <b><i>string</i></b>s with a <b><i>symbol</i></b>
+argument, and vice versa</p>
+
+<p>call a predicate that handles <b><i>real</i></b>s with an <b><i>integer</i></b>
+argument</p>
+
+<p>call a predicate that handles characters with <b><i>integer</i></b> values</p>
+
+<p>use characters in expressions and comparisons without needing to look up their ASCII
+values.</p>
+
+<p>There are a number of rules deciding what domain the result of the expression belongs
+to, when different domains are mixed. These will be detailed in chapter <b>9</b>.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381487"><font size="5"><b>Other Program Sections</b></font></a><!--mstheme--></font></h2>
+
+<p>Now that you're reasonably familiar with the <b>clauses</b>, <b>predicates</b>, <b>domains</b>,
+and <b>goal</b> sections of a Visual Prolog program, we'll tell you a little bit about
+some other commonly-used program sections: the <b>facts</b> section, the <b>constants</b>
+section, and the various <b>global</b> sections. This is just an introduction; as you work
+through the rest of the tutorials in this book you'll learn more about these sections and
+how to use them in your programs.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381488"><font size="4"><b>The Facts Section</b></font></a><!--mstheme--></font></h3>
+
+<p>A Visual Prolog program is a collection of facts and rules. Sometimes, while the
+program is running, you might want to update (change, remove, or add) some of the facts
+the program operates on. In such a case, the facts constitute a <i>dynamic</i> or <i>internal</i>
+database; it can change while the program is running. Visual Prolog includes a special
+section for declaring the facts in the program that are to be a part of the dynamic (or
+changing) database; this is the <b>facts</b> section.</p>
+
+<p>The keyword <b>facts</b> declares the <b>facts</b> section. It is here that you declare
+the facts to be included in the dynamic facts section. Visual Prolog includes a number of
+built-in predicates that allow easy use of the dynamic facts section. The keyword <b>facts</b>
+is synonymous with <b>database.</b></p>
+
+<p>Chapter <b>8</b> provides a complete discussion of the facts section and the predicates
+used along with it.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381489"><font size="4"><b>The Constants Section</b></font></a><!--mstheme--></font></h3>
+
+<p>You can declare and use symbolic constants in your Visual Prolog programs. A constant
+declaration section is indicated by the keyword <b>constants</b>, followed by the
+declarations themselves, using the following syntax: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>&lt;Id&gt; = &lt;Macro definition&gt;</em></font></dd>
+</dl>
+
+<p>&lt;<i>Id</i>&gt; is the name of your symbolic constant, and &lt;<i>Macro definition</i>&gt;
+is what you're assigning to that constant. Each &lt;<i>Macro definition</i>&gt; is
+terminated by a newline character, so there can only be one constant declaration per line.
+Constants declared in this way can then be referred to later in the program.</p>
+
+<p>Consider the following program fragment: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>CONSTANTS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>zero = 0</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>one = 1</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>two = 2</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>hundred = (10*(10-1)+10)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>pi = 3.141592653</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>ega = 3</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>slash_fill = 4</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>red = 4</em></font></dd>
+</dl>
+
+<p>Before compiling your program, Visual Prolog will replace each constant with the actual
+string to which it corresponds. For instance: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>..., </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>A = hundred*34, delay(A), </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>setfillstyle(slash_fill, red), </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Circumf = pi*Diam, </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>...</em></font></dd>
+</dl>
+
+<p>will be handled by the compiler in exactly the same way as </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>...,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>A = (10*(10-1)+10)*34, delay(A), </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>setfillstyle(4, 4), </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Circumf = 3.141592653*Diam, </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>...</em></font></dd>
+</dl>
+
+<p>There are a few restrictions on the use of symbolic constants:</p>
+
+<p>The definition of a constant can't refer to itself. For example: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>my_number = 2*my_number/2 /* Is not allowed */</em></font></dd>
+</dl>
+
+<p>will generate the error message Recursion in constant definition.</p>
+
+<p>The system does not distinguish between upper-case and lower-case in a <b>constants</b>
+declaration. Consequently, when a <b>constants</b> identifier is used in the <b>clauses</b>
+section of a program, the first letter must be lower-case to avoid confusing constants
+with variables. So, for example, the following is a valid construction: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>CONSTANTS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Two = 2</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>GOAL</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>A=two, write(A).</em></font></dd>
+</dl>
+
+<p>There can be several <b>constants</b> declaration sections in a program, but constants
+must be declared before they are used.</p>
+
+<p>Declared constants are effective from their point of declaration to the end of the
+source file, and in any files included after the declaration. Constant identifiers can
+only be declared once. Multiple declarations of the same identifier will result in the
+error message This constant is already defined.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381490"><font size="4"><b>The Global Sections</b></font></a><!--mstheme--></font></h3>
+
+<p>Visual Prolog allows you to declare some domains, predicates, and clauses in your
+program to be <i>global</i> (rather than <i>local</i>); you do this by setting aside
+separate <b>global domains</b>, <b>global predicates</b>, and <b>global facts</b> sections
+at the top of your program. These global sections are discussed in the chapter <b>17</b>.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381491"><font size="4"><b>The Compiler Directives</b></font></a><!--mstheme--></font></h3>
+
+<p>Visual Prolog provides several <i>compiler directives</i> you can add to your program
+to tell the compiler to treat your code in specified ways when compiling. You can also set
+most of the compiler directives from the <b>Options</b> | <b>Project </b>| <b>Compiler
+Options</b> menu item in the Visual Prolog system. Compiler directives are covered in
+detail in the chapter <b>17</b>, but you'll want to know how to use a couple of them
+before you get to that chapter, so we introduce the basic ones here.</p>
+
+<h4><!--mstheme--><font color="#000000"><b><a name="_Toc325381492">The include Directive</a> </b><!--mstheme--></font></h4>
+
+<p>As you get more familiar with using Visual Prolog, you'll probably find that you use
+certain procedures over and over again in your programs. You can use the include directive
+to save yourself from having to type those procedures in again and again. </p>
+
+<p>Here's an example of how you could use it:</p>
+
+<p>You create a file (such as MYSTUFF.PRO) in which you declare your frequently-used
+predicates (using <b>domains</b> and <b>predicates</b> sections) and give the procedures
+defining those predicates in a <b>clauses</b> section.</p>
+
+<p>You write the source text for the program that will make use of these procedures.</p>
+
+<p>At a <i>natural boundary</i> in your source text, you place the line </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>include &quot;mystuff.pro&quot;</em></font></dd>
+</dl>
+
+<p>(A natural boundary is anywhere in your program that you can place a <b>domains</b>,<b>
+facts</b>, <b>predicates</b>, <b>clauses</b>, or <b>goal</b> section.)</p>
+
+<p>When you compile your source text, Visual Prolog will compile the contents of
+MYSTUFF.PRO right into the final compiled product of your source text.</p>
+
+<p>You can use the include directive to include practically any often-used text into your
+source text, and one included file can in turn include another (but a given file can only
+be included once in your program). The include directive can appear at any natural
+boundary in your source text. However, you must observe the restrictions on program
+structure when you include a file into your source text.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381494"><font size="5"><b>Summary</b></font></a><!--mstheme--></font></h3>
+
+<p>These are the ideas we've introduced in this chapter:</p>
+
+<p>A Visual Prolog program has the following basic structure: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* ... </em></font></dd>
+</dl>
+
+<p><font size="1" face="Courier New">domain declarations</font> </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>... */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* ... </em></font></dd>
+</dl>
+
+<p><font size="1" face="Courier New">predicate declarations</font> </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>... */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* ... </em></font></dd>
+</dl>
+
+<p><font size="1" face="Courier New">clauses (rules and facts)</font> </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>... */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>GOAL</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* ... </em></font></dd>
+  <dd><font size="1" face="Courier New"><em>subgoal_1,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>subgoal_2,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>etc. */</em></font></dd>
+</dl>
+
+<p>The <b>clauses</b> section is where you put the facts and rules that Visual Prolog will
+operate on when trying to satisfy the program's goal.</p>
+
+<p>The <b>predicates</b> section is where you declare your predicates and the domains
+(types) of the arguments to your predicates. Predicate names must begin with a letter
+(preferably lower-case), followed by a sequence of letters, digits, and underscores, up to
+250 characters long. You can't use spaces, the minus sign, asterisks, or slashes in
+predicate names. Predicate declarations are of the form </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>predicateName(argument_type1, argument_type2, ...,
+    argument_typeN)</em></font></dd>
+</dl>
+
+<p><i>argument_type1</i>, ..., <i>argument_typeN</i> are either standard domains or
+domains that you've declared in the <b>domains</b> section. Declaring the domain of an
+argument and defining the argument's type are the same thing.</p>
+
+<p>The <b>domains</b> section is where you declare any nonstandard domains you're using
+for the arguments to your predicates. Domains in Prolog are like types in other languages.
+Visual Prolog's basic standard domains are <b><i>char</i></b>, <b><i>byte</i></b>, <b><i>short</i></b>,
+<b><i>ushort</i></b>, <b><i>word</i></b>, <b><i>integer</i></b>, <b><i>unsigned</i></b>, <b><i>long</i></b>,
+<b><i>ulong</i></b>, <b><i>dword</i></b>, <b><i>real</i></b>, <b><i>string</i></b>, and <b><i>symbol</i></b>;
+the more specialized standard domains are covered in other chapters. The basic domain
+declarations are of the form </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>argument_type1, ..., argument_typeN = &lt;standard
+    domain&gt;</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>argument_1, ..., argument_N) = &lt;compound domain
+    1&gt;;</em></font></dd>
+  <dd><p align="left"><font size="1" face="Courier New"><em>&lt;compound domain 2&gt;; &lt;
+    ... &gt;; </em></font></p>
+  </dd>
+  <dd><p align="left"><font size="1" face="Courier New"><em>&lt;compound domain N&gt;; </em></font></p>
+  </dd>
+</dl>
+
+<p>Compound domains haven't been covered in this chapter; you'll see them in Chapter 5.</p>
+
+<p>The <b>goal</b> section is where you put your program's <i>internal goal</i>; this
+allows the program to run independent of the development environment. With an internal
+goal, Visual Prolog only searches for the first solution, and the values to which
+variables are bound are not displayed. </p>
+
+<p>If you don't use an internal goal, you'll enter an <i>external goal</i> in the Dialog
+window at run time. With an external goal, Visual Prolog searches for all solutions, and
+displays the values to which variables are bound.</p>
+
+<p>The <i>arity</i> of a predicate is the number of arguments that it takes; two
+predicates can have the same name but different arity. You must group a predicate's
+different arity versions together in both the <b>predicates</b> and <b>clauses</b>
+sections, but different arities are treated as completely different predicates.</p>
+
+<p>Rules are of the form </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>HEAD :- &lt;Subgoal1&gt;, &lt;Subgoal2&gt;, ...,
+    &lt;SubgoalN&gt;.</em></font></dd>
+</dl>
+
+<p>For a rule to succeed, Prolog must satisfy all of its subgoals, creating a consistent
+set of variable bindings. If one subgoal fails, Prolog backs up and looks for alternatives
+to earlier subgoals, then proceeds forward with different variable values. This is called <i>backtracking</i>.</p>
+
+<p>The :- (&quot;if&quot;) in Prolog should not be confused with the <b>IF</b> used in
+other languages; a Prolog rule is in the form of a <i>then/if</i> conditional, while <b>IF</b>
+statements in other languages are in the form of an <i>if/then</i> conditional.</p>
+
+<p><a href="learn3.htm">Go to next section</a></p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

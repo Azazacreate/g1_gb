@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<TITLE>Sections</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Sections'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>SECTIONS</FONT>
+<P ALIGN=LEFT>The top level of knowledge representation in ESTA consists of sections. The first section in any knowledge base must be one called <B>start</B>. A section consists of a name, a textual description and a number of paragraphs. ESTA deals with the paragraphs in a section working from top to bottom, one paragraph at the time. If a paragraph contains a boolean expression, then the expression is evaluated first. If the expression is true - or the paragraph does not contain a boolean expression at all - the relevant list of actions are executed in the order given in the paragraph. When a consultation is started via the Begin Consultation command, ESTA starts by evaluating the boolean expressions in the paragraphs of the <B>start</B> section. 
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for a section is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;section&gt;        ::= section &lt;<A HREF='NAME.HTM'>section-name</A>&gt; [:] &lt;<A HREF='STRING.HTM'>description-text</A>&gt; 
+<P ALIGN=LEFT>&lt;paragraph-list&gt; 
+<P ALIGN=LEFT>&lt;paragraph-list&gt; ::= &lt;paragraph&gt; [&lt;paragraph-list&gt;] 
+<P ALIGN=LEFT>&lt;paragraph&gt;      ::= [if &lt;<A HREF='BOOLEAN_.HTM'>boolean-expression</A>&gt;] &lt;action&gt; 
+<P ALIGN=LEFT>                     [if &lt;boolean-expression&gt;] ( &lt;actions&gt; ) 
+<P ALIGN=LEFT>&lt;actions&gt;        ::= &lt;action&gt; [,&lt;actions&gt;] 
+<P ALIGN=LEFT>&lt;action&gt;         ::= <A HREF='ADVICE.HTM'>advice</A> | 
+<P ALIGN=LEFT>                     <A HREF='ASSIGN_A.HTM'>assign</A> | 
+<P ALIGN=LEFT>                     <A HREF='CALL_ACT.HTM'>call</A> | 
+<P ALIGN=LEFT>                     <A HREF='CHAIN_AC.HTM'>chain</A> | 
+<P ALIGN=LEFT>                     <A HREF='DO_ACTIO.HTM'>do</A> | 
+<P ALIGN=LEFT>                     <A HREF='DO_SECTI.HTM'>do_section_of</A> | 
+<P ALIGN=LEFT>                     <A HREF='EXIT_ACT.HTM'>exit</A> | 
+<P ALIGN=LEFT>                     <A HREF='STOP_ACT.HTM'>stop</A> 
+<P ALIGN=LEFT></FONT><B>Example</B>
+<P ALIGN=LEFT>The following example consists of a knowledge base with one section and one parameter: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2> <B>section</B> start : 'the first section to be executed' 
+<P ALIGN=LEFT> if car_color = 'red'  
+<P ALIGN=LEFT>   ( advice 'Your car is red, try to sell it to the fire brigade ' , 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>     call sound(200,100) 
+<P ALIGN=LEFT>   ) 
+<P ALIGN=LEFT> if car_color  &lt;&gt; 'red' and car_color &lt;&gt; 'blue' 
+<P ALIGN=LEFT>     advice 'Your car is not one of our favourite colors !' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT> advice 'That''s all folks!' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT> <B>parameter</B> car_color 'the color of the car' 
+<P ALIGN=LEFT> type text 
+<P ALIGN=LEFT> question 'What is the color of your car ?' </FONT>
+<P ALIGN=LEFT>The section start contains three paragraphs. The first paragraph contains a list of two actions separated by commas and embedded in parantheses. The next paragraph has only one action in which case the parantheses may be omitted. The last paragraph consists of a single action without any preceding boolean condition.  
+<P ALIGN=LEFT>Notice that evaluation of a boolean expression typically involves the use of parameters - as in <I>car_color = 'red'</I> in the above example. If a parameter does not have a value at the time of evaluation, ESTA will first establish a value for it either by questioning the user or by using a rule - depending on the parameters declaration. 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

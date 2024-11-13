@@ -1,0 +1,140 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName:	PROPERTY.PRE
+ PURPOSE:	Predicate definitions for Property Editor
+ Written by:	Victor Yukhtenko
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+Comments:	
+******************************************************************************/
+ifndef property_dom_included
+ #Error: this file requires include: property.dom
+enddef 
+
+constants
+  property_pre_included = 1
+
+global predicates
+
+%**** global ****************************************************
+% Create a new Property Editor window as TopLevel window
+%  propedit_Create / 8
+% Return:	Property Editor window
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure  WINDOW propedit_Create(WINDOW Parent,RCT,STRING Title,FONT,
+  		  	 PROPERTY_SHEET InitValue,PROPERTY_CALLBACK,INTEGER Label_area_width,WSFLAGS) - (i,i,i,i,i,i,i,i)
+
+%**** global ****************************************************
+% Init a new Property Editor window as a Custom Control
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure  propedit_CreateCustom(WINDOW Parent,FONT,PROPERTY_SHEET InitValue,
+  		  	 PROPERTY_CALLBACK,INTEGER Label_area_width) - (i,i,i,i,i)
+
+%**** global ****************************************************
+% Reload property Editor window
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure  propedit_Reload(WINDOW,STRING Title,PROPERTY_SHEET InitValue,INTEGER Label_area_width) - (i,i,i,i)
+
+%**** global ****************************************************
+% Reload Property Editor as custom control
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure  propedit_ReloadCustom(WINDOW,PROPERTY_SHEET InitValue,INTEGER Size_title_fields)  - (i,i,i)
+
+%**** global ****************************************************
+% PREDICATE TO GET Sheet from Property Editor
+% Fail:	Fails if the PropertyWindow does not exist
+% Errors:	No errors.
+%****************************************************************
+procedure PROPERTY_SHEET  propedit_GetSheet(WINDOW) - (i)
+
+%**** global ****************************************************
+% Set field marker (Set active control)
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure propedit_SetMarker(WINDOW,PROPERTY_ID) - (i,i)
+
+%**** global ****************************************************
+% Get current value from field
+% Fail:	Fails if the field does not exist
+% Errors:	No errors.
+%****************************************************************
+procedure PROPERTY_CTRLVAL propedit_GetValue (WINDOW,PROPERTY_ID) - (i,i)
+
+%**** global ****************************************************
+%  Set/Change the value for field
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure propedit_SetValue(WINDOW,PROPERTY_ID,PROPERTY_CTRLVAL) - (i,i,i)
+
+%**** global ****************************************************
+% Predicates to GET the different types of property values
+% Based on Window and Property_ID
+% Fail:	Fails if the field does not exist
+% Errors:	No errors.
+%****************************************************************
+procedure STRING propedit_GetStr(WINDOW,PROPERTY_ID)	- (i,i)
+procedure PROPERTY_INT propedit_GetInt(WINDOW,PROPERTY_ID)	- (i,i)
+procedure PROPERTY_LONG propedit_GetLong(WINDOW,PROPERTY_ID)	- (i,i)
+procedure PROPERTY_REAL propedit_GetReal(WINDOW,PROPERTY_ID)	- (i,i)
+procedure STRING propedit_GetListEdit(WINDOW,PROPERTY_ID)	- (i,i)
+procedure propedit_GetListButton(WINDOW,PROPERTY_ID,STRING,INTEGER) - (i,i,o,o)
+
+%**** global ****************************************************
+% Predicates to SET the different types of property values
+% Based on Window and Property_ID
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure propedit_SetStr(WINDOW,PROPERTY_ID,STRING)	- (i,i,i)
+procedure propedit_SetInt(WINDOW,PROPERTY_ID,PROPERTY_INT)	- (i,i,i)
+procedure propedit_SetLong(WINDOW,PROPERTY_ID,PROPERTY_LONG)	- (i,i,i)
+procedure propedit_SetReal(WINDOW,PROPERTY_ID,PROPERTY_REAL)	- (i,i,i)
+procedure propedit_SetListEdit(WINDOW,PROPERTY_ID,STRING)	- (i,i,i)
+procedure propedit_SetListButton(WINDOW,PROPERTY_ID,INTEGER)	- (i,i,i)
+
+%**** global ****************************************************
+% Predicate to SET the label for field
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure propedit_SetPropertyLabel(WINDOW,PROPERTY_ID,STRING Title)	- (i,i,i)
+
+%**** global ****************************************************
+% Predicate to GET the label from field
+% Fail:	Fails if the field does not exist
+% Errors:	No errors.
+%****************************************************************
+procedure  propedit_GetPropertyLabel(WINDOW,PROPERTY_ID,STRING Title)	- (i,i,o)
+
+%**** global ****************************************************
+% Predicate to GET the active table
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure  PROPERTY_TBLID propedit_GetActiveTbl(WINDOW)	- (i)
+
+%**** global ****************************************************
+% Predicate to SET the active table
+% Fail: 	Never fails.
+% Errors: 	No errors.
+%****************************************************************
+procedure propedit_SetActiveTbl(WINDOW,PROPERTY_TBLID)	- (i,i)
+
+/**** global ***************************************************************
+	Handle event in Property Sheet created as a Custom Control
+***************************************************************************/
+determ propedit_HandleEvent(WINDOW,EVENT)

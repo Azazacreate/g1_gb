@@ -1,0 +1,901 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName: VPI.PRE
+ PURPOSE: Predicate declaration for VPI Layer
+ Written by: Leo Jensen
+ Comments:
+
+******************************************************************************/
+
+global predicates
+%VPI main group
+
+% Invoke the GUI system
+procedure vpi_Init(WSFLAGS Flags,EHANDLER,MENU,STRING ApplName,STRING TaskWinTitle)
+	 - (I,I,I,I,I) language c
+
+%obsolette
+procedure vpi_InitDll() - language c
+
+procedure LONG vpi_LoadDll( STRING ) - (I) language c
+
+procedure vpi_FreeDll( LONG ) - (I) language c
+
+procedure LONG vpi_GetDllProc( LONG, STRING ProcName ) - (I,I) language c
+
+procedure LONG vpi_CreateProcess( WINDOW, STRING Command, STRING Param, WSFLAG Flag ) - (i,i,i,i) language C
+
+procedure vpi_CloseProcess( LONG AppId ) - (i) language C
+
+procedure WINDOW vpi_GetProcessWindow( LONG AppId ) - (i) language C
+
+procedure vpi_ShowHelp(STRING FileName) - (I) language c
+
+procedure vpi_ShowHelp(STRING FileName,INTEGER OpSys) - (I,I) language c
+ifdef ws_pm
+procedure vpi_ShowHelp(STRING FileName,STRING Title) - (I,I) language c
+enddef
+procedure vpi_ShowHelpContext(STRING FileName,LONG ContextId)-(I,I) language c
+
+procedure vpi_ShowHelpContext(STRING FileName,LONG ContextId,INTEGER OpSys)-(I,I,I) language c
+ifdef ws_pm
+procedure vpi_ShowHelpContext(STRING FileName,LONG ContextId,STRING Title)-(I,I,I) language c
+enddef
+
+procedure vpi_ShowHelpKeyWord(STRING FileName,STRING KeyWord)-(I,I) language c
+
+procedure vpi_ShowHelpKeyWord(STRING FileName,STRING KeyWord,INTEGER OpSys)-(I,I,I) language c
+ifdef ws_pm
+procedure vpi_ShowHelpKeyWord(STRING FileName,STRING KeyWord,STRING Title)-(I,I,I) language c
+enddef
+
+procedure vpi_HelpClose() - language c
+
+procedure vpi_HelpClose(INTEGER OpSys) - (I) language c
+
+procedure vpi_Alarm( INTEGER Type ) - (i) language C
+
+% Get a task window
+procedure WINDOW vpi_GetTaskWin() - () language c
+
+% Get a value for a given attribute
+procedure LONG vpi_GetAttrVal(LONG Attribute) - (I) language c
+
+% Set a value for a given attribute
+procedure vpi_SetAttrVal(LONG Attr,LONG Value) - (I,I) language c
+
+% Get a string from the resource file
+procedure STRING vpi_GetResStr(RESID) - (I) language c
+
+% Process all pending events in the GUI system
+procedure BOOLEAN vpi_ProcessEvents(BOOLEAN SendEventsToThisApp) - (I) language c
+
+procedure BOOLEAN vpi_ProcessEvents(BOOLEAN SendEventsToThisApp, BOOLEAN WaitNewEvents ) - (I,I) language c
+
+procedure BOOLEAN vpi_ProcessEvents() - () language c
+
+% Compose a color from the red, green,blue parts.
+procedure COLOR vpi_ComposeRGB(INTEGER Red,INTEGER Green,INTEGER Blue) - (I,I,I) language c
+
+%  returns the dialog box base units used by Windows when creating dialog boxes
+procedure vpi_GetBaseUnits(INTEGER Width,INTEGER Heigth) - (O,O) language c
+
+% Install new error handling predicate
+procedure vpi_SetErrorHandler(ERRHANDLER)-(I) language c
+
+% Turn on and off argument validation in the GUI API
+procedure vpi_ArgValidation(BOOLEAN OnOff)-(I) language c
+
+% Check existing dialog with specified ResID
+procedure BOOLEAN vpi_CheckExistDialog( RESID ResID ) - (I) language c
+
+% Check existing string with specified ResID
+procedure BOOLEAN vpi_CheckExistString( RESID ResID ) - (I) language C
+
+% set and get accelerators list
+procedure vpi_Accelerators(ACCEL_LIST) - (i),(o) language C
+
+%Timer handling
+
+% Stop Timer
+procedure timer_Kill(LONG TimerId) - (I) language c
+
+% Start a timer for a window
+procedure LONG timer_Set(WINDOW,UNSIGNED Interval) - (I,I) language c
+
+
+%Common dialogs
+
+% A dialog to get a string
+determ STRING dlg_GetStr(STRING Title,STRING Msg,STRING InitStr) - (I,I,I) language c
+determ STRING dlg_GetStr(WINDOW Parent,STRING Title,STRING Msg,STRING InitStr) - (I,I,I,I) language c
+
+% Ask a standard Yes/No etc. question
+procedure INTEGER dlg_Ask(STRING Promt,SLIST ButtonTitlesList) - (I,I) language c
+
+% Ask a standard Yes/No etc. question
+procedure INTEGER dlg_Ask(STRING Title,STRING Promt,SLIST ButtonTitlesList) - (I,I,I) language c
+
+procedure INTEGER dlg_Ask(WINDOW Parent,STRING Title,STRING Promt,SLIST ButtonTitlesList) - (I,I,I,I) language c
+
+% Put up a message box
+procedure INTEGER dlg_MessageBox( STRING Title, STRING Msg, INTEGER IconType,
+  INTEGER Buttons, INTEGER DefaultButton, INTEGER Suspending ) - (i,i,i,i,i,i) language C
+
+% Put up a little note box
+procedure dlg_Note(STRING Msg) - (I) language c
+procedure dlg_Note(STRING Title,STRING Msg) - (I,I) language c
+
+% Put up a little note box
+procedure dlg_Error(STRING Msg) - (I) language c
+procedure dlg_Error(STRING Title,STRING Msg) - (i,I) language c
+
+% Let the user make a selection from a list
+procedure BOOLEAN dlg_ListSelect(STRING Title,SLIST,INTEGER PreSel,STRING StrSel,INTEGER Index) - (I,I,I,O,O) language c
+procedure BOOLEAN dlg_ListSelect(WINDOW Parent,STRING Title,SLIST,INTEGER PreSel,STRING StrSel,INTEGER Index) - (I,I,I,I,O,O) language c
+procedure BOOLEAN dlg_ListSelect(WINDOW Parent,STRING Title,SLIST,INTEGER PreSel,STRING StrSel,INTEGER Index,BOOLEAN SortListBox) - (I,I,I,I,O,O,I) language c
+
+% Get filename to open/save file
+determ STRING dlg_GetFileName( STRING Mask, SLIST Types, STRING Msg,
+    ILIST Flags, STRING StartPath, SLIST OutFiles ) - (i,i,i,i,i,o) language C
+determ STRING dlg_GetFileName( STRING Mask, SLIST Types, STRING Msg,
+    ILIST Flags, STRING StartPath, SLIST OutFiles, integer FilterIndex ) - (i,i,i,i,i,o,o) language C
+
+%obsolette
+determ STRING dlg_GetOpenFileName(STRING Mask,SLIST Types,STRING Msg ) 
+	- (I,I,I) language c
+
+%obsolette
+determ SLIST dlg_GetOpenFileNameList(STRING Mask,SLIST Types,STRING Msg ) 
+	- (I,I,I) language c
+determ SLIST dlg_GetOpenFileNameList(STRING Mask,SLIST Types,STRING Msg, UNSIGNED BuffSize ) 
+	- (I,I,I,I) language c
+
+%obsolette
+determ STRING dlg_GetSaveFileName(STRING Mask,SLIST Types,STRING Msg) % STRING OMask)
+	- (I,I,I) language c
+
+% Retrieve a font
+determ FONT dlg_ChooseFont(FONT OldFont) - (I) language c
+
+% Retrieve a font
+determ FONT dlg_ChooseFont(FONT OldFont,STRING FontName,INTEGER FontSize) - (I,O,O) language c
+
+% Retrieve a color
+determ COLOR dlg_ChooseColor(COLOR OldColor) - (I) language c
+
+determ COLOR dlg_ChooseColor(WINDOW Win, COLOR OldColor) - (I,I) language c
+
+% Invoke dialog for printer setup
+% dlg_PrintSetup/3 - obsolette
+determ dlg_PrintSetup(INTEGER NoOfCopies,INTEGER FirstPage,INTEGER LastPage)-(O,O,O) language c
+determ dlg_PrintSetup(INTEGER MaxPages, INTEGER ModePages, INTEGER NoOfCopies, 
+   INTEGER FirstPage,INTEGER LastPage)-(I,O,O,O,O) language c
+ifdef os_nt
+determ dlg_PageSetup( PNT SizeOfPaper, RCT Margins ) - (o,o) language C
+enddef
+
+%Clipboard.
+
+
+% Test whether something is on the clipboard
+determ cb_StringAvailable()		-  language c	
+determ cb_PictureAvailable()		-  language c	
+determ cb_BinAvailable(STRING FormatName) - (I) language c
+determ cb_MetafileAvailable( )         -  language C
+
+% Put something on the clipboard
+procedure cb_PutString(String)-(I) language c
+procedure cb_PutPicture(picture)-(I) language c
+procedure cb_PutBin(STRING,Binary)-(I,I) language c
+procedure cb_PutMetafile(Metafile)-(I) language c
+
+% Get something from clipboard
+procedure STRING cb_GetString()-language c
+procedure PICTURE cb_GetPicture()-language c
+procedure BINARY cb_GetBin(STRING)-(I) language c
+procedure Metafile cb_GetMetafile() - language C
+
+procedure LONG cb_GetSize() language c
+
+% Printing
+
+% Start a new print job
+procedure WINDOW print_StartJob(STRING Title) - (I) language c
+
+% End a print job
+procedure print_EndJob(WINDOW) - (I) language c
+
+% Start printing of a new page
+procedure BOOLEAN print_StartPage(WINDOW PrintWin) - (I) language c
+
+% Finish printing of current page.
+procedure print_EndPage(WINDOW PrintWin) - (I) language c
+
+% Aborts a printing JOB
+procedure print_AbortJob(WINDOW PrintWin) - (I) language c
+
+% Set and Get Printer Configuration
+procedure BINARY print_GetConfig() - () language c
+procedure print_SetConfig( BINARY )- (I) language c
+
+%obsolete predicate, use print_GetConfig & print_SetConfig or dlg_PrintSetup/5
+%ILIST vpi_GetPrintSetup() - language C
+
+procedure print_SetOrientation(BOOLEAN IsLandscape) - (I) language c
+
+% Picture handling
+%Pictures are internally handled as Windows DIB's
+
+% Start drawing into the picture
+procedure WINDOW pict_Open(RCT) - (I) language c
+
+% End drawing into the picture
+procedure PICTURE pict_Close(WINDOW) - (I) language c
+
+% Draw a picture in a rectangle
+procedure pict_Draw(WINDOW,PICTURE,PNT,ROP) - (I,I,I,I) language c
+
+% Draw a picture in a rectangle with streatching (if needed)
+procedure pict_Draw(WINDOW,PICTURE,RCT WindowRect,RCT PictureRect,ROP) - (I,I,I,I,I) language c
+
+% Draw a picture in a rectangle
+procedure pict_DrawEx(WINDOW,PICTURE,PNT,ROP, BOOLEAN PalFlag) - (I,I,I,I,I) language c
+
+% Draw a picture in a rectangle with streatching (if needed)
+procedure pict_DrawEx(WINDOW,PICTURE,RCT WindowRect,RCT PictureRect,ROP,BOOLEAN PalFlag) - (I,I,I,I,I,I) language c
+
+% Load a picture from the resource file
+procedure PICTURE pict_GetFromRes(RESID) - (I) language c
+
+% Put a window area in a picture
+procedure PICTURE pict_GetFromWin(WINDOW,RCT) - (I,I) language c
+
+% Load a picture from a file (may be larger that 64K)
+procedure PICTURE pict_Load(STRING FileName) - (I) language c
+
+% Store a picture in a file (may be larger that 64K)
+procedure pict_Save(PICTURE Picture,STRING FileName) - (i,I) language c
+
+% Convert the picture into a binary
+procedure BINARY pict_ToBin(PICTURE)-(I) language c
+
+% Convert a binary back into a picture
+procedure PICTURE pict_FromBin(BINARY)-(I) language c
+
+% Free the space occupied by a picture
+procedure pict_Destroy(PICTURE) - (I) language c
+
+% Get size of picture
+procedure pict_GetSize(PICTURE,INTEGER X,INTEGER Y,LONG Size) - (I,O,O,O) language c
+
+% Rotate picture
+procedure PICTURE pict_Rotate( PICTURE, INTEGER Mode ) - (i,i) language C
+
+% CURSOR Handling
+
+% Set a cursor for a window
+procedure cursor_Set(WINDOW,CURSOR ResId) - (I,I) language c
+
+procedure cursor_Set(WINDOW, CURSOR ResId, BOOLEAN ChangeNow) - (I,I,I) language c
+
+% Return cursor for given window
+procedure CURSOR cursor_Get(WINDOW) - (I) language c
+
+% Hide cursor
+procedure cursor_Hide() - language c
+
+% Set cursor to Hourglass
+procedure cursor_SetWait() - language c
+
+% Get a cursor for a window
+procedure PNT cursor_GetPos(WINDOW) - (I) language c
+
+% Caret handling
+
+
+% Moves the caret to a given position
+procedure caret_Set(WINDOW,INTEGER X,INTEGER Y) - (I,I,I) language c
+procedure caret_Set(WINDOW,INTEGER X,INTEGER Y, INTEGER Width,INTEGER Height) - (I,I,I,I,I) language c
+
+% Show / Hide cares
+procedure caret_Off(WINDOW) - (I) language c
+
+% Create a caret for a window
+procedure caret_Size(WINDOW,INTEGER Width,INTEGER Height) - (I,I,I) language c
+
+
+% Rectangle functions
+
+% Get the client rectangle from the outer rectangle
+procedure RCT rect_GetClient(WSFLAGS Flags,BOOLEAN HasMenu,RCT OuterRct) - (I,I,I) language c
+
+% Check wether area of rectangle is empty
+determ rect_IsEmpty(RCT) - (I) language c
+
+% Return the intersection of two rectangles
+procedure RCT rect_Intersect(RCT Rect1,RCT Rect2) - (I,I) language c
+
+% Return the union of two rectangles
+procedure RCT rect_Union(RCT Rect1,RCT Rect2) - (I,I) language c
+
+% Add an offset to a rectangle
+procedure RCT rect_Offset(RCT,INTEGER Dh,INTEGER Dv) - (I,I,I) language c
+
+% Enlarge rectangle
+procedure RCT rect_Inflate(RCT,INTEGER Dh,INTEGER Dv) - (I,I,I) language c
+
+% Check wether a point is inside a rectangle
+determ rect_PntInside(RCT,PNT) - (I,I) language c
+
+% FONT handling
+
+
+% Create a font from family+style+size.
+procedure FONT font_Create(FONTFAMILY FontFamily,FONTSTYLE StyleFlags,INTEGER Size) - (I,I,I) language c
+
+% Get the attributes for a font.
+procedure STRING font_GetAttrs(FONT,FONTSTYLE StyleFlags,INTEGER Size) - (I,O,O) language c
+
+% Set the attributes for a font.
+procedure FONT font_SetAttrs(FONT,FONTSTYLE StyleFlags,INTEGER Size) - (I,I,I) language c
+
+
+% Window Classes
+
+
+% Create a new control window class
+procedure class_Create(STRING ClassName,EHANDLER) - (I,I) language c
+
+% Destroy a window class
+procedure class_Destroy(STRING ClassName) - (I) language c
+
+%Get class name
+procedure STRING win_GetClassName( WINDOW ) - (I) language c
+
+% Window handling
+
+
+%Creation / destruction of windows / dialogs / controls:
+
+% Create new window
+procedure WINDOW win_Create(WINTYPE,RCT,STRING Title,MENU,WINDOW Parent,WSFLAGS,
+	EHANDLER,LONG CreationData) - (I,I,I,I,I,I,I,I) language c
+
+% Create window from definition
+procedure WINDOW win_CreateDyn(WINDEF_LIST,WINDOW Parent,EHANDLER,LONG CreationData)
+	 - (I,I,I,I) language c
+
+% Create a dialog from a resource description
+procedure WINDOW win_CreateResDialog(WINDOW Parent, WINTYPE,RESID,EHANDLER,LONG CreationData) - (I,I,I,I,I) language c
+
+% Create a dialog from a structure definition
+procedure WINDOW win_CreateDynDialog(WINDOW Parent,WINDEF_LIST,EHANDLER,LONG CreationData) - (I,I,I,I) language c
+
+% Create a control in a window
+procedure WINDOW win_CreateControl(WINTYPE,RCT,STRING Title,WINDOW,
+	WSFLAGS,INTEGER CtrlId) - (I,I,I,I,I,I) language c
+
+% Create control from a structure definition
+procedure WINDOW win_CreateDynControl(WINDEF_LIST,WINDOW) - (I,I) language c
+
+% Destroy a window
+procedure win_Destroy(WINDOW) - (I) language c
+
+%DESCR Enable/Disable hooking
+procedure win_EnableHook(WINDOW,BOOLEAN) - (I,I) language c
+
+%misc window group
+
+
+% Convert coordinates to be relative to another window
+procedure PNTLIST win_MapPoints(WINDOW FromWin,WINDOW ToWin,PNTLIST OldPntLists)
+	 - (I,I,I) language c
+
+% Return handle from control ID in a window
+procedure WINDOW win_GetCtlHandle(WINDOW,INTEGER CtrlId) - (I,I) language c
+
+% Return ID from control window handle
+procedure INTEGER win_GetCtlId(WINDOW CtrlWin) - (I) language c
+
+% Return structure for dialog resource
+procedure WINDEF_LIST win_GetResDialog(RESID) - (I) language c
+
+% Return type of window
+procedure WINTYPE win_GetType(WINDOW) - (I) language c
+
+% Get client rectangle
+procedure RCT win_GetClientRect(WINDOW) - (I) language c
+
+% Return the outer rectangle for a window
+procedure RCT win_GetOuterRect(WINDOW) - (I) language c
+
+% Get clipping rectangle
+procedure RCT win_GetClip(WINDOW) - (I) language c
+
+% Set clipping rectangle
+procedure win_SetClip(WINDOW,RCT) - (I,I) language c
+
+% Return title/text of Window / Control
+procedure STRING win_GetText(WINDOW) - (I) language c
+
+% Change title/text of Window / Control
+procedure win_SetText(WINDOW,STRING Text) - (I,I) language c
+
+% Move a window to other location
+procedure win_Move(WINDOW,RCT) - (I,I) language c
+
+% Invalidate the entire client area
+procedure win_Invalidate(WINDOW) - (I) language c
+
+% Invalidate rectangle
+procedure win_Invalidate(WINDOW,RCT) - (I,I) language c
+
+% Check wether any updating needs to be done in a given RCT
+determ win_NeedsUpdate(WINDOW,RCT) - (I,I) language c
+
+%DESCR Set validate rectangle
+procedure win_ValidateRect(WINDOW,RCT) - (I,I) language c
+
+%DESCR Get invalid rectangle
+procedure RCT win_GetInvalidRect(WINDOW) - (I) language c
+
+% Process all update events for a window
+procedure win_Update(WINDOW) - (I) language c
+
+% Clear window to given color
+procedure win_Clear(WINDOW,COLOR) - (I,I) language c
+
+% Clear rectangle to given color
+procedure win_Clear(WINDOW,RCT,COLOR) - (I,I,I) language c
+
+% Scroll region
+procedure win_Scroll(WINDOW,RCT,INTEGER Dh,INTEGER Dv) - (I,I,I,I) language c
+
+% Get pixel color
+procedure COLOR win_GetPixel(WINDOW,PNT) - (I,I) language c
+
+% check window
+determ win_IsOwn(WINDOW) - (I) language c
+
+% Event dispatching
+
+% Make immediately call to event handler for other window
+procedure LONG win_SendEvent(WINDOW,EVENT) - (I,I) language c
+
+% Put event in the event que to another window
+procedure win_PostEvent(WINDOW,EVENT) - (I,I) language c
+
+
+%Get /Set event handler for window
+
+% Return event handler fo a window
+procedure EHANDLER win_GetHandler(WINDOW) - (I) language c
+
+% Set event handler fo a window
+procedure win_SetHandler(WINDOW,EHANDLER) - (I,I) language c
+
+% Set event handler fo a window
+procedure win_SetSubClassHandler(WINDOW,EHANDLER,BOOLEAN) - (I,I,I) language c
+
+
+%Flags and data connected to a window
+
+
+% Get a value for a given attribute
+procedure LONG win_GetAttrVal(WINDOW,LONG Attribute) - (I,I) language c
+
+% Get the data connected to a window
+procedure LONG win_GetData(WINDOW) - (I) language c
+
+% Connect some data with a window
+procedure win_SetData(WINDOW,LONG Data) - (I,I) language c
+
+% Change window icon
+procedure win_SetIcon( WINDOW, RESID ) - (i,i) language C
+
+%Window hierarchy
+
+
+% Return parent handle for a window
+procedure WINDOW win_GetParent(WINDOW) - (I) language c
+
+% Return window which has focus
+determ WINDOW win_GetFocus() - language c
+
+% Move a given window to the front (set focus)
+procedure win_SetFocus(WINDOW) - (I) language c
+
+procedure WINDOW win_GetActiveWindow() -  language c
+
+% Set window active
+procedure win_SetActiveWindow( WINDOW ) - (I) language c
+
+%WINREF BrinWindowToTop
+procedure win_BringToTop(WINDOW) - (I) language c
+
+
+% Change the Enable / Disable - Min / Max - Hidden behaviour of window
+
+
+% Change Enable/disable - Hide/Show - Min/Max/Restore for win
+procedure win_SetState(WINDOW,WSFLAGS WinStateList) - (I,I) language c
+
+% Change Enable/disable - Hide/Show - Min/Max/Restore for win
+procedure WSFLAGS win_GetState(WINDOW) - (I) language c
+
+% Change Readonly state for Edit Control
+procedure win_SetEditCtlReadOnly( WINDOW, BOOLEAN Readonly ) - (I,I) language c
+
+% Change check state for a checkbox
+procedure win_Check(WINDOW,INTEGER OnOff) - (I,I) language c
+
+% Return the check state for a checkbox
+procedure INTEGER win_IsChecked(WINDOW) - (I) language c
+
+% Select a given radiobutton from a group (, with autocheck use just win_check)
+procedure win_CheckRadioButton(WINDOW,WINLIST RadioWinList) - (I,I) language c
+
+% Select text in edit control. Do we want this here ??
+procedure win_SelectText(WINDOW,INTEGER First,INTEGER Last) - (I,I,I) language c
+
+% Get Selection of text in edit control. Do we want this here ??
+procedure win_GetTextSelection( WINDOW , INTEGER First, INTEGER Last ) - ( i, o, o ) language C
+
+%Change drawing tools for window
+
+% Set current mode to be used for drawing
+procedure win_SetDrawMode(WINDOW,DRAWMODE) - (I,I) language c
+
+% Get current mode to be used for drawing
+procedure DRAWMODE win_GetDrawMode(WINDOW) - (I) language c
+
+% Set current font to be used for drawing
+procedure win_SetFont(WINDOW,FONT) - (I,I) language c
+
+% Get current window font to
+procedure FONT win_GetFont(WINDOW) - (I) language c
+
+% Set the current window background color
+procedure win_SetBackColor(WINDOW,COLOR) - (I,I) language c
+
+% Set the current window foreground color to be used for drawing text
+procedure win_SetForeColor(WINDOW,COLOR) - (I,I) language c
+
+% Set the current window background mode
+procedure win_SetBackMode(WINDOW,BK_MODE) - (I,I) language c
+
+% Get the current pen
+procedure PEN win_GetPen(WINDOW) - (I) language c
+
+% Set the current pen
+procedure win_SetPen(WINDOW,PEN) - (I,I) language c
+
+% Get the current brush
+procedure BRUSH win_GetBrush(WINDOW) - (I) language c
+
+% Set the current brush
+procedure win_SetBrush(WINDOW,BRUSH) - (I,I) language c
+
+% Return current drawtools
+procedure DRAWTOOLS win_GetDrawTools(WINDOW) -(I) language c
+
+% Set the current drawing tools
+procedure win_SetDrawTools(WINDOW,DRAWTOOLS) - (I,I) language c
+
+% Return a standard set of draw_tools
+procedure DRAWTOOLS win_GetDefaultDrawTools() - language c
+
+% Get metrics for current font setting
+procedure win_GetFontMetrics(WINDOW,INTEGER Leading,INTEGER Acent, INTEGER Descent)
+	- (I,O,O,O) language c
+
+% Get width of string with current font settings
+procedure win_GetTextExtent(WINDOW,STRING Str,INTEGER Len,INTEGER Width,INTEGER Height) - (I,I,I,O,O) language c
+
+
+%Scrollbars
+
+% Get actual Scrollbar position
+procedure INTEGER win_GetScrollPos(WINDOW,SCROLL_TYPE) - (I,I) language c
+
+% Set actual Scrollbar position
+procedure win_SetScrollPos(WINDOW,SCROLL_TYPE,INTEGER Pos) - (I,I,I) language c
+
+% Get current Min and Max for a Scrollbar
+procedure win_SetScrollRange(WINDOW,SCROLL_TYPE,INTEGER Min,INTEGER Max) - (I,I,I,I) language c
+
+% Get current Min and Max for a Scrollbar
+procedure win_GetScrollRange(WINDOW,SCROLL_TYPE,INTEGER Min,INTEGER Max) - (I,I,O,O) language c
+
+% Get scrollbar thumb proportion
+procedure UNSIGNED win_GetScrollProportion(WINDOW,SCROLL_TYPE)-(I,I) language c
+
+% Set scrollbar thumb proportion
+procedure win_SetScrollProportion(WINDOW,SCROLL_TYPE,UNSIGNED Proportion)-(I,I,I) language c
+
+
+% Trapping the mouse inside a window
+
+% Capture all mouse events to a window
+procedure win_CaptureMouse(WINDOW) - (I) language c
+
+% Release mouse after call to win_CaptureMouse
+procedure win_ReleaseMouse() - language c
+
+
+% Mapping, panning, zooming
+
+% Set current mapping mode
+procedure win_SetMapMode(WINDOW,MAPMODE) - (I,I) language c
+
+% Get current mapping mode
+procedure MAPMODE win_GetMapMode(WINDOW)-(I) language c
+
+% Set mapping transformation.
+procedure win_SetMapScale(WINDOW,PNT LogOrg,PNT LogExt,PNT DevOrg,PNT DevExt)
+	- (I,I,I,I,I) language c
+
+% Get mapping transformation.
+procedure win_GetMapScale(WINDOW,PNT LogOrg,PNT LogExt,PNT DevOrg,PNT DevExt)
+	- (I,O,O,O,O) language c
+
+% Convert points from device coordinates to logical coordinates.
+procedure PNTLIST win_DPtoLP(WINDOW,PNTLIST DevicePoints) - (I,I) language c
+
+% Convert points from logical coordinates to device coordinates.
+procedure PNTLIST win_LPtoDP(WINDOW,PNTLIST LogPoints) - (I,I) language c
+
+% Handling with Device Context
+procedure LONG win_GetNativeGraphicContext(WINDOW, BOOLEAN) - (i,o) language C
+
+procedure win_ReleaseNativeGraphicContext(WINDOW, LONG, BOOLEAN) - (i,i,i) language C
+
+procedure win_DialogRatio( WINDOW win, PNT ) - (i,o) language C
+
+procedure WINLIST win_GetChildWindows( WINDOW Win ) - (i) language C
+
+procedure WINLIST win_GetListDialogs( WINDOW Parent ) - (i) language C
+
+
+% LISTBOX Handling
+
+% Add a new item
+procedure lbox_Add(WINDOW,INTEGER Index,STRING Str) - (I,I,I) language c
+
+% Add a list of new items
+procedure lbox_Add(WINDOW,INTEGER Index,SLIST SList) - (I,I,I) language c
+
+% Add a new item
+procedure lbox_Add(WINDOW,STRING Str) - (I,I) language c
+
+% Add a list of new items
+procedure lbox_Add(WINDOW,SLIST SList) - (I,I) language c
+
+% Remove all items
+procedure lbox_Clear(WINDOW) - (I) language c
+
+% Delete an entry in a listbox
+procedure lbox_Delete(WINDOW,INTEGER index) - (I,I) language c
+
+% Get all strings in a list
+procedure SLIST lbox_GetAll(WINDOW) - (I) language c
+
+% Get the number of items in a list
+procedure INTEGER lbox_CountAll(WINDOW) - (i) language c
+
+% Get the string item for a given selection
+procedure STRING lbox_GetItem(WINDOW,INTEGER Index) - (I,I) language c
+
+% Return all selected entries with indices
+procedure lbox_GetSel(WINDOW,SLIST,ILIST) - (I,O,O) language c
+
+% Get the Index of the current selection
+determ INTEGER lbox_GetSelIndex(WINDOW) - (I) language c
+
+% Test wether a given index is selected
+determ lbox_IsSel(WINDOW,INTEGER Index) - (I,I) language c
+
+% Enable/Disable a given selection
+procedure lbox_SetSel(WINDOW,INTEGER Index,BOOLEAN Select) - (I,I,I) language c
+
+% Disable windowing updating
+procedure lbox_Suspend(WINDOW) - (I) language c
+
+% Enable windowing updating
+procedure lbox_Resume(WINDOW) - (I) language c
+
+% Set the width of the column for multicolumn listbox
+
+ifdef ws_win
+procedure lbox_SetColumnWidth(WINDOW,INTEGER width) - (I,I) language c
+procedure lbox_SetTabStops(WINDOW,ILIST TabList) - (I,I) language c
+enddef
+
+% Set top index
+procedure lbox_SetTopIndex( WINDOW win, INTEGER index ) - (I,I) language c
+
+% MENU Handling
+
+% Retrieve a menu from resource file
+procedure MENU menu_GetRes(RESID) - (I) language c
+
+% Retrieve a menu from a window
+procedure MENU menu_Get(WINDOW) - (I) language c
+
+% Assign a new menu to a window
+procedure menu_Set(WINDOW,MENU) - (I,I) language c
+
+% Set/remove checkmark on menu entry
+procedure menu_Check(WINDOW,MENU_TAG,BOOLEAN) - (I,I,I) language c
+
+% Set/remove checkmark on menu entry
+procedure menu_Check(WINDOW,STRING,BOOLEAN) - (I,I,I) language c
+
+% Enable/disable a menu entry
+procedure menu_Enable(WINDOW,MENU_TAG,BOOLEAN) - (I,I,I) language c
+
+% Enable/disable a menu entry
+procedure menu_Enable(WINDOW,STRING,BOOLEAN) - (I,I,I) language c
+
+% Set the text for a given menu tag
+procedure menu_SetText(WINDOW,MENU_TAG,STRING) - (I,I,I) language c
+
+% Set the text for a given menu tag
+procedure menu_SetText(WINDOW,STRING,STRING) - (I,I,I) language c
+
+% update the menubar with the various changes
+procedure menu_Update(WINDOW) - (I) language c
+
+% Create a POPUP menu, which sends commands to parent window
+procedure menu_PopUp(WINDOW,MENU,PNT,ALIGN PositionFlags) - (I,I,I,I) language c
+
+
+% DRAWING
+
+
+% Set a single pixel value
+procedure draw_Pixel(WINDOW,PNT,COLOR) - (I,I,I) language c
+
+% Draw a line from the window current position to a new point
+procedure draw_Line(WINDOW,PNT,PNT) - (I,I,I) language c
+
+% Draw a piece of a circle
+procedure draw_Arc(WINDOW,RCT,INTEGER StartX,INTEGER StartY,INTEGER StopX,
+	INTEGER StopY) -(I,I,I,I,I,I) language c
+
+% Draw an icon from a resource identifier
+procedure draw_Icon(WINDOW,INTEGER X,INTEGER Y,RESID) - (I,I,I,I) language c
+
+% Draw an oval circle (ellipse)
+procedure draw_Ellipse(WINDOW,RCT) - (I,I) language c
+
+% Draw a pie
+procedure draw_Pie(WINDOW,RCT,INTEGER StartX,INTEGER StartY,INTEGER StopX,
+	INTEGER StopY) - (I,I,I,I,I,I) language c
+
+% draw a polygon
+procedure draw_Polygon(WINDOW,PNTLIST) - (I,I) language c
+
+% Draw a list of lines
+procedure draw_Polyline(WINDOW,PNTLIST) - (I,I) language c
+
+% Draw a rectangle
+procedure draw_Rect(WINDOW,RCT) - (I,I) language c
+
+% Draw a rectangle with round corners
+procedure draw_RoundRect(WINDOW,RCT,INTEGER EllipseWidth,INTEGER EllipseHeight)
+	- (I,I,I,I) language c
+
+% Draw a whole text string on a given position
+procedure draw_Text(WINDOW,INTEGER X,INTEGER Y,STRING Str) 
+	- (I,I,I,I) language c
+
+% Draw a text string on a given position
+procedure draw_Text(WINDOW,INTEGER X,INTEGER Y,STRING Str,INTEGER len) 
+	- (I,I,I,I,I) language c
+
+% Draw a text string in a box
+procedure draw_TextInRect(WINDOW,RCT,STRING str,INTEGER len,ILIST flags)
+	        - (I,I,I,I,I) language c
+
+% Fills an area of the screen surface by using the current brush
+procedure draw_FloodFill(WINDOW,PNT,COLOR) - (I,I,I) language c
+
+% DDE interface
+
+%DDE initialization
+procedure dde_Init(DDE_INITFLAGS)-(I) language c
+
+%Complete DDE session
+procedure dde_End()-language c
+
+%Establish a conversation: returns conversation handle
+procedure DDE_CONV dde_Connect(STRING Service,STRING Topic)-(I,I) language c
+
+%terminate conversaion
+procedure dde_DisConnect(DDE_CONV Conv)-(I) language c
+
+%Establish a multiply conversation
+procedure DDE_CONVLIST dde_ConnectMult(STRING Service,STRING Topic,DDE_CONVMULT)-
+     (I,I,O) language c
+
+%terminate
+procedure dde_DisConnectMult(DDE_CONVMULT ConvMult)-(I) language c
+
+%reestablish connection
+procedure dde_ReConnect(DDE_CONV Conv)-(I) language c
+
+%Register/Unregister a service name
+procedure dde_RegisterService(STRING Service,BOOLEAN Register)-(I,I) language c
+
+%Provoke trans_advreq transaction
+procedure dde_PostAdvise(STRING Topic,STRING Item)-(I,I) language c
+
+%Enable/Disable all transactions
+procedure dde_EnableEvents(DDE_CONV Conv,BOOLEAN EnableDisable)-(I,I) language c
+
+%Send an execute command
+procedure DDE_TRANSID dde_Execute(DDE_CONV Conv,STRING Command,LONG Timeout)-(I,I,I) language c
+
+%Send a value
+procedure DDE_TRANSID dde_Poke(DDE_CONV Conv,STRING Item,DDE_DATA Val,DDE_FORMAT,LONG TimeOut)-
+      (I,I,I,I,I) language c
+
+%Request a value
+procedure DDE_TRANSID dde_Request(DDE_CONV Conv,STRING Item,LONG TimeOut,DDE_FORMAT,DDE_DATA Val)-
+      (I,I,I,I,O) language c
+
+%Start advise loop
+procedure DDE_TRANSID dde_StartAdv(DDE_CONV Conv,STRING Item,DDE_FORMAT,DDE_ADVFLAGS,
+                     LONG TimeOut)-(I,I,I,I,I) language c
+
+%Stop advise loop
+procedure DDE_TRANSID dde_StopAdv(DDE_CONV Conv,STRING Item,LONG TimeOut)-(I,I,I) language c
+
+%Abandon a transaction
+procedure dde_AbandonTrans(DDE_CONV Conv,DDE_TRANSID Id)-(I,I) language c
+
+%Convert the Prolog structure into a handle which can be returned
+%from a DDE event
+procedure LONG dde_MakeDDEReturnData(DDE_DATA Val)-(I) language c
+
+%Convert the Prolog structure into a handle which can be returned
+%from a DDE event
+procedure LONG dde_MakeDDEReturnServiceInfo(DDE_SERVICE_INFO_LIST)-(I) language c
+
+% METAFILE handling
+
+%Start metafile recording
+procedure WINDOW mf_Open() - language c
+
+%Complete metafile recording
+procedure METAFILE mf_Close(WINDOW) - (I) language c
+
+%Destroy metafile
+procedure mf_Destroy(METAFILE) - (I) language c
+
+%Play metafile in the WINDOW
+procedure mf_Play(WINDOW,METAFILE) - (I,I) language c
+
+procedure mf_Play(WINDOW,METAFILE, RCT) - (I,I,I) language c
+
+%Load metafile from file
+procedure METAFILE mf_Load(STRING FileName) - (I) language c
+
+%Load metafile from file and get rectangle and resolution
+procedure METAFILE mf_Load(STRING FileName,RCT rctMf,UNSIGNED Resolution) - (I,O,O) language c
+
+%Save metafile to file
+procedure mf_Save(METAFILE,RCT,STRING FileName) - (I,I,I) language c
+
+%MDI Windows handling
+procedure vpi_MoveMDIWindowsTile( ILIST Flags ) - (i) language C
+
+procedure vpi_MoveMDIWindowsCascade( ILIST Flags ) - (i) language C
+
+procedure vpi_ArrangeMDIIcons() - language C

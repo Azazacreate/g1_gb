@@ -1,0 +1,8 @@
+main_extframe("idr_399")
+tmpsl("idr_399",s("AKO",0,13,el([e("menu","PROJECT.FKB")]),n,sl([]),0,0,0))
+tmpsl("idr_399",s("name",0,1,st("Task menu"),m("cr","class"),sl([]),2,0,1))
+tmpsl("idr_399",s("const",0,1,st("idr_task_menu"),d,sl([]),6,15,2))
+tmpsl("idr_399",s("dis",0,5,n,m("pu",""),sl([]),0,0,1))
+tmpsl("idr_399",s("pref",0,1,st("id"),m("pu",""),sl([]),0,0,1))
+tmpsl("idr_399",s("upd_dt",0,1,n,d,sl([]),0,9,1))
+tmpsl("idr_399",s("efile",0,1,st("RES\\Taskmenu.mnu"),m("pu",""),st("1"),0,0,1))

@@ -1,0 +1,13 @@
+REGEDIT
+; This .REG file may be used by your SETUP program.
+;   If a SETUP program is not available, the entries below will be
+;   registered in your InitInstance automatically with a call to
+;   CWinApp::RegisterShellFileTypes and COleObjectFactory::UpdateRegistryAll.
+
+
+HKEY_CLASSES_ROOT\Mycalc3.Application = Mycalc3 Application
+HKEY_CLASSES_ROOT\Mycalc3.Application\CLSID = {FB1AE905-4A0B-11D1-B1F7-00AA0019F5FB}
+
+HKEY_CLASSES_ROOT\CLSID\{FB1AE905-4A0B-11D1-B1F7-00AA0019F5FB} = Mycalc3 Application
+HKEY_CLASSES_ROOT\CLSID\{FB1AE905-4A0B-11D1-B1F7-00AA0019F5FB}\ProgId = Mycalc3.Application
+HKEY_CLASSES_ROOT\CLSID\{FB1AE905-4A0B-11D1-B1F7-00AA0019F5FB}\LocalServer32 = MYCALC3.EXE

@@ -1,0 +1,21 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TREE
+ FileName: TREE.PRE
+ Purpose: Predicate definitions for TREE.PRO
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+
+%END System Mark
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  win_project_tree_Create(WINDOW Parent) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

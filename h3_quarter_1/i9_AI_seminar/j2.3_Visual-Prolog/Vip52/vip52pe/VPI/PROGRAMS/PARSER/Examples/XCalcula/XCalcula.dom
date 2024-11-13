@@ -1,0 +1,100 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALCULA
+ FileName: XCALCULA.DOM
+ Purpose: Domain Definitions for XCalcula
+ Written by: Eugene Akimov
+ Comments: Abbreviations used in this file:
+ 		ttok		= token & cursor position
+  		eq		= equal to				 
+  		ge		= greater than or equal to		 
+  		gt		= greater than				 
+  		le		= less than or equal to			 
+  		lt		= less than				 
+  		ne		= not equal to				 
+  		op		= operator 	 			 
+   		tok		= token					 
+   		tokl		= list of cursortoks			 
+  		oper		= operator and it's location			 
+  		stmnt 		= statement					 
+  		var 		= variable					 
+
+******************************************************************************/
+
+global domains
+  CURSORPOS	  = integer
+  
+  PROGRAM         = STMNT*
+
+  COND            = condition(EXPR Expression,OPER Oper,EXPR Expression)
+
+  EXPR            = add(EXPR Expression,EXPR Expression);
+		    subtract(EXPR Expression,EXPR Expression);
+		    multiply(EXPR Expression,EXPR Expression);
+		    divide(EXPR Expression,EXPR Expression);
+		    power(EXPR Expression,EXPR Expression);
+		    parenthetical(EXPR Expression);
+		    number(real Number);
+		    var(VAR Variable)
+
+  OPER            = operator(OP Operator,CURSORPOS CursorPos)
+
+  OUTPUT_TERM     = expr(EXPR Expression);
+		    str(string Str)
+
+  OUTPUT_TERMS    = OUTPUT_TERM*
+
+  STMNT           = bind(VAR Var,OPER Oper,EXPR Expression);
+		    clear();
+		    do_while(COND Cond,PROGRAM Program);
+		    for(VAR Var,OPER Oper,EXPR Expression,EXPR Expression,PROGRAM Program);
+		    if_then(COND Cond,PROGRAM Program);
+		    if_then_else(COND Cond,PROGRAM Program,PROGRAM Program);
+		    input(VARS Vars);
+		    memory();
+		    nl();
+		    output(OUTPUT_TERMS OutputTerms);
+		    time()
+
+  VAR             = var(string Str,CURSORPOS CursorPos)
+
+  VARS            = VAR*
+
+
+  TOK		  = comma();
+		    plus();
+		    minus();
+		    mult();
+		    div();
+		    power();
+		    lpar();
+		    rpar();
+		    number(real Number);
+		    op(OP Operator);
+		    str(string Str);
+		    clear();
+		    while();
+		    do();
+		    enddo();
+		    for();
+		    to();
+		    if_();
+		    then();
+		    endif();
+		    else();
+		    input();
+		    memory();
+		    nl();
+		    output();
+		    time();
+		    name(string Name);
+		    nill
+
+  TTOK 		= t(TOK Token,CURSORPOS CursorPos)
+  MESSAGE	= string
+  OP		= eq; ne; lt; gt; le; ge
+  RESULT	= real
+  SOURCE	= string
+  TOKL 		= TTOK*

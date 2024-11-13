@@ -1,0 +1,21 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  APPLICAT
+ FileName: APPLICAT.PRE
+ Purpose: Predicate definitions for APPLICAT.PRO
+ Written by: Alexandr Grachev
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+global predicates
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  dlg_cancel_dialog_Create(WINDOW Parent) - (i)
+  dlg_page_range_set_up_Create(WINDOW Parent) - (i)
+%END_DECL

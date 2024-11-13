@@ -1,0 +1,977 @@
+<html>
+
+<head>
+<title>Problems Solved in Visual Prolog 5.0 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1 align="left"><!--mstheme--><font color="#000000">Problems Solved in Visual Prolog 5.01<!--mstheme--></font></h1>
+
+<p>Following is a list of problems found in in Visual Prolog, version 5.0, and solved in
+the version 5.01. Each of the reported problems receives an ID, a short heading, a
+description of a problem, and some text under the Version Info entry.</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems Solved in the <a href="fixes501.htm#problems solved in the compiler">Compiler</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems Solved in the <a href="fixes501.htm#problems solved in the prolog.lib">PROLOG.LIB</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems Solved in the <a href="fixes501.htm#problems solved in the vpi">VPI</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Solved <a href="fixes501.htm#solved debugger problems">Debugger</a> Problems<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems Solved <a href="fixes501.htm#solved  problem under uni">under Unix</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Solved <a href="fixes501.htm#solved linker problems">Linker</a> Problems<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems Solved in the <a href="fixes501.htm#problems solved in the pdc's document handling packag">PDC's Document
+    Handling Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the Compiler">Problems Solved in the Compiler</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">GPF occurs when filename is too big<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971216.04 Compiler </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Example:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p><code>file_str(FileName,A),<br>
+  file_str(FileName,B),<br>
+  filenamepath(Name,A,B),</code></p>
+</blockquote>
+
+<blockquote>
+  <p>where A and B more than 3 kb</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">References to undeclared functions are treated as string's<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980105.02 Compiler </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>In 541, if you do:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p><code>foo :-<br>
+    Var = hello(),<br>
+    writef(&quot;\nVar = %&quot;, Var).</code></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>without having declared (or provided clauses for) the hello function, the compiler
+  doesn't complain. It apparently considers hello() to be acceptable syntax for a string
+  literal. This of course makes finding typos in function calls hard to catch...</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">The BUG&nbsp; in VIP 5.0 for the operation '/'<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980205.01 Compiler </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p><code>GOAL A = 1 + 6 / (11 + 3) * 4.</code></p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h4><!--mstheme--><font color="#000000">Bug in Ansii2OEM conversion in the Compiler<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980226.01 Compiler </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>You will receive a compilation error if you:</p>
+</blockquote>
+
+<ol>
+  <ol>
+    <ol>
+      <blockquote>
+      </blockquote>
+      <li>Compile for a DOS target.</li>
+      <blockquote>
+      </blockquote>
+      <li>Use the ANSII2OEM conversion compiler option.</li>
+      <blockquote>
+      </blockquote>
+      <li>Have a functor with a NON ANSII character.</li>
+    </ol>
+  </ol>
+</ol>
+
+<blockquote>
+  <p>The error disappears if you turn conversion off, but then nothing works!</p>
+</blockquote>
+
+<blockquote>
+  <p>Note, that functors do need to be converted otherwise consult will not work!</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Executables must be equal when crosscompilation<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980303.01 Compiler </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The bug has been fixed in the version 5.01.</p>
+</blockquote>
+
+<blockquote>
+  <p>It can be done for crosscompilation 32bits-&gt;16bits only. The 16bits Compiler can
+  treat 64K segments only, opposite to 32bits Compiler. Therefore, when you use
+  crosscompilation 16bits-&gt;32bits, there will be different number of sections, symbols,
+  etc.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Incorrect code interpretation<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980303.06 Compiler </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The error 209 is generated with the following code:</p>
+</blockquote>
+
+<blockquote>
+  <p><code>GLOBAL PREDICATES<br>
+  &nbsp; test_name( INTEGER, INTEGER ) - (i,o)<br>
+  <br>
+  DATABASE - int<br>
+  &nbsp; test_name( INTEGER )<br>
+  <br>
+  CLAUSES<br>
+  &nbsp; test_name( _, B ):-<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; test_name( B ).<br>
+  <br>
+  GOAL<br>
+  &nbsp; test_name( 1, N ).</code></p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Empty flowpattern for predicates with arity 0 should be available<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971127.02 Compiler </p>
+</blockquote>
+
+<p>Description:</p>
+
+<blockquote>
+  <p>For predicates with zero arguments is is not possible to use:</p>
+</blockquote>
+
+<blockquote>
+  <p><code>PREDICATES<br>
+  &nbsp; dd() - ()<br>
+  <br>
+  PREDICATES<br>
+  &nbsp; dd() - procedure ()</code></p>
+</blockquote>
+
+<blockquote>
+  <p>If you are having a long list of declarations, and using this style, it is nice to be
+  able to specify empty flow also. </p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Input error for a float constant<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971201.04 Compiler </p>
+</blockquote>
+
+<p>Description:</p>
+
+<blockquote>
+  <p><code>GOAL<br>
+  &nbsp;&nbsp;&nbsp; writef(&quot;%.30&quot;,2.85e+20),nl.<br>
+  &nbsp;&nbsp;&nbsp; Output: 285000000004096</code></p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the PROLOG.LIB">Problems Solved in the
+PROLOG.LIB</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">Handling of Very Large Gstack<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971209.03 Prolog.LIB </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>In Visual Prolog v. 5.0 a user cannot control the total size of virtual memory to be
+  allocated for GStack.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Beginning from Visual Prolog v. 5.01 the new compiler directive gstacksize can be used
+  in 32-bit applications. </p>
+</blockquote>
+
+<blockquote>
+  <p>The syntax is:</p>
+</blockquote>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <blockquote>
+    <p>gstacksize = Number_of_Bytes</p>
+  </blockquote>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<blockquote>
+  <p>The specified Number_of_Bytes determines the total size of virtual memory to be
+  allocated for GStack.</p>
+  <p>For detailed information, please, see the topic &quot;The gstacksize compiler
+  directive&quot; of the online Help provided with the patch.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Error in frontstr(...) for String with the size &gt; 64Kb<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980113.01 Prolog.LIB </p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">fronttoken() has a bug.<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980203.03 Prolog.LIB </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p><code>fronttoken(&quot;_rest&quot;,Token,_) must return Token=&quot;_rest&quot;, but it
+  has been returning Token=&quot;_&quot;.</code></p>
+</blockquote>
+
+<blockquote>
+  <p>It is a bug, because &quot;_rest&quot; is the valid name for the prolog syntax.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Bug in the predicate errormsg() when reading from different files in one program<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980313.02 Prolog.LIB </p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the VPI">Problems Solved in the VPI</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">Font style ff_times does not correspond to &quot;Times New Roman&quot;<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971212.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>If a font is created by font_Create(ff_times,...) and then dlg_ChooseFont is called,
+  the font &quot;Times New Roman&quot; is not selected.</p>
+</blockquote>
+
+<blockquote>
+  <p>However, the font created by font_Create(ff_times,...) looks like the font &quot;Times
+  New Roman&quot;</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<p>In the version 5.01 ff_times corresponds to &quot;Times New Roman&quot; in Windows.</p>
+
+<h4><!--mstheme--><font color="#000000">Using no_menu argument in vpi_Init in the MDI mode hides an application<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971214.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Application in this case is not shown but is running and takes processor's time.</p>
+</blockquote>
+
+<blockquote>
+  <p>In case of using of no_menu for a task window in the MDI mode, the error message 6405
+  appears: &quot;MDI cannot be used if a window has no menu&quot;</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">GPF in the message window.<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971225.01 VPI.Editor </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Try to set maximum 5 lines and maximize message window, then rebuild project. GPF
+  occurs.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Big output in the message window in the wrap mode leads to the error 7008<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971225.02 VPI.Editor </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since version 5.01 error 7008 is not generated in the wrap mode of the message window.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Bug in dlg_ListSelect/7 under OS/2<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980105.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>dlg_ListSelect/7&nbsp; works, but the first element of the list is lost during the
+  sort.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01. dlg_ListSelect/7&nbsp; sorts elements correctly.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">menu_Set does not work in the SDI mode under Windows<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980106.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Create a top level window in task window. Changing of a menu in e_Create event of the
+  top level window does not work in the SDI mode in Windows.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 changing of a menu for a top level window&nbsp; in e_Create
+  event is available by menu_Set in the SDI.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Popup menu problem for a child window in the SDI mode<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980106.03 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Create a top level window with menu in a task window. </p>
+</blockquote>
+
+<blockquote>
+  <p>Then create a child window in the top level window.</p>
+</blockquote>
+
+<blockquote>
+  <p>Call menu_Popup by mouse click in the child window.</p>
+</blockquote>
+
+<blockquote>
+  <p>Menu events comes to the top level window event handler in the SDI mode.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 Menu events come to the window, that has popup menu.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">lbox_GetSel for an extended list box returns only one selection<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980112.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>If list box has a flag wsf_ExtendedSel, lbox_GetSel returns only one selection.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 lbox_GetSel for an extended list box returns all selections.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Text in a static control cannot be wrapped under OS/2<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980114.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 text in a static control can be wrapped. Also it is possible now
+  to turn off wrapping by flag wsf_NoWrap.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Edit control with wsf_MultiLine is always wrapped under OS/2 no matter whether the
+horizontal scrollbar is present or not.<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980121.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 an edit control under OS/2 is wrapped only if flag wsf_HScroll is not
+  set.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">The flag wsf_HScroll is not imported for an edit control under OS/2<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980121.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The flag wsf_HScroll is not imported for edit control under OS/2 if this control is a
+  multi-line one.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 wsf_HScroll is imported for a multi-line edit control.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Printer driver information is not stored under OS/2 by print_GetConfig/print_SetConfig<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980122.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 printer driver information is gotten by print_GetConfig and can be set by
+  print_SetConfig</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">menu_Set does not work in the MDI mode under Windows<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980128.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>menu_Set does not work in the MDI mode under Windows if &quot;Window&quot; menu is
+  replaced by a menu with one item and no sub-items.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 menu_Set changes menu in the MDI mode if the item
+  &quot;Window&quot; is invisible.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">The size of a child window in the MDI mode is wrong if a child window has a task
+window as a parent.<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980202.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since&nbsp; the version 5.01 the size of a child window in the MDI mode is the same, no
+  matter what parent it has.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">An application started by vpi_CreateProcess is closed after closing a parent
+application under OS/2<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980203.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>If an application A starts an application B, then the application B is closed
+  automatically while closing the application A.</p>
+</blockquote>
+
+<blockquote>
+  <p>If&nbsp; Visual Prolog is closed, the application that was started by &quot;Run&quot;
+  command is closed also.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 the application, that is started by vpi_CreateProcess, remains
+  existing after closing parent application.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">dlg_GetFileName does not set a corresponding filter item<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980203.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The call:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>dlg_GetFileName(&quot;*.pre&quot;,[&quot;pro file&quot;,&quot;*.pro&quot;,&quot;pre
+    file&quot;,&quot;*.pre&quot;],&quot;Save&quot;,[],&quot;&quot;,_OutListFiles),</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>works correctly, but the call:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>dlg_GetFileName(&quot;1.pre&quot;,[&quot;pro file&quot;,&quot;*.pro&quot;,&quot;pre
+    file&quot;,&quot;*.pre&quot;],&quot;Save&quot;,[],&quot;&quot;,_OutListFiles),</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>leads to a dialog with the &quot;pro file&quot; type.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 the call: </p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>dlg_GetFileName(&quot;1.pre&quot;,[&quot;pro file&quot;,&quot;*.pro&quot;,&quot;pre
+    file&quot;,&quot;*.pre&quot;],&quot;Save&quot;,[],&quot;&quot;,_OutListFiles),</p>
+  </blockquote>
+  <p>leads to dialog with the chosen &quot;pre file&quot; type.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">win_SetMapScale for metafiles gives no error messages<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980211.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 win_SetMapScale and win_GetMapScale issue the error message 6001 for
+  w_Metafile window.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">dlg_GetFileName does not add extension to a filename<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980219.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>If filename entered by a user has no extension, then extension should be added from a
+  file type.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 if you call:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>FileName = dlg_GetFileName(&quot;*.*&quot;,[&quot;Prolog
+    files&quot;,&quot;*.pro&quot;,&quot;All files&quot;,&quot;*.*&quot;], &quot;Title&quot;,
+    [], &quot;c:\\temp&quot;, _)</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>and choose &lt;Prolog files&gt;, then an input &quot;file&quot; &lt;FileName&gt; will
+  be equal to &quot;c:\\temp\\file.pro&quot;</p>
+</blockquote>
+
+<blockquote>
+  <p>If you choose &lt;All files&gt; , an input &quot;file&quot; &lt;FileName&gt; will be
+  equal to &quot;c:\\temp\\file&quot;</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Bug for draw_text in metafiles<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980225.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>draw_text in metafiles draws text under the base line, but should draw on the base line
+  as for screen, picture, printer.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 drawing text in metafiles is the same as for pictures, printer, screen
+  windows.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Task window always has tilter bar under Windows<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980306.02 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>It should have tilter bar only if flag wsf_TitleBar is set.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 the Task window has tilter bar only if flag, wsf_Titlebar is
+  set.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">dlg_ChooseFont changes content of the Font input parameter<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980312.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>fact_from_db(Font),</p>
+</blockquote>
+
+<blockquote>
+  <p>_NewFont = dlg_ChooseFont( Font ),</p>
+</blockquote>
+
+<blockquote>
+  <p>retract(fact_from_db(Font)), %&lt;----- fail here, but should be success</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v 5.01 an input parameter is not changed by dlg_ChooseFont.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Error in win_GetResDialog for group box under OS/2<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971209.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The wsflags are wrong under OS/2 in the v. 5.0. Instead of [] I get</p>
+</blockquote>
+
+<blockquote>
+  <p>[0,8194] and [0,2879845304958] (or something in that range).</p>
+</blockquote>
+
+<blockquote>
+  <p>this results in the control not being build.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 win_GetResDialog returns right flags for group box under OS/2</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">win_Clear does not work in the print window<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971112.01 VPI.Printing </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 win_Clear works in the&nbsp; print window.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Creating of VPI window in DLL using VPI, which is called from another DLL using VPI,
+&nbsp; is unsuccessful.<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971124.01 VPI </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>If&nbsp; DLL2 is build with VPI and DLL1 is build with VPI and import library of DLL2
+  creating of child window in DLL1 is unsuccessful.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since the version 5.01 creating of a VPI window in DLL is successful.</p>
+</blockquote>
+
+<blockquote>
+  <p>Workaround for previous builds is to load the second DLL by vpi_LoadDll.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000"><a name="VPI Tools"></a>Spoiling of values in the list edit, list button and list box<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971127.05 VPI.Tools.Dialog </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>If you save all values from a dialog by:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>VList = dialog_GetValues(_Win),</p>
+  </blockquote>
+  <p>And later set them back by:</p>
+  <blockquote>
+    <p>dialog_SetValues(_Win, VList),</p>
+  </blockquote>
+  <p>it will spoil the values in the list edit, list button and list box.</p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Solved Debugger Problems">Solved Debugger Problems</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">The content of the call stack is not always correct<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<dl>
+  <dd>The content of the call stack is not always correct, there might be extra entries.</dd>
+</dl>
+
+<h4><!--mstheme--><font color="#000000">Tracing into Procedure variables does not work with F7 or F8<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<dl>
+  <dd>Tracing into Procedure variables does not work with F7 or F8, it is needed to set a
+    breakpoint to catch execution.</dd>
+</dl>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Solved  Problem under Uni">Problem Solved under Uni</a>x<!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">retractall ends with GPF under UNIX<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R971114.01 Prolog.LIB </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<dl>
+  <dd>Initialization for facts specified in the program doesn't work properly, it can cause
+    problems when retracting them. </dd>
+</dl>
+
+<h5><!--mstheme--><font color="#000000">Example:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>PREDICATES<br>
+  &nbsp; linux()</p>
+</blockquote>
+
+<blockquote>
+  <p>DATABASEt<br>
+  &nbsp; test_db(integer)</p>
+</blockquote>
+
+<blockquote>
+  <p>CLAUSES<br>
+  &nbsp; test_db(1). </p>
+</blockquote>
+
+<blockquote>
+  <p>CLAUSES<br>
+  &nbsp; linux():- retractall(test_db(_)).</p>
+</blockquote>
+
+<blockquote>
+  <p>GOAL<br>
+  &nbsp; linux().</p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Solved Linker Problems">Solved Linker Problems</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">The PDC Linker Editor v. 5.0 does not create an import library in the&nbsp; archive
+format (compatible with MSC)<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>For Win32 only. The PDC Linker generates the import library in the MS Library format.
+  Note, that MSC supports archive format for libraries, but not MS Library format. So, there
+  is a compatibility problem, if a DLL which was built by the PDC Linker is used from
+  executables which were built by MSC. </p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>In the v. 5.01 the linker option -{L,l}[&lt;lib_name&gt;] is replaced with two
+  options:&nbsp;&nbsp;&nbsp; </p>
+  <p>-L[&lt;lib_name&gt;] - creates an import library in the MS Library format (compatible
+  with BC). This option is equal to the option -{l, L}[&lt;lib_name&gt;] in the v.5.0)<br>
+  <br>
+  -l[&lt;lib_name&gt;] -&nbsp; creates an import library in the archive format (compatible
+  with MSC) - only for Windows 32&nbsp; DLL format (PE).</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">The&nbsp; executables generated by the PDC Link Editor v. 5.0 are bigger than those
+linked with the previous SLR linker.<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.01 the size of executables generated by the PDC Link Editor is comparable
+  with sizes of executables generated by other linkers. </p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Linker's bug in the implementation of indirect call to an import function<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>For Win32 only. In the v.5.0 there is&nbsp; the PDC Linker's bug in the implementation
+  of indirect call to an import function if its address is situated in the data segment.</p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="Problems Solved in the PDC's Document Handling Packag">Problems Solved in the
+PDC's Document Handling Packag</a>e<!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">The .RTF parser does not handle tables.<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The PDC's Document Handling Package v. 5.01 supports tables both in RTF and HTML
+  formats.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">The .RTF parser v. 5.0 does not support colored fonts.<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>The PDC's Document Handling Package v. 5.01 supports colored fonts both in RTF and HTML
+  formats.</p>
+  <p>The following new attributes for the term font are defined : </p>
+  <blockquote>
+    <p>COLOR &#150; the foreground color</p>
+    <p>BGCOLOR &#150; the background color</p>
+  </blockquote>
+  <p>These attributes values may be given both in hexadecimal (i.e. #FF0000 &#150; pure red)
+  and symbolic notation (See HTML 3.2 definition).</p>
+  <p>There is one little bug: if a colored phrase in RTF document is followed by a table
+  (right after) then this table erroneously is colored too. </p>
+  <p>Workaround : add any uncolored char (single blank) just after the colored phrase.</p>
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,112 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName: TOOLBAR.DOM
+ PURPOSE: Domain definitions for toolbar object
+ Written by: Alexander Butovsky
+ Comments:
+
+******************************************************************************/
+constants
+  toolbar_dom_included = 1
+
+constants
+  toolbar_height_text = 16     % For toolbars without controls
+  toolbar_title_height  = 20   % For moveable toolbar
+  toolbar_border_size = 8
+
+  toolbar_separator_size = 16        % Space between groups of pushbutton
+  toolbar_margin         = 4         % Margin before the first pushbutton
+
+  toolbar_listbutton_height = 120       % Height of listbutton's list when opened
+
+
+%
+% Set/Remove the comment symbol below to change toolbar's exterior!
+% -----------------------------------------------------------------
+%
+    toolbar_ornamentation = 1   % Toolbar decoration with raised and sunken
+%                       % fields. (Like MSVC, MS Word etc.)
+
+
+global domains
+
+
+  TOOLBAR_STYLE = tb_top;                 % tired to the top of parent win;
+                  tb_left;                % tired to the left of parent win;
+                  tb_bottom;              % tired to the bottom of parent win;
+                  tb_right;               % tired to the right of parent win;
+                  tb_inside(PNT);         % occupies fixed position inside
+                                          %    parent win (TopLeftPoint)
+                  tb_moveable(STRING,PNT) % can be moved inside parent win
+                                          %       (Title,InitialPosition).
+
+  TOOLBAR_MENU_TAGS = MENU_TAG*
+
+  TOOLBAR_CONTROL_STYLE = 	pushb;
+                     		checkb
+
+  TOOLBAR_TEXT_STYLE  = tb_static;    % Constant text
+                     	tb_context    % Indicates status text for pushbuttons
+                                % NOTE: Only one text of context style is
+                                %       allowed in the same window!
+
+  TOOLBAR_CONTROL =
+
+               %----- Control: pushbutton or checkbutton -----
+
+               tb_ctrl(MENU_TAG,         % (Control Id,
+                       TOOLBAR_CONTROL_STYLE, %  Style - PushButton or CheckButton,
+                       RESID,            %  Bitmap Resource Id (when released),
+                       RESID,            %  Bitmap Resource Id (when pressed),
+                       RESID,            %  Bitmap Resource Id (when grayed),
+                       STRING,           %  Text for context sensitive status bar
+                       BOOLEAN,          %  True - initially enabled,
+                       BOOLEAN);         %  True - initially released)
+
+               %----- Text: static or context sensitive -----
+
+               tb_text(MENU_TAG,         % (Text Id,
+                       TOOLBAR_TEXT_STYLE,    %  Style - Static or Context Sensitive,
+                       SHORT,            %  Width (pixels),
+                       INTEGER,          %  Font style: Bold, Italic etc...,
+                       FONTFAMILY,       %  Font family: Times, Helvetica etc...,
+                       SHORT,            %  Font size,
+                       COLOR,            %  Text color,
+                       STRING);          %  Initial text);
+                                         %  NOTE: tb_text not valid for tb_left
+                                         %        and tb_right style toolbars
+
+               %----- Listbutton control -----
+
+               tb_lbut(MENU_TAG,         % (Control Id,
+                       SHORT,            %  Width (pixels),
+                       SLIST,            %  Item List,
+                       BOOLEAN,          %  True - initially enabled,
+                       INTEGER);         %  Initial position in Item List)
+
+               %----- Space between controls -----
+
+               separator;                %  space between controls;
+
+               %----- New row of controls -----
+
+               new_row                   %  begins new row of controls (only in
+                                         %  tb_moveable and tb_inside toolbars)
+
+
+  TOOLBAR_LIST = TOOLBAR_CONTROL*
+
+  TOOLBAR_VALUE = ctrl_value(BOOLEAN,BOOLEAN);  % (Enabled,Released)
+                  text_value(STRING);           % (Text)
+                  lbut_value(BOOLEAN,INTEGER);  % (Enabled,PositionInList)
+                  none
+
+  TOOLBAR_ACTION_FUNC = determ (WINDOW,         % Parent window
+                                MENU_TAG,       % Control Id
+                                TOOLBAR_VALUE)  % Control's status
+                                     - (i,i,i)
+

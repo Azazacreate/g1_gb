@@ -1,0 +1,16 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	SPLIT.PRE
+ Purpose:	Split window toool, Global predicates - top level
+ Written by:	Andrew Skobelev
+ Version:	1.0
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:	
+******************************************************************************/
+
+% Replace SPLIT_DIR with actual path to SPLIT tool:
+include "SPLIT_DIR\\split.con"
+include "SPLIT_DIR\\split.pre"

@@ -1,0 +1,23 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XTEMP
+ FileName: XTemp.PRE
+ Purpose: Predicate definitions for XTEMP.PRO
+ Written by: Eugene Akimov
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  win_result_Create(WINDOW Parent,WINDOW ResultWin) - (i,o)
+%END_DECL
+
+% Parser global predicate
+  main(WINDOW ResultWindow) - determ (i)

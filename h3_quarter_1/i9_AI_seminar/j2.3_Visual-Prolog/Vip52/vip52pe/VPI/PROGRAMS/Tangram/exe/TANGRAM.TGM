@@ -1,0 +1,8 @@
+dbscore(score("Hans",0,0,7),[])
+dbpiece([pt(-3,0),pt(-1,-2),pt(-3,-2)])
+dbpiece([pt(-3,0),pt(-1,0),pt(-1,-2)])
+dbpiece([pt(-3,0),pt(-2,1),pt(-1,0)])
+dbpiece([pt(-3,0),pt(-3,1),pt(-2,1)])
+dbpiece([pt(-2,2),pt(-1,2),pt(-1,1)])
+dbpiece([pt(-2,1),pt(-2,2),pt(-1,1),pt(-1,0)])
+dbpiece([pt(-3,1),pt(-3,2),pt(-2,2),pt(-2,1)])

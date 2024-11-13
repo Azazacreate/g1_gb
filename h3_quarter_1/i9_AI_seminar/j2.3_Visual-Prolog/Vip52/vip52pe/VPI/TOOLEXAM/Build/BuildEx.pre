@@ -1,0 +1,28 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  COMPILE
+ FileName: COMPILE.PRE
+ Purpose: Predicate definitions for COMPILE.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+ifndef ws_win
+  #Error: This project for Windows platform only
+enddef
+
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  dlg_compile_and_link_options_Create(WINDOW Parent) - (i)
+  win_soft_software_Create(WINDOW Parent) - (i)
+  win_messagewin_Create(WINDOW Parent) - (i)
+  win_text_editor_Create(WINDOW Parent) - (i)
+  dlg_testdlg_Create(WINDOW Parent) - (i)
+%END_DECL

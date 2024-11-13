@@ -1,0 +1,93 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+<title>Trap examples (VIP 5.x)</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Trap examples (VIP 5.x)<!--mstheme--></font></h1>
+
+<p>This is an example of how to handle some errors:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    ...
+        trap(openXFile(<font color="#008000">XFile</font>), <font color="#008000">E</font>, openXFile_trap_handler(<font color="#008000">E</font>)),
+        ...
+
+    openXFile_trap_handler(error_fileDoesNotExist):-
+        !,
+        <font color="#0000FF">% handle &quot;file does not exist&quot;.</font>
+    openXFile_trap_handler(error_fileReadOnly):-
+        !,
+        <font color="#0000FF">% handle &quot;file is read only&quot;.</font>
+    openXFile_trap_handler(<font color="#008000">Exitcode</font>):-
+        <font color="#0000FF">% some exits are not handled here send them on</font>
+        exit(<font color="#008000">Exitcode</font>).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>A handler which ensures that a lock is released looks as follows</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>predicates</strong></font>
+    xxx_trap_handler(integer <font color="#008000">Exitcode</font>) – <strong><font face="Arial" color="#808000">erroneous</font></strong> (i)
+<font face="Arial" color="#808000"><strong>clauses</strong></font>
+    xxx_trap_handler(_):-
+        releaseLock(),
+        fail.
+    xxx_trap_handler(<font color="#008000">Exitcode</font>):-
+        exit(<font color="#008000">Exitcode</font>). </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>In this situation we have used a bullet proof construction with fail: We are certain
+that the error will be continued whether <em>releaseLock</em> fails or not.&nbsp; If <em>releaseLock</em>
+is a procedure, then a single clause will be sufficient.</p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Dividing aWordsinto Syllables</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Dividing a Word into Syllables <!--mstheme--></font></h1>
+
+<p>One way to divide word into sylabes, is to use a very simple algorithm that involves
+looking at the sequence of vowels and consonants a word contains. A computer program can
+decide how to this. For instance, consider the two sequences:</p>
+
+<p>1) <i>vowel consonant vowel</i></p>
+
+<p>In this case the word is divided after the first vowel. For example, this rule can be
+applied to the following words:</p>
+
+<p>ruler &gt; ru-ler<br>
+prolog &gt; pro-log</p>
+
+<p>2) <i>vowel consonant consonant vowel</i></p>
+
+<p>In this case the word is divided between the two consonants. For example:</p>
+
+<p>number &gt; num-ber<br>
+panter &gt; pan-ter<br>
+console &gt; con-sole</p>
+
+<p>These two rules work well for most words but fail with words like <i>handbook</i> and <i>hungry</i>,
+which conform to neither pattern. In order to divide such words, your program would have
+to use a library containing all words that were exceptions to the implemented rules.</p>
+
+<p>The program will first ask for a word to be typed in and then attempt to split it into
+syllables using the two rules above. As mentioned, this will not always produce correct
+results.</p>
+
+<p>First, the program should split the word up into a list of characters. You therefore
+need the following domain declarations:</p>
+
+<p><b><font FACE="Courier New">DOMAINS</font></b></p>
+
+<p><b><font FACE="Courier New">letter = symbol</font></b></p>
+
+<p><b><font FACE="Courier New">word= letter*</font></b></p>
+
+<p>You must have a predicate that determines whether the letter is a vowel or a consonant.
+However, the two rules given can also work with the vowels (the usual vowels--<i>a</i>, <i>e</i>,
+<i>i</i>, <i>o</i>, and <i>u</i>--plus the letter <i>y</i>). The letter <i>y</i> sounds
+like (and is considered to be) a vowel in many words, for example, <i>hyphen</i>, <i>pity</i>,
+<i>myrrh</i>, <i>syzygy</i>, and <i>martyr</i>. To account for the vocals, you have the
+clauses</p>
+
+<p><b><font FACE="Courier New">vocal(a). vocal(e). vocal(i).</font></b></p>
+
+<p><b><font FACE="Courier New">vocal(o). vocal(u). vocal(y).</font></b></p>
+
+<p>for the predicate <b><i>vocal</i></b>. A consonant is defined as a letter that is not a
+vocal:</p>
+
+<p><b><font FACE="Courier New">consonant(L) :- not(vocal(L)).</font></b></p>
+
+<p>You need two more predicates. First, you need the <b><i>append</i></b> predicate.</p>
+
+<p><b><font FACE="Courier New">append(word, word, word)</font></b></p>
+
+<p>Second, you need a predicate to convert a string into a list of the characters in that
+string:</p>
+
+<p><b><font FACE="Courier New">string_word(string, word)</font></b></p>
+
+<p>This predicate will use the standard predicate <b><i>frontstr</i></b> (described in
+chapter 12), as well as the standard predicates <b><i>free</i></b> and <b><i>bound</i></b>
+(where <b><i>free(X) </i></b>succeeds if <i>X</i> is a free variable at the time of
+calling, and <b><i>bound(Y)</i></b> succeeds if <i>Y</i> is bound) to control which clause
+to activate, depending on the flow-pattern.</p>
+
+<p>Now you're ready to attack the main problem: defining the predicate <b><i>divide</i></b>
+that separates a word into syllables. <b><i>divide</i></b> has four parameters and is
+defined recursively. The first and second parameters contain, respectively, the <i>Start</i>
+and the <i>Remainder</i> of a given word during the recursion. The last two arguments
+return, respectively, the first and the last part of the word after the word has been
+divided into syllables.</p>
+
+<p>As an example, the first rule for <b><i>divide</i></b> is:</p>
+
+<p><b><i><font FACE="Courier New">divide(Start, [T1, T2, T3|Rest], D, [T2, T3|Rest]) :-</font></i></b></p>
+
+<p><b><i><font FACE="Courier New">vocal(T1), consonant(T2), vocal(T3),</font></i></b></p>
+
+<p><b><i><font FACE="Courier New">append(Start, [T1], D).</font></i></b></p>
+
+<p>where <i>Start</i> is a list of the first group of characters in the word to be
+divided. The next three characters in the word are represented by <i>T1</i>, <i>T2</i>,
+and <i>T3</i>, while <i>Rest</i> represents the remaining characters in the word. In list <i>D</i>,
+the characters <i>T2</i> and <i>T3</i>, and the list <i>Rest</i> represent the complete
+sequence of letters in the word. The word is divided into syllables at the end of those
+letters contained in <i>D</i>.</p>
+
+<p>This rule can be satisfied by the call:</p>
+
+<p><b><font FACE="Courier New">divide([p, r], [o, l, o, g], P1, P2)</font></b></p>
+
+<p>To see how, insert the appropriate letters into the clause:</p>
+
+<p><b><font FACE="Courier New">divide([p, r], [o, l, o|[g]], [p, r, o], [l, o | [g]]) :-</font></b></p>
+
+<p><b><i><font FACE="Courier New">vocal(o), consonant(l), vocal(o),</font></i></b></p>
+
+<p><b><i><font FACE="Courier New">append([p, r], [o], [p, r, o]).</font></i></b></p>
+
+<p>The <b><i>append</i></b> predicate concatenates the first vocal to the start of the
+word. <i>P1</i> becomes bound to <i>[p, r, o]</i>, and <i>P2</i> is bound to <i>[l, o, g]</i>.</p>
+
+<p>Execute the program as a CGI script by pressing the &quot;Split&quot; button on the
+form below: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form action="http://vip.pdc.dk/vipexamples/cgiexamples/bin/wordbrk.exe" method="POST">
+    <p><br>
+    <input type="submit" value="Split">&nbsp;&nbsp;<input type="text" size="25" name="txt" value="succulently">&nbsp;<input type="submit" value="Split"><br>
+    </p>
+    <p>Show <a href="src/wordbrk.htm">Source</a> to the WordBrk-application.</p>
+    <p>Show <a href="src/wordbrkcgisource.htm">Source</a> to the WordBrk-application incl.
+    cgi-support.</p>
+  </form>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

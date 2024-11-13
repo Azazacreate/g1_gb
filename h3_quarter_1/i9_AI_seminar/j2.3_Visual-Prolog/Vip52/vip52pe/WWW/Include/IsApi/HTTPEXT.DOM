@@ -1,0 +1,31 @@
+/*****************************************************************************
+
+                Copyright (c) 1984 - 2000 Prolog Development Center
+
+ Project:
+ FileName: HTTPEXT.DOM
+ Purpose:
+ Written by: PDC
+ Comments:
+     This module contains  domain definitions for the
+     version 1.1 HTTP Server Extension interface.
+
+******************************************************************************/
+
+ifndef _HTTPEXT_DOM_
+
+constants
+                        _HTTPEXT_DOM_           =               1
+
+
+GLOBAL DOMAINS
+
+%%
+%%  That's our simulation of C pointer
+%%
+
+   EXTENSION_CONTROL_BLOCK      =       DWORD
+
+
+enddef  % end definition _HTTPEXT_DOM_
+

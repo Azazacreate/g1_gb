@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>The Zebra-</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p><font size="4" face="Arial"><b>The Zebra-program and Prologs
+list handling capabilities.</b></font></p>
+
+<p>Another very good example of Prolog's general purpose problem
+solving capabilities as well as its list-handling-facilities is
+the Zebra program. </p>
+
+<p>The problem is a classical constraint-resolution problem. In 5
+houses live 5 persons of different nationality, different
+house-colors, different favorites for cigarette brand, drinks,
+different pets etc. You are given a number of facts as a starting
+point, and a question like &quot;Who lives in the house left of
+the man that has a zebra as pet&quot;.</p>
+
+<p>Have a look at the program, and see how elegant prolog
+solution to this problem is. Everything is represented as lists.
+The constraints (e.g. &quot;in the 3<sup>rd</sup> house they
+smoke cigars&quot;) are put into the lists.</p>
+
+<p>To solve the puzzle a small toolbox of list-handling
+predicates is built. It is these tools that solve the problem.
+Notice that you have built a very general-purpose program that
+can easily can be adapted to similar kinds of problems. </p>
+
+<p><em>A PROLOG program to solve the &quot;5 houses&quot; problem
+using a &quot;verify and choose&quot; method. A candidate
+solution is any of the (5!)**5 ways of distributing 5 colours, 5
+drinks, 5 nationalities, 5 cigarettes, and 5 pets amongst 5
+houses. By Lewis Baxter</em></p>
+
+<p><em>There are five houses with five different colours, in each
+house lives a person of different nationality having favorite
+drinks, cigaretes and pets, the information is:</em></p>
+
+<ul>
+    <li><em>The Englishman lives in the red house</em></li>
+    <li><em>The Spaniard owns the dog</em></li>
+    <li><em>The Norwegian lives in the first house on the lleft</em></li>
+    <li><em>Kools are smoked in the yellow house.</em></li>
+    <li><em>The man who smokes Chesterfields lives in the house</em></li>
+    <li><em>next to the man with the fox.</em></li>
+    <li><em>The Norwegian lives next to the blue house</em></li>
+    <li><em>The Winston smoker owns snails.</em></li>
+    <li><em>The lucky strike smoker drinks orange juice</em></li>
+    <li><em>The Ukrainian drinks tea</em></li>
+    <li><em>The Japanese smokes parliaments</em></li>
+    <li><em>Kools are smoked in the house next to the house where
+        the horse is kept.</em></li>
+    <li><em>Coffee is drunk in the green house</em></li>
+    <li><em>The green house is immediately to the right (your
+        right) of the ivory house</em></li>
+    <li><em>Milk is drunk in the middle house.</em></li>
+</ul>
+
+<p><em>The question is then: Where does the zebra live, and in
+which house do they drink water ?</em></p>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  MYPROJ
+ FileName: SWEEP.PRE
+ Purpose: Predicate definitions for SWEEP.PRO
+ Written by: Leo Jensen
+ Comments:
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+  tb_sweep_toolbar_Create(WINDOW Parent) - (i)
+  win_sweep_Create(WINDOW Parent) - (i)
+%END System Mark

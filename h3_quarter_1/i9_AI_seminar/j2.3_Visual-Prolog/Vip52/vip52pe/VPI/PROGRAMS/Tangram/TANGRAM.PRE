@@ -1,0 +1,21 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: TANGRAM.PRE
+ Purpose: Predicate definitions for TANGRAM.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+ifndef ws_win
+  #Error: this project for Windows platform only
+enddef
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_tangram_toolbar_Create(WINDOW Parent) - (i)
+%END_DECL

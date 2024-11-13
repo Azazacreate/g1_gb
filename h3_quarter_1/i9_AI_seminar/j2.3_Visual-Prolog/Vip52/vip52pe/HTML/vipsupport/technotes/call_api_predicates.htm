@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<title>Call API Predicates</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Call API Predicates:<!--mstheme--></font></h1>
+
+<p>To call API function, you should describe it in the GLOBAL PREDICATES section. Flow
+pattern for this predicate is usually an input for all arguments. </p>
+
+<p ALIGN="JUSTIFY">Tables below provide information about:</p>
+
+<ol>
+  <li><p ALIGN="JUSTIFY"><a href="#t1">types of arguments and retrieving values;</a></p>
+  </li>
+  <li><p ALIGN="JUSTIFY"><a href="#t2">&quot;language&quot; statements you should use;</a></p>
+  </li>
+  <li><p ALIGN="left"><a href="#t3">differences between ANSI and UNICODE in a predicate
+    definition under Windows 32.</a></p>
+  </li>
+</ol>
+
+<h3 ALIGN="left"><!--mstheme--><font color="#000000"><a name="T1"></a>Types of Arguments and Retrieving Values<!--mstheme--></font></h3>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="100%" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td WIDTH="23%" VALIGN="TOP" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="2"><h4 ALIGN="center"><!--mstheme--><font color="#000000"><strong>Type
+    of argument</strong></font><!--mstheme--></font></h4>
+    <!--mstheme--></font></td>
+    <td WIDTH="21%" VALIGN="TOP" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="2"><h4 ALIGN="center"><!--mstheme--><font color="#000000">Set
+      or get
+    value</font><!--mstheme--></font></h4>
+    <!--mstheme--></font></td>
+    <td WIDTH="56%" VALIGN="TOP" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="2"><h4 ALIGN="center"><!--mstheme--><font color="#000000">Code in
+    prolog</font><!--mstheme--></font></h4>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="23%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Int</font><!--mstheme--></font></td>
+    <td WIDTH="21%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Set</font><!--mstheme--></font></td>
+    <td WIDTH="56%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">INTEGER in definition, flow
+    pattern &#150; I</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="23%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Char*</font><!--mstheme--></font></td>
+    <td WIDTH="21%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Set</font><!--mstheme--></font></td>
+    <td WIDTH="56%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">STRING in definition, flow
+    pattern &#150; I</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="23%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Char*</font><!--mstheme--></font></td>
+    <td WIDTH="21%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Get</font><!--mstheme--></font></td>
+    <td WIDTH="56%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">STRING in definition, flow
+    pattern &#150; I,</p>
+    <p ALIGN="JUSTIFY">Note that you should initialize this string before call of API
+    predicate by str_len(<i>Str</i>, <i>Len</i>) predicate, where <i>Len </i>is the maximum
+    size of a returned string.</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="23%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Int*</font><!--mstheme--></font></td>
+    <td WIDTH="21%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Get</font><!--mstheme--></font></td>
+    <td WIDTH="56%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">INTEGER in definition, flow
+    pattern - O</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="T2"></a>Language Statements<!--mstheme--></font></h3>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="100%" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="2"><h4 ALIGN="center"><!--mstheme--><font color="#000000">Platform</font><!--mstheme--></font></h4>
+    <!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP" align="center"><!--mstheme--><font face="verdana, Arial, Helvetica"><font SIZE="2"><h4 ALIGN="center"><!--mstheme--><font color="#000000">Language</font><!--mstheme--></font></h4>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">WIN16</font><!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Pascal</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">WIN32</font><!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Stdcall</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">OS2</font><!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3"><p ALIGN="JUSTIFY">Syscall</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="T3"></a>ANSI and UNICODE<!--mstheme--></font></h3>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="100%" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">&nbsp;<!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><h4 align="center"><!--mstheme--><font color="#000000"><font SIZE="2">Predicate definition</font><!--mstheme--></font></h4>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3">ANSI, function &quot;sndPlaySound&quot;</font><!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3">language stdcall as &quot;sndPlaySoundA&quot;</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3">UNICODE, function &quot;sndPlaySound&quot;</font><!--mstheme--></font></td>
+    <td WIDTH="50%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="3">language stdcall as &quot;sndPlaySoundW&quot;</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font SIZE="2">
+
+<p ALIGN="JUSTIFY">&nbsp;</font> 
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

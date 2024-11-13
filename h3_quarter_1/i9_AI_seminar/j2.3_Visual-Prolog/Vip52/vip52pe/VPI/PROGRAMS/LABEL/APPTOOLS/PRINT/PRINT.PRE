@@ -1,0 +1,22 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	PRINT.PRE
+ Purpose:	Global predicates for Print and Print preview
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  WINDOW pv_create(WINDOW ParentWin,BOOLEAN Maximized,STRING Title,INTEGER PixInMM,RCT RectInMM,INTEGER ScaleThick,
+	COLOR BgColor,INTEGER FormPage,COLOR ColorPage,REAL LeftMarg,REAL TopMarg,REAL HorSpace,
+	REAL VertSpace,REAL LabelWidth,REAL LabelHeight,UNSIGNED NoHor,UNSIGNED NoVert,
+	BOOLEAN Page_Roll,BOOLEAN Landscape,LE_FIELD_INFORMATIONLIST,PV_CALLBACK) - (i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i)
+
+  pv_init(WINDOW PVWin,INTEGER PixInMM) - (i,i)
+
+  print_create(FONT,BOOLEAN PrintBorder,INTEGER FormPage,REAL LeftMarg,REAL TopMarg,REAL HorSpace,
+	REAL VertSpace,REAL LabelWidth,REAL LabelHeight,UNSIGNED NoHor,UNSIGNED NoVert,
+	BOOLEAN Page_Roll,BOOLEAN Landscape,LE_FIELD_INFORMATIONLIST) - (i,i,i,i,i,i,i,i,i,i,i,i,i,i)

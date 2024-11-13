@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="str_toklist;fronttoken">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Token Conversion</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">fronttoken/3,
+str_toklist/2</font><font color="#0000FF"> </font></h3>
+
+<p align="left"><b>fronttoken</b>(<i>String,String,String</i>) <br>
+<b>str_toklist</b>(<i>String,TokenList</i>) </p>
+
+<p align="left">Break the string into tokens </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>fronttoken/3</b> operates as if it were
+defined by the equation: </p>
+
+<p align="left">String = (the concatenation of Token and
+RestString) </p>
+
+<p align="left"><b>str_toklist/2</b> performs one step conversion
+of the string into a list of tokens </p>
+
+<p align="left">A group of one or more characters constitutes a
+token in the following cases: </p>
+
+<ul>
+    <li>The text group constitutes a &lt;name&gt; according to
+        Prolog syntax. </li>
+    <li>The group constitutes a valid string representation of a
+        integer or real (a preceding sign is returned as a
+        separate token). </li>
+    <li>The group is a single character, but not the ASCII space
+        character (ASCII 32), Horizontal Tab (ASCII 9 - '\t'
+        &lt;HT&gt;) or other white-space character (Line Feed
+        (ASCII 10 &lt;LF&gt;), Vertical Tab (ASCII 11
+        &lt;VT&gt;), Form Feed (ASCII 12 &lt;FF&gt;), Carriage
+        Return (ASCII 13 (CR)), SUBstitute (ASCII 26 &lt;SUB&gt;
+        or &lt;EOF&gt; - Ctrl+Z) ). </li>
+</ul>
+
+<p align="left">Notice that in DOS-like strings, new lines ('\n')
+are represented as the couples of the &lt;CR&gt; and the
+&lt;LF&gt; characters. Contrary, in UNIX -like strings, new lines
+are represented as the single &lt;LF&gt; character.</p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>fronttoken(&quot;all kids do fine&quot;,TOK,REST)
+TOK=all, REST= kids do fine
+1 Solution
+fronttoken(&quot;all+kids do fine&quot;,TOK,REST),
+fronttoken(REST,TOK1,_)
+TOK=all, REST=+kids do fine, TOK1=+
+1 Solution
+str_toklist(&quot;all kids do fine&quot;,L)
+L=[all,kids,do,fine]
+1 Solution </pre>
+</body>
+</html>

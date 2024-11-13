@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Visual Prolog</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Using the Visual Development Environment (VDE)<!--mstheme--></font></h1>
+<p>We assume, that you have experience using the Graphical User Interface
+system, the windowing system. This might be either Windows 3.x, Windows 95,
+Windows NT, Win-OS/2 or OS/2 PM. You should thus know about using menus, closing
+and resizing windows, loading a file in the File Open dialog etc. If you do not
+have this knowledge, you should not start off trying to create an application
+that runs under this environment. You must first learn to use the environment.</p>
+<p>If you are a beginner to Prolog, you don’t want to mix learning the Prolog
+language with the complexity of creating Windows applications with event
+handling and all the Windows options and possibilities, then we do suggest that
+you work your ways through the book about the Prolog language.</p>
+<p>We do suggest, that you at an early stage try compiling some of the examples
+in the VPI subdirectory, and work your way through the Guided Tour in the
+Getting Started book. This gives you an impression what can be done with Visual
+Prolog - just so you know what you should be able to do, when you have learned
+to master Visual Prolog.</p>
+<p>Iif you are going to seriously use the Visual Prolog system, you need to
+learn the basic concepts of Prolog properly. You will not be able to build a
+skyscraper without having a solid foundation. In Visual Prolog, the foundation
+is understanding the Prolog language and the VPI layer.</p>
+<h2><!--mstheme--><font color="#000000">Starting the Visual Prolog Environment<!--mstheme--></font></h2>
+<p>The installation program will install a program group with an Icon which are
+normally used to start the Visual Prolog Environment. However, there are many
+ways to start an application in the GUI World, if you prefer another method, you
+can just start the VIP.EXE down in the BIN\WIN\16, BIN\WIN\32 or BIN\OS2
+directories under the main VIP directory.</p>
+<p>If Visual Prolog had an open project (a .PRJ file) last time it was closed on
+your computer, it will automatically reopen this project next time it starts.
+For the examples in this manual, you do not need to have an open project.</p>
+<h2><!--mstheme--><font color="#000000"><img src="vde.gif" alt="vde.gif (21850 bytes)" width="734" height="561"><!--mstheme--></font></h2>
+<h2><!--mstheme--><font color="#000000">Opening an Editor Window<!--mstheme--></font></h2>
+<p>To create a new edit window, you can use the menu command <b>File | New</b>.
+This will bring up a new editor window with the title &quot;NONAME&quot;.</p>
+<p>The editor is a fairly standard text editor. It is documented in the VDE
+manual, but you should be able to use cursor keys and the mouse as you are used
+to in other editors. It supports cut, copy and Paste and Undo / Redo, which you
+can all be activated from the Edit menu. Also the Edit menu shows the
+accelerator keys associated for these actions.</p>
+<h2><!--mstheme--><font color="#000000">Goal Mode<!--mstheme--></font></h2>
+<p>To check, that your system is set up properly, you should try to type in the
+following text in the new empty editor window:</p>
+<blockquote>
+  <!--mstheme--></font><pre>GOAL write(&quot;Hello world&quot;),nl.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>This is what is called a GOAL in the Prolog terminology, and this is enough
+to be a program that can be executed. To execute the GOAL, you should activate
+the menu item <b>Project | Test Goal</b>, or just press the accelerator key <b>Ctrl+G</b>.
+If your system is installed properly, your screen will look like the following:</p>
+<p><img src="goalmode.gif" alt="goalmode.gif (3659 bytes)" width="477" height="231"></p>
+<p>The result of the execution will come up in a separate window, which you must
+close before you can test another GOAL.</p>
+<p>(The Visual Prolog system treats the GOAL as a program which it compiles,
+links and generates a Windows executable from. It uses the EASYWIN strategy,
+which is described in the VDE manual.).</p>
+<p>(Note if you do not have a Project (.PRJ file) open, Visual Prolog will
+compile the program to your Windows temp directory. If you do have a project
+open while using Goal mode, Visual Prolog will use the .OBJ directory for the
+project to generate the temporary files. )</p>
+<p>Try also the following goals, to see how Visual Prolog responds with yes, no
+or print variable values.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>GOAL 2=2.</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>GOAL 2=3.</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>GOAL X = 2, Y=X+1.</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>GOAL X=1; X=2.</em><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000">Loading A Visual Prolog Project (.VPR file)<!--mstheme--></font></h2>
+<p>Visual Prolog operates with projects in .VPR files. A .VPR file contains all
+the setup and description of Windows, dialogs, menues etc. for a Visual Prolog
+program. To open a Visual Prolog project you need to use Project-&gt;Open
+Project, and once a project is open, you can compile and run it by activating
+Project-Run.</p>
+<p>You should know that the .VPR files are platform dependent. If you are using
+the Win16 version of the VDE, you must load the 16bit .VPR files, and if you are
+using the Win32 or OS/2 version of the VDE you must load the 32bit .VPR files.</p>
+<p>Unfortunately the same fileextension are used, and in the examples on the
+Visual Prolog CD you must guess the format of the .VPR file from the name. The
+name of the Win16 version usually ends with &quot;16&quot;, and the OS/2 version
+of the .VPR file usually ends with &quot;OS2&quot; - this is a bad design, and
+will probably be changed in the next version of Visual Prolog, so all platforms
+can use the same project file !</p>
+<p>The design is especially bad if you want to register the the VDE to be
+automatically started if you click on a .VPR file. Then you have to choose which
+platform you want to work with ! If you are running Windows 3.1 or are using the
+16 bit version of Visual Prolog, You will probably like to use the
+BIN\WIN\16\VIP.EXE 16bit environment, while most users running NT or WIN95/98,
+probably always want to use the 32 bit version.</p>
+<p><font size="3">The name of a Visual Prolog project (.VPR) file may be
+supplied to VIP.EXE as a command line parameter at start up. This will start
+Visual Prolog with the given project opened. Associating the .VPR file extension
+with Visual Prolog enables double-clicking on any .VPR file name to
+automatically invoke Visual Prolog with that project pre-loaded, as long as
+Visual Prolog is not already running.</font></p>
+<h2><!--mstheme--><font color="#000000">Handling Errors<!--mstheme--></font></h2>
+<p>If you, like all programmers do, happen to make some errors in your program,
+the Visual Prolog system will display an error window, which contains a list of
+errors. You can double click on one of these errors to come to the position of
+the error in the source text.</p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

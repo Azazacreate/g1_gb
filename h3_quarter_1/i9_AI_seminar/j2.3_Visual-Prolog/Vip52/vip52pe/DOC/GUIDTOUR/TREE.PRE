@@ -1,0 +1,15 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  MYPROJ
+ FileName: TREE.PRE
+ Purpose: Predicate definitions for TREE.PRO
+ Written by: Leo Jensen
+ Comments:
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+  win_tree_window_Create(WINDOW Parent) - (i)
+%END System Mark

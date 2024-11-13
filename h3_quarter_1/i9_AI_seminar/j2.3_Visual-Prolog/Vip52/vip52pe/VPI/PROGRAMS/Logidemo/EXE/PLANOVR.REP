@@ -1,0 +1,113 @@
+%  ****************************************************************************
+%                                 REPORT ENGINE
+%                         Report source text example
+%   		                  13-Oct-1997
+% *****************************************************************************
+
+report  Test
+    margins(0.5,1.0,0.5,1.0);
+    units logical(1200 900);
+    orientation=portrait;
+    defaulttabs=80
+    fontname=helvetica fontsize=7 alignment=left
+    leftindent=10
+    script gray:=0;
+	 Grouped_by := "by producer";  
+         init_main(Grouped_by);
+    end_script
+    header  fontsize=16 fontstyle=bold
+	text "Prolog Development Center - 1997" at(0,0,250,15) fontname=helvetica fontsize=8 fontstyle=normal;
+	text "Logistics Demo Example" 
+		at(700,0,800,15)  fontname=helvetica fontsize=8 fontstyle = normal;
+        text "Plan Generation Overview"  at(380,15,550,40) forecolor=240;
+    end_header
+  
+  if get_plan_ovr(;Retries,Conflicts,Prod,Order,Trans,Unplaced,Backlog)
+     then at(100,20,0,0) fontstyle = bold fontsize = 10 
+     begin
+	script
+	  Order_p := 100.0 * Order / Prod + " %";
+	  Trans_p := 100.0 * Trans / Prod + " %";
+	  Unpl_p  := 100.0 * Unplaced / Prod + " %";
+	  Back_p  := 100.0 * Backlog / Prod + " %";
+	end_script
+        text "Plan Overview" at(0,0,300,20) fontsize = 12;
+        text "Retries" at(0,30,250,50);
+        text Retries   at(250,30,500,50);
+        text "Conflicts solved" at(0,50,250,70);
+        text Conflicts at(250,50,500,70);
+        text "Production" at(0,70,250,90);
+        text Prod at(250,70,500,90); text "100 %" at(500,70,600,90);
+        text "Order" at(0,90,250,110);
+        text Order at(250,90,500,110); text Order_p at(500,90,600,110);
+        text "Transportation" at(0,110,250,130);
+        text Trans at(250,110,500,130); text Trans_p at(500,110,600,130);
+        text "Unplaced" at(0,130,250,150);
+        text Unplaced at(250,130,500,150); text Unpl_p at(500,130,600,150);
+        text "Backlog" at(0,150,250,170);
+        text Backlog at(250,150,500,170); text Back_p at(500,150,600,170);
+     end;
+  while get_first_loop(Grouped_by;P1,HeaderLine) do at(0,190,0,0) border=1
+	header
+        text "Transportation from ..." at(100,0,800,30) border=0 
+        	alignment = center fontsize = 12 fontstyle = bold;
+	text "Manufacturers" at(0,30,200,60) fontsize=10 fontstyle=bold; 
+	text HeaderLine at(200,30,750,60) fontname=times fontsize=9 fontstyle=bold;
+	end_header
+  begin
+     while get_second_loop(Grouped_by;P2,Line2) do at(0,0,0,0)
+     alignment=left clip border=1
+     begin
+	script 	
+	  get_sum_line(;Sum);
+	  get_sum_line1(;Sum1);
+	  get_nested_loop(;Line3);
+	end_script
+     end;
+	block keep_together border = 1 begin
+     text P1 at(0,0,120,30);
+     text "Quantity" 	at(120,0,200,15);
+     text "Cost"	at(120,15,200,30);
+     text Sum at(200,0,750,15) alignment=right;
+     text Sum1 at(200,15,750,30) alignment=right;
+	end;
+end;
+    block
+    begin
+    script 
+    	 Grouped_by := "by customer";  
+         init_main(Grouped_by);
+    end_script
+    end;    
+  while get_first_loop(Grouped_by;P1,HeaderLine) do at(0,30,0,0) border=1
+	header
+        text "Transportation to ..." at(100,0,800,30) border=0 
+        	alignment = center fontsize = 12 fontstyle = bold;
+	text "Customers" at(0,30,200,60) fontsize=10 fontstyle=bold; 
+	text HeaderLine at(200,30,750,60) fontname=times fontsize=9 fontstyle=bold;
+	end_header
+  begin
+     while get_second_loop(Grouped_by;P2,Line2) do at(0,0,0,0)
+     alignment=left clip border=1
+     begin
+	script 	
+	  get_sum_line(;Sum);
+	  get_sum_line1(;Sum1);
+	  get_nested_loop(;Line3);
+	end_script
+     end;
+	block keep_together border = 1 begin
+     text P1 at(0,0,120,30);
+     text "Quantity" 	at(120,0,200,15);
+     text "Cost"	at(120,15,200,30);
+     text Sum at(200,0,750,15) alignment=right;
+     text Sum1 at(200,15,750,30) alignment=right;
+	end;
+end;
+    footer fontsize=10 fontstyle=bold
+      script date(;D); page(;P); time(;T) end_script
+      text "Printed "+D at(0,20,300,40);
+      text T at(300,20,400,40);
+      text "Page "+P at(520,20,620,40) fontsize=10;
+    end_footer
+end_report

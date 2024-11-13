@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<TITLE>Stop Action</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Stop Action'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Stop Action</FONT>
+<P ALIGN=LEFT>The stop action may be used to optimize rules written in a section. Execution of a stop action indicates that no more actions are to be executed or boolean expressions to be evaluated in the containing section. The stop action helps the knowledge engineer to avoid repeating complicated conditions.  
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for stop is simply: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;stop&gt; ::= stop</FONT> 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT>A simple example using stop: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start 'a section without any action' 
+<P ALIGN=LEFT>stop 
+<P ALIGN=LEFT>advice 'This advice will never be given due to the stop action'</FONT> 
+<P ALIGN=LEFT>An example showing two sections, one with stop and one without, which operate identically: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start1 'start section without stop' 
+<P ALIGN=LEFT>if p1 and p2 and p3 and p4 and p5 and p6 and p7 
+<P ALIGN=LEFT>   advice 'realizing that p1 - p7 is true , this advice is given' 
+<P ALIGN=LEFT>if not (p1 and p2 and p3 and p4 and p5 and p6 and p7) 
+<P ALIGN=LEFT>   advice 'this second advice is given since one of p1 - p7 was false' 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>section start2 'start section with stop' 
+<P ALIGN=LEFT>if p1 and p2 and p3 and p4 and p5 and p6 and p7 
+<P ALIGN=LEFT>   (advice 'realizing that p1 - p7 is true , this advice is given', 
+<P ALIGN=LEFT>   stop) 
+<P ALIGN=LEFT>advice 'this second advice is given since one of p1 - p7 was false' </FONT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

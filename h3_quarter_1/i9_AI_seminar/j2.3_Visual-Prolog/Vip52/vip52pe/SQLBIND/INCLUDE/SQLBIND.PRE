@@ -1,0 +1,140 @@
+/******************************************************************************
+
+             Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+                         Interface to SQL Data Bases
+
+ FileName: SQL_TOOL.PRE
+ PURPOSE : Global predicates (and constants) for SQL Interfaces
+ AUTHOR  : Ole Kjaer Christensen, Henrik Lawaetz, Lars Henrik Jacobsen
+
+                                                                            
+  Date Modified,  By,     Comments.
+                                                                            
+  June 1994               Initial version, 1.35
+  10-06-1994      LHJ     Version 1.36, Cleaning up
+  27-06-1994      LHJ                   GetCursorName (for positioned updates)
+                                        ExecDirectStmt (for positioned update)
+  29-06-1994      LHJ                   Drop (for dropping stmt handle)
+  17-08-1994      LHJ     sql_GetReal changed
+  18-08-1994      OKC     DB2/2 compatibility enforced
+  30-10-1994      LHJ     sql_ErrorMsg changed; returns also the STMT_HANDLE 
+                            with error if called with sql_nullHandle.
+  03-11-1994      LHJ     Change sql_ColWidth to return an SDWORD
+  09-11-1994      LHJ     New functions: sql_ExecBnd, sql_ExecStmtBnd and sql_Get*Bnd
+  14-11-1994      LHJ     New function: sql_GetColDescrBnd
+  03-02-1995      LHJ     New functions: sql_ConnectOldStyle (OCI only)
+  28-04-1995      LHJ     New functions: sql_BeginParam, sql_ExecParam, sql_EndParam
+  25-03-1997      TLP     SQL_nullHandle changed to 0xffffffff (correct type)
+  31-10-1997      VY      the setting of the sqlbind_Pre_Included constant added
+*****************************************************************************/
+
+CONSTANTS
+ sqlbind_Pre_Included = 1
+ifndef callconv
+  ifdef ws_pm
+      callconv = syscall
+  elsedef
+      callconv = c
+  enddef
+enddef
+
+   sql_nullHandle             = 0xffffffff        % Not the same as ODBC's SQL_NULL_HSTMT
+
+% Error codes specific for DB2BIND
+   sql_noErr                  =    0
+   sql_invalidHandle          = 4015
+   sql_columnTypeErr          = 4016
+   sql_columnRefErr           = 4017
+   sql_memoryErr              = 4018
+   sql_noFreeHandlesErr       = 4019
+   sql_functionUnsupportedErr = 4020
+
+% Error codes specific for ODBCBIND
+   prolog_sql_error           = 2100
+   prolog_sql_invalid_handle  = 2110
+   prolog_sql_need_data       = 2120
+   prolog_sql_still_executing = 2130
+   prolog_sql_datatype_unsupp = 2097
+   prolog_fail                = 2098
+   prolog_other_error         = 2099
+
+% Type codes returned by sql_ColType (domain COL_TYPE)
+   sql_stringType             =  1
+   sql_longType               =  2
+   sql_shortType              =  3
+   sql_realType               =  4
+   sql_dateType               =  5
+   sql_timeType               =  6
+   sql_timeStampType          =  7
+
+ 
+
+GLOBAL PREDICATES
+
+  DBC_HANDLE  sql_Connect(STRING,STRING,STRING)       - (i,i,i) language callconv
+  DBC_HANDLE  sql_ConnectOldStyle(STRING,STRING,STRING) - (i,i,i)   language callconv
+              sql_Disconnect(DBC_HANDLE)              - (i)     language callconv
+              sql_Commit(DBC_HANDLE)                  - (i)     language callconv
+              sql_RollBack(DBC_HANDLE)                - (i)     language callconv
+
+              sql_Drop(STMT_HANDLE)                   - (i)     language callconv
+              sql_Close(STMT_HANDLE)                  - (i)     language callconv
+
+  STMT_HANDLE sql_Prepare(DBC_HANDLE,STRING)          - (i,i)   language callconv
+  STMT_HANDLE sql_Exec(DBC_HANDLE,STRING)             - (i,i)   language callconv
+              sql_ExecStmt(STMT_HANDLE)               - (i)     language callconv   % ODBC only
+  STMT_HANDLE sql_ExecDirect(DBC_HANDLE,STRING)       - (i,i)   language callconv
+              sql_ExecDirectStmt(STMT_HANDLE,STRING)  - (i,i)   language callconv   % ODBC only
+                                                       
+              sql_FetchNext(STMT_HANDLE)              - (i)     language callconv
+
+  STRING      sql_GetString(STMT_HANDLE, COL_REF)     - (i,i)   language callconv
+  SDWORD      sql_GetLong(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  SWORD       sql_GetInteger(STMT_HANDLE, COL_REF)    - (i,i)   language callconv
+              sql_GetReal(STMT_HANDLE, COL_REF, REAL) - (i,i,o) language callconv
+  STRING      sql_GetDate(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  STRING      sql_GetTime(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  STRING      sql_GetTimeStamp(STMT_HANDLE, COL_REF)  - (i,i)   language callconv
+
+  COL_DATA    sql_GetColData(STMT_HANDLE, COL_REF)    - (i,i)   language callconv
+
+  COL_TYPE    sql_ColType(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  STRING      sql_ColName(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  SDWORD      sql_ColWidth(STMT_HANDLE, COL_REF)      - (i,i)   language callconv
+  SWORD       sql_NumCols(STMT_HANDLE)                - (i)     language callconv
+
+  STRING      sql_GetCursorName(STMT_HANDLE)          - (i)     language callconv
+
+  ERR_CODE    sql_Error(STMT_HANDLE)                  - (i)     language callconv   % DB2  only
+
+  STRING      sql_ErrorMsg(DBC_HANDLE,STMT_HANDLE,STMT_HANDLE) - (i,i,o)   language callconv   % ODBC only
+
+	% Using Binding:
+  % Call with COL_BIND_DESCR_LIST = [] if specific types not used
+  % Specifying a non-empty list prevents additional SQL calls for querying column descriptions
+  % If any column is specified, all must be specified; no holes
+
+  STMT_HANDLE sql_ExecBnd(DBC_HANDLE,STRING,COL_BIND_DESCR_LIST) - (i,i,i)   language callconv
+              sql_ExecStmtBnd(STMT_HANDLE,STRING,COL_BIND_DESCR_LIST) - (i,i,i)     language callconv   % ODBC only
+
+  STRING      sql_GetStringBnd(STMT_HANDLE, COL_REF)     - (i,i)   language callconv
+  SDWORD      sql_GetLongBnd(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  SWORD       sql_GetIntegerBnd(STMT_HANDLE, COL_REF)    - (i,i)   language callconv
+              sql_GetRealBnd(STMT_HANDLE, COL_REF, REAL) - (i,i,o) language callconv
+  STRING      sql_GetDateBnd(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  STRING      sql_GetTimeBnd(STMT_HANDLE, COL_REF)       - (i,i)   language callconv
+  STRING      sql_GetTimeStampBnd(STMT_HANDLE, COL_REF)  - (i,i)   language callconv
+
+  COL_DATA    sql_GetColDataBnd(STMT_HANDLE, COL_REF)    - (i,i)   language callconv   % DB2  only
+
+              sql_GetColDescrBnd(STMT_HANDLE, COL_BIND_DESCR_LIST) - (i,o) language callconv
+
+	% Using Parameters:
+  % 
+  PARAM_HANDLE sql_BeginParam(STMT_HANDLE, COL_DATA_LIST) - (i,i)	 language callconv
+              sql_EndParam(PARAM_HANDLE)                 - (i)     language callconv
+              sql_ExecParam(STMT_HANDLE, PARAM_HANDLE, COL_DATA_LIST) - (i,i,i) language callconv
+
+/*** END OF FILE ***/
+

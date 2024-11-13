@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Visual Prolog 5.1 Upgrade Notes</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<b>
+<h1><!--mstheme--><font color="#000000">Visual Prolog Upgrade Notes<!--mstheme--></font></h1>
+</b>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a name="5.2upgrade" href="#5.2upgrade">Upgrading Visual Prolog from 5.1
+    to 5.2 version</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a name="5.2upgrade" href="upgrade5to5.1.htm">Upgrading Visual Prolog from
+    5.02 to 5.1 version</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a name="5.2upgrade" href="upgrade4to5.htm">Upgrading Visual Prolog from
+    4.x to 5.0 version</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>
+<p>See also:&nbsp;</p>
+</b>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="converting_visual_prolog_5.htm">Converting Visual Prolog 5.2
+    Projects into Visual Prolog 5.1 Projects</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>
+<h2><!--mstheme--><font color="#000000"><a name="5.2upgrade"></a>Upgrading Visual Prolog from 5.1 to 5.2 version<!--mstheme--></font></h2>
+</b>
+<p>Release 5.2 of Visual Prolog is almost 100% compatible with the previous 5.1
+release.</p>
+<p>However, if you want to use enhanced possibilities of Visual Prolog 5.2 to
+handle directories and files, which names include spaces, and to be installed in
+such directories (e.g. &quot;Program Files&quot;), the scripts in your old
+projects must be regenerated.&nbsp;Note also that new build script format
+supports several new VDE features, such as a possibility to specify&nbsp; the
+stack size for 32-bit Windows applications from the VDE.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#clearning-up">Cleaning</a><a href="#clearning-up">-up OBJ
+    sub-directories.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#regenerating build scripts">Regenerating Build Scripts</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#problems of upgrading projects with borland c as the main program for windows and dos platforms">Problems
+    of Upgrading Projects with Borland C as the Main Program for Windows and DOS
+    Platforms</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">Upgrading Projects that use Document Handling Package
+    (DOC_TOOL)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#error">Upgrading Projects, in which 590 and 591 Warnings had
+    been Ignored.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#upgrading one file projects">Upgrading One File Projects</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3><!--mstheme--><font color="#000000"><a name="Clearning-up"></a>Cleaning-up OBJ Project Sub-directories.<!--mstheme--></font></h3>
+<p>Before upgrading a project, it is necessary to delete contents of .OBJ&nbsp;
+sub-directory of the project.</p>
+<h3><!--mstheme--><font color="#000000"><a name="Regenerating Build Scripts"></a>Regenerating Build Scripts<!--mstheme--></font></h3>
+<p>A special <a href="../news/news52/vde/warning.htm">&quot;Warning!&quot;
+dialog</a> is activated, when you open a Visual Prolog 5.1 project with Visual
+Prolog 5.2 VDE, to provide you a possibility to regenerate scripts.&nbsp;</p>
+<p>Be careful, while upgrading your Visual Prolog 5.1 projects into&nbsp; Visual
+Prolog 5.2 projects, if you are going to return later to Visual Prolog 5.1.
+Please, read <a href="../news/news52/vde/caution.htm">Caution</a> and <a href="converting_visual_prolog_5.htm">Converting
+Visual Prolog 5.2 Projects into Visual Prolog 5.1 Projects</a>.</p>
+<h3><!--mstheme--><font color="#000000"><a name="Problems of Upgrading Projects with Borland C as the Main Program for Windows and DOS Platforms"></a>Problems
+of Upgrading Projects with Borland C as the Main Program for Windows and DOS
+Platforms.<!--mstheme--></font></h3>
+<p>Visual Prolog 5.2 VDE does not support Borland C as Main Program for Windows
+and DOS Platform.</p>
+<p>This means that:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&nbsp;All source code files, object files, and libraries required to use
+    Borland C as the Main Program for Windows and DOS Platform are not supplied.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">VDE does not support BGI (Borland Graphics Interface) as UI Strategy. The
+    BGIBIND files are not supplied.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Therefore, to use this project with Visual Prolog 5.2, you need to change the
+Main Program setting to the one supported by this VDE (Prolog or MSVC).</p>
+<p>When the VDE opens an old project that uses Borland C as &quot;Main
+Program&quot;, the dialog <a href="../news/news52/vde/warningborland.htm">&quot;Warning:
+Borland C is not Supported&quot;</a> is activated.</p>
+<h3><!--mstheme--><font color="#000000"><a name="Doc_tool"></a>Upgrading Projects that use Document Handling Package
+(DOC_TOOL)<!--mstheme--></font></h3>
+<p>The structure of the Document Handling package (DOC_TOOL) has been changed in
+Visual Prolog 5.2. Therefore, in the projects created by previous versions of
+Visual Prolog that use DOC_TOOL, it is necessary to&nbsp; make manual changes.</p>
+<p>In the <i>&lt;project_name&gt;.inc</i> file the following lines:&nbsp;</p>
+<blockquote>
+  <!--mstheme--></font><pre><font color="#808000"><b>include</b></font> &quot;rtf.con&quot; </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre><font color="#808000"><b>include</b></font> &quot;rtf.dom&quot; </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>should be added before&nbsp;</p>
+<blockquote>
+  <!--mstheme--></font><pre><font color="#808000"><b>include</b></font> &quot;rtf.pre&quot;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="error"></a>Upgrading Projects, in which 590 and 591 Warnings had
+been Ignored.<!--mstheme--></font></h3>
+<p>Since in the versions previous to Visual Prolog 5.2, <i>&quot;590
+Nondeterministic clause&quot;</i> and <i>&quot;591 Nondeterministic
+predicate&quot;</i> errors were treated as warnings, some user programs that can
+be compiled by previous versions of Visual Prolog&nbsp; (if a programmer&nbsp;
+ignores the warnings) cannot be compiled with Visual Prolog 5.2.<br>
+The reason, why in Visual Prolog 5.2 we treat 590 and 591 as errors is that
+ignoring of this warnings in previous VIP versions often leads to run-time
+errors in programs.<br>
+<i>See</i> detailed descriptions of these error messages in the online Help.</p>
+<h3><!--mstheme--><font color="#000000"><a name="Upgrading One File Projects"></a>Upgrading One File Projects<!--mstheme--></font></h3>
+<p>In Visual Prolog 5.2, the <b>file</b> and <b>db_selector</b> domains have to
+be declared as global domains also in a one file project.<br>
+This was not the case in previous versions of Visual Prolog.<br>
+Therefore, it is necessary to declare&nbsp; the <b>file</b> and <b>db_selector</b>
+domains as global domains in such projects created by previous versions of
+Visual Prolog. Otherwise, these projects will not be built.</p>
+<h4><!--mstheme--><font color="#000000">Note<!--mstheme--></font></h4>
+<p>If you upgrade you project from Visual Prolog from versions 4.x, 5.0, and
+5.02 to Visual Prolog 5.2, please, see also the following pages:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a name="5.2upgrade" href="upgrade5to5.1.htm">Upgrading Visual Prolog from
+    5.02 to 5.1 version</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a name="5.2upgrade" href="upgrade4to5.htm">Upgrading Visual Prolog from
+    4.x to 5.0 version</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

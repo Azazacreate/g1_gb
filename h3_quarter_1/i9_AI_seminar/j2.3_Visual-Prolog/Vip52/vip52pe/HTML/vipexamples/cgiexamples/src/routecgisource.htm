@@ -1,0 +1,120 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><br>
+include &quot;cgiexam.inc&quot;<br>
+<br>
+DOMAINS<br>
+town = symbol<br>
+distance = integer<br>
+<br>
+PREDICATES<br>
+nondeterm road(town,town,distance)<br>
+nondeterm route(town,town,distance)<br>
+<br>
+CLAUSES<br>
+<br>
+road(&quot;tampa&quot;,&quot;houston&quot;,200).<br>
+road(&quot;gordon&quot;,&quot;tampa&quot;,300).<br>
+road(&quot;houston&quot;,&quot;gordon&quot;,100).<br>
+road(&quot;houston&quot;,&quot;kansas_city&quot;,120).<br>
+road(&quot;gordon&quot;,&quot;kansas_city&quot;,130).<br>
+road(&quot;kansas_city&quot;,&quot;tampa&quot;,200).<br>
+<br>
+route(Town1,Town2,Distance):-<br>
+&nbsp;&nbsp;&nbsp; road(Town1,Town2,Distance).<br>
+route(Town1,Town2,Distance):-<br>
+&nbsp;&nbsp;&nbsp; road(Town1,X,Dist1),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;From &quot;,Town1,&quot; to &quot;,X,&quot; :
+&quot;,Dist1,&quot;&lt;br&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; route(X,Town2,Dist2),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;From &quot;,X,&quot; to &quot;,Town2,&quot; :
+&quot;,Dist2,&quot;&lt;br&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; Distance=Dist1+Dist2,<br>
+&nbsp;&nbsp;&nbsp; !.<br>
+<br>
+<br>
+PREDICATES<br>
+runme (PARMLIST)<br>
+nondeterm member (PARM,PARMLIST)<br>
+show_dist (string,string)<br>
+<br>
+CLAUSES<br>
+<br>
+member (X,[X|_]).<br>
+member (X,[_|Y]):-member(X,Y).<br>
+<br>
+runme (Parmlist) :-<br>
+&nbsp;&nbsp;&nbsp; member(parm(&quot;From&quot;,From),Parmlist),<br>
+&nbsp;&nbsp;&nbsp; member(parm(&quot;To&quot;,To),Parmlist),!,<br>
+&nbsp;&nbsp;&nbsp; show_dist(From,To).<br>
+&nbsp;&nbsp;&nbsp; <br>
+show_dist (City,City) :- !,write (&quot;&lt;p&gt;Same city&quot;).<br>
+show_dist (City1,City2) :-<br>
+&nbsp;&nbsp;&nbsp; route(City1,City2, X),!,<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;p&gt;Distance from &quot;,City1,&quot; to
+&quot;,City2,&quot; is &quot;,X).<br>
+<br>
+GOAL&nbsp;&nbsp;&nbsp; <br>
+write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; ParmList = cgi_GetParmList(), <br>
+&nbsp;&nbsp;&nbsp; runme(ParmList),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).<br>
+<br>
+</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

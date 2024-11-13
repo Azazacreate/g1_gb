@@ -1,0 +1,580 @@
+<html>
+
+<head>
+<title>Problems Solved in Visual Prolog 5.1</title>
+
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h5 align="right"><!--mstheme--><font color="#000000">Visual Prolog Technical Support<!--mstheme--></font></h5>
+<h1><!--mstheme--><font color="#000000">Problems Solved in Visual Prolog 5.1<!--mstheme--></font></h1>
+<p>Following is a list of problems found in Visual Prolog, version 5.02 that
+have been fixed in the version 5.1.</p>
+<p>Visual Prolog 5.1 is supplied in two major builds:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">build 564<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">build 565<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Note, please, that some problems found in the build 564, have been already
+fixed in the build 565.&nbsp;<br>
+To check the build of your copy, use the Help | About command.<br>
+The information specific to a build is described in the items of this list under<strong>
+</strong>.</p>
+<p>For information about bugfixes, see the following sections:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup">Problems solved in Setup</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde">Problems solved in the VDE</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler">Problems solved in the Compiler</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prologlib">Problems solved in the Prolog Library</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi">Problems solved in the VPI</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker">Problems solved in the Linker</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker">Problems solved in the Debugger</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#packages">Problems solved in Visual Prolog Packages</a>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">Problems solved in the PDC's Document Handling
+        Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#esta">Problems solved in ESTA</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#report">Problems Solved in the Report and&nbsp; Own_Draw
+        Packages</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#tree">Problems Solved in the Tree Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#http_layer">Problems solved in the HTTP Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#msglayer">Problems solved in the Message Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#ftp">Problems solved in the FTP Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#ftpagent">Problems solved in the FTPagent</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples">Problems solved in Examples</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>There are also a number of small problems, solved in the version that are not
+listed here.</p>
+<p>See also:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="fixes502.htm">List of problems solved in Visual Prolog 5.02</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="fixes501.htm">List of problems solved in Visual Prolog 5.01</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Setup"></a>Solved Setup Problems<!--mstheme--></font></h2>
+<blockquote>
+  <h4 align="left"><!--mstheme--><font color="#000000">In some cases bitmaps in the Setup wizard dialogs are
+  corrupted<!--mstheme--></font></h4>
+  <p align="left">The reason of the problem was <a href="../knownbugs/wrong_generation_of_res_files_fo.htm">wrong
+  generation of RES files</a> for some bitmaps.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="Compiler"></a>Solved Compiler Problems<!--mstheme--></font></h2>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Finished the implementation of&nbsp; procedure checking<!--mstheme--></font></h4>
+</blockquote>
+<dl>
+  <dd>The compiler can now do what we call a saturation check for clauses. This
+    means that if a predicate is declared to be a procedure, then the compiler
+    can check if there are enough clauses to catch all input combinations
+    without any of these leading to a fail for the predicate.</dd>
+</dl>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Some errorpositions were previously reported with a wrong module.<!--mstheme--></font></h4>
+  <h4><!--mstheme--><font color="#000000">SINGLE facts could not be used in GLOBAL facts sections.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug with not(not( x ))<!--mstheme--></font></h4>
+  <p>In the following example compiler deleted double <code>not</code> in Visual
+  Prolog 5.1 (build 564) and previous versions.</p>
+  <blockquote>
+    <!--mstheme--></font><pre>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>nondeterm x(integer)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>x(1).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>x(1).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>x(1).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>not_test</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>not_test :-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <!--mstheme--></font><pre>not(not(x(1))),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+      <blockquote>
+        <blockquote>
+          <!--mstheme--></font><pre>write(&quot;Hello&quot;), nl,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+        </blockquote>
+      </blockquote>
+      <blockquote>
+        <!--mstheme--></font><pre>fail.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+      <!--mstheme--></font><pre>not_test.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>GOAL</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>not_test.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">A problem with multiple inheritance<!--mstheme--></font></h4>
+  <p>If a class had more than one parent, then while using an object of such
+  class for access to base class methods, the multiple inheritance engine did
+  not always work properly.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">Using of two underscore symbols at the beginning of an identifier caused
+  error 450<font size="2"><!--mstheme--></font></h4>
+  </font>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="PrologLib"></a>Problems Solved in the Prolog Library<!--mstheme--></font></h2>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug in the readln predicate under 16bit EasyWin<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R981027.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in Visual Prolog 5.1.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Rounding error under OS/2<!--mstheme--></font></h4>
+</blockquote>
+<dl>
+  <dd>Under OS/2 the coprocessor initialization was missed when the program
+    started. It could cause rounding errors for values with floating-point
+    values.</dd>
+</dl>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug in str_real<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug in the str_dosstr predicate under Windows<!--mstheme--></font></h4>
+</blockquote>
+<dl>
+  <dd>The behavior of the predicate was invalid when there were CRs in the
+    string.</dd>
+</dl>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug in predicate errormsg/4 under 32bits platforms<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">not(bound(_))did not convert &quot;fail&quot; to &quot;true&quot;<!--mstheme--></font></h4>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Missed detection of absence of&nbsp; LOCAL SINGLE FACT initialization in
+  the CLAUSES section.<!--mstheme--></font></h4>
+  <p>In some complex cases, the compiler could not correctly detect that a LOCAL
+  SINGLE FACT had not been&nbsp; initialized by one and only one clause.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000"><strong>str_len</strong> predicate generates GPF if a negative value&nbsp;
+  is passed to the Length variable.<!--mstheme--></font></h4>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>Since the build 565,&nbsp; an error 1602 is generated if a negative
+  value&nbsp; is passed to the Length variable.</p>
+  <p align="left">The problem exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">vpi_CreateProcess:&nbsp; notification bug for 16-bit GUI applications
+  under WinNT.<!--mstheme--></font></h4>
+  <p>While running 16-bit GUI application from 32-bit VPI application using
+  vpi_CreateProcess,&nbsp; <strong>e_EndApplication</strong> comes to windows
+  event handler before closing it.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>In the build 565&nbsp; <strong>e_EndApplication</strong> event comes after
+  closing of a spawned process.</p>
+  <p align="left">The problem exists in the build 564.</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="VDe">Solved VDE Problems</a><!--mstheme--></font></h2>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Pressing F1 with big selection in the VDE text editor used to lead to GPF.<!--mstheme--></font></h4>
+  <h4><!--mstheme--><font color="#000000">Importing resources under OS/2 could lead to a GPF.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Possible BUG when updating source code with the help of Code Experts<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>In some circumstances (a large source file and a relatively slow computer),
+  there is a significant delay while the source file is being updated.&nbsp; If
+  during this time in the Personal Edition, or previous versions, you hit the <strong>Edit
+  Code</strong> button, then the source update can be wrong, because a Code
+  Expert initiates a new update operation while the previous one is not
+  finished.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="ResFile"></a>Wrong generation of RES files for some bitmaps<!--mstheme--></font></h4>
+  <p>See <a href="../knownbugs/wrong_generation_of_res_files_fo.htm">description</a></p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug with saving changes in a project, when &quot;AutoSave Project on
+  Exit&quot; option in the Environment dialog is turned off.<!--mstheme--></font></h4>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Problems with read-only .PRJ files<!--mstheme--></font></h4>
+  <p>If a project had been opened from&nbsp; a read-only .PRJ file, then after
+  choosing Project | Save Project menu item, the following invalid message was
+  generated in the Message window:</p>
+  <blockquote>
+    <blockquote>
+      <p><code>Project &lt;PrjFilePath&gt;.PRJ saved</code></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>Since the build 565 the following message is generated:</p>
+  <blockquote>
+    <blockquote>
+      <p><code>&quot;Project components has been saved&quot;</code></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Printing problem<!--mstheme--></font></h4>
+  <p>If you print several pages beginning with the page different from the
+  first, the first page of a range is spoiled in the build 564 and previous
+  versions.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The problem has been solved in the build 565.</p>
+  <h4><!--mstheme--><font color="#000000">Default setting for &quot;Convert ANSI to OEM&quot; in the Compiler
+  Options dialog<!--mstheme--></font></h4>
+  <p align="left">In the versions previous to Visual Prolog 5.1, build 565 the
+  default setting for &quot;Convert ANSI to OEM&quot; option in the Compiler
+  Options dialog is ON. This causes problems with handling of non-English
+  characters, because the second part of the code table is unavailable.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>Since the build 565, the default setting of the option is OFF.</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="VPI"></a>Problems Solved in the VPI<!--mstheme--></font></h2>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Bug when drawing to a window by a predicate in a DLL<!--mstheme--></font></h4>
+</blockquote>
+<dl>
+  <dd>If you exported the following predicate from a 5.02 32-bit VPI DLL...
+    <blockquote>
+      <!--mstheme--></font><pre>display_string(Win, String) :-
+Rct = win_GetClientRect(Win), 
+draw_TextInRect(Win, Rct, String, -1, [dtext_Left]).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <p>and then called it on the e_Update event of a top-level window of a 5.02
+    32-bit VPI EXE, the string initially appeared in the window as expected.
+    However, if you then forced an update of the window (e.g. by moving the
+    EXE's message window across the window), the string was not updated
+    properly.</p>
+  </dd>
+</dl>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">GPF in pict_GetFromWin<!--mstheme--></font></h4>
+</blockquote>
+<dl>
+  <blockquote>
+    <p>The following code caused GPF:</p>
+    <blockquote>
+      <!--mstheme--></font><pre>Rct = win_GetClientRect(_Win),
+_Picture = pict_GetFromWin(_Win, Rct),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">Tab settings did not work properly after VDE restart<!--mstheme--></font></h4>
+  </blockquote>
+  <blockquote>
+    <p>Changing of Tab settings caused problems after restart of the VDE.</p>
+    <h4><!--mstheme--><font color="#000000"><strong>readln</strong> predicate did not fail on Esc in EasyWin<!--mstheme--></font></h4>
+    <h4><!--mstheme--><font color="#000000">Bug&nbsp; in the dlg_GetFileName predicate&nbsp; under 32-bit<!--mstheme--></font></h4>
+    <p>When&nbsp; more&nbsp; than 15 files were selected, then the error 7002
+    was generated.</p>
+    <h4><!--mstheme--><font color="#000000">A problem with setting of a negative position in VPI events under Win32<!--mstheme--></font></h4>
+    <h4><!--mstheme--><font color="#000000">GPF in the Editor Search Dialog<!--mstheme--></font></h4>
+    <p>Search in the backward direction of a string in an empty wrap editor
+    caused GPF.</p>
+    <h4><!--mstheme--><font color="#000000">Incompatibility of Sysinfo and Dlgdir packages in one project<!--mstheme--></font></h4>
+    <p>The problem of incompatibility of Sysinfo (VPI\Include\Sysinfo) and&nbsp;
+    Dlgdir ( VPI\Include\Dlgdir) packages in one project caused by intersecting
+    flag names has been solved.</p>
+    <h4><!--mstheme--><font color="#000000">Incompatibility of the Dlgcolor and HTTP Layer packages in one project<!--mstheme--></font></h4>
+    <p>The problem of incompatibility of the HTTP Layer
+    (SOCKBIND\INCLUDE\HTTPLAY) and the Dlgcolor (VPI\Include\Dlgcolor) packages
+    in one project caused by intersecting predicate names has been solved.</p>
+  </blockquote>
+</dl>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">A problem with setting Enabled/Disabled and Visible/Invisible flags for
+  controls in inactive sheets.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>Using of a standard VPI predicate <strong>win_SetState</strong>&nbsp; or
+  Dialog package predicate <strong>dialog_SetState</strong> for setting
+  Enabled/Disabled and Visible/Invisible flags for controls in inactive sheets
+  does not lead to the expected result.</p>
+</blockquote>
+<blockquote>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>Beginning from&nbsp; Visual Prolog 5.1 (build 565) it is possible to use a
+  new <a href="../news/news51add/tabdlg_setstate.htm">tabdlg_SetState
+  predicate</a>. This predicate correctly handles controls in inactive sheets.</p>
+  <h4><!--mstheme--><font color="#000000">win_GetText bug for a multi-line edit control in OS/2<!--mstheme--></font></h4>
+  <p>If a multi-line edit control was created using <strong>win_SetText</strong>
+  with a string more than 1K, <strong>win_GetText</strong> truncated the text to
+  about 1K.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">Bug in win_Move for task window&nbsp;<!--mstheme--></font></h4>
+  <p>Top was set lower than expected.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">pict_Open causes&nbsp; the error 6000<!--mstheme--></font></h4>
+  <p>If pict_Open was used in a DLL with a console .EXE, the error 6000
+  &quot;Bad window handle&quot; was generated.</p>
+  <h4><!--mstheme--><font color="#000000">mf_Load/3 BUG under Win32<!--mstheme--></font></h4>
+  <p>Predicate <strong>mf_Load/3</strong> returned invalid rectangle values if a
+  metafile contained negative coordinates.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">win_GetState returned wsf_Titlebar in a wrong way<!--mstheme--></font></h4>
+  <p>If window has a border, the predicate <strong>win_GetState</strong> returns
+  <strong>wsf_Titlebar</strong> no matter, whether window has a title bar or
+  not.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">vpiCall_ShowHelpKeyWord call with a long&nbsp; keyword caused GPF<!--mstheme--></font></h4>
+  <p>In Visual Prolog 5.1 <strong>vpi_ShowHelpKeyWord</strong> truncates long
+  keywords to the first 255 symbols.</p>
+</blockquote>
+<dl>
+  <h2><!--mstheme--><font color="#000000"><a name="Linker"></a>Problems Solved in the PDC Linker<!--mstheme--></font></h2>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">Bug in linking of object modules produced by 16 bit MS C Compiler.<!--mstheme--></font></h4>
+  </blockquote>
+  <p>In some cases, linking of object modules produced by 16-bit MS C Compiler
+  caused errors or GPF while execution. (Win16 only)</p>
+  <h2><!--mstheme--><font color="#000000"><a name="DEBUGGER"></a>Problems Solved in the Debugger<!--mstheme--></font></h2>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">The debugger will now catch errorexits that happen in the program.<!--mstheme--></font></h4>
+  </blockquote>
+  <dl>
+    <dd>It was not possible&nbsp; to go inside Error Handler called by trap in
+      case if the error was caused by errorexit predicate</dd>
+  </dl>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">Bug in sorting of modules<!--mstheme--></font></h4>
+  </blockquote>
+  <dl>
+    <dd>Since v. 5.1 sorting of modules is case insensitive</dd>
+  </dl>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">Call Stack window provided incorrect information<!--mstheme--></font></h4>
+    <h4><!--mstheme--><font color="#000000">Missed horizontal scroll-bars<!--mstheme--></font></h4>
+  </blockquote>
+  <blockquote>
+  </blockquote>
+  <dd>Since v.5.1 horizontal scroll-bars have been added to the following
+    windows:
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;Variables for Current Clause&quot;<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;Call Stack&quot;<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </dd>
+</dl>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Debugger&nbsp; immediately jumped to the continue point with no visual
+  indication of a fail.<!--mstheme--></font></h4>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="Packages"></a>Problems Solved in Visual Prolog Packages<!--mstheme--></font></h2>
+<h3><!--mstheme--><font color="#000000"><a name="DOC_TOOL"></a>PDC's Document Handling Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">GPF while converting HTML files with the help of&nbsp;16bit DOCCNV.<!--mstheme--></font></h4>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the Document Handling and the HTTP Layer packages in
+  one project<!--mstheme--></font></h4>
+  <p>The problem of incompatibility of the HTTP Layer&nbsp; and the Document
+  Handling&nbsp;&nbsp; packages in one project&nbsp; has been solved.</p>
+  <h4><!--mstheme--><font color="#000000">Bug in the HTML Parser error handling<!--mstheme--></font></h4>
+  <p>HTML Parser reports wrong line and position numbers.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The problem has been solved in the build 565. The problem exists in the
+  build 564.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="ESTA"></a>ESTA<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Corrupted ESTA *.KB example files<!--mstheme--></font></h4>
+  <p>ESTA *.KB example files in the v.5.02 were corrupted</p>
+</blockquote>
+<h3 align="left"><!--mstheme--><font color="#000000"><a name="Report"></a>Report and&nbsp; Own_Draw Packages<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the Report and the Own_Draw packages in one module<!--mstheme--></font></h4>
+  <p>The problem of incompatibility of the Report and the Own_Draw packages was
+  &nbsp;caused by intersecting&nbsp;names.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Tree"></a>Tree Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Runtime error while printing big trees<!--mstheme--></font></h4>
+  <p>Runtime overflow error in the internal Tree package procedure of&nbsp; page
+  size calculating for printing&nbsp; trees in 16 bit applications.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">Bug in a big tree display<!--mstheme--></font></h4>
+  <p>If a tree width or height exceeded 32767 pixels, the tree was not displayed
+  properly:</p>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Under OS/2 it was impossible to scroll a big tree.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Under Windows, one could not use a thumb for scrolling. However, it was
+      possible to scroll using scroll-bar direction arrows.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+  <h4><!--mstheme--><font color="#000000">The Print Status dialog determined a&nbsp; number of a printing page for a
+  Project tree incorrectly<!--mstheme--></font></h4>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The problem has been solved in the build 565. The problem
+  exists in the build 564.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="SOCKBIND"></a>SOCKBIND<!--mstheme--></font></h3>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h3><!--mstheme--><font color="#000000"><a name="MSGLayer"></a>Message Layer<!--mstheme--></font></h3>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">The user could not trap msglay_errConnect<!--mstheme--></font></h4>
+  <p>If the resolving of a target host&#146;s name is done asynchronous and a
+  connection cannot be established then the error msglay_errConnect is fired and
+  user app. cannot trap it;</p>
+  <h4><!--mstheme--><font color="#000000">Internal event queue was not cleared<!--mstheme--></font></h4>
+  <p>Internal event queue was not cleared when user application changed socket&#146;s
+  message layer handler.</p>
+  <h4><!--mstheme--><font color="#000000">Message Layer processed packed data with length &gt; 1677216 incorrectly.<!--mstheme--></font></h4>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h3><!--mstheme--><font color="#000000"><a name="FTP">FTP Layer</a><!--mstheme--></font></h3>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Some internal timers were not killed<!--mstheme--></font></h4>
+  <p>In the v. 5.02 some internal timers were not&nbsp; killed when an error
+  occurred while establishing a connection;</p>
+  <h4><!--mstheme--><font color="#000000">A socket was not closed if an error occurred while receiving data<!--mstheme--></font></h4>
+  <h4><!--mstheme--><font color="#000000">Not trapped 1041 error.<!--mstheme--></font></h4>
+  <p>Some internal facts were asserted twice in error conditions.</p>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the&nbsp; <b>FTP Layer</b> and HTTP Layer packages in
+  one project<!--mstheme--></font></h4>
+  <p>The problem of incompatibility of the FTP Layer (SOCKBIND\INCLUDE\FTPLAYER)
+  and&nbsp;&nbsp; HTTP Layer (SOCKBIND\INCLUDE\HTTPLAY) and the Dlgcolor
+  (VPI\Include\Dlgcolor) packages in one project caused by intersecting&nbsp;
+  names has been solved.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h3><!--mstheme--><font color="#000000">&nbsp; <a name="HTTP_Layer"></a>HTTP Layer<!--mstheme--></font></h3>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the HTTP Layer&nbsp; and the Document Handling packages
+  in one project<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>The problem of incompatibility of the HTTP Layer (SOCKBIND\INCLUDE\HTTPLAY)
+  and the Document Handling (DOC_TOOL\Include) packages in one project&nbsp; has
+  been solved.</p>
+  <p>Note, please, that in order to avoid intersection of domain names in these
+  packages, the <b>URI </b>domain of the HTTP Layer Package has been renamed <strong>httplay_URI</strong>.</p>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the HTTP Layer&nbsp; with some other packages in one
+  project<!--mstheme--></font></h4>
+  <p>The problem of incompatibility of the HTTP Layer (SOCKBIND\INCLUDE\HTTPLAY)
+  with some other packages, such as Dlgcolor (VPI\Include\Dlgcolor) and FTP
+  Layer (SOCKBIND\INCLUDE\FTPLAYER),&nbsp; in one project caused by
+  intersecting&nbsp; names has been solved.</p>
+</blockquote>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h3><!--mstheme--><font color="#000000"><a name="FTPAgent"></a>FTPAgent<!--mstheme--></font></h3>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">The FTPAgent Main Window was distorted when large fonts were set.<!--mstheme--></font></h4>
+  <p>The FTPAgent Main Window is distorted when high resolution and large fonts
+  are set in the Display Properties.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The problem has been solved in the build 565. The problem exists in the
+  build 564.</p>
+</blockquote>
+<h2><!--mstheme--><font color="#000000"><a name="Examples"></a>Problems Solved in Examples<!--mstheme--></font></h2>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Problem with 16-bit examples under 32-bit VDE<!--mstheme--></font></h4>
+  <p>One cannot open 16-bit examples from the 32-bit VDE Visual Prolog 5.1,
+  build 564 and previous versions .</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>In the build 565 the problem does not exist, because .VPR files in the
+  examples from WINBIND and TXTEXAMP directories have been replaced with the
+  .PRJ files.</p>
+</blockquote>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

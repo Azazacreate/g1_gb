@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>filenamepath</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='filenamepath'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>filenamepath/3</FONT>
+<P ALIGN=LEFT><B>filenamepath</B>(<I>QualName,Path,Name</I>)
+<P ALIGN=LEFT>Is used to compose and decompose a fully qualified OS file name around its path and file name.
+<P ALIGN=LEFT><B>Remarks</B>
+<P ALIGN=LEFT><B>filenamepath/3</B> converts between <I>QualName</I> on one side, and <I>Path</I> and <I>Name</I> on the other. 
+<P ALIGN=LEFT>(i,o,o) filenamepath with this flow pattern works simply. It just separates the specified string <I>QualName</I> into the couple of strings: <I>QualName = Path + Name</I> according to the following rule:
+</OL>
+<UL>
+<LI>String <I>Path</I> containing the beginning of the <I>QualName</I> string including the last backslash (doubled) character under DOS and OS/2 platforms, or including the last slash character under UNIX. 
+<LI>String <I>Name</I> containing the tail of the <I>QualName</I> string after the last backslash character under DOS and OS/2 platforms, or after the last slash character under UNIX. 
+</UL>
+<P ALIGN=LEFT>For example, according to this rule, if one specifies: <I>QualName</I> = &quot;C:\VIP\INCLUDE\IODECL.CON&quot;, then <B>filenamepath</B> returns: <I>Path</I> =  &quot;C:\VIP\INCLUDE\&quot;, <I>Name</I> =  &quot;IODECL.CON&quot;
+<P ALIGN=LEFT>If one specifies: <I>QualName</I> = &quot;INCLUDE\IODECL.CON&quot;, then <B>filenamepath</B> returns: <I>Path</I> =  &quot;INCLUDE\&quot;, <I>Name</I> =  &quot;IODECL.CON&quot;
+<P ALIGN=LEFT>If one specifies: <I>QualName</I> = &quot;IODECL.CON&quot;, then <B>filenamepath</B> returns: <I>Path</I> =  &quot;&quot;, <I>Name</I> =  &quot;IODECL.CON&quot;
+<P ALIGN=LEFT>(o,i,i) <B>filenamepath</B> with this flow pattern works more tricky. The returned <I>QualName</I> string is not always a simple concatenation of the <I>Path</I> and <I>Name</I> strings.
+<P ALIGN=LEFT>Under DOS and OS/2 platforms there are the following rules:
+<P ALIGN=LEFT><B>1.</B> String <I>Name</I> begins with a device name following by the backslash (doubled) character (i.e. C:\\, D:\, ...). Then string <I>Path</I> is ignored and
+<P ALIGN=LEFT><I>QualName = Name </I>
+<P ALIGN=LEFT><B>2.</B> String <I>Name</I> begins with a device name following by a file name that is not preceded by the backslash (doubled) character, that is: 
+<P ALIGN=LEFT><I>Name = Dev:FileName </I>
+<P ALIGN=LEFT>This specification means that string <I>Name</I> refers to the file <I>FileName</I> in the current directory on the specified device <I>Dev</I> (A,B,C,...). For example, if the current directory on the drive C is \VIP\BIN, then <I>Name</I> = C:VIP.EXE specifies the file C:\VIP\BIN\VIP.EXE.
+<P ALIGN=LEFT>In this case <B>filenamepath</B> ignores string <I>Path</I> and uses the following formula:
+<P ALIGN=LEFT><I>QualName = Dev: + CurrentDir + FileName</I>
+<P ALIGN=LEFT>where <I>CurrentDir</I> is the current directory on the specified device Dev (see also disk).
+<P ALIGN=LEFT>Notice that in this case you obtains the run-time error 7015 &quot;Invalid disk drive&quot; if a specified device is not accessible. 
+<P ALIGN=LEFT><B>3.</B> String <I>Name</I> begins with the backslash (doubled) character (device root directory). Then string <I>Path</I> is ignored and the following formula is used:
+<P ALIGN=LEFT><I>QualName = DeviceRoot + Name </I>
+<P ALIGN=LEFT>where <I>DeviceRoot</I> is the current device root directory (i.e. C:\, D:\, ...).
+<P ALIGN=LEFT><B>4.</B> String <I>Path</I> begins with device name (i.e. C:, D:, ...). Then <I>QualName</I> is a concatenation of <I>Path</I> and <I>Name</I>, i.e. the following formula is used: 
+<P ALIGN=LEFT><I>QualName = Path + Name </I>
+<P ALIGN=LEFT>Notice that if <I>Path</I> does not terminate with the backslash (doubled) character, then filenamepath adds it automatically, i.e. in this case the following formula is used: 
+<P ALIGN=LEFT><I>QualName = Path + &quot;\&quot; + Name </I>
+<P ALIGN=LEFT><B>5.</B> General case. In other cases the following formula is used:
+<P ALIGN=LEFT><I>QualName = CurrentDir + Path + Name </I>
+<P ALIGN=LEFT>where <I>CurrentDir</I> is the current working directory (see also disk).
+<P ALIGN=LEFT>Notice that as in the previous case, <B>filenamepath</B> adds automatically the backslash character after <I>Path</I> and <I>CurrentDir</I> (if it is absent).
+<P ALIGN=LEFT>Notice that under DOS the string(s) returned will be in the upper case.
+<P ALIGN=LEFT>Remember that in the DOS-related versions the backslash character used to present subdirectories is an escape character. Because of this, you must always place two backslash characters when you use the backslash in a path that is written directly into the source text:&quot;C:\\VIP\\INCLUDE\\IODECL.CON&quot;
+<P ALIGN=LEFT>Notice that <B>filenamepath</B> does not check the correctness of the specified file and path names.Therefore, be careful specifying input strings to this predicate, otherwise you can obtain quite unusual results. For example, run the following program from the C:\WORKING directory (under DOS):
+<P ALIGN=LEFT><B>Example</B>
+<P ALIGN=LEFT>Path = &quot;txtexamp&quot;,
+<P ALIGN=LEFT>Name =&quot;test\test.dat&quot;,
+<P ALIGN=LEFT>write(&quot;CurPath=&quot;,CurPath),nl,
+<P ALIGN=LEFT>write(&quot;Path=&quot;,Path),nl,
+<P ALIGN=LEFT>write(&quot;Name=&quot;,Name),nl,
+<P ALIGN=LEFT>FileNamePath(QualName,Path,Name),
+<P ALIGN=LEFT>write(&quot;QualName=&quot;,QualName),nl.
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>You obtains the following program output:
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>CurPath=C:\WORKING
+<P ALIGN=LEFT>Path=TXTEXAMP
+<P ALIGN=LEFT>Name=TEST\TEST.DAT
+<P ALIGN=LEFT>QualName=C:\WORKING\TXTEXAMP\TEST\TEST.DAT</FONT>
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

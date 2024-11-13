@@ -1,0 +1,23 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  GRIDTEST
+ FileName: GRIDTEST.PRE
+ Purpose: Predicate definitions for GRIDTEST.PRO
+ Written by: Sergey A. Alexeev
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+global predicates
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  win_grid_window_Create(WINDOW Parent) - (i)
+  dlg_grid_style_Create(WINDOW Parent) - (i)
+  dlg_grid_column_style_Create(WINDOW Parent,INTEGER InitColumn) - (i,i)
+  dlg_grid_row_style_Create(WINDOW Parent) - (i)
+%END_DECL

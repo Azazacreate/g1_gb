@@ -1,0 +1,169 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Dividing Words into Syllables</title>
+<meta name="Template" content="E:\MSOffice97\Office\html.dot">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Dividing Words into Syllables<!--mstheme--></font></h1>
+<p>Using a very simple algorithm that involves looking at the sequence of vowels
+and consonants a word contains, a computer program can decide how to divide
+words into syllables. For instance, consider the two sequences:</p>
+<p>&nbsp;</p>
+<!--mstheme--></font><pre>1) vowel consonant vowel
+   In this case, the word is divided after the first vowel.
+   For example, this rule can be applied to the following words:
+     ruler &gt; ru-ler
+     prolog &gt; pro-log
+
+2) vowel consonant consonant vowel
+   In this case, the word is divided between the two consonants. For example,
+     number &gt; num-ber
+     panter &gt; pan-ter
+     console &gt; con-sole</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>These two rules work well for most words but fail with words like <i>handbook</i>
+and <i>hungry</i>, which conform to neither pattern. To divide such words, your
+program would have to use a library containing all words.</p>
+<p>Write a Visual Prolog program to divide a word into syllables. The program
+will first ask for a word to be typed in, and then attempt to split it into
+syllables using the two rules just given. As we've mentioned, this will not
+always produce correct results.</p>
+<p>First, the program should split the word up into a list of characters. You
+therefore need the following domain declarations:</p>
+<blockquote>
+  <!--mstheme--></font><pre>DOMAINS
+  letter = symbol
+  word= letter*</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>You must have a predicate that determines whether the letter is a vowel or a
+consonant. However, the two rules given can also work with the vocals (the usual
+vowels--<i>a</i>, <i>e</i>, <i>i</i>, <i>o</i>, and <i>u</i>--plus the letter <i>y</i>).
+The letter <i>y</i> sounds like (and is considered to be) a vowel in many words,
+for example, <i>hyphen</i>, <i>pity</i>, <i>myrrh</i>, <i>syzygy</i>, and <i>martyr</i>.
+To account for the vocals, you have the clauses</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>vocal(a). vocal(e). vocal(i).</p>
+    <p>vocal(o). vocal(u). vocal(y).</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>for the predicate <i><b>vocal</b></i>. A consonant is defined as a letter
+that is not a vocal:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>consonant(L) <b>:-</b> not(vocal(L)).</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>You also need two more predicates. First, you need the <i><b>append</b></i>
+predicate.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>append(word, word, word)</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Second, you need a predicate to convert a string to a list of the characters
+in that string:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>string_word(string, word)</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>This predicate will use the standard predicate <i><b>frontstr</b></i>
+(described in chapter 12), as well as the standard predicates <i><b>free</b></i>
+and <i><b>bound</b></i> (where <i><b>free(X) </b></i>succeeds if <i>X</i> is a
+free variable at the time of calling, and <i><b>bound(Y)</b></i> succeeds if <i>Y</i>
+is bound), to control which clause to activate, dependent on the flow-pattern.</p>
+<p>Now you're ready to attack the main problem: defining the predicate <i><b>divide</b></i>
+that separates a word into syllables. <i><b>divide</b></i> has four parameters
+and is defined recursively. The first and second parameters contain,
+respectively, the <i>Start</i> and the <i>Remainder</i> of a given word during
+the recursion. The last two arguments return, respectively, the first and the
+last part of the word after the word has been divided into syllables.</p>
+<p>As a example, the first rule for <i><b>divide</b></i> is:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>divide(Start, [T1, T2, T3|Rest], D, [T2, T3|Rest]) <b>:-</p>
+    </b>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>vocal(T1), consonant(T2), vocal(T3),</p>
+        <p>append(Start, [T1], D).</p>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>where <i>Start</i> is a list of the first group of characters in the word to
+be divided. The next three characters in the word are represented by <i>T1</i>, <i>T2</i>,
+and <i>T3</i>, while <i>Rest</i> represents the remaining characters in the
+word. In list <i>D</i>, the characters <i>T2</i> and <i>T3</i>, and the list <i>Rest</i>
+represent the complete sequence of letters in the word. The word is divided into
+syllables at the end of those letters contained in <i>D</i>.</p>
+<p>This rule can be satisfied by the call:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>divide([p, r], [o, l, o, g], P1, P2)</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>To see how, insert the appropriate letters into the clause:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>divide([p, r], [o, l, o|[g]], [p, r, o], [l, o | [g]]) <b>:-</p>
+    </b>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>vocal(o), consonant(l), vocal(o),</p>
+        <p>append([p, r], [o], [p, r, o]).</p>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>The <i><b>append</b></i> predicate concatenates the first vocal to the start
+of the word. <i>P1</i> becomes bound to <i>[p, r, o]</i>, and <i>P2</i> is bound
+to <i>[l, o, g]</i>.</p>
+<p><a href="../../examples/wordbrk.prj">WORDBRK.PRJ(Use win32 VDE)</a></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

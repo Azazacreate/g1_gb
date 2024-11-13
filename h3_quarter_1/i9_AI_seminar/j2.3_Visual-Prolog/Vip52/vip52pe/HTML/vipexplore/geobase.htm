@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Geobase</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Geobase<!--mstheme--></font></h1>
+<p>Geobase demonstrates a natural language interface to a database on U.S.
+geography written in Visual Prolog.. It shouldn't be too difficult to modify it
+, to your own purposes, so that this will be the first step on the way to
+designing natural language interfaces to your programs. As all prolog programs,
+geobase is highly extendible. Try your self to extend Geobase rule base, so that
+Geobase can more sentences. It isn't that difficult! Geobase allows you to query
+its database in English rather than &quot;computerese&quot;-commands.</p>
+<p>Geobase is by no means a complete geological database of the United States,
+nor is it a complete English language interface. If you plan to write similar
+routines in your own programs, studying how the code is put together and how
+certain routines are implemented should help. Again, we urge you to modify
+Geobase to be a more complete program. This will not only sharpen your Visual
+Prolog programming skills, but it will also keep you off the streets late at
+night.</p>
+<p>This means that you can access the information stored in the Geobase database
+with natural language (in this case, the natural language is English). The
+database supplied with Geobase is built upon the geography of the United States.
+You can enter queries (questions) in English prose and Geobase will parse
+(translate) these questions into a form that Visual Prolog understands. Geobase
+will give answers to the queries to the best of its knowledge. The Geobase
+application demonstrates one of the important areas where Visual Prolog shines:
+understanding natural language.</p>
+<p>One of the most exciting features of Geobase is that you can examine and edit
+the source code. The code to Geobase is fully documented; you can take any
+section and modify it to suit your needs. Take a look at the database and modify
+it to include your home town! Soon you'll be on the road to creating your own
+natural language interfaces.</p>
+<p><a href="../../examples/geobase.prj">GEOBASE.PRJ (Use win32 VDE)</a></p>
+<h2><!--mstheme--><font color="#000000">Examining Geobase<!--mstheme--></font></h2>
+<p>The database contains the following information:</p>
+<ol>
+  <li>Information about states:</li>
+  <li>Area of the state in square kilometers</li>
+  <li>Population of the state in citizens</li>
+  <li>apital of the state</li>
+  <li>Which states border a given state</li>
+  <li>Rivers in the state</li>
+  <li>Cities in the state</li>
+  <li>Highest and lowest point in the state in meters</li>
+  <li>Information about rivers: Length of river in kilometers</li>
+  <li>Information about cities: Population of the city in citizens</li>
+</ol>
+<p>Try to ask a few random questions. If Geobase doesn't understand a question,
+it will tell you the word it can't parse. For a list of sample questions, take a
+look at the following for some sample queries.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>What are the states?</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>What are the cities in New York?</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>What is the highest mountain in California?</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>What are the name of the states which border New Mexico?</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><em>Which rivers run through the state that border the state with the
+    capital Olympia?</em><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>The language is defined in the file GEOBASE.LAN, and the database in defined
+in GEOBASE.DBA</p>
+<p>Be imaginative! Geobase will understand many English sentences, but
+occasionally you will find a sentence that Geobase simply does not recognize.
+This is the dilemma of a natural language interface. If you find a question you
+feel Geobase should be able to answer but can't, try to improve Geobase so that
+it understands the query!</p>
+<h2><!--mstheme--><font color="#000000">The Idea Behind Geobase<!--mstheme--></font></h2>
+<p>Geobase illustrates one way of implementing a natural language interface to a
+database. Understanding a natural language is far more complex than parsing a
+programming language. There are far more words in the natural language and
+natural languages have difficult ambiguities. But Visual Prolog is extremely
+well suited for natural language processing, because the backtracking mechanism
+can be used to handle ambiguities.</p>
+<p>In Geobase the stored data is a USA geography database. However, you could
+use the same approach for other types of data.</p>
+<p>The key idea behind Geobase is simple: The user views the database as a
+network of entities connected by associations. This is known as an entity
+association network. The entities are the items stored in the database. In
+Geobase, the entities are states, cities, capitals of states, rivers, lakes,
+etc. The associations are words that connect the entities in queries. For
+example:</p>
+<p>Cities in the state California. Here the two entities, cities and state, are
+connected by the association in. The word the is just ignored here, and
+california is regarded as an actual constant for the state entity.</p>
+<p>Geobase is designed to accept simple English. This means that, rather than
+worrying about whether a sentence is grammatically correct, Geobase tries to
+extract the meaning by attempting to match the user's query with the entity
+association network.</p>
+<p>Queries can be combined to form rather complex queries. For example:</p>
+<p><em>which rivers run through states that border the state with the capital
+austin?</em></p>
+<p>In order to make the query match to the entity association network, Geobase
+must simplify the query's various forms. This occurs while Geobase
+&quot;parses&quot; the query.</p>
+<p>The first step is to ignore certain words, such as:</p>
+<p><em>which, is, are, the, tell, me, what, give, as, that, please to, how,
+many, live, lives, living, there, do, does</em></p>
+<p>This step makes the query look like this: <em>rivers run through states
+border state with capital austin?</em></p>
+<p>The next step is to find the internal names for entities and associations.
+Entities can have synonyms, and the query can use</p>
+<p>plural forms of the entity names. Associations can consist of several words
+and they can also have synonyms. After these</p>
+<p>conversions, the query looks like this:</p>
+<p><em>river in state border state with capital austin?</em></p>
+<p>Geobase can now classify the words as either entities or associations and
+group the query into subqueries (E=entity, A=association, C=constant):</p>
+<p><em>river in state border state with capital austin?</em></p>
+<p><em>E A (E A (E A E C))</em></p>
+<p>Geobase can then evaluate the query by first finding the name of the state
+with the capital austin, then finding all states that border this state, and
+finally looking up which rivers run through these states.</p>
+<h2><!--mstheme--><font color="#000000">Adapting the Geobase Idea<!--mstheme--></font></h2>
+<p>Geobase is a natural language query interface to an existing database. You
+can adapt the Geobase mechanisms to your own natural language query interface;
+we explain how in this section.</p>
+<h3><!--mstheme--><font color="#000000">Create Your Database<!--mstheme--></font></h3>
+<p>The first thing you need to do is to create your database. How the database
+is stored or was created has nothing to do with Geobase. You can use internal
+database sections or Visual Prolog's external database system, or you could even
+access some other database files by means of the Visual Prolog Toolbox. Geobase
+accesses the actual database through the predicates (db) and b(ent).</p>
+<p>For simplicity, the geography database is stored in an internal database
+section, which you can load from disk by calling the (consult) predicate. Here
+are some sample declarations from the geography database:</p>
+<p><em>/*state(Name,Abbreviation,Capitol,Area,Admit,Population,City,City,City,City*/</em></p>
+<p><em>state(string,string,string,real,real,integer,string,string,string,string)</em></p>
+<p><em>/*city(State,Abbreviation,Name,Population) */</em></p>
+<p><em>city(string,string,string,real)</em></p>
+<p><em>/*river(Name,Length,StateList)*/</em></p>
+<p><em>river(string,integer,list)</em></p>
+<p><em>/*border(State,Abbreviation,StateList) */</em></p>
+<p><em>border(string,string,list)</em></p>
+<p><em>/*etc.*/</em></p>
+<h3><!--mstheme--><font color="#000000">Porting Geobase<!--mstheme--></font></h3>
+<p>The first step in porting Geobase to your own database is to draw the entity
+association network. The next step is to model this network with the database
+predicate schema:</p>
+<p><em>schema(Entity,Assoc,Entity)</em></p>
+<p>Here are some examples of schema clauses from Geobase:</p>
+<p><em>schema(&quot;capital&quot;,&quot;of&quot;,&quot;state&quot;)</em></p>
+<p><em>schema(&quot;state&quot;,&quot;with&quot;,&quot;capital&quot;)</em></p>
+<p><em>schema(&quot;population&quot;,&quot;of&quot;,&quot;state&quot;)</em></p>
+<p><em>schema(&quot;state&quot;,&quot;with&quot;,&quot;population&quot;)</em></p>
+<p><em>schema(&quot;area&quot;,&quot;of&quot;,&quot;state&quot;)</em></p>
+<p><em>schema(&quot;city&quot;,&quot;in&quot;,&quot;state&quot;)}</em></p>
+<p>After you have defined the entity association network, you should implement
+Geobase's interface to the database. This requires that you define clauses for
+the two predicates db and ent</p>
+<p><em>Predicates</em></p>
+<p><em>db(ent,assoc,ent,string,string)</em></p>
+<p><em>ent(ent,string)</em></p>
+<p>The ent Predicate</p>
+<p>The(ent) predicate is responsible for delivering all instances of a given
+entity. In the first argument to ent, Geobase passes the name of an entity and
+expects the second to return actual string values for this entity.</p>
+<p>Here are some example clauses for ent from Geobase:</p>
+<p><em>ent(continent,usa).</em></p>
+<p><em>ent(city,Name) :- city(_,_,Name,_).</em></p>
+<p><em>ent(state,Name) :- state(Name,_,_,_,_,_,_,_,_,_).</em></p>
+<p><em>ent(capital,Name):- state(_,_,Name,_,_,_,_,_,_,_).</em></p>
+<p><em>ent(river,Name) :- river(Name,_,_).}</em></p>
+<p>The (db) predicate is a bit more complicated then ent. It is responsible for
+modeling the relation between the two entities (the association). You can also
+regard the (db) predicate as a function between one entity value and another
+value. All the arrows in the entity association network (modeled by the (schema)
+relation) should be implemented in clauses for the (db) predicate. Here are some
+examples from the geography database:</p>
+<p><em>db(city,in,state,City,State) :-city(State,_,City,_).</em></p>
+<p><em>db(state,with,city,State,City) :-city(State,_,City,_).</em></p>
+<p><em>db(abbreviation,of,state,Ab,State) :- state(State,Ab,_,_,_,_,_,_,_,_).</em></p>
+<p><em>db(area,of,state,Area,State) :-state(State,_,_,_,Area1,_,_,_,_,_),</em></p>
+<p><em>str_real(Area,Area1).</em></p>
+<p><em>db(capitol,of,state,Capital,State)
+:-state(State,_,Capital,_,_,_,_,_,_,_).</em></p>
+<p><em>db(state,border,state,State1,State2):-
+border(State2,_,List),member(State1,List).</em></p>
+<p><em>db(length,of,river,Length,River)
+:-river(River,Length1,_),str_real(Length,Length1).</em></p>
+<p><em>db(state,with,river,State,River)
+:-river(River,_,List),member(State,List).</em></p>
+<p>That's really all you need to do in order to provide a natural language
+interface to your existing database.</p>
+<h3><!--mstheme--><font color="#000000">Translating Natural Language Queries<!--mstheme--></font></h3>
+<p>Most natural languages (and English in particular) are not simple,
+straightforward, and consistent. Nouns can be singular or plural, verbs
+conjugate, synonyms exist. Translating sentences from natural language to
+something the program recognizes is not a simple task. In the following sections
+we discuss how the Geobase program deals with these translation issues.</p>
+<p>Internal Entity Names</p>
+<p>Geobase needs to obtain an internal entity name from the words the user has
+used. They break down into three separate problems:</p>
+<p>Plural forms of entities. The user might use the word states, which is the
+entity name state appended by an s; or cities, which comes from the entity name
+city. The predicate (entn) is responsible for converting plural entities to
+their singluar forms.</p>
+<p>Synonyms for entities. The user might type town instead of city, or place
+instead of point. Synonyms for entities are stored in the database predicate
+{synonym}.</p>
+<p>Compound entity values. The entity values might consist of more than one
+word, like new york or salt lake city. Geobase handles this situation during
+parsing with the predicate db(get_cmpent).</p>
+<p>Some of the involved clauses look like these:</p>
+<p><em>predicates</em></p>
+<p><em>ent_name(ent,string) /* Convert between an entity name and an internal
+entity name */</em></p>
+<p><em>entn(string,string) /* Convert an entity to singular form */</em></p>
+<p><em>entity(string) /* Get all entities */</em></p>
+<p><em>ent_synonym(string,string) /* Synonyms for entities */</em></p>
+<p><em>clauses</em></p>
+<p><em>ent_name(Ent,Navn) :- entn(E,Navn),</em></p>
+<p><em>ent_synonym(E,Ent),</em></p>
+<p><em>entity(Ent).</em></p>
+<p><em>ent_synonym(E,Ent) :-synonym(E,Ent).</em></p>
+<p><em>ent_synonym(E,E).</em></p>
+<p><em>entn(E,N) :-concat(E,&quot;s&quot;,N).</em></p>
+<p><em>entn(E,N) :-free(E), bound(N), concat(X,&quot;ies&quot;,N),
+concat(X,&quot;y&quot;,E).</em></p>
+<p><em>entn(E,E).</em></p>
+<p><em>entity(&quot;name&quot;):-!.</em></p>
+<p><em>entity(&quot;continent&quot;):-!.</em></p>
+<p><em>entity(X) :- schema(X,_,_).</em></p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#000000">Internal Names for Associations<!--mstheme--></font></h3>
+<p>In the same way that entities can have synonyms and consist of several words,
+so can the associations in the queries be represented by several words. The
+alternative forms for the association names are stored in the b(assoc) database
+predicate. b(assoc) stores a list of words that can be used for the internal
+association name; for example:</p>
+<p><em>assoc(&quot;in&quot;,[&quot;in&quot;])</em></p>
+<p><em>assoc(&quot;in&quot;,[&quot;running&quot;,&quot;through&quot;])</em></p>
+<p><em>assoc(&quot;in&quot;,[&quot;runs&quot;,&quot;through&quot;])</em></p>
+<p><em>assoc(&quot;in&quot;,[&quot;run&quot;,&quot;through&quot;])</em></p>
+<p><em>assoc(&quot;with&quot;,[&quot;with&quot;])</em></p>
+<p><em>assoc(&quot;with&quot;,[&quot;traversed&quot;])</em></p>
+<p><em>assoc(&quot;with&quot;,[&quot;traversed&quot;,&quot;by&quot;])</em></p>
+<p>The predicate (get_assoc) is responsible for recognizing an association in
+the beginning of a list of words. It does this by using the nondeterministic
+version of append to split the list up into two parts. If the first part of the
+list matches an alternative for an association in the (assoc) predicate, the
+corresponding internal association name is returned.</p>
+<p><em>get_assoc(IL,OL,A) :- append(ASL,OL,IL), assoc(A,ASL).</em></p>
+<p>The parser is responsible for recognizing the query sentence structure. There
+are many types of sentences, but these are classified by the parser into nine
+different cases. Each of these nine cases has alternatives in the domain
+(query). The (query) domain is defined recursively, which means it can represent
+nested queries.</p>
+<p><em>Give me cities -ENT - q_e(ENT)</em></p>
+<p><em>state with the city new york -ENT ASSOC ENT CONST -
+q_eaec(ENT,ASSOC,ENT,STR)</em></p>
+<p><em>rivers in (....) -ENT ASSOC SUBQUERY - q_eaq(ENT,ASSOC,ENT,QUERY)</em></p>
+<p><em>rivers longer than 1000 miles -ENT REL UNIT VAL -
+q_sel(ENT,RELOP,UNIT,REAL)</em></p>
+<p><em>the smallest (...) -MIN SUBQUERY - q_min(ENT,QUERY)</em></p>
+<p><em>the biggest (..) -MAX SUBQUERY - q_max(ENT,QUERY)</em></p>
+<p><em>rivers that does not traverse -ENT ASSOC NOT SUBQ - q_not(ENT,QUERY)</em></p>
+<p><em>rivers that are longer than</em></p>
+<p><em>1 thousand miles</em></p>
+<p><em>or that run through texas -SUBQUERY OR SUBQUERY - q_or(QUERY,QUERY)</em></p>
+<p><em>which state borders nevada</em></p>
+<p><em>and borders arizona -SUBQUERY AND SUBQUERY - q_and(QUERY,QUERY)</em></p>
+<p>The words that users can type for minimum, maximum, units, etc., are stored
+in the language database section. The definition in Geobase looks like this:</p>
+<p><em>entitysize(entity,keyword)</em></p>
+<p><em>relop(keywords,relative_size) &#06;/* relational operator */</em></p>
+<p><em>assoc(association_between_entities,keyword)</em></p>
+<p><em>synonym(keyword,entity)</em></p>
+<p><em>ignore(keyword)</em></p>
+<p><em>min(keyword)</em></p>
+<p><em>max(keyword)</em></p>
+<p><em>size(entity,keyword)</em></p>
+<p><em>unit(keyword,keyword)</em></p>
+<h3><!--mstheme--><font color="#000000">Parsing by Difference Lists<!--mstheme--></font></h3>
+<p>The parser uses a method called &quot;parsing by difference lists.&quot; The
+first two arguments for the parsing predicates are the input list and what
+remains of the list after part of a query is stripped off. In the last argument,
+the parser builds up a structure for the query.</p>
+<p>The parser consists of several predicates and clauses, each of which is
+responsible for handling special cases in recognizing the query. If you want to
+understand everything about the parser, study the comments and use trace mode to
+follow how Geobase parses various queries.</p>
+<p>The following clause recognizes the query <em>How large is the town new york</em>.
+The filter gives the parser list&quot;large&quot;, &quot;town&quot;,
+&quot;new&quot;, &quot;york&quot;.</p>
+<p><em>s_attr([BIG,ENAME|S1],S2,E1,q_eaec(E1,A,E2,X)):- /*First s_attr clause*/</em></p>
+<p><em>ent_name(E2,ENAME), /* Entity type town is a city. Look</em></p>
+<p><em>up entity in the language scheme */</em></p>
+<p><em>size(E2,BIG), /* look up city size is large */</em></p>
+<p><em>entitysize(E2,E1), /* look up city scale is population */</em></p>
+<p><em>schema(E1,A,E2), /* look up scheme population of city */</em></p>
+<p><em>get_ent(S1,S2,X),!./* return an entity name and query */</em></p>
+<p>The parser is also able to recognize the more ambiguous query <i>How large is
+new york.</i> Given this query, the first clause for s_attr fails because it
+expects an entity type (such as as <i>town</i> or <i>state</i>). Then the
+program calls the second clause for s_attr, shown here.</p>
+<p><em>s_attr([BIG|S1],S2,E1,q_eaec(E1,A,E2,X)):- /*Second s_attr clause*/</em></p>
+<p><em>get_ent(S1,S2,X), size(E2,BIG),entitysize(E2,E1),
+schema(E1,A,E2),ent(E2,X),!.</em></p>
+<p>Using this clause, the parser decides that new york refers to the city and
+that large refers to the number of citizens.</p>
+<p>Once the parser returns a query, Geobase calls the (eval) clause that
+actually determines which query into the database should be called. The actual
+calls into the database are made with the (db) and (ent) predicates.</p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

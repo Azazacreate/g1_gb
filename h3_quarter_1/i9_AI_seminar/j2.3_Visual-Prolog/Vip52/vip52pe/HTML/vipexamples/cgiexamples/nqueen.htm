@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>The N Queens Problem</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b><font SIZE="+2">The N Queens Problem</font></b><!--mstheme--></font></h1>
+
+<p><font SIZE="+0">In the N Queens problem the object is to place <i>N</i> queens on a
+chessboard in such a way that no queens can capture a piece. This means that no two queens
+may be placed on the same row, column, or diagonal.</font></p>
+
+<p><font SIZE="+0">One way to solve the problem is to number the rows and columns of the
+chessboard from 1 to <i>N</i>. In order to number the diagonals you divide them into two
+types so that a diagonal is uniquely specified by a type and a value calculated from its
+row and column numbers:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>Diagonal = N + Column - Row (Type 1)
+
+Diagonal = Row + Column
+    </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">When you view the chessboard with row 1 at the top and column 1 on the
+left side, Type 1 diagonals resemble the backslash (\) character in shape, and Type 2
+diagonals resemble the shape of slash (/). Figure 15.5 shows the numbering of Type 2
+diagonals on a 4x4 board.</font></p>
+
+<p align="center"><img src="nqueen.gif" </P WIDTH="188" HEIGHT="190"> </p>
+
+<p align="center"><i><font SIZE="+0">The N Queens Chessboard</font></i></p>
+
+<p><font SIZE="+0">Execute the program as a CGI&nbsp;script by pressing the &quot;<b>Run</b>&quot;
+button on the form below</font> </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form METHOD="POST" ACTION="http://vip.pdc.dk/vipexamples/cgiexamples/bin/nqueen.exe">
+    <p><br>
+    <input TYPE="SUBMIT" VALUE="Run">&nbsp;for&nbsp;<select NAME="nq" size="1">
+      <option>7</option>
+      <option SELECTED>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+    </select>&nbsp;queens<br>
+    </p>
+  </form>
+  <p>Show <a href="src/nqueen.htm">Source</a> to the Nqueen-application.<br>
+  Show <a href="src/nqueencgisource.htm">Source</a> to the Nqueen-application incl.
+  cgi-support.</p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h3><!--mstheme--><font color="#000000"><font SIZE="+0">Problem Description</font><!--mstheme--></font></h3>
+
+<p><font SIZE="+0">In order to solve the N Queens Problem with a Visual Prolog program,
+you must record which rows, columns, and diagonals are unoccupied, and also make a note of
+where the queens are placed.</font></p>
+
+<p><font SIZE="+0">A queen's position is described with a row number and a column number
+as in the domain declaration:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>queen = q(integer, integer)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">This declaration represents the position of one queen. You can use a
+list of queens to describe more positions. This is defined as:<br>
+</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queens = queen*</p>
+
+<p><font SIZE="+0">Likewise, you need several numerical lists indicating the rows,
+columns, and diagonals unoccupied by queens. These lists are described by:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>freelist = integer*</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">You will treat the chessboard as a single object with the following
+domain declaration:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>board = board(queens, freelist, freelist, freelist, freelist)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">The four <i>freelist</i>s represent the free rows, columns, and
+diagonals of Type 1 and Type 2 respectively.</font></p>
+
+<p><font SIZE="+0">To see how this is going to work, let <b><i>board</i></b> represent a
+4*4 chessboard in two situations: (1) without queens and (2) with one queen at the top
+left corner.</font> </p>
+
+<ol>
+  <li><font SIZE="+0"><b><i>board</i></b> without queens</font></li>
+</ol>
+
+<blockquote>
+  <blockquote>
+    <!--mstheme--></font><pre>board([], [1,2,3,4], [1,2,3,4], [1,2,3,4,5,6,7], [1,2,3,4,5,6,7])</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+
+<ol start="2">
+  <li><font SIZE="+0"><b><i>board</i></b> with one queen</font></li>
+</ol>
+
+<blockquote>
+  <blockquote>
+    <!--mstheme--></font><pre>board([q(1,1)], [2,3,4], [2,3,4], [1,2,3,5,6,7], [2,3,4,5,6,7])</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+
+<p><font SIZE="+0">You can now solve the problem by describing the relationship between an
+empty board and a board with <i>N</i> queens. You define the predicate:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>placeN(integer, board, board)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">with the two clauses following. Queens are placed one at a time until
+every row and column is occupied. You can see this in the first clause, where the two
+lists of <i>freerows</i> and <i>freecols</i> are empty:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>placeN(_, board(D, [], [], X, Y), board(D, [], [], X, Y)) <b>:-</b> !.
+placeN(N, Board1, Result) :-
+        place_a_queen(N, Board1, Board2),
+        placeN(N, Board2, Result).
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">In the second clause the predicate <b><i>place_a_queen</i></b> gives
+the connection between <i>Board1</i> and <i>Board2</i>. (<i>Board2</i> has one more queen
+than <i>Board1</i>). Use this predicate declaration:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>place_a_queen(integer, board, board)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">The core of the N Queens Problem lies in the description of how to add
+extra queens until they have all been successfully placed, starting with an empty board.
+To solve this problem, you should add the new queen to the list of those already placed:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>[q(R, C)|Queens]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">Among the remaining free rows, <i>Rows</i>, you need to find a row <i>R</i>
+where you can place the next queen. At the same time you must remove <i>R</i> from the
+list of free rows, resulting in a new list of free rows, <i>NewR</i>. This is formulated
+as:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>findandremove(R, Rows, NewR)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">Correspondingly, you must find and remove a vacant column <i>C</i>.
+From <i>R</i> and <i>C</i> you can calculate the numbers of the occupied diagonals. Then
+you can determine if <i>D1</i> and <i>D2</i> are among the vacant diagonals.</font></p>
+
+<p><font SIZE="+0">This is the <b><i>place_a_queen</i></b> clause:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>place_a_queen(N, board(Queens, Rows, Columns, Diag1, Diag2),
+                board([q(R,C)|Queens], NewR, NewS, NewD1, NewD2)) :-
+        findandremove(R, Rows, NewR),
+        findandremove(C, Columns, NewC),
+        D1=N+S-R,
+        findandremove(D1, Diag1, NewD1),
+        D2=R+S-1,
+        findandremove(D2, Diag2, NewD2).
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">NQUEEN.PRO is the complete program. It contains a number of smaller
+additions to defining <b><i>nqueens</i></b> so you only need to give a goal like:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>nqueens(5)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">to obtain a possible solution (in this case for placing five queens on
+a 5*5 board).</font></p>
+<font SIZE="+0">&nbsp;</font>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

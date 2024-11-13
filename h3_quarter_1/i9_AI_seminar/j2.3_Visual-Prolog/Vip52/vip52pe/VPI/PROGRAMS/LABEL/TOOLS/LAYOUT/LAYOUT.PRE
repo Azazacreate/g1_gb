@@ -1,0 +1,33 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	LAYOUT.PRE
+ Purpose:	Global predicates for Layout
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  WINDOW layout_CreatePage(WINDOW ParentWin,LAYOUT_PAGE,LAYOUT_CALLBACK,
+	STRING Copy,STRING Move,STRING Cancel) - (i,i,i,i,i,i)
+  layout_InitPage(WINDOW PageWin,LAYOUT_PAGE,BOOLEAN Stretch) - (i,i,i)
+  layout_grid(WINDOW PageWin,INTEGER GridHorStep,INTEGER GridVerStep,LAYOUT_GRID Visible,
+	BOOLEAN SnapToGrid) - (i,i,i,i,i), (i,o,o,o,o)
+  layout_SetMode(WINDOW PageWin,LAYOUT_MODE) - (i,i)
+
+  layout_Create(WINDOW PageWin,RCT,LAYOUT_FIELD_TYPE,INTEGER Id) - (i,i,i,i) (i,i,i,o)
+  layout_fields(WINDOW PageWin,ILIST IdList) - (i,o) (i,i)
+  layout_delete(WINDOW PageWin,ILIST IdList) - (i,i)
+
+  layout_select(WINDOW PageWin,ILIST IdList) - (i,i) (i,o)
+  layout_unselect(WINDOW PageWin) - (i)
+  layout_get_field(WINDOW PageWin,PNT,INTEGER FieldId) - (i,i,o)
+  layout_rectangle(WINDOW PageWin,ILIST IdList,RCT) - (i,i,i) (i,i,o)
+
+  layout_BringToFront(WINDOW PageWin,ILIST IdList) - (i,i)
+  layout_SendToBack(WINDOW PageWin,ILIST IdList) - (i,i)
+
+  layout_size(WINDOW PageWin,ILIST IdList,INTEGER Width,INTEGER Height) - (i,i,i,i)
+  layout_move(WINDOW PageWin,ILIST IdList,INTEGER DX,INTEGER DY) - (i,i,i,i)
+  layout_align(WINDOW PageWin,ILIST IdList,LAYOUT_ALIGN) - (i,i,i)

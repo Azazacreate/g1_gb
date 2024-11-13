@@ -1,0 +1,15 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  MYPROJ
+ FileName: DIALOGS.PRE
+ Purpose: Predicate definitions for DIALOGS.PRO
+ Written by: Leo Jensen
+ Comments:
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+  dlg_person_Create(WINDOW Parent) - (i)
+%END System Mark

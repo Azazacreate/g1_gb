@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<TITLE>Advice</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Advice'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Advice</FONT>
+<P ALIGN=LEFT>The advice action is executed by first establishing the values of all parameters involved in the text expression and then writing the resulting text in a window on the screen. Pictures can be included anywhere in the advice and thereby be shown on the screen as part of the advice. The <A HREF='BNF_SYNT.HTM'>syntax</A> for an advice is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;advice&gt;        ::= advice &lt;specification&gt; 
+<P ALIGN=LEFT>&lt;specification&gt; ::= &lt;advice-item&gt; {&lt;specification&gt;} 
+<P ALIGN=LEFT>&lt;advice-item&gt;   ::= <A HREF='TEXT_EXP.HTM'>text-expression</A> | picture &lt;<A HREF='PICTURE1.HTM'>picture-name</A>&gt; </FONT>
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>advice
+<P ALIGN=LEFT>'There are three possible ways in which to start the car:
+<P ALIGN=LEFT>        1) Tow or push-start
+<P ALIGN=LEFT>        2) Recharge the battery
+<P ALIGN=LEFT>        3) Use the battery from another car'</FONT>
+<P ALIGN=LEFT>The advice will look like this in a consultation:
+<P ALIGN=LEFT>{bml ADVICE.BMP}
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

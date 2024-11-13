@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>include &quot;cgiexam.inc&quot;<br>
+<br>
+DOMAINS<br>
+loc =right;middle;left<br>
+<br>
+PREDICATES<br>
+hanoi(integer)<br>
+move(integer,loc,loc,loc)<br>
+inform(loc,loc)<br>
+<br>
+CLAUSES<br>
+hanoi(N):-<br>
+&nbsp;&nbsp;&nbsp; move(N,left,middle,right).<br>
+&nbsp;&nbsp;&nbsp; move(1,A,_,C):-<br>
+&nbsp;&nbsp;&nbsp; inform(A,C),!.<br>
+<br>
+move(N,A,B,C):-<br>
+&nbsp;&nbsp;&nbsp; N1=N-1,<br>
+&nbsp;&nbsp;&nbsp; move(N1,A,C,B),<br>
+&nbsp;&nbsp;&nbsp; inform(A,C),<br>
+&nbsp;&nbsp;&nbsp; move(N1,B,A,C).<br>
+<br>
+inform(Loc1, Loc2):-<br>
+&nbsp;&nbsp;&nbsp; write(&quot;\n&lt;br&gt;Move a disk from &quot;, Loc1, &quot; to
+&quot;, Loc2).<br>
+<br>
+PREDICATES<br>
+nondeterm member(parm,parmlist)<br>
+runme(parmlist)<br>
+CLAUSES<br>
+member (X,[X|_]).<br>
+member (X,[_|Y]):-member(X,Y).<br>
+&nbsp;&nbsp;&nbsp; <br>
+runme(Parmlist) :-<br>
+&nbsp;&nbsp;&nbsp; member (parm(&quot;nd&quot;,N),ParmList),<br>
+&nbsp;&nbsp;&nbsp; str_int (N,I),<br>
+&nbsp;&nbsp;&nbsp; hanoi(I),!.<br>
+runme (_) :-<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;Error while executing Hanoi.exe\n&quot;).<br>
+<br>
+GOAL<br>
+write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; ParmList = cgi_GetParmList(), <br>
+&nbsp;&nbsp;&nbsp; runme(ParmList),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).<br>
+</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

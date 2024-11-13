@@ -1,0 +1,69 @@
+--------------------Configuration: X_VPI - Win32 Release--------------------
+Begining build with project "E:\VPRO\FOREIGN\Examples\msvc\ActiveX\X_VPI.DSP", at root.
+Active configuration is Win32 (x86) Dynamic-Link Library (based on Win32 (x86) Dynamic-Link Library)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Fp"Release/X_VPI.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "NDEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x419 /fo"Release/X_VPI.res" /d "NDEBUG" /d "_AFXDLL" "
+			"Browser Database Maker" with flags "/nologo /o"Release/X_VPI.bsc" "
+			"COFF Linker for 80x86" with flags "/nologo /subsystem:windows /dll /incremental:no /pdb:"Release/X_VPI.pdb" /machine:I386 /def:".\X_VPI.def" /out:"Release/X_VPI.ocx" /implib:"Release/X_VPI.lib" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating command line "midl.exe /nologo /D "NDEBUG" /tlb "Release/X_VPI.tlb" /mktyplib203 /o NUL /win32 "E:\VPRO\FOREIGN\Examples\msvc\ActiveX\X_VPI.odl"" 
+Creating command line "rc.exe /l 0x419 /fo"Release/X_VPI.res" /i "Release" /d "NDEBUG" /d "_AFXDLL" "E:\VPRO\FOREIGN\Examples\msvc\ActiveX\X_VPI.rc"" 
+Creating temp file "C:\TEMP\RSP1BE.tmp" with contents </nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Fp"Release/X_VPI.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\VPRO\FOREIGN\Examples\msvc\ActiveX\X_VPI.cpp"
+"E:\VPRO\FOREIGN\Examples\msvc\ActiveX\X_VPICtl.cpp"
+"E:\VPRO\FOREIGN\Examples\msvc\ActiveX\X_VPIPpg.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSP1BE.tmp" 
+Creating temp file "C:\TEMP\RSP1BF.tmp" with contents </nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_USRDLL" /Fp"Release/X_VPI.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\VPRO\FOREIGN\Examples\msvc\ActiveX\StdAfx.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSP1BF.tmp" 
+Creating temp file "C:\TEMP\RSP1C0.bat" with contents <@echo off
+copy ..\..\Dlls\Exe\Dll1.lib .\Prolog\*.*
+>
+Creating command line "C:\TEMP\RSP1C0.bat" 
+Creating Type Library...
+X_VPI.odl
+oaidl.idl
+objidl.idl
+unknwn.idl
+wtypes.idl
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+X_VPI.cpp
+X_VPICtl.cpp
+X_VPIPpg.cpp
+Generating Code...
+Creating temp file "C:\TEMP\RSP1C6.tmp" with contents </nologo /subsystem:windows /dll /incremental:no /pdb:"Release/X_VPI.pdb" /machine:I386 /def:".\X_VPI.def" /out:"Release/X_VPI.ocx" /implib:"Release/X_VPI.lib" 
+.\Release\StdAfx.obj
+.\Release\X_VPI.obj
+.\Release\X_VPICtl.obj
+.\Release\X_VPIPpg.obj
+.\Release\X_VPI.res
+.\Prolog\DLL1.LIB>
+Creating command line "link.exe @C:\TEMP\RSP1C6.tmp" 
+
+        1 file(s) copied.
+Creating temp file "C:\TEMP\RSP1C7.bat" with contents <@echo off
+copy ..\..\Dlls\Exe\Dll1.dll .\Release\*.*
+regsvr32 /s /c ".\Release\X_VPI.ocx"
+echo regsvr32 exec. time > ".\Release\regsvr32.trg"
+>
+Creating command line "C:\TEMP\RSP1C7.bat" 
+Linking...
+   Creating library Release/X_VPI.lib and object Release/X_VPI.exp
+Registering ActiveX Control...
+        1 file(s) copied.
+RegSvr32: DllRegisterServer in .\Release\X_VPI.ocx succeeded.
+
+
+
+
+X_VPI.ocx - 0 error(s), 0 warning(s)

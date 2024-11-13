@@ -1,0 +1,28 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  
+ FileName: RMTSH.PRE
+ Purpose: 
+ Written by: PDC
+ Comments: 
+******************************************************************************/
+constants
+fattrib_normal = $40
+flush = 0
+purge = 1
+nofilter = 0
+filter = 1
+
+err_pipeclosed = 1802
+err_pipebroken = 1803
+
+domains
+shcom =
+	dir(string);		/* Request dir info.			*/
+	direntry(string,unsigned,unsigned,unsigned,unsigned,
+						unsigned,unsigned,ulong);
+	copy(string);		/* Request file transfer.		*/
+	contents(string);	/* File contents.			*/
+	eoj()			/* End of job.				*/

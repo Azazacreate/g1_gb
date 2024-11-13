@@ -1,0 +1,25 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+			VISUAL Prolog
+
+ Project:  EDITOR
+ FileName: EDITOR.PRE
+ Purpose: Predicate definitions for EDITOR.PRO
+ Written by: Ilyin Yuri
+ Modifyed by: Eugene Akimov
+ Comments:
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+%END System Mark
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  win_editor_Create(WINDOW Parent) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

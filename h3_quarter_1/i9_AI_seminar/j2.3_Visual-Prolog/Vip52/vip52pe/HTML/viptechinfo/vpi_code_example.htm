@@ -1,0 +1,134 @@
+<html>
+
+<head>
+<title>VPI Code Example</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font face="arial, arial, helvetica">
+
+<h1><!--mstheme--><font color="#000000"><small><a name="VisualPrologCodeExample"></a></small></font>VPI Code Example<font face="arial, arial, helvetica"><!--mstheme--></font></h1>
+
+<p>The following code fragment shows the code needed to create a window with a tree
+display of the include structure in the Visual Prolog VDE. The predicate <i>collect_tree </i>is
+building the tree structure in the usual findall loop. The predicate project_tre_event is
+the event-handler that will receive notice of actions done in the window. In this case
+there are provisions only for closing the window, and in the event the user double clicks
+on a node. In the case of a double-click the editor is activated with the corresponding
+source text. </p>
+
+<blockquote>
+  <!--mstheme--></font><pre><small>/***********************************************
+        Project tree
+***********************************************/
+
+PREDICATES
+  project_tree_event: EVENT_HANDLER
+CLAUSES
+  project_tree(W):-
+    projectfilename(Project),
+    get_exename(Project,ExeName),
+    retractall(_, seen_nodes),
+    collect_tree(ExeName,9,TREE),
+    make_tree_win(W,&quot;Test tree&quot;,TREE,[],project_tree_event,_),!.
+  project_tree_event(W,e_CloseRequest,0):-
+    win_Destroy(W),!.
+  project_tree_event(W,e_MouseDbl(_,_,_,_),0):-
+    get_selected_node(W,FileName),!,
+    not_bin_file(FileName),
+    open_file_editor(FileName).
+</small></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>The following example shows how to use the dialog package to control dialog handling.
+The dialog package takes care of initializing all parts of a dialog, and it does various
+kinds of type and range checking on the input fields. After the dialog is completed, it
+delivers the output values in a list. Note that this code is generated automatically when
+the dialog is designed using the dialog editor. </p>
+
+<blockquote>
+  <!--mstheme--></font><pre><small>PREDICATES
+   setup_env      % Brings up the dialog
+   setup_env(DLG_VAL_LIST, INTEGER)   % Handle the return values
+CLAUSES
+  setup_env:-
+    saveconfig(SAVECONFIG),   % Get the variable from a fact
+    saveedit(SAVEEDIT),       % Another variable
+    new_modal_dialog(d_env, &quot;Environment&quot;,
+                     [df(d_env_saveconfig,checkbox(SAVECONFIG),nopr),
+                      df(d_env_saveedit,checkbox(SAVEEDIT),nopr)
+                     ],[],no_validation,no_user_action,VALLIST,ANSWER),
+    setup_env(VALLIST,ANSWER).
+</small></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>The next example shows what code is needed to create a window with a toolbar on the
+right side. This code can be generated automatically by the resource expert. The various
+constants are resource identifiers which name the icons used as button images. </p>
+
+<blockquote>
+  <!--mstheme--></font><pre><small>toolbar_create(tb_right,color_blue,W,
+    [tb_ctrl(1, pushb, tbcut_up,  tbcut_dn,  &quot;&quot;,b_true,b_true),
+     tb_ctrl(2, pushb, tbcopy_up, tbcopy_dn, &quot;&quot;,b_true,b_true),
+     tb_ctrl(3, pushb, tbok_up,   tbok_dn,   &quot;&quot;,b_true,b_true),
+     tb_ctrl(11,checkb,switch_off,switch_on, &quot;&quot;,b_true,b_true),
+     separator,
+     tb_ctrl(12,checkb,rot_off,   rot_on,    &quot;&quot;,b_true,b_true),
+     separator,
+     tb_ctrl(4, pushb, flower_up, flower_dn, &quot;&quot;,b_true,b_true),
+     separator,
+     tb_ctrl(5, pushb, tbcopy_up, tbcopy_dn, &quot;&quot;,b_true,b_true),
+     tb_ctrl(6, pushb, tbok_up,   tbok_dn,   &quot;&quot;,b_true,b_true)
+    ],toolbar_action).
+</small></font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>&nbsp; 
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

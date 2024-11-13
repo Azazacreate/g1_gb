@@ -1,0 +1,169 @@
+/*****************************************************************************
+
+                Copyright (c) 1984 - 2000 Prolog Development Center
+
+ Project:
+ FileName: HTMLFUN.PRE
+ Purpose: Definition of Server Extension HTML Authoring Predicates
+ Written by: PDC
+ Comments:
+******************************************************************************/
+
+ifndef  _HTML_FUN_
+
+constants
+        _HTML_FUN_      =       1
+
+
+ifndef  _HTTPEXT_CON_
+include "httpext.con"
+enddef
+
+ifndef  _HTTPEXT_DOM_
+include "httpext.dom"
+enddef
+
+GLOBAL PREDICATES
+
+%
+% Text tools
+%
+
+  html_WriteString (EXTENSION_CONTROL_BLOCK , STRING ) - (i,i) language c
+  html_WriteText (EXTENSION_CONTROL_BLOCK , STRING ) - (i,i) language c
+  html_WriteTextLine (EXTENSION_CONTROL_BLOCK , STRING ) - (i,i) language c
+
+
+%
+% html_CreatePage adds <HTML> and a title
+%
+
+  html_CreatePage (EXTENSION_CONTROL_BLOCK , STRING title) - (i,i) language c
+
+  html_EndPage (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+
+%
+% Heading tools
+%
+
+  html_BeginHeading (EXTENSION_CONTROL_BLOCK , INTEGER nHeading) - (i,i) language c
+  html_EndHeading (EXTENSION_CONTROL_BLOCK , INTEGER nHeading) - (i,i) language c
+  html_Heading (EXTENSION_CONTROL_BLOCK , INTEGER nHeading, STRING Text) - (i,i,i) language c
+
+
+  html_EndParagraph (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+%
+% html_HyperLink adds a hyptertext link.  Doc is the destination
+% document, and Text is the display text.
+%
+% html_HyperLinkAndBookmark adds a hyperlink with a bookmark link.
+% html_BookmarkLink adds only a bookmark link.
+%
+
+  html_HyperLink (EXTENSION_CONTROL_BLOCK , STRING Doc, STRING Text) - (i,i,i) language c
+
+  html_HyperLinkAndBookmark (EXTENSION_CONTROL_BLOCK ,
+                               STRING Doc, STRING Bookmark,
+                               STRING Text)            - (i,i,i,i) language c
+
+  html_BookmarkLink (EXTENSION_CONTROL_BLOCK , STRING Bookmark,
+                       STRING Text) - (i,i,i) language c
+
+  html_SetBookMark  (EXTENSION_CONTROL_BLOCK ,
+                     STRING BookMarkName ) - (i,i) language c
+
+%
+% The following support list formatting.
+%
+
+  html_BeginUnnumberedList (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndUnnumberedList (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginListItem (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginNumberedList (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndNumberedList (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginDefinitionList (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndDefinitionList (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_Definition (EXTENSION_CONTROL_BLOCK , STRING Term, STRING Def) - (i,i,i) language c
+
+% For complex defintions
+  html_BeginDefinitionTerm (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginDefinition (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+
+%
+% Text formatting
+%
+
+  html_BeginPreformattedText (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndPreformattedText (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginBlockQuote (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndBlockQuote (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginAddress (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndAddress (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginDefine (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndDefine (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginEmphasis (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndEmphasis (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginCitation (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndCitation (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginCode (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndCode (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginKeyboard (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndKeyboard (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginSample (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndSample (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginStrong (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndStrong (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginVariable (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndVariable (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_BeginBold (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndBold (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_Bold (EXTENSION_CONTROL_BLOCK , STRING Text) - (i,i) language c
+
+  html_BeginItalic (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndItalic (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_Italic (EXTENSION_CONTROL_BLOCK , STRING Text) - (i,i) language c
+
+  html_BeginFixed (EXTENSION_CONTROL_BLOCK ) - (i) language c
+  html_EndFixed (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_Fixed (EXTENSION_CONTROL_BLOCK , STRING Text) - (i,i) language c
+
+
+%
+% Line breaks and other formatting
+%
+
+  html_LineBreak (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+  html_HorizontalRule (EXTENSION_CONTROL_BLOCK ) - (i) language c
+
+
+%
+% Images
+%
+
+  html_Image (EXTENSION_CONTROL_BLOCK , STRING PicFile,
+                STRING AltText) - (i,i,i) language c
+
+enddef

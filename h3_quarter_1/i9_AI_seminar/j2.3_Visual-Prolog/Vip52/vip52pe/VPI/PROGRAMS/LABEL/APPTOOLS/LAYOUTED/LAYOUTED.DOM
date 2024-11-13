@@ -1,0 +1,83 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	LAYOUTED.DOM
+ Purpose:	Global domains for Layout Editor
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+
+include "tools\\layout\\layout.dom"
+include "tools\\barcode\\barcode.dom"
+include "apptools\\align\\align.dom"
+include "apptools\\editmode\\editmode.dom"
+include "palette\\palette.dom"
+
+global domains
+  file = le_file
+
+  LE_CREATE_TYPE = rectangle;
+		 ellipse;
+		 line;
+		 bitmap;
+		 text;
+		 counter
+
+  LE_MODE = edit_mode;
+	    create_mode(LE_CREATE_TYPE)
+
+  LE_FIELD_TEXT = text(STRING);
+		  dyntext(SLIST);
+		  date(STRING FormatString,INTEGER DayShift);
+		  ascii(STRING FileName,UNSIGNED From,UNSIGNED To);
+		  odbc(STRING BaseName,STRING TableName,UNSIGNED Column,STRING UserName,STRING Password);
+		  dbase(STRING FileName,UNSIGNED Column)
+
+  LE_TEXT_ALIGN = left;
+		  right;
+		  center
+
+  LE_FIELD_TYPE  = rectangle(PEN Border,BRUSH);
+		   ellipse(PEN Border,BRUSH);
+		   line(PEN);
+		   bitmap(PEN Border,STRING FileName,BOOLEAN Stretch);
+		   text(LE_FIELD_TEXT,FONT,STRING FontName,COLOR TextColor,LE_TEXT_ALIGN,
+		   	PEN Border,BRUSH Fill,BOOLEAN Wrap,BARCODE_TYPE);
+		   counter(ULONG Start,ULONG End,ULONG Step,UNSIGNED DigitNumber,
+			FONT,STRING FontName,COLOR TextColor,LE_TEXT_ALIGN,PEN Border,BRUSH Fill,
+			BARCODE_TYPE)
+
+  LE_FIELD_ORIENTATION = angle_0;
+			 angle_90;
+			 angle_180;
+			 angle_270
+
+  LE_RCT = le_rct(REAL L,REAL T,REAL R,REAL B)
+
+  LE_FIELD_INFORMATION = info(LE_RCT,LE_FIELD_ORIENTATION,LE_FIELD_TYPE)
+  LE_FIELD_INFORMATIONLIST = LE_FIELD_INFORMATION*
+
+  LE_USER_ACTION = create_field;
+		   page_change;
+		   page_setup;
+		   modified;
+		   property_destroy;
+		   align_destroy;
+		   palette_destroy;
+		   property_create;
+		   align_create;
+		   palette_create;
+		   go_to_preview
+
+  LE_MESSAGE =	event(EVENT);
+		user_action(LE_USER_ACTION)
+
+  LE_ANSWER = 	stop;
+		continue
+
+  LE_CALLBACK = determ (WINDOW		LEWin,
+			LE_MESSAGE	What,
+			LE_ANSWER	Answer) - (i,i,o)

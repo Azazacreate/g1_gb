@@ -1,0 +1,53 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: PIE.PRE
+ Purpose: Predicate definitions for PIE.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+
+global database
+	pie(	PIEID,		% Unique number for this piece (nb: includes window)
+		POLYGON, 	% Original coordinates
+		MODE)		% Current pen and brush style
+	draw_ids()		% Flag for testing
+
+global predicates
+% Pies
+	pieNew(WINDOW,SET,MODE,POLYGON,PIEID) 	- (i,i,i,i,o)
+	pieCopy(WINDOW,SET,PIEID,PIEID) - (i,i,i,o) % new copy of id1
+	pieCopy(PIEID,PIEID)		- (i,i)     % copy of id1 in id2
+	pieDelete(PIEID)		- (i)
+	
+	pieGetPol(PIEID,POLYGON)	- (i,o) (i,pol(o))
+	pieGetMod(PIEID,MODE)		- (i,o)  
+	
+	pieSetPol(PIEID,POLYGON)	- (i,i)
+	pieSetMod(PIEID,MODE)		- (i,i)	
+	
+	pieFlip(PIEID)			- (i)
+	pieTurn(PIEID,ANGLE)		- (i,i)
+	pieSlide(PIEID,VECTOR)		- (i,i)
+	
+	pieDraw(PIEID)			- (i)
+	pieWrite(PIEID)			- (i)
+
+% Sets of pies
+	nondeterm pieIter(WINDOW,SET,PIEID)	- (i,i,o)
+
+	pieFind(WINDOW,SET,PT,PIEID)	- (i,i,i,o)
+	piesDraw(WINDOW,SET)		- (i,i)
+	
+	pieOverlap(PIEID,SET,PIEID)	- (i,i,o)
+	pieNear(PIEID,SET,REAL,PIEID)	- (i,i,i,o)
+	
+	piesSetMod(WINDOW,SET,MODE)	- (i,i,i)
+	
+	piesWrite(WINDOW,SET)		- (i,i)
+	
+	
+	puzzleInit(WINDOW,SET)		- (i,i)
+

@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<title>Reference to the Object Itself</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>Reference to the Object Itself<!--mstheme--></font></h1>
+</b>All non-<a href="static_class_members.htm">static</a> member predicates have
+an invisible (to the programmer) extra parameter that is a pointer (object
+identifier) to an actual instance (object) of the class.
+<p>If it is necessary to refer to the object itself, for instance to access a
+predicate in an inherited class, it is possible to use the built-in predicate <a href><b>this</b></a>.
+Predicate <a href><b>this</b></a> allows, for instance, to get access to any
+non-static member predicate or a member fact that is defined in the class or in
+its base classes.
+<p>The syntax for making call to predicate <b>this</b> is:
+<blockquote>
+  <!--mstheme--></font><pre>this(ObjectIdentifier)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>Predicate <a href><b>this</b></a> can be used only inside clauses of
+non-static member-predicates. Predicate <a href><b>this</b></a> has the single
+output argument. It is not allowed to use the single underscore for name of this
+variable.
+<p>See also examples in topics <a href>Derived Classes and Inheritance</a> and <a href="objects_class_instances.htm#c8744781">Class
+Instances</a>.<b>
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm">See also</a><!--mstheme--></font></h5>
+</b>&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

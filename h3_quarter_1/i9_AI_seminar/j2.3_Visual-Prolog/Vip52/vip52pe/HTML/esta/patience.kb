@@ -1,0 +1,13 @@
+vars("parameter lost_patience : 'the user has lost patience'\ntype boolean\nquestion 'Have you lost your patience ?'","lost_patience","the user has lost patience",[],[c_str("Have you lost your patience ?",79)],fact,fact([]),"")
+vars("parameter index : 'an index of the users patience level'\ntype number\n","index","an index of the users patience level",[],[],number,number(none,[]),"")
+vars("parameter number_of_loops : 'count of how many loops ESTA has performed'\ntype number\n","number_of_loops","count of how many loops ESTA has performed",[],[],number,number(none,[]),"")
+section("section start : 'start section of PATIENCE.KB'\n\nadvice 'hello'\ncall restore_values('LOOP.FIL')\ncall clear_value('lost_patience')\n\nif not known(number_of_loops)\nassign number_of_loops := 0\n\n\n\nif number_of_loops = 0\nadvice 'This is a test of your patience. Please click on the OK button'\n\nif number_of_loops > 0\nadvice 'This is still a test of your patience. Please click on the OK button'\n\nassign number_of_loops := number_of_loops + 1\n\nif lost_patience (assign index := ln(number_of_loops),\nadvice 'Your patience index is ' index , chain 'EXPERTEX.KB')\n\nif not lost_patience (call save_values('LOOP.FIL'), chain '')","start",[c_str("start section of PATIENCE.KB",16)])
+paragraph("start",1,c_bool(true,0),[display([c_str("hello",57)])])
+paragraph("start",2,c_bool(true,0),[call("restore_values",71,[c_str("LOOP.FIL",86)])])
+paragraph("start",3,c_bool(true,0),[call("clear_value",104,[c_str("lost_patience",116)])])
+paragraph("start",4,not_(c_func("known",143,[c_var("number_of_loops",149)])),[assign("number_of_loops",174,c_int(0,193))])
+paragraph("start",5,rel(c_var("number_of_loops",205),eq,c_int(0,223)),[display([c_str("This is a test of your patience. Please click on the OK button",233)])])
+paragraph("start",6,rel(c_var("number_of_loops",304),gt,c_int(0,322)),[display([c_str("This is still a test of your patience. Please click on the OK button",332)])])
+paragraph("start",7,c_bool(true,0),[assign("number_of_loops",413,plus(c_var("number_of_loops",432),c_int(1,450)))])
+paragraph("start",8,c_var("lost_patience",458),[assign("index",480,c_func("ln",489,[c_var("number_of_loops",492)])),display([c_str("Your patience index is ",518),c_var("index",544)]),chain("EXPERTEX.KB")])
+paragraph("start",9,not_(c_var("lost_patience",583)),[call("save_values",603,[c_str("LOOP.FIL",615)]),chain("")])

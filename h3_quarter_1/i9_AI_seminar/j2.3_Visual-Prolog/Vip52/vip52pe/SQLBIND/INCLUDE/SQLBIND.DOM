@@ -1,0 +1,49 @@
+/******************************************************************************
+
+             Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+                 Global Domains for Interface to SQL Data Bases
+
+ FileName: SQL_TOOL.DOM
+ PURPOSE : Global domains for SQL Interface
+ AUTHOR  : Ole Kjaer Christensen & Henrik Lawaetz, Lars Henrik Jacobsen
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  June 1994     บ      บ  Initial version, 1.35
+  10-06-1994    บ LHJ  บ  Version 1.36, Cleaning up
+  10-11-1994    บ LHJ  บ  Version 1.37, Bind col interface
+  28-04-1995    บ LHJ  บ  Version 1.38, Parameter interface
+  09-10-1997    บ VY   บ  Version 1.39, COL_REF changed to pure unsigned (Leo's email message)
+  31-10-1997    บ VY   บ  Version 1.40, setting of the sqlbind_Dom_Included constatnt added
+                บ      บ
+  
+*****************************************************************************/
+CONSTANTS
+ sqlbind_Dom_Included = 1
+
+GLOBAL DOMAINS
+  SWORD       = signed word
+  SDWORD      = signed dword
+  ERR_CODE    = long
+  STMT_HANDLE = dword
+  DBC_HANDLE  = dword
+  PARAM_HANDLE = dword
+  COL_REF     = unsigned /*word*/ % VY 971009 (Leo's email message)
+  COL_TYPE    = unsigned
+
+  COL_DATA    = s(STRING) ;       % String
+                i(SHORT) ;        % Small integer (16 bit)
+                l(LONG) ;         % Long integer (32 bit)
+                r(REAL) ;         % Real
+                d(STRING) ;       % Date
+                t(STRING) ;       % Time
+                ts(STRING) ;      % Time stamp
+                null_value        % Null value
+
+  COL_DATA_LIST = COL_DATA*
+
+	COL_BIND_DESCR = struct cbd(COL_REF, COL_TYPE, SDWORD)  % Column nr., Column C-Type, Column Length
+	COL_BIND_DESCR_LIST = COL_BIND_DESCR*
+	

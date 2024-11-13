@@ -1,0 +1,66 @@
+GLOBAL FACTS
+yes (symbol)
+no (symbol)
+PREDICATES
+nondeterm fish(symbol)
+nondeterm otrajd(symbol)
+nondeterm vid(symbol)
+begin
+answer
+question(symbol)
+add_to_database(symbol,char)
+otvet(char)
+clear_from_database
+priznak(symbol)
+GOAL
+begin.
+CLAUSES
+begin :-
+write ("ќтветьте на вопросы :"),nl,nl,
+answer,
+clear_from_database,
+nl,nl,nl,nl,
+exit.
+answer :-
+fish(X),!,nl,
+save("BF1.dbf"),
+write (" ќтвет: ",X,"."),nl.
+question(Y) :-
+write ("¬oпрос: ",Y,"? "),
+otvet(X),
+write(X),nl,
+add_to_database (Y,X).
+otvet(C):-
+readchar(C).
+priznak (Y) :-
+yes (Y),!.
+priznak (Y) :-
+not( no (Y)),
+question (Y).
+add_to_database (Y,'y') :-
+assertz (yes (Y)).
+add_to_database (Y,'n') :-
+assertz (no (Y)),fail.
+clear_from_database :- retract (yes(_)),fail.
+clear_from_database :- retract (no(_)),fail.
+fish("это сазан"):-
+otrajd("отр€д карпообразные"),
+priznak("губы с 4 усиками").
+fish("это плотва"):-
+otrajd("отр€д карпообразные"),
+priznak("плавники с розовыми перь€ми").
+fish("это лещ"):-
+otrajd("отр€д карпообразные"),
+priznak("у рыбы желто-золотистый окрас"),
+priznak("у рыбы спинной плавник узкий").
+fish("ƒанной рыбы в базе знаний не обнаружено").
+otrajd("отр€д карпообразные"):-
+vid("пресноводна€ рыба"),
+vid("костна€ рыба"),
+priznak("одиночный спинной лучевой плавник"),
+priznak("у рыбы нет зубов").
+vid("костна€ рыба"):-
+priznak("у рыбы есть жаберные крышки");
+priznak("у рыбы есть костный скелет").
+vid("пресноводна€ рыба"):-
+priznak("рыба плавает в реках или озерах").

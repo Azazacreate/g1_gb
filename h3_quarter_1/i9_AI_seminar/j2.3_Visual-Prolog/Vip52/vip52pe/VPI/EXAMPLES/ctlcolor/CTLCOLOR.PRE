@@ -1,0 +1,25 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  CTLCOLOR
+ FileName: CTLCOLOR.PRE
+ Purpose: Predicate definitions for CTLCOLOR.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+ifndef platform_32bit
+  #Error: This project for Windows 32bit only
+elsedef
+  ifndef ws_win
+    #Error: This project for Windows 32bit only
+  enddef
+enddef
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_dialog_with_color_contol_Create(WINDOW Parent) - (i)
+%END_DECL

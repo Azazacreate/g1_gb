@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<title>Predicates Section in the Class Declaration</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>PREDICATES Section in the Class Declaration<!--mstheme--></font></h1>
+</b>The <b>predicates</b> sections in the <a href="class_declaration.htm">class
+declaration</a> declare predicates (and predicate values) - members of the
+class.
+<p><b>Syntax</b>
+<!--mstheme--></font><pre>[PROTECTED] [STATIC] <b>PREDICATES</b> &lt;<i>predicates_declarations</i>&gt;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+where:
+<!--mstheme--></font><table border="0" width="100%" style="border-style: double">
+  <tr>
+    <td width="36%"><!--mstheme--><font face="verdana, Arial, Helvetica">PREDICATES<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">declares the predicates
+      section<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="36%" style="border-top-style: double; border-bottom-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">PROTECTED<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double; border-top-style: double; border-bottom-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">changes
+      the <a href="class_access_control.htm">access rights</a> of predicates
+      declared in the section from <a href="class_access_control.htm#public class members">public</a>
+      (default) to <a href="class_access_control.htm#protected class members">protected</a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="36%" style="border-bottom-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">STATIC<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double; border-bottom-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">determines
+      that predicates declared in the section are <a href="static_class_members.htm">static</a>.<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="36%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt;<i>predicates_declarations</i>&gt;<!--mstheme--></font></td>
+    <td width="64%" style="border-left-style: double"><!--mstheme--><font face="verdana, Arial, Helvetica">a list of <a href>declarations
+      of predicates</a>.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><b>Remarks<!--mstheme--></font></h2>
+</b>The default <a href="class_access_control.htm">access rights</a> of the
+predicates declared in the class declaration are <a href="class_access_control.htm#public class members">public</a>.
+<p>&quot;Ordinary&quot;<b> <a href></a></b><a href>predicate domains</a>
+(declared inside or outside a class) can be used in classes <b>only</b> for
+declarations of <b>static</b> <a href>predicate values</a>.
+<p>Object (<a href="static_class_members.htm">non-static</a>) <a href>predicate
+values</a> can be declared as instances of <a href="object_predicate_domains_declara.htm"><b>object
+</b>predicate domains</a>. If an object predicate value is passed as an
+argument, then the corresponding object identifier is also passed (as a hidden
+attribute of this object predicate value) to make this predicate usable.
+<p>All predicates declared in the class declaration are <a href="virtual_predicates.htm">virtual</a>
+predicates, except for <a href="constructors_and_destructors.htm"><b>new</b></a>
+and <a href="constructors_and_destructors.htm"><b>delete</b></a> predicates.
+<p>The order of STATIC and PROTECTED keywords in the predicates section
+declaration is insignificant.
+<p>Several predicates sections can be declared in a class declaration.
+<p><b>Attention! </b>If a class member predicate declaration does not contain a
+flow pattern specification, the default flow pattern with all input parameters
+is accepted. For example (i,i,i).
+<p>This is a common reason of getting 703 error while conversions of old well
+tested Prolog sources to VIP classes.
+<h2><!--mstheme--><font color="#000000"><b>Example<!--mstheme--></font></h2>
+</b>
+<!--mstheme--></font><pre>class xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>domains</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>pred_domain = object procedure (integer) - (o)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>writeString</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>xclass_method : pred_domain</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>static predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>classstatistic()</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>endclass xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

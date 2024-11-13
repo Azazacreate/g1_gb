@@ -1,0 +1,46 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+			
+ FileName: RES.PRE
+ Purpose: declaration of predicates to bind with res.lib
+ Written by: Yuri Illin
+ Comments:
+
+******************************************************************************/
+
+global predicates
+%                     file_name
+  procedure BOOLEAN begin_resgen( STRING, STRING ) - ( i, i ) language c
+  procedure BOOLEAN end_resgen() - language c
+
+  procedure res_from_file() % 0:EXE; 1:RES; 2:DLL
+  procedure res_get_types( STRING, ILIST, SLIST,INTEGER ) - ( i, o, o, o ) language c
+  procedure MENU res_get_menu( INTEGER ) - ( i ) language c
+  procedure WINDEF_LIST   res_get_dialog( INTEGER ) - ( i ) language c
+  procedure res_get_str( INTEGER, SLIST Strings, ILIST Identifiers ) - ( i, o, o ) language c
+  procedure STRING  res_get_icon( UNSIGNED, INTEGER )-(o,i) language c
+  procedure STRING  res_get_cursor( UNSIGNED, INTEGER )-(o,i) language c
+  procedure STRING  res_get_bitmap( UNSIGNED, INTEGER )-(o,i) language c
+  procedure BOOLEAN res_get_write_bitmap(STRING,INTEGER) - (i,i) language c
+  procedure get_impres_win(WINDOW)  - (o)
+%                           ResId   ResString
+  procedure gen_dialog( WINDEF_LIST, INTEGER, STRING ) - ( i, i, i ) language c
+%            FileName  ResId
+  procedure gen_icon( STRING, INTEGER, STRING ) - ( i, i ,i) language c
+
+%            FileName  ResId
+  procedure gen_cursor( STRING, INTEGER, STRING ) - ( i, i, i) language c
+%              Str-list  Int-List
+  procedure gen_strings( SLIST, ILIST ) - ( i, i ) language c
+%                  ResId   ResString
+  procedure gen_menu( MENU, INTEGER, STRING ) - ( i, i, i ) language c
+%            FileName   ResId   ResString
+  procedure gen_bitmap( STRING, INTEGER , STRING ) - ( i, i, i ) language c
+%             ResId  ShiftAltCtl  Char   MenuId
+  procedure gen_accel( INTEGER, ILIST, ILIST, ILIST ) - ( i, i, i, i ) language c
+
+  procedure gen_versioninfo( VERSIONINFO_HEAD, VERSIONINFO_BLOCKLIST ) - (i,i) language C
+

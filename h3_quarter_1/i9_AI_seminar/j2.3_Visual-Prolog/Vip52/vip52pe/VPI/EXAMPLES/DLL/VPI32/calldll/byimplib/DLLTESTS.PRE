@@ -1,0 +1,31 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DLLTEST
+ FileName: DLLTESTS.PRE
+ Purpose: Predicate definitions for DLLTEST.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i) 
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_dll_test_Create(WINDOW Parent) - (i)
+%END_DECL
+
+GLOBAL PREDICATES
+   %Calls to "DLL1"
+ PROCEDURE dll1_mark_gstack(STACKMARK) - (o) language stdcall
+ PROCEDURE dll1_release_gstack(STACKMARK) - (i) language stdcall
+ PROCEDURE WINDOW dll1_custom_Create(WINDOW Parent,RCT, INTEGER Id) - (i,i,i) language stdcall
+ PROCEDURE  dll1_custom_Destroy(WINDOW) - (i) language stdcall
+   
+   %Calls to "DLL2"
+ PROCEDURE dll2_mark_gstack(STACKMARK)     - (o) language stdcall
+ PROCEDURE dll2_release_gstack(STACKMARK) - (i) language stdcall
+ PROCEDURE dll2_callCallback( mycallback Callback ) - (i) language stdcall
+ PROCEDURE dll2_getstring(STRING) - (o) language stdcall

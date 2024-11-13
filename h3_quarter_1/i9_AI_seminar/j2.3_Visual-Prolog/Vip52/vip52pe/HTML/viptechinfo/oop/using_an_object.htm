@@ -1,0 +1,86 @@
+<html>
+
+<head>
+<title>Using an object</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>Using an Object<!--mstheme--></font></h1>
+</b>Once an object of some <a href="class_declaration.htm">class</a> has been
+created, it is possible to pass the object identifier as a parameter in
+predicate calls, or to make calls to members<i> </i>of this object.
+<p>The syntax for specification of <b>predicates</b> and <b>facts </b>from some
+formerly created object is:
+<!--mstheme--></font><pre>[object_identifier <b>:</b>][class_name <b>::</b>] predicate_or_fact_name[(arguments)]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+The <i>object_identifier</i> can be omitted inside class <a href="class_implementation.htm#3cd99d1b">implementations</a>
+and in specifications of <a href="static_class_members.htm">static</a> class
+members. It will be considered as a call to the corresponding member of that
+class (or its base class) in case it exists. Otherwise, if there is no member
+with the given name declared in the class (or inherited classes), the compiler
+generates the error.
+<p>Domain declared inside a class belongs to this class, but not to separate
+instances of this class. Therefore, the domain name outside the class should be
+qualified only with the name of the class in which the domain is declared:
+<blockquote>
+  <!--mstheme--></font><pre>[class_name]::&lt;domain_name&gt;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+The object identifier cannot be used.
+<p>Inside a class in order to specify a predicate, a fact or a domain that is
+not a member of any class, in case when the class has the adequate member with
+the same name, the following syntax can be used:
+<blockquote>
+  <!--mstheme--></font><pre><b>::</b> name_of_predicate_fact_domain [(arguments)]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<b>
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm">See also</a><!--mstheme--></font></h5>
+</b>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

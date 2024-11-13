@@ -1,0 +1,36 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  PIE
+ FileName: PIE.PRE
+ Purpose: Predicate definitions for PIE.PRO
+ Written by:
+ Comments:
+ 
+     Interface for Prolog Inference Engine
+     
+     defines:
+     
+     run/1 - invoke the user goal
+     trace/1 - begin/end trace mode
+     pause/1 - pause/resume execution
+     reset_engine/0 - cleans up the database
+     get_clause_list/1 - retrieve the clause list
+     stop_execution/0 - stops the Engine
+     resume_execution/0 - resume the Engine
+     
+******************************************************************************/
+
+
+GLOBAL PREDICATES
+  trace(symbol) - (i)
+  pause(symbol) - (i)
+  get_clause_list (SLIST) - (o)
+  reset_engine
+  is_system_trace
+  is_system_paused
+  recons_text (STRING) - (i)
+  break_execution
+  resume_execution
+

@@ -1,0 +1,148 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) My Company<br>
+<br>
+Project: WORDBRK<br>
+FileName: WORDBRK.PRO<br>
+Purpose: No description<br>
+Written by: Visual Prolog<br>
+Comments:<br>
+******************************************************************************/<br>
+include &quot;cgiexam.inc&quot;<br>
+<br>
+DOMAINS<br>
+&nbsp;&nbsp;&nbsp; letter = char<br>
+&nbsp;&nbsp;&nbsp; word_ = letter*<br>
+<br>
+PREDICATES<br>
+&nbsp;&nbsp;&nbsp; nondeterm divide(word_,word_,word_,word_)<br>
+&nbsp;&nbsp;&nbsp; vocal(letter)<br>
+&nbsp;&nbsp;&nbsp; consonant(letter)<br>
+&nbsp;&nbsp;&nbsp; nondeterm string_word(string,word_)<br>
+&nbsp;&nbsp;&nbsp; append(word_,word_,word_)<br>
+CLAUSES<br>
+divide(Start,[T1,T2,T3|Rest],D1,[T2,T3|Rest]):-<br>
+&nbsp;&nbsp;&nbsp; vocal(T1),<br>
+&nbsp;&nbsp;&nbsp; consonant(T2),<br>
+&nbsp;&nbsp;&nbsp; vocal(T3),<br>
+append(Start,[T1],D1).<br>
+divide(Start,[T1,T2,T3,T4|Rest],D1,[T3,T4|Rest]):-<br>
+&nbsp;&nbsp;&nbsp; vocal(T1),<br>
+&nbsp;&nbsp;&nbsp; consonant(T2),<br>
+&nbsp;&nbsp;&nbsp; consonant(T3),<br>
+&nbsp;&nbsp;&nbsp; vocal(T4),<br>
+append(Start,[T1,T2],D1).<br>
+divide(Start,[T1|Rest],D1,D2):-<br>
+&nbsp;&nbsp;&nbsp; append(Start,[T1],S),<br>
+&nbsp;&nbsp;&nbsp; divide(S,Rest,D1,D2).<br>
+<br>
+vocal('a').<br>
+vocal('e').<br>
+vocal('i').<br>
+vocal('o').<br>
+vocal('u').<br>
+vocal('y').<br>
+<br>
+consonant(B):-<br>
+&nbsp;&nbsp;&nbsp; not(vocal(B)),<br>
+&nbsp;&nbsp;&nbsp; B &lt;= 'z',<br>
+&nbsp;&nbsp;&nbsp; 'a' &lt;= B.<br>
+<br>
+string_word(&quot;&quot;,[]):-!.<br>
+string_word(Str,[H|T]):-<br>
+&nbsp;&nbsp;&nbsp; bound(Str),<br>
+&nbsp;&nbsp;&nbsp; frontchar(Str,H,S),<br>
+&nbsp;&nbsp;&nbsp; string_word(S,T).<br>
+string_word(Str,[H|T]):-<br>
+&nbsp;&nbsp;&nbsp; free(Str),<br>
+&nbsp;&nbsp;&nbsp; bound(H),<br>
+&nbsp;&nbsp;&nbsp; string_word(S,T),<br>
+&nbsp;&nbsp;&nbsp; frontchar(Str,H,S).<br>
+<br>
+append([],L,L):-!.<br>
+append([X|L1],L2,[X|L3]):-<br>
+&nbsp;&nbsp;&nbsp; append(L1,L2,L3).<br>
+<br>
+<br>
+PREDICATES<br>
+nondeterm member(parm,parmlist)<br>
+runme(parmlist)<br>
+CLAUSES<br>
+member (X,[X|_]).<br>
+member (X,[_|Y]):-member(X,Y).<br>
+&nbsp;&nbsp;&nbsp; <br>
+runme(Parmlist) :-<br>
+&nbsp;&nbsp;&nbsp; member (parm(&quot;txt&quot;,S),ParmList),<br>
+&nbsp;&nbsp;&nbsp; string_word(S,Word),<br>
+&nbsp;&nbsp;&nbsp; divide([],Word,Part1,Part2),<br>
+&nbsp;&nbsp;&nbsp; string_word(Syllable1,Part1),<br>
+&nbsp;&nbsp;&nbsp; string_word(Syllable2,Part2),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;p&gt;Division:
+&quot;,Syllable1,&quot;-&quot;,Syllable2),nl,<br>
+&nbsp;&nbsp;&nbsp; fail.<br>
+runme (_).<br>
+<br>
+GOAL<br>
+write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; ParmList = cgi_GetParmList(), <br>
+&nbsp;&nbsp;&nbsp; runme(ParmList),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

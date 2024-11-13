@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.pdc.dk/splitwin/header_splitwin.htm -->
+<html>
+
+<head>
+<title>SPLITWIN</title>
+<meta content="text/html" http-equiv="Content-Type">
+<meta content="Microsoft FrontPage 4.0" name="GENERATOR">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../../";</script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">SPLITWIN.PRE<!--mstheme--></font></h1>
+<!--msthemeseparator--><p align="center"><img src="../../../../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<!--mstheme--></font><pre>/********************************************************************
+
+                Copyright (c)1999 Prolog Development Center A/S
+
+ FileName:        SPLITWIN.PRE
+ Purpose:        Split window object. Bottom level. Global predicates.
+ Written by:        Carsten Kehler Holst
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:        
+*********************************************************************/
+
+GLOBAL PREDICATES
+%* splitwin_Create **************************************************
+% Creates a split window with the designated number
+% of Columns and Rows.
+% The window is created invisible and is made visible by
+% splitwin_Show.
+%
+% exit: Illegal parameter value,
+% IF illegal Columns, Rows, WinType is not w_TopLevel or w_Child
+%********************************************************************
+    window /* SplitWin */ splitwin_Create(
+        wintype WinType, 
+        rct Rectangle, 
+        string Title, 
+        menu Menu, 
+        window ParentWindow, 
+        wsflags Flags, 
+        splitwin_resize_cb ResizeCallback, 
+        splitwin_update_cb UpdateCallback, 
+        splitwin_events_cb EventCallback,  
+        integer Columns, 
+        integer Rows)
+     - procedure (i, i, i, i, i, i, i, i, i, i, i)
+
+
+%* splitwin_CreateInWindow ******************************************
+% Works like splitwin_Create but in an already created window,
+% for use with custom controls, or created window.
+% The created window should not contain the wsf_ClipChildren flag.
+%
+% exit: Illegal parameter value,
+% IF illegal Columns, Rows
+%********************************************************************
+    splitwin_CreateInWindow(
+        window SplitWin,
+        splitwin_resize_cb ResizeCallback,
+        splitwin_update_cb UpdateCallback,
+        integer Columns,
+        integer Rows)
+    - procedure (i,i,i,i,i)
+
+%* splitwin_GetPane *************************************************
+% Returns the child window contained in pane (Column, Row) or NullWin
+%
+% exit: Illegal parameter value,
+% IF illegal Column, Row, Splitwin
+%********************************************************************
+    window /* PaneWin */ splitwin_GetPane(
+        window SplitWin, 
+        integer Column, 
+        integer Row)
+    - procedure (i, i, i)
+  
+%* splitwin_Show ****************************************************
+% splitwin_Show makes the splitwin Visible
+%********************************************************************
+    splitwin_Show(
+        window SplitWin)
+    - procedure (i)
+
+%--------------------------------------------------------------------
+% Row and Column manipulations
+%--------------------------------------------------------------------
+
+%* splitwin_SetPane *************************************************
+% Sets the pane (column, row) to be the childwindow PaneWin.
+% Returns the previous child window contained in that pane or NULL if
+% the pane previously was empty.
+%
+% exit: Illegal parameter value,
+% IF illegal Column, Row, Window
+%********************************************************************
+    window /* PaneWin */ splitwin_SetPane(
+        window SplitWin, 
+        integer Column, 
+        integer Row, 
+        window PaneWin)
+    - procedure (i, i, i, i)
+
+%* splitwin_SetColumnWidth ******************************************
+% Sets the Width of the Column as if the resize bar to the
+% right of the column had been moved manually.
+%  But without checking with the resize callback.
+% If there isn't a resize bar to the right or the resize bar
+% to the right cannot be moved as desired, because it's limited
+% by the window size, then as if the resize bar 
+% to the left had been moved manually.
+%
+% exit: Illegal parameter value,
+% IF illegal Column, Window, Width
+%********************************************************************
+    splitwin_SetColumnWidth(
+        window SplitWin, 
+        integer Column, 
+        integer Width)
+    - procedure (i, i, i)
+
+%* splitwin_GetColumnWidth ******************************************
+% Gets the Width of the Column.
+%
+% exit: Illegal parameter value,
+% IF illegal Column, Window
+%********************************************************************
+    splitwin_GetColumnWidth(
+        window SplitWin, 
+        integer Column, 
+        integer Width)
+    - procedure (i, i, o)
+
+%* splitwin_SetRowHeight ********************************************
+% Sets the Height of the Row as if the resize bar below the row
+% had been moved manually.
+% But without checking with the resize callback.
+% If there isn't a resize bar below or the resize bar below cannot
+% be moved as desired, because it's limited
+% by the window size, then as if the resize bar above
+% had been moved manually.
+%
+% exit: Illegal parameter value,
+% IF illegal Row, Window, Height
+%********************************************************************
+    splitwin_SetRowHeight(
+        window SplitWin, 
+        integer Row, 
+        integer Height)
+    - procedure (i, i, i)
+
+%* splitwin_GetRowHeight ********************************************
+% Gets the Width of the Column.
+%
+% exit: Illegal parameter value,
+% IF illegal Row, Window
+%********************************************************************
+    splitwin_GetRowHeight(
+        window SplitWin, 
+        integer Row, 
+        integer Height)
+    - procedure (i, i, o)
+
+%* splitwin_GetPaneCoordinate ***************************************
+% Returns the coordinates of the pane containing the PaneWin.
+%
+% exit: Illegal parameter value,
+% if the PaneWin is not contained in any of the Panes.
+%********************************************************************
+    pnt /* Coordinates */ splitwin_GetPaneCoordinate(
+        window SplitWin, 
+        window PaneWin) 
+    - procedure (i, i)
+  
+%* splitwin_SetMarginWidth ******************************************
+% Sets the margin width in pixels
+% Defailt is 1 pixels
+%
+% exit: Illegal parameter value,
+% IF illegal Window
+%********************************************************************
+    splitwin_SetMarginWidth(
+        window SplitWin, 
+        integer WidthInPixels)
+    - procedure (i, i)
+  
+%* splitwin_GetMarginWidth ******************************************
+% Gets the margin width in pixels
+%
+% exit: Illegal parameter value,
+% IF illegal Window
+%********************************************************************
+    splitwin_GetMarginWidth(
+        window SplitWin, 
+        integer WidthInPixels)
+    - procedure (i, o)
+
+%* splitwin_SetResizeBarWidth ***************************************
+% Sets the Resize Bar Width in pixels
+% Default is 6 pixels
+%
+% exit: Illegal parameter value,
+% IF illegal Window
+%********************************************************************
+    splitwin_SetResizeBarWidth(
+        window SplitWin, 
+        integer WidthInPixels) 
+    - procedure (i, i)
+  
+%* splitwin_GetResizeBarWidth ***************************************
+% Gets the Resize Bar Width in pixels
+%
+% exit: Illegal parameter value,
+% IF illegal Window
+%********************************************************************
+    splitwin_GetResizeBarWidth(
+        window SplitWin, 
+        integer WidthInPixels) 
+    - procedure (i, o)
+
+%* splitwin_GetColumnBarPos *****************************************
+% Returns the Column resize bar coordinate,
+% Including bar -1 (coordinate: Margin + 1) 
+% and bar N (coordinate: client Width - Margin - 1),
+% where N - number of column bars.
+% 
+% exit: Illegal parameter value,
+% IF illegal Window, Column 
+%********************************************************************
+    splitwin_GetColumnBarPos(
+        window SplitWin, 
+        integer Column, 
+        integer Position)
+    - procedure (i, i, o)
+
+%* splitwin_GetRowBarPos ********************************************
+% Returns the Row resize bar coordinate,
+% Including bar -1 (coordinate: Margin + 1) 
+% and bar N (coordinate: client Height - Margin - 1),
+% where N - number of row bars.
+% 
+% exit: Illegal parameter value,
+% IF illegal Window, Row 
+%********************************************************************
+    splitwin_GetRowBarPos(
+        window SplitWin, 
+        integer Row, 
+        integer Position)
+    - procedure (i, i, o)
+
+%* splitwin_ClearPane ***********************************************
+% Returns the child window contained in pane (Column, Row)
+% and deletes the Pane from the split window
+% 
+% exit: Illegal parameter value,
+% IF illegal Window, Row, Column 
+%********************************************************************
+    window /* PaneWin */ splitwin_ClearPane(
+        window SplitWin, 
+        integer Column, 
+        integer Row)
+    - procedure (i, i, i)
+
+%* splitwin_DeleteColumn ********************************************
+% Deletes a column and destroys all the pane windows in that column.
+% The contents of the columns to the right moves one to the left.
+% The column to the immediate right takes up the freed space unless
+% Column is the rightmost column in which case the column to the
+% immediate left gets the space
+%
+% exits: Illegal parameter value,
+% IF illegal Window, Column 
+%********************************************************************
+    splitwin_DeleteColumn(
+        window SplitWin, 
+        integer Column)
+    - procedure (i, i)
+
+%* splitwin_DeleteRow ***********************************************
+% Works like splitwin_DeleteColumn
+%
+% exits: Illegal parameter value,
+% IF illegal Window, Row
+%********************************************************************
+    splitwin_DeleteRow(
+        window SplitWin, 
+        integer Row)
+    - procedure (i, i)
+
+%* splitwin_InsertColumnAt ******************************************
+% Creates a new column. Moves the contents of the old column and all
+% the columns to the right of it one to the right.
+% It makes room for the new column by pushing the column to the right
+% unless it's the rightmost columns in which case it pushes the 
+% column to the left.
+% If width is too big it makes the column as big as possible.
+%
+% Exits:
+% if Column are not in the range 0..N where N,
+% is the number of columns, if SplitWin is not a legal splitwin,
+% if impossible to makes the room for the new column.
+%********************************************************************
+    splitwin_InsertColumnAt(
+        window SplitWin, 
+        integer Column, 
+        integer Width)
+    - procedure (i, i, i)
+
+%* splitwin_InsertRowAt *********************************************
+% Works like splitwin_InsertColumnAt
+%
+% Exits:
+% if Row are not in the range 0..N where N,
+% is the number of rows, if SplitWin is not a legal splitwin,
+% if impossible to makes the room for the new row.
+%********************************************************************
+    splitwin_InsertRowAt(
+        window SplitWin, 
+        integer Row, 
+        integer Height)
+    - procedure (i, i, i)
+
+%* splitwin_GetColumnsRows ******************************************
+% Returns number of columns and rows
+%********************************************************************
+    splitwin_GetColumnsRows(
+        window SplitWin, 
+        integer Columns, 
+        integer Rows)
+    - procedure (i, o, o)
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,73 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Tool: Message layer
+ FileName: msglayer.dom
+ Purpose: 
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+Global Domains
+
+  MSGLAY_CLOSE_KIND =
+	msglay_incoming;			% A fd_close event comes
+	msglay_self;				% A socket was closed by Message Layer predicate msglay_close
+	msglay_error( SCK_EVENT, SCK_ERROR )	% A network event ( except fd_connect )comes with an error
+    
+    
+  MSGLAY_ERROR_KIND =
+	msglay_errEventConnect( SCK_ERROR );	%fd_connect comes with an error
+    
+	% an error in processing of corresponding event occurres
+	msglay_errEvConnect;
+	msglay_errEvAccept; 
+	msglay_errEvWrite;
+	msglay_errEvRead;
+	msglay_errEvReadPacked	% The format of the incomming messages do not fit the format of
+			        % the packed messages (packed bin or packed string)
+
+
+    
+  MSGLAY_EVENT = 
+  	e_Connect(SOCKET);
+    	e_ReadBin(BINARY);
+    	e_ReadStr(STRING);
+    	e_Close(MSGLAY_CLOSE_KIND);
+    	e_Error(MSGLAY_ERROR_KIND);
+    	e_Notify(INTEGER)
+    
+  MSGLAY_HANDLER = determ (SOCKET,MSGLAY_EVENT)
+  
+  % Domains for msglay_setOption
+  MSGLAY_VPIPROCDOM =
+	manual;
+	automatic
+    
+  MSGLAY_SNDSTRDOM =
+	packed;
+	unpacked;
+	nullTerminated
+   
+  MSGLAY_SNDBINDOM =
+	packed;
+	unpacked
+    
+  MSGLAY_RCVDOM =
+	packed_str;
+	unpacked_str;
+	untilNull_str;
+	packed_bin;
+	unpacked_bin
+    
+  MSGLAY_OPT =
+	msglay_SndBuf(INTEGER);
+	msglay_RcvBuf(INTEGER);
+	msglay_VpiProcessEvents(MSGLAY_VPIPROCDOM);
+	msglay_SndStr(MSGLAY_SNDSTRDOM);
+	msglay_SndBin(MSGLAY_SNDBINDOM);
+	msglay_Rcv(MSGLAY_RCVDOM);
+	msglay_SndNotify(BOOLEAN)
+
+  MSGLAY_OPTLIST = MSGLAY_OPT*    

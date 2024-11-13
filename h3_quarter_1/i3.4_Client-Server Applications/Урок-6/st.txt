@@ -1,0 +1,56 @@
+"""
+Модуль с декораторами
+"""
+
+
+import functools
+import logging
+import sys
+import traceback
+from common.settings import LOGGERS_DICT
+# from logbooks.cfgs import config_server_log, config_client_log
+
+
+def log(func):
+    """
+    Декоратор для записи в лог сообщений о запуске и завершении функций
+    :param func:
+    :return:
+    """
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        # получаем имя логера по названию запущенного файла
+        logger_name = sys.argv[0].split('/')[-1][:-3]
+        # проверяем есть ли такой логгер, если нет, то отправляем вывод
+        # в типа /dev/null, без этого if тесты не будут работать
+        # я пока не понял как лучше...
+        if logger_name not in LOGGERS_DICT:
+            # альтернативный вариант сделать тут:
+            # return func(*args, **kwargs)
+            logger = logging.getLogger('null')
+            logger.addHandler(logging.NullHandler())
+        else:
+            # подтягиваем инстанс логгера
+            logger = logging.getLogger(logger_name)
+        # собираем в кучку параметры для вывода в лог
+        log_params_dict = {
+            'func_name': func.__name__,
+            'args': args,
+            'kwargs': kwargs,
+            'func_module': func.__module__,
+            'func_caller': traceback.format_stack()[0].strip().split()[-1]
+        }
+        # выводим в лог
+        logger.debug(
+            'Запущена функция %(func_name)s. Входные параметры: args: %(args)s, '
+            'kwargs: %(kwargs)s. Модуль: %(func_module)s. '
+            'Вызывающая функция: %(func_caller)s.',
+            log_params_dict,
+            stacklevel=2)
+        result = func(*args, **kwargs)
+        logger.debug(
+            'Функция %(func_name)s завершила работу.',
+            log_params_dict,
+            stacklevel=2)
+        return result
+    return wrapper

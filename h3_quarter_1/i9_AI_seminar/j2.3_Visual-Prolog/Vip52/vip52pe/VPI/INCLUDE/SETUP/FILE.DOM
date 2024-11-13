@@ -1,0 +1,28 @@
+/*****************************************************************************
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SETUP
+ FileName: FILE.PRE
+ Purpose: Predicate definitions for FILE.PRO
+ Written by: Zaichenko Michael
+ Comments:
+******************************************************************************/
+global domains
+  file = archive;outfile
+  fileHandle=UNSIGNED
+  ul=ULONG*
+  il=INTEGER*
+  arcFilePos,fileSize = ULONG 
+  udate,utime, blksize = USHORT
+  directory = DIR_ENTRY*
+  dir_entry = small_file(STRING FileName, FILESIZE, UDATE,UTIME,CRC32,ARCFILEPOS,BLKSIZE);
+	     large_file(STRING FileName, FILESIZE, UDATE,UTIME,CRC32,ARCFILEPOS,BINARY Array_of_BLKSIZE);
+ 	     subdir(STRING DirName, DIRECTORY)
+  file_or_directory= file(STRING) ; directory(STRING)
+  install_script=IGRP*
+  install_script2=IGRP2*
+  igrp=struct igroup(INTEGER, ArcFilePos, FileSize)
+  igrp2=struct install_group(INTEGER, DIRECTORY)
+  diskStat=BINARY
+

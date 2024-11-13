@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0043)http://www.pdc.dk/splitwin/architecture.htm -->
+<html>
+
+<head>
+<title>Architecture</title>
+<meta content="text/html" http-equiv="Content-Type">
+<meta content="Microsoft FrontPage 4.0" name="GENERATOR">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../../";</script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Architecture<!--mstheme--></font></h1>
+<p>To facilitate modularity the split window tool is split into two levels, a
+bottom level and a top level. It should be possible to use the bottom level
+split window if one wants fine-grained control of the behaviour of the split
+window. And use the top-level window if one wants the tools to take hand of the
+details and one can live with the default behaviour. The top level split window
+is to be implemented on top of the bottom level split window.</p>
+<h2><!--mstheme--><font color="#000000">Bottom Level Split Window<!--mstheme--></font></h2>
+<p>The bottom level handles the placement of the windows in the split window. It
+resizes the child windows when the rows and columns change sizes.</p>
+<p>The code prefix in the bottom level is &quot;splitwin&quot;.</p>
+<h3><!--mstheme--><font color="#000000">Split Window Creation<!--mstheme--></font></h3>
+<p>First the split window is created (invisible) then its different properties
+are set and the panes are created and finally the split window is made visible
+by the splitwin_Show call.</p>
+<p>The bottom level splitwin_create predicate takes the callback predicates as
+arguments whereas the top level split_create predicate does not.</p>
+<h3><!--mstheme--><font color="#000000">Resize callback<!--mstheme--></font></h3>
+<p>When the cursor is placed over a resize bar the splitwin_resize_cb predicate
+is called to find out if the resize bar is fixed and if it's not how much it
+should be possible to move it in each direction.</p>
+<p>There are three possibilities
+<ol>
+  <li>It's a cross: The relevant horizontal and vertical coordinates each is in
+    the range 0 to N-1 where N is the number of rows or columns respectively.
+  <li>It's a vertical bar: The horizontal coordinate is -1.
+  <li>It's a horizontal bar: The vertical coordinated is -1.</li>
+</ol>
+<p>If the callback fails the bar should not be moved. If the allowable movement
+is negative the bar can be moved freely in that direction.</p>
+<h3><!--mstheme--><font color="#000000">Update callback<!--mstheme--></font></h3>
+<p>Called to draw the resize bars and the margins. The bottom level asks the top
+level to draw the resize bars and the margins.</p>
+<h3><!--mstheme--><font color="#000000">Setting the Pane Size Programmatically<!--mstheme--></font></h3>
+<p>The problem with setting the pane sizes programmatically is that the total
+size of the windows will have to fit inside the split window.</p>
+<p>Setting the size of a pane works like dragging the right bottom cross of that
+pane. Of course without the visual feedback</p>
+<h3><!--mstheme--><font color="#000000">Inserting a Column or a Row<!--mstheme--></font></h3>
+<p>Inserting a column at position N push the column to the right just like
+resizing does. It also changes the coordinates of all the panes to the right of
+that column. If we have three columns (numbered 0,1,2) inserting a column at
+position 1 moves the column 1 and 2 to be column 2 and 3. If the column is
+inserted as the rightmost column it pushes to the old rightmost column now the
+column to the left of the newly inserted column.</p>
+<p>Insertion of rows works the same way.</p>
+<h3><!--mstheme--><font color="#000000">Deleting a Column or a Row<!--mstheme--></font></h3>
+<p>Deleting a column changes the coordinates of the columns to the right of the
+column. If we have a split window with three columns 0,1,2 and delete column 1
+column 2 becomes column 1. The column to the right takes the space freed.</p>
+<p>Rows are deleted like columns.</p>
+<h2><!--mstheme--><font color="#000000">Top level Split Window<!--mstheme--></font></h2>
+<p>In the top level split window you set some properties and it takes care of
+the communication with the bottom level split window. So a user of the top-level
+split window should not take care of any callback predicates.</p>
+<h3><!--mstheme--><font color="#000000">Visual Appearance of Resize Bars<!--mstheme--></font></h3>
+<p>It should be possible to choose between 3D resize bars, plain 2D resize bars.
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

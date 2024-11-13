@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<title>When I installed Visual Prolog 5</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h4><!--mstheme--><font color="#000000">When I installed Visual Prolog, and afterwards, when I started it, I got the following
+error message: <code>&quot;The application uses CTL3D32.DLL, which is not the correct
+version. This version of CTL3D32.DLL is designed only for Windows NT systems&quot;.</code>
+<br>
+I am running Windows 98. What's wrong, and how do I correct it?<!--mstheme--></font></h4>
+
+<p>The Visual Prolog installation program uses a service called CTL3D32.DLL that works
+under Windows 95, 98, and NT. <br>
+Unfortunately, before you attempted to install Visual Prolog, another installation program
+had upgraded this DLL at your computer to one that works only under Windows NT. This
+upgrade was the reason of the error message. </p>
+<b>
+
+<p>What can you do?:</b></p>
+
+<p>VIP Setup program searches for CTL3D32.DLL in the Windows system directory.</p>
+
+<ol>
+  <li>You need to find, where CTL3D32.DLL is located in your system directory (e.g. under
+    Windows NT it is located in ..\&lt;Windows_root&gt;\System32 directory).</li>
+  <li>Sometimes several copies of CTL3D32.DLL, installed by various programs, can be found in
+    different subdirectories. <br>
+    If you find more than one occurrence, move all them to another location, and returning one
+    by one define what is used really.</li>
+  <li>Compare its date with the dates of other Windows DLLs. Is it the same?</li>
+  <li>Replace the CTL3D32.DLL for Windows NT with a correct one. There are several ways to do
+    this.</li>
+</ol>
+
+<blockquote>
+  <ol>
+    <li>Visual Prolog contains CTL3D32.DLL in ..\&lt;VIP_root&gt;\BIN\WIN\DLL subdirectory, but
+      it does not copy it to the system location automatically. You can copy this DLL to the
+      system directory.</li>
+    <li>You can restore the DLL from a back up copy of your system, or from Windows 98
+      distribution.</li>
+  </ol>
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

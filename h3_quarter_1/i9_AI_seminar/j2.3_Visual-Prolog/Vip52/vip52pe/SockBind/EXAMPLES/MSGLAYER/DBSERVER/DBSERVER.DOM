@@ -1,0 +1,40 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DBSERVER
+ FileName: DBSERVER.DOM
+ Purpose: Domains definitions for DBSERVER.PRO
+ Written by: Visual Prolog Application expert
+ Comments:
+
+******************************************************************************/
+
+Global domains
+  db_messages =	req_DB_list;
+  		res_DB_list(String);
+  		
+  		req_key_list(String);
+  		res_key_list(String,Slist);
+  		
+  		req_find(String DBName, String Key);
+  		res_find_failed(String DBName, String Key);
+  		res_find(String DBName, String Key, String);	
+  		
+  		req_add(String DBName, String Key, String);
+  		res_add_succes(String DBName, String Key);
+  		res_add_failed(String DBName, String Key);
+  		
+  		req_ed(String DBName, String Key);
+  		res_ed(String DBName, String Key, String);
+  		res_ed_failed(String DBName, String Key);
+		res_ed_locked(String DBName, String Key);
+		
+		req_save(String DBName, String Key, String);
+		req_removeLock(String DBName, String Key);
+		res_save(String DBName, String Key)  		
+
+
+
+
+

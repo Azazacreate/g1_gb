@@ -1,0 +1,306 @@
+<html>
+
+<head>
+<title>Prolog Assists in Brain Lesions Diagnosis</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font SIZE="2">
+
+<h1><!--mstheme--><font color="#000000"></font><font size="5">Prolog Assists in Brain Lesions Diagnosis:<!--mstheme--></font></h1>
+
+<h1><!--mstheme--><font color="#000000">An MR and CT Features-Based Expert System<!--mstheme--></font></h1>
+
+<p></font><font SIZE="2">by Pasteur Rasuli, Firooz Rasouli, Ali Oskouie, Tannaz Rasouli,
+William F.Morrish</p>
+
+<p>&nbsp;</p>
+
+<p>MRI-WIZ software was developed to determine the technical feasibility of an expert
+system for differential diagnosis in neuroradiology. This frame based expert system,
+developed in Visual Prolog, stores the Magnetic Resonance (MR) and Computerized Tomography
+(CT) imaging characteristics of over 100 known brain disorders in object-like entities.
+The frames, organized in a hierarchical relationship, have the highest frames containing
+information that applies to all lower frames. A decision tree menu provides a
+user-friendly interface that navigates through the network based upon lesion features as
+depicted on MR and CT images. Once the appropriate node on the tree menu is chosen, the
+user responds to CT and MR related questions - to obtain information about the lesion. The
+exact location of the brain lesion, as seen on the MR and CT images, is determined by the
+user on the color coded, hot-linked cross sectional diagrams of the brain. Program
+execution follows a consultation paradigm using a dynamic database and provides a
+differential diagnosis based on MR findings alone. Adding CT-related information may
+further refine the diagnosis. The program utilizes extensive on-line hypertext-based help
+information about the lesions with actual CT and MR images.</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">Introduction<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">Expert systems, using knowledge and inference techniques, mimic
+human reasoning and decision-making to solve problems. Production and frame-based systems
+are two basic types of expert systems1. In the production system, the knowledge is stored
+as a large body of facts2, along with rules expressing relationship between these facts.
+These programs base their decisions on rules and facts typically represented in the form
+of if-then rules. Each rule relates information that is known or could be known about a
+particular domain to something that can be inferred from that knowledge. By combining the
+applicable rules, the expert system can reach a conclusion or make a diagnosis. The
+frame-based system, an efficient and powerful form of data structure, represents
+contextual information about objects, concepts, or events. The frames, organized in a
+hierarchical structure, allow lower order frames to inherit attributes from higher order
+frames, with the highest frame containing information that applies to all other frames.</p>
+
+<p>Expert systems have been assisting clinicians in areas such as infectious disease
+therapy for many years. While radiological technology relies heavily on computers, it has
+been slow to develop an expert system to aid in diagnosis. In 1992 we developed BONEX, a
+menu-driven DOS-based expert system for the radiological diagnosis of bone tumors using
+PDC Prolog. BONEX, a rule-based expert system, leads the user through a menu of questions,
+generates a hard copy report and a list of diagnosis with an estimate of the likelihood of
+each.</p>
+
+<p>The success of BONEX was very well received at the 1992 annual meeting of the
+Radiological Society of North America (RSNA)3 which led us to consider the application of
+an expert system for the diagnosis of brain lesions. The objective of developing a program
+that could be accessed directly from MR imaging or CT console required the development of
+a Windows-based program with a programming environment that had previously been
+unavailable.</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">System Methodology and Architecture<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">In neuroradiology, MR imaging is the most prevalent imaging
+modality for the diagnosis of cerebral lesions. Useful adjunctive information is often
+obtained with CT and when integrated with the patient's age and clinical symptoms, the
+radiologist suggests the diagnosis or develops a short list of differential diagnoses4.
+The diagnostic process has limitations, however, resulting from human error caused by a
+lack of knowledge, a nonsystematic approach, or even forgetfulness5. An attractive
+solution to this dilemma is the use of artificial intelligence based technology, such as
+an expert system, that draws conclusions based on facts stored in a knowledge base.
+However, even the best expert systems have limitations when compared with the human
+expert, who is often able to apply intuition and common sense to solve problems when no
+formal solutions or analogy exists.</p>
+
+<p>To determine the technical feasibility of an expert system in diagnosing brain lesions,
+the MRI-WIZ program was developed. Prolog was selected as the language of choice for
+implementing the program. Prolog programs, a collection of facts and rules about a
+particular knowledge domain, are unique in their ability to infer facts and conclusions
+from other facts. The program is really a database, with Prolog the very powerful query
+language. The database characteristics make the language ideal for problems that are
+unstructured and for which the procedures to solve it are unknown. Both production and
+frame-based expert systems can be built with Prolog. MRI-WIZ uses a frame-based expert
+system to store MR and CT imaging characteristics of over 100 known brain disorders4. The
+prototype version of the MRI-WIZ for Windows was developed using Visual Prolog based on
+its fully visual programming capabilities and cross-platform portability. The other
+attractive features of Visual Prolog include tools for making Windows help files and
+facilities for creating dynamic web pages. The program was field tested on proven cases at
+Ottawa General Hospital (Ontario, Canada) as the prototype program was being refined. The
+system was also showcased at the Department of the Future exhibit at the 1995 scientific
+assembly and annual meeting of the RSNA6. In this article, steps that were taken to refine
+and expand the program after the field testing and showcasing are discussed.</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">Program Refinement and Expansion<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">Based on discussions with several neuroradiologists during and
+after the 1995 exhibit, and the intensive verification and validation of the program on
+proven cases at Ottawa General Hospital, a 400-bed teaching hospital at The University of
+Ottawa, the program was modified to satisfy the end users' requirements. The modifications
+included cosmetic and conceptual changes to the program as well as knowledge enhancement
+of the database to improve the systems credibility. The changes include:</p>
+
+<p><em><strong>Location Menu </strong></em>- A graphical method of location identification
+was implemented providing a list of possible locations. The diagram (Figure 1), divided
+into eight segments, illustrates eight cross sectional views of the brain. The different
+regions of the brain are color coded and linked to a special database. When a region is
+selected via the mouse, the program displays the name of the region and asks for
+confirmation. Main Tree-Menu - A decision tree menu provides a user-friendly interface
+that navigates through the response network. Since the program provides a differential
+diagnosis based on MR imaging alone and is further refined by CT-related information,
+there were originally separate nodes for MR and CT options on each branch. As a result,
+the opening tree-menu looked complex and confusing. In the new version, the MR and CT
+nodes are combined (Figure 2), and a Not Known option was added to the response boxes
+enabling the radiologist to use the program without the CT information.</p>
+
+<p>&nbsp;<a href="fig1.gif"><img src="fig1_small.gif" alt="fig1.gif (42817 bytes)" border="0" WIDTH="100" HEIGHT="72"></a></p>
+
+<p>Figure 1: Location menu for identifying the site of the lesion</p>
+
+<p>&nbsp;<a href="fig2.gif"><img src="fig2_small.gif" alt="fig2.gif (9010 bytes)" border="0" WIDTH="100" HEIGHT="72"></a></p>
+
+<p>Figure 2: MRI-WIZ Opening Menu- Decision Tree</p>
+
+<p>&nbsp;<em><strong>Diagnosis Report</strong></em> - In the new version, in addition to
+the list of diagnoses, the user response to various questions is also summarized in an
+abbreviated form on top of the diagnosis report (Figure 3). If an abbreviation is in
+question, a &quot;glossary&quot; furnishes the user with abbreviations and meanings with
+the click of the mouse (Figure 4).</p>
+
+<p>&nbsp;<a href="fig3.gif"><img src="fig3_small.gif" alt="fig3.gif (12033 bytes)" border="0" WIDTH="100" HEIGHT="72"></a></p>
+
+<p>Figure 3: The diagnosis report-list of diagnoses and the user's response to various
+questions</p>
+
+<p>&nbsp;<a href="fig4.gif"><img src="fig4_small.gif" alt="fig4.gif (6608 bytes)" border="0" WIDTH="100" HEIGHT="64"></a></p>
+
+<p>Figure 4: Glossary of the abbreviated terms</p>
+
+<p><em><strong>&nbsp;Online Help</strong></em> - One of the main features of the program
+is an extensive online hypertext-based help system containing information on all the
+lesions in the knowledge base. Users can refer to the comprehensive help menu for
+clarification purposes, or for a &quot;hands-on&quot; approach to identify brain lesions.
+The general description of a lesion under the help topic consists of: population at risk,
+prognosis, and differential diagnosis. Topics are accompanied by actual MR and CT images
+(Figure 5).</p>
+
+<p>&nbsp;<a href="fig5.gif"><img src="fig5_small.gif" alt="fig5.gif (41941 bytes)" border="0" WIDTH="100" HEIGHT="64"></a></p>
+
+<p>Figure 5: Help Menu-Portions of the online text information about Meningioma</p>
+
+<p>&nbsp;<em><strong>Modular Design</strong></em> - MRI-WIZ is modular with different
+aspects of the program and knowledge base in separate modules. This proves to be very
+helpful during the program modification and expansion process. The approach is also very
+useful during the program validation process since it allows for use of different versions
+of the knowledge base with minimal effort.</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">&nbsp;Using MRI-WIZ<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">MRI-WIZ opens with a tree menu displaying various nodes; each
+node represents a possible signal intensity of a lesion. Before selecting the signal
+intensity the user identifies the location of the lesion by using the mouse on a
+color-coded diagram with eight cross sectional views of the brain.</p>
+
+<p>Once the location is identified, the user is presented with a series of possibilities
+in the form of a decision tree. Begining with a broad array of options, the program
+gradually becomes more specific as each affirmed characteristic leads to a new series of
+options.</p>
+
+<p>First, the user must identify whether the signal intensity of the lesion on T1-weighted
+images is Dark, Bright, or Isointense (relative to the neighboring normal brain tissue).
+If chosen, a fourth option, Other, allows the user to select from: Fluid Level
+(bi-intensity), Mixed intensity, Cystic intensity, Signal Void, or Hypointense Rim on T2.
+After describing the T1-weighted image, the user is presented with similar options for the
+T2-weighted image, Dark or Bright.</p>
+
+<p>Next, several questions appear about the lesion.These questions can be yes-or-no, or
+contain options (Figure 6). In the CT related questions, a Not Known alternative is
+available to enable the user to pursue diagnosis in the absence of the CT information on
+the basis of MR information only. Required information includes data about the contrast
+enhancement, calcification, CT density, perilesional edema, hemorrhage, multiplicity,
+size, and hydrocephalus or ventriculomegaly. At any point throughout the procedure, the
+user may opt to cancel the search. </p>
+
+<p>After completing the survey, the questions and user-provided answers are displayed
+together in abbreviated form. Beneath the synopsis of responses, the possible diagnoses
+are listed. The program also specifies if the lesion occurs in adult or pediatric
+populations, or in both. </p>
+
+<p>&nbsp;<a href="fig6.gif"><img src="fig6_small.gif" alt="fig6.gif (4953 bytes)" border="0" WIDTH="100" HEIGHT="64"></a></p>
+
+<p>Figure 6: Response box with multiple options</p>
+
+<p>&nbsp;In addition to the step-by-step, diagnosis application of the program, users may
+utilize MRI-WIZ as a reference. The Help menu not only offers operational support, but
+also extends detailed descriptions of all lesions in the knowledge base, classified by
+location of the lesion, category of the lesion, and age of the patient. The online help
+can also be accessed from the alphabetical list or through a simple search command.</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">&nbsp;Conclusion<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">The introduction of computers to radiological imaging
+revolutionized radiology in the 60's and 70's with the development of Computer Assisted
+Tomography (CAT scanning), which later was extended to sonographic imaging, magnetic
+resonance imaging and digital subtraction angiography. The role of computers in
+radiological imaging, until recently, however, has mainly been confined to processing
+complex matrix data of radiological densities to produce gray scale digital images. The
+introduction of expert systems promises another major advancement brought to radiology by
+computers, this time in the area of diagnosis. Although it will be possible to train
+computers to scan images and make diagnosis independently, it is more accurate and,
+ultimately, safer to have the radiologist view images and feed the information to the
+computer. In this form of application, the radiologist also acts as the final referee in
+accepting or rejecting the diagnostic possibilities rendered by the computer. As we have
+shown, expert systems can play a vital role in advancing the field of radiological
+diagnosis.</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">&nbsp;BIO info<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">Pasteur Rasuli, MD, FRCP(C), Associate Professor, Department of
+Radiology, The Ottawa Hospital-General Campus,University of Ottawa (Ottawa, Ontario). He
+can be reached at (613)-737-8098</p>
+
+<p>Firooz Rasouli, PhD, currently at the Research and Development &amp; Engineering
+Center, Philip Morris USA (Richmond, Virginia). He can be reached at rasoulif @ cs.com</p>
+
+<p>Aki Oskouie, PhD, Department of Chemical &amp; Environmental Engineering, Illinois
+Institute of Technology (Chicago, Illinois)</p>
+
+<p>Tannaz Rasouli, currently studying at the Department of Cognetive Science, Johns
+Hopkins University (Baltimore, Maryland)</p>
+
+<p>William F. Morrish, MD, FRCP(C), Neuroradiologist, Department of Diagnostic Imaging,
+Foothills Hospital (Calgary, Alberta)</p>
+
+<h2><!--mstheme--><font color="#000000"></font><font size="4">&nbsp;References<!--mstheme--></font></h2>
+
+<p></font><font SIZE="2">1. Townsend C. Introduction to Expert Systems. In:Townsend C.,ed.
+Introduction to Turbo Prolog. San Francisco, CA: SYBEX, 1986:213-219</p>
+
+<p>2. Theft L. Overview of Knowledge Based Systems. In Teft L, ed. Programming in Turbo
+Prolog with an Introduction to Knowledge Based Systems. Englewood Cliffs, NJ:
+Prentice-Hall, 1989; 1-21</p>
+
+<p>3. Rasuli P, Rasouli F. Diagnosis of Bone Tumors with a Personal Computer (abstr.).
+Radiology 1992; (185(P):413</p>
+
+<p>4. Rasuli, P, Rasouli F, Hammond, I, Amiri, F An Artificial Intelligence Program for
+the Radiologic Diagnosis of Brain lesions. RadioGraphics 1996, 16,5,1207-1213</p>
+
+<p>5. Lodwick GS. &quot;Radiologic concepts. In: Hodes PJ, ed. The Bones and Joints: an
+Atlas of Tumor Radiology. Chicago, IL:Year Book Medical, 1971;1-82</p>
+
+<p>6. Rasuli, P, Rasouli F, Amiri, F Department of the Future Exhibit, RSNA Scientific
+Assembly and Annual Meeting, Chicago, IL, Nov 1995</p>
+
+<p>&nbsp;</font>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,277 @@
+<html>
+
+<head>
+<title>Using VIP DLLs in multithreading applications</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Questions about&nbsp; Multithreading and DLLs<!--mstheme--></font></h2>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="multithreading_and_dlls.htm#vip_multithreading_support">Does Visual Prolog
+    support multithreading?</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="multithreading_and_dlls.htm#multithreading_calls_of_predicates">Can several
+    Visual Prolog predicates be called simultaneously in a multithreading application?</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="multithreading_and_dlls.htm#multithreading_dll_predicates_calls">When
+    multithreading application calls more than one predicate from a Prolog DLL, the program
+    generates an error (&quot;stack overflow&quot; or &quot;GPF&quot;). </a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="multithreading_and_dlls.htm#multithreading_prolog_reinitialization">When
+    multithreading application initiates and closes Prolog and then reinitiates Prolog in a
+    different thread, the program generates an error (&quot;stack overflow&quot; or
+    &quot;GPF&quot;).</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="multithreading_and_dlls.htm#vip_&amp;_dll_modal_dialog">VIP application calls
+    DLL's function that opens a modal dialog. After switching to another application and then
+    switching back to the VIP application, the dialog and the task window no long appear on
+    the screen together.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h4><!--mstheme--><font color="#000000"><a name="VIP_multithreading_support"></a>Does Visual Prolog support multithreading?<!--mstheme--></font></h4>
+
+<p>No, Visual Prolog v.5.x does not support multithreading. This means:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">New threads cannot be created from Visual Prolog. Visual Prolog does not supply any
+    predicates for multithreading handling. Also Visual Prolog code should not call Windows
+    API function CreateThread. The result can be unpredictable. The usual reaction is GPF (or
+    memory fault) while the program execution.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Prolog engine is not re-enterable. That is one Prolog engine cannot simultaneously
+    processing calls from different threads.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>At the moment we are working over VIP v.6 that will support multithreading.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="Multithreading_calls_of_predicates"></a>Can several Visual Prolog predicates
+be called simultaneously in a multithreading application?<!--mstheme--></font></h4>
+
+<p>Yes, but since VIP v.5.x does not support multithreading the programmer should clearly
+understand possible problems and strictly obey some rules. </p>
+
+<p>The most simple and save rules for creating of multithreading applications, which can
+simultaneously execute several Prolog predicates are the following: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Create main application with C or other language supporting multithreading.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Statically link several Visual Prolog DLLs to this application.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Create some threads from C side.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Each thread can call predicates from the loaded VIP DLLs.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">But the following restriction is mandatory:<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<dl>
+  <dd><strong>&quot;Only one predicate from any VIP DLL can be executed in any moment.&quot; </strong></dd>
+</dl>
+
+<p>Here we also should discuss the following problems:</p>
+
+<h5><!--mstheme--><font color="#000000">PROBLEM 1<!--mstheme--></font></h5>
+
+<h4><!--mstheme--><font color="#000000"><a name="Multithreading_DLL_predicates_calls"></a>When multithreading application
+calls more than one predicate from a Prolog DLL, the program generates an error
+(&quot;stack overflow&quot; or &quot;GPF&quot;).<!--mstheme--></font></h4>
+
+<p>VIP v.5.x Prolog engine does not support multithreading. Loading of a Prolog DLL
+initiates creation of one Prolog engine. If the VC application (from different threads)
+calls simultaneously more than one predicate from this DLL, they cannot be accomplished
+successfully (VIP v.5.x Prolog engine is not re-enterable). </p>
+
+<h5><!--mstheme--><font color="#000000">Workaround:<!--mstheme--></font></h5>
+
+<p>Loading (static or dynamic) of each Prolog DLL (with a new file name) initiates a
+separate independent Prolog engine in the program. Each such Prolog engine is absolutely
+independent from others. For instance, each Prolog engine has independent memory
+structures, personal (inaccessible from other instances) sets of internal facts, etc.
+Notice that sequential loading of the second version of a DLL from the same file does not
+initialize a new Prolog engine. </p>
+
+<p>Therefore, to call simultaneously several predicates from the same VIP DLL, the
+following workaround can be suggested: Make several copies of the DLL file with names like
+DLL_FileName_X. Each thread before calling predicate from a Prolog DLL can dynamically
+load a personal copy of the DLL by vpi_LoadDll(DLL_FileName_X) with a free (at the moment)
+name. This will initiate separate Prolog engine and call of one DLL's predicate in its
+context will be save. After returning from this predicate, the thread can again call any
+predicate from this DLL or just download the DLL by vpi_FreeDll to free this
+DLL_FileName_X for subsequent usage by other threads. </p>
+
+<p>Simultaneous calls of predicates from different statically loaded Prolog DLLs are also
+save. </p>
+
+<h5><!--mstheme--><font color="#000000">PROBLEM 2<!--mstheme--></font></h5>
+
+<h4><!--mstheme--><font color="#000000"><a name="Multithreading_Prolog_reinitialization"></a>When multithreading application
+initiates and close Prolog and then reinitiates Prolog in a different thread, the program
+generates an error (&quot;stack overflow&quot; or &quot;GPF&quot;).<!--mstheme--></font></h4>
+
+<p>VC++ application creates the special thread to run Prolog in. This thread initializes
+Prolog (static link). All calls into Prolog are initiated from this thread (no other
+thread calls into Prolog) and application works successfully. </p>
+
+<p>The application can terminate the thread and shutdown Prolog (by using the library
+calls to terminate Prolog RUN_End, etc.) And the first time this works successfully. But
+the next attempt (or 2) to initialize/use/shutdown Prolog in a different thread abends the
+application (no stack or GPF). </p>
+
+<h5><!--mstheme--><font color="#000000">Workaround:<!--mstheme--></font></h5>
+
+<p>Prolog must be fully unloaded from memory before it can be initialized on a different
+thread. Using the standard library calls to terminate Prolog (RUN_End... etc) is simply
+not enough. The solution is to use a VIP DLL which can be unloaded from memory when the
+thread is shut down using FreeLibrary(). An application can simply load it again when it
+creates a new thread. </p>
+
+<h4><!--mstheme--><font color="#000000"><a name="VIP_&amp;_DLL_modal_dialog"></a>VIP application calls DLL's function that
+opens a modal dialog. After switching to another application and then switching back to
+the VIP application, the dialog and the task window no long appear on the screen together.<!--mstheme--></font></h4>
+
+<p>A Prolog program has called a DLL function that activates a modal dialog, and this
+modal dialog is active on the screen. If the user somehow minimizes the program or starts
+up another, the task window of the main prolog program and the DLL's dialog do not
+reappear on the screen together when the VIP application is reactivated. One or the other
+appears, but usually not both. For example, if one cycles through open programs with
+Alt_tab, or brings up the desktop by clicking on the Win 98 desktop icon in the taskbar,
+or just starts another program with a keyboard shortcut, one can create the problem. </p>
+
+<p>Clicking on the minimized (Prolog) program icon in the task bar brings back the main
+window, but the DLL's dialog is no longer visible. The main program is still inactivated
+waiting for input from the modal dialog that is no longer visible! </p>
+
+<p>On the other hand, when one cycles through open programs with Alt-tab, the DLL icon is
+visible, and not the main program icon. Selecting the DLL icon brings back the dialog, but
+not necessarily with the main program in the background. </p>
+
+<p>A DLL can be VPI, Delphi, C. </p>
+
+<h5><!--mstheme--><font color="#000000">Short Formulation of Solution Ideas<!--mstheme--></font></h5>
+
+<p>When the application is being reactivated after another application has been active,
+both the main application and the DLL receive a WM_ACTIVATEAPP (Windows API) message. The
+solution lies in creating an event handler for this message that first brings back the
+main window and then brings back the DLL dialog window (in that order). A
+BringWindowToTop(HWND) function directed to each window will accomplish this. Since the
+order is important, this should be done in one event handler, in either the main program
+or the DLL. It is not necessary to do it in both places. Wherever it is, the event handler
+needs the window handle of the other window. </p>
+
+<p>Assuming the programmer has access to the DLL code as well as the VIP code, the main
+application must pass the window handle of the task window as a parameter in the predicate
+that calls the DLL's dialog. If the event handler is in the DLL, it will issue a
+BringWindowToTop(MAINWINHWND) then a BringWindowToTop(DLLHWND). If instead the event
+handler is in the main program, the DLL in addition must pass its window handle back to
+the main program. There, the event handler would issue the same BringWindowToTop commands.
+</p>
+
+<h5><!--mstheme--><font color="#000000">Possible Solution<!--mstheme--></font></h5>
+
+<p>Mr. Normand Bachand [mailto:bachand@nevi.com] generously provides a description of his
+experience for the case of a Prolog main program and a Delphi DLL. </p>
+
+<p>In either case, you must start by passing the Prolog window handle to the Delphi
+procedure. This is accomplished by adding another parameter to the Delphi procedure that
+sets up the form. The DLL stores this handle for later use (I just put it in a global
+variable called PWin). Remember, you must pass a variable of the HWND type and not of the
+WINDOW domain. You can get the handle of a window in VPI from the function win_GetAttrVal
+as in the following code that gets the window handle of the task window:</p>
+
+<!--mstheme--></font><pre>TASKWIN = vpi_GetTaskWin(),   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>NATIVEHWND = win_GetAttrVal (TASKWIN, attr_native_window).   </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Remember that the problem occurred when another program (or the desktop) had been
+activated and then my program was reactivated. Since my forms are all modal, this only
+occurred when the user cycled through open programs using Alt_Tab or by clicking on the
+desktop icon in the taskbar, or some other similar method. The solution lies in noticing
+when the program is being reactivated and then bringing the required windows back to the
+top. </p>
+
+<p>I spent a lot of time fooling around with the WM_ACTIVATE, WM_CREATE, WM_ENABLE,
+WM_PAINT, and WM_SETFOCUS messages and with the SetActiveWindow and SetFocus functions. It
+turns out that these are not much use since they are not involved when the program is
+regaining control after another program was active. By experimentation and reading, I
+learned that it was the WM_ACTIVATEAPP message that I needed to monitor. This message is
+sent to the application whose windows are being activated and deactivated whenever the
+window being activated belongs to a different task than the currently active window. If
+WParam = 0, the window is being deactivated, otherwise it is being activated. From within
+the event handler for this message, I can issue a BringWindowToTop command, first for the
+Prolog window, then for the Delphi DLL form. Presto it works perfectly! </p>
+
+<p>I can create the event handler either on the Prolog side or the Delphi side. It's a
+little simpler in Delphi. It looks like this: </p>
+
+<!--mstheme--></font><pre>procedure TNewClntForm.OnActivateApp(var Msg : TMessage);   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>begin   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>    inherited; {Do default processing for the event}  </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>    if (Msg.WParam &gt; 0)   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>    then   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>    begin   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>        BringWindowToTop(PWin);   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>        BringToFront; {A Delphi method of the form}   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>    end;   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>end;   </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>PWin is the global variable holding the Prolog window handle passed to it via the
+procedure that sets up the form. The procedure needs to be declared as a private method of
+the class for the form as follows:</p>
+
+<!--mstheme--></font><pre>procedure OnActivateApp(var Msg : TMessage); message WM_ACTIVATEAPP;   </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>That's all there is to it! There is nothing else I have to do on the Prolog side. </p>
+
+<p>You only need to do it in one place, provided the event handler brings both windows to
+the top. This solution works either if I reactivate the DLL or the minimized task window.
+By experimenting, I learned the WM_ACTIVATEAPP message is sent to BOTH windows when the
+application is being reactivated. </p>
+
+<p>It's a little more complicated if instead I set up the event handler on the Prolog
+side. There I would need the window handle of the Delphi form for the BringWindowToTop
+call. I can set an e_Native event handler to capture a WM_USER message, and have the DLL
+pass its window handle in WParam and some index in LParam indicating whether the form is
+being activated or deactivated. In Delphi I would do this from the OnActivate and
+OnDeactivate events respectively. If being activated, I would store the window handle in
+the database fact: dll_win(DLLWIN). If being deactivated, I would retract the fact. I must
+also set up an e_Native handler to handle the WM_ACTIVATEAPP message. I would look
+something like this: </p>
+
+<!--mstheme--></font><pre>task_win_eh(TASKWIN,e_Native(wm_activateapp,WPARAM,_),0):-  </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">!,   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">dll_win(DLLWIN_Windows), %if the form isn't active go no further   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">WPARAM &gt; 0, %application is being reactivated   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">win_BringToTop(TASKWIN), % activate Prolog task window   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">% Really VPI window handle is exactly Windows window handle   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">% for some internal VPI reasons, converted to WINDOW domain   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">DLLWIN_VPI = cast(window, DLLWIN_Windows),   </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre style="margin-left: 30px">win_BringToTop(DLLWIN_VPI), % activate form from Delphi DLL !.   </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Again, that's all there is to it. A few lines of extra code in Delphi and in Prolog. </p>
+
+<p>I tried following the suggestions about using SetParent to set the parent window of the
+DLL form in Delphi. This didn't seem to do anything and in a couple of instances seemed to
+actually freeze everything. I could never figure out how to set the WS_CHILD property of
+the Delphi DLL window. The only thing I could find that seemed related was the
+SetWindowLong function. That only made the form visible inactive and not able to be
+activated.<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

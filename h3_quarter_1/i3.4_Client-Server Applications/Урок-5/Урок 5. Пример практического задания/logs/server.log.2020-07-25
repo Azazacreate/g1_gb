@@ -1,0 +1,4 @@
+2020-07-25 23:21:51,621 CRITICAL config_server_log.py Критическая ошибка
+2020-07-25 23:21:51,631 ERROR config_server_log.py Ошибка
+2020-07-25 23:21:51,631 DEBUG config_server_log.py Отладочная информация
+2020-07-25 23:21:51,631 INFO config_server_log.py Информационное сообщение

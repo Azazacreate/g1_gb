@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="Author" content>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title></title>
+</head>
+
+<body>
+
+<h1>Farmer, Wolf, Goat Cabbage</h1>
+
+<p>Prolog's powerful problem-solving capabilities can be seen
+with an example, the classic farmer-goat-cabbage-problem. </p>
+
+<p>The problem: A farmer and his goat, wolf and cabbage come to a
+river that they wish to cross. There is a boat, but it only has
+room for two, and the farmer is the only one that can row. If the
+goat and cabbage get in the boat at the same time, the cabbage
+gets eaten. Similarly, if the wolf and goat are together without
+the farmer, the goat is eaten. </p>
+
+<p>Devise a series of crossings of the river so that all
+concerned make it across safely. The state of the system is
+indicated by stating where the farmer, the goat the wolf and the
+cabbage are located. state( Farmer, Wolf, Goat, Cabbage) The
+problem is that a state must only be visited once, and some
+states are illegal. This is checked by 'unsafe' and 'member'. The
+Predicate &quot;go&quot; can be called with a start state and a
+final state</p>
+
+<p>A farmer with his goat, wolf and cabbage come to a river that
+they wish to cross. There is a boat, but it only has room for
+two, and the farmer is the only one that can row. If the goat and
+cabbage get in the boat at the same time, the cabbage gets eaten.
+Similarly, if the wolf and goat are together without the farmer,
+the goat is eaten. Devise a series of crossings of the river so
+that all concerned make it across safely.<br>
+<br>
+The state of the system is indicated by a structure STATE stating
+where the farmer, the goat the wolf and the cabbage are located.
+The goal is then how to transform the start state to the endstate
+through a series of valid states.<br>
+<br>
+The valid states are checked by the predicate 'unsafe'<br>
+<br>
+The problem is that a state must only be visited once, this is
+handled by collecing the visited stetes in a list, and checking
+that a new state isnot already in the list.<br>
+<br>
+The Predicate &quot;go&quot; can be called with a start state and
+a final state<br>
+<br>
+go( state(east,east,east,east), state(west,west,west,west) ).<br>
+</p>
+
+<p><a href="fwgc.prj">FWGC.PRJ</a></p>
+
+<pre><strong>DOMAINS</strong>
+  LOC = east ; west
+  STATE = state(LOC farmer,LOC wolf,LOC goat,LOC cabbage)
+  PATH = STATE*
+
+<strong>PREDICATES</strong>
+  go(STATE,STATE)	% Start of the algorithm
+  path(STATE,STATE,PATH,PATH)	% Finds a path from one state to another
+  nondeterm move(STATE,STATE)	% Transfer a system from one side to another
+  opposite(LOC,LOC)	% Gives a location on the opposite side
+  nondeterm unsafe(STATE)	% Gives the unsafe states
+  nondeterm member(STATE,PATH)	% Checks if the state is already visited
+  write_path(PATH)
+  write_move(STATE,STATE)
+
+<strong>GOAL</strong>
+	go(state(east,east,east,east),state(west,west,west,west)),
+	write(&quot;solved&quot;).
+
+<strong>CLAUSES</strong>
+go(StartState,GoalState):-
+	path(StartState,GoalState,[StartState],Path),
+	write(&quot;A solution is:\n&quot;),
+	write_path(Path).
+
+path(StartState,GoalState,VisitedPath,Path):-
+	move(StartState,NextState),	% Find a move
+	not( unsafe(NextState) ),	% Check that it is not unsage
+	not( member(NextState,VisitedPath) ),	% Check that we have not had this situation before
+	path( NextState,GoalState,[NextState|VisitedPath],Path),!.
+path(GoalState,GoalState,Path,Path).	% The final state is reached
+
+move(state(X,X,G,C),state(Y,Y,G,C)):-opposite(X,Y). % Move FARMER + WOLF
+move(state(X,W,X,C),state(Y,W,Y,C)):-opposite(X,Y). % Move FARMER + GOAT
+move(state(X,W,G,X),state(Y,W,G,Y)):-opposite(X,Y). % Move FARMER + CABBAGE
+move(state(X,W,G,C),state(Y,W,G,C)):-opposite(X,Y). % Move ONLY FARMER
+
+opposite(east,west).
+opposite(west,east).
+
+unsafe( state(F,X,X,_) ):- opposite(F,X),!. % The wolf eats the goat
+unsafe( state(F,U,&#16;,&#29;))-opAs/tA(T,C)V!.   OhT úoStReWt&#06; ¸h&#03; €a&#16;b˛g}
+∂
+2m¥mÕeæ(&#05;,˚X&#14;_3)Ë-&#07;.	
+3e∏br&#28;X∏[|ÿ]&#19;:$m±m”eé(3,«)$
+«
+&#02;wTiGeLp‰tË(&#05;[ƒ1°Hƒ|G]â)&#06;:_
+æ	&#05;rwt._,ooeâH&#14;,W2ç,
+‚w$i<euptË(H‘|<]u.ç
+r t®_uaçh ¿]®)u
+ç
+w!i∞eËmv!(sVa∞eËXW¢G®Ct,ˆsaUeVYËWGÄCä Ë -ã,Ë
+wi|eÉ&uìtVTÏe»f@r‡eÏ ƒr's¡eÏ ¡h ie» ‰r‡m¯&≈uÔt;,ä,tqÎoã;tB ãq
+o∆;.Y,l?
+9wi0e∏mv(sËae[X
+X∏GC	,Gs
+aueÎYËYGvC _ Z-[,ù
+æwi∑eã&ÜuËtT≈e∫fære• ˆae  hË o	f3f∏o qËo;X
+&çut$ Óf·täer¿vrVtË qoG;πY,»l	
+Ww∏ieﬁmÄv(ÈsñaeéX.W<XC.,Ls∏aeáYâW$Y»Cá  G-Ë,
+°wçie"&fuçtTe¿frÛeç aNe∏ hG çot@fFo˚ VqËo;X±&ËutË f˜tweãr(v√r•tË qoo∏;Y,tlÄ
+wGi=eBmvO(ÄsWateæXWGÎXË,sÌa∏eY3WÛGæY  r-Ë,
+œw∏ie&WuãtT_eufâreO Ëae- Ëh Îaâb,g_ √rm˙&@uét°,,˛qo‡;¸ot éh3 Åi$eu Åo&Tut,L)tn.
+ﬁ/Wr.>&#22;
+&#03;/Go.y*
+<yhÉm>n

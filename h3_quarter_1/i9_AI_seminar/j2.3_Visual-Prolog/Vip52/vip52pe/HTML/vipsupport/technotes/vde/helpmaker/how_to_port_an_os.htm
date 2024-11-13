@@ -1,0 +1,190 @@
+<html>
+
+<head>
+<title>How to port an OS</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../";</script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">How to Port an OS/2 .IPF File or its Part into Windows Help File (WinHelp)?<!--mstheme--></font></h1>
+
+<p>Visual Prolog provides two ways of converting files from the .IPF format to the .RTF
+format:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#help maker">Using Visual Prolog build-in Help Maker</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">Using Visual Prolog Document Handling Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000"><a name="Help Maker"></a>Importing Topics from&nbsp; IPF Files into&nbsp; Windows Help
+Files with the Help of the Help Maker<!--mstheme--></font></h2>
+
+<p>Visual Prolog VDE includes build-in Help Maker that provides the possibility to import
+topics from&nbsp; IPF files into Visual Prolog hyperbase and then to create output .RTF
+files, compile and test Windows Help file (WinHelp).</p>
+
+<p>Help Maker is extremely useful if you need to port only a part of an .IPF file or a
+file that has external links,&nbsp; because:</p>
+
+<ol>
+  <li>It is possible to load only definite topics.</li>
+  <li>Help Maker detects all unresolved links and provides the choice to remove these links
+    (together with specific coloring), or to redirect these links.</li>
+</ol>
+
+<h2><!--mstheme--><font color="#000000">Importing .IPF File<!--mstheme--></font></h2>
+
+<ol>
+  <li>In the Project window choose &quot;Help Topics&quot;.</li>
+  <li>In the Help Maker menu choose <strong>Topics | Import from </strong>menu item.</li>
+  <li>Select a necessary file with the help of the standard Import from dialog. </li>
+</ol>
+
+<h3><!--mstheme--><font color="#000000">Parsing Topics<!--mstheme--></font></h3>
+
+<p>After choosing the source file or hyperbase the Help Maker parses topics, scans for
+hypertext links, and tries to resolve these links. At this stage unresolved links can
+appear if the file being imported has links to other files.</p>
+
+<p>While import a user can choose whether to: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">remove an unresolved link;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">skip an unresolved link;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">remove all unresolved links;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">skip all unresolved links;<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>If the user decides to remove unresolved links, green hotspots marking links will be
+formatted as a plain text. <br>
+If the user decides to skip unresolved links or some of them while import, green hotspots
+will be preserved and the Help Maker will issue an error message.</p>
+
+<h3><!--mstheme--><font color="#000000">Loading Topics<!--mstheme--></font></h3>
+
+<p>After parsing source topics, they can be loaded into the current hyperbase with the
+help of the<strong> Import from &lt;filename&gt;</strong> dialog. The user can choose
+whether to load the whole source file or a hyperbase, or to load definite topics.</p>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Loading Definite Topics:<!--mstheme--></font></h4>
+</blockquote>
+
+<ol>
+  <li>Select topics in the Contents window of the <strong>Import from &lt;filename&gt;</strong>
+    dialog. To preview topics check the Auto Preview check box or press the Preview button.</li>
+  <li>Press the Load button. </li>
+  <li>If the check box Ask Name is checked, the Help Maker asks for a new topic name. Note
+    that renaming a topic can cause destroying links to this topic.</li>
+  <li>The system verifies topics for duplicate names. Duplicate topic names can appear in the
+    following cases:</li>
+</ol>
+
+<blockquote>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The topic with the same name exists in the hyperbase. The user can overwrite the
+      existing topic, or rename the topic being loaded with the help of the Duplicate Topic Name
+      dialog.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Topics in the hyperbase and topics being loaded have different names, but these names
+      have first 240 matching characters for the hyperbases created by the current version of
+      the Help Maker and first 25 matching characters for the hyperbases created by previous
+      versions, and are considered by the Help Maker to be duplicated. In this case, the Help
+      Maker demands to rename these topics, that can cause destroying links to these topics.<br>
+      <br>
+      Note: to avoid renaming topics having first 25 matching symbols while importing topics
+      into an old hyperbase create a new hyperbase and import topics from the old hyperbase and
+      a source file into the new hyperbase.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p>Note that separate topics you are importing can have links to the topics you are not
+  importing. This can cause appearance of unresolved links.</p>
+  <h4><!--mstheme--><font color="#000000">Loading a Whole File or Hyperbase<!--mstheme--></font></h4>
+  <p>Press the Load All button.</p>
+  <h4><!--mstheme--><font color="#000000">Adding Topics to a Hyperbase<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>To add topics to a hyperbase, press the Close button. After that , the Help Maker tries
+  to resolve links once more and then adds new topics to a hyperbase.<br>
+  If the Help Maker founds unresolved links, it issues the message: &quot;One or more topics
+  contain irrelevant links. Reestablish or delete this links&quot;.</p>
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Reestablishing or Deleting Irrelevant Links<!--mstheme--></font></h3>
+
+<p>The detailed description of the process is done in the topic &quot;Reestablishing or
+Deleting Irrelevant Links while Import&quot; of the online Help (In the Search index
+select: &quot;import: unresolved links&quot;).</p>
+
+<h3><!--mstheme--><font color="#000000">Preserving Hierarchical Structure of the .IPF file<!--mstheme--></font></h3>
+
+<p>The Help Maker import facility does not preserve hierarchical structure of the .IPF
+file. The Help writer can reestablish hierarchy using the Help Maker Browse facility. You
+can find a description of the&nbsp; Help Maker Browse facility in the topic
+&quot;Assigning Browse Sequences&quot; of the online Help (In the Search index select:
+&quot;browse sequences: creating). </p>
+
+<h3><!--mstheme--><font color="#000000">Creating Output .RTF and Project Files <!--mstheme--></font></h3>
+
+<p>To save a Help hyperbase as an RTF-format file choose the Project | Write RTF command.
+A basic Help project file will be&nbsp; generated by the Help Maker automatically.</p>
+
+<h3><!--mstheme--><font color="#000000">Compiling Windows Help<!--mstheme--></font></h3>
+
+<p>Run Help compiler to make a final Help file using Project | Compile Help command.</p>
+
+<h3><!--mstheme--><font color="#000000">Testing Windows Help system<!--mstheme--></font></h3>
+
+<p>To test your Help System call the Microsoft Windows Help system (WinHelp.EXE) with the
+help of the Project | Display Help File.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="DOC_TOOL"></a>Converting of .IPF Files into the .RTF Format with the Help of
+the Document Handling Package (DOC_TOOL)<!--mstheme--></font></h2>
+
+<p>The Document Handling Package provides a set of tools for parsing and converting
+documents of different types.&nbsp; You can see an example of converting of .IPF files
+into the .RTF format in the DOC_TOOL\Example directory.</p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

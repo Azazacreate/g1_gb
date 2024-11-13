@@ -1,0 +1,6 @@
+2020-12-18 20:02:50,120 DEBUG server.py Разбор сообщения от клиента : {'time': '1.1', 'user': {'account_name': 'Guest'}}
+2020-12-18 20:02:50,136 DEBUG server.py Разбор сообщения от клиента : {'action': 'presence', 'user': {'account_name': 'Guest'}}
+2020-12-18 20:02:50,139 DEBUG server.py Разбор сообщения от клиента : {'action': 'presence', 'time': '1.1'}
+2020-12-18 20:02:50,142 DEBUG server.py Разбор сообщения от клиента : {'action': 'presence', 'time': 1.1, 'user': {'account_name': 'Guest'}}
+2020-12-18 20:02:50,144 DEBUG server.py Разбор сообщения от клиента : {'action': 'presence', 'time': 1.1, 'user': {'account_name': 'Guest1'}}
+2020-12-18 20:02:50,147 DEBUG server.py Разбор сообщения от клиента : {'action': 'Wrong', 'time': '1.1', 'user': {'account_name': 'Guest'}}

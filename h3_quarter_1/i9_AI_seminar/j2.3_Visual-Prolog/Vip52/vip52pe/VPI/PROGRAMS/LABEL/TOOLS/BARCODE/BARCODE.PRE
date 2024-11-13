@@ -1,0 +1,12 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	BARCODE.PRE
+ Purpose:	Global predicate for Barcode drawing
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  barcode_draw(WINDOW Win,BOOLEAN Proportional,RCT,PEN,STRING,BARCODE_TYPE)

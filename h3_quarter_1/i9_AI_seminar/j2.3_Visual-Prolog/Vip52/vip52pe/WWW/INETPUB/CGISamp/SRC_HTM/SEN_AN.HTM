@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Sourse Code for Semantic analyzer</title>
+</head>
+<body bgcolor="#FFFFFF">
+<h2>Sourse Code for Semantic analyzer</h2>
+<hr>
+<pre>
+GLOBAL DATABASE
+  det( STRING )
+  noun( STRING )
+  rel( STRING )
+  verb( STRING )
+
+DOMAINS
+  DETERM   = none ; determ( STRING )
+  NOUNP    = nounp( DETERM, STRING, RELCL)
+  RELCL    = none ; relcl( STRING, VERBP )
+  SENTENCE = sent( NOUNP, VERBP )
+  VERBP    = verb( STRING ) ; verbp( STRING, NOUNP )
+  TOKL     = STRING*
+
+PREDICATES
+% Recognition of words in different forms
+  is_det( STRING )
+  is_noun( STRING )
+  is_rel( STRING )
+  is_verb( STRING )
+
+% Parser
+  nondeterm s_determ(   TOKL, TOKL, DETERM )
+  nondeterm s_nounp(    TOKL, TOKL, NOUNP )
+  nondeterm s_relcl(    TOKL, TOKL, RELCL )
+  nondeterm s_sentence( TOKL, TOKL, SENTENCE )
+  nondeterm s_verbp(    TOKL, TOKL, VERBP )
+
+% scanner
+  check(STRING)
+  tokl( STRING, TOKL )
+
+GOAL
+    consult("sen_an.dba"),
+    write("Try: every man that lives loves a woman\n"),
+    write("Write a sentence: "),
+    readln(STR),
+    tokl(STR,TOKL),
+    s_sentence( TOKL, RESTTOKL, SENT ),
+    RESTTOKL = [],
+    write(SENT).
+
+CLAUSES
+
+s_sentence(TOKL,TOKL2,sent(NOUNP,VERBP)):-
+    s_nounp(TOKL,TOKL1,NOUNP),
+    s_verbp(TOKL1,TOKL2,VERBP),
+    TOKL2 = [] ,!.
+s_sentence(_,_,_):-
+    write(">> Sentence not recognized\n"),fail.
+
+s_nounp(TOKL,TOKL2,nounp(DETERM,NOUN,RELCL)):-
+    s_determ(TOKL,[NOUN|TOKL1],DETERM),
+    is_noun(NOUN),
+    s_relcl(TOKL1,TOKL2,RELCL).
+
+s_determ([DETERM|TOKL],TOKL,determ(DETERM)):-
+    is_det(DETERM).
+s_determ(TOKL,TOKL,none).
+
+s_relcl([REL|TOKL],TOKL1,relcl(REL,VERBP)):-
+    is_rel(REL),
+    s_verbp(TOKL,TOKL1,VERBP).
+s_relcl(TOKL,TOKL,none).
+
+s_verbp([VERB|TOKL],TOKL1,verbp(VERB,NOUNP)):-
+    is_verb(VERB),
+    s_nounp(TOKL,TOKL1,NOUNP).
+s_verbp([VERB|TOKL],TOKL,verb(VERB)):-
+    is_verb(VERB).
+
+is_noun(X):-noun(X),!.
+is_noun(X):-noun(Y),concat(Y,"s",X),!.
+
+is_det(X):-det(X),!.
+
+is_rel(X):-rel(X),!.
+
+is_verb(X):-verb(X),!.
+is_verb(X):-verb(Y),concat(Y,"s",X),!.
+is_verb(X):-verb(Y),concat(Y,"ed",X),!.
+is_verb(X):-verb(Y),concat(Y,"es",X),!.
+is_verb(X):-verb(Y),concat(Y,"ing",X),!.
+
+tokl(STR,[TOK|TOKL]) :-
+    fronttoken(STR,TOK,STR1),
+    check(TOK),!,
+    tokl(STR1,TOKL).
+tokl(_,[]).
+
+check(WORD):-is_noun(WORD),!.
+check(WORD):-is_det(WORD),!.
+check(WORD):-is_rel(WORD),!.
+check(WORD):-is_verb(WORD),!.
+check(WORD):- write(">> Unknown word: ",WORD),nl.
+</pre>
+</body>
+</html>

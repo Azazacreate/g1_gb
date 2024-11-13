@@ -1,0 +1,81 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALCULA
+ FileName: XCALCULA.PSF
+ Purpose: Operations involving Prolog source-file
+ Written by: Eugene Akimov
+ Comments: Predicates used in this file:
+		prolog_source_file_DeleteIfPresent -	delete prolog source file
+							(xtemp.pro) if he present
+		prolog_source_file_Create -		create prolog source file
+******************************************************************************/
+
+predicates
+  prolog_source_file_DeleteIfPresent - procedure ()
+  prolog_source_file_Create(SOURCE,PROGRAM) - procedure (i,i)
+
+clauses
+  prolog_source_file_DeleteIfPresent:-
+  	existfile("xtemp.pro"),
+  	!,
+  	deletefile("xtemp.pro").
+  prolog_source_file_DeleteIfPresent.
+
+  prolog_source_file_Create(Source,Term):-
+	openwrite(outputfile, "xtemp.pro"),
+	writedevice(outputfile),
+
+      % Write comments.
+      	write("\n/*"),
+	nl,
+      	write("\nProduced by XCALCULA.PRO from the following Calcula source:"),
+      	nl,
+      	nl,
+	write(Source),
+	nl,
+      	write("\n*/"),
+      	nl,
+
+      % Write include file
+	write("include \"XTemp.inc\""),
+	nl,
+
+      % Write database section.
+	nl,
+	write("\facts - xtemp_db"),
+	write("\n  determ  error(MESSAGE,CURSORPOS)"),
+
+      % Write predicates section.
+	nl,
+	write("\npredicates"),
+	write("\n  replace_error(MESSAGE,CURSORPOS) - procedure (i,i)"),
+
+      % Include evaluation engine.
+	nl,
+	write("\ninclude \"..\\\\XCalcula\\\\XCalcula.run\""),
+
+      % Write clauses section.
+	nl,
+	write("\nclauses"),
+	write("\n  main(Win):-"),
+	write("\n	program_FreeAllVariables,"),
+	write("\n	program_Run(Win,"),
+	write(Term),
+	write("),"),
+	write("\n\t!."),
+	write("\n  main(_):- "),
+	write("\n	retract(error(Message,CursorPos)),"),
+	write("\n\t!,"),
+	write("\n\tformat(ErrMsg,\"A runtime error occurred.Message: %, Position : %\",Message,CursorPos),"),
+	write("\n\tdlg_Error(ErrMsg)."),
+	write("\n  main(_):-"),
+	write("\n\tdlg_Error(\"Process failed\")."),
+	
+	nl,
+	write("\n  replace_error(Message,CursorPos):-"),
+	write("\n	retractall(error(_,_)),"),
+	write("\n	assert(error(Message,CursorPos))."),
+
+	closefile(outputfile).

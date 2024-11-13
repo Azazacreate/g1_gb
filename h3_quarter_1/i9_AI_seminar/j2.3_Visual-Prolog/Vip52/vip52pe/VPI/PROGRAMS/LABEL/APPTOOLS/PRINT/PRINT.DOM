@@ -1,0 +1,17 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	PRINT.DOM
+ Purpose:	Global domains for Print and Print preview
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global domains
+  PV_MESSAGE =	event(EVENT);
+		go_to_source
+
+  PV_CALLBACK = determ (WINDOW		PVWin,
+			PV_MESSAGE)	- (i,i)

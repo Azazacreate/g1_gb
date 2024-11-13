@@ -1,0 +1,55 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  
+ FileName: AAPLAY.PRE
+ Purpose: 
+ Written by: PDC
+ Comments:
+******************************************************************************/
+ifndef aaplay_dom_included
+ #Error: this file requires include: aaplay.dom
+enddef 
+
+constants
+  aaplay_pre_included = 1
+
+global predicates
+  procedure INTEGER aaOpen() - language pascal
+  procedure aaClose() - language pascal
+% AAOpen and AAClose are not really needed, except there is
+% a bug in Windows which prevents Libraries from being
+% freed in the Windows Exit Proc (WEP). So we use AAClose
+% to free the Libraries when the last task closes the
+% AAPlay DLL. aaOpen returns 1 if there were no errors.
+
+
+procedure AAHANDLE aaLoad(STRING File,WORD hWnd,Integer wMode, Integer x,Integer y, Integer wid,Integer hght,Integer orgx, Integer orgy)
+		- (i,i,i,i,i,i,i,i,i) language pascal
+%  The filename should be the name of a FLI or FLC file. hWnd is the window
+%  handle of the caller (Use: cast(word,Window)). wMode is defined in aaplay.dom. X and Y
+%  are where the displaywindow will be. wid and hght are the size of the display
+%  window. orgx and orgy are the top left corner of the flic (normally 0's).
+%  Returns the animation window handle if no error, or zero if error.
+
+
+procedure INTEGER aaUnload(AAHandle)-(i) language pascal
+% AAHandle (and in all subsequent calls) is the handle returned
+% from the aaLoad function. Returns 1 if no error.
+
+
+procedure INTEGER aaPlay(AAHANDLE)-(i) language pascal
+% aaPlay plays a loaded animation. 1 is returned if the animation
+% is not stopped when aaPlay returns. The flic will play continously,
+% so some method should be used to determine when you want to stop it
+
+
+procedure INTEGER aaStop(AAhandle)-(i) language pascal
+% aastop will stop a playing animation. 1 is returned if the
+% animation is stopped when aastop returns.
+
+
+procedure INTEGER aaGetParmIndirect (AAhandle,AAPARMS,UNSIGNED SIZE)
+	- (i,aaparms(o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o,o),i) language pascal
+% Returns the AAPARMS struct, Size should be "sizeof(aaparms)"

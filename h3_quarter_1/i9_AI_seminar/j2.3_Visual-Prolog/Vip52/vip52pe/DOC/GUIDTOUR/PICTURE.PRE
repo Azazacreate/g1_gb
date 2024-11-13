@@ -1,0 +1,15 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  MYPROJ
+ FileName: PICTURE.PRE
+ Purpose: Predicate definitions for PICTURE.PRO
+ Written by: Leo Jensen
+ Comments:
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+  win_picture_Create(WINDOW Parent) - (i)
+%END System Mark

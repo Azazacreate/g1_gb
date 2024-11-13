@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<META NAME="Template" CONTENT="E:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<H1>Sun Java program which uses a non-GUI Visual Prolog DLL</H1>
+<FONT FACE="Courier New" SIZE=2><P>&nbsp;</P>
+<P>Copyright (c) 1984 - 1998 Prolog Development Center A/S</P>
+<P>Written by Konstantin Ivanov </P>
+<P>&nbsp;</P>
+</FONT><H2>Note:</H2>
+<FONT FACE="Courier New" SIZE=2><P>This example uses JNI programming technology. A support of this technology is provided in Java SDK 1.1 and higher. Use the </FONT><I><CODE>javac.exe</I></CODE><FONT FACE="Courier New" SIZE=2>, <I>javah.exe</I> and <I>java.exe</I> from this SDK to compile and test the example.</P>
+<P>&nbsp;</P>
+</FONT><H2>Short description of the example:<FONT FACE="Courier New" SIZE=2>&nbsp;</H2>
+<P>This example demonstrates how Java program can use Prolog code that is contained in DLL. The main target of the example is to show how Java program can pass (set*** predicates) and retrieve (get*** predicates) different types of data with the help of export functions of Visual Prolog DLL. The following Prolog data types are used: integer, real, string. The values of these types are printed to a screen before set operation and after get operation.</P>
+<P>&nbsp;</P>
+</FONT><H2>How to run the example:</H2>
+<FONT FACE="Courier New" SIZE=2><P>Change a path to Java SDK in <I>makefile.</I> and <I>go.bat</I> files if needed.</P>
+</FONT><PRE>The example uses static linking of <I>Testdll</I>.</PRE>
+<FONT FACE="Courier New" SIZE=2><P>To build the example: &#9;<I>nmake -f makefile</P>
+</I><P>To run the example:&#9;<I>go.bat</P>
+</I><P>&nbsp;</P>
+</FONT><B><FONT SIZE=4><P>See also:</B></FONT><FONT FACE="Courier New" SIZE=2> </FONT><A HREF="../../readme.htm">Using Visual Prolog DLL’s from other languages</A></P></BODY>
+</HTML>

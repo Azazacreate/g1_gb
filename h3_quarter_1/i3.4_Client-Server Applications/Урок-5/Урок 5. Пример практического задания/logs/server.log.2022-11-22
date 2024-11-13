@@ -1,0 +1,4 @@
+2022-11-22 20:45:17,807 CRITICAL config_server_log.py Критическая ошибка
+2022-11-22 20:45:17,819 ERROR config_server_log.py Ошибка
+2022-11-22 20:45:17,819 DEBUG config_server_log.py Отладочная информация
+2022-11-22 20:45:17,819 INFO config_server_log.py Информационное сообщение

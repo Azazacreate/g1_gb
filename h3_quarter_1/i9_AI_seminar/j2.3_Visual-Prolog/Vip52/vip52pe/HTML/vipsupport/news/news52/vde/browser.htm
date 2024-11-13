@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Source Code Browser</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../";</script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Changes in the &quot;Browse&quot; and &quot;Browse Seach&quot; Dialogs<!--mstheme--></font></h1>
+<h2><!--mstheme--><font color="#000000">&quot;Browse&quot; Dialog<!--mstheme--></font></h2>
+<p>The <b>Project |Browse</b> menu item (or the Ctrl+B hot key ) invokes the
+Source Code Browser.&nbsp;</p>
+<p><br>
+<img border="0" src="../../../images/browse.gif" width="561" height="529" alt="&quot;Browse&quot; Dialog"></p>
+<p>The browsing mode is set by two radio button groups:</p>
+<ol>
+  <li>Predicates / Domains / Facts Sections / Facts / Classes / Abstract
+    Classes&nbsp;</li>
+  <li>Global / Local.&nbsp;</li>
+</ol>
+<p>Selection in the <b>first group of radio buttons</b> determines a browse unit
+type, i.e., whether the&nbsp; Source Code Browser will browse: names of user
+defined Predicates or Domains,&nbsp;names of Facts Sections or names of
+Facts,&nbsp;names of Classes or Abstract Classes.&nbsp;</p>
+<p>Selection in the <b>second radio button group</b> determines, whether browse
+for Global or Local (declared in a single module) names. Note that in classes
+public names are treated as global and private names as local.<br>
+<br>
+Besides these, three filters can be used: &quot;in Module&quot;, &quot;in
+Class&quot;, &quot;in Facts Section&quot;.</p>
+<p>The list button &quot;in Module&quot; provides the possibility to specify the
+module for browsing.<br>
+Checking ON &quot;in Class&quot; check box, you can specify a class for browsing
+names.&nbsp;<br>
+Note that, when a name declared in a class is displayed in the general list
+(&quot;in Class&quot; is OFF), then this name is prefixed by the class name. For
+instance, in case of the following declaration:</p>
+<!--mstheme--></font><pre>CLASS person</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>write_info()</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<p>In the general list of global user declared predicates, the member predicate
+write_info will have the following representation:</p>
+<blockquote>
+  <!--mstheme--></font><pre>person::write_info</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>For facts you can additionally check ON the &quot;in Facts Section&quot;
+check box and select the name of facts section, which facts you wish to browse.</p>
+<h3><!--mstheme--><font color="#000000">&quot;Browse&quot; Dialog Buttons<!--mstheme--></font></h3>
+<!--mstheme--></font><table border="1" width="100%" cellpadding="3" cellspacing="4" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td width="29%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <h5 align="center"><!--mstheme--><font color="#000000">Button<!--mstheme--></font></h5>
+    <!--mstheme--></font></td>
+    <td width="71%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <h5 align="center"><!--mstheme--><font color="#000000">Description<!--mstheme--></font></h5>
+    <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="29%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Search</b>&nbsp;<!--mstheme--></font></td>
+    <td width="71%"><!--mstheme--><font face="verdana, Arial, Helvetica">Activates the Browse Search dialog box allowing search
+      within predicates, domains, fact sections, facts, classes, abstract
+      classes or anywhere in a project. This search is independent of other
+      settings selected in Source Code Browser.&nbsp;See <a href="#browse_search">picture</a>.<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="29%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Search again</b><!--mstheme--></font></td>
+    <td width="71%"><!--mstheme--><font face="verdana, Arial, Helvetica">Repeats the last search operation.<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="29%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>GoTo</b> (Declared in:)<!--mstheme--></font></td>
+    <td width="71%"><!--mstheme--><font face="verdana, Arial, Helvetica">Opens an editor window, with the cursor positioned at the
+      declaration of the selected name.<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="29%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>GoTo</b> (Clauses in:)&nbsp;<!--mstheme--></font></td>
+    <td width="71%"><!--mstheme--><font face="verdana, Arial, Helvetica">Opens an editor window, with the cursor positioned at the
+      definition of the first clause of the selected predicate of fact.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="browse_search"></a>&quot;Browse Seach&quot; Dialog<!--mstheme--></font></h2>
+<h3><!--mstheme--><font color="#000000"><img border="0" src="../../../images/browsesearch.gif" width="428" height="355" alt="&quot;Browse Seach&quot; Dialog"><!--mstheme--></font></h3>
+<h3><!--mstheme--><font color="#000000">Remarks<!--mstheme--></font></h3>
+<p>The Source Code Browser uses the PROJECT.BRO file, which contains information
+on where domains and predicates are declared and defined. So, to use the Source
+Code Browser, the PROJECT.BRO file must exist. It can be created by using
+Project |Build VDE menu item.&nbsp;<br>
+Note that the compiler will generate the file PROJECT.BRO only if the option
+&quot;Generate Browser Information&quot; (in the Compiler Options dialog) is
+checked.
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

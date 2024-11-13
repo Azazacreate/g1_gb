@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<title>Is it possible to define any clause with variables left unbound</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h4><!--mstheme--><font color="#000000">Is it possible to define any clause with variables left unbound?<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>To use an unbound variable as an input argument, it is necessary to declare this
+  argument as a &quot;reference&quot; domain.</p>
+  <p>(See the Chapter 11 of the &quot;Language Tutorial&quot; (p. 220) and the
+  &quot;Reference Domains Declaration&quot; topic in the online Help).</p>
+  <p>Note, please, that while declaring a reference variable using standard Visual Prolog
+  domains, you should always declare a special reference domain and use it as locally as
+  possible. For instance:</p>
+  <!--mstheme--></font><pre>domains</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>ref_int = reference integer</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>ref_int_list = ref_int*</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <p>You should not write:</p>
+  <!--mstheme--></font><pre>domains</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>list = reference integer*</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <p>since in this case all integers in the module will be treated by the compiler as
+  belonging to the reference domain. The result can be unpredictable - especially in the
+  case of global domains. GPF can be general reaction. </p>
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

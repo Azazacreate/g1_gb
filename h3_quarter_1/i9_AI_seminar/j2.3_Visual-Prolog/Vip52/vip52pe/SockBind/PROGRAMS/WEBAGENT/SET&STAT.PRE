@@ -1,0 +1,16 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  WEBAGENT
+ FileName: SET.PRE
+ Purpose: Predicate definitions for SET&STAT.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  dlg_entry_settings_Create(WINDOW Parent, INTEGER Row) - (i,i)
+%END_DECL

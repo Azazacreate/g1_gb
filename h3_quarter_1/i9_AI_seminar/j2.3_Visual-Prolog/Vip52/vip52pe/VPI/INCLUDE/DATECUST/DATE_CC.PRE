@@ -1,0 +1,72 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	DATE_CC.PRE
+ PURPOSE:	Predicate definitions for date custom control
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		012.000316
+ Tested with:   Visual Prolog v.5.1 build 565
+ Comments:	
+
+******************************************************************************/
+constants
+  date_cc_pre_included = 1
+
+global predicates
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 	Date custom control initialization		*/
+/*							*/
+/*  date_cc_Init(WINDOW,	% Control window	*/
+/*		 MINUT_OFFSET,	% Init value		*/
+/*		 STRING)	% Format string		*/
+/*                                                      */
+/* RETURN VALUE: none					*/
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+  procedure date_cc_Init(WINDOW,MINUT_OFFSET,STRING) - (i,i,i)
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 	Date custom control event handling		*/
+/*							*/
+/*  Put date_cc_HandleEvent call into the clause for all*/
+/*  events (except for e_Create) of the class handler	*/
+/*							*/
+/*  date_cc_HandleEvent(WINDOW,	% Control window	*/
+/*		 	EVENT)	% Event			*/
+/*                                                      */
+/*                                                      */
+/********************************************************/
+  determ date_cc_HandleEvent(WINDOW,EVENT) - (i,i)
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 		Set Date custom control value		*/
+/*							*/
+/*  date_cc_SetValue(WINDOW,	    % Control window	*/
+/*		     MINUT_OFFSET)  % Value		*/
+/*                                                      */
+/* NOTE: Moves the selection to the leftmost field      */
+/* RETURN VALUE: none					*/
+/* FAIL: Newer fails                                    */
+/*                                                      */
+/********************************************************/
+  procedure date_cc_SetValue(WINDOW,MINUT_OFFSET) - (i,i)
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 		Get Date custom control value		*/
+/*							*/
+/* MINUT_OFFSET date_cc_SetValue(WINDOW)% Control window*/
+/*                                                      */
+/* RETURN VALUE: Date control value in mins since 1/1-1	*/
+/* FAIL: Newer fails                                    */
+/*                                                      */
+/********************************************************/
+  procedure MINUT_OFFSET date_cc_GetValue(WINDOW) - (i)

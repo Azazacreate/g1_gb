@@ -1,0 +1,16 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	DATE_CC.DOM
+ PURPOSE:	Domains definitions for date custom control
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		012.000316
+ Tested with:   Visual Prolog v.5.1 build 565
+ Comments:	Date custom contol haven't specific domains but includes
+		DATE module global domains (from $(PRODIR)\VPI\INCLUDE)
+
+******************************************************************************/
+constants
+  date_cc_dom_included = 1

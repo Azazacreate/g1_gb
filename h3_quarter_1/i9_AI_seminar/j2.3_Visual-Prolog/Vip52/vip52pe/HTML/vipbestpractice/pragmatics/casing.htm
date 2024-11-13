@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Casing on input patterns</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Casing on input patterns<!--mstheme--></font></h1>
+
+Only handle very simple things in the dispatcher. The problem with handling stuff in the dispatcher is that it has a very flat structure and typically a lot of different things has to happen. So code that belongs logically together gets spread and pieces of code that basically has very little to do with each other stands next to each other. To avoid this code that belongs logically together should be placed in handling predicates that are grouped in a module so the dispatcher only calls the handling predicates. This way the dispatcher is just that a dispatcher and code that belongs together are placed close together.<br>
+&nbsp;
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If a predicate handles many cases then keep each case simple.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Never have more clauses for the &quot;same case&quot;, if the predicate also handles
+    &quot;other&quot; cases.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The first &quot;rule&quot; is straight forward. The second rule can be illustrated with
+the following example:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font color="#FF0000"><strong><font face="Arial">clauses</font></strong>
+    qwerty(17, W, E, R, 13, Y) :-
+        ..., % A
+        !,
+        ... % B
+    qwerty(17, W, E, R, 13, Y) :-
+        ..., % C
+    qwerty(Q, W, E, R, 13, Y) :-
+        ... % D
+    ...</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>The clauses above represents bad coding style, because is has two clauses for the same
+input &quot;pattern&quot;. This would have been OK if this was the only input pattern the
+predicate deals with.&nbsp; But in this case, we have clauses for other patterns as well.
+&nbsp; I think that the predicate above should have been rewritten, such that the purpose
+of <i> qwerty</i> is solely to case out on the specific patterns of input leaving other work to
+sub-predicates:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    qwerty(<font
+color="#0000FF">17</font>, <font color="#008000">W</font>, <font color="#008000">E</font>, <font
+color="#008000">R</font>, <font color="#0000FF">13</font>, <font color="#008000">Y</font>) :-
+        !, <font
+color="#0000FF">% we have cased out, this is one of our cases</font>
+        qwerty_17_w_e_r_13_y(<font
+color="#008000">W</font>, <font color="#008000">E</font>, <font color="#008000">R</font>, <font
+color="#008000">Y</font>).
+    qwerty(<font color="#008000">Q</font>, <font color="#008000">W</font>, <font
+color="#008000">E</font>, <font color="#008000">R</font>, <font color="#0000FF">13</font>, <font
+color="#008000">Y</font>) :-
+        !, <font color="#0000FF">% we have cased out, this is one of our cases</font>
+        qwerty_q_w_e_r_13_y(<font
+color="#008000">Q</font>, <font color="#008000">W</font>, <font color="#008000">E</font>, <font
+color="#008000">R</font>, <font color="#008000">Y</font>).
+    ...</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    qwerty_17_w_e_r_13_y(<font color="#008000">W</font>, <font color="#008000">E</font>, <font color="#008000">R</font>, <font color="#008000">Y</font>) :-
+        ..., <font
+color="#0000FF">% A</font>
+        !,
+        ... <font color="#0000FF">% B</font>
+    qwerty_17_w_e_r_13_y(<font color="#008000">W</font>, <font color="#008000">E</font>, <font color="#008000">R</font>, <font color="#008000">Y</font>) :-
+        ... <font
+color="#0000FF">% C</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    qwerty_q_w_e_r_13_y(<font color="#008000">Q</font>, <font color="#008000">W</font>, <font color="#008000">E</font>, <font color="#008000">R</font>, <font color="#008000">Y</font>) :-
+        ... <font color="#0000FF">% D</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>This code have changed the <em>qwerty</em> predicate into a predicate, which only
+cases-out on the various combinations of input.&nbsp; It is not essential that you only
+have a single predicate call for each kind of input as illustrated above.&nbsp; The main
+point is that you do not back-track from one clause to an other on the same input pattern.</p>
+
+<p>This rule does especially apply to event handlers, you should not have more than one
+clauses for &quot;close&quot; (or anything else) in the same event handler. An event
+handler often spread on several pages, so if it is not a rule that each case is handled by
+a single clause, then you will have to look at all clauses to be sure that you know how a
+single input pattern is handled.</p>
+
+<p>&nbsp;</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

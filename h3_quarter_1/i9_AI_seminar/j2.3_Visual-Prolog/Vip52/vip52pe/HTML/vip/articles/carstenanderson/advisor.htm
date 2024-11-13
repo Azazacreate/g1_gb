@@ -1,0 +1,755 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>AUTOMATED NEURAL-NETWORK AND USER-DEFINED KNOWLEDGE-BASED DIAGNOSTIC SYSTEM FOR
+USERS OF ROTATING MACHINERY</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1 align="center"><!--mstheme--><font color="#000000">ADVISOR<!--mstheme--></font></h1>
+
+<h2><!--mstheme--><font color="#000000">A PROLOG IMPLEMENTATION OF AN AUTOMATED NEURAL-NETWORK FOR DIAGNOSIS OF ROTATING
+MACHINERY<!--mstheme--></font></h2>
+
+<p>By:</p>
+
+<blockquote>
+  <p>Carsten Andersson<br>
+  Product Manager<br>
+  Bruel &amp; Kjaer CMS A/S, Denmark</p>
+</blockquote>
+
+<p>and</p>
+
+<blockquote>
+  <p>Claus Witfelt<br>
+  Product Manager<br>
+  Prolog Development Center A/S, Denmark</p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000">ABSTRACT<!--mstheme--></font></h2>
+
+<p>The condition-based (vibration and process) diagnosis system presented in this paper
+offers a new approach to expert system design and implementation.</p>
+
+<p>The diagnosis system was implemented entirely by using Prolog which has bindings to an
+XVT1 library. The very strong features of the Prolog language - dynamic data structures,
+recursiveness and the ability to compare and match elements of complex data structures has
+made the implementation of this program possible. The application described, is within the
+field of machine vibration analysis. However, the principles of the program may also be
+used for diagnosis systems solving other types of problems.</p>
+
+<p>The paper examines the steps in setting up the system, the daily operation, the
+workings of the neural network implementation and for each of these steps examples of how
+Prolog facilitated the implementation. The paper also looks at neural networks and
+discusses how this important technology is used in the system to address the problems
+associated with traditional artificial intelligence systems.</p>
+
+<p>Most simple expert systems today are limited by the number of rules in their databases.
+As the person using the system gains enough experience to make better judgements, the
+expert system is used less and less. This paper therefore discusses how a user-defined
+knowledge-base can be used to augment the diagnosis system with the user's own knowledge
+and experience, continuously improving the breadth and accuracy of the diagnoses. </p>
+
+<h2><!--mstheme--><font color="#000000">Background<!--mstheme--></font></h2>
+
+<p>Advances in asset technology and management allow machines to produce at full capacity
+for longer periods of time and with less intervention than what was ever thought possible.
+This has been achieved not only through improvements in machine design but also through
+the successful implementation of predictive maintenance (PdM) programmes based on
+vibration and process (condition) measurements. </p>
+
+<p>Today's computerised-PdM systems, can automatically detect machine faults earlier and
+with greater degree of certainty than ever before. Such systems can scan thousands of
+measurement points in a plant, detect the smallest change in a machine's condition, and
+then pre-process, process, and post-process the measurement - all in a fraction of the
+time that it conventionally used to take! With the obvious enormous amounts of generated
+data that this entails, a means of effectively optimising and managing this data is
+certainly needed.</p>
+
+<p>Traditionally, `experts' analyse the data and make the necessary decisions that will
+initiate the appropriate action. However, experts are not born! They have to be trained
+and then practise, and in general their years of accumulated expert knowledge is seldom
+documented. This means that experts are not only an expensive commodity but often in short
+supply as the demand for specialist decision-making increases with the volume of data
+produced. Moreover, with the current trend towards downsizing and outsourcing, there are
+fewer skilled people to use as a resource. </p>
+
+<p>The two figures below shows a popular explanation of the function of a machine
+monitoring system and a machine diagnosis system.</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image-a.gif"><img border="0" src="images/image-a_small.gif" width="100" height="60"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 1<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">The objective of a monitoring system<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_b.gif"><img border="0" src="images/image_b_small.gif" alt="image_b.gif (63825 bytes)" width="100" height="60"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 2<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">The objective of a diagnosis system<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Introduction<!--mstheme--></font></h1>
+
+<p>For several years there has been considerable interest in computer-based expert systems
+that will alleviate the expert availability problem, and tap the experience of top-level
+vibration analysts to provide first-hand information that is useful to both novices and
+experienced personnel in detecting and solving machine problems.</p>
+
+<p>Most expert systems in use to date are artificial intelligence (AI) based systems -
+better known as rule-based expert systems. This type of system has a separate and distinct
+knowledge-base containing specific information and a finite number of previously
+established IF-THEN rules (that is, fixed conclusions based on a logical combination of
+observations) for a well-defined and narrow domain. To output a specific conclusion, the
+decision-making mechanism (called an inference engine in rule-based systems) looks at the
+information (or attributes) that is input into the system, and then finds a rule or a
+logical combination of rules in the knowledge base that matches the input information. </p>
+
+<p>Rule-based systems are around in abundance, largely because the wealth of research and
+techniques available in this area make them easy to develop and apply efficiently. They
+are also commercially very popular because they use familiar, logical structures that
+users can understand and relate to. Rule-based expert systems are especially good for
+closed-system applications for which inputs are literal and precise, leading to logical
+outputs.</p>
+
+<p>However, for dynamic applications such as predictive monitoring, rule-based systems
+fail to measure up to the expectations and needs of the user. This can be mainly
+attributed to an inherent problem associated with rule-based experts systems - fixed
+knowledge-bases. They are fixed because of the difficulty and time involved in checking,
+validating and verifying hundreds of lines of reasoning, each time the system is updated.</p>
+
+<p>Having a fixed finite number of rules then, make rule-based expert systems inherently
+obsolete for PdM applications. As the person using the system gains enough experience to
+make better judgements and more reliable diagnoses, the system is used less and less.</p>
+
+<p>One way of getting around this problem is to make large and comprehensive
+knowledge-bases that will cover all current and future eventualities. However, a specific
+problem associated with this idea is knowledge-acquisition congestion. Because the
+procurement of knowledge for the system is still primarily a human intensive activity, the
+availability of human experts is a major stumbling block in developing large expert
+systems for PdM and other dynamic applications. </p>
+
+<p>Another problem with rule-based systems is knowledge aquisition, vibration experts
+generally do not think in terms of rules. Thus the logical, analytical techniques of
+rule-based systems do not generally imitate the actual reasoning processes of human
+experts which would ultimately lead to more reliable, heuristic diagnoses.</p>
+
+<p>In the sections that follow, a machine diagnosis system is presented that offers
+solutions to the practical problems associated with conventional expert systems. </p>
+
+<p>The system is an automatic neural-network based expert system that receives all of its
+monitoring and measurement information directly from a UNIX-based predictive monitoring
+system. Where machine vibration is dependant on the operating condition of the machine
+(for example change in active and reactive power and bearing oil temperature), the
+diagnosis system will combine process parameter measurements with vibration measurements
+to provide a more reliable diagnosis.</p>
+
+<p>The paper outlines the operation of the system and for each of the sections describing
+the program, notes will be given on how Prolog facilitated the implementation.</p>
+
+<h2><!--mstheme--><font color="#000000">Setting up the system - a crucial first stage<!--mstheme--></font></h2>
+
+<p>The key to successful machine monitoring is a meticulous approach to the initial
+setting up of the monitoring system. This also holds true for expert systems. Just as
+experienced analysts cannot give an accurate diagnoses without sufficient background
+knowledge of the machinery, so a machine diagnosis system cannot perform reliably without
+internal mechanical details of the machine.</p>
+
+<p>A graphical editor has been implemented to allow for easy setup of many different types
+of machines.</p>
+
+<h3><!--mstheme--><font color="#000000">Mechanical setup of a machine<!--mstheme--></font></h3>
+
+<p>In this example, the diagnosis system's graphical machine editor is used to represent a
+gas turbine (see figure 3). The entire gas turbine is composed from a library of standard
+machine-part icons, each with its own set of standard rules attached. These rules
+automatically provide the system with the standard vibration characteristics of the
+components. Where a machine component is not available in the icon toolbox , a
+user-defined icon is used to define the component to the system.</p>
+
+<p>Additional detailed information regarding the number of blades on the turbine stages, ,
+the type of couplings, etc., is also specified via a graphical display. For machines with
+rolling-element bearings, a bearing database is provided for easy specification.</p>
+
+<p>This graphical approach to machine setup allows an infinite number of machine `models'
+to be easily created; the level and detail of which can be set by the user.</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_c.gif"><img border="0" src="images/image_c_small.gif" alt="image_c.gif (32551 bytes)" width="100" height="79"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 3<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">The graphical machine display showing the gas turbine, the
+    upper right shows a drawing of the actual gas turbine.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <th VALIGN="top" BGCOLOR="#FFFFFF"><!--mstheme--><font face="verdana, Arial, Helvetica">Box 1: Prolog Implementation details<!--mstheme--></font></th>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" BGCOLOR="#ffffff"><!--mstheme--><font face="verdana, Arial, Helvetica">Each of the components of the machine drawing has a
+    number of rules and symptoms attached describing the possible faults on that component.
+    The figure below shows the relationship between components, symptoms, rules and faults.<p>Each
+    component, symptom and rule is implemented as compound objects. New preset compound
+    objects can be defined directly in the diagnosis system to create new symptoms and rules
+    or can be done in an external tool used to defined factory set synptoms and rules.</p>
+    <p>The compound objects has the following layout:</p>
+    <p>Metacomponent(ComponentName,ComponentParameterList,Explanation)</p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">ComponentName specifies the name of the component e.g. Turbine Row<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">ComponentParameterList specifies the which informations the diagnosis system needs to
+        make a diagnosis, e.g. No. of blades on a Turbine Row.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Explanation contains textual information about the component.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>Metasymptom(SymptomID,SymptomSetup,SymptomCalculation, Explanation)</p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">SymptomId defined the name of the symptom<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">SymptomSetup defines the conditions and requirements for calculation the symptom - type
+        of transducer, type of measurement etc. and defined which components this symptom are
+        attached to.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">SymptomCalculation specifies the actual calculation of the symptom eg. a sum or a
+        difference between two other symptoms, or values of peaks extracted from frequency
+        spectra.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Explanation contains textual information about the symptom.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>metarule(Fault,RuleID,Certainty,ComponentSpecList,RuleConditionList, Explanation)</p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Fault specifies the the name of the faults diagnosed by the rule<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">RuleId specifies the name of the rule.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">ComponentSpecList specifies which components this rule is valid for.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">RuleConditionList specifies a list of rules with symptom limits which will indicate the
+        fault.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Explanation contains textual information about the rule.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>Basically the whole diagnosis system is based upon these three compound objects. The
+    role of the graphical machine editor is for each machine picture to store a set of
+    metacomponents with component parameters defined by the user, and metasymptoms and
+    metarules characteristic for the components comprising the machine.</p>
+    <p>The sections below will show in more detail how the diagnosis system uses these data
+    structures to create a diagnosis.<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" BGCOLOR="#ffffff"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_d.gif"><img border="0" src="images/image_d_small.gif" alt="image_d.gif (9555 bytes)" width="100" height="124"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" BGCOLOR="#ffffff"><!--mstheme--><font face="verdana, Arial, Helvetica">From the figure above the following information can be
+    extracted:
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Several components can be defined<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A symptom may be attached to several components (e.g. Sy-1 is attached to Component 1, 2
+        ....<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">One symptom can be based on the calculation of other symptoms (e.g. Sy-5 is calculated
+        from Sy-2 and Sy-3.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The same symptom may be used in several rules (e.g. Sy-1 is used in R-2 and R-5)<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">One Rule may be attached to several components. (e.g. R-4 is attached to both Component
+        1 and 2.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A Fault is the result of the evaluation of several rules (e.g. Fault 2 is the result of
+        the evaluation of R-5 and R-7.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h3><!--mstheme--><font color="#000000">Assigning symptoms<!--mstheme--></font></h3>
+
+<p>Once the machine is defined, the next stage in the initial setup is to assign the
+symptoms that will allow the system to diagnose faults. In vibration monitoring, symptoms
+would typically be peaks in a vibration spectrum, corresponding to the characteristic
+frequencies for the machine. During the diagnosis these symptoms are extracted from the
+vibration spectrum by peak search algorithms.. For example, the amplitude of the running
+speed (1X); the amplitude at twice the running speed (2X); the increase in amplitude at
+the blade passing frequency (BLPF), etc.). Another window is now used, this time to assign
+(connect) the symptoms to a specific monitoring point and measurement setup (see figure 4)
+defined in the monitoring system. </p>
+
+<p>The assignment procedure automatically selects the most appropriate measurement defined
+in the monitoring (data aquisition) system for the different types of symptoms by matching
+the details of the measurement setup with the requirements of the symptoms for the
+different types of faults. </p>
+
+<p>When making a diagnosis, the system will extract the symptom values from the
+measurement data, which are recorded and stored by the monitoring system at the selected
+point on the machine. </p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_e.gif"><img border="0" src="images/image_e_small.gif" alt="image_e.gif (14939 bytes)" width="100" height="58"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 4<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">The assignment window showing monitoring points on the left
+    connected to characteristic symptoms on the right.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <th VALIGN="top" BGCOLOR="#FFFFFF"><!--mstheme--><font face="verdana, Arial, Helvetica">Box2: Prolog Implementation details - Assignment
+    procedure<!--mstheme--></font></th>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" BGCOLOR="#ffffff"><!--mstheme--><font face="verdana, Arial, Helvetica">The problems of the assignment procedure is to ensure
+    that the properties of the selected measurement point in the monitoring system matches the
+    requirements of the symptom in order to make a correct calculation. Only if there is an
+    agreement, an assignment will be made. Each transducer may have up to twelve different
+    measurements. In a recursive loop it is checked which of the measurements are best suited
+    for each symptom.<p>Each symptom has the following main requirements:</p>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Correct Transducer Type of which around 15 different types are relevant.<br>
+        E.g. radial accelerometer, axial accelerometer, x accelerometer, y accelerometer, radial
+        displacement transducer, axial displacement transducer.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Correct measurement domain<br>
+        E.g. acceleration, velocity or displacement<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Correct measurement Type of which around 35 different types are relevant.<br>
+        E.g. Bandpass Measurement, Spectrum Measurement, Phase Measurement, Lowpass etc.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Correct Frequency Range. The frequency range of the measurement must be checked, if it
+        is too large the resolution is too low and the symptom cannot be extracted reliably from
+        the frequency spectrum. If it is too low, some of the components of the symptom may fall
+        out of the frequency range.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>The problem of matching the properties of the symptom with those of the measurement
+    system is elegantly solved by using the Prolog unification facilities in a series of
+    clauses where valid combinations of transducer and symptom requirements.</p>
+    <p>Example: </p>
+    <p>Here it is checked that the selected transducer type matches the transducer type (e.g.
+    Accelerometer) and the measurement direction and orientation (e.g. radial) as defined in
+    the compound object &quot;measreq&quot; which is a part of the symptom definition. In this
+    short example the bold element is matched against the bold cursive elements. The simple
+    and understandable way of writing these statements made it very easy for a non-programmer
+    with expertise in the measurement system to review the code.</p>
+      <!--mstheme--></font><pre><strong>domains
+</strong>MeasurementRequirements = measreq(SLIST, % Allowed transducertypes
+		BOOLEAN, % Acceleration required	BOOLEAN,	% Par_vel 
+		BOOLEAN, % Velocity required
+		BOOLEAN, % Other
+		MeasurementSpec, % Type of measurement
+		Direction, % Radial/Axial
+		Orientation); % Horizontal/Vertical</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre><strong>predicates</strong>
+  valid_transducertype(TransducerType, MeasRequirements)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre><strong>clauses</strong>
+  valid_transducertype(radial_accelerometer,measreq(Transducertypes,_,_,_,_,_,&quot;radial&quot;,_)) :- 
+	member(&quot;Accelerometer&quot;,Transducertypes),!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  valid_transducertype(axial_accelerometer,measreq(Transducertypes,_,_,_,_,_,&quot;axial&quot;,_)) :-
+	member(&quot;Accelerometer&quot;,Transducertypes),!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  valid_transducertype(radial_displ_transducer,measreq(Transducertypes,_,_,_,_,_,&quot;radial&quot;,_)) :- 
+	member(&quot;Proximity Probe&quot;,Transducertypes),!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  valid_transducertype(x_displ_transducer,measreq(Transducertypes,_,_,_,_,_,&quot;radial&quot;,&quot;hor&quot;)) :- 
+	member(&quot;Proximity Pair&quot;,Transducertypes),!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  valid_transducertype(y_displ_transducer,measreq(Transducertypes,_,_,_,_,_,&quot;radial&quot;,&quot;ver&quot;)) :- 
+	member(&quot;Proximity Pair&quot;,Transducertypes),!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Daily Operation<!--mstheme--></font></h2>
+
+<p>After the initial setup where machine data were entered and the connection between the
+monitoring system and the diagnosis software was made by the assignment procedure the
+system is ready for diagnosing faults. As this stage of the process may involve many users
+with different skills, the actual operation of a diagnosis has been cut down to a simple
+three mouse-click operation. All of the functions necessary to view, verify, or document a
+diagnosis are accessed from one screen display (see figure 5). Training in how to use the
+system for daily operation is therefore kept down to a minimum, and ensures that the
+operators focuses on what the diagnosis software tells them, rather than bothering about
+details of how to operate the software in order to get a diagnostic result.</p>
+
+<p>All diagnoses are displayed in a list, each one with an associated certainty level. </p>
+
+<p>The Certainty expresses the level of confidence in the diagnoses. Certainty must not be
+confused with </p>
+
+<p>probability. If a fault is diagnosed with a certainty of 63% this does NOT mean that
+the chance (or probability) for having that particular fault is 63%. The number 63%
+expresses that the symptoms indicating the fault to a degree of 63% matches the 'ideal'
+symptom values for that fault.</p>
+
+<p>The system is unique here in that it not only shows which faults are most likely
+(positive levels) but also which faults it not likely to be (negative levels) this is
+useful for focusing the user's attention away from wasteful paths of analysis. </p>
+
+<p>Another important aspect of the system is that it also demonstrates the integrity and
+weaknesses of your symptoms. Ideally, the symptoms for a fault are defined such they are
+`unique' and they cannot be confused with other faults. Unfortunately, this is not always
+possible, especially in situations where there are several faults present at the same time
+with similar symptoms. By showing all of the faults simultaneously and by providing a
+graphical display of the symptoms, the user is able to verify the integrity of the
+symptoms allocated. </p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_f.gif"><img border="0" src="images/image_f_small.gif" alt="image_f.gif (12426 bytes)" width="100" height="60"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 5<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">The diagnosis display<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <th VALIGN="top" BGCOLOR="#FFFFFF"><!--mstheme--><font face="verdana, Arial, Helvetica">Box 3: Prolog Implementation details - The symptom
+    calculation<!--mstheme--></font></th>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" BGCOLOR="#ffffff"><!--mstheme--><font face="verdana, Arial, Helvetica">This box will explain how the symptoms to be used in
+    the diagnosis are calculated. An explanation of how these symptoms are used in the
+    diagnosis is given in section 5. <p>A bootstrapping technique is used to resolve the
+    dependency and correct sequence of the symptom calculation. The backtracking and recursion
+    facilities of prolog used here, greatly simplifies the job for the programmer of
+    controlling the symptom calculation. Furthermore it simplifies the database structure as
+    no information about the interdependency of symptoms (as explained in Box1) and the
+    sequence of calculation has to be stored in the database. </p>
+    <p>The sequence of calculating a diagnosis for a machine is as follows:</p>
+    <ol>
+      <li>Find all rules attached to each component of the actual machine configuration (as shown
+        in Fig. 3)</li>
+      <li>Extract from the rules all symptoms to be calculated</li>
+      <li>Calculate the symptoms to be used in the diagnosis (the subject of this box)</li>
+      <li>Make an input vector with all the actual symptom values and a training vector with all
+        the rule limits and do the diagnosis. Refer to section 6.</li>
+    </ol>
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Before entering the recursive loop where symptoms are calculated, symptoms using the
+        same measurement data are grouped in a list of subgroups in order to avoid extra
+        operations on the measurement database.<br>
+        SympList = [ [S1, S2, S3], [S4, S5], [S6, S7,S8,S9] ]<br>
+        <!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Recursive loop 1:<br>
+        get_symptomgroup is a nondeterministic predicate which under backtracking (*) extracts
+        groups from SympList until a group is found where all symptoms can be calculated, that is,
+        groups where all dependencies for the symptoms can be resolved. There is no requirement to
+        the sequence of the symptoms in the group as the recursive loop will continue until all
+        symptoms has been calculated. calculate _symptoms1 contains another recursive loop to do
+        the actual calculation and keeps returning the remaining symptoms as a group unitil all
+        has been calculated.<br>
+        <!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Recursive loop 2: <br>
+        When no total groups can be calculated any more , Prolog backtracks to 2: where the two
+        nondeterministic predicates get_symptomgroup and get_symptom (*) under backtracking
+        extracts the remaining symptoms one by one, to be calculated. If there is symptoms left
+        which cannot be calculated the recursive loop 3: will set the status of these to
+        &quot;unknown&quot;<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>In the code example shown below all outputparameters are shown as bold text.</p>
+      <!--mstheme--></font><pre>% Stop criteria, inputlist is empty, all symptoms has been calculated or set to unknown
+calculate_symptoms1([],Values,Values) :- !.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% 1: A whole group can be calculated.
+calculate_symptoms(SympList,ValueBuffer,Values) :-
+	get_symptomgroup(SympList, SubSympList, SympListRest),
+	symptom_group_can_be_calculated(SubSympList,ValueBuffer),
+	get_data(SubSympList,MeasurementData),!,
+	calculate_symptoms1(SubSympList,MeasurementData,Buffer,
+	NewValueBuffer,SubSympRest),
+	append(SubSympRest,SympListRest,Rest),
+	calculate_symptoms(Rest,NewValueBuffer,Values).</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% 2: A whole group could not be calculated, 
+calculate_symptoms(SympList,ValueBuffer,Values) :-
+	get_symptomgroup(SympList, SubSympList, SympListRest),
+	get_symptom(SubSympList,SymptomRef),
+	symptom_can_be_calculated(SymptomRef,SubSympList,ValueBuffer),!,
+	get_data(SubSymptomList,MeasurementData),
+	calculate_symptoms1(SubSympList,MeasurementData,ValueBuffer,
+						NewValueBuffer,SubSympRest),
+	append(SubSymptomRest,SympListRest,Rest),
+	calculate_symptoms(Rest,NewValueBuffer,Values).</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% 3: Insert 'unknown' for symptoms which cannot be calculated.
+Calculate_symptoms(SympList,ValueBuffer,Values) :-
+	get_symptomgroup(SympList, SubSympList, SympListRest),
+	unknown_symptoms(SubSympList,ValueBuffer,NewValueBuffer),!,
+	calculate_symptoms(SympListRest,NewValueBuffer,Values).</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Implementing an Artificial Neural Network<!--mstheme--></font></h2>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_g.gif"><img border="0" src="images/image_g_small.gif" alt="image_g.gif (6638 bytes)" width="100" height="60"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 6<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">A neural network<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The principles and benefits of ANNs are well known, and commercially available
+ANN-shells are currently being used in a wide variety of different applications. Basically
+an ANN is a simplistic emulation of the biological neural network, consisting of
+artificial neurons (also called neurodes or processing elements) organised into layers. </p>
+
+<p>The input layer distributes the pattern throughout the network, the output layer
+generates an appropriate response and the middle (hidden) layers acts as a collection of
+`feature detectors'. Each feature detector neurode looks for a key feature (or features)
+in the input pattern, and is strongly stimulated (fired) when one is found. The output
+layer then constructs an appropriate output pattern based on a transfer function of the
+particular combination of features the middle layers have detected. The number of hidden
+layers used in the emulation depends on the complexity and accuracy of the network's
+transfer function.</p>
+
+<p>The presence (or the absence) of key features is indicated by the numeric weight values
+that are assigned to the neurode input connections. These weights indicate the relative
+importance of the input connections, provide the ANN with `memory', and thereby allow the
+network to `learn'. This approach allows ANN-based expert systems to be continuously
+modified with an updated set of training sample patterns for increased performance,
+without the need for programming changes or the complex re-construction of rule chains.
+And after the system has been modified, it can be put immediately into operation. The
+process of adjusting the factors in the network is called training. The objective of this
+training is to come to a point where the application of a set of inputs produces a desired
+set of outputs.</p>
+
+<p>One of the most popular type of commercial ANN-shells, and one of the easiest to
+implement, is the back propagation ANN. Back propagation uses &quot;Supervised
+Training&quot; where an input vector is paired with a target vector representing the
+desired output, together these are called training pairs. Usually a network is trained
+over a number of such training pairs. An input is applied, the output is compared to the
+desired, the error is fed back through the network and weights are changed in order to
+minimize the error. Training vectors are applied sequentially until the error is at an
+acceptable low level.</p>
+
+<p>Some Other types of ANN&#146;s use &quot;Unsupervised Training&quot; (Self
+Organization) here the training set consists solely of input vectors. During the training
+process the network weights are adjusted so that similar inputs produces similar outputs
+this is accomplished by a training algorithm that extracts statistical regularities from
+the training set.</p>
+
+<p>A marked disadvantage of back propagation for dynamic applications is the prohibitively
+large number of training samples required and the subsequently large training times
+required. For the fault diagnosis of machinery, as well as for many other dynamic
+applications, the acquisition of many case examples to cover all decision-making
+eventualities is difficult. Furthermore, when new training samples do become available,
+the whole training process must be re-started from the beginning.</p>
+
+<p>To avoid the problems associated with commercial shells, a ANN must be developed
+specifically for machine vibration analysis and diagnosis. Fundamentally, this is a
+basis-function ANN, widely used in advanced expert system applications due to its
+flexibility, simplicity, and rapid training. With this type of ANN, the designer has some
+knowledge of the specific application, and sets up the likely important features as a
+fixed set of feature detectors in the hidden layer(s). Instead of random weights,
+basis-function ANNs use fixed weights in the hidden layers (no feedback is used) that sets
+up a preset bias towards the features deemed important. As the feature detectors are
+already set, random incoming patterns of symptom values cannot be explicitly categorized
+as class A or class B, but are instead approximated to either class A or B.</p>
+
+<p>Another advantage of this approach is that because the designer has control over the
+workings of the hidden layers, the expert system is capable of explaining the reasoning
+behind its diagnoses. The system is completely open to the user, showing exactly which
+rules and symptoms were used to diagnose a fault. As commercial shell expert systems have
+no such control, the reasoning processes used in these systems are never obvious and often
+obscure.</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_h.gif"><img border="0" src="images/image_h_small.gif" alt="image_h.gif (3636 bytes)" width="100" height="80"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 7<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Simple example of a basis function implementation. Due to the
+    fixed weightings in the network, diagnostic results follow a normal or Gaussian
+    distribution.<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Training the system<!--mstheme--></font></h2>
+
+<p>A characteristic of Basis-function networks is that the training samples (rules) only
+need to be expressed as a number of simple statements or facts - not as a long set of
+chained rules. These facts are based upon a combination of theoretical results, experience
+and experimental data from case studies, and they are typically expressed as:</p>
+
+<p>IF Acc. &gt; xx m/s2 AND<br>
+Temp. &gt; yy deg C THEN<br>
+Fault z with Certainty x%</p>
+
+<p>IF Temp. &gt; 400 deg C AND<br>
+Press. &gt; 0.9 bar THEN<br>
+Fault z with Certainty y%</p>
+
+<p>When a pattern of measured symptom values is presented to the network, a statistical
+function calculates how close the measured symptom values are to the symptom values used
+in the training samples, to produce a possible diagnostic outcome (see Fig. 7). In
+practice, this means that a relatively few number of facts are needed to train the
+network, with considerably shortened training times. </p>
+
+<p>At least three facts are needed for the network to effectively interpolate between the
+training sample symptom values and the actual symptom values - a positive affirmative
+fact; a negative affirmative fact and a non-affirmative (don't know) fact. Essentially a
+positive affirmative fact states that for a specified symptom value, the network is 80%
+certain that the specified fault is present. The negative affirmative fact states that for
+the specified symptom value, the network is 20% certain that the specified fault is not
+present. The non-affirmative fact states that for a specified symptom value, the network
+is uncertain (0%) whether the fault is present or not. From experience, these certainty
+values have been shown to optimize the normalization process, and to thereby increase the
+speed and efficiency of the network. Using these values also makes the process of defining
+user facts simple and fast, and contributes to optimizing the diagnostic result.</p>
+
+<p>Before a diagnosis is made, the ANN is trained with all of the facts for a given fault
+(that is, the ANN's preset bias). In practice, this means that during system operation,
+input data is evaluated, in a sequential manner, using all of the facts associated with
+all of the fault types defined in the system. Using The fault &quot;Misalignment&quot; as
+an example, this follows the procedure: </p>
+
+<ol>
+  <li>The amplitude of the symptoms indicating misalignment are extracted from the measured
+    data.</li>
+  <li>The amplitude of the symptoms are evaluated by the statistical function from all of the
+    facts associated with misalignment.</li>
+  <li>The network outputs a total evaluated certainty value indicating how close the actual
+    pattern of symptoms are to the ideal pattern of symptoms which indicate misalignment. </li>
+  <li>Steps 1 to 3 are repeated for all other types of faults.</li>
+</ol>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="738" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="images/image_i.gif"><img border="0" src="images/image_i_small.gif" alt="image_i.gif (4512 bytes)" width="100" height="65"></a><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="11%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">Fig. 8<!--mstheme--></font></td>
+    <td WIDTH="89%" VALIGN="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">A training vector for each type of fault is applied in a
+    sequential manner<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>As a consequence of this method, the diagnostic result produces a list of certainty
+values - one for each type of fault detected by the network. Some faults may come out with
+a very low certainty value (for example 2%) indicating that one or more symptoms
+associated with the faults have increased slightly. Others may have a high certainty value
+(for example 76%), indicating that their associated symptoms have increased considerably.</p>
+
+<h2><!--mstheme--><font color="#000000">Customizing the system<!--mstheme--></font></h2>
+
+<p>The structure of the basis-function ANN allows users to easily and quickly introduce
+their own personal experience into the network via new training samples. For already
+existing diagnoses, the user can create and add completely new facts to the network, or
+edit facts that have been copied from the standard rulebase supplied with the system. The
+defined fact is associated to one particular machine component (in real life, a turbine
+stage or row, bearing, gearwheel, etc.) and becomes an integral characteristic of that
+component. </p>
+
+<p>User-defined facts can be used to influence any of the diagnoses in the system. If none
+of the supplied diagnoses are applicable, the user can also input a completely new
+diagnosis into the system. For example, if from the user's experience a specific pattern
+of measured symptom values indicates a fault not already detected by the system, the user
+can make a positive, negative and null fact from the symptom pattern, and add them to the
+user-defined rulebase under a new fault name. These facts can be immediately used by the
+system to diagnose the new fault. The network views the new facts as training samples for
+the specified diagnosis, and automatically handles the complex statistical interpolation
+process quickly and efficiently. </p>
+
+<p>In practice, any type of symptom can be defined in the system including frequency
+spectra or scalar measurements from the monitoring system; a specific frequency band in
+the spectrum; a process parameter such as temperature or pressure; an absolute value or a
+value relative to the reference measurement; a level value or a trend on historical data.</p>
+
+<h2><!--mstheme--><font color="#000000">Conclusion<!--mstheme--></font></h2>
+
+<p>`Humanizing' an expert system is the ultimate goal of all designers, especially those
+concerned with the area of dynamic applications. The idea is of course to produce
+effective and quality results even when the system is presented with unfamiliar or even
+incorrect information.</p>
+
+<p>The principles used in the design of the presented system removes the stringency of a
+conventional rule based system by introducing a more heuristic approach which makes the
+knowledge acquisition much easier. Updating the rule database by entering a new rule, or
+adjust an existing, can be done within minutes. The approach also makes it possible to let
+the users of the system add their own rules or modify existing rules, only by using their
+specialist knowledge of the application area, rather than being a specialist in expert
+systems.</p>
+
+<p>Using Prolog for this application has made it possible to concentrate on the logical
+structure of the program rather than bothering with details of the implementation and
+programming details of conventional programming languages. </p>
+
+<p>The extensive use of dynamic data structures in the design of this system, as
+facilitated by Prolog, is a necessity, as the different objects to be diagnosed (in this
+case machine structures) varies in size and complexity. </p>
+
+<p>The recursive techniques of Prolog is as made for the hierarchic structure of the
+system where a machine consists of a number of components, which has a number of rules
+attached, and with each of the rules referring to the symptoms which contains the actual
+values evaluated by the rules.</p>
+
+<p>The unification facilities of Prolog supported the connection to the data acquisition
+system as the problem on this interface is to match several characteristics of the
+transducers and measurement techniques of the data acquisition system, to several
+requirements defined by the symptoms in order to be calculated correctly. Doing the same
+job with &quot;case&quot; and &quot;if-then-else&quot; structures of a conventional
+programming language would be cumbersome.</p>
+
+<p>The unification techniques of multiple values also very well supports the state table
+approach when decoding a dialogue window by the setting of a new state of the dialogue as
+a result of a given combination of field values, or by giving a sensible message to the
+user.</p>
+
+<h2><!--mstheme--><font color="#000000">References<!--mstheme--></font></h2>
+
+<ol>
+  <li>1996, &#145;Automated Neural-network and User-defined Knowledge-based Diagnosis system
+    for users of Turbonachinery&#146; - Turbomachinery Maintenance Congress</li>
+  <li>1997, &#145;Effective Automatic Expert Systems for Dynamic Predictive Maintenance
+    Applications - The American Society of Mechanical Engineers, Paper No. 97-GT-64</li>
+  <li>Caudill, M., Butler, C., 1992, &quot;Understanding Neural Networks: Computer
+    Explorations, Volume 2 Advanced Networks&quot; - Massachusetts Institute of Technology</li>
+  <li>Medsker, L. R., 1994, &quot;Hybrid Neural Network and Expert Systems&quot; - Kluwer
+    Academic Publishers.</li>
+</ol>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

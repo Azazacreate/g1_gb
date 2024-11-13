@@ -1,0 +1,875 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>WebSolverSrc</title>
+<meta NAME="Version" CONTENT="8.0.3410">
+<meta NAME="Date" CONTENT="10/11/96">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+<code><font FACE="Courier New" SIZE="4"><b>
+
+<p>/***************************************************************************** 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Copyright (c) 1998 Prolog Development Center A/S<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>The Equation Solver. WEB version</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>Project: SOLVER32</p>
+
+<p>FileName: SOLVER32.PRO</p>
+
+<p>Purpose: The demonstration of the Solver Engine</p>
+
+<p>Written by: Victor Yukhtenko</p>
+
+<p>******************************************************************************/</p>
+
+<p>include</b></font><font FACE="Courier New" SIZE="2"> </font><font FACE="Courier New" SIZE="4">&quot;solver32.inc&quot;</p>
+<b>
+
+<p>include</b> </font><font FACE="Courier New" SIZE="5">&quot;pdcrunt.pre&quot;</p>
+</font><font FACE="Courier New" SIZE="4"><b>
+
+<p>include</b> &quot;solver.pre&quot;</p>
+<b>
+
+<p>include</b> &quot;cgitools.pre&quot;</p>
+<b>
+
+<p>include</b> &quot;cgitools.pro&quot;</p>
+<b>
+
+<p>CONSTANTS 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmC_VarPreset = 1000</p>
+    <p>htmC_VarVoid = 1010</p>
+    <p>htmC_VarSolved = 1020</p>
+    <p>htmC_VarNotSolved = 1030</p>
+    <p>htmC_SrcDataConflict = 1040</p>
+    <p>htmC_FinalDataConflict = 1050</p>
+    <p>htmC_InvalidData = 1060</p>
+    <p>htmC_VarNegative = 1070</p>
+    <p>htmC_VarZero = 1080</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>/****************************************************** 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Some predicate to debug CGI application</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>******************************************************/</p>
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>makePage(STRING message,STRING page)</p>
+    <p>sendPage(STRING message)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>makePage(Message,Page):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>Head1=&quot;Content-type: text/html\n\n&quot;,</p>
+        <p>Head2=&quot;&lt;html&gt;\n&quot;,</p>
+        <p>Head3=&quot;&lt;body&gt;\n&quot;,</p>
+        <p>Head4=&quot;&lt;/body&gt;\n&quot;,</p>
+        <p>Head5=&quot;&lt;/html&gt;\n&quot;,</p>
+        <p>format(Page,&quot;%s%s%s%s\n%s%s&quot;,Head1,Head2,Head3,Message,Head4,Head5).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>sendPage(Message):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>makePage(Message,Page),</p>
+        <p>write(Page).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>DATABASE</b> - htmDB_InputData 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><p>determ</b> htmB_TemplateFileName(STRING fileName)</p>
+    <p>htmB_VarValue(STRING varName,STRING varValue)</p>
+    <p>htmB_UserData(INTEGER solvingCase,STRING userTextForReplacement)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>DATABASE</b> - htmDB_OutputData 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>htmB_OutputVar(STRING varName,STRING varValue)</p>
+    <p>htmB_VarError(STRING varName,STRING msg)</p>
+    <p>htmB_RuleError(STRING msg)</p>
+    <p>htmB_OutputVarMark(STRING varName,STRING toBeReplacedToThis)</p>
+    <p>htmB_SrcDataConflict(STRING ruleNo,SLIST varList)</p>
+    <p>htmB_FinalDataConflict(STRING ruleNo,SLIST varList)</p>
+    <p>htmB_MSG(STRING)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>nondeterm</b> htmP_Member(parm,parmlist)</p>
+    <b><p>nondeterm</b> htmP_Member(SlvD_Var,SlvD_VarList)</p>
+    <b><p>nondeterm</b> htmP_Member(STRING,SLIST)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_Member(X,[X|_]).</p>
+    <p>htmP_Member(X,[_|Y]):-htmP_Member(X,Y).</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_Message : SlvPD_Message</p>
+    <p>htmP_ErrAndWarn : SlvPD_ErrAndWarn</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_Message(slvErrC_InvalidSourceSetData,StrListStr):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>term_str(slist,DataList,StrListStr),</p>
+        <p>DataList=[RuleNo|VarNameList],!,</p>
+        <p>assert(htmB_SrcDataConflict(RuleNo,VarNameList)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_Message(slvErrC_InvalidFinalSetData,StrListStr):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>term_str(slist,DataList,StrListStr),</p>
+        <p>DataList=[RuleNo|VarNameList],!,</p>
+        <p>assert(htmB_FinalDataConflict(RuleNo,VarNameList)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_Message(_MesageId,_StrMessage):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>format(MSG,&quot;SLV: %&quot;,_StrMessage),</p>
+        <p>assert(htmB_MSG(MSG)).</p>
+        <p>&nbsp;</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_ErrAndWarn(Pos,MessageText):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>ActualPos=Pos+1,</p>
+        <p>format(MSG,&quot;Error in Pos %. %&quot;,ActualPos,MessageText),</p>
+        <p>assert(htmB_MSG(MSG)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>procedure</b> htmP_GetCaseReaction(REAL varValue,INTEGER CaseCode,STRING
+    onCaseReaction)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_GetCaseReaction(Value,htmC_VarSolved,OnCaseReaction):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>Value&lt;0,</p>
+        <p>htmB_UserData(htmC_VarNegative,OnCaseReaction),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_GetCaseReaction(Value,htmC_VarSolved,OnCaseReaction):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>Value=0,</p>
+        <p>htmB_UserData(htmC_VarZero,OnCaseReaction),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_GetCaseReaction(_AnyValue,Case,OnCaseReaction):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_UserData(Case,OnCaseReaction),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_GetCaseReaction(_AnyValue,_AnyCase,&quot;&quot;).</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>procedure</b> htmP_MakeHTMLpage( STRING templateStr,STRING stringCollector,STRING
+    outHTMLStr)</p>
+    <p>htmP_SearchKeyString(STRING templateStr,STRING prefix,STRING varName,STRING suffix)</p>
+    <b><p>procedure</b> htmP_GetVarValue(STRING varName,STRING varValue)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_GetVarValue(VarName,VarValue):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_OutputVar(VarName,VarValue),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_GetVarValue(_VarName,&quot;&quot;).</p>
+    <p>&nbsp;</p>
+    <p>htmP_SearchKeyString(TemplateStr,Prefix,VarName,Suffix):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>searchChar(TemplateStr,'$',FoundPos),</p>
+        <p>NeededFoundPos=FoundPos-1,</p>
+        <p>frontstr(NeededFoundPos,TemplateStr,Prefix,RestString),</p>
+        <p>frontChar(RestString,_,IncludedVarNameStr),</p>
+        <p>searchChar(IncludedVarNameStr,'$',EndOfFieldPos),!,</p>
+        <p>frontStr(EndOfFieldPos,IncludedVarNameStr,VarNameWithDollar,Suffix),</p>
+        <p>concat(VarName,&quot;$&quot;,VarNameWithDollar).</p>
+        <p>&nbsp;</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_MakeHTMLpage(TemplateStr,Collector,OutHTMLStr):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmP_SearchKeyString(TemplateStr,Prefix,VarName,Suffix),</p>
+        <p>htmP_GetVarValue(VarName,VarValue),</p>
+        <p>format(NewCollector,&quot;%s%s%s&quot;,Collector,Prefix,VarValue),!,</p>
+        <p>htmP_MakeHTMLpage(Suffix,NewCollector,OutHTMLStr).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_MakeHTMLpage(Suffix,Collector,OutHTMLStr):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>format(OutHTMLStr,&quot;%s%s&quot;,Collector,Suffix).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>nondeterm</b> htmP_MarkConflictedVariables(INTEGER conflictType,STRING varName,SLIST
+    varNameList)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_MarkConflictedVariables(ConflictType,VarName,VarNameList):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmP_Member(VarName,VarNameList),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>concat(&quot;c&quot;,VarName,C_VarName),</p>
+            <p>htmP_GetCaseReaction(0.0,ConflictType,OnCaseReaction),</p>
+            <p>asserta(htmB_OutputVarMark(C_VarName,OnCaseReaction)).</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_BuildPage(STRING htmPage)</p>
+    <p>htmP_StoreMessage(STRING msg)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_StoreMessage(NewMsg):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>retract(htmB_OutputVar(&quot;mMsg&quot;,OldMsg)),!,</p>
+        <p>format(MSG,&quot;%s\n%s&quot;,OldMsg,NewMsg),</p>
+        <p>assert(htmB_OutputVar(&quot;mMsg&quot;,MSG)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_StoreMessage(NewMsg):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_OutputVar(&quot;mMsg&quot;,NewMsg)).</p>
+        <p>&nbsp;</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_VarError(VarName,Msg),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>htmP_StoreMessage(Msg),</p>
+            <p>htmP_GetCaseReaction(0.0,htmC_InvalidData,OnCaseReaction),</p>
+            <p>concat(&quot;c&quot;,VarName,C_VarName),</p>
+            <p>assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_RuleError(Msg),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>htmP_StoreMessage(Msg),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_SrcDataConflict(RuleNo,VarNameList),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>findall(VarName,htmP_MarkConflictedVariables(htmC_SrcDataConflict,VarName,VarNameList),_DummyL),</p>
+            <p>format(Msg,&quot;Source Data Conflict in RuleNo: %&quot;,RuleNo),</p>
+            <p>htmP_StoreMessage(Msg),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_FinalDataConflict(RuleNo,VarNameList),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>findall(VarName,htmP_MarkConflictedVariables(htmC_FinalDataConflict,VarName,VarNameList),_DummyL),</p>
+            <p>format(Msg,&quot;Solution Data Conflict in RuleNo: %&quot;,RuleNo),</p>
+            <p>htmP_StoreMessage(Msg),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_MSG(Msg),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>htmP_StoreMessage(Msg),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_OutputVarMark(C_VarName,OnCaseReaction),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>assert(htmB_OutputVar(C_VarName,OnCaseReaction)),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(HtmPage):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_TemplateFileName(TemlateFileName),</p>
+        <p>trap(file_str(TemlateFileName,_TemplateStr),_,fail),!,</p>
+        <p>htmP_MakeHTMLpage(_TemplateStr,&quot;&quot;,HtmPage),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildPage(HtmPage):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>makePage(&quot;Nothing Done. The Reason Unknown.&quot;,HtmPage).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_BuildOutputPage(STRING htmPage)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_BuildOutputPage(HtmPage):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>not(htmB_VarError(_,_)),</p>
+        <p>not(htmB_RuleError(_)),</p>
+        <p>not(htmB_SrcDataConflict(_,_)),</p>
+        <p>htmP_BuildPage(HtmPage),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>% Error situation handling 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>htmP_BuildOutputPage(&quot;&quot;):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>retractall(htmB_OutputVar(_,_)),</p>
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildOutputPage(&quot;&quot;):- % restoring User's input Data<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_VarValue(VarName,VarValue),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>concat(&quot;v&quot;,VarName,V_VarName),</p>
+            <p>assert(htmB_OutputVar(V_VarName,VarValue)),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildOutputPage(&quot;&quot;):- % preparing Case Marking<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmB_OutputVarMark(C_VarName,OnCaseReaction),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>assert(htmB_OutputVar(C_VarName,OnCaseReaction)),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildOutputPage(HtmPage):- % building Error Reaction Page<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmP_BuildPage(HtmPage),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_BuildOutputPage(HtmPage):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>makePage(&quot;Nothing Done. The Reason Unknown.&quot;,HtmPage).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>procedure</b> htmP_StoreVarData(<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>STRING varName,</p>
+            <p>INTEGER varSrcStatus,</p>
+            <p>INTEGER varResultStatus,</p>
+            <p>REAL varValue)</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_StoreVarData(VarName,slvC_SourceIsVoid,slvC_CurrentlyIsEmpty,Value):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>concat(&quot;v&quot;,VarName,V_VarName),</p>
+        <p>assert(htmB_OutputVar(V_VarName,&quot;&quot;)),</p>
+        <p>htmP_GetCaseReaction(Value,htmC_VarVoid,OnCaseReaction),</p>
+        <p>concat(&quot;c&quot;,VarName,C_VarName),</p>
+        <p>assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_StoreVarData(VarName,slvC_SourceIsVoid,slvC_CurrentlyResolved,Value):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>str_real(ValueStr,Value),</p>
+        <p>concat(&quot;v&quot;,VarName,V_VarName),</p>
+        <p>assert(htmB_OutputVar(V_VarName,ValueStr)),</p>
+        <p>htmP_GetCaseReaction(Value,htmC_VarSolved,OnCaseReaction),</p>
+        <p>concat(&quot;c&quot;,VarName,C_VarName),</p>
+        <p>assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_StoreVarData(VarName,slvC_SourceIsSet,slvC_CurrentlyResolved,Value):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>str_real(ValueStr,Value),</p>
+        <p>concat(&quot;v&quot;,VarName,V_VarName),</p>
+        <p>assert(htmB_OutputVar(V_VarName,ValueStr)),</p>
+        <p>htmP_GetCaseReaction(Value,htmC_VarPreset,OnCaseReaction),</p>
+        <p>concat(&quot;c&quot;,VarName,C_VarName),</p>
+        <p>assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_StoreVarData(VarName,slvC_SourceIsVoid,slvC_CurrentlyIsNeeded,Value):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>concat(&quot;v&quot;,VarName,V_VarName),</p>
+        <p>assert(htmB_OutputVar(V_VarName,&quot;&quot;)),</p>
+        <p>htmP_GetCaseReaction(Value,htmC_VarNotSolved,OnCaseReaction),</p>
+        <p>concat(&quot;c&quot;,VarName,C_VarName),</p>
+        <p>assert(htmB_OutputVarMark(C_VarName,OnCaseReaction)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_StoreVarData(_VarName,_VarSrcStatus,_VarResStatus,_Value).</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>procedure</b> htmP_GetSolverResults</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_GetSolverResults:-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>slvP_GetVarList(VarList),</p>
+        <p>htmP_Member(slvT_Var(VarName,VarSrcStatus,VarCurStatus,Value),VarList),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>htmP_StoreVarData(VarName,VarSrcStatus,VarCurStatus,Value),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_GetSolverResults.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>procedure</b> htmP_RunSolver</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_RunSolver:-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>not(htmB_VarError(_,_)), % valid Input Data</p>
+        <p>not(htmB_RuleError(_)), % valid Rule Script</p>
+        <p>slvP_ResolveNet,!,</p>
+        <p>htmP_GetSolverResults. % data stored in the internalDB</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_RunSolver:- % No proper solution.<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_MSG(&quot;No Solution.&quot;)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_TransformData(STRING varName,STRING srcValue,INTEGER varStatus,REAL value)
+    %(i,i,o,o)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_TransformData(VarName,ValueSrc,slvC_SourceIsVoid,0.0):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_VarValue(VarName,ValueSrc)),</p>
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_TransformData(_VarName,&quot;&quot;,slvC_SourceIsVoid,0.0):-!.</p>
+    <p>htmP_TransformData(_VarName,ValueSrc,slvC_SourceIsSet,ValueReal):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>trap(str_real(ValueSrc,ValueReal),_,fail),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_TransformData(VarName,ValueSrc,slvC_SourceIsVoid,0.0):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>format(MSG,&quot;The wrong Variable '%s' input. Must be a number instead of
+        '%s'.&quot;,VarName,ValueSrc),</p>
+        <p>assert(htmB_VarError(VarName,MSG)),</p>
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_InputData(STRING varName,STRING inputValue)</p>
+    <b><p>procedure</b> htmP_InsertUsrDescriptor(STRING usrEventName,STRING varValue)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES</p>
+</b>
+
+<p>% User predefined Variables to mark results:</p>
+
+<p>% Wrong Data Cases: 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>% usrOnInvalidData</p>
+    <p>% usrOnSrcConflict</p>
+    <p>% usrOnResConflict</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>% Resolvation Results: 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>% usrOnPreset</p>
+    <p>% usrOnVoid</p>
+    <p>% usrOnNotSolved</p>
+    <p>% usrOnSolved<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>%usrOnNegative</p>
+        <p>%usrOnZero</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;invaliddata&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_InvalidData,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;preset&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_VarPreset,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;void&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_VarVoid,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;solved&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_VarSolved,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;notsolved&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_VarNotSolved,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;srcconflict&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_SrcDataConflict,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;resconflict&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_FinalDataConflict,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;negative&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_VarNegative,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(&quot;zero&quot;,VarValue):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_UserData(htmC_VarZero,VarValue)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InsertUsrDescriptor(_EventName,_VarValue).</p>
+    <p>&nbsp;</p>
+    <p>htmP_InputData(VarName,VarValue):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>frontstr(5,VarName,UsrOn,RestString),</p>
+        <p>UsrOn=&quot;usrOn&quot;,!,</p>
+        <p>upper_lower(RestString,UsrVar),</p>
+        <p>htmP_InsertUsrDescriptor(UsrVar,VarValue).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InputData(&quot;slvINFO&quot;,_Any):-!.</p>
+    <p>htmP_InputData(&quot;slvMSG&quot;,_Any):-!.</p>
+    <p>htmP_InputData(&quot;slvTEMPL&quot;,TempFileName):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>assert(htmB_TemplateFileName(TempFileName)).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InputData(&quot;slvRULE&quot;,RuleSetScript):-!,<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>trap(slvP_SetRules(RuleSetScript),_,assert(htmB_RuleError(&quot;Wrong rule
+        script&quot;))).</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_InputData(VarName,VarValueSrc):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmP_TransformData(VarName,VarValueSrc,VarSourcStatus,VarValueReal),</p>
+        <p>slvP_SetVarList([slvT_Var(VarName,VarSourcStatus,VarSourcStatus,VarValueReal)]),!.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>PREDICATES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>procedure</b> htmP_LoadSolver(ParmList)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>CLAUSES 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>htmP_LoadSolver(ParmList):-<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>htmP_Member(parm(ParamName,ParamVal),Parmlist),<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <p>htmP_InputData(ParamName,ParamVal),</p>
+          <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+        <p>fail.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+    <p>htmP_LoadSolver(_ParmList).</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>GOAL 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  </code><!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>slvP_SetProperty(slvT_MessageCB(htmP_Message)),</p>
+    <p>slvP_SetProperty(slvT_ErrAndWarnCB(htmP_ErrAndWarn)),</p>
+    <p>ParmList = cgi_GetParmList(), </p>
+    <p>htmP_LoadSolver(ParmList),</p>
+    <p>htmP_RunSolver,</p>
+    <p>htmP_BuildOutputPage(HtmPage), % takes data from the internal DB</p>
+    <p>write(HtmPage).</p>
+    </font><font SIZE="5"><p>&nbsp;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+</font>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

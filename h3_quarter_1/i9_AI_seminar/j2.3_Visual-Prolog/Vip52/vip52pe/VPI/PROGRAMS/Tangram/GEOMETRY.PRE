@@ -1,0 +1,47 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: GEOMETRY.PRE
+ Purpose: Predicate definitions for GEOMETRY.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+
+global predicates
+
+	% Vectors
+	pt2vec(PT,PT,VECTOR)			- (i,i,o)
+	vectorLength(VECTOR,REAL)		- (i,o)
+	vectorNormal(VECTOR,VECTOR)		- (i,o) (i,vector(o,o))
+	vectorDot(VECTOR,VECTOR,REAL)		- (i,i,o)
+	vectorMultiply(VECTOR,REAL,VECTOR)	- (i,i,o) (i,i,vector(o,o))
+	vectorAdd(VECTOR,VECTOR,VECTOR)		- (i,i,o) (i,i,vector(o,o))
+	vectorSub(VECTOR,VECTOR,VECTOR)		- (i,i,o) (i,i,vector(o,o))
+	vectorNormalise(VECTOR,VECTOR)		- (i,o) (i,vector(o,o))
+	vectorOrthogonal(VECTOR,VECTOR)		- (i,o) (i,vector(o,o))
+	vectorProject(VECTOR,VECTOR,VECTOR)	- (i,i,o) (i,i,vector(o,o))
+	
+	% Angles, lines, points
+	turn(ANGLE,PT,PT,PT) 		- (i,i,i,o)
+	flip(LINE,PT,PT)		- (i,i,o)
+	slide(VECTOR,PT,PT)		- (i,i,o)
+	planePos:LINEPROCESS
+	planeNeg:LINEPROCESS
+	lpCrossing(PT,PT,PT,PT)		- (i,i,i,i)
+	ptDist(PT,PT,REAL)		- (i,i,o)
+	ptsReverse(PTLIST,PTLIST)	- (i,o)
+	ptsAppend(PTLIST,PTLIST,PTLIST)	- (i,i,o)
+	
+	% Polygons
+	polCenter(POLYGON,PT)			- (i,o)	
+	polTurn(ANGLE,PT,POLYGON,POLYGON)	- (i,i,i,o)
+	polFlip(LINE,POLYGON,POLYGON)		- (i,i,o)
+	polSlide(VECTOR,POLYGON,POLYGON)	- (i,i,o)
+	polInside(POLYGON,PT)			- (i,i)
+	polOverlap(POLYGON,POLYGON)		- (i,i)
+	polNear(POLYGON,POLYGON,REAL)		- (i,i,i)
+	polOrientation(POLYGON,ORIENTATION)	- (i,o)
+	
+	

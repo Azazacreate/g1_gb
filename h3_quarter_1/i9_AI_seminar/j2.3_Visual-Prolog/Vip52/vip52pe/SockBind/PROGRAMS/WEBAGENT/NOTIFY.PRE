@@ -1,0 +1,18 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  WEBAGENT
+ FileName: NOTIFY.PRE
+ Purpose: Predicate definitions for NOTIFY.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  notify_notifdialog_Create(WINDOW Parent, NOTIFY_SETTS In , NOTIFY_SETTS Out ) - (i,i,o)
+  INTEGER dlg_choose_profile_name_Create(WINDOW Parent, STRING ProfileName) - (i,o)
+%END_DECL
+  notify_send_notifications(NOTIFY_LIST Lst, STRING Comment, STRING ProfileName ) - (i,i,i)

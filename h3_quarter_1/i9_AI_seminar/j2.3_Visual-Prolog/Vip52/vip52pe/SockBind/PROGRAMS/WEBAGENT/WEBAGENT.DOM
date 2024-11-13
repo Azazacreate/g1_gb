@@ -1,0 +1,56 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  WEBAGENT
+ FileName: WEBAGENT.DOM
+ Purpose: Domain definitions for WEBAGENT.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+CONSTANTS
+  wa_mess = 0x550
+  
+GLOBAL DOMAINS
+  LOG_FILE = log(BOOLEAN IsLog,STRING LogFile,BOOLEAN IsDbg,STRING DbgFile)
+  BRS = browser(INTEGER,STRING,STRING)
+  PROXY = proxy(BOOLEAN Proxy,STRING ProxyName,USHORT ProxyPort)
+  NOTIFY_PER = notify( STRING NameAddr, INTEGER Mode ) %Mode - message/e_mail
+  NOTIFY_LIST = NOTIFY_PER*
+  NOTIFY_SETTS = notify_setts( NOTIFY_LIST, STRING EmailProfileName )
+  AUTHENTICATION = auth(BOOLEAN Auth, BINARY NamePwd)
+  SETTINGS = setts(STRING Levels, BOOLEAN FetchPath, NOTIFY_SETTS, STRING TargetDir, AUTHENTICATION)
+  STATISTICS = stat(STRING Time)
+  
+  WA_REFERENCE = wa_ref(STRING Url, STRING LocalFileName)
+  WA_REFS_LIST = WA_REFERENCE*
+  
+  SETDIRPROC = procedure ( INTEGER ControlId, STRING OldValue, STRING NewValue ) - (i,i,o)
+  
+GLOBAL DATABASE - diff
+  determ  on_work
+
+  determ log_wind(WINDOW)
+  determ dbg_wind(WINDOW)
+  determ grid_win(WINDOW)
+  determ wa_dialog_win(WINDOW)
+  determ wa_window(WINDOW)
+  entry_setts_db(WINDOW,INTEGER Row) 
+    
+  row_remote(INTEGER,STRING,USHORT,BOOLEAN,INTEGER RestLevel)
+  row_lboxwin(INTEGER Row,WINDOW LboxWin)
+  
+  row_timer(INTEGER Row, LONG Timer, LONG RestTime)
+  row_next_timer(INTEGER Row, STRING NextTimer)
+  
+  to_answer_http(INTEGER, WA_REFERENCE, HTTPLAY_REQUEST,INTEGER Req_level)
+  to_send_req(INTEGER, WA_REFERENCE, INTEGER, BOOLEAN)	%b_false - for sending, b_true - sent, but not received
+  to_conn(SOCKET,INTEGER Row, STRING Host, USHORT Port, STRING RelPath)	%to find_host
+ 
+  file_refs(INTEGER Row, WA_REFERENCE Node, WA_REFS_LIST SonsRefs, WA_REFS_LIST ParentsRefs ) %Node is unique
+  already_req(INTEGER Row, WA_REFERENCE, HTTPLAY_DATE Date, BOOLEAN Al_done)
+GLOBAL DATABASE - intern
+  determ options( USHORT NumberOfConnections, LOG_FILE, PROXY, BRS, STRING ResFile, BOOLEAN ClearStartUP)
+  determ cols_width(INTEGER Col1,INTEGER Col2,INTEGER Col3,INTEGER Col4)
+  uri_entry(INTEGER Row, STRING Status, STRING URI, STRING Timer, SETTINGS, STATISTICS, COLOR ForeC, COLOR BackC)
+  done_lst(INTEGER Row, STRING Uri)

@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) My Company<br>
+<br>
+Project: HARDWARE<br>
+FileName: HARDWARE.PRO<br>
+Purpose: No description<br>
+Written by: Visual Prolog<br>
+Comments:<br>
+******************************************************************************/<br>
+include &quot;cgiexam.inc&quot;<br>
+<br>
+DOMAINS<br>
+d = integer<br>
+<br>
+DATABASE - inp<br>
+inp (D,D)<br>
+<br>
+PREDICATES<br>
+not_(D,D)<br>
+and_(D,D,D)<br>
+or_(D,D,D)<br>
+xor_(D,D,D)<br>
+<br>
+CLAUSES<br>
+not_(1,0). not_(0,1).<br>
+and_(0,0,0). and_(0,1,0).<br>
+and_(1,0,0). and_(1,1,1).<br>
+or_(0,0,0). or_(0,1,1).<br>
+or_(1,0,1). or_(1,1,1).<br>
+<br>
+% See the documentarion for the XOR circuit<br>
+xor_(Input1,Input2,Output):-<br>
+&nbsp;&nbsp;&nbsp; not_(Input1,N1),<br>
+&nbsp;&nbsp;&nbsp; not_(Input2,N2),<br>
+&nbsp;&nbsp;&nbsp; and_(Input1,N2,N3),<br>
+&nbsp;&nbsp;&nbsp; and_(Input2,N1,N4),<br>
+&nbsp;&nbsp;&nbsp; or_(N3,N4,Output).<br>
+&nbsp;&nbsp;&nbsp; <br>
+PREDICATES<br>
+nondeterm member(parm,parmlist)<br>
+runme(parmlist)<br>
+legal(D)<br>
+CLAUSES<br>
+member (X,[X|_]).<br>
+member (X,[_|Y]):-member(X,Y).<br>
+<br>
+legal (1). legal (0).<br>
+&nbsp;&nbsp;&nbsp; <br>
+runme(Parmlist) :-<br>
+&nbsp;&nbsp;&nbsp; member (parm(&quot;i1&quot;,S1),ParmList),<br>
+&nbsp;&nbsp;&nbsp; member (parm(&quot;i2&quot;,S2),ParmList),<br>
+&nbsp;&nbsp;&nbsp; trap (str_int(S1,I1),_,fail),<br>
+&nbsp;&nbsp;&nbsp; trap (str_int(S2,I2),_,fail),<br>
+&nbsp;&nbsp;&nbsp; legal(I1),<br>
+&nbsp;&nbsp;&nbsp; legal(I2),!,<br>
+&nbsp;&nbsp;&nbsp; xor_(I1,I2,Out),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;Input 1 = &quot;,I1),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;br&gt;Input 2 = &quot;,I2),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;Output = &quot;,Out).<br>
+runme (_) :-<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;Illegal input values. Only 0 and 1 are
+allowed.\n&quot;).<br>
+<br>
+GOAL<br>
+write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; ParmList = cgi_GetParmList(),<br>
+&nbsp;&nbsp;&nbsp; runme(ParmList),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>Do_Section_of Action</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Do_Section_of Action'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Do_Section_of Action</FONT>
+<P ALIGN=LEFT>The action do_section_of takes one argument: a parameter of the type category. The action is an alternative to the often used sentences in section declarations: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>if &lt;category parameter name&gt; = &lt;option1&gt; do &lt;option1&gt; 
+<P ALIGN=LEFT>if &lt;category parameter name&gt; = &lt;option2&gt; do &lt;option2&gt; 
+<P ALIGN=LEFT>...</FONT> 
+<P ALIGN=LEFT>Instead of listing all the if-statements corresponding to the possible options, you can simply write: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>do_section_of &lt;category parameter name&gt;</FONT> 
+<P ALIGN=LEFT>In a consultation session the value of the parameter will determine to which section, the control will be transferred. If the parameter hasn't got a value, ESTA evaluates the parameter first and the obtained value is then used as reference to the corresponding section. The functionality of the do_section_of and the do action is exactly the same. The difference is that you don't have to write all the equal sentences with the do-statements, but instead only one sentence. Remember that the option names of the category parameter must correspond to section names in the knowledge base. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT>This example is taken from the supplied knowledge base CAR.KB: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start 'main section' 
+<P ALIGN=LEFT>do_section_of problem 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>parameter problem : 'the problem with your car' 
+<P ALIGN=LEFT>type category 
+<P ALIGN=LEFT>explanation 
+<P ALIGN=LEFT>'Identify the problem with your car as closely as you can. Only those listed are dealt with in this knowledge base.' 
+<P ALIGN=LEFT>options 
+<P ALIGN=LEFT>starting_problems - 'starting problems' 
+<P ALIGN=LEFT>overheating - 'the engine gets overheated' 
+<P ALIGN=LEFT>smell_of_gasoline - 'the car smells of gasoline' 
+<P ALIGN=LEFT>bad_running - 'the engine runs badly' 
+<P ALIGN=LEFT>brakes - 'the brakes' 
+<P ALIGN=LEFT>vibration - 'excessive vibrations' 
+<P ALIGN=LEFT>wiper_motor - 'the wiper motors' 
+<P ALIGN=LEFT>light_problem - 'the lights' 
+<P ALIGN=LEFT>horn_problem - 'a faulty horn'. 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>question 
+<P ALIGN=LEFT>'What is the problem with your ' car ' ?' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>picture 'car'</FONT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

@@ -1,0 +1,141 @@
+<html>
+
+<head>
+<title>Known&nbsp; Problems in the SCO and Linux&nbsp; Versions</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h5 align="right"><!--mstheme--><font color="#000000">Visual Prolog Technical Support<!--mstheme--></font></h5>
+<h2><!--mstheme--><font color="#000000">Problems Known in the SCO and Linux&nbsp; Versions of Visual Prolog<!--mstheme--></font></h2>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Problems in the SCO and Linux of Visual Prolog 5.1, build 564<!--mstheme--></font></h4>
+  <p>If you have problems with SCO and Linux&nbsp; versions of Visual Prolog,
+  you can <a href="../patches/p50to51/sco_linux.htm">download Linux or SCO UNIX
+  version</a> of Visual Prolog 5.1, build 565 (Personal Edition).<br>
+  The download is free for all&nbsp; users.</p>
+  <p>If you are a registered user, you may order the latest versions directly
+  from <a href="mailto:support@visual-prolog.com">Visual Prolog Support
+  Department</a>. In this case, we will send you a .zip file (about 600Kb) by
+  e-mail.&nbsp; Do not forget to send us your product serial number.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog 5.0, 5.02,&nbsp;
+  5.1 (build 564).</p>
+  <h4 align="left"><!--mstheme--><font color="#000000">The 5.1 Linux version is incompatible with some GNU versions.<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">R990521.01<!--mstheme--></font></h6>
+  <p align="left">The 5.1 Linux version is incompatible with some GNU versions
+  different from GNU C 2.7.2.3. When linking statically under these versions the
+  reference to `_IO_putc' is undefined.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.1.
+  <!--webbot bot="PurpleText" preview="Solved" --></p>
+  <p align="left">Fixed in Visual Prolog 5.2.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Visual Prolog 5.1 Linux Version does not support RedHat 6.0<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990726.01<!--mstheme--></font></h6>
+  <p>When statically linking under RedHat 6.0, the references to _IO_stdin_,
+  _IO_stdout_, and _IO_stderr_ are undefined.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.1
+  (builds 564, 565).</p>
+  <p align="left">Fixed in Visual Prolog 5.2.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Segmentation Fault under Linux<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990825.05:&nbsp;&nbsp;&nbsp; BUG<!--mstheme--></font></h6>
+  <p>If a program creates a long list (more than 600 elements) and then
+  quicksorts it several times, the first write occurs, but then a segmentation
+  fault is generated.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.1.<br>
+  Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000">Segmentation Fault under Linux, while using the retract predicate<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990609.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5><!--mstheme--><font color="#000000"><a href="unix/segmentation_fault_under_linux_retract_example.htm">Example</a><!--mstheme--></font></h5>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.1.<br>
+  Fixed in Visual Prolog 5.2.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <p align="left">Replacing of (_) with a varible name solves the problem</p>
+  <!--mstheme--></font><pre><span style="color:black">%% The following code</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre><span style="color: black">% </span><span style="color:black"> will cause a core dump!</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre><span style="color:black"><span style="mso-spacerun: yes">   </span>retract(stringdb(_)),<span style="mso-spacerun: yes"> </span></span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre><span style="color:black">%% The following code WILL work instead!</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre><span style="color:black"><span style="mso-spacerun: yes">   </span>%retract(stringdb(P7)), </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre><span style="color:black"><span style="mso-spacerun: yes">   </span>%write(P7),nl,</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Visual Prolog 5.1 do not provide the possibility to build a project
+  including more than one module<!--mstheme--></font></h4>
+  <p>Visual Prolog 5.1 UNIX versions do not provide the possibility to build a
+  project including more than one module. The Linux compiler will not compile
+  unless the source module contains a goal.</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.1.</p>
+  <p align="left">Fixed in Visual Prolog 5.2.</p>
+  <h4 align="left"><!--mstheme--><font color="#000000">Core dump under Linux<!--mstheme--></font></h4>
+  <p>Opposite to 32-bit Windows and OS/2 versions, there is no exceptions
+  handling under Linux. All such fatal errors cause the standard core dump (in
+  the case of the stack overflow, for example).</p>
+  <h4><!--mstheme--><font color="#000000">Absence of wild characters support under Linux/SCO Unix<!--mstheme--></font></h4>
+  <p>Problem</p>
+  <p>There is no special support for wild characters in file names, since, for
+  example, &quot;*&quot; and &quot;*.*&quot; are valid names for files under
+  Linux/Unix. Therefore, for example, the following code:</p>
+  <!--mstheme--></font><pre>Str=”/usr/local/PDCProlog/”, </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>concat(Str,”*.*”,FinalStr), </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>trap(existfile(FinalStr),_,fail),!. </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p>will succeed only if there exists a file &quot;<code>/usr/local/PDCProlog/*.*</code>&quot;</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.2
+  and previous versions.</p>
+  <h4><!--mstheme--><font color="#000000">Reference variables do not work properly under Linux/SCO Unix<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R000324.003:&nbsp;&nbsp; BUG<!--mstheme--></font></h6>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;Visual Prolog&nbsp;&nbsp; 5.1.<br>
+  Fixed in Visual Prolog 5.2.</p>
+</blockquote>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

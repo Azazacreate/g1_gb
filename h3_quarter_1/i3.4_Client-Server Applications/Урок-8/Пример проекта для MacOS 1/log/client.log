@@ -1,0 +1,345 @@
+2019-06-25 21:59:38,996 INFO       client     Запущен клиент
+2019-06-25 21:59:39,000 WARNING    client     Неудачная попытка подключения к серверу! 
+ Ошибка Traceback (most recent call last):
+  File "/Users/alex/eclipse-workspace/CS/client.py", line 62, in <module>
+    sock.connect((arg["a"], arg["p"]))
+ConnectionRefusedError: [Errno 61] Connection refused
+
+2019-06-25 21:59:51,548 INFO       client     Запущен клиент
+2019-06-25 21:59:51,612 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-25 21:59:51,612 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489191.6126158, 'user': {'account_name': 'alex'}}
+2019-06-25 21:59:56,668 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:00:51,245 INFO       client     Запущен клиент
+2019-06-25 22:00:51,326 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-25 22:00:51,327 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489251.326915, 'user': {'account_name': 'alex'}}
+2019-06-25 22:00:56,013 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:01:39,084 INFO       client     Запущен клиент
+2019-06-25 22:01:39,090 INFO       client     Запущен клиент
+2019-06-25 22:01:39,094 INFO       client     Запущен клиент
+2019-06-25 22:01:39,102 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:01:39,102 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489299.102738, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:01:39,106 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:01:39,106 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489299.106535, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:01:39,108 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:01:39,108 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489299.1087968, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:01:39,133 INFO       client     Запущен клиент
+2019-06-25 22:01:39,137 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:01:39,138 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:01:39,138 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:01:39,144 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:01:39,144 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489299.1448379, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:01:39,343 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:02:14,463 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489334.463331, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'hi'}
+2019-06-25 22:02:25,412 INFO       client     alex: От сервера потоком получено сообщение {'action': 'message', 'time': 1561489334.525215, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'hi'}
+2019-06-25 22:02:40,560 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489360.5599282, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'what'}
+2019-06-25 22:02:46,342 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489366.342548, 'to_account': 'alex', 'user': {'account_name': 'Client1'}, 'message': ''}
+2019-06-25 22:02:49,545 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489369.545701, 'to_account': 'alex', 'user': {'account_name': 'Client1'}, 'message': 'no'}
+2019-06-25 22:02:55,002 INFO       client     alex: От сервера потоком получено сообщение {'action': 'message', 'time': 1561489360.63934, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'what'}
+2019-06-25 22:03:22,938 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489402.9381802, 'to_account': 'dfg', 'user': {'account_name': 'Client1'}, 'message': 'sf'}
+2019-06-25 22:05:41,078 INFO       client     Запущен клиент
+2019-06-25 22:05:41,082 INFO       client     Запущен клиент
+2019-06-25 22:05:41,097 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:05:41,097 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489541.097402, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:05:41,101 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:05:41,101 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489541.10172, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:05:41,106 INFO       client     Запущен клиент
+2019-06-25 22:05:41,111 INFO       client     Запущен клиент
+2019-06-25 22:05:41,123 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:05:41,123 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489541.123124, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:05:41,123 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:05:41,124 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:05:41,124 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:05:41,125 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:05:41,125 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489541.12548, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:05:41,328 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:06:38,186 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489598.186181, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'sdf'}
+2019-06-25 22:07:43,307 INFO       client     Запущен клиент
+2019-06-25 22:07:43,308 INFO       client     Запущен клиент
+2019-06-25 22:07:43,310 INFO       client     Запущен клиент
+2019-06-25 22:07:43,323 INFO       client     Запущен клиент
+2019-06-25 22:07:43,324 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:07:43,324 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489663.324765, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:07:43,325 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:07:43,326 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:07:43,326 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489663.326049, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:07:43,326 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489663.326132, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:07:43,332 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:07:43,333 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489663.333087, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:07:43,693 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:07:43,694 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:07:43,695 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:07:43,696 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:08:13,850 INFO       client     Запущен клиент
+2019-06-25 22:08:13,852 INFO       client     Запущен клиент
+2019-06-25 22:08:13,865 INFO       client     Запущен клиент
+2019-06-25 22:08:13,866 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:08:13,866 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489693.866504, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:08:13,868 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:08:13,869 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489693.869035, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:08:13,876 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:08:13,877 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489693.876962, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:08:13,887 INFO       client     Запущен клиент
+2019-06-25 22:08:13,896 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:08:13,896 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561489693.896443, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:08:14,606 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:08:14,607 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:08:14,608 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:08:14,609 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:09:17,316 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489757.315865, 'to_account': 'Client1', 'user': {'account_name': 'Client1'}, 'message': 'asdf'}
+2019-06-25 22:09:17,508 INFO       client     Client1: От сервера потоком получено сообщение {'action': 'message', 'time': 1561489757.501473, 'to_account': 'Client1', 'user': {'account_name': 'Client1'}, 'message': 'asdf'}
+2019-06-25 22:09:26,385 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561489766.3857641, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdf'}
+2019-06-25 22:14:48,589 INFO       client     Запущен клиент
+2019-06-25 22:14:48,596 INFO       client     Запущен клиент
+2019-06-25 22:14:48,604 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:14:48,604 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561490088.604641, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:14:48,608 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:14:48,609 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561490088.608921, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:14:48,609 INFO       client     Запущен клиент
+2019-06-25 22:14:48,620 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-25 22:14:48,621 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561490088.621053, 'user': {'account_name': 'Client2'}}
+2019-06-25 22:14:48,630 INFO       client     Запущен клиент
+2019-06-25 22:14:48,640 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-25 22:14:48,640 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561490088.6407082, 'user': {'account_name': 'Client1'}}
+2019-06-25 22:14:49,397 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:14:49,397 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:14:49,398 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:14:49,399 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:18:28,965 INFO       client     Запущен клиент
+2019-06-25 22:18:29,025 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-25 22:18:29,025 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561490309.0253382, 'user': {'account_name': 'alex'}}
+2019-06-25 22:18:33,111 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-25 22:20:11,362 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490411.362462, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'asdgf'}
+2019-06-25 22:20:24,798 INFO       client     alex: От сервера потоком получено сообщение {'action': 'message', 'time': 1561490411.497497, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'asdgf'}
+2019-06-25 22:20:53,370 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490453.370826, 'to_account': 'Client1', 'user': {'account_name': 'Client1'}, 'message': 'asdf'}
+2019-06-25 22:20:53,395 INFO       client     Client1: От сервера потоком получено сообщение {'action': 'message', 'time': 1561490453.388917, 'to_account': 'Client1', 'user': {'account_name': 'Client1'}, 'message': 'asdf'}
+2019-06-25 22:21:02,792 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490462.792227, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdf'}
+2019-06-25 22:21:10,270 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490470.270253, 'to_account': 'alex', 'user': {'account_name': 'Client1'}, 'message': 'sdfgv'}
+2019-06-25 22:21:15,705 INFO       client     alex: От сервера потоком получено сообщение {'action': 'message', 'time': 1561490470.455612, 'to_account': 'alex', 'user': {'account_name': 'Client1'}, 'message': 'sdfgv'}
+2019-06-25 22:21:28,413 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490488.412964, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'vcx'}
+2019-06-25 22:21:31,398 INFO       client     alex: От сервера потоком получено сообщение {'action': 'message', 'time': 1561490488.50098, 'to_account': 'alex', 'user': {'account_name': 'Client2'}, 'message': 'vcx'}
+2019-06-25 22:21:58,122 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490518.122522, 'to_account': 'CLients2cvxzxcv', 'user': {'account_name': 'Client1'}, 'message': ''}
+2019-06-25 22:22:06,943 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561490526.94327, 'to_account': 'vli', 'user': {'account_name': 'Client1'}, 'message': ''}
+2019-06-26 06:28:44,683 INFO       client     Запущен клиент
+2019-06-26 06:28:44,686 INFO       client     Запущен клиент
+2019-06-26 06:28:44,686 INFO       client     Запущен клиент
+2019-06-26 06:28:44,689 INFO       client     Запущен клиент
+2019-06-26 06:28:44,701 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 06:28:44,701 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561519724.701484, 'user': {'account_name': 'Client2'}}
+2019-06-26 06:28:44,702 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 06:28:44,702 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561519724.702512, 'user': {'account_name': 'Client2'}}
+2019-06-26 06:28:44,703 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 06:28:44,704 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561519724.7040372, 'user': {'account_name': 'Client1'}}
+2019-06-26 06:28:44,704 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 06:28:44,704 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561519724.704635, 'user': {'account_name': 'Client1'}}
+2019-06-26 06:28:44,891 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:28:44,894 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:28:44,895 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:28:44,897 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:29:14,706 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561519754.706618, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'asf'}
+2019-06-26 06:44:57,294 INFO       client     Запущен клиент
+2019-06-26 06:44:57,303 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 06:44:57,303 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561520697.303524, 'user': {'account_name': 'alex'}}
+2019-06-26 06:44:57,564 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:45:19,300 INFO       client     Запущен клиент
+2019-06-26 06:45:19,310 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 06:45:19,310 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561520719.310196, 'user': {'account_name': 'alex'}}
+2019-06-26 06:45:31,116 INFO       client     Запущен клиент
+2019-06-26 06:45:31,125 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 06:45:31,125 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561520731.1253388, 'user': {'account_name': 'alex'}}
+2019-06-26 06:45:32,051 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:45:35,664 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561520735.663966, 'to_account': 'asfd', 'user': {'account_name': 'alex'}, 'message': ''}
+2019-06-26 06:48:51,406 INFO       client     Запущен клиент
+2019-06-26 06:48:51,415 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 06:48:51,415 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561520931.41535, 'user': {'account_name': 'alex'}}
+2019-06-26 06:48:51,568 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 06:48:53,845 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561520933.8449101, 'to_account': 'dsgz', 'user': {'account_name': 'alex'}, 'message': ''}
+2019-06-26 06:51:16,352 INFO       client     Запущен клиент
+2019-06-26 06:51:16,360 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 06:51:16,360 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561521076.360786, 'user': {'account_name': 'alex'}}
+2019-06-26 06:51:29,898 INFO       client     Запущен клиент
+2019-06-26 06:51:29,907 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 06:51:29,907 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561521089.907586, 'user': {'account_name': 'alex'}}
+2019-06-26 07:05:09,740 INFO       client     Запущен клиент
+2019-06-26 07:05:09,749 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:05:09,750 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561521909.7499871, 'user': {'account_name': 'alex'}}
+2019-06-26 07:05:27,527 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:08:43,538 INFO       client     Запущен клиент
+2019-06-26 07:08:43,547 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:08:43,548 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561522123.547939, 'user': {'account_name': 'alex'}}
+2019-06-26 07:09:01,450 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:10:11,387 INFO       client     Запущен клиент
+2019-06-26 07:10:11,396 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:10:11,396 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561522211.3961291, 'user': {'account_name': 'alex'}}
+2019-06-26 07:10:26,631 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:10:39,234 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561522239.234515, 'to_account': 'cv', 'user': {'account_name': 'alex'}, 'message': 'sghsdfg'}
+2019-06-26 07:14:14,725 INFO       client     Запущен клиент
+2019-06-26 07:14:14,733 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:14:14,733 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561522454.733845, 'user': {'account_name': 'alex'}}
+2019-06-26 07:14:15,627 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:14:19,737 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561522459.7368908, 'to_account': 'sdf', 'user': {'account_name': 'alex'}, 'message': 'adg ads'}
+2019-06-26 07:16:57,950 INFO       client     Запущен клиент
+2019-06-26 07:16:57,959 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:16:57,959 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561522617.95932, 'user': {'account_name': 'alex'}}
+2019-06-26 07:16:58,987 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:17:01,581 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561522621.581197, 'to_account': 'dfg', 'user': {'account_name': 'alex'}, 'message': 'sdfg sdfg'}
+2019-06-26 07:20:32,210 INFO       client     Запущен клиент
+2019-06-26 07:20:32,220 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:20:32,220 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561522832.220595, 'user': {'account_name': 'alex'}}
+2019-06-26 07:20:32,632 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:20:35,038 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561522835.0382888, 'to_account': 'szdf', 'user': {'account_name': 'alex'}, 'message': 'sfh'}
+2019-06-26 07:24:05,556 INFO       client     Запущен клиент
+2019-06-26 07:24:05,564 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'alex'}) из функции wrapper
+2019-06-26 07:24:05,565 INFO       client     alex: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523045.564975, 'user': {'account_name': 'alex'}}
+2019-06-26 07:24:06,026 INFO       client     alex: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:24:08,881 INFO       client     alex:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523048.88182, 'to_account': 'asdf', 'user': {'account_name': 'alex'}, 'message': 'sdgh'}
+2019-06-26 07:24:52,965 INFO       client     Запущен клиент
+2019-06-26 07:24:52,971 INFO       client     Запущен клиент
+2019-06-26 07:24:52,978 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:24:52,978 INFO       client     Запущен клиент
+2019-06-26 07:24:52,978 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523092.97855, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:24:52,983 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:24:52,983 INFO       client     Запущен клиент
+2019-06-26 07:24:52,984 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:24:52,984 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523092.98446, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:24:52,988 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:24:52,989 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:24:52,989 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523092.9896598, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:24:52,993 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:24:52,993 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523092.99316, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:24:53,195 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:24:53,195 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:25:34,225 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523134.225461, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:27:16,841 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:05,355 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:05,556 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:05,762 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:05,964 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:06,168 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:06,370 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:06,573 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:06,775 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:06,980 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:07,185 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:07,387 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:07,591 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:07,796 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:07,998 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:08,200 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:08,404 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:08,605 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:08,811 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:09,013 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:09,216 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:09,420 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:09,623 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:09,827 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:10,030 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:10,230 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:10,437 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:10,642 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:10,846 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:11,049 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:11,254 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:11,460 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:11,664 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:11,866 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:12,070 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:12,271 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:12,476 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:12,680 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:12,883 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:13,087 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:13,288 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:13,490 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:13,692 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:13,895 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:14,097 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:14,302 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:14,505 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:14,706 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:28:14,908 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523184.832136, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdfg'}
+2019-06-26 07:30:48,200 INFO       client     Запущен клиент
+2019-06-26 07:30:48,205 INFO       client     Запущен клиент
+2019-06-26 07:30:48,215 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:30:48,215 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523448.215116, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:30:48,219 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:30:48,219 INFO       client     Запущен клиент
+2019-06-26 07:30:48,220 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523448.220022, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:30:48,232 INFO       client     Запущен клиент
+2019-06-26 07:30:48,233 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:30:48,233 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523448.233529, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:30:48,242 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:30:48,242 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523448.2425332, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:30:48,463 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:30:48,464 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:30:48,465 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:30:48,465 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:31:22,853 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523482.8531961, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'sdf'}
+2019-06-26 07:31:22,884 INFO       client     Client1: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523482.877834, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'sdf'}
+2019-06-26 07:31:39,029 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523499.029412, 'to_account': 'Clietn1', 'user': {'account_name': 'Client2'}, 'message': 'Привет1'}
+2019-06-26 07:32:03,970 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523523.97021, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'Привет!'}
+2019-06-26 07:32:04,084 INFO       client     Client1: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523524.0782762, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'Привет!'}
+2019-06-26 07:32:25,375 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523545.374818, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'вып'}
+2019-06-26 07:32:25,397 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523545.391179, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'вып'}
+2019-06-26 07:34:44,686 INFO       client     Запущен клиент
+2019-06-26 07:34:44,690 INFO       client     Запущен клиент
+2019-06-26 07:34:44,706 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:34:44,706 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523684.706193, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:34:44,708 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:34:44,709 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523684.7089422, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:34:44,711 INFO       client     Запущен клиент
+2019-06-26 07:34:44,716 INFO       client     Запущен клиент
+2019-06-26 07:34:44,726 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:34:44,726 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523684.7264159, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:34:44,730 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:34:44,730 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523684.730701, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:34:45,570 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:34:45,571 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:34:45,572 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:34:45,573 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:35:21,327 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523721.327017, 'to_account': 'sdf', 'user': {'account_name': 'Client2'}, 'message': 'srjhdf'}
+2019-06-26 07:36:06,464 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523766.464561, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'sdf'}
+2019-06-26 07:36:26,811 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523786.811671, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'asdf'}
+2019-06-26 07:36:26,818 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561523786.812869, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'asdf'}
+2019-06-26 07:36:35,584 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523795.5844, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'a'}
+2019-06-26 07:37:38,643 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561523858.6430972, 'to_account': 'jhg', 'user': {'account_name': 'Client1'}, 'message': ''}
+2019-06-26 07:39:22,495 INFO       client     Запущен клиент
+2019-06-26 07:39:22,513 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:39:22,513 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523962.513222, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:39:22,517 INFO       client     Запущен клиент
+2019-06-26 07:39:22,517 INFO       client     Запущен клиент
+2019-06-26 07:39:22,524 INFO       client     Запущен клиент
+2019-06-26 07:39:22,534 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:39:22,534 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523962.534695, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:39:22,535 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:39:22,535 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523962.535873, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:39:22,539 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:39:22,539 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561523962.5394702, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:39:23,302 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:39:23,302 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:39:23,303 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:39:23,303 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:40:00,936 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561524000.9360378, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'dsgf'}
+2019-06-26 07:40:49,220 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561524049.22068, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdf'}
+2019-06-26 07:40:49,395 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561524049.389021, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdf'}
+2019-06-26 07:42:44,587 INFO       client     Запущен клиент
+2019-06-26 07:42:44,604 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:42:44,604 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561524164.604394, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:42:44,975 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:42:44,995 INFO       client     Запущен клиент
+2019-06-26 07:42:45,011 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:42:45,011 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561524165.011633, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:42:45,041 INFO       client     Запущен клиент
+2019-06-26 07:42:45,044 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:42:45,052 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client1'}) из функции wrapper
+2019-06-26 07:42:45,052 INFO       client     Client1: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561524165.052821, 'user': {'account_name': 'Client1'}}
+2019-06-26 07:42:45,245 INFO       client     Client1: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:42:45,490 INFO       client     Запущен клиент
+2019-06-26 07:42:45,498 INFO       logDecor   Собщение из декоратора: вызов функции createPresence с аргументами ((), {'account_name': 'Client2'}) из функции wrapper
+2019-06-26 07:42:45,498 INFO       client     Client2: Серверу отправлено приветственное сообщение {'action': 'presence', 'time': 1561524165.498894, 'user': {'account_name': 'Client2'}}
+2019-06-26 07:42:45,697 INFO       client     Client2: От сервера получен ответ на приветственноу сообщение {'response': 200}
+2019-06-26 07:43:21,120 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561524201.120496, 'to_account': 'Clietn', 'user': {'account_name': 'Client1'}, 'message': 'sv'}
+2019-06-26 07:43:27,841 INFO       client     Client1:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561524207.841693, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdf'}
+2019-06-26 07:43:27,878 INFO       client     Client2: От сервера потоком получено сообщение {'action': 'message', 'time': 1561524207.872066, 'to_account': 'Client2', 'user': {'account_name': 'Client1'}, 'message': 'sdf'}
+2019-06-26 07:43:35,754 INFO       client     Client2:Серверу отправлено текстовое сообщение {'action': 'message', 'time': 1561524215.754516, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'asdf'}
+2019-06-26 07:43:35,820 INFO       client     Client1: От сервера потоком получено сообщение {'action': 'message', 'time': 1561524215.8138041, 'to_account': 'Client1', 'user': {'account_name': 'Client2'}, 'message': 'asdf'}

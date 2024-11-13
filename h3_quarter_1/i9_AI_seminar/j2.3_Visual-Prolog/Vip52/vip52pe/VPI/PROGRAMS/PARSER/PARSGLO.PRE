@@ -1,0 +1,32 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  PARSER
+ FileName: PARSGLO.PRE
+ Purpose: Global Predicate definitions 
+ Written by: Eugene Akimov
+ Comments:
+******************************************************************************/
+
+GLOBAL PREDICATES
+	generate_parser(WINDOW,WINDOW) - (i,i)
+	load_grammar(WINDOW,string) - (i,i)
+	new_grammar(WINDOW) - (i)
+	display_parsing_predicates(WINDOW) - (i)
+	display_domain_definftions(WINDOW) - (i)
+% UI.PRO
+%  determ	change(DBASEDOM)			- (i)
+  determ	change_error(string,integer)		- (i,i)
+  determ	change_grammar(TEXT)			- (i)
+  
+  determ	is_a_better_error(integer)		- (i)
+%PARSE.PRO
+  determ	parse(TOKL)				- (i)
+  determ	scan(TOKL)				- (o)
+% WRITE.PRO
+  determ	getdoml(GRAMTOKL, INTEGER, PRODNAMES)	- (i, i, o)
+  nondeterm	terms(PRODNAME, TERM)			- (i, o)
+   determ	write_domain_definitions_aux
+   determ	write_parsing_predicates_aux
+  

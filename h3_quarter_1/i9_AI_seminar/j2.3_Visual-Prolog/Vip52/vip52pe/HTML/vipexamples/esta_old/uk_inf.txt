@@ -1,0 +1,238 @@
+ESTA, an Easy-to-Use Expert System Shell
+----------------------------------------------------------------------
+
+PDC's new expert system shell, ESTA,  is easy to use and a great  
+stand-alone environment for constructing advisory and decision support
+systems. Building advanced knowledge bases with ESTA requires no 
+previous programming experience and it is suitable for many problem 
+domains. 
+
+You can use ESTA to build advisory systems that ensure:
+
+	Accessibility of knowledge
+	Delegation of decision competence
+	Secure and homogeneous decision making
+	Preservation of valuable knowledge
+	Fast and easy information retrieval
+	Easy and cost efficient document maintenance
+	Relief for overworked employees
+
+And, you can easily interface ESTA to 3 rd-party applications like 
+spreadsheets, databases, word processors etc. via the built-in 
+DDE-interface. 
+
+ESTA includes an interface to PDC Prolog, which means that you can 
+go beyond the built in functionality - you can build your own extensions 
+to ESTA or integrate ESTA into an existing PDC Prolog application. 
+
+In addition to advisory systems, ESTA is a great prototyping tool. 
+A knowledge base in ESTA has a hierarchical structure from which 
+a tree display is automatically drawn. You can edit or expand your 
+knowledge base directly from the tree. This way you can easily get 
+an overview of your knowledge.
+
+
+THE DIALOG
+--------------------
+ESTA is designed so that a dialog with an expert system running under 
+the shell resembles having a chat with an actual expert in the subject 
+area. The user initially provides some information - in the form of 
+replies to questions posed by the system- and then he receives the 
+appropriate advice. A record of the dialog can be logged in a window 
+and it can be stored in a file for later reference. 
+
+For some questions, the user responds by selecting from a menu 
+(e.g. "What is the problem with your car") in other cases,  the user can 
+click with the mouse on some part of a picture 
+(e.g. "Point on the place where the noise comes from") and in some 
+cases it is necessary to type in the answer (e.g. "What is your name"). 
+If requested by the user, the system will elaborate on questions not 
+readily understood, as well as provide a more general explanation 
+of the course of the consultation and how conclusions have been 
+reached.
+
+
+ESTA Features and Functionality
+-----------------------------------------------------
+
+ESTA is fully exploits Microsoft Windows 3.x, making use of the 
+Multiple Document Interface (MDI), 
+DDE communication with other Windows applications, 
+links into the Windows help system for hypertext extensions, and 
+sophisticated integration of Windows bitmaps and metafiles for 
+knowledge representation. The result is a pleasant, user-friendly 
+interface that is exceptionally easy for those consulting your knowledge 
+bases.
+
+Plus, all language-specific parts of ESTA are recorded in specific files 
+that let you easily make your own version of ESTA in any language 
+with a minimum of effort.
+
+ESTA includes provisions for generating license free, 
+consultation-only versions of the system, which may be distributed to 
+end-users.
+
+In addition to knowledge representation, ESTA includes useful features 
+from traditional programming languages, such as procedure calls and 
+mathematical functions.
+
+ESTA is configurable - menus, startup-pictures, and other 
+UI-functionality can be readily customized to match the specific needs 
+of your application.
+
+ESTA includes facilities for the knowledge base to call general purpose 
+routines written in PDC Prolog and (thereby) also routines written in C 
+or other languages. ESTA has facilities to explain why a question is 
+being asked or why an answer has been given, or to repeat advice given
+earlier in a consultation. Of course ESTA also enables the user to break 
+off a dialog, change the answer to a previously asked question, or bring 
+up new questions (which have not yet been asked) to answer.
+
+ESTA provides the knowledge engineer with a number of views of the 
+knowledge, including  hierarchical tree-representation, where clicking 
+on a node in the tree brings up an edit window containing the 
+corresponding rules.
+
+The knowledge entered into ESTA is automatically translated and 
+syntax checked, and errors are pointed out directly in the text. 
+Furthermore ESTA has a check-facility for noting type errors, 
+endless loops, undefined or unused knowledge.
+
+Knowledge Representation in ESTA
+----------------------------------------------------------
+In ESTA, knowledge is represented in an intuitive way - rules are written 
+in English-like statements as
+"if  its_raining and person_has_umbrella advice 'You can go out' "
+
+A knowledge base in ESTA consists of Sections and Parameters. 
+The sections contains the rules (the logic) that directs the user to the 
+right place in the knowledge base and gives the appropriate advice.
+
+Parameters are the variables that can obtain values - 'its_raining' or 
+'person_has_umbrella' are examples of parameters that can either be 
+true, false or unknown. Other parameter-types are texts, numbers or 
+categories. Parameter definitions can themselves contain rules and 
+thus their values can be based on other parameters.
+
+Sections
+---------------
+
+Sections contain the rules that tell ESTA how to solve the problem and 
+which actions to perform, such as giving advice, going to other sections, 
+calling special routines, chaining to other knowledge bases, etc. 
+
+Each section can be edited individually in a text window. The first 
+section in a knowledge base must be called 'start', and this is the place 
+where ESTA begins the consultation. The 'do' command executes 
+another section, thus 'do overheating' will execute the overheating 
+section.
+---------------------------------------------------------------------------------------------------
+section  start : 'main section'
+
+if (problem='starting_problem') do starting_problem
+if (problem='overheating') do overheating
+if (problem='smell_of_gasoline') do smell_of_gasoline
+if (problem='vibration') do vibration
+do other
+
+section  overheating 'the engine gets overheated'
+
+advice 'Overheating is normally caused by problems in the cooling 
+system'
+
+if not(water_ok) advice
+'Top up your radiator but keep an eye on the
+water level as there might be a leak in the system'
+
+if water_ok and acceleration_noise advice
+'The fan belt may be slipping. Tighten it up.'
+
+if water_ok and not(acceleration_noise) and not(oil_ok) advice
+'Top up the oil in your ' car '. In future, watch the oil level carefully as 
+it is cheaper to buy new oil than a new engine'
+
+---------------------------------------------------------------------------------------------------------------------
+
+Should you wish to know how the system reached a certain conclusion 
+or why a certain piece of advice is given, you click on the 'Why' button 
+and the system is able to establish why the conclusion was reached 
+based on the rules used.
+
+
+Parameters
+-------------------
+A Parameter is a variable that can have a value 
+(text, number, true/false, or one of a number of options). The value 
+can be calculated from other parameters or specified by the end-user 
+(when ESTA needs the value, and asks for it)
+
+A typical parameter might be defined as shown below, with entries to 
+specify the question to be asked, an explanation to give if the user 
+presses the 'explain' button, the possible values, and even links to a 
+graphic representation . Expressions can be given to calculate the 
+parameter from other parameters, the range can be given etc.
+
+parameter car	'the kind of car'
+type category
+explanation
+	'identify your car with one of the listed 
+	types as closely as you can.'
+option
+	ambulance
+	policecar
+	sedan - 'car'
+	van.
+question	'Which kind of car do you have ?'
+picture	'cars'
+
+Name
+----------
+When a parameter is declared, it is necessary to specify the name of 
+the parameter (e.g. 'car') this name is used when the parameter is 
+referred to in rules.
+
+Type
+--------
+A Parameter has one of the following four types:
+	Boolean (true, false or unknown)
+	Number ( integers or reals)
+	Text (such as a person's name, etc.)
+	Category (used when the parameter is known to 
+                                take one of a definite set of values).
+
+Question
+---------------
+ESTA determines if and when it needs the value of a parameter. 
+If the value depends on other parameters it will calculate the value 
+otherwise it will prompt the user for the value. ESTA generates a 
+dialog box and asks the question given in the parameter definition 
+under the 'question' heading. 
+
+
+Explanation
+--------------------
+When a question is given during a consultation, the user will have 
+the option to ask ESTA to 'explain the question'. This explanation can 
+be provided by the knowledge engineer in the 'explanation' field of a 
+parameter declaration.  You can also answer 'Unknown' to a question 
+posed by ESTA if you are unaware of the value of the parameter. 
+This can either lead to special advice or to a dialog which will establish 
+the value by other rules.
+
+Option
+-----------
+The Option field is used in parameters of Category type only. After giving
+the keyword Options, a list of values can be given, and a menu is 
+automatically generated during the consultation. The user may select 
+from the menu by clicking on the appropriate option.
+
+Picture
+------------
+Pictures can be included as part of advice, questions or explanations. 
+When used together with category parameters,  it is even possible to 
+define links between areas of a picture and specific parameter options, 
+so the user can answer a category-based query by pointing at regions 
+of a graphic and clicking.
+
+
+

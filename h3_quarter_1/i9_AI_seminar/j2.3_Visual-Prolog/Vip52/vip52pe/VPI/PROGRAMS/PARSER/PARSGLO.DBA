@@ -1,0 +1,39 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 1999 Prolog Development Center A/S
+
+ Project:  PARSER
+ FileName: PARSGLO.DBA
+ Purpose: Gobal databases for Parser Generator
+ Written by: Eugene Akimov
+ Comments:
+******************************************************************************/
+
+GLOBAL DATABASE
+determ	error(STRING,integer)
+determ	grammar(TEXT)
+
+GLOBAL DATABASE - parse
+	catchallflag
+	clausevar(PRODNAME, INTEGER)
+	constinhead
+	decl(SLIST, PRODNAMES)
+	decltok(STRING, TOKK)
+	difflist(INTEGER)
+	exist_prior(PRODNAME, PRIORITY)
+	outptermvar(PRODNAME, INTEGER)
+	p(PRODNAME, PRODBODY)
+	pred_first(PRODNAME, SUFFIX, PRIORITY, FIRSTLIST)
+	pred_second(INTEGER, PRODNAMES, PRIORGROUP, PRODNAME, SUFFIX, PRIORITY)
+	prodname(PRODNAME)
+	suffix(INTEGER)
+	userdom(PRODNAME)
+	userprod(PRODNAME)
+
+GLOBAL DATABASE - db1 
+	editwin(WINDOW,string,string)
+	options(string,string,string)
+	new_file
+
+GLOBAL DATABASE - db2
+	win_focus(WINDOW)	

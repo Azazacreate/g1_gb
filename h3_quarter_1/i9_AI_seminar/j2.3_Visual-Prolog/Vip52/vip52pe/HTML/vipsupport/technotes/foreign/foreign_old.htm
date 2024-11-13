@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Using Visual Prolog DLL’s from other languages</title>
+<meta name="Template" content="C:\Program Files\Microsoft Office\Office\html.dot">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Using Visual Prolog DLLs from Other Languages<!--mstheme--></font></h1>
+<p>VIP\FOREIGN\EXAMPLES directory contains a number of examples, all showing how
+to use Visual Prolog DLL’s from other languages.</p>
+<p>All the examples use the same Visual Prolog DLL’s that are found in the
+DLLS directory, so these have to be compiled before any of the examples are
+compiled and run.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#notes">Common Notes for all Languages</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples">Examples</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#notesdll">Notes about DLLs</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="notes">Common Notes for All Languages<!--mstheme--></font></h2>
+<p></a>If a string or a term is returned from the DLL to the calling program
+then the memory on GStack should be released. If for example a program calls an
+entry getString in a DLL, which returns a string, then the calling program
+should have the following structure:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <blockquote>
+      <!--mstheme--></font><pre>dll_mark_gstack(Stack);
+getString(String);
+... // saving String in variable of calling program
+dll_release_gstack(Stack);</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Where <code>dll_mark_gstack</code> and <code>dll_release_gstack</code> are
+defined in (and exported from) the DLL as follows:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <blockquote>
+      <!--mstheme--></font><pre>dll_mark_gstack(STACKMARK):- STACKMARK=mem_MarkGStack().
+dll_release_gstack(STACKMARK):- mem_ReleaseGStack(STACKMARK).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Normally exported DLL functions in Win32 have &lt;stdcall&gt; modifier. So
+the declaration of the three predicates from the example above will look like:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <blockquote>
+      <!--mstheme--></font><pre>global predicates
+dll_mark_gstack(STACKMARK) - procedure (o) language stdcall
+dll_release_gstack(STACKMARK) - procedure (i) language stdcall
+getString(string Out) - procedure (o) language stdcall</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="examples"></a>Examples<!--mstheme--></font></h2>
+<p>The examples are organized in subdirectories corresponding to the programming
+language:</p>
+<p><a href="delphi/readme.htm">Borland Delphi</a> main program using Visual
+Prolog DLLs.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">NONGUI: Delphi project uses a non-GUI Visual Prolog DLL.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">USEVPI: Delphi project uses a Visual Prolog DLL with VPI.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p><a href="java/readme.htm">Java</a> (Microsoft and Sun) main program using a
+non-GUI Visual Prolog DLLs.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">MSVJ example: Microsoft Visual Java program which uses a non-GUI Visual
+    Prolog DLL.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">SunJava example: Sun Java program which uses a non-GUI Visual Prolog DLL.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p><a href="msvb/readme.htm">Microsoft Visual Basic</a> main program using
+Visual Prolog DLLs</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">NONGUI: Microsoft Visual Basic project uses non-GUI Visual Prolog DLL.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">USEVPI: Microsoft Visual Basic project uses a Visual Prolog DLL with VPI.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p><a href="msvc/readme.htm">Microsoft Visual C++</a> main program using Visual
+Prolog DLLs</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">NONGUI: Visual Prolog project with MSVC as main program that uses non-GUI
+    Visual Prolog DLL.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">USEVPI: Microsoft Visual C++ MFC project that uses a Visual Prolog DLL
+    with VPI.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">ActiveX: Microsoft Visual C++ MFC ActiveX project that uses a Visual
+    Prolog DLL with VPI.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000"><a name="notesDLL"></a>Notes about DLLs<!--mstheme--></font></h2>
+<h3><!--mstheme--><font color="#000000">No fail and no errors in exported predicates<!--mstheme--></font></h3>
+<p>Predicate, which is exported from DLL should be declared as <b>procedure</b>
+and all run time errors should be trapped by <b>trap</b> predicate.</p>
+<h3><!--mstheme--><font color="#000000">Exporting Predicates<!--mstheme--></font></h3>
+<p>The predicates to be called from outside a DLL must be defined as <u>GLOBAL
+PREDICATES</u>, which use the <b>stdcall</b> calling convention.</p>
+<p>The predicate names <b>MUST</b> be added to the <u>EXPORT</u> section of the
+DLLs .DEF file.</p>
+<h3><!--mstheme--><font color="#000000">Managing the DLL's Global Stack<!--mstheme--></font></h3>
+<p>Managing the DLL's Global Stack is done by using the <b>mem_MarkGStack</b>
+and <b>mem_ReleaseGStack</b> predicates inside DLL or <b>dll_mark_gstack</b> and
+<b>dll_release_gstack</b> functions on each side of the &quot;real&quot; DLL
+call. Memory management predicates should be included into DLL if there is no
+output argument with memory allocation.</p>
+<p>In the Visual Prolog DLL&nbsp; these predicates are defined like this:</p>
+<blockquote>
+  <!--mstheme--></font><pre>GLOBAL PREDICATES
+PROCEDURE dll_mark_gstack(STACKMARK) - (o) language stdcall
+PROCEDURE dll_release_gstack(STACKMARK) - (i) language stdcall
+CLAUSES
+dll_mark_gstack(STACKMARK):- STACKMARK=mem_MarkGStack().
+dll_release_gstack(STACKMARK):-mem_ReleaseGStack(STACKMARK).  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>Because <b>mem_MarkGStack</b> and <b>mem_ReleaseGStack</b> are part of the
+run-time library there are no clauses implementing them. Their definitions can
+be included if you select PDCRUNT in the Application Experts Other Tools Dialog.</p>
+<h3><!--mstheme--><font color="#000000">Link the DLL<!--mstheme--></font></h3>
+<p>DLL, which is built by Visual Prolog, can be linked to another project via
+import library or can be loaded dynamically in run time.
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

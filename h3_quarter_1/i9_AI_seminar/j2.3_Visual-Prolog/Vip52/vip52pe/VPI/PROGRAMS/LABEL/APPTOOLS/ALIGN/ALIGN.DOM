@@ -1,0 +1,26 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	ALIGN.DOM
+ Purpose:	Global domains for ALIGN object
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global domains
+  ALIGN_PUSH =  is_ToBeDestroyed;
+		left_align;
+		top_align;
+		right_align;
+		bottom_align;
+		center_hor;
+		center_ver;
+		divider_hor;
+		divider_ver;
+		equal_hor;
+		equal_ver;
+		equal_all
+
+  ALIGN_CALLBACK = determ (ALIGN_PUSH) - (i)

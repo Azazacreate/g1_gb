@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="save">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>save</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+
+<h3 align="left"><!--mstheme--><font color="#000000"><font color="#0000FF" size="4" face="Arial">save/1</font><font color="#0000FF"> </font><!--mstheme--></font></h3>
+
+<p align="left"><b>save</b>(<i>Filename</i>) </p>
+
+<p align="left">Save the contents of the internal database. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left">Saves the internal database predicates in the
+text file that <i>FileName</i> names. <b>save/1</b> saves a
+clause on each line in the file. The file can later be read into
+memory with the <b>consult/1</b> or <b>reconsult/1</b>
+predicates. The text file can also be inspected and manipulated
+using the editor. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<!--mstheme--></font><pre>fact1(1,&quot;fact1&quot;,[1,2,3]).
+fact1(2,&quot;fact2&quot;,[1,3]).
+fact1(3,&quot;fact2&quot;,[3,2,1]).
+fact2(1,&quot;one&quot;).
+fact2(1,&quot;one once more&quot;).
+fact2(2,&quot;two&quot;).
+--- Dialog ---
+save(&quot;con&quot;).
+fact1(1,&quot;fact1&quot;,[1,2,3])
+fact1(2,&quot;fact2&quot;,[1,3])
+fact1(3,&quot;fact2&quot;,[3,2,1])
+fact2(1,&quot;one&quot;)
+fact2(1,&quot;one once more&quot;)
+fact2(2,&quot;two&quot;)
+Yes 
+</pre><!--mstheme--><font face="Verdana">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

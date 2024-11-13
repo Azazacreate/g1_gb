@@ -1,0 +1,968 @@
+/***************************************************************************/
+/*                                                                         */
+/*                               SQLBIND.SQC                               */
+/*                                                                         */
+/*                 Interface to SQL data bases (DB2/2 Version)             */ 
+/*                                                                         */
+/*                         Version 1.37, November 1995                     */
+/*                                                                         */
+/*                       Author : Ole Kjaer Christensen                    */
+/*                                                                         */
+/***************************************************************************/
+
+//#define c_env             // Define this constant if you want to run this
+                            // module as a standalone (textmode) C-program.
+
+#include <sqlenv.h>
+#include <sqlca.h>
+#include <sqlda.h>
+#include <upm.h>
+
+#define FAR
+#define DBC_HANDLE  short
+#define STMT_HANDLE short
+
+typedef long int           SDWORD;
+typedef unsigned long int  UDWORD;
+typedef unsigned char      UCHAR;
+typedef signed char        SCHAR;
+typedef short int          SWORD;
+typedef unsigned short int UWORD;
+typedef double             SDOUBLE;
+typedef void FAR *         PTR;
+
+typedef unsigned short     BOOL;
+
+#include "sqlbind.h"
+
+#ifdef c_env
+   #include <stdio.h>
+   #include <stdlib.h>
+   #include <string.h>
+   #define  NewPtr(N)       malloc(N)
+   #define  DisposePtr(P,N) free(P)
+#else
+   #if defined(__IBMC__) && defined (__32BIT__)
+      #define UNDERSCORES
+      #include "c:\psys\foreign\ibmc\ibmmap.h"
+   #endif
+   #include "c:\psys\foreign\pdcrunt.h"
+
+   #define  NewPtr(n)       MEM_AllocHeap(n)
+   #define  DisposePtr(p,n) MEM_ReleaseHeap(p,n)
+
+   #define  strlen(s)       StrLen(s)  // The precompiler generates calls to
+                                       // the C-library routine "strlen"
+                                       // which cannot be called from Prolog:
+                                       // Therefore use our own (internal)
+                                       // version.
+#endif
+
+/*------------------------ Local Constants/Macros -------------------------*/
+
+#define maxStmtHandles    5     // Maximum number of open cursors.
+#define maxColumns      100     // Maximum number of columns in result of
+                                // a SELECT statement (determins size of
+                                // each SQLDA). Must be <= 255.
+#define true               1
+#define false              0
+#define nil                0L
+#define defaultDBCHandle   (DBC_HANDLE)1
+
+#define validHandle(h)   (h >= 0 && h < maxStmtHandles && sqlda[h]->sqld > 0)
+#define validColRef(i,h) (i >= 0 && i < sqlda[h]->sqld)
+
+/*------------------------ Local Data Structures --------------------------*/
+
+// The SQL Communication area (SQLCA):
+
+struct sqlca sqlca;
+
+// The SQL Descriptor Areas (SQLDA) used for output of SQL statements
+// (SELECT statements in particular). The SQLDA describes one row of the
+// output of a SELECT statement: The number, type and contents of each
+// column/field in the row. Each open cursor (i.e. active SELECT-statement)
+// is associated with an SQLDA. Unused SQLDAs have their sqld-field set to 0.
+
+struct sqlda *sqlda[maxStmtHandles];
+
+// Null indicators for each column and statement handle:
+
+short nullind[maxStmtHandles][maxColumns];
+
+// SQL data handles each column and statement handle:
+
+short sqld[maxStmtHandles];
+short sqllen[maxStmtHandles][maxColumns];
+unsigned char *sqldata[maxStmtHandles][maxColumns];
+
+// Current SQL Tool error code:
+
+ERR_CODE err;
+
+// Host variables:
+
+EXEC SQL BEGIN DECLARE SECTION;
+   char Hdb_name[10];
+   char Hstmt[4000];
+EXEC SQL END DECLARE SECTION;
+
+/*---------------------- Local Function Prototypes ------------------------*/
+
+static STMT_HANDLE NewStmtHandle (void);
+static void        FreeStmtHandle(STMT_HANDLE);
+static void        StrCopy(STRING, STRING);
+static short       StrLen (STRING);
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Connect                     */
+/*                                                                         */
+/***************************************************************************/
+
+static BOOL InitDataStructures(void);
+
+// Connects to the data base and initializes the internal data structures.
+// NOTE: UserID and password are not yet used. Neither is the database
+// connection handle.
+
+DBC_HANDLE sql_Connect(UCHAR szDatabase[],UCHAR szUser[],UCHAR szPassword[])
+{
+/*
+   unsigned char  userid[9];
+   unsigned short RC, type;
+
+   RC = upmelocl(userid, &type);
+
+   if (StrLen(szUser) > 0)
+      if(err = upmeulgn(szUser, szPassword, "", UPM_LOCAL, UPM_USER))
+         goto exit;
+*/
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+
+   StrCopy(Hdb_name, szDatabase);
+   EXEC SQL CONNECT TO :Hdb_name;
+
+   err = sql_noErr;
+   if (InitDataStructures()) return defaultDBCHandle;
+                                         // Return (default handle) if 
+                                         // initialization OK.
+   EXEC SQL CONNECT RESET;               // Otherwise disconnect.
+   err = sql_memoryErr;
+   goto exit;
+
+error:
+   err = SQLCODE;
+exit:
+   RUN_Error(err);
+}
+
+// Allocates and initializes the SQLDAs. Returns false if an error occurs.
+
+static BOOL InitDataStructures(void)
+{
+   STMT_HANDLE   h;
+   int           i;
+   struct sqlvar *v;
+
+   for (h = 0; h < maxStmtHandles; h++)
+   {
+      sqlda[h] = (struct sqlda *)NewPtr(SQLDASIZE(maxColumns));
+      if (sqlda[h] == nil) 
+         return false;
+
+      sqlda[h]->sqldabc = SQLDASIZE(maxColumns);
+      sqlda[h]->sqln    = maxColumns;
+
+      v = sqlda[h]->sqlvar;                   // Initialize sqlvar[]:
+      sqld[h] = 0;
+      for (i = 0; i < maxColumns; i++)        // (DON'T INITIALIZE SQLIND
+         v[i].sqldata  = nil,                 // HERE - IT'S TOO EARLY!?!)
+         sqldata[h][i] = nil,
+         sqllen[h][i]  = 0;
+
+      FreeStmtHandle(h);
+   }
+
+   return true;
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Disconnect                  */
+/*                                                                         */
+/***************************************************************************/
+
+static void FreeDataStructures(void);
+
+// Disconnects from the data base.
+
+void sql_Disconnect (DBC_HANDLE hdbc)    // NOTE: Database handle not used.
+{
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+
+   EXEC SQL CONNECT RESET;
+   FreeDataStructures();
+   err = sql_noErr;
+   return;
+
+error:
+   err = SQLCODE;
+exit:
+   RUN_Error(err);
+}
+
+// Deallocates SQLDAs.
+
+static void FreeDataStructures (void)
+{
+   STMT_HANDLE   h;
+   int           i;
+// struct sqlvar *v;
+
+   for (h = 0; h < maxStmtHandles; h++)
+   {
+
+      for (i = 0; i < sqld[h]; i++)
+         if (sqldata[h][i] != nil)
+            DisposePtr(sqldata[h][i], sqllen[h][i]);
+
+//    v = sqlda[h]->sqlvar;                        // Deallocate sqlvar[].
+//    for (i = 0; i < maxColumns; i++)
+//      if (v[i].sqldata != nil)
+//         DisposePtr(v[i].sqldata, v[i].sqllen + 1);
+
+      DisposePtr(sqlda[h], sqlda[h]->sqldabc);     // Deallocate sqlda.
+      sqlda[h] = nil;
+   }
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Commit                      */
+/*                                                                         */
+/***************************************************************************/
+
+void sql_Commit (DBC_HANDLE hdbc)      // NOTE: Database handle not used.
+{
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+   EXEC SQL COMMIT;
+   err = sql_noErr;
+   return;
+
+error:
+   err = SQLCODE;
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_RollBack                    */
+/*                                                                         */
+/***************************************************************************/
+
+void sql_RollBack (DBC_HANDLE hdbc)    // NOTE: Database handle not used.
+{
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+   EXEC SQL ROLLBACK;
+   err = sql_noErr;
+   return;
+
+error:
+   err = SQLCODE;
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Exec                        */
+/*                                                                         */
+/***************************************************************************/
+
+static void AllocateSqlVars   (int, struct sqlda *);
+static void DeallocateSqlVars (int, struct sqlda *);
+
+// Executes an SQL statement and returns a statement handle which is "null"
+// (sql_nullHandle) for non-SELECT statements. For SELECT statements the
+// statement handle is >= 0 and must be used when retrieving the result rows.
+// NOTE: Database handle not used.
+
+STMT_HANDLE sql_Exec(DBC_HANDLE hdbc, UCHAR szSqlStr[])
+{
+   struct sqlda *sqldah;
+   STMT_HANDLE  h;
+
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+
+   h = NewStmtHandle();                        // Get new statement handle
+   if (h == sql_nullHandle)                    // and exit if there are no
+   {  err = sql_noFreeHandlesErr;              // free handles.
+      goto exit;
+   }
+
+   sqldah = sqlda[h];                          // Deallocate old sqlvars
+   DeallocateSqlVars(h, sqldah);               // BEFORE preparing the
+   StrCopy(Hstmt, szSqlStr);                   // statement.
+
+   switch (h)
+   {  
+       case 0 : EXEC SQL PREPARE S0 INTO :*sqldah FROM :Hstmt;
+                if (sqldah->sqld > 0)    /* sqld > 0 means SQL SELECT stmt */
+                {  EXEC SQL DESCRIBE S0 INTO :*sqldah;
+                   AllocateSqlVars(h, sqldah);
+                   EXEC SQL DECLARE X0 CURSOR FOR S0;
+                   EXEC SQL OPEN X0;
+                }
+                else     /* for all other SQL stmt types */
+                {  EXEC SQL EXECUTE S0 USING DESCRIPTOR :*sqldah;
+                   h = sql_nullHandle;
+                }
+                break;
+
+       case 1 : EXEC SQL PREPARE S1 INTO :*sqldah FROM :Hstmt;
+                if (sqldah->sqld > 0)
+                {  EXEC SQL DESCRIBE S1 INTO :*sqldah;
+                   AllocateSqlVars(h, sqldah);
+                   EXEC SQL DECLARE X1 CURSOR FOR S1;
+                   EXEC SQL OPEN X1;
+                }
+                else
+                {  EXEC SQL EXECUTE S1 USING DESCRIPTOR :*sqldah;
+                   h = sql_nullHandle;
+                }
+                break;
+
+       case 2 : EXEC SQL PREPARE S2 INTO :*sqldah FROM :Hstmt;
+                if (sqldah->sqld > 0)
+                {  EXEC SQL DESCRIBE S2 INTO :*sqldah;
+                   AllocateSqlVars(h, sqldah);
+                   EXEC SQL DECLARE X2 CURSOR FOR S2;
+                   EXEC SQL OPEN X2;
+                }
+                else
+                {  EXEC SQL EXECUTE S2 USING DESCRIPTOR :*sqldah;
+                   h = sql_nullHandle;
+                }
+                break;
+
+       case 3 : EXEC SQL PREPARE S3 INTO :*sqldah FROM :Hstmt;
+                if (sqldah->sqld > 0)
+                {  EXEC SQL DESCRIBE S3 INTO :*sqldah;
+                   AllocateSqlVars(h, sqldah);
+                   EXEC SQL DECLARE X3 CURSOR FOR S3;
+                   EXEC SQL OPEN X3;
+                }
+                else
+                {  EXEC SQL EXECUTE S3 USING DESCRIPTOR :*sqldah;
+                   h = sql_nullHandle;
+                }
+                break;
+
+       case 4 : EXEC SQL PREPARE S4 INTO :*sqldah FROM :Hstmt;
+                if (sqldah->sqld > 0)
+                {  EXEC SQL DESCRIBE S4 INTO :*sqldah;
+                   AllocateSqlVars(h, sqldah);
+                   EXEC SQL DECLARE X4 CURSOR FOR S4;
+                   EXEC SQL OPEN X4;
+                }
+                else
+                {  EXEC SQL EXECUTE S4 USING DESCRIPTOR :*sqldah;
+                   h = sql_nullHandle;
+                }
+                break;
+   }
+
+   err = sql_noErr;
+   return h;
+
+error:
+   err = SQLCODE;                              // Release statement handle
+   FreeStmtHandle(h);                          // in case of error.
+exit:
+   RUN_Error(err);
+}
+
+// Allocates space for the result rows. NOTE: an extra byte is allocated so
+// that strings can be null-terminated before they are returned.
+
+void AllocateSqlVars (int h, struct sqlda *sqldah) 
+{
+   struct sqlvar *v = sqldah->sqlvar;
+   int            i;
+
+   sqld[h] = sqldah->sqld;
+   for (i = 0; i < sqldah->sqld; i++)
+   {
+      sqllen[h][i]  = v[i].sqllen + 1;
+      sqldata[h][i] = (unsigned char *)NewPtr(sqllen[h][i]);
+      v[i].sqldata  = sqldata[h][i];
+      v[i].sqlind   = &nullind[h][i];
+   }
+}
+
+// Similarly deallocates space for result rows.
+
+void DeallocateSqlVars (int h, struct sqlda *sqldah)
+{
+   int i;
+
+   for (i = 0; i < sqld[h]; i++)
+      if (sqldata[h][i] != nil)
+      {
+         DisposePtr(sqldata[h][i], sqllen[h][i]);
+         sqldata[h][i] = nil;
+      }
+   sqld[h] = 0;
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_ExecDirect                  */
+/*                                                                         */
+/***************************************************************************/
+
+STMT_HANDLE sql_ExecDirect(DBC_HANDLE hdbc, UCHAR szSqlStr[])
+{
+   sql_Exec(hdbc,szSqlStr);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_ExecStmt                    */
+/*                                                                         */
+/***************************************************************************/
+
+void sql_ExecStmt(STMT_HANDLE h)
+{
+   err = sql_functionUnsupportedErr;
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_ExecDirectStmt              */
+/*                                                                         */
+/***************************************************************************/
+
+void sql_ExecDirectStmt(STMT_HANDLE h, UCHAR szSqlStr[])
+{
+   err = sql_functionUnsupportedErr;
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_FetchNext                   */
+/*                                                                         */
+/***************************************************************************/
+
+// Fetches next result row of a SELECT statement. Fails if there are no more
+// rows.
+
+void sql_FetchNext(STMT_HANDLE h)
+{
+   struct sqlda *sqldah;
+
+   if (! validHandle(h)) 
+   {  err = sql_invalidHandleErr;
+      goto exit;
+   }
+
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+   EXEC SQL WHENEVER NOT FOUND GO TO close;
+
+   sqldah = sqlda[h];
+   switch (h)
+   {  case 0 : EXEC SQL FETCH X0 USING DESCRIPTOR :*sqldah; break;
+      case 1 : EXEC SQL FETCH X1 USING DESCRIPTOR :*sqldah; break;
+      case 2 : EXEC SQL FETCH X2 USING DESCRIPTOR :*sqldah; break;
+      case 3 : EXEC SQL FETCH X3 USING DESCRIPTOR :*sqldah; break;
+      case 4 : EXEC SQL FETCH X4 USING DESCRIPTOR :*sqldah; break;
+   }
+   err = sql_noErr;
+   return;
+
+close:
+   switch (h)
+   {  case 0 : EXEC SQL CLOSE X0; break;
+      case 1 : EXEC SQL CLOSE X1; break;
+      case 2 : EXEC SQL CLOSE X2; break;
+      case 3 : EXEC SQL CLOSE X3; break;
+      case 4 : EXEC SQL CLOSE X4; break;
+   }
+   FreeStmtHandle(h);
+   err = sql_noErr;
+   RUN_Fail();
+
+error:
+   FreeStmtHandle(h);
+   err = SQLCODE;
+exit:
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_FetchPrev                   */
+/*                                                                         */
+/***************************************************************************/
+
+// Fetches previous result row of a SELECT statement. NOT SUPPORTED BY DB2/2.
+
+void sql_FetchPrev (STMT_HANDLE h)
+{
+   err = sql_functionUnsupportedErr;
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Drop                        */
+/*                                                                         */
+/***************************************************************************/
+
+// Closes the cursor associated with the SELECT-statement represented by
+// "h". Is only necessary if you don't want to 'wait' for "sql_fetchNext" to
+// fail (i.e. if you don't want all result rows of a SELECT-statement).
+
+void sql_Drop(STMT_HANDLE h)
+{
+   if (! validHandle(h)) 
+   {  err = sql_invalidHandleErr;
+      goto exit;
+   }
+   FreeStmtHandle(h);
+
+   EXEC SQL WHENEVER SQLERROR GO TO error;
+   EXEC SQL WHENEVER NOT FOUND GO TO close;
+
+close:
+   switch (h)
+   {  case 0 : EXEC SQL CLOSE X0; break;
+      case 1 : EXEC SQL CLOSE X1; break;
+      case 2 : EXEC SQL CLOSE X2; break;
+      case 3 : EXEC SQL CLOSE X3; break;
+      case 4 : EXEC SQL CLOSE X4; break;
+   }
+   err = sql_noErr;
+   return;
+
+error:
+   err = SQLCODE;
+exit:
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Close                       */
+/*                                                                         */
+/***************************************************************************/
+
+void sql_Close(STMT_HANDLE h)    // Does nothing because deallocation 
+{                                // doesn't have any effect
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTIONS : sql_Get???                     */
+/*                                                                         */
+/***************************************************************************/
+
+ERR_CODE GetError (STMT_HANDLE h, COL_REF i, COL_TYPE colType);
+STRING   GStackFixString (struct sqlvar *v);
+STRING   GStackVarString (struct sqlvar *v);
+
+STRING sql_GetString (STMT_HANDLE h, COL_REF i)
+{
+   struct sqlvar *v;
+
+   i--;   
+   if (! validHandle(h))
+      err = sql_invalidHandleErr; 
+   else if (! validColRef(i,h))
+      err = sql_columnRefErr;
+   else
+   {
+      err = sql_noErr;
+      v   = &sqlda[h]->sqlvar[i];
+
+      if (v->sqltype == SQL_TYP_CSTR || v->sqltype == SQL_TYP_CHAR)
+         return GStackFixString(v);
+
+      if (v->sqltype == SQL_TYP_VARCHAR || v->sqltype == SQL_TYP_LONG)
+         return GStackVarString(v);
+
+      err = sql_columnTypeErr;
+   }
+
+   RUN_Error(err);
+}
+         
+SDWORD sql_GetLong (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (GetError(h, i, SQL_TYP_INTEGER))
+      RUN_Error(err);
+
+   return *((SDWORD *)(sqlda[h]->sqlvar[i].sqldata));
+}
+
+SWORD sql_GetInteger (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (GetError(h, i, SQL_TYP_SMALL))
+      RUN_Error(err);
+
+   return *((SWORD *)(sqlda[h]->sqlvar[i].sqldata));
+}
+                                 
+void sql_GetReal (STMT_HANDLE h, COL_REF i, SDOUBLE* pReal)
+{
+   i--;
+   if (GetError(h, i, SQL_TYP_FLOAT))
+      RUN_Error(err);
+
+   *pReal = *((SDOUBLE *)(sqlda[h]->sqlvar[i].sqldata));
+}
+
+STRING sql_GetDate (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (GetError(h, i, SQL_TYP_DATE))
+      RUN_Error(err);
+
+   return GStackFixString(&sqlda[h]->sqlvar[i]);
+}
+
+STRING sql_GetTime (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (GetError(h, i, SQL_TYP_TIME))
+      RUN_Error(err);
+
+   return GStackFixString(&sqlda[h]->sqlvar[i]);
+}
+
+STRING sql_GetTimeStamp (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (GetError(h, i, SQL_TYP_STAMP))
+      RUN_Error(err);
+
+   return GStackFixString(&sqlda[h]->sqlvar[i]);
+}
+
+/*------------------------------- Miscellaneous ---------------------------*/
+
+ERR_CODE GetError (STMT_HANDLE h, COL_REF i, COL_TYPE colType)
+{
+   if (! validHandle(h))
+      err = sql_invalidHandleErr; 
+   else if (! validColRef(i,h))
+      err = sql_columnRefErr;
+   else if (sqlda[h]->sqlvar[i].sqltype != colType)
+      err = sql_columnTypeErr;
+   else
+      err = sql_noErr;
+
+   return err;
+}
+
+STRING GStackFixString (struct sqlvar *v)   // Null terminates a fixed string
+{                                           // and copies it to the G-stack.
+   v->sqldata[v->sqllen] = '\0';
+   return MEM_SaveStringGStack((STRING)(v->sqldata));
+}
+
+STRING GStackVarString (struct sqlvar *v)   // Null terminates a variable
+{                                           // length string (with a 2 byte
+   STRING str;                              // length indicator) and copies
+   short  len;                              // it to the G-stack.
+
+   str = ((STRING)v->sqldata) + 2;
+   len = *((short *)v->sqldata);
+   str[len] = '\0';
+   return MEM_SaveStringGStack(str);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_GetColData                  */
+/*                                                                         */
+/***************************************************************************/
+
+BOOL NullType (short t)
+{
+   return (t == (2*(t/2) + SQL_TYP_NULINC));
+}
+
+
+COL_DATA *sql_GetColData(STMT_HANDLE h, COL_REF i)
+{
+   struct sqlvar *v;
+   COL_DATA      *data; 
+   
+   i--;
+   if (! validHandle(h))
+      err = sql_invalidHandleErr; 
+   else if (! validColRef(i,h))
+      err = sql_columnRefErr;
+   else
+   {
+      err  = sql_noErr;
+      v    = &sqlda[h]->sqlvar[i];
+      data = MEM_AllocGStack(sizeof(COL_DATA));
+
+      if (NullType(v->sqltype) && *(v->sqlind) < 0)
+         data->fno = f_null;
+      else
+         switch (v->sqltype)
+         {
+            case SQL_TYP_CSTR :
+            case SQL_TYP_NCSTR :
+            case SQL_TYP_CHAR :
+            case SQL_TYP_NCHAR :
+               data->fno = f_s;
+               data->u.s = GStackFixString(v);
+               break;
+            case SQL_TYP_VARCHAR :
+            case SQL_TYP_NVARCHAR :
+            case SQL_TYP_LONG :
+            case SQL_TYP_NLONG :
+               data->fno = f_s;
+               data->u.s = GStackVarString(v);
+               break;
+            case SQL_TYP_SMALL :
+            case SQL_TYP_NSMALL :
+               data->fno = f_i;
+               data->u.i = *((SWORD *)v->sqldata);
+               break;
+            case SQL_TYP_INTEGER :
+            case SQL_TYP_NINTEGER :
+               data->fno = f_l;
+               data->u.l = *((SDWORD *)v->sqldata);
+               break;
+            case SQL_TYP_FLOAT :
+            case SQL_TYP_NFLOAT :
+               data->fno = f_r;
+               data->u.r = *((SDOUBLE *)v->sqldata);
+               break;
+            case SQL_TYP_DATE :
+            case SQL_TYP_NDATE :
+               data->fno = f_d;
+               data->u.d = GStackFixString(v);
+               break;
+            case SQL_TYP_TIME :
+            case SQL_TYP_NTIME :
+               data->fno = f_t;
+               data->u.t = GStackFixString(v);
+               break;
+            case SQL_TYP_STAMP :
+            case SQL_TYP_NSTAMP :
+               data->fno  = f_ts;
+               data->u.ts = GStackFixString(v);
+         }
+
+      return data;
+   }
+
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_ColType                     */
+/*                                                                         */
+/***************************************************************************/
+
+COL_TYPE sql_ColType (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (! validHandle(h))
+      err = sql_invalidHandleErr; 
+   else if (! validColRef(i,h))
+      err = sql_columnRefErr;
+   else
+   {  err = sql_noErr;
+      switch (sqlda[h]->sqlvar[i].sqltype)
+      {
+         case SQL_TYP_CHAR     :
+         case SQL_TYP_CSTR     :
+         case SQL_TYP_VARCHAR  :
+         case SQL_TYP_LONG     :
+         case SQL_TYP_NCHAR    :
+         case SQL_TYP_NCSTR    :
+         case SQL_TYP_NVARCHAR :
+         case SQL_TYP_NLONG    : return SQL_StringType;
+         case SQL_TYP_INTEGER  :
+         case SQL_TYP_NINTEGER : return SQL_LongType;
+         case SQL_TYP_SMALL    :
+         case SQL_TYP_NSMALL   : return SQL_IntegerType;
+         case SQL_TYP_FLOAT    :
+         case SQL_TYP_NFLOAT   : return SQL_RealType;
+         case SQL_TYP_DATE     :
+         case SQL_TYP_NDATE    : return SQL_DateType;
+         case SQL_TYP_TIME     :
+         case SQL_TYP_NTIME    : return SQL_TimeType;
+         case SQL_TYP_STAMP    :
+         case SQL_TYP_NSTAMP   : return SQL_TimeStampType;
+         default               : err = sql_columnTypeErr;
+      }   
+   }
+
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_ColName                     */
+/*                                                                         */
+/***************************************************************************/
+
+STRING sql_ColName (STMT_HANDLE h, COL_REF i)
+{
+   struct sqlname *n;
+
+   i--;
+   if (! validHandle(h))
+      err = sql_invalidHandleErr; 
+   else if (! validColRef(i,h))
+      err = sql_columnRefErr;
+   else
+   {  err = sql_noErr;
+
+      n = &sqlda[h]->sqlvar[i].sqlname;
+      n->data[n->length >= 30 ? 29 : n->length] = '\0';   // Null terminate!!!
+      return MEM_SaveStringGStack((STRING)n->data);
+   }
+
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_ColWidth                    */
+/*                                                                         */
+/***************************************************************************/
+
+SWORD sql_ColWidth (STMT_HANDLE h, COL_REF i)
+{
+   i--;
+   if (! validHandle(h))
+      err = sql_invalidHandleErr; 
+   else if (! validColRef(i,h))
+      err = sql_columnRefErr;
+   else
+   {  err = sql_noErr;
+      return (SWORD)sqlda[h]->sqlvar[i].sqllen;
+   }
+
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_NumCols                     */
+/*                                                                         */
+/***************************************************************************/
+
+SWORD sql_NumCols (STMT_HANDLE h)
+{
+   if (! validHandle(h)) 
+      err = sql_invalidHandleErr; 
+   else
+   {  err = sql_noErr;
+      return sqlda[h]->sqld;     /* number of columns */
+   }
+
+   RUN_Error(err);
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                       GLOBAL FUNCTION : sql_Error                       */
+/*                                                                         */
+/***************************************************************************/
+
+// Returns error code of must recent SQL Tool call. Currently we are
+// ignoring the statement handle.
+
+ERR_CODE sql_Error (STMT_HANDLE h)
+{
+   return err;
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                             UTILITY ROUTINES                            */
+/*                                                                         */
+/***************************************************************************/
+
+/*---------------------------- Statement Handles --------------------------*/
+
+STMT_HANDLE NewStmtHandle ()
+{
+   STMT_HANDLE h;
+
+   for (h = 0; h < maxStmtHandles; h++)
+      if (sqlda[h]->sqld == 0)
+         return h;
+   return sql_nullHandle;
+}
+
+static void FreeStmtHandle(STMT_HANDLE h)
+{
+   sqlda[h]->sqld = 0;
+}
+
+/*----------------------------- Miscellaneous -----------------------------*/
+
+static void StrCopy (char t[], char s[])
+{
+   while (*(t++) = *(s++));
+}
+
+short StrLen (char s[])
+{
+   short n;
+
+   for (n = 0; *(s++); n++);
+   return n;
+}
+
+
+/***************************************************************************/
+/*                                                                         */
+/*                            MAIN (TESTING)                               */
+/*                                                                         */
+/***************************************************************************/
+
+#ifdef c_env
+
+void main (void)
+{
+   /* ... */
+}
+
+#endif

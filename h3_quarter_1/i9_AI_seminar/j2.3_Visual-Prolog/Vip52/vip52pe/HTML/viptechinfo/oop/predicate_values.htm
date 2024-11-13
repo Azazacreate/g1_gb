@@ -1,0 +1,307 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Predicate Values</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><a name="predicate values"></a>Predicate Values<!--mstheme--></font></h1>
+<p>Visual Prolog supports a notion of <i>predicate values</i>. Predicate values
+are predicates that can be treated as values in the sense that:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">They can be passed as parameters and returned from predicates and
+    functions.&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">They can be stored in facts.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">They can be held in variables.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">They can be compared for identity.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Of course, like &quot;plain&quot; predicates the predicate values can be
+called with appropriate arguments.</p>
+<p>Note that predicate values are declared as instances of predicate domains
+(please, refer to the online Help topic &quot;Predicate Domain
+Declarations&quot; for details).</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Predicate values do however differ from most other Visual Prolog values in
+    the following respects:<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">There exist <b>no</b> literals for predicate values.<br>
+    Predicate values have <b>no</b> persistent representation. (The text
+    representation of a predicate value is simply a hexadecimal number (i.e. the
+    value of a pointer to a memory address)).<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Predicate values have many usages. One of the most important is for <i>callbacks</i>.</p>
+<p>A callback is a predicate that is used to call back from some <i>used entity</i>
+to the user of this entity. For example:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">a call back from a server to a client, or&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">a call back from a service to the service user, or&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">a call back from a routine to a routine user.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Callbacks are normally used for one or both of the following purposes:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">to handle asynchronous events<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">to provide advanced/dynamic parameterization<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>When dealing with asynchronous events a program registers a callback with
+some event source. Then this event source invokes the callback whenever an event
+occurs. &quot;Data ready&quot; in asynchronous communication is a typical
+example of such an asynchronous event. Another very typical example is a Windows
+event handler.</p>
+<p>As an example of advanced/dynamic parameterization assume a tool that can
+create a certain kind of window. This window has the ability to change the shape
+of the cursor (mouse pointer) when it enters certain parts of the window. The
+window is however intended to work in many different situations, and therefore
+it cannot know which cursor to use in which parts of the window. In fact, the
+choice of cursor might depend on numerous things of which the window has no
+knowledge at all. Subsequently the window simply leaves the choice of cursor to
+the program that uses the window. And the way the window does this is by
+invoking a callback predicate. Via this callback predicate the window asks the
+surrounding program what cursor to use, when the mouse enters a certain part of
+the window. Since the window makes such a callback each time the mouse enters a
+certain part it need not receive the same cursor each time, the choice of cursor
+can <i>dynamically</i> depend on things external to the window.</p>
+<h2><!--mstheme--><font color="#000000"><a name="Object Predicate Values"></a>Object Predicate Values<!--mstheme--></font></h2>
+<p>Visual Prolog supports a notion of <i>object predicate values</i>. Object
+predicate value is a generalization of <a href="#predicate values">predicate
+values</a> (and as such the reader is encouraged to understand that notion
+first). An object predicate value is a <b>non-static</b> predicate of a specific
+object. This is opposed to &quot;ordinary&quot; predicate values, which are
+either global, local or static predicates (predicate values).</p>
+<p>Notice that object predicate values are declared as instances of object
+predicate domains (please refer to the online Help topic &quot;Object Predicate
+Domain Declarations&quot; for details).</p>
+<p>Seen from the outside, an object predicate value looks like an
+&quot;ordinary&quot; predicate value, because the object to which it belongs is
+subsumed by the predicate value itself. I.e. an object predicate value consists
+of both the code and the object to which the code belongs. Therefore, the call
+of an object predicate value looks exactly the same as the call of an
+&quot;ordinary&quot; predicate value: It is simply applied to their arguments.
+But execution will (nevertheless) take place in the context of the specific
+object to which the object predicate value relates.</p>
+<p>Therefore, the main reason for using object predicate values over
+&quot;ordinary&quot; predicate values is that execution will occur in a specific
+context of an object.</p>
+<p>To illustrate this semantics let us consider an example:</p>
+<p>First, we declare an object predicate domain (please refer to the online Help
+topic &quot;Object Predicate Domain Declarations&quot; for details):</p>
+<!--mstheme--></font><pre>global domains
+    objectIntInt = object procedure integer (integer)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>The domain objectIntInt declares object (non-static) predicates from integer
+to integer with procedure mode. Now let us declare a predicate of this domain.
+Because a predicate value of such domain must be a non-static member predicate,
+therefore, it must be declared in a class:</p>
+<!--mstheme--></font><pre>class cLast
+    predicates
+        last : objectIntInt
+endclass cLast</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>To really illustrate that last is indeed a non-static member predicate, we
+let it returns a value dependent on the state of the object. In fact we will let
+it returns the parameter it was called with at the previous invocation. So, we
+store the parameter from one invocation to the next in a fact:</p>
+<!--mstheme--></font><pre>implement cLast
+    facts
+        % invariant: &quot;lastParamater&quot; holds 
+        % the parameter value from last invocation of &quot;last&quot;
+        % initially assume 0 as value from &quot;last&quot; invocation
+        single lastParameter(integer Last)
+    clauses
+         lastParameter(0).        
+         last(ThisParameter, LastParameter) :-
+             lastParameter(LastParameter),
+             assert(lastParameter(ThisParameter)).
+endclass cLast</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>So far, the only thing special about this example is the way the predicate
+last is declared. And before we will really use last as a an object predicate
+value, let us use it like a normal non-static member predicate:</p>
+<!--mstheme--></font><pre>predicates
+    test1() - procedure ()
+clauses
+    test1() :-
+        O1 = cLast::new(),
+        O2 = cLast::new(),
+        _1 = O1:last(1),
+        _2 = O2:last(2),
+        V1 = O1:last(3),
+        V2 = O2:last(4),
+        writef(&quot;V1 = %, V2 = %&quot;, V1, V2), nl,
+        O1:delete(),
+        O2:delete().</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>If we call test1 then it will first create two objects O1 and O2. Then it
+calls last on O1 with parameter 1 and on O2 with parameter 2. Both O1 and O2
+will store their parameter in respective instances of lastParameter fact. So,
+when last is called again we will retrieve 1 and 2, respectively. Subsequently,
+the call of test1 will produce the output:</p>
+<!--mstheme--></font><pre>    V1 = 1, V2 = 2</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Now let us do the same again, only this time we will use the predicates as
+values held in variables:</p>
+<!--mstheme--></font><pre>predicates
+    test2() - procedure ()
+clauses
+    test2() :-
+        O1 = cLast::new(),
+        O2 = cLast::new(),
+        P1 = O1:last, 
+        % P1 is bound to an instance of 
+        % the object predicate domain objectIntInt
+        P2 = O2:last,
+        _1 = P1(1),
+        _2 = P2(2),
+        V1 = P1(3),
+        V2 = P2 (4),
+        writef(&quot;V1 = %, V2 = %&quot;, V1, V2), nl,
+        O1:delete(),
+        O2:delete().</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>The first thing to notice is that object predicate values consist of both an
+object (O1 or O2) and a predicate (last). The call of an object predicate value
+is, however, completely identical to calls of &quot;ordinary&quot; predicate
+values, i.e. you do not apply an object predicate value to an object, you simply
+call it with appropriate arguments.</p>
+<p>The effect of running test2 is exactly the same as when running test1:
+Executing P1(1) will store 1 in the lastParameter fact of O1. Likewise, the next
+call of P1 will retrieve the value stored in the lastParameter fact of O1. And
+completely similarly P2 will refer to O2.</p>
+<p>Object predicate values are at least as useful for callbacks as
+&quot;ordinary&quot; predicate values (please refer to the description of
+predicate values for a discussion of callbacks). The benefit from using object
+predicate values (over &quot;ordinary&quot; predicate values) is that the
+callback comes back to a specific context, namely to the object to which the
+callback belongs. This makes it possible to deal with several different
+callbacks of the same kind because each callback will end up in its own context.</p>
+<p>Let us walk through an example. Assume that we have a number of
+&quot;things&quot; that are interested in knowing when a certain value changes.
+(For the sake of the example, this value is simply an integer.) These things
+want to be notified asynchronously about changes in the value. Therefore, they
+register a &quot;dataReady&quot; listener at a data ready source. In this
+example, we choose to transfer the new value together with the data ready
+notification, but with more complex data we might let the listener pick up the
+data itself.</p>
+<p>We represent the data ready source by an object of class cDataReadySource. If
+we have several pieces of data that can &quot;become ready&quot;, then we can
+use one instance of cDataReadySource per data piece, making it possible to
+listen to notifications for exactly those of interest. cDataReadySource supports
+registering and unregistering of listeners. It also has a predicate for setting
+the value in question.</p>
+<p>Listener are represented by object procedure values (i.e. object callbacks).</p>
+<!--mstheme--></font><pre>class cDataReadySource
+    domains
+        dataReadyListener = object procedure (cDataReadySource EventSource, integer NewValue)
+    predicates
+        addDataReadyListener(dataReadyListener Listener) - procedure (i)
+        removeDataReadyListener(dataReadyListener Listener) - procedure (i)
+    predicates
+        setValue(integer NewValue) - procedure (i)
+endclass cDataReadySource</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>The implementation is quite straightforward. We store the currently
+registered listeners in a fact, and, when the data is changed, we notify all
+registered listeners of this.</p>
+<!--mstheme--></font><pre>implement cDataReadySource
+    facts
+        % Invariant: listener_db contains the currently 
+        % registered listeners (multiple registrations are ignored)
+        listener_db(dataReadyListener Listener)
+    clauses
+        addDataReadyListener(Listener) :-
+            listener_db(Listener), % already registered
+            !.
+        addDataReadyListener(Listener) :-
+            assert(listener_db(Listener)).
+        removeDataReadyListener(Listener) :-
+            retractAll(listener_db(Listener)).
+    predicates
+        dataIsReady(integer NewValue) - procedure (i)
+    clauses
+        dataIsReady(NewValue) :-
+            this(This),
+            listener_db(Listener),
+                Listener(This, NewValue),
+            fail.
+        dataIsReady(_).
+    </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>    clauses
+        setValue(NewValue) :-
+            dataIsReady(NewValue).
+endclass cDataReadySource</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Let us also try to use the class above in a context. Assume that we have a
+system, which counts how many users are active, this count is used in a number
+of places. One of these places is a status window, which displays the count. For
+the sake of the example, we imagine that there is a global predicate
+getUserCountSource, which will return a cDataReadySource object corresponding to
+the count.</p>
+<!--mstheme--></font><pre>global predicates
+    cDataReadySource getUserCountSource() - procedure ()</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>We implement our status window as a class cStatusWindow. The declaration of
+cStatusWindow is not very interesting in this context; all we are concerned with
+is the implementation. In the implementation we put our dataReadyListener, and
+in the constructor of the class we register this listener with the user count
+data source. We, of course, also unregister the listener in the destructor.</p>
+<!--mstheme--></font><pre>implement cStatusWindow
+    predicates
+        updateWindow(integer NewValue) - procedure (i)
+    clauses
+        updateWindow(NewValue) :-
+            …</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>    predicates
+        onUserCountChanged : cDataReadySource::dataReadyListener
+    clauses
+        onUserCountChanged(_Source, NewValue) :-
+            updateWindow(NewValue).
+ </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>    clauses
+        new() :-
+            UserCountSource = getUserCountSource(),
+            UserCountSource:addDataReadyListener(onUserCountChanged). % THIS is subsumed
+        delete() :-
+            UserCountSource = getUserCountSource(),
+            UserCountSource:removeDataReadyListener(onUserCountChanged).
+endclass cStatusWindow</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>No matter how many status windows we create they all will be updated when the
+user count changes.
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

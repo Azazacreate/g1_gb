@@ -1,0 +1,6 @@
+vars("parameter esta : ''\ntype category\nexplanation 'You can choose to get information about ESTA or to consult a knowledge base.'\noptions\n information - 'Information about ESTA',\n car - 'Knowledge base about cars',\n sanocor - 'Knowledge base about health'.\n/* rules */\nquestion 'Choose a subject to explore.'\npicture 'estademo'","esta","",[c_str("You can choose to get information about ESTA or to consult a knowledge base.",48)],[c_str("Choose a subject to explore.",281)],category,category([option("information","Information about ESTA"),option("car","Knowledge base about cars"),option("sanocor","Knowledge base about health")],[]),"estademo")
+section("section start : 'Start section in the demo knowledge base'\n\nif esta = 'information'(call display('uk_inf.txt'),chain '')\nif esta = 'car' chain 'car.kb'\nif esta = 'sanocor' chain 'sanocor.kb'","start",[c_str("Start section in the demo knowledge base",16)])
+paragraph("start",1,rel(c_var("esta",65),eq,c_str("information",72)),[call("display",91,[c_str("uk_inf.txt",99)]),chain("")])
+paragraph("start",2,rel(c_var("esta",127),eq,c_str("car",134)),[chain("car.kb")])
+paragraph("start",3,rel(c_var("esta",159),eq,c_str("sanocor",166)),[chain("sanocor.kb")])
+title("*demotitl*")

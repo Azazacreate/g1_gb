@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="retract">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>retract</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">retract/1</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>retract</b>(<i>Fact</i>) </p>
+
+<p align="left">Remove facts from the internal database. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>retract/1</b> deletes the first <i>Fact</i> in
+the database that matches the given <i>Fact</i>. During
+backtracking, the rest of the matching facts are deleted. The <i>Fact</i>
+is matched with the facts in the database, which means that any
+free variables will be bound in the call to retract. </p>
+
+<p align="left"><b>Fail</b> </p>
+
+<p align="left">When there are no more matches. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>fact1(1,&quot;fact1&quot;,[1,2,3]).
+fact1(2,&quot;fact2&quot;,[1,3]).
+fact1(3,&quot;fact2&quot;,[3,2,1]).
+fact2(1,&quot;one&quot;).
+fact2(1,&quot;one once more&quot;).
+fact2(2,&quot;two&quot;).
+-------- Dialog --------
+fact1(X,Y,Z)
+X=1, Y=fact1, Z=[1,2,3]
+X=2, Y=fact2, Z=[1,3]
+X=3, Y=fact2, Z=[3,2,1]
+3 Solutions
+retract(fact1(X,Y,[_,2|Z]))
+X=1, Y=fact1, Z=[3]
+X=3, Y=fact2, Z=[1]
+2 Solutions
+retract(fact1(X,Y,Z))
+X=2, Y=fact2, Z=[1,3]
+1 Solution
+fact1(X,Y,Z)
+No Solution
+retract(fact2(1,X))
+X=one
+X=one once more
+2 Solutions 
+</pre>
+</body>
+</html>

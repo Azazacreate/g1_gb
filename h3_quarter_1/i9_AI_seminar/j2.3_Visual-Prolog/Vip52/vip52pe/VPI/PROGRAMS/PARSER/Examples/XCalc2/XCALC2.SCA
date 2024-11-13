@@ -1,0 +1,80 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALC
+ FileName: XCALC2.SCA
+ Purpose: Calculator Demo of Parser Generator
+ Written by: Eugene Akimov
+ Comments: Lexical Analysis of the input expression
+
+		Domains & Predicates used in this file:
+		NUMBER_OF_SPACES - 	Number of space
+
+		scan - 			Scanning text
+		get_token - 		check token
+		is_a_space - 		checking char in text
+		skip_spaces - 		skip space and return number of spaces
+		string_token - 		get token from string
+******************************************************************************/
+
+domains
+  NUMBER_OF_SPACES		= integer
+
+predicates
+  scan(integer CursorPos,SOURCE Text,TOKL Tokl) - determ (i,i,o)
+  get_token(string StringToken,TOK Token,integer CursorPos) - determ (i,o,i)
+  is_a_space(char StrChar) - determ (i)
+  skip_spaces(SOURCE Text,SOURCE Text,NUMBER_OF_SPACES SpaceNumber) - procedure (i,o,o)
+  string_token(string Str,TOK Token) - determ (o,i),(i,o)
+  
+CLAUSES
+  get_token(Fronttoken,Token,_):-string_token(Fronttoken,Token),!.
+  get_token(_,_,Position):-
+	is_a_deeper_error(Position),
+	replace_error("Illegal token.",Position),
+	fail.
+
+  is_a_space(' ').	
+  is_a_space('\t').	
+  is_a_space('\n').
+
+  scan(Starting_Position,Source,[t(Token,Position)|Tail]):-
+	skip_spaces(Source,New_Source,Number_of_Spaces),
+	Position = Starting_Position + Number_of_Spaces,
+	fronttoken(New_Source,Fronttoken,Rest),
+	!,
+
+% Make the case of each token unimportant.
+	upper_lower(Fronttoken,Lower_Case_Fronttoken),
+	get_token(Lower_Case_Fronttoken,Token,Position),
+	str_len(Fronttoken,Length_of_Fronttoken),
+	New_Starting_Position = Position + Length_of_Fronttoken,
+	scan(New_Starting_Position,Rest,Tail).
+  scan(_,_,[]).
+
+  skip_spaces(Source,New_Source,Number_of_Spaces):-
+	frontchar(Source,Char,Source1),
+	is_a_space(Char),
+	!,
+	skip_spaces(Source1,New_Source,Number_of_Spaces_in_Source1),
+	Number_of_Spaces = Number_of_Spaces_in_Source1 + 1.
+  skip_spaces(Source,Source,0).
+
+  string_token("/",div):-
+	!.
+  string_token("(",lpar):-
+	!.
+  string_token("-",minus):-
+	!.
+  string_token("*",mult):-
+	!.
+  string_token(String,number(Real)):-
+	trap(str_real(String,Real),_,true),
+	!.
+  string_token("+",plus):-
+	!.
+  string_token("^",power):-
+	!.
+  string_token(")",rpar):-
+	!.

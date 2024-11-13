@@ -1,0 +1,209 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>The WWW Directory</title>
+</head>
+
+<body>
+
+<table border="0" cellPadding="0" cellSpacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td vAlign="top">
+        <h1>The WWW Directory</h1>
+        <p align="justify">The WWW directory contains the following
+        subdirectories:</p>
+        <table border="1" borderColorDark="#000000" borderColorLight="#c0c0c0" cellPadding="4" cellSpacing="1">
+          <tbody>
+            <tr>
+              <th vAlign="top">Directory</th>
+              <th vAlign="top">Content</th>
+            </tr>
+            <tr>
+              <td vAlign="top">[CGI]</td>
+              <td vAlign="top">The \WWW\CGI\Samples sub-directory includes <a href="#Demo"> demo
+                projects of WEB applications</a>.
+                <p>The \WWW\CGI\Test sub-directory includes <a href="#CGITEST">CgiTest</a>
+                example showing, how to create Prolog
+                applications that can be used as CGI programs, how to receive,
+                examine and decode Web Server's requests, and how to generate
+                dynamic HTML pages.</p>
+              </td>
+            </tr>
+            <tr>
+              <td vAlign="top">[ISAPI]</td>
+              <td vAlign="top">The ISAPI directory contains the tools and
+                declarations that simplify development of the ISAPI (Internet
+                Server API) extensions for Microsoft Internet Information Server
+                and the examples of using them.</td>
+            </tr>
+            <tr>
+              <td vAlign="top">[INCLUDE]</td>
+              <td vAlign="top">Some include files to use for CGI Scripts and
+                ISAPI extensions</td>
+            </tr>
+            <tr>
+              <td vAlign="top">[INETPUB]</td>
+              <td vAlign="top">Target dir of the Programs in the [PROGRAMS]
+                sub-directory, to be copied to the Internet Server directory.</td>
+            </tr>
+            <tr>
+              <td vAlign="top">[LIB]</td>
+              <td vAlign="top">Contains a library to support ISAPI</td>
+            </tr>
+            <tr>
+              <td vAlign="top">[PROGRAMS]</td>
+              <td vAlign="top">Some example projects: ESTA, Geni, License, Pie.</td>
+            </tr>
+          </tbody>
+        </table>
+        &nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="#Examples">Visual Prolog Examples of WEB Applications</a> </p>
+
+<p><a href="#Information">Where to Find Additional Information about Demo
+Examples and Real-World Visual Prolog CGI Applications?</a> </p>
+
+<h2><a name="Examples"></a>Visual Prolog Examples of WEB Applications </h2>
+
+<p>The [WWW] directory includes two groups of examples: </p>
+
+<ol>
+  <li>Demo examples of WEB applications from the &lt;<i>VIP_root</i>&gt;\WWW\INETPUB\CGIsamp sub-directory.<br>
+    These CGI examples are created from some of&nbsp; simple Prolog example programs
+supplied with Visual Prolog. The examples are shipped with executables.&nbsp;<br>
+    You can run these ready-to-use examples at your local server, or examine and
+    modify the source code of these examples.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Demo">How to run Visual Prolog WEB
+    demo examples?<br>
+    </a></li>
+  <li> CgiTest and other examples from the [WWW] directory that
+are supplied in the form of projects without executable files. You need to build a
+project first and then run an example at your server.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#CGITEST">How to run&nbsp; WEB
+    Examples that
+are supplied in the form of projects?</a></li>
+</ol>
+
+<h3><a name="Demo"><br>
+</a>How to Run Visual Prolog WEB Demo Examples from the CGIsamp Sub-directory? </h3>
+
+<p>To run Web applications from the &lt;<i>VIP_root</i>&gt;\WWW\INETPUB\CGIsamp directory at your local computer, you need to
+fulfill the
+following steps: 
+
+<ol>
+  <li> Install a local WEB server (e.g. MS Personal WEB server). <br>
+  </li>
+  <li> Make the &lt;<i>VIP_root</i>&gt;\WWW\INETPUB\CGIsamp a virtual directory.<br>
+    Note: If you want to test all examples in the &lt;<i>VIP_root</i>&gt;\WWW\,
+    you may make the whole&nbsp; &lt;<i>VIP_root</i>&gt;\WWW\ a virtual
+    directory <br>
+  </li>
+  <li>Provide the possibility to run executables from the directory.&nbsp; <br>
+    There are several ways to do it:</li>
+</ol>
+
+<blockquote>
+  <ol type="a">
+    <li>For example, if you use MS Personal WEB server, you can do it with the
+      help of the &quot;Advanced Options&quot; item in the Personal WEB Manager: </li>
+  </ol>
+  <blockquote>
+    <ul>
+      <li>Click on&nbsp; the &quot;Edit Properties&quot; button,</li>
+      <li>Check &quot;Execute&quot;.</li>
+    </ul>
+  </blockquote>
+  <ol type="a" start="2">
+    <li> Another way to provide this possibility is to use the File|Properties menu command in
+      the Windows Explorer or Windows Commander to invoke the Properties dialog for this
+      directory. </li>
+  </ol>
+  <blockquote>
+    <ul>
+      <li>Choose &quot;WEB Sharing&quot; tab,</li>
+      <li>Check &quot;Share this directory&quot; checkbox. </li>
+      <li>In the &quot;Edit Alias&quot; dialog check all checkboxes. </li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<ol start="4">
+  <li> Start a browser that supports forms.</li>
+  <li> Load: http://&lt;<i>your server name</i>&gt;/cgisamp/index.htm. </li>
+  <li> Run examples. </li>
+</ol>
+
+<h4>Where to Find the Source Code of Demo Examples of WEB Applications?</h4>
+
+<p>The source code of the WEB demo examples is&nbsp; located in the &lt;<i>VIP_root</i>&gt;\WWW\CGI\Samples
+sub-directory.<br>
+</p>
+
+<h3><a name="CGITEST"></a>How to Run CgiTest and Other Visual Prolog WEB
+Examples that
+are Supplied in the Form of Projects? </h3>
+
+<p>To run CgiTest and other examples from the WWW directory that
+are supplied in the form of projects without executable files, you need to build a
+project first.&nbsp;</p>
+
+<p> For example, to run the CgiTest example you need to fulfill the
+following steps:&nbsp;</p>
+
+<ol>
+  <li> Load CgiTest example (&lt;<i>VIP_root</i>&gt;\WWW\CGI\Test\CgiTest. PRJ) into Visual Prolog VDE.&nbsp;</li>
+  <li>In the
+Application Expert choose &quot;Other Options&quot; tab.&nbsp;<br>
+ Click &quot;Project Directories&quot; and then
+choose &quot;Output&quot; tab.&nbsp;<br>
+ You will see that CgiTest.exe file will be placed into &lt;<i>VIP_root</i>&gt;\WWW\INETPUB\CGIsamp directory.&nbsp;</li>
+</ol>
+<p> 3. Build your project.&nbsp;</p>
+
+<p> 4. Make &lt;<i>VIP_root</i>&gt;\WWW\INETPUB\CgiTest a virtual directory.&nbsp;</p>
+
+<p> 5. Provide a possibility to run
+CGI applications from your server directory .</p>
+
+<p>&nbsp;6. Start any browser that supports forms.&nbsp;</p>
+
+<p> 7. Load CgiTest.HTM:
+//cgitest/cgitest.htm</p>
+
+<h4>Where to Find the Source Code of ESTA, Geni, License, and Pie Examples?</h4>
+
+<p>Projects for ESTA, Geni, License, and Pie examples are located in the
+\WWW\Programs sub-directory.</p>
+
+<p><a name="ESTA"></a>You will find a detailed description of ESTA example in
+the &lt;<i>VIP_root</i>&gt;\WWW\Programs\Esta\ReadMe.htm.</p>
+
+<h2><a name="Information"></a>Where to Find Additional Information about Demo
+Examples and Real-World Visual Prolog CGI Applications?</h2>
+
+<p>You will find a lot of useful information about Visual Prolog WEB applications in the
+&quot;Introduction to Visual Prolog&quot;.&nbsp; To read this Introduction, use the <strong>Help|Introduction
+to Visual Prolog</strong> menu command and then choose &quot;Demo&quot;. </p>
+
+<p>In the&nbsp; &quot;Visual Prolog Demo Examples &quot; page, you will find links to
+descriptions of the demo examples and demos working at the WEB.</p>
+
+<p>The page includes also links to real-world applications made in Visual Prolog. </p>
+
+<p>You will find some useful tips in the &quot;<a
+href="http://www.visual-prolog.com/vipsupport/faq/pdcindex.htm">Frequently Asked Questions</a>&quot;.</p>
+
+<p> Please, see also the topic &quot;Internet and Networking Support&quot; (&quot;Internet
+support&quot; keyword) in the Visual Prolog online Help.</p>
+
+</body>
+
+</html>

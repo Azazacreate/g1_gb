@@ -1,0 +1,41 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	EDITFORM
+ FileName:	EDITFORM.PRE
+ Purpose:	FORMS EDITOR
+ Written by:	Andrey Skobelev
+ Comments:
+*****************************************************************************/
+
+constants
+  tableed_class 	= "tableed_class"	% User defined name for the class
+  tableed_id 		= 3278			% Control Id for tableed control created in window
+
+% INPUT forms id
+  con_producer =	2220
+  con_customer =	2221
+  con_sort =		2222
+  con_production =	2223
+  con_custom =		2224
+  con_distance =	2225
+% OUTPUT forms id
+  con_move = 		2226
+  con_unplaced = 	2227
+  con_needs =		2228
+
+global predicates
+procedure  ef_form_Create(INTEGER ID,TABLEEDIT_FILTERS FilterList) - (i,i)
+procedure  ef_forms_Update
+procedure  ef_outforms_Update
+procedure  ef_write_formRct
+procedure  ef_clear_Data
+procedure  ef_close_Form
+procedure  ef_read_formRct
+procedure  ef_set_font
+procedure  ef_changeRegister
+procedure  ef_changeUnRegister
+determ     ef_change_Notify(INTEGER YesNoCancel) - (o)
+procedure  set_GenStatusToToolbar
+	   tableed_class_handler : EHANDLER	% Table editor custom control EVENT HANDLER

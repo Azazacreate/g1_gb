@@ -1,0 +1,30 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  Build
+ FileName: Build.DOM
+ Purpose: Supports the runtime Build process using PDC Prolog Compiler
+ 	  and PDC Link
+ Written by: Victor Yukhtenko
+ Comments:
+******************************************************************************/
+constants
+bldC_DOM_file = 1
+
+include "build\\buildInt.dom"
+
+global domains
+  BldD_ToolType = compiler;linker;compilerANDlinker
+
+  BldD_Argument = STRING
+  BldPD_Update = determ ()
+  BldPD_CompErrAndWarn = determ (STRING BldD_ErrOrWarnSYM,INTEGER msgNo,UNSIGNED lineNo,UNSIGNED pos,STRING commentText) - (i,i,i,i,i)
+  BldPD_Message = determ (STRING) - (i) language c
+  BldD_Property = 
+	bldT_UpdateCB(BldPD_Update);
+	bldT_MessageCB(BldPD_Message);
+	bldT_CmpErrAndWarnCB(BldPD_CompErrAndWarn);
+	bldT_CmpFlags(BldD_Argument);
+	bldT_LnkFlags(BldD_Argument);
+	bldT_Default()

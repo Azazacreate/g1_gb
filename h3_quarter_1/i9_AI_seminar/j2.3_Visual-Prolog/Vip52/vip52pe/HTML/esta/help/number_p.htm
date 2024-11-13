@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<TITLE>Number Parameter</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Number Parameter'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Number Parameter</FONT>
+<P ALIGN=LEFT>Number parameters may take integer or real values - ESTA converts all values to reals automatically. Number parameters can be used to represent tax rates, interest rates, or the number of parts in a component etc. It is possible to declare a range, that ESTA will validate in response to an assignment of the parameter value.
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for a number parameter is: 
+<P ALIGN=LEFT> <FONT FACE='Courier' SIZE=2>&lt;number parameter&gt; ::=  
+<P ALIGN=LEFT>            &lt;<A HREF='DECLARAT.HTM'>declaration field</A>&gt; 
+<P ALIGN=LEFT>            type number 
+<P ALIGN=LEFT>            [&lt;<A HREF='EXPLANAT.HTM'>explanation field</A>&gt;] 
+<P ALIGN=LEFT>            [&lt;<A HREF='RULES_FI.HTM'>rules field</A> (with <A HREF='NUMBER_E.HTM'>number expressions</A>)&gt;] 
+<P ALIGN=LEFT>            &lt;range field&gt; 
+<P ALIGN=LEFT>            [&lt;<A HREF='QUESTION.HTM'>question field</A>&gt;] 
+<P ALIGN=LEFT>            [&lt;<A HREF='PICTURE_.HTM'>picture field</A>&gt;] 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>&lt;range field&gt; ::= range &lt;<A HREF='NUMBER.HTM'>number</A>&gt; &lt;<A HREF='NUMBER.HTM'>number</A>&gt;</FONT>    
+<P ALIGN=LEFT>If the number parameter gets its value from an answer to a question, ESTA will show a dialog box, with the question and an edit line for the answer. The input value will be checked automatically for being a <A HREF='NUMBER.HTM'>number</A>. If a range field is specified, the value will further be checked as being within the range. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>parameter height_cm 'your height in cm' 
+<P ALIGN=LEFT>type number 
+<P ALIGN=LEFT>range 100 250 
+<P ALIGN=LEFT>question 'What is your height in cm ?'</FONT> 
+<P ALIGN=LEFT>The parameter will look like this in a dialog: 
+<P ALIGN=LEFT>{bml NUM_PAR.BMP}
+</BODY>
+</HTML>

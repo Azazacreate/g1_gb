@@ -1,0 +1,187 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	LAYMOUSE.PRO
+ Purpose:	Mouse events for Layout object
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+clauses
+  layout_MouseDown(Win,pnt(X,Y)):-
+	layout_page_info(_,Win,_,_,create_mode(_)),
+	layout_check_callback(Win,user_action(createBegin)),
+	assert(layout_grouped(Win,rct(X,Y,X,Y))),
+	win_CaptureMouse(Win),!.
+  layout_MouseDown(Win,_):-
+	retract(layout_sized(Win,_,Corner,b_false)),
+	layout_selection(Win,IdList,Rect),
+	assert(layout_sized(Win,Rect,Corner,b_true)),
+	layout_createXorRectType(Win,IdList),
+	layout_draw_xor_rect(Win,Rect),
+	win_CaptureMouse(Win),!.
+  layout_MouseDown(Win,pnt(X,Y)):-
+	retract(layout_moved(Win,_,_,_,_,_,b_false)),
+	layout_selection(Win,IdList,rct(L,T,R,B)),
+	Dx = X - L, Dy = Y - T,
+	assert(layout_moved(Win,Win,IdList,rct(L,T,R,B),Dx,Dy,b_true)),
+	layout_createXorRectType(Win,IdList),
+	layout_draw_xor_rect(Win,rct(L,T,R,B)),
+	win_CaptureMouse(Win),!.
+  layout_MouseDown(Win,pnt(X,Y)):-
+	Id = layout_get(Win,pnt(X,Y)),
+	layout_check_callback(Win,user_action(select([Id]))),
+	layout_select(Win,[Id]),
+	layout_check_callback(Win,user_action(moveBegin([Id]))),
+	layout_set_cursor1(Win,cursor_Size),
+	layout_selection(Win,IdList,rct(L,T,R,B)),
+	Dx = X - L, Dy = Y - T,
+	assert(layout_moved(Win,Win,IdList,rct(L,T,R,B),Dx,Dy,b_true)),
+	layout_createXorRectType(Win,IdList),
+	layout_draw_xor_rect(Win,rct(L,T,R,B)),
+	win_CaptureMouse(Win),!.
+  layout_MouseDown(Win,pnt(X,Y)):-
+	layout_off(Win),
+	layout_check_callback(Win,user_action(selectBegin)),
+	assert(layout_grouped(Win,rct(X,Y,X,Y))),
+	layout_createXorRectType(Win,[]),
+	win_CaptureMouse(Win),!.
+
+  layout_MouseUp(Win,pnt(X,Y)):-
+	win_ReleaseMouse(),
+	layout_page_info(_,Win,_,_,create_mode(Type)),
+	retract(layout_grouped(Win,Rect)),
+	layout_draw_xor_rect1(Win,Rect,Type),
+	layout_change_rct(Rect,X,Y,layout_corner_rb,Rect1),
+	layout_adjust_rct(Rect1,Type,Rect2),
+	layout_NewId(Win,1,Id),
+	layout_check_callback(Win,user_action(create(Id,Rect2))),
+	assert(layout_info(Id,Win,Rect2,Type)),
+	layout_add_id(Win,Id),
+	layout_Update1(Win,[Id]),
+	layout_check_callback(Win,user_action(modified([Id]))),!.
+  layout_MouseUp(Win,pnt(X,Y)):-
+	layout_selection(Win,IdList,Rect0),
+	retract(layout_sized(Win,Rect,Corner,b_true)),
+	layout_draw_xor_rect(Win,Rect),
+	layout_change_rct(Rect,X,Y,Corner,Rect1),
+	layout_adjust_rct(Win,Rect1,IdList,Rect2),
+	layout_check_callback(Win,user_action(size(IdList,Rect2))),
+	assert(layout_sized(Win,Rect,Corner,b_false)),
+	layout_page_info(_,Win,Page,_,_),
+	layout_change_field(Win,Page,IdList,Rect0,Rect1),
+	layout_on(Win,IdList),
+	layout_invalidate(Win,Rect0),
+	layout_draw_border(Win),
+	layout_check_callback(Win,user_action(modified(IdList))),!.
+  layout_MouseUp(NewWin,pnt(X,Y)):-
+	retract(layout_moved(OldWin,NewWin,OldIdList,NewRect,Dx,Dy,b_true)),
+	retractall(layout_info_tmp(_,OldWin,_,_)),
+	layout_assert_tmp_info(OldWin,OldIdList),
+	layout_selection(OldWin,OldIdList,OldRect),
+	layout_off(OldWin),
+	layout_move_fields(OldWin,NewWin,OldIdList,NewIdList),
+	layout_draw_xor_rect(NewWin,NewRect),
+	layout_change_rct(NewRect,X,Y,Dx,Dy,NewRect1),
+	assert(layout_moved(NewWin,NewWin,NewIdList,NewRect1,Dx,Dy,b_false)),
+	layout_page_info(_,NewWin,Page,_,_),
+	layout_change_field(NewWin,Page,NewIdList,OldRect,NewRect1),
+	layout_on(NewWin,NewIdList),
+	win_SetFocus(NewWin),
+	layout_move_sendcallback(OldWin,OldIdList,NewWin,NewIdList),
+	layout_check_callback(OldWin,user_action(modified(OldIdList))),
+	layout_check_callback(NewWin,user_action(modified(NewIdList))),!.
+  layout_MouseUp(Win,pnt(X,Y)):-
+	retract(layout_grouped(Win,Rect)),
+	layout_draw_xor_rect(Win,Rect),
+	layout_change_rct(Rect,X,Y,layout_corner_rb,Rect1),
+	layout_adjust_rct(Win,Rect1,[],Rect2),
+	layout_group_select(Win,Rect2),
+	layout_selection(Win,IdList,_),
+	layout_draw_border(Win),!,
+	layout_check_callback(Win,user_action(select(IdList))).
+
+  layout_MouseMove(Win,pnt(X0,Y0)):-
+	layout_correct_pnt(Win,pnt(X0,Y0),pnt(X,Y)),
+	layout_page_info(_,Win,_,_,create_mode(Type)),
+	retract(layout_grouped(Win,Rect)),
+	layout_draw_xor_rect1(Win,Rect,Type),
+	layout_change_rct(Rect,X,Y,layout_corner_rb,Rect1),
+	assert(layout_grouped(Win,Rect1)),
+	layout_draw_xor_rect1(Win,Rect1,Type),!.
+  layout_MouseMove(Win,_):-
+	layout_page_info(_,Win,_,_,create_mode(_)),!.
+  layout_MouseMove(Win,pnt(X0,Y0)):-
+	layout_correct_pnt(Win,pnt(X0,Y0),pnt(X,Y)),
+	retract(layout_sized(Win,Rect,Corner,b_true)),
+	layout_draw_xor_rect(Win,Rect),
+	layout_change_rct(Rect,X,Y,Corner,Rect1),
+	assert(layout_sized(Win,Rect1,Corner,b_true)),
+	layout_draw_xor_rect(Win,Rect1),!.
+  layout_MouseMove(NewWin0,pnt(X00,Y00)):-
+	retract(layout_moved(OldWin,NewWin0,IdList,Rect,DX,DY,b_true)),
+	layout_draw_xor_rect(NewWin0,Rect),
+	layout_change_win(OldWin,NewWin0,X00,Y00,NewWin,X0,Y0),
+	layout_correct_pnt(NewWin,pnt(X0,Y0),pnt(X,Y)),
+	layout_change_rct(Rect,X,Y,DX,DY,Rect1),
+	assert(layout_moved(OldWin,NewWin,IdList,Rect1,DX,DY,b_true)),
+	layout_draw_xor_rect(NewWin,Rect1),!.
+  layout_MouseMove(Win,pnt(X0,Y0)):-
+	layout_correct_pnt(Win,pnt(X0,Y0),pnt(X,Y)),
+	retract(layout_grouped(Win,Rect)),
+	layout_draw_xor_rect(Win,Rect),
+	layout_change_rct(Rect,X,Y,layout_corner_rb,Rect1),
+	assert(layout_grouped(Win,Rect1)),
+	layout_draw_xor_rect(Win,Rect1),!.
+  layout_MouseMove(Win,pnt(X,Y)):-
+	layout_selection(Win,IdList,Rect),
+	layout_check_line(Win,IdList),
+	layout_get_matr(Rect,X1,X2,X5,X6,Y1,Y2,Y5,Y6),
+	Corner = layout_get_corner(X,Y,X1,X2,X5,X6,Y1,Y2,Y5,Y6),!,
+	retractall(layout_moved(Win,_,_,_,_,_,_)),
+	retractall(layout_sized(Win,_,_,_)),
+	layout_check_callback(Win,user_action(sizeBegin(IdList))),
+	assert(layout_sized(Win,Rect,Corner,b_false)),
+	layout_set_cursor(Win,Corner),!.
+  layout_MouseMove(Win,pnt(X,Y)):-
+	layout_selection(Win,IdList,Rect),
+	not(layout_check_line(Win,IdList)),
+	layout_get_matr(Rect,X1,X2,X3,X4,X5,X6,Y1,Y2,Y3,Y4,Y5,Y6),
+	Corner = layout_get_corner(X,Y,X1,X2,X3,X4,X5,X6,Y1,Y2,Y3,Y4,Y5,Y6),!,
+	retractall(layout_moved(Win,_,_,_,_,_,_)),
+	retractall(layout_sized(Win,_,_,_)),
+	layout_check_callback(Win,user_action(sizeBegin(IdList))),
+	assert(layout_sized(Win,Rect,Corner,b_false)),
+	layout_set_cursor(Win,Corner),!.
+  layout_MouseMove(Win,pnt(X,Y)):-
+	layout_selection(Win,[Id0|[]],_),
+	layout_get(Win,Id0,pnt(X,Y)),
+	retractall(layout_sized(Win,_,_,_)),
+	retractall(layout_moved(Win,_,_,_,_,_,_)),
+	layout_set_cursor1(Win,cursor_Arrow),!.
+  layout_MouseMove(Win,pnt(X,Y)):-
+	layout_selection(Win,IdList,Rect),
+	layout_check_line(Win,IdList),
+	layout_Insaid1(Rect,pnt(X,Y)),!,
+	retractall(layout_moved(Win,_,_,_,_,_,_)),
+	retractall(layout_sized(Win,_,_,_)),
+	layout_check_callback(Win,user_action(moveBegin(IdList))),
+	assert(layout_moved(Win,Win,IdList,Rect,0,0,b_false)),
+	layout_set_cursor1(Win,cursor_Size),!.
+  layout_MouseMove(Win,pnt(X,Y)):-
+	layout_selection(Win,IdList,Rect),
+	not(layout_check_line(Win,IdList)),
+	layout_Insaid(Rect,rct(X,Y,X,Y)),!,
+	retractall(layout_moved(Win,_,_,_,_,_,_)),
+	retractall(layout_sized(Win,_,_,_)),
+	layout_check_callback(Win,user_action(moveBegin(IdList))),
+	assert(layout_moved(Win,Win,IdList,Rect,0,0,b_false)),
+	layout_set_cursor1(Win,cursor_Size),!.
+  layout_MouseMove(Win,_):-
+	retract(layout_sized(Win,_,_,_)),
+	layout_set_cursor1(Win,cursor_Arrow),!.
+  layout_MouseMove(Win,_):-
+	retract(layout_moved(Win,_,_,_,_,_,_)),
+	layout_set_cursor1(Win,cursor_Arrow),!.
+

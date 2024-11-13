@@ -1,0 +1,215 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	WINCTRLS.PRE
+ Purpose:	Tree View custom control global predicates
+ Written by:	Sergey Alexeev
+ Version:	1.0
+ Build:		002.000316
+ Tested with:   Visual Prolog v.5.0 build 533
+ Comments:
+******************************************************************************/
+ifndef winctrls_dom_included
+ #Error: this file requires include: winctrls.dom
+enddef 
+
+CONSTANTS
+  winctrls_pre_included = 1
+
+ifdef use_drag_and_drop
+
+GLOBAL PREDICATES
+  procedure dd_client(WINDOW,DD_CALLBACK) - (i,i)
+
+  determ dd_drag(WINDOW FromWin,PNT,INTEGER MouseButton,STRING Data) - (i,i,i,i)
+
+  determ dd_drop(WINDOW FromWin,PNT,INTEGER MouseButton,STRING Data) - (i,i,i,i)
+
+enddef /*** use_drag_and_drop ***/
+ifdef use_winctrl_TreeView
+
+GLOBAL PREDICATES
+  procedure tv_Init(WINDOW TVWin,ILIST Flags,CURSOR DragAndDropAvailable,CURSOR DragAndDropUnAvailable,TV_TREELIST,TV_CALLBACK) - (i,i,i,i,i,i)
+
+  determ LONG tv_HandleEvent(WINDOW TVWin,EVENT) - (i,i)
+
+  procedure tv_get_pos(WINDOW TVWin,INTEGER X,INTEGER Y,UNSIGNED ItemId,UNSIGNED Place) - (i,i,i,o,o)
+
+  procedure tv_get_sel(WINDOW TVWin,UNSIGNED ItemId) - (i,o)
+
+  procedure tv_get_item(WINDOW TVWin,UNSIGNED ItemId,STRING Text,ILIST StateList,RESID BitmapId) - (i,i,o,o,o)
+
+  procedure tv_get_parent(WINDOW TVWin,UNSIGNED ItemId,UNSIGNED ParentId) - (i,i,o)
+
+  procedure tv_get_child(WINDOW TVWin,UNSIGNED ItemId,UNSIGNED ChildId) - (i,i,o)
+
+  procedure tv_get_next(WINDOW TVWin,UNSIGNED ItemId,UNSIGNED NextId) - (i,i,o)
+
+  procedure tv_get_previous(WINDOW TVWin,UNSIGNED ItemId,UNSIGNED PreviousId) - (i,i,o)
+
+  procedure tv_get_all(WINDOW TVWin,TV_TREELIST) - (i,o)
+
+  procedure tv_get_part(WINDOW TVWin,UNSIGNED FromItemId,TV_TREELIST) - (i,i,o)
+
+  procedure tv_get_count(WINDOW TVWin,UNSIGNED Count) - (i,o)
+
+  procedure tv_expand(WINDOW TVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure tv_select(WINDOW TVWin,UNSIGNED ItemId,BOOLEAN Select) - (i,i,i)
+
+  procedure tv_set_item(WINDOW TVWin,UNSIGNED ItemId,STRING Text,ILIST StateList,RESID BitmapId) - (i,i,i,i,i)
+
+  procedure tv_insert_item(WINDOW TVWin,UNSIGNED ItemId,UNSIGNED ParentId,UNSIGNED PreviosId,STRING Text,ILIST StateList,RESID BitmapId) - (i,i,i,i,i,i,i)
+
+  procedure tv_delete_item(WINDOW TVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure tv_sort_children(WINDOW TVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure tv_edit_begin(WINDOW TVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure tv_edit_end(WINDOW TVWin) - (i)
+
+  procedure tv_ensure_visible(WINDOW TVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure tv_get_indent(WINDOW TVWin,UNSIGNED Indent) - (i,o)
+
+  procedure tv_set_indent(WINDOW TVWin,UNSIGNED Indent) - (i,i)
+
+  procedure tv_get_AdvancedData(WINDOW TVWin,STRING) - (i,o) % See TV_DRAGDROP domain
+
+  procedure tv_set_AdvancedData(WINDOW TVWin,STRING) - (i,i) % See TV_DRAGDROP domain
+
+enddef /*** use_winctrl_TreeView ***/
+ifdef use_winctrl_ListView
+
+GLOBAL PREDICATES
+
+  procedure lv_Init(WINDOW LVWin,UNSIGNED Type,ILIST Style,LV_COLUMNLIST,LV_ITEMLIST,CURSOR DragAndDropAvailable,CURSOR DragAndDropUnAvailable,LV_CALLBACK) - (i,i,i,i,i,i,i,i)
+
+  determ LONG lv_HandleEvent(WINDOW LVWin,EVENT) - (i,i)
+
+  procedure lv_get_pos(WINDOW LVWin,INTEGER X,INTEGER Y,UNSIGNED ItemId,UNSIGNED Place) - (i,i,i,o,o)
+
+  determ lv_itemid_row(WINDOW LVWin,UNSIGNED ItemId,UNSIGNED Row) - (i,i,o)
+
+  determ lv_row_itemid(WINDOW LVWin,UNSIGNED Row,UNSIGNED ItemId) - (i,i,o)
+
+  procedure lv_get_type(WINDOW LVWIN,UNSIGNED Type) - (i,o)
+
+  procedure lv_set_type(WINDOW LVWIN,UNSIGNED Type) - (i,i)
+
+  procedure lv_get_style(WINDOW LVWIN,ILIST Style) - (i,o)
+
+  procedure lv_set_style(WINDOW LVWIN,ILIST Style) - (i,i)
+
+  procedure lv_get_sel(WINDOW LVWin,ILIST ItemIdList) - (i,o)
+
+  procedure lv_get_focus(WINDOW LVWin,UNSIGNED ItemId) - (i,o)
+
+  procedure lv_select(WINDOW LVWin,ILIST ItemIdList,BOOLEAN Select) - (i,i,i)
+
+  procedure lv_focus(WINDOW LVWin,UNSIGNED ItemId,BOOLEAN Focus) - (i,i,i)
+
+  procedure lv_get_item(WINDOW LVWin,UNSIGNED ItemId,LV_ITEM) - (i,i,o)
+
+  procedure lv_set_item(WINDOW LVWin,LV_ITEM) - (i,i)
+
+  procedure lv_sort_items(WINDOW LVWin,LV_ORDER,UNSIGNED ColumnNumber,UNSIGNED HeaderRows,UNSIGNED FooterRows) - (i,i,i,i,i)
+
+  procedure lv_sort_items(WINDOW LVWin,UNSIGNED DataToSortCallBack,LV_SORTCALLBACK) - (i,i,i)
+
+  procedure lv_insert_item(WINDOW LVWin,LV_ITEM) - (i,i)
+
+  procedure lv_delete_item(WINDOW LVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure lv_delete_allitems(WINDOW LVWin) - (i)
+
+  procedure lv_get_column(WINDOW LVWin,INTEGER ColumnPos,LV_COLUMN) - (i,i,o)
+
+  procedure lv_set_column(WINDOW LVWin,INTEGER ColumnPos,LV_COLUMN) - (i,i,i)
+
+  procedure lv_insert_column(WINDOW LVWin,INTEGER ColumnPos,LV_COLUMN) - (i,i,i)
+
+  procedure lv_delete_column(WINDOW LVWin,UNSIGNED ColumnNum) - (i,i)
+
+  procedure lv_get_color(WINDOW LVWin,COLOR TextColor,COLOR TextBgColor) - (i,o,o)
+
+  procedure lv_set_color(WINDOW LVWin,COLOR TextColor,COLOR TextBgColor) - (i,i,i)
+
+  procedure lv_arrange(WINDOW LVWin,LV_ARRANGE) - (i,i)
+
+  procedure lv_ensurevisible(WINDOW LVWin,UNSIGNED ItemId) - (i,i)
+
+  procedure lv_getcountperpage(WINDOW LVWin,UNSIGNED NumItems) - (i,o)
+
+  procedure lv_getitemcount(WINDOW LVWin,UNSIGNED NumItems) - (i,o)
+
+  procedure lv_getitemposition(WINDOW LVWin,UNSIGNED ItemId,PNT Position) - (i,i,o)
+
+  procedure lv_setitemposition(WINDOW LVWin,UNSIGNED ItemId,PNT Position) - (i,i,i)
+
+  procedure lv_getnextitem(WINDOW LVWin,UNSIGNED ItemId,LV_RELATIVEPOS,UNSIGNED ItemId) - (i,i,i,o)
+
+  procedure lv_get_AdvancedData(WINDOW LVWin,STRING) - (i,o) % See LV_DRAGDROP domain
+
+  procedure lv_set_AdvancedData(WINDOW LVWin,STRING) - (i,i) % See LV_DRAGDROP domain
+
+enddef /*** use_winctrl_ListView ***/
+ifdef use_winctrl_TabCtrl
+
+  procedure tc_Init(WINDOW TCWin,TC_PAGELIST,TC_CALLBACK) - (i,i,i)
+
+  determ LONG tc_HandleEvent(WINDOW TCWin,EVENT) - (i,i)
+
+  procedure tc_get_page(WINDOW TCWin,INTEGER Page) - (i,o)
+
+  procedure tc_set_page(WINDOW TCWin,INTEGER Page) - (i,i)
+
+enddef /*** use_winctrl_TabCtrl ***/
+ifdef use_winctrl_UpDown
+
+  procedure ud_Init(WINDOW UDWin,ILIST Flags,UD_CALLBACK) - (i,i,i)
+
+  determ LONG ud_HandleEvent(WINDOW UDWin,EVENT) - (i,i)
+
+  procedure ud_get_pos(WINDOW UDWin,INTEGER Pos) - (i,o)
+
+  procedure ud_set_pos(WINDOW UDWin,INTEGER Pos) - (i,i)
+
+  procedure ud_get_range(WINDOW UDWin,INTEGER Min,INTEGER Max) - (i,o,o)
+
+  procedure ud_set_range(WINDOW UDWin,INTEGER Min,INTEGER Max) - (i,i,i)
+
+  procedure ud_get_accel(WINDOW UDWin,UD_ACCELERATORLIST) - (i,o)
+
+  procedure ud_set_accel(WINDOW UDWin,UD_ACCELERATORLIST) - (i,i)
+
+  procedure ud_get_buddy(WINDOW UDWin,WINDOW Win) - (i,o)
+
+  procedure ud_set_buddy(WINDOW UDWin,WINDOW Win) - (i,i)
+
+enddef /*** use_winctrl_UpDown ***/
+ifdef use_winctrl_treebut
+
+  procedure tb_Init(WINDOW TBWin,TV_TREELIST,INTEGER ItemId) - (i,i,i)
+
+  determ tb_HandleEvent(WINDOW TBWin,EVENT) - (i,i)
+
+  procedure tb_add(WINDOW TBWin,UNSIGNED ItemId,UNSIGNED ParentId,UNSIGNED PreviosId,STRING Text,ILIST StateList,RESID BitmapId) - (i,i,i,i,i,i,i)
+
+  procedure tb_clear(WINDOW TBWin) - (i)
+
+  procedure tb_count(WINDOW TBWin,UNSIGNED Count) - (i,o)
+
+  procedure tb_delete(WINDOW TBWin,UNSIGNED ItemId) - (i,i)
+  
+  procedure tb_getAll(WINDOW TBWin,TV_TREELIST) - (i,o)
+
+  procedure tb_GetItem(WINDOW TBWin,UNSIGNED ItemId,STRING Text,ILIST StateList,RESID BitmapId) - (i,i,o,o,o)
+
+  procedure tb_GetSel(WINDOW TBWin,UNSIGNED ItemId) - (i,o)
+
+  procedure tb_select(WINDOW TBWin,UNSIGNED ItemId,BOOLEAN Select) - (i,i,i)
+
+enddef /*** use_winctrl_treebut ***/

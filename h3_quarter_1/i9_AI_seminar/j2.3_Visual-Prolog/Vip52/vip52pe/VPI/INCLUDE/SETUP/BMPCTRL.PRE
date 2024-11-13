@@ -1,0 +1,19 @@
+/*****************************************************************************
+
+	(c) Copyright 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SETUP
+ FileName: BMPCTRL.PRE
+ Purpose: Predicate definitions for BMPCTRL.PRO
+ Written by: Leo Jensen
+ Modified by: Zaichenko Michael
+ Comments:
+******************************************************************************/
+constants
+  bmpctrl_pre_included = 1
+
+global predicates
+  procedure bmpctrl_register()-()
+  procedure bmpctrl_unregister() - ()
+
+  procedure bmpctrl_SetBMPResId(WINDOW,RESID,BOOLEAN Stretch,Boolean VertFlip)-(i,i,i,i)

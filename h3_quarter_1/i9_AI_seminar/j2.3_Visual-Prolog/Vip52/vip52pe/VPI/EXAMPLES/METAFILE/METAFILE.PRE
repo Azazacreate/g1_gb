@@ -1,0 +1,20 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  METAFILE
+ FileName: METAFILE.PRE
+ Purpose: Predicate definitions for METAFILE.PRO
+ Written by: Alexander Gostintsev
+ Comments:
+******************************************************************************/
+ifndef ws_win
+  #Error: This project for Windows platform only
+enddef
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

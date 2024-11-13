@@ -1,0 +1,941 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<title>Steps to using Visual Prolog in</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b><font SIZE="4">
+
+<h1 ALIGN="left"><!--mstheme--><font color="#000000"></font></b><font size="6">Constructing ActiveX [OLE] Components<!--mstheme--></font></h1>
+</font><font size="5">
+
+<p ALIGN="left"></font><font size="3"><b>By Brad Perkins (bradley@gvn.net)</p>
+</b>
+
+<p>Aug 16 1997:</p>
+
+<p>&nbsp;</p>
+
+<ol>
+  <li> Added a section on creating a VB5 ActiveX control using a VP 32 bit DLL.</li>
+  <li>Fixed/Updated Document to reflect VPs newest types and calling conventions.</li>
+  <li>Supplied a complete example</font><font SIZE="4"></li>
+</ol>
+</font><font size="5"><b>
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Introduction<!--mstheme--></font></h2>
+</b></font><font size="4">
+
+<p></font><font size="3">These notes assume the reader has a good grasp of VIP programming
+including mixed language (using C or C++ with VP) and has some Windows API and OLE/COM
+experience. </p>
+
+<p>Optionally (If you prefer VB) I have added a large section on creating VB5 ActiveX
+controls using VIP DLLs. You should (but don&#146;t have to) have access to the Internet.
+These notes apply only to the development of 32 bit OCX's using Microsoft VC++ 4.x, VC++
+5.0 and VB 5.0. I have not tried this with 16 Bit OCX's or using other Compilers like
+Borland C++. To date, Microsoft provides the best tools for relatively easy ActiveX /COM
+development. I'm excited that this works because it gives brand new life to old Prolog
+code and will reduce the development time for new components. You will still need to learn
+enough about ActiveX/COM and C++ to connect everything together. With VB you can get by
+with much less knowledge </p>
+
+<p>There are short code segments from one of my own projects. These aren&#146;t
+necessarily complete, as I wanted them to be simple and avoid confusion. This document
+does not cover visual or graphical controls. The sample project I used is an invisible
+control.</p>
+
+<p>This is by no stretch of the imagination, a tutorial on VIP, VC++ or ActiveX /OLE.
+Suggested sources for that type of reading or Web resources follows.</font><font size="4"></p>
+
+<p></font><font SIZE="3">&nbsp;</p>
+</font><b><font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000"></font></b><font size="5">Other Resources and Suggestions<!--mstheme--></font></h2>
+</font><font size="4">
+
+<p></font><font SIZE="3">One of the largest and most valuable resources of information on
+Visual Basic, Visual C++, COM/DCOM and ActiveX is of course, Microsoft&#146;s Web Site at:
+http://www.microsoft.com. I think I spend more time there than anywhere else, It&#146;s
+Gigantic; and always changing, growing and being updated. There are hundreds of documents,
+dozens of free tools, SDKs and Betas to be had there. </p>
+
+<p>A list of links to documents, software and resources:
+http://www.microsoft.com/workshop/</p>
+
+<p>Various downloads including ActiveX SDK, ActiveX Control Pad, Web Server software; At
+the same address select downloads.</p>
+
+<p>If you need a good test container for your new ActiveX controls you can download MS
+Internet Explorer 3.x for free from the same download page mentioned above.</p>
+
+<p>Visual basic 4.0 or 5.0. </p>
+</font><b><font SIZE="4">
+
+<p ALIGN="CENTER"><font color="#0080FF">Prolog to ActiveX In 1000 easy steps.</font></p>
+</font></b><font SIZE="3">
+
+<p ALIGN="CENTER"><font color="#0080FF">Just kidding. I'll just outline the steps I took
+to build a control. </font></p>
+</font><b><font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">ActiveX Options<!--mstheme--></font></h2>
+</font><font SIZE="3">
+
+<p>Option 1.</p>
+</font>
+
+</b>
+
+<font SIZE="3">
+
+<p>This document deals with using MSVC++ with Visual Prolog (previously Turbo Prolog, PDC
+Prolog). You must have Visual C++ version 4.0 higher. Earlier versions may work but I
+haven&#146;t tested them. You also must have Visual Prolog 4.0 or higher. The benefits of
+this method are:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Compact and fast executing control.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Access to MS Foundation Classes<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Finer programmatic control<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Disadvantages are:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Longer development cycle<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Linking Prolog with C++ can be problematic.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>
+
+<p>Option 2.</p>
+</b>
+
+<p>You could also use Microsoft&#146;s new Visual Basic Control Creation Edition (VB5)
+which is available from Microsoft&#146;s web site at:
+http://www.microsoft.com/vbasic/controls/. Using Visual Basic would require you compile
+your Prolog code into a separate DLL and then declaring and calling the functions from
+VB5. I haven&#146;t tried this option so this document does not address it. The benefits
+of this option are:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Faster development cycle<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Nice Control Wizards<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Microsoft&#146;s commitment to Making VB a standard<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">You can distribute your code in a separate DLL.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Disadvantages are:</p>
+
+<p>a). Slightly slower execution.</p>
+
+<p>b). Large runtime requirements</p>
+</font>
+
+<p><font SIZE="3">&nbsp;</font></p>
+<font SIZE="4"><b>
+
+<p ALIGN="left">First Things First</p>
+</b></font><font SIZE="3">
+
+<p>Determine what you want to expose to the outside world in the way of Properties,
+Methods and Events. </p>
+
+<p>For properties, write predicates that can be called from C++ to <b>Get</b> and <b>Set</b>
+these properties. For example:</p>
+</font>
+
+<blockquote>
+  <b><font SIZE="2"><p>Constants</p>
+  <p>PropName1 = 10<br>
+  PropName2 = 11<br>
+  PropNameN = ...</p>
+  <p>Global Domains</p>
+  <p>Value = String</p>
+  <p>Global Predicates</p>
+  <p>% Property values can any domain type but in this example<br>
+  % I've made them strings since strings can easily be converted into any<br>
+  % base domain</p>
+  <p>SetMyProp(hInstance, PropName, Value) - (i,i,i) language c<br>
+  GetMyProp(hInstance,PropName,Value) - (i,i,o) language c</p>
+  <p>Clauses</p>
+  <p>% As an example I store my properties in an internal dB<br>
+  % I have left out safe calls for simplicity</p>
+  <p>SetMyProp(hInstance,Property,Value):-<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; retractall(storeprop(hInstance,Property,_)),<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assert(storeprop(hInstance,Property,Value)).</p>
+  <p>GetMyProp(hInstance,Property,Value):-<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; storeprop(hInstance, Property,Value),!.</p>
+  </font></b>
+</blockquote>
+<font SIZE="3">
+
+<p>Do the same for methods and events. The difference for events is that these are called
+from Prolog to the C++ side, so there will be no associated Clauses for these
+declarations. I will discuss events later because they present a special problem from the
+C++ side. </p>
+</font>
+
+<p><font SIZE="3">&nbsp;</font></p>
+<b><font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Initializing Prolog<!--mstheme--></font></h2>
+</font></b><font SIZE="3">
+
+<p>Prolog must be initialized from your custom controls <i><b>InitCtrlApp::InitInstance</b></i>
+member function:</p>
+</font>
+
+<blockquote>
+  <b><font SIZE="2"><p>// declare external<br>
+  extern &quot;C&quot; BOOL InitProlog(void);<br>
+  ///////////////////////////////////////////////////////////////////////////<br>
+  // CIbisPlus95App::InitInstance - DLL initialization</p>
+  <p>BOOL CIbisPlus95App::InitInstance()<br>
+  {</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BOOL bInit =
+  COleControlModule::InitInstance();<br>
+  <font SIZE="3">&nbsp;&nbsp; </font>&nbsp;&nbsp;&nbsp;&nbsp; </font></b><font size="3">if
+  (bInit)</font><br>
+  <b><font SIZE="2">{</p>
+  <i><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Start Prolog<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InitProlog();<br>
+  }</p>
+  </i><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return bInit;<br>
+  }</p>
+  </font></b>
+</blockquote>
+<font SIZE="3">
+
+<p>It calls the following 'C' function to initialize Prolog. This function can be found in
+InitPDC32.C and is modified code from the cmain.c file in your foreign directory. The
+associated .OBJ file must be linked into your OCX projects.</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>// Initialize Prolog</p>
+  <p>BOOL InitProlog(void)<br>
+  {</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BOOL result = FALSE;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PEXCEPTION_POINTERS lpExc;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ULONG excCode = 0;</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __try
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+  Initialize Prolog system */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RUN_Init(&amp;PROLOG_Vars,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;PROLOG_SymbolTable,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;PROLOG_ModTab,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FALSE,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FALSE);</p>
+  <p>}</p>
+  <p>__except ( lpExc = GetExceptionInformation() ) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; excCode =
+  (lpExc-&gt;ExceptionRecord)-&gt;ExceptionCode;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExceptionHandler(
+  excCode );<br>
+  return(result); }</p>
+  </b></font>
+</blockquote>
+<font SIZE="3">
+
+<p>&nbsp;</p>
+
+<p>Define a Global predicate to terminate an instance of the Control. It'll need at least
+one argument (to pass the OCX Instance handle). Any other arguments that your Prolog code
+will need (Window handles or whatever) should also be included. In my example OCX I clean
+up any internal database stuff, deleting any references to the OCX Instance that is being
+unloaded. VP will need to pass the OCX Instance handle back to C++ when Events are fired.
+In some controls you may need to initialize and then cleanup code or data on each instance
+of a controls creation or destruction. This can be accomplished from the controls
+Constructor and Destructor. In this case I need to cleanup as each instance is destroyed. </p>
+
+<p>Create an ExitInstance member function for the control module: </p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <b><p>// overrides &#133;.<br>
+  // new ExitIntance Member</p>
+  <p>virtual void ExitInstance(CIbisPlus32Ctrl*)</p>
+  </b><p>this is called from the controls destructor:</p>
+  <b><p>/////////////////////////////////////////////////////////////////////////////<br>
+  // CIbisPlus32Ctrl::~CIbisPlus32Ctrl - Destructor</p>
+  <p>CIbisPlus32Ctrl::~CIbisPlus32Ctrl()<br>
+  {</p>
+  <p>ExitInstance(this);</p>
+  <p>}</p>
+  </b>
+</blockquote>
+
+<p>And then create the member function:</p>
+
+<blockquote>
+  <b><p>// C++ Declaration for InstanceEXIT <br>
+  // This calls the Prolog InstanceEXIT function<br>
+  // Of course you could bypass much of this and just call the Prolog<br>
+  // Function directly from the destructor</p>
+  <p>extern &quot;C&quot; void InstanceEXIT(COleControl*);</p>
+  <p>///////////////////////////////////////////////////////////////////////////// <br>
+  // Exit an instance of the control<br>
+  // This calls The Prolog InstanceEXIT predicate</p>
+  <p>void CIbisPlus32Ctrl::ExitInstance(CIbisPlus32Ctrl* pControl)<br>
+  {</p>
+  <p>InstanceEXIT(pControl);<br>
+  }</p>
+  </b>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>From Prolog clean up anything associated with the instance that&#146;s being shut down:</p>
+
+<blockquote>
+  <b><p>% clear_all deletes all internal database stuff associated with this instance<br>
+  InstanceEXIT(OcxHnd):-<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear_all(OcxHnd),!.</p>
+  </b>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>You need to terminate Prolog when the last instance of your control is unloaded. This
+is done from the CntlApp::ExitInstance member function:</p>
+
+<blockquote>
+  <b><p>// Declarations <br>
+  extern &quot;C&quot; void ExitProlog(void);</p>
+  <p>////////////////////////////////////////////////////////////////////////////<br>
+  // CIbisPlus32App::ExitInstance - DLL termination</p>
+  <p>int CIbisPlus32App::ExitInstance()<br>
+  {</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Terminate prolog<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExitProlog();<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return COleControlModule::ExitInstance();<br>
+  }</p>
+  </b>
+</blockquote>
+
+<p>Which calls this function in initPDC32.C:</p>
+
+<blockquote>
+  <b><p>// Call This From CntlExitApp<br>
+  // To Exit Prolog<br>
+  void ExitProlog(void) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RUN_End(FALSE,FALSE);<br>
+  }</p>
+  </b>
+</blockquote>
+</font><font SIZE="4"><b>
+
+<p ALIGN="CENTER">&nbsp;</p>
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Create A Skeleton ActiveX<!--mstheme--></font></h2>
+</b></font><font SIZE="3">
+
+<p>Build an OCX skeleton using MSC++ 4.0 OLE Control wizard. Include all the methods,
+properties and events that you have predetermined for your Prolog project. Compile, link
+(without linking in Prolog) and load into the test container if you want before going any
+further. This will assure you that the Class Wizard has done it's job (Because it DOES
+have bugs, at least in version 4.0).</p>
+</font><font SIZE="4"><b>
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Do The Hard Part<!--mstheme--></font></h2>
+</b></font><font SIZE="3">
+
+<p>Define all of your extern &quot;C&quot; functions for your Prolog Predicates (methods
+and property SetProperty/GetProperty) and link in your modules, including the PrologINIT
+module. Work this until there are no undefined externals or LIB errors before going on
+(See the compiler/Linker options sections later in this doc). To prevent function name
+mangling (also called decorating) by C++, external declarations on the C++ side must use
+the extern &quot;C&quot; directive:</p>
+
+<blockquote>
+  <b><p>// Declarations in the control</p>
+  <p>extern &quot;C&quot; int mPrologMethod(COleControl*,LPCTSTR);<br>
+  extern &quot;C&quot; LPCTSTR mGetProperty(COleControl*,short);<br>
+  extern &quot;C&quot; void mSetProperty(COleControl*,short,LPCTSTR);</p>
+  <p>// this is our Prolog Init function declaration and should include any other args you
+  may<br>
+  // need. It, in turn calls PrologINIT.</p>
+  <p>extern &quot;C&quot; BOOL InitProlog();</p>
+  </b>
+</blockquote>
+<b>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <p>// Declare your Property Constant names; Make sure they match your Prolog property IDs</p>
+  <p>const short PROPNAME1 = 10;<br>
+  const short PROPNAME2 = 11;<br>
+  const short PROPNAME... = Next ID#;</p>
+  <p>// Set Prolog properties<br>
+  LPCTSTR mGetProperty(DWORD OcxInstance,short propname)<br>
+  {</p>
+  <p>//BOOL result = FALSE;<br>
+  PEXCEPTION_POINTERS lpExc;<br>
+  LPSTR FAR lpszValue;<br>
+  ULONG excCode = 0;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __try {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned SaveSP = GETSP;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(RUN_StackTrap()){ </p>
+  <p>/* Catch Exits Here */</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if((!RUN_StackTrap()) &amp;&amp;
+  RUN_ErrorFlag) { /* Avoid double error's */</p>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROLOG_ErrReport(RUN_ExitCode); /* Normal
+  Prolog Error */</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if(!RUN_StackBTrack()) { <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+  Call Prolog Goals Here */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GetPrologProperty(OcxInstance,propname,&amp;lpszValue);</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RUN_RemoveTrap(SaveSP); /* Remove The Trap
+  */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(lpszValue);</p>
+  <p>}</p>
+  <p>__except ( lpExc = GetExceptionInformation() ) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; excCode =
+  (lpExc-&gt;ExceptionRecord)-&gt;ExceptionCode;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExceptionHandler( excCode );<br>
+  return(NULL);</p>
+</blockquote>
+
+<p>}</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <p>// Set Prolog properties<br>
+  BOOL mSetProperty(DWORD OcxInstance,short prop,LPCTSTR lpszValue)<br>
+  {<br>
+  BOOL result = FALSE;<br>
+  PEXCEPTION_POINTERS lpExc;<br>
+  ULONG excCode = 0;</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __try
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned
+  SaveSP = GETSP;</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(RUN_StackTrap()){<br>
+  /* Catch Exits Here */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if((!RUN_StackTrap())
+  &amp;&amp; RUN_ErrorFlag) { <br>
+  /* Avoid double error's */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROLOG_ErrReport(RUN_ExitCode);
+  <br>
+  /* Normal Prolog Error */</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else
+  if(!RUN_StackBTrack()) { <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*
+  Call Prolog Goals Here */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SetPrologProperty(OcxInstance,prop,lpszValue);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RUN_RemoveTrap(SaveSP);
+  /* Remove The Trap */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(TRUE);</p>
+</blockquote>
+
+<blockquote>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+  __except ( lpExc = GetExceptionInformation() ) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; excCode =
+  (lpExc-&gt;ExceptionRecord)-&gt;ExceptionCode;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExceptionHandler( excCode );</p>
+  <p>return(result);</p>
+  <p>}</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<blockquote>
+  <p>// Execute Prolog Method Code<br>
+  short mPrologMethod(DWORD OcxInstance,LPCTSTR lpszExec)</p>
+  <p>{</p>
+  <p>int result = 0;<br>
+  PEXCEPTION_POINTERS lpExc;<br>
+  ULONG excCode = 0;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __try {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned SaveSP = GETSP;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(RUN_StackTrap()){ /* Catch Exits Here */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if((!RUN_StackTrap()) &amp;&amp; RUN_ErrorFlag)
+  { /* Avoid double error's */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROLOG_ErrReport(RUN_ExitCode); /* Normal
+  Prolog Error */</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if(!RUN_StackBTrack()) { <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Call Prolog Goals Here */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = PrologMethod(OcxInstance,lpszExec);</p>
+  <p>}</p>
+  <p>RUN_RemoveTrap(SaveSP); /* Remove The Trap */<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(result);</p>
+</blockquote>
+
+<blockquote>
+  <p>}</p>
+</blockquote>
+
+<blockquote>
+  <p>__except ( lpExc = GetExceptionInformation() ) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; excCode =
+  (lpExc-&gt;ExceptionRecord)-&gt;ExceptionCode;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExceptionHandler( excCode );</p>
+  <p>return(result);</p>
+  <p>}</p>
+</blockquote>
+</b>
+</font>
+
+<b>
+
+<p><font SIZE="3">&nbsp;</font></p>
+<font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Easy Properties and Methods<!--mstheme--></font></h2>
+</font></b><font SIZE="3">
+
+<p>Declare all of your Property/Method Functions in the ActiveX Control (Events are
+covered near the end of this doc):</p>
+<b>
+
+<p>extern &quot;C&quot; int mPrologMethod(COleControl*,LPCTSTR);<br>
+extern &quot;C&quot; LPCTSTR mGetProperty(COleControl*,short);<br>
+extern &quot;C&quot; void mSetProperty(COleControl*,short,LPCTSTR);</p>
+</b> 
+</font>
+
+<b>
+
+<p><font SIZE="3">&nbsp;</font></p>
+<font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">A Sample Property From My Control<!--mstheme--></font></h2>
+</font><font SIZE="3">
+
+<p>Cache
+</font>
+
+</b> <font SIZE="3">
+
+ is a read-only property that returns a string. IBIS_CACHE is a integer
+constant that identifies the property on both [C++ &amp; Prolog] sides. Some properties
+should be read-only that is, the user should not be able to set them to a value. The
+following C++ code for <b>CIbisPlus32Ctrl::SetCache</b> shows how to throw a runtime error
+informing the user that the property can&#146;t be set.</p>
+
+<p>&nbsp;</p>
+</font>
+
+<blockquote>
+  <b><font SIZE="2"><p>// constant value for retrieving memory cache<br>
+  const short IBIS_CACHE= 23;</p>
+  <p>BSTR CIbisPlus32Ctrl::GetCache() </p>
+  <p>{</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CString strResult;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strResult = mGetProperty(this,IBIS_CACHE);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return strResult.AllocSysString();</p>
+  <p>}</p>
+  <p>// warn the programmer that this is a read-only property<br>
+  void CIbisPlus32Ctrl::SetCache(LPCTSTR lpszNewValue) </p>
+  <p>{</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ThrowError(CTL_E_SETNOTSUPPORTEDATRUNTIME,</p>
+  <p>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Cache
+  is a read-only property.&quot;);</p>
+  <p>}</p>
+  </font></b>
+</blockquote>
+<font SIZE="3">
+
+<p>Here is the prolog code that retrieves the IBIS-Plus cache memory string and returns it
+to the control:</p>
+</font>
+
+<blockquote>
+  <b><font SIZE="2"><p>CONSTANTS<br>
+  cache = 23</p>
+  <p>GLOBAL DOMAINS<br>
+  OCX = DWORD</p>
+  <p>GLOBAL PREDICATES<br>
+  GetPrologProperty(OCX,Integer,String) - (i,i,o) language c<br>
+  % Called By Control as Methods<br>
+  PrologMethod(OCX,STRING) - (i,i) language c <br>
+  SetPrologProperty(OCX,Integer,String) - (i,i,i) language c </p>
+  </font></b>
+</blockquote>
+<font SIZE="3">
+
+<p>&nbsp;</p>
+<b>
+
+<p>&nbsp;</p>
+</b>
+</font>
+<b>
+
+<font SIZE="2">
+
+<p>CLAUSES</p>
+
+<blockquote>
+  <p>% this is general purpose property retrieve clause that returns any property<br>
+  GetPrologProperty(OcxHnd,Item,Data):-<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; trap(GetData(OcxHnd,Item,Data),_,error_handler(OcxHnd,&quot;GetProperty&quot;)),!.<br>
+  GetPrologProperty(_,_,&quot;&quot;).</p>
+  <p>% cache is the property constant<br>
+  % the _Cache pred returns a formatted string list of IBIS Plus memory cache<br>
+  GetData(OcxHnd,cache,String):-_Cache(OcxHnd,String),!.</p>
+</blockquote>
+</font></b><font SIZE="3">
+
+<p>Executing methods is virtually the same as setting properties. In this case I just send
+a string to prolog for interpreting:</p>
+
+<p>&nbsp;</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>BOOL CIbisPlus32Ctrl::ExecuteIBIS(LPCTSTR ExecString) </p>
+  <p>{</p>
+  <p>mPrologMethod(this,ExecString);<br>
+  return TRUE;</p>
+  <p>}</p>
+  </b></font>
+</blockquote>
+<b>
+
+<p><font SIZE="2">&nbsp;</font></p>
+<font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Handling Events<!--mstheme--></font></h2>
+</font></b><font SIZE="3">
+
+<p>Events are sent from Prolog to the control and are handled differently. The should be
+declared and implemented in OLECtrl. This example is a simple error handler event. The
+event contains an error number and string describing the error. </p>
+
+<p>&nbsp;</p>
+</font><font SIZE="2"><b>
+
+<p>extern &quot;C&quot; void ErrorEvent(CIbisPlus32Ctrl *pControl,short ErrorCode,LPCTSTR
+ErrorText)</p>
+
+<blockquote>
+  <p>{</p>
+  <p>// Error events<br>
+  pControl-&gt;FireErrorEvent(ErrorCode,ErrorText);</p>
+  <p>}</p>
+</blockquote>
+</b></font><font SIZE="3">
+
+<p>&nbsp;</p>
+
+<p>The Prolog error predicate reads the error file and formats the error text before
+firing the event.</p>
+
+<p>In your globals module:</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>GLOBAL PREDICATES<br>
+  ErrorEvent(OCX,SHORT, STRING) - (i,i,i) language c % ErrorCode, Text</p>
+  </b></font>
+</blockquote>
+<font SIZE="3">
+
+<p>&nbsp;</p>
+
+<p>In your code module:</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>PREDICATES<br>
+  get_error_file_text(OCX,Integer,String)</p>
+  <p>CLAUSES<br>
+  error_handler(OcxHnd,WndProcName) :- % )<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lasterror(ErrorNo,FileName,_,Position),<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; get_error_file_text(OcxHnd,ErrorNo,ErrText),<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; format(STR,&quot;EXIT! in predicate:
+  %\nError:%\nFile:%\nPos: %\nDescription: %&quot;,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WndProcName, ErrorNo, FileName,
+  Position,ErrText),<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Call Controls Error Event directly<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorEvent(OcxHnd,internalerror,STR),!.</p>
+  </b></font>
+</blockquote>
+<b>
+
+<p><font SIZE="2">&nbsp;</font></p>
+<font SIZE="4">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">Using VIP DLLs with VC++ To Create Controls<!--mstheme--></font></h2>
+</font></b><font SIZE="3">
+
+<p>You can use new or existing VIP DLLs [or DLLs in any language] in conjunction with VC++
+to create ActiveX controls. There are a few advantages in doing so:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">You can distribute the DLL alone to those who don&#146;t use ActiveX.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">There is no need to initialize and shut down Prolog from your VC++ code.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">There are no problems associated with compiling and linking mixed language code.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">You can encapsulate low level functions into higher level, easier to use methods.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">You could wrap multiple DLLs into a single ActiveX control.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>There are only a few things to consider. To simplify things use the following C++
+definitions to obviate the need for external declarations in a .DEF file or .LIB file to
+resolve the externals in the DLL at link time.</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>#define DllExport __declspec( dllexport )<br>
+  #define DllImport __declspec( dllimport )</p>
+  </b></font>
+</blockquote>
+<font SIZE="3"><b>
+
+<p>Note1:</b> You only need &quot;DllExport&quot; if you are calling a function in C++
+from the DLL. For instance, to fire an event from Prolog. I try to avoid this because it
+makes the DLL less useful in some containers. I try to handle events by evaluating
+returned results from functions.</p>
+<b>
+
+<p>Note2:</b> The sample code here is from a different project (A document parser) where I
+created a DLL in VIP. </p>
+
+<p>Now define the DLL functions you wish to expose to C++.</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>extern &quot;C&quot; DllExport void traceit(LPCTSTR); // Call DEBUG
+  TRACE from Prolog<br>
+  extern &quot;C&quot; DllImport BOOL parser_ADDWORD(LPCTSTR,LPCTSTR,LPCTSTR); // Section,
+  Field, Synonym<br>
+  extern &quot;C&quot; DllImport BOOL parser_INSERTWORD(LPCTSTR,LPCTSTR,LPCTSTR); //
+  Section, Field, Synonym<br>
+  extern &quot;C&quot; DllImport BOOL parser_DELWORD(LPCTSTR,LPCTSTR,LPCTSTR); // Section,
+  Field, Synonym <br>
+  extern &quot;C&quot; DllImport BOOL parser_FINDMATCH(LPCTSTR,LPCTSTR,LPSTR FAR *,LPSTR FAR
+  * ,short FAR *,LONG FAR *,LONG FAR *,short FAR *); // - (i,i,i,i,o,o,o,o)<br>
+  extern &quot;C&quot; DllImport BOOL parser_PARSE(LPCTSTR); // Document Text<br>
+  extern &quot;C&quot; DllImport BOOL parser_FRONTTOKEN(LPCTSTR); // True if fronttoken<br>
+  extern &quot;C&quot; DllImport BOOL parser_DICTIONARY(void); // Is there a dictionary<br>
+  extern &quot;C&quot; DllImport BOOL parser_ADJACENT(short,LONG,short FAR* Xpos,short FAR*
+  Len,LPSTR FAR* FoundSect ,LPSTR FAR* FoundField); // - (i,i,o,o,o,o) language c</p>
+  </b></font>
+</blockquote>
+<font SIZE="3">
+
+<p>The DLL should be loaded from <b>OLEApp:InitInstance</b>. It should also have some
+error trapping in case the DLL is nonexistent or corrupt. I haven&#146;t done the latter
+in this sample so I&#146;ll scold myself. You can omit this step if you simply include the
+DLL&#146;s export lib in the project.</p>
+</font>
+
+<blockquote>
+  <font SIZE="2"><b><p>////////////////////////////////////////////////////////////////////////////<br>
+  // CParseSnipApp::InitInstance - DLL initialization</p>
+  <p>BOOL CParseSnipApp::InitInstance()<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BOOL bInit =
+  COleControlModule::InitInstance();</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (bInit)</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LoadLibrary(&quot;PARSER32.DLL&quot;);</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return bInit;</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+  </b></font>
+</blockquote>
+<font SIZE="3">
+
+<p>Handling properties, methods and events are handled as if they were just simple C
+functions. And that&#146;s it! So much easier than mixed language programming [linking the
+two together].</p>
+
+<p>That pretty much covers all the procedures in implementing ActiveX controls in VIP. If
+you want to use more complex types; Well, I&#146;ll leave that to you. </p>
+</font><font SIZE="4"><b>
+
+<p ALIGN="CENTER">&nbsp;</p>
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">MSVC++ Compile/Link Settings<!--mstheme--></font></h2>
+</b></font><font SIZE="3">
+
+<p>This series of screen shots may help you set up the C++ compiler, though settings may
+vary for your control. This section applies only if you are linking Prolog .OBJs and LIBS
+with C++&#146;s. I&#146;m only including the settings that may need to be specifically
+set.</p>
+</font><b><font FACE="MS Sans Serif" SIZE="3">
+
+<p ALIGN="left"><img SRC="ocx-6.gif" WIDTH="537" HEIGHT="372"></font></p>
+
+<p>&nbsp;<font FACE="MS Sans Serif" SIZE="4"></p>
+
+<p ALIGN="left"><img SRC="ocx-2.gif" WIDTH="537" HEIGHT="372"></font></p>
+
+<p>&nbsp;<font FACE="MS Sans Serif" SIZE="4"></p>
+
+<p ALIGN="left"><img SRC="ocx-3.gif" WIDTH="537" HEIGHT="372"></font></p>
+<font SIZE="3">
+
+<p ALIGN="left">
+</font>
+
+</b>
+<font SIZE="3">
+
+<em>Struct member alignment must match setting in VIP compiler</em></p>
+</font>
+
+<p>&nbsp;<font FACE="MS Sans Serif" SIZE="3"></p>
+
+<p ALIGN="left"><img SRC="ocx-4.gif" WIDTH="537" HEIGHT="372"></font></p>
+<font SIZE="3"><b>
+
+<p ALIGN="left"></b><em>Make certain to include VIP required OBJs and LIBS and your
+projects symbol table</em></p>
+
+<p ALIGN="CENTER"><b>&nbsp;</p>
+
+<p ALIGN="left">Resolving A Common MS Linker (LNK2005) Error</p>
+</b>
+
+<p>The following exerpt is from Microsoft article ID: Q148652. The article provides two
+solutions. The first is to ensure that all MFC libs are linked before the CRT libs. The
+second is more involved so I&#146;ll leave it up to you to read the complete article.</p>
+<b>
+
+<p></b>When the C Run-Time (CRT) library and MFC libraries are linked in the wrong order,
+LNK2005 errors like the following may occur:</p>
+
+<blockquote>
+  <p>nafxcwd.lib(afxmem.obj) : error LNK2005:<br>
+  &quot;void * __cdecl operator new(unsigned int)&quot;(??2@YAPAXI@Z) already<br>
+  defined in LIBCMTD.lib(new.obj)</p>
+  <p>nafxcwd.lib(afxmem.obj) : error LNK2005:<br>
+  &quot;void __cdecl operator delete(void *)&quot;(??3@YAXPAX@Z) already defined<br>
+  in LIBCMTD.lib(dbgnew.obj)</p>
+  <p>nafxcwd.lib(afxmem.obj) : error LNK2005:<br>
+  &quot;void * __cdecl operator new(unsigned int,int,char const *,int)&quot;<br>
+  (??2@YAPAXIHPBDH@Z) already defined in LIBCMTD.lib(dbgnew.obj)</p>
+  <p>mfcs40d.lib(dllmodul.obj): error LNK2005: _DllMain@12 already defined in<br>
+  MSVCRTD.LIB (dllmain.obj)</p>
+</blockquote>
+<b>
+
+<p ALIGN="CENTER">&nbsp;</p>
+</b></font><font FACE="MS Sans Serif" SIZE="3">
+
+<p ALIGN="left"><img SRC="ocx-5.gif" WIDTH="537" HEIGHT="372"></font></p>
+<font SIZE="3"><b>
+
+<p ALIGN="left"></b><em>Ignore Libraries may differ for your projects</em></p>
+
+<p>Most of the other settings are self explanatory or handled by VC++. I welcome any
+suggestions/fixes. I&#146;ll add or make changes and include your name for the submission.
+If you have any questions you can email me at: <a href="mailto:bradley@gvn.net">bradley@gvn.net</a></p>
+</font>
+
+<p><font SIZE="3">&nbsp;</font></p>
+<font SIZE="4"><b>
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">The Same Story In VB 5.0<!--mstheme--></font></h2>
+</b></font><font SIZE="3">
+
+<h2 ALIGN="left"><!--mstheme--><font color="#000000">&#133; only a lot easier.<!--mstheme--></font></h2>
+
+<p>You can now pass function pointers as arguments from VB. This is quite a change since
+B.G. said doing stuff like this was impossible (from Basic) just a few years ago. So I
+took advantage of this &quot;miracle&quot; to call VB events from VIP. </p>
+
+<p>External predicatest to be called by VB must use the &quot;stdcall&quot; calling
+convention.</p>
+</font>
+
+<blockquote>
+  <b><font SIZE="2"><p>% Use Function pointers for VB Events<br>
+  ERRORCALLBACK = determ (INTEGER err, STRING desc) - (i,i) language stdcall<br>
+  PARSECOMPLETEEVENT = determ () - language stdcall</p>
+  <p>VB Types VS VIP Types</p>
+  <p>ByVal Integer = DWORD<br>
+  AddressOf = DWORD<br>
+  Long = Long</p>
+  </font></b>
+</blockquote>
+
+<p><b><font SIZE="2">&nbsp;</font></b></p>
+<font FACE="MS Sans Serif" SIZE="3">
+
+<p ALIGN="CENTER"></font>&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

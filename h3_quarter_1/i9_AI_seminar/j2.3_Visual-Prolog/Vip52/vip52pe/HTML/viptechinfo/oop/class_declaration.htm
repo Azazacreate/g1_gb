@@ -1,0 +1,164 @@
+<html>
+
+<head>
+<title>Class Declaration</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>Class Declaration<!--mstheme--></font></h1>
+<h2><!--mstheme--><font color="#000000">Syntax<!--mstheme--></font></h2>
+<!--mstheme--></font><pre>CLASS </b>&lt;<i>class_name</i>&gt; [: &lt;<i>base_class_list&gt;</i>]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>{[PROTECTED] <a href="domains_section_in_the_class_dec.htm"><b>DOMAINS</b></a><b> </b>&lt;<i>domains_declarations</i>&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>{[STATIC] [PROTECTED] <a href="predicates_section_in_the_class_.htm"><b>PREDICATES</b></a><b> </b>&lt;<i>predicates_declarations</i>&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>{[STATIC] [PROTECTED] <a href><b>FACTS</b></a><b> </b>[-<b> </b>&lt;<i>facts_section_name</i>&gt;]<b> </b>&lt;<i>facts_declarations&gt;</i>}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<!--mstheme--></font><pre><b>ENDCLASS </b>[&lt;<i>class_name</i>&gt;]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>
+<h3><!--mstheme--><font color="#000000">Syntax of Abstract Class Declaration<!--mstheme--></font></h3>
+<a href></a></b>
+<!--mstheme--></font><pre><a href><b>ABSTRACT</b></a><b> CLASS </b>&lt;<i>class_name</i>&gt; [: &lt;<i>base_class_list&gt;</i>]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>{[PROTECTED] <a href="domains_section_in_the_class_dec.htm"><b>DOMAINS</b></a> &lt;<i>domains_declarations</i>&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>{[PROTECTED] <a href="predicates_section_in_the_class_.htm"><b>PREDICATES</b></a><b> </b>&lt;<i>predicates_declarations</i>&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<!--mstheme--></font><pre><b>ENDCLASS </b>[&lt;<i>class_name</i>&gt;]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemeseparator--><p align="center"><img src="../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+A class has to be declared before it can be referenced in the program code.
+<h4><!--mstheme--><font color="#000000"><b>CLASS keyword<!--mstheme--></font></h4>
+</b>The <b>class declaration</b> section begins with the keyword CLASS. The
+CLASS keyword should be followed by the <b>class header</b> that includes the
+class name and an optional list of base (parent) classes.
+<p>If it is necessary to declare an <a href>abstract class</a>, then the keyword
+ABSTRACT should be specified before the keyword CLASS.<a name="13afa86c"></a>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt; <b><i>class_name</i></b> &gt;<br>
+    The <i>class_name </i>specifies the name of the class. The class name should
+    be unique within a project. The declaration of a class with a name <i>class_name</i>
+    automatically generates a global domain <i>class_name</i>. The generated <i>class_name</i>
+    domain can be used to declare arguments for predicates that should handle
+    references to the objects of this class.<a name="0e23724b"></a>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt;<b><i>base_class_list</i>&gt;</b>
+    <p>The base class list includes a base (parent) class or classes from which
+    the class <i>class_name</i> will derive (or inherit) predicates and facts.
+    If any base class is specified, the class <i>class_name</i> is called a <a href="derived_classes.htm#08b211ae">derived
+    class</a>. Each class can be met in this list only once. The class name
+    cannot be specified as the base class for itself.<br>
+    For example:</p>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>CLASS child : parent1, parent2</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<h3><!--mstheme--><font color="#000000">Domains, Predicates, and Facts Sections in the Class Declaration<!--mstheme--></font></h3>
+<p><b>Domains</b>, <b>predicates</b>, and <b>facts</b> sections can be declared
+inside a class declaration.</p>
+In <a href>abstract</a> classes only <b>domains</b> and <b>predicates</b>
+sections can be declared.
+<p>Several <b>domains</b>, <b>predicates</b>, and <b>facts</b> sections can be
+declared in a class declaration.
+<p>The class members declared in the class declaration have the <a href="class_access_control.htm#b792e204">public</a>
+default <a href="class_access_control.htm">access rights</a>.
+<p>Class members declared in the <a href="class_implementation.htm#3cd99d1b">class
+implementation</a> are <a href="class_access_control.htm#e97aa622">private</a>.
+<p>Each class, except <a href>abstract</a> classes, must have both the <a href="class_declaration.htm">class
+declaration</a> and the <a href="class_implementation.htm#3cd99d1b">class
+implementation</a> that follows the class declaration.
+<p>An abstract class is used to provide general concepts (interfaces). The
+purpose of an abstract class is to have a declaration of some <a href="virtual_predicates.htm">virtual
+predicates</a> in order to have some other predicates working on a different
+specialization of the more general class. An abstract class can be used only as
+a base class for other classes. No objects of an abstract class can be created.
+<p>Beginning with Visual Prolog version 5.2, Visual Prolog's class system is
+much more compatible with COM. Abstract class provides exactly the same VTABLE
+as the COM interface.
+<h3><!--mstheme--><font color="#000000"><b>Example</b><!--mstheme--></font></h3>
+<!--mstheme--></font><pre>CLASS XString</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>writeString</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>ENDCLASS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>IMPLEMENT XString</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>FACTS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<!--mstheme--></font><pre>determ strDB(string)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>writeString :-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>assert(strDB(&quot;Hello world\n&quot;)),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>strDB(X),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>write(X),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>retractall(strDB(_)).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>ENDCLASS XString</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>GOAL</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>NewObject = XString::new,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>NewObject:writeString,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>NewObject:delete.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<b>Caution!</b> Our position is that using of public (global) facts is a
+dangerous practice and is not a good programming style. Therefore, we recommend
+never to declare facts in class declarations. We recommend always to encapsulate
+class facts in class implementation and provide access to them only with class
+predicates (methods). According to our plans, future versions of Visual Prolog
+will not support public facts.<b>
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm">See also</a><!--mstheme--></font></h5>
+</b>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,13 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	TABLEED.PRE
+ Purpose:	FORMS EDITOR template file
+ Written by:	Andrew Skobelev
+ Version:	1.0
+ Build:		009.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:
+******************************************************************************/
+include "tableed\\tableed.pre"

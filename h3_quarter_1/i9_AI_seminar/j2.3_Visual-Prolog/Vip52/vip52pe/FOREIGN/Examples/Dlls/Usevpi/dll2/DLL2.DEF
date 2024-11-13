@@ -1,0 +1,13 @@
+LIBRARY DLL2
+
+CODE	  PRELOAD MOVEABLE DISCARDABLE
+DATA	  PRELOAD SINGLE
+
+HEAPSIZE  1024
+
+EXPORTS
+  dll2_mark_gstack  
+  dll2_release_gstack
+  dll2_callCallback
+  dll2_getstring
+  

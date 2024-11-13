@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<title>How to update multiple dialog windows</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h4><!--mstheme--><font color="#000000">How to update multiple dialog windows?<!--mstheme--></font></h4>
+
+<p><strong>Question:</strong> I recently constructed a program to track time-on-task with
+respect to<br>
+a number of related and/or unrelated tasks simultaneously (any of which<br>
+may be timing&nbsp; or &quot;taking a break&quot; at any particular time).&nbsp; I am
+using<br>
+Win95 on a 200Mz, 64MbRAM Pentium.<br>
+<br>
+The structure I devised was simple:&nbsp; one very small task window which is<br>
+the vehicle for opening/closing/editing an arbitrary number of modeless<br>
+dialogs (one per task).<br>
+<br>
+A frustrating problem arose when trying to update these windows (12<br>
+second intervals).&nbsp; My first strategy was to set a timer for taskwin and<br>
+then update all dialogs (their handles having been stored as facts upon<br>
+creation) using bactracking.&nbsp; This worked fine until I did any sort of<br>
+serious multitasking (I tend to use Norton3, askSam3, Quattro8,<br>
+WPerfect8, and Winfax8 at all times--these are large programs).&nbsp; At<br>
+unpredictable intervals my VP program would hang and require a reset<br>
+(I use Norton 3 for this purpose).<br>
+<br>
+Noting that Win95, at least, allows for a rather large number of timers,<br>
+I then changed the program such that a separate&nbsp; timer was created for<br>
+taskwin and for each dialog as part of the e_create event.&nbsp; This works<br>
+fine and to date I have had no hangs.<br>
+<br>
+Question #1:&nbsp; Is this a VP problem (I am at VP 5.02)? or an OS problem?<br>
+<br>
+Question #2:&nbsp; Do I need to explicitly kill each timer when a dialog<br>
+window is closed, or does the timer &quot;go away&quot; when the dialog window is<br>
+closed?&nbsp; How can I check for this? (Assuming a computer/Win95 stays up,<br>
+I have no wish to clog up systems with thousands of timers over some<br>
+period of time as a result of opening and closing dialogs.)<br>
+<br>
+<strong>Answer: </strong>If you update all dialogs through one timer you can have problems
+due to you<br>
+try to exchange information among a big number of tasks.<br>
+If you create many timers, your e_Timer events do not come simultaneously,<br>
+so you exchange information at each time only between your main prolog<br>
+program and one of child tasks.<br>
+<br>
+Please use many timers.<br>
+<br>
+You should kill each timer after closing of dialog.<br>
+The common place for this is e_Destroy event of the appropriate window or<br>
+dialog.<br>
+<br>
+Yuri Iliin<br>
+VPI Group, Prolog Development Center Ltd.<br>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

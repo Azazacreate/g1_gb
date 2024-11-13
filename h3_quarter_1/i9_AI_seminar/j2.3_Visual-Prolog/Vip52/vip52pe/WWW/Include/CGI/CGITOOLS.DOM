@@ -1,0 +1,13 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName: CGITOOLS.DOM
+ Purpose: Domain definitions for CGITOOLS.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+GLOBAL DOMAINS
+  PARM = parm(STRING Name,STRING Val)
+  PARMLIST = PARM*

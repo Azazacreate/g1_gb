@@ -1,0 +1,219 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	TABLEED.PRE
+ Purpose:	Table editor object based on GRID custom control. Global predicates.
+ Written by:	Sergey Alexeev & Alexander Butovsky
+ Version:	1.0
+ Build:		009.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+******************************************************************************/
+ifndef grid_dom_included
+ #Error: this file requires include: grid.dom
+enddef 
+
+ifndef tableed_dom_included
+ #Error: this file requires include: tableed.dom
+enddef 
+
+constants
+	tableed_pre_included = 1
+
+global predicates
+%---- Init Table editor custom control ----
+procedure tableedit_Init(WINDOW	TableEditCustomControl,
+		TABLEEDIT_PROPERTIES,
+		TABLEEDIT_COLUMNLIST,
+		TABLEEDIT_DATA		InputData) - (i,i,i,i)
+
+%---- Get entire list of Editor's properties ----
+procedure TABLEEDIT_PROPERTIES tableedit_GetProperties(WINDOW TableEditWindow) - (i)
+
+%---- Change some Editor's properties ----
+procedure tableedit_SetProperties(WINDOW TableEditWindow,TABLEEDIT_PROPERTIES) - (i,i)
+
+%---- Get entire list of column's properties ----
+procedure TABLEEDIT_COLUMNPROPERTIES tableedit_GetColumnProperties(WINDOW	TableEditWindow,INTEGER Col) - (i,i)
+
+%---- Change some column's properties ----
+procedure tableedit_SetColumnProperties(WINDOW TableEditWindow,INTEGER Col,TABLEEDIT_COLUMNPROPERTIES) - (i,i,i)
+
+%---- Get marker ----
+% See GRID_MARKER domain in grid.dom
+procedure GRID_MARKER tableedit_GetMarker(WINDOW TableEditWindow) - (i)
+
+%---- Set marker ----
+% See GRID_MARKER domain in grid.dom
+procedure tableedit_SetMarker(WINDOW TableEditWindow,GRID_MARKER) - (i,i)
+
+%---- Get entire data as 2-d list of TABLEEDIT_CELLDATA terms ----
+%---- (The data in the table and filtered data)
+procedure TABLEEDIT_DATA tableedit_GetAllData(WINDOW TableEditWindow) - (i)
+
+%---- Get entire data as 2-d list of TABLEEDIT_CELLDATA terms ----
+%---- (Only data in the table)
+procedure TABLEEDIT_DATA tableedit_GetAllVisibleData(WINDOW TableEditWindow) - (i)
+
+%---- Reset all data ----
+% Set all data for nobuffering mode
+% Request data from database for buffering mode (ignore TABLEEDIT_DATA)
+procedure tableedit_SetAllData(WINDOW TableEditWindow,TABLEEDIT_DATA) - (i,i)
+
+%---- Set active row ----
+procedure tableedit_SetActiveRow(WINDOW TableEditWin,INTEGER ActiveRow) - (i,i)
+
+%---- Get active row ----
+procedure INTEGER tableedit_GetActiveRow(WINDOW TableEditWin) - (i)
+
+%---- Numer of columns calculation ----
+procedure INTEGER tableedit_MaxCol(WINDOW TableEditWin) - (i)
+
+%---- Numer of rows calculation ----
+%---- (The rows in the table and filtered rows(for nobuffering mode))
+procedure INTEGER tableedit_MaxRows(WINDOW TableEditWin) - (i)
+
+%---- Set Max rows for buffering mode
+% --- ignore for NObuffering mode
+procedure  tableedit_Buff_SetMaxRows(WINDOW TableEditWin,INTEGER MaxRows) - (i,i)
+
+% --- invalidate and request of new data from external database
+% --- ignore for NObuffering mode
+procedure  tableedit_Buff_InvalidateArea(WINDOW TableEditWin,
+					INTEGER FrRow,
+					INTEGER ToRow,
+					INTEGER FRColumn,
+					INTEGER ToColumn) - (i,i,i,i,i)
+
+%---- Numer of rows calculation ----
+%---- (Only rows in the table)
+procedure INTEGER tableedit_MaxVisibleRows(WINDOW) - (i)
+
+%---- Get data for certain area as 2-d list of TABLEEDIT_CELLDATA terms ----
+procedure TABLEEDIT_DATA tableedit_GetData(WINDOW		TableEditWindow,
+				 INTEGER	FromRow,
+				 INTEGER	ToRow,
+				 INTEGER	FromCol,
+				 INTEGER	ToCol) - (i,i,i,i,i)
+
+%---- Set data for certain area as 2-d list of TABLEEDIT_CELLDATA terms ----
+procedure tableedit_SetData(WINDOW	TableEditWindow,
+		  INTEGER	FromRow,
+		  INTEGER	ToRow,
+		  INTEGER	FromCol,
+		  INTEGER	ToCol,
+		  TABLEEDIT_DATA) - (i,i,i,i,i,i)
+
+%---- Get clipboard format data from table (row range) ----
+%  Clipboard data format is strings with column values
+%  separated by tabs and rows separated by new line.
+procedure STRING tableedit_GetRowData(WINDOW	TableEditWindow,
+			    INTEGER	FromRow,
+			    INTEGER	ToRow) - (i,i,i)
+
+%---- Set clipboard format data to table (from row) ----
+% Ignore for buffering mode
+procedure tableedit_SetRowData(WINDOW	TableEditWindow,
+		     INTEGER	FromRow,
+		     STRING	Data) - (i,i,i)
+
+%---- Set clipboard format data to table (from row to row) ----
+procedure tableedit_SetRowData(WINDOW	TableEditWindow,
+		     INTEGER	FromRow,
+		     INTEGER	ToRowLimit, 
+		     STRING	Data) - (i,i,i,i)
+
+%---- Get clipboard format data from table (area range) ----
+procedure STRING tableedit_GetClipBoardData(WINDOW	TableEditWindow,
+				  INTEGER	FromRow,
+				  INTEGER	ToRow, 
+				  INTEGER	FromColumn,
+				  INTEGER	ToColumn) - (i,i,i,i,i)
+
+%---- Set clipboard format data to table ----
+%---- (FromRow ToRowLimit  FromColumn ToColumnLimit) ----
+procedure tableedit_SetClipBoardData(WINDOW	TableEditWindow,
+			   INTEGER	FromRow,
+			   INTEGER	ToRow, 
+			   INTEGER	FromColumn,
+			   INTEGER	ToColumn,
+			   STRING	Data) - (i,i,i,i,i,i)
+
+%---- Get data for certain cell as TABLEEDIT_CELLDATA term ----
+procedure TABLEEDIT_CELLDATA tableedit_GetCellData(WINDOW	 TableEditWindow,
+				 	 INTEGER Row,
+				 	 INTEGER Col) - (i,i,i)
+
+%---- Set data for certain cell as TABLEEDIT_CELLDATA term ----
+procedure tableedit_SetCellData(WINDOW	TableEditWindow,
+		      INTEGER	Row,
+		      INTEGER	Col,
+		      TABLEEDIT_CELLDATA) - (i,i,i,i)
+
+%---- Set filer for column and handling
+%---- (The filters in other columns remain same)
+% ignore for buffering mode
+procedure tableedit_SetColumnFilter(WINDOW	TableEditWindow,
+			  INTEGER	Columnm,
+			  TABLEEDIT_ORFILTERLIST) - (i,i,i)
+
+%---- Reset filer for columns and handling
+%----(Reset of given filters and destruction of the other filters)
+% ignore for buffering mode
+procedure tableedit_ReSetFilters(WINDOW	TableEditWindow,
+				TABLEEDIT_FILTERS) - (i,i)
+
+%---- Sort handling
+%---- (According to the current order of sorting in a column)
+% ignore for buffering mode
+procedure tableedit_Sort(WINDOW	TableEditWindow,
+			INTEGER	Column) - (i,i)
+
+% ignore for buffering mode
+% delete rows contains in line list
+% See GRID_LINELIST domain in grid.dom
+procedure tableedit_DeleteRows(WINDOW,GRID_LINELIST) - (i,i)
+
+%---- Insert given rows to table
+% ignore for buffering mode
+procedure tableedit_InsertRows(WINDOW TableEditWindow,
+				INTEGER FromRow,
+				TABLEEDIT_DATA) - (i,i,i)
+
+
+%---- Insert given rows to end of table (before footers)
+% ignore for buffering mode
+procedure INTEGER tableedit_InsertRowsToEnd(WINDOW TableEditWindow,
+				TABLEEDIT_DATA) - (i,i)
+
+%---- Insert number of default rows to end of table (before footers)
+%---- (The rows form according to defaultvalue() column properties)
+% ignore for buffering mode
+procedure INTEGER tableedit_InsertDefRowsToEnd(WINDOW TableEditWindow,
+					INTEGER	NumberOfRows) - (i,i)
+
+%---- Changes the action, performed by grid control when user presses Enter key
+%---- or Tab key or exceeds the maximum number of symbols typing the data into the cell. 
+% See GRID_KEY,GRID_KEY_ACTION domains in grid.dom
+procedure tableedit_SetVisitOrder(WINDOW,GRID_KEY,INTEGER ShiftCtlAlt,GRID_KEY_ACTION) - (i,i,i,i)
+
+% ---- Find position of specified string,fail if string not find
+% ---- Fail for buffering mode
+determ INTEGER tableedit_Find(WINDOW,STRING,TABLEEDIT_DIRECTION,INTEGER Column,TABLEEDIT_MATCH,BOOLEAN CaseSensitive) -(i,i,i,i,i,i)
+
+%---- Get current action settings.
+% See GRID_KEY,GRID_KEY_ACTION domains in grid.dom
+determ GRID_KEY_ACTION tableedit_GetVisitOrder(WINDOW,GRID_KEY,INTEGER ShiftCtlAlt) - (i,i,i)
+
+procedure tableedit_OptimizeColumnsWidth(WINDOW,BOOLEAN NotResizableResize) - (i,i)
+
+% Get state of markers (b_true - invisible, b_false - visible)
+procedure BOOLEAN tableedit_GetInvisibleMarkers(WINDOW) - (i)
+
+% Set state for markers (b_true - invisible, b_false - visible)
+procedure  tableedit_SetInvisibleMarkers(WINDOW,BOOLEAN InvisibleVisible) - (i,i)
+
+%---- Global predicate handles all Table editor custom control events.
+determ tableedit_HandleEvent(WINDOW,EVENT) - (i,i)
+

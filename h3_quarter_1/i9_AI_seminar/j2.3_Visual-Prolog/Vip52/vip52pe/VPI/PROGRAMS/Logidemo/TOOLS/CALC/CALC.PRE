@@ -1,0 +1,28 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  trans
+ FileName: calc.pre
+ Purpose:  Project's global declarations
+ Written by: Sergey Alexeev
+ Comments:
+*****************************************************************************/
+
+global predicates
+
+  calc_trans(	CALC_ITEMLIST Sources,
+		CALC_ITEMLIST Targets,
+		CALC_COSTLIST,
+		CALC_MOVELIST,
+		CALC_ITEMLIST UnPlaced,
+		CALC_ITEMLIST Needed) - (i,i,i,o,o,o)
+  calc_trans(	CALC_ITEMLIST Sources,
+		CALC_ITEMLIST Targets,
+		CALC_COSTLIST,
+		CALC_CALLBACK,
+		CALC_MESSAGE_DETAILS,
+		CALC_MOVELIST,
+		CALC_ITEMLIST UnPlaced,
+		CALC_ITEMLIST Needed) - (i,i,i,i,i,o,o,o)
+  calc_break() - ()

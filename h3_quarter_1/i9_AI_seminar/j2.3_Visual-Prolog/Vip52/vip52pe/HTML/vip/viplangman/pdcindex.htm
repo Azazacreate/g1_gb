@@ -1,0 +1,1399 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="Template" content="C:\Program Files\Microsoft Office\Templates\VIP.DOT">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Visual Prolog Language manual 1</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body stylesrc="http://carsten-c2/test/standard_page.htm" bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Visual Prolog Language Manual On-line<!--mstheme--></font></h1>
+
+<p><a name="fundamentals_name">Welcome to this introduction to Visual prolog. This is a
+HTML-version of the first 3 chapters of the Visual Prolog Language manual. <br>
+This manual (and the rest of the chapters) can be downloaded with the Visual Prolog
+Timelocked version. </a>Along with the manuals, <br>
+you will also find the example programs, that are refered to in this text.</p>
+
+<h2><!--mstheme--><font color="#000000">1. <a name="fundamentals_name">Prolog Fundamentals</a><!--mstheme--></font></h2>
+
+<p>This is the first in a sequence of chapters giving a step-by-step tutorial introduction
+to the Visual Prolog language. We begin this chapter with an introduction to programming
+in logic. After that we discuss some of Prolog's basic concepts, including clauses,
+predicates, variables, goals, and matching.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381450">PROgramming in LOGic</a><!--mstheme--></font></h2>
+
+<p>In Prolog, you arrive at solutions by logically inferring one thing from something
+already known. Typically, a Prolog program isn't a sequence of actions--it's a collection
+of facts together with rules for drawing conclusions from those facts. Prolog is therefore
+what is known as a declarative language.</p>
+
+<p>Prolog is based on Horn clauses, which are a subset of a formal system called predicate
+logic. Don't let this name scare you. Predicate logic is simply a way of making it clear
+how reasoning is done. It's simpler than arithmetic once you get used to it.</p>
+
+<p>Prolog uses a simplified variation of predicate logic syntax because it provides an
+easy-to-understand syntax very similar to natural language, and because computers are not
+as fast, large, or as inexpensive as we would like. If Prolog were to accept English
+statements, the compiler would need to know every possible way something could be worded
+in English. In many cases, it would take many times longer to translate the program into
+something the computer understands than it would to run the program. The computer hardware
+needed to run such a system would be monstrous.</p>
+
+<p>Prolog includes an inference engine, which is a process for reasoning logically about
+information. The inference engine includes a pattern matcher, which retrieves stored
+(known) information by matching answers to questions. Prolog tries to infer that a
+hypothesis is true (in other words, answer a question) by questioning the set of
+information already known to be true. Prolog's known world is the finite set of facts (and
+rules) that are given in the program.</p>
+
+<p>One important feature of Prolog is that, in addition to logically finding answers to
+the questions you pose, it can deal with alternatives and find all possible solutions
+rather than only one. Instead of just proceeding from the beginning of the program to the
+end, Prolog can actually back up and look for more than one way of solving each part of
+the problem.</p>
+
+<p>Predicate logic was developed to easily convey logic-based ideas into a written form.
+Prolog takes advantage of this syntax to develop a programming language based on logic. In
+predicate logic, you first eliminate all unnecessary words from your sentences. You then
+transform the sentence, placing the relationship first and grouping the objects after the
+relationship. The objects then become arguments that the relationship acts upon. For
+example, the following sentences are transformed into predicate logic syntax:</p>
+
+<!--mstheme--></font><table border="1" cellpadding="7" width="463" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td valign="top" width="43%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Natural Language:</b><!--mstheme--></font></td>
+    <td valign="top" width="57%"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Predicate Logic:</b><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="43%"><!--mstheme--><font face="verdana, Arial, Helvetica">A car is fun.<p>A rose is red.<!--mstheme--></font></td>
+    <td valign="top" width="57%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">fun(car).</font><p><font size="1" face="Courier New">red(rose).</font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td valign="top" width="43%"><!--mstheme--><font face="verdana, Arial, Helvetica">Bill likes a car if the car is fun.<!--mstheme--></font></td>
+    <td valign="top" width="57%"><!--mstheme--><font face="verdana, Arial, Helvetica"><font size="1" face="Courier New">likes(bill, Car) if
+    fun(Car).</font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381451">Sentences: Facts and Rules</a><!--mstheme--></font></h2>
+
+<p>A Prolog programmer defines <i>objects</i> and <i>relations</i>, then defines <i>rules</i>
+about when these relations are true. For example, the sentence </p>
+
+<dl>
+  <dd><em><tt>Bill likes dogs.</tt></em></dd>
+</dl>
+
+<p>shows a relation between the objects <i>Bill</i> and <i>dogs</i>; the relation is <i>likes</i>.
+Here is a rule that defines when the sentence<font size="1" face="Courier New"> Bill likes
+dogs</font><font size="1" face="Courier">.</font> is true: </p>
+
+<dl>
+  <dd><em><tt>Bill likes dogs if the dogs are nice.</tt></em></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381452">Facts: What Is Known</a><!--mstheme--></font></h3>
+
+<p>In Prolog, a relation between objects is called a <i>predicate</i>. In natural
+language, a relation is symbolized by a sentence. In the predicate logic that Prolog uses,
+a relation is summarized in a simple phrase--a fact--that consists of the relation name
+followed by the object or objects (enclosed in parentheses). As with a sentence, the fact
+ends with a period (.).</p>
+
+<p>Here are some more facts expressing &quot;likes&quot; relations in natural language: </p>
+
+<dl>
+  <dd><em><tt>Bill likes Cindy.</tt></em></dd>
+  <dd><em><tt>Cindy likes Bill.</tt></em></dd>
+  <dd><em><tt>Bill likes dogs.</tt></em></dd>
+</dl>
+
+<p>Here are the same facts, written in Prolog syntax: </p>
+
+<dl>
+  <dd><em><tt>likes(bill, cindy).</tt></em></dd>
+  <dd><em><tt>likes(cindy, bill).</tt></em></dd>
+  <dd><em><tt>likes(bill, dogs).</tt></em></dd>
+</dl>
+
+<p>Facts can also express properties of objects as well as relations; in natural language
+&quot;Kermit is green&quot; and &quot;Caitlin is a girl.&quot; Here are some Prolog facts
+that express these same properties: </p>
+
+<dl>
+  <dd><em><tt>green(kermit).</tt></em></dd>
+  <dd><em><tt>girl(caitlin).</tt></em></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381453">Rules: What You Can Infer from Given Facts</a><!--mstheme--></font></h3>
+
+<p>Rules enable you to infer facts from other facts. Another way to say this is that a <i>rule</i>,
+as conclusions is a conclusion that is known to be true if one or more other conclusions
+or facts are found to be true. Here are some rules concerning a &quot;likes&quot;
+relation: </p>
+
+<dl>
+  <dd><!--mstheme--></font><pre><em><tt>Cindy likes everything that Bill likes.</tt></em>      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </dd>
+  <dd><!--mstheme--></font><pre><em><tt>Caitlin likes everything that is green.</tt></em>      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </dd>
+</dl>
+
+<p>Given these rules, you can infer from the previous facts some of the things that Cindy
+and Caitlin like: </p>
+
+<dl>
+  <dd><em><tt>Cindy likes Cindy.</tt></em></dd>
+  <dd><em><tt>Caitlin likes Kermit.</tt></em></dd>
+</dl>
+
+<p>To encode these same rules into Prolog, you only need to change the syntax a little,
+like this: </p>
+
+<dl>
+  <dd><em><tt>likes(cindy, Something):- likes(bill, Something).</tt></em></dd>
+  <dd><em><tt>likes(caitlin, Something):- green(Something).</tt></em></dd>
+</dl>
+
+<p>The <font size="1" face="Courier New">:-</font> symbol is simply pronounced
+&quot;if&quot;, and serves to separate the two parts of a rule: the head and the body.</p>
+
+<p>You can also think of a rule as a procedure. In other words, these rules </p>
+
+<dl>
+  <dd><em><tt>likes(cindy, Something):- likes(bill, Something)</tt></em></dd>
+  <dd><em><tt>likes(caitlin, Something):- green(Something).</tt></em></dd>
+</dl>
+
+<p>also mean &quot;To prove that Cindy likes something, prove that Bill likes that same
+thing&quot; and &quot;To prove that Caitlin likes something, prove that it is green.&quot;
+In the sameside effects procedural way, a rule can ask Prolog to perform actions other
+than proving things--such as writing something or creating a file.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381454">Queries</a><!--mstheme--></font></h3>
+
+<p>Once we give Prolog a set of facts, we can proceed to ask questions concerning these
+facts; this is known as <i>querying the Prolog system</i>. We can ask Prolog the same type
+of questions that we would ask you about these relations. Based upon the known facts and
+rules given earlier, you can answer questions about these relations, just as Prolog can.</p>
+
+<p>In natural language, we ask you: </p>
+
+<dl>
+  <dd><em><tt>Does Bill like Cindy?</tt></em></dd>
+</dl>
+
+<p>In Prolog syntax, we ask Prolog: </p>
+
+<dl>
+  <dd><em><tt>likes(bill, cindy).</tt></em></dd>
+</dl>
+
+<p>Given this query, Prolog would answer </p>
+
+<dl>
+  <dd><em><tt>yes</tt></em></dd>
+</dl>
+
+<p>because Prolog has a fact that says so. As a little more complicated and general
+question, we could ask you in natural language: </p>
+
+<dl>
+  <dd><em><tt>What does Bill like?</tt></em></dd>
+</dl>
+
+<p>In Prolog syntax, we ask Prolog: </p>
+
+<dl>
+  <dd><em><tt>likes(bill, What).</tt></em></dd>
+</dl>
+
+<p>Notice that Prolog syntax does not change when you ask a question: this query looks
+very similar to a fact. However, it is important to notice that the second object--<i>What</i>--begins
+with a capital letter, while the first object--<i>bill</i>--does not. This is because <i>bill</i>
+is a fixed, constant object--aconstants known value--but <i>What</i> is a variable.
+Variables always begin with an upper-case letter or an underscore.</p>
+
+<p>Prolog always looks for an answer to a query by starting at the top of the facts. It
+looks at each fact until it reaches the bottom, where there are no more. Given the query
+about what Bill likes, Prolog will return </p>
+
+<dl>
+  <dd><em><tt>What=cindy</tt></em></dd>
+  <dd><em><tt>What=dogs</tt></em></dd>
+  <dd><em><tt>2 Solutions</tt></em></dd>
+</dl>
+
+<p>This is because Prolog knows </p>
+
+<dl>
+  <dd><em><tt>likes(bill, cindy).</tt></em></dd>
+</dl>
+
+<p>and </p>
+
+<dl>
+  <dd><em><tt>likes(bill, dogs).</tt></em></dd>
+</dl>
+
+<p>We hope that you draw the same conclusion.</p>
+
+<p>If we were to ask you (and Prolog): </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>What does Cindy like?</em></font></dd>
+  <dd><em><tt>likes(cindy, What).</tt></em></dd>
+</dl>
+
+<p>Prolog would answer </p>
+
+<dl>
+  <dd><em><tt>What = bill</tt></em></dd>
+  <dd><em><tt>What = cindy</tt></em></dd>
+  <dd><em><tt>What = dogs</tt></em></dd>
+  <dd><em><tt>3 solutions</tt></em></dd>
+</dl>
+
+<p>This is because Prolog knows that Cindy likes Bill, and that Cindy likes what Bill
+likes, and that Bill likes Cindy and dogs.</p>
+
+<p>We could ask Prolog other questions that we might ask a person; however, a question
+such as &quot;What girl does Bill like?&quot; will yield no solution because Prolog, in
+this case, knows no facts about girls, and it can't draw any conclusions based on material
+not known (supplied to it). In this example, we have not given Prolog any relation or
+property to determine if any of the objects are girls.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381455"><b>Putting Facts, Rules, and Queries Together</b></a><!--mstheme--></font></h3>
+
+<p>Suppose you have the following facts and rules: </p>
+
+<dl>
+  <dd><em><tt>A fast car is fun.</tt></em></dd>
+  <dd><em><tt>A big car is nice.</tt></em></dd>
+  <dd><em><tt>A little car is practical.</tt></em></dd>
+  <dd><em><tt>Bill likes a car if the car is fun.</tt></em></dd>
+</dl>
+
+<p>When you read these facts, you can deduce that Bill likes a fast car. In much the same
+way, Prolog will come to the same conclusion. If no fact were given about fast cars, then
+you would not be able to logically deduce what kind of a car Bill likes. <i>You</i> could
+take a guess at what kind of a car might be fun, but Prolog only knows what you tell it;
+Prolog does not guess.</p>
+
+<p>Here's an example demonstrating how Prolog uses rules to answer queries. Look at the
+facts and rules in this portion of Program 1: </p>
+
+<dl>
+  <dd><em><tt>likes(ellen, tennis).</tt></em></dd>
+  <dd><em><tt>likes(john, football).</tt></em></dd>
+  <dd><em><tt>likes(tom, baseball).</tt></em></dd>
+  <dd><em><tt>likes(eric, swimming).</tt></em></dd>
+  <dd><em><tt>likes(mark, tennis).</tt></em></dd>
+  <dd><em><tt>likes(bill, Activity):- likes(tom, Activity).</tt></em></dd>
+</dl>
+
+<p>The last line in Program 1 is a rule: </p>
+
+<dl>
+  <dd><em><tt>likes(bill, Activity):- likes(tom, Activity).</tt></em></dd>
+</dl>
+
+<p>This rule corresponds to the natural language statement </p>
+
+<dl>
+  <dd><em><tt>Bill likes an activity if Tom likes that activity.</tt></em></dd>
+</dl>
+
+<p>In this rule, the head is <font size="1" face="Courier New">likes(bill, Activity)</font><font size="1" face="Courier">,</font> and the body is <font size="1" face="Courier New">likes(tom,
+Activity)</font>. Notice that there is no fact in this example about Bill liking baseball.
+For Prolog to discover if Bill likes baseball, you can give the query </p>
+
+<dl>
+  <dd><em><tt>likes(bill, baseball).</tt></em></dd>
+</dl>
+
+<p>When attempting to find a solution to this query, Prolog will use the rule: </p>
+
+<dl>
+  <dd><em><tt>likes(bill, Activity):- likes(tom, Activity).</tt></em></dd>
+</dl>
+
+<p>Load Program ch02e01.pro into the Prolog System and run it. </p>
+
+<dl>
+  <dd><em><tt>PREDICATES</tt></em></dd>
+  <dd><em><tt>nondeterm likes(symbol,symbol)</tt></em></dd>
+  <dt>&nbsp;</dt>
+  <dd><em><tt>CLAUSES</tt></em></dd>
+  <dd><em><tt>likes(ellen,tennis).</tt></em></dd>
+  <dd><em><tt>likes(john,football).</tt></em></dd>
+  <dd><em><tt>likes(tom,baseball).</tt></em></dd>
+  <dd><em><tt>likes(eric,swimming).</tt></em></dd>
+  <dd><em><tt>likes(mark,tennis).</tt></em></dd>
+  <dd>&nbsp;</dd>
+  <dd><em><tt>likes(bill,Activity):-</tt></em></dd>
+  <dd><em><tt>likes(tom, Activity).</tt></em></dd>
+  <dd>&nbsp;</dd>
+  <dd><em><tt>GOAL</tt></em></dd>
+  <dd><em><tt>likes(bill, baseball).</tt></em></dd>
+</dl>
+
+<p>The system replies in the Dialog window </p>
+
+<dl>
+  <dd><em><tt>yes</tt></em></dd>
+</dl>
+
+<p>It has combined the rule </p>
+
+<dl>
+  <dd><em><tt>likes(bill, Activity):- likes(tom, Activity).</tt></em></dd>
+</dl>
+
+<p>with the fact </p>
+
+<dl>
+  <dd><em><tt>likes(tom, baseball).</tt></em></dd>
+</dl>
+
+<p>to decide that </p>
+
+<dl>
+  <dd><em><tt>likes(bill, baseball).</tt></em></dd>
+</dl>
+
+<p>Try also this query: </p>
+
+<dl>
+  <dd><em><tt>likes(bill, tennis).</tt></em></dd>
+</dl>
+
+<p>The system replies </p>
+
+<dl>
+  <dd><em><tt>no</tt></em></dd>
+</dl>
+
+<p>Visual Prolog replies no to the latest query (&quot;Does Bill like tennis?&quot;)
+because </p>
+
+<dl>
+  <dd><em>There is no fact that says Bill likes tennis.</em></dd>
+</dl>
+
+<p>Bill's relationship with tennis can't be inferred using the given rule and the
+available facts.</p>
+
+<p>Of course, it may be that Bill absolutely adores tennis in real life, but Visual
+Prolog's response is based <i>only</i> upon the facts and the rules you have given it in
+the program.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381456"><font size="4"><b>Variables: General Sentences</b></font></a><!--mstheme--></font></h3>
+
+<p>In Prolog, <i>variables</i> enable you to write general facts and rules and ask general
+questions. In natural language, you use variables in sentences all the time. A typical
+general statement in English could be </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Bill likes the same thing as Kim.</em></font></dd>
+</dl>
+
+<p>As we mentioned earlier in this chapter, to represent a variable in Prolog, the first
+character of the name must be an upper-case letter or an underscore. For example, in the
+following line, <i>Thing</i> is a variable. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, Thing):- likes(kim, Thing).</em></font></dd>
+</dl>
+
+<p>In the preceding discussion of rules, you saw this line: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(cindy, Something):- likes(bill, Something).</em></font></dd>
+</dl>
+
+<p>The object <i>Something</i> begins with a capital letter because it is a variable; it
+must be able to match anything that Bill likes. It could equally well have been called <i>X</i>
+or <i>Zorro</i>.</p>
+
+<p>The objects <i>bill</i> and <i>cindy</i> begin with lower-case letters because they are
+<i>not</i> variables--instead, they are symbols, having a constant value. Visual Prolog
+can also handle arbitrary text strings, much like we've been handling symbols above, if
+the text is surrounded by double quotes. Hence, the token <font size="1" face="Courier">bill</font>
+could have been written as <font size="1" face="Courier">&quot;Bill&quot;</font>, if you
+wanted it to begin with an upper-case letter.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381457"><font size="4"><b>Overview</b></font></a><!--mstheme--></font></h3>
+
+<p>1. A Prolog program is made up of two types of phrases (also known as <i>clauses</i>):
+facts and rules.</p>
+
+<p><i>Facts</i> are relations or properties that you, the programmer, know to be true.</p>
+
+<p><i>Rules</i> are dependent relations; they allow Prolog to infer one piece of
+information from another. A rule becomes true if a given set of conditions is proven to be
+true. Each rule depends upon proving its conditions to be true.</p>
+
+<p>2. In Prolog, all rules have two parts: a head and a body separated by the special <font size="1" face="Courier New">:-</font> token.</p>
+
+<p>The <i>head</i> is the fact that would be true if some number of conditions were true.
+This is also known as the conclusion or the dependent relation.</p>
+
+<p>The <i>body</i> is the set of conditions that must be true so that Prolog can prove
+that the head of the rule is true.</p>
+
+<p>3. As you may have already guessed, facts and rules are really the same, except that a
+fact has no explicit body. The fact simply behaves as if it had a body that was always
+true.</p>
+
+<p>4. Once you give Prolog a set of facts and/or rules, you can proceed to ask questions
+concerning these; this is known as <i>querying the Prolog system</i>. Prolog always looks
+for a solution by starting at the top of the facts and/or rules, and keeps looking until
+it reaches the bottom.</p>
+
+<p>5. Prolog's inference engine takes the conditions of a rule (the body of the rule) and
+looks through its list of known facts and rules, trying to satisfy the conditions. Once
+all the conditions have been met, the dependent relation (the head of the rule) is found
+to be true. If all the conditions can't be matched with known facts, the rule doesn't
+conclude anything.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381458"><b>Exercises</b></a><!--mstheme--></font></h3>
+
+<p>Write natural language sentences that represent what these Prolog facts might convey to
+a human reader. (Remember that, to the computer, these facts are simple pieces of
+information that can be used for matching answers to questions.)</p>
+
+<p><font size="2">1.</font><font size="1" face="Courier New"> likes(jeff, painting).</font></p>
+
+<p><font size="2">2.</font><font size="1" face="Courier New"> male(john).</font></p>
+
+<p><font size="2">3.</font><font size="1" face="Courier New"> building(&quot;Empire State
+Building&quot;, new_york).</font></p>
+
+<p><font size="2">4.</font><font size="1" face="Courier New"> person(roslin, jeanie,
+&quot;1429 East Sutter St.&quot;,</font></p>
+
+<p><font size="1" face="Courier New">&quot;Scotts Valley&quot;, &quot;CA&quot;, 95066).</font></p>
+
+<p>Write Visual Prolog facts that represent the following natural language statements:</p>
+
+<p>Helen likes pizza.</p>
+
+<p>San Francisco is in California.</p>
+
+<p>Amy's telephone number is 476-0299.</p>
+
+<p>Len's father is Alphonso Grenaldi.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381459"><font size="5"><b>From Natural Language to Prolog Programs</b></font></a><!--mstheme--></font></h2>
+
+<p>In the first section of this chapter we talked about facts and rules, relations,
+general sentences, and queries. Those words are all part of a discussion of logic and
+natural language. Now we're going to discuss the same ideas, but we're going to use more
+Prolog-ish words, like clauses, predicates, variables, and goals.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381460"><font size="4"><b>Clauses (Facts and Rules)</b></font></a><!--mstheme--></font></h3>
+
+<p>Basically, there are only two types of phrases that make up the Prolog language; a
+phrase can be either a <i>fact</i> or a <i>rule</i>. These phrases are known in Prolog as <i>clauses</i>.
+The heart of a Prolog program is made up of clauses.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381461"><b>More About Facts</b></a><!--mstheme--></font></h3>
+
+<p>A fact represents one single instance of either a property of an object or a relation
+between objects. A fact is self-standing; Prolog doesn't need to look any further for
+confirmation of the fact, and the fact can be used as a basis for inferences.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381462"><b>More About Rules</b></a><!--mstheme--></font></h3>
+
+<p>In Prolog, as in ordinary life, it is often possible to find out that something is true
+by inferring it from other facts. The Prolog construct that describes what you can infer
+from other information is a rule. A rule is a property or relation known to be true when
+some set of other relations is known. Syntactically, these relations are separated by
+commas, as we illustrate in example 1 below.</p>
+
+<p><i>Examples of Rules</i></p>
+
+<p>1. This first example shows a rule that can be used to conclude whether a menu item is
+suitable for Diane. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Diane is a vegetarian and eats only what her
+    doctor tells her to eat.</em></font></dd>
+</dl>
+
+<p>Given a menu and the preceding rule, you can conclude if Diane can order a particular
+item on the menu. To do this, you must check to see if the item on the menu matches the
+constraints given.</p>
+
+<p>a. Is<font size="1" face="Courier New"> Food_on_menu </font>a vegetable?</p>
+
+<p>b. Is <font size="1" face="Courier New">Food_on_menu</font> on the doctor's list?</p>
+
+<p>c. Conclusion: If both answers are yes, Diane can order <font size="1" face="Courier New">Food_on_menu</font>.</p>
+
+<p>In Prolog, a relationship like this must be represented by a rule because the
+conclusion is based on facts. Here's one way of writing the rule: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>diane_can_eat(Food_on_menu):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>vegetable(Food_on_menu),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>on_doctor_list(Food_on_menu).</em></font></dd>
+</dl>
+
+<p>Notice here the comma after <font size="1" face="Courier New">vegetable(Food_on_menu)</font><font size="1" face="Courier">.</font> The comma introduces a conjunction of several goals, and
+is simply read as &quot;and&quot;; both <font size="1" face="Courier New">vegetable(Food_on_menu)
+</font><b>and</b> <font size="1" face="Courier New">on_doctor_list(Food_on_menu)</font>
+must be true, for <font size="1" face="Courier New">diane_can_eat(Food_on_menu)</font> to
+be true.</p>
+
+<p>Suppose you want to make a Prolog fact that is true if <i>Person1</i> is the parent of <i>Person2</i>.
+This is easy enough; simply state the Prolog fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>parent(paul, samantha).</em></font></dd>
+</dl>
+
+<p>This shows that Paul is the parent of Samantha. But, suppose your Prolog database
+already has facts stating father relationships. For example, &quot;Paul is the father of
+Samantha&quot;: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>father(paul, samantha).</em></font></dd>
+</dl>
+
+<p>And you also have facts stating mother relationships; &quot;Julie is the mother of
+Samantha&quot;: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>mother(julie, samantha).</em></font></dd>
+</dl>
+
+<p>If you already had a collection of facts stating these father/mother relationships, it
+would be a waste of time to write parent facts into the database for each parent
+relationship.</p>
+
+<p>Since you know that <i>Person1</i> is the parent of <i>Person2</i> if <i>Person1</i> is
+the father of <i>Person2</i> or if <i>Person1</i> is the mother of <i>Person2</i>, then
+why not write a rule to convey these constraints? After stating these conditions in
+natural language, it should be fairly simple to code this into a Prolog rule by writing a
+rule that states the relationships. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>parent(Person1, Person2):- father(Person1,
+    Person2).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>parent(Person1, Person2):- mother(Person1,
+    Person2).</em></font></dd>
+</dl>
+
+<p>These Prolog rules simply state that </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Person1 is the parent of Person2 if Person1 is the
+    father of Person2.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1 is the parent of Person2 if Person1 is the
+    mother of Person2.</em></font></dd>
+</dl>
+
+<p>3. Here's another example: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>A person can buy a car if the person likes the car
+    and the car is for sale.</em></font></dd>
+</dl>
+
+<p>This natural language relationship can be conveyed in Prolog with the following rule: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>can_buy(Name, Model):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(Name),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(Model),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(Name, Model),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>for_sale(Model).</em></font></dd>
+</dl>
+
+<p>This rule shows the following relationship: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Name can_buy Model if</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Name is a person and</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Model is a car and</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Name likes Model and</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Model is for sale.</em></font></dd>
+</dl>
+
+<p>This Prolog rule will succeed if all four conditions in the body of the rule succeed.</p>
+
+<p>4. Here is a program designed to find solutions to this car-buying problem:</p>
+
+<p align="center"><font size="1" face="Courier New">/* Program ch02e02.pro */</font></p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm can_buy(symbol, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm person(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm car(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(symbol, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>for_sale(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>can_buy(X,Y):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(X),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(Y),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(X,Y),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>for_sale(Y).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(kelly).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(judy).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(ellen).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(mark).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(lemon).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(hot_rod).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(kelly, hot_rod).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(judy, pizza).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(ellen, tennis).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(mark, tennis).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>for_sale(pizza).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>for_sale(lemon).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>for_sale(hot_rod).</em></font></dd>
+</dl>
+
+<p>What can Judy and Kelly buy? Who can buy the hot rod? You can try the following goals: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>can_buy(Who, What).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>can_buy(judy, What).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>can_buy(kelly, What).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>can_buy(Who, hot_rod).</em></font></dd>
+</dl>
+
+<p>Experiment! Add other facts and maybe even a rule or two to this Prolog program. Test
+the new program with queries that you make up. Does Prolog respond in a way you would
+expect it to?</p>
+
+<p><i>Exercises</i></p>
+
+<p>Write natural-language sentences corresponding to the following Visual Prolog rules: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>eats(Who, What):- food(What), likes(Who, What).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>pass_class(Who):- did_homework(Who),
+    good_attendance(Who).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>does_not_eat(toby, Stuff):- food(Stuff),
+    greasy(Stuff).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>owns(Who, What):- bought(Who, What).</em></font></dd>
+</dl>
+
+<p>Write Visual Prolog rules that convey the meaning of these natural-language sentences:</p>
+
+<p>a. A person is hungry if that person's stomach is empty.</p>
+
+<p>b. Everybody likes a job if it's fun and it pays well.</p>
+
+<p>c. Sally likes french fries if they're cooked.</p>
+
+<p>d. Everybody owns a car who buys one, pays for it, and keeps it.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381463"><font size="4"><b>Predicates (Relations)</b></font></a><!--mstheme--></font></h2>
+
+<p>The symbolic name of a relation is called the <i>predicate</i> name. The objects that
+it relates are called its <i>arguments</i>; in the fact <font size="1" face="Courier New">likes(bill,
+cindy).</font>, the relation <i>likes</i> is the predicate and the objects <i>bill</i> and
+<i>cindy</i> are the arguments.</p>
+
+<p>Here are some examples of Prolog predicates with zero or more arguments: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>pred(integer, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>person(last, first, gender)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>run</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>insert_mode</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>birthday(firstName, lastName, date)</em></font></dd>
+</dl>
+
+<p>As we've shown here, a predicate might not have any arguments at all, but the use of
+such a predicate is limited. You can use a query such as <font size="1" face="Courier New">person(rosemont,Name,male)</font><font size="1" face="Courier">.</font> to find out Mr. Rosemont's first name. But what can you
+do with the zero-argument query run? You can find out whether the clause <font size="1" face="Courier New">run</font> is in the program, or--if <font size="1" face="Courier New">run</font>
+is the head of a rule, you can evaluate that rule. This can be useful in a few cases--for
+instance, you might want to make a program behave differently depending on whether the
+clause <font size="1" face="Courier New">insert_mode.</font> is present.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381464"><font size="4"><b>Variables (General Clauses)</b></font></a><!--mstheme--></font></h3>
+
+<p>In a simple query, you can use variables to ask Prolog to find who likes tennis. For
+example: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(X, tennis).</em></font></dd>
+</dl>
+
+<p>This query uses the letter <i>X</i> as a variable to indicate an unknown person.
+Variable names in Visual Prolog must begin with a capital letter (or an underscore), after
+which any number of letters (upper-case or lower-case), digits, or underline characters
+(_) can be used. For example, the following are valid variable names: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>My_first_correct_variable_name</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Sales_10_11_86</em></font></dd>
+</dl>
+
+<p>while the next three are invalid: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>1stattempt</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>second_attempt</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>&quot;disaster&quot;</em></font></dd>
+</dl>
+
+<p>(Careful choice of variable names makes programs more readable. For example, </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(Person, tennis).</em></font></dd>
+</dl>
+
+<p>is better than </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(X, tennis).</em></font></dd>
+</dl>
+
+<p>because <i>Person</i> makes more sense than <i>X</i>.) Now try the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>GOAL likes(Person, tennis).</em></font></dd>
+</dl>
+
+<p>Visual Prolog replies </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Person=ellen</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person=mark</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>2 Solutions</em></font></dd>
+</dl>
+
+<p>because the goal can be solved in just two ways; namely, by taking the variable <i>Person</i>
+and successively matching it with the values <i>ellen</i> and <i>mark</i>.</p>
+
+<p>In variable names, except for the first character (which must be an upper-case letter
+or an underscore), Visual Prolog allows lower-case or upper-case letters in any position.
+One way to make variable names more readable is by using mixed upper-case and lower-case
+letters, as in </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>IncomeAndExpenditureAccount</em></font></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381465"><b>How Variables Get Their Values</b></a><!--mstheme--></font></h3>
+
+<p>You may have noticed that Prolog has no assignment statement; this is a significant
+distinction between Prolog and other programming languages. <b><i>Variables in Prolog get
+their values by being matched to constants in facts or rules.</i></b></p>
+
+<p>Until it gets a value, a variable is said to be <i>free</i>; when it gets a value, it
+becomes <i>bound</i>. But it only stays bound for the time needed to obtain one solution
+to the query; then Prolog unbinds it, backs up, and looks for alternative solutions.</p>
+
+<p>This is a very important point: <b><i>You can't store information by giving a value to
+a variable.</i></b> Variables are used as part of the pattern-matching, process, not as a
+kind of information storage.</p>
+
+<p>Take a look at the following example, which uses program 3 to demonstrate how and when
+variables get their values. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch02e03.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm likes(symbol,symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(ellen,reading).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(john,computers).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(john,badminton).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(leonard,badminton).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(eric,swimming).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(eric,reading).</em></font></dd>
+</dl>
+
+<p>Consider this query: Is there a person who likes both reading and swimming? </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(Person, reading), likes(Person, swimming).</em></font></dd>
+</dl>
+
+<p>Prolog will solve the two parts of this query by searching the program's clauses from
+top to bottom. In the first part of the query </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(Person, reading)</em></font></dd>
+</dl>
+
+<p>the variable <i>Person</i> is free; its value is unknown before Prolog attempts to find
+a solution. On the other hand, the second argument, <i>reading</i>, is known. Prolog
+searches for a fact that matches the first part of the query. The first fact in the
+program </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(ellen, reading)</em></font></dd>
+</dl>
+
+<p>is a match (<i>reading</i> in the fact matches <i>reading</i> in the query), so Prolog
+binds the free variable <i>Person</i> to the value <i>ellen</i>, the relevant value in the
+fact. At the same time, Prolog places a pointer in the list of facts indicating how far
+down the search procedure has reached.</p>
+
+<p>Next, in order for the query to be fully satisfied (find a person who likes both
+reading and swimming), the second part must also be fulfilled. Since <i>Person</i> is now
+bound to <i>ellen</i>, Prolog must search for the fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(ellen, swimming)</em></font></dd>
+</dl>
+
+<p>Prolog searches for this fact from the beginning of the program, but no match occurs
+(because there is no such fact in the program). The second part of the query is not true
+when <i>Person</i> is <i>ellen</i>.</p>
+
+<p>Prolog now &quot;unbinds&quot; <i>Person</i> and attempts another solution of the first
+part of the query with <i>Person</i> once again a free variable. The search for another
+fact that fulfills the first part of the query starts from the pointer in the list of
+facts. (This returning to the place last marked is known as <i>backtracking</i>, which
+we'll cover in chapter <b>4</b>.)</p>
+
+<p>Prolog looks for the next person who likes reading and finds the fact <font size="1" face="Courier New">likes(eric, reading)</font>. <i>Person</i> is now bound to <i>eric</i>,
+and Prolog tries once again to satisfy the second part of the query, this time by looking
+in the program for the fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New">likes(eric, swimming)</font></dd>
+</dl>
+
+<p>This time it finds a match (the last clause in the program), and the query is fully
+satisfied. Prolog returns </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Person=eric</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381466"><b>Anonymous Variables</b></a><!--mstheme--></font></h3>
+
+<p>Anonymous variables enable you to unclutter your programs. If you only need certain
+information from a query, you can use anonymous variables to ignore the values you don't
+need. In Prolog, the anonymous variable is represented by a lone underscore
+(&quot;_&quot;).</p>
+
+<p>The following <i>parents</i> example demonstrates how the anonymous variable is used.
+Load Program 4. </p>
+
+<dl>
+  <dd><p align="center"><a name="parent"><font size="1" face="Courier New"><em>/* Program
+    ch02e04.pro */</em></font></a></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>male(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>female(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm parent(symbol, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>male(bill).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>male(joe).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>female(sue).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>female(tammy).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>parent(bill,joe).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>parent(sue,joe).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>parent(joe,tammy).</em></font></dd>
+</dl>
+
+<p><b><i>The anonymous variable can be used in place of any other variable.</i></b> The
+difference is that the anonymous variable will never get set to a value.</p>
+
+<p>For example, in the following query, you need to know which people are parents, but you
+don't need to know who their children are. Prolog realizes that each time you use the
+underscore symbol in the query, you don't need information about what value is represented
+in that variable's place. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>GOAL</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>parent(Parent, _).</em></font></dd>
+  <dd><em>Given this query, Prolog replies</em></dd>
+  <dd><font size="1" face="Courier New"><em>Parent=bill</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Parent=sue</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Parent=joe</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>3 Solutions</em></font></dd>
+</dl>
+
+<p>In this case, because of the anonymous variable, Prolog finds and reports three
+parents, but it does not report the values associated with the second argument in the <b><i>parent</i></b>
+clause.</p>
+
+<p>Anonymous variables can also be used in facts. The following Prolog facts </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>owns(_, shoes).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>eats(_).</em></font></dd>
+</dl>
+
+<p>could be used to express the natural language statements </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Everyone owns shoes.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Everyone eats.</em></font></dd>
+</dl>
+
+<p><b><i>The anonymous variable matches anything.</i></b> A named variable would work
+equally well in most cases, but its name would serve no useful purpose.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381467"><font size="4"><b>Goals (Queries)</b></font></a><!--mstheme--></font></h3>
+
+<p>Up to now, we've been mixing the word <i>query</i> when talking about the questions you
+ask Prolog, with the more common name <i>goal</i>, which we'll use from now on. Referring
+to queries as goals should make sense: when you query Prolog, you are actually giving it a
+goal to accomplish (&quot;Find an answer to this question, if one exists: ...&quot;).</p>
+
+<p>Goals can be simple, such as these two: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(ellen, swimming).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(bill, What).</em></font></dd>
+</dl>
+
+<p>or they can be more complex. In the &quot;Variables&quot; section of this chapter, you
+saw a goal made up of two parts: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(Person, reading), likes(Person, swimming).</em></font></dd>
+</dl>
+
+<p>A goal made up of two or more parts is known as a <i>compound goal</i>, and each part
+of the compound goal is called a <i>subgoal</i>.</p>
+
+<p>Often you need to know the intersection of two goals. For instance, in the previous
+parents example, you might also need to know which persons are male parents. You can get
+Prolog to search for the solutions to such a query by setting a compound goal. Load the
+Program 4 and enter the following compound goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Goal parent(Person, _), male(Person).</em></font></dd>
+</dl>
+
+<p>Prolog will first try to solve the subgoal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>parent(Person, _)</em></font></dd>
+</dl>
+
+<p>by searching the clauses for a match, then binding the variable <i>Person</i> to a
+value returned by <b><i>parent</i></b> (<i>Person</i> is a parent). The value that <b><i>parent</i></b>
+returns will then provide the second subgoal with the value on which to search (Is <i>Person</i>--now
+bound--a male?). </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>male(Person)</em></font></dd>
+</dl>
+
+<p>If you entered the goal correctly, Prolog will answer </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Person=bill</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person=joe</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>2 Solutions</em></font></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381468"><b>Compound Goals: Conjunctions and Disjunctions</b></a><!--mstheme--></font></h3>
+
+<p>As you have seen, you can use a compound goal to find a solution where both subgoal A <i>and</i>
+subgoal B are true (a <i>conjunction</i>), by separating the subgoals with a comma, but
+this is not all. You can also find a solution where subgoal A <i>or</i> subgoal B is true
+(a <i>disjunction</i>), by separating the subgoals with a semicolon. Here's an example
+program illustrating this idea: </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch02e05.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(symbol,long,integer,symbol,long)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>truck(symbol,long,integer,symbol,long)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm vehicle(symbol,long,integer,symbol,long)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(chrysler,130000,3,red,12000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(ford,90000,4,gray,25000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(datsun,8000,1,red,30000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>truck(ford,80000,6,blue,8000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>truck(datsun,50000,5,orange,20000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>truck(toyota,25000,2,black,25000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>vehicle(Make,Odometer,Age,Color,Price):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(Make,Odometer,Age,Color,Price);</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>truck(Make,Odometer,Age,Color,Price).</em></font></dd>
+</dl>
+
+<p>Load and run this program, then try the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>GOAL car(Make, Odometer, Years_on_road, Body,
+    25000).</em></font></dd>
+</dl>
+
+<p>This goal attempts to find a car described in the clauses that costs exactly $25,000.
+Prolog replies </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Make=ford, Odometer=90000, Years_on_road=4,
+    Body=gray</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<p>But this goal is slightly unnatural, since you'd probably rather ask a question like: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Is there a car listed that costs less than
+    $25,000?</em></font></dd>
+</dl>
+
+<p>You can get Visual Prolog to search for a solution by setting this compound goal: </p>
+
+<dl>
+  <dd><em><font size="1" face="Courier New">car(Make, Odometer, Years_on_road, Body, Cost),
+    /*subgoal A <b>and</b>*/</font></em></dd>
+  <dd><font size="1" face="Courier New"><em>Cost &lt; 25000. /*subgoal B */</em></font></dd>
+</dl>
+
+<p>This is known as a conjunction. To fulfill this compound goal, Prolog will try to solve
+the subgoals in order. First, it will try to solve </p>
+
+<dl>
+  <dd><font size="1" face="Courier New">car(Make, Odometer, Years_on_road, Body, Cost).</font></dd>
+</dl>
+
+<p>and then </p>
+
+<dl>
+  <dd><font size="1" face="Courier New">Cost &lt; 25000.</font></dd>
+</dl>
+
+<p>with the variable <i>Cost</i> referring to the same value in both subgoals. Try it out
+now.</p>
+
+<p><b>Note:</b> The subgoal <font size="1" face="Courier New">Cost &lt; 25000</font>
+involves the relation <i>less than</i>, which is built into the Visual Prolog system. The <i>less
+than</i> relation is no different from any other relation involving two numeric objects,
+but it is more natural to place the symbol for it between the two objects.</p>
+
+<p>Now we will try to see if the following, expressed in natural language, is true:goals,
+disjunctivedisjunctive goals queries, disjunctive </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Is there a car listed that costs less than
+    $25,000?, or is there a truck listed that costs less than $20,000?</em></font></dd>
+</dl>
+
+<p>Prolog will search for a solution if you set this compound goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>car(Make,Odometer,Years_on_road,Body,Cost),
+    Cost&lt;25000 ; <br>
+    /* subgoal A or */</em></font></dd>
+  <dt>&nbsp;</dt>
+  <dd><font size="1" face="Courier New"><em>truck(Make,Odometer,Years_on_road,Body,Cost), Cost
+    &lt; 20000. <br>
+    /* subgoal B */</em></font></dd>
+</dl>
+
+<p>This kind of compound goal is known as a disjunction. This one sets up the two subgoals
+as alternatives, much as though they were two clauses for the same rule. Prolog will then
+find any solution that satisfies either of the subgoals.</p>
+
+<p>To fulfill this compound goal, Prolog will try to solve the first subgoal (&quot;find a
+car ...&quot;), which is composed of these subgoals: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>car(Make, Odometer, Years_on_road, Body, Cost.)</em></font></dd>
+</dl>
+
+<p>and </p>
+
+<dl>
+  <dd><font size="1" face="Courier New">Cost &lt; 25000.</font></dd>
+</dl>
+
+<p>If a car is found, the goal will succeed; if not, Prolog will try to fulfill the second
+compound goal (&quot;find a truck ...&quot;), made up of the subgoals </p>
+
+<dl>
+  <dd><font size="1" face="Courier New">truck(Make, Odometer, Years_on_road, Body, Cost),</font></dd>
+</dl>
+
+<p>and </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Cost &lt; 20000.</em></font></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381469"><font size="4"><b>Comments</b></font></a><!--mstheme--></font></h3>
+
+<p>It's good programming style to include comments in your program to explain things that
+might not be obvious to someone else (or to you in six months). This makes the program
+easy for you and others to understand. If you choose appropriate names for variables,
+predicates, and domains, you'll need fewer comments, since the program will be more
+self-explanatory.</p>
+
+<p>Multiple-line comments must begin with the characters /* (slash, asterisk) and end with
+the characters */ (asterisk, slash). To set off single-line comments, you can use these
+same characters, or you can begin the comment with a percent sign (%). </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>/* This is an example of a comment */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>% This is also a comment</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/***************************************/</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/* and so are these three lines */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>/***************************************/</em></font></dd>
+  <dt>&nbsp;</dt>
+  <dd><font size="1" face="Courier New"><em>/*You can also nest a Visual Prolog comment
+    /*within a comment*/ like this */</em></font></dd>
+</dl>
+
+<p><a name="_Toc325381470">In Visual Prolog 5.0 you can also use a comment after de
+decalratition of a domain. </a></p>
+
+<dl>
+  <dd><a name="_Toc325381470"><font size="1" face="Courier New"><em>DOMAINS</em></font></a></dd>
+  <dd><a name="_Toc325381470"><font size="1" face="Courier New"><em>articles = book(STRING
+    title, STRING author); horse(STRING name)</em></font></a></dd>
+  <dd><a name="_Toc325381470"><font size="1" face="Courier New"><em>PREDICATES</em></font></a></dd>
+  <dd><a name="_Toc325381470"><font size="1" face="Courier New"><em>conv(STRING
+    uppercase,STRING lowercase)</em></font></a></dd>
+</dl>
+
+<p><a name="_Toc325381470">The words title, author, name, uppercase and lowercase will be
+ignored by the compiler, but makes the program much more readable.</a></p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc404659155"><font size="5"><b>What Is a Match?</b></font></a><!--mstheme--></font></h2>
+
+<p>In the previous sections of this chapter, we've talked about Prolog &quot;matching
+answers to questions&quot;, &quot;finding a match&quot;, &quot;matching conditions with
+facts&quot;, &quot;matching variables with constants&quot;, and so on. In this section we
+explain what we mean when we use the term &quot;match.&quot;</p>
+
+<p>There are several ways Prolog can match one thing to another. Obviously, <b><i>identical
+structures match each other</i></b>; </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>parent(joe,tammy) matches parent(joe,tammy).</em></font></dd>
+</dl>
+
+<p>However, <b><i>a match usually involves one or more free variables</i></b>. For
+example, with <i>X</i> free, </p>
+
+<dl>
+  <dd><em><font size="1" face="Courier New">parent(joe,X) </font><font size="1">matches</font><font size="1" face="Courier New"> parent(joe,tammy)</font></em></dd>
+</dl>
+
+<p>and <i>X</i> takes on (is bound to) the value <i>tammy</i>.</p>
+
+<p>If <i>X</i> is already bound, it acts exactly like a constant. Thus, if <i>X</i> is
+bound to the value <i>tammy</i>, then</p>
+
+<p><font size="1" face="Courier New">parent(joe,X) </font>matches<font size="1" face="Courier New"> parent(joe,tammy) but</font></p>
+
+<p><font size="1" face="Courier New">parent(joe,X) </font>would not match<font size="1" face="Courier New"> parent(joe,millie)</font></p>
+
+<p>The second instance doesn't match because, once a variable becomes bound, its value
+can't change.</p>
+
+<p>How could a variable, bindings already be bound when Prolog tries to match it with
+something? Remember that variables don't store values--they only stay bound for the length
+of time needed to find (or try to find) one solution to one goal. So the only way a
+variable could be bound before trying a match is that the goal involves more than one
+step, and the variable became bound in a previous step. For example, </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>parent(joe,X), parent(X,jenny)</em></font></dd>
+</dl>
+
+<p>is a legitimate goal; it means, &quot;Find someone who is a child of Joe and a parent
+of Jenny.&quot; Here <i>X</i> will already be bound when the subgoal <font size="1" face="Courier New">parent(X,jenny)</font> is reached. If there is no solution to <font size="1" face="Courier New">parent(X,jenny)</font>, Prolog will unbind <i>X</i> and go
+back and try to find another solution to <font size="1" face="Courier New">parent(joe,X)</font>,
+then see if <font size="1" face="Courier New">parent(X,jenny)</font> will work with the
+new value of <i>X</i>.</p>
+
+<p><b><i>Two free variables can even match each other.</i></b> For example, </p>
+
+<dl>
+  <dd><em><font size="1" face="Courier New">parent(joe,X) </font><font size="1">matches</font><font size="1" face="Courier New"> parent(joe,Y)</font></em></dd>
+</dl>
+
+<p>binding the variables <i>X</i> and <i>Y</i> to each other. As long as the binding
+lasts, <i>X</i> and <i>Y</i> are treated as a single variable, and if one of them gets a
+value the other one will immediately have the same value. When free variables are bound to
+each other like this, they're called pointers, shared <i>free sharing variables</i>. Some
+really powerful programming techniques involve binding together variables that were
+originally separate.</p>
+
+<p>In Prolog, variable bindings (values) are passed in two ways: in and out. The direction
+in which a value is passed is referred to as its <i>flow pattern</i>. When a variable is
+passed into a clause, it is an <i>input</i> , <i>argument</i>, signified by (i); when
+passed out of a clause, a variable is an <i>output argument</i>, signified by (o).</p>
+
+<p><a name="_Toc325381471"><font size="5"><b>Summary</b></font></a></p>
+
+<p>These are the ideas we've introduced in this brief introduction:</p>
+
+<p>1. A Prolog program is made up of <i>clauses</i>, which conceptually are two types of
+phrases: facts and rules.</p>
+
+<p><i>Facts</i> are relations or properties that you, the programmer, know to be true.</p>
+
+<p><i>Rules</i> are dependent relations; they allow Prolog to infer one piece of
+information from another.</p>
+
+<p>2<i>. Facts</i> have the general form: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>property(object1, object2, ..., objectN)</em></font></dd>
+</dl>
+
+<p>or </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>relation(object1, object2, ..., objectN)</em></font></dd>
+</dl>
+
+<p>where a property is a <i>property of </i>the objects and a relation is a <i>relation
+between</i> the objects. As far as Prolog programming goes, the distinction doesn't exist
+and we will refer to both as relations in this book.</p>
+
+<p>3. Each fact given in a program consists of either a relation that affects one or more
+objects or a property of one or more objects. For example, in the Prolog fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(tom, baseball).</em></font></dd>
+</dl>
+
+<p>the relation is <i>likes</i>, and the objects are <i>tom</i> and <i>baseball</i>; Tom
+likes baseball. Also, in the fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>left_handed(benjamin)</em></font></dd>
+</dl>
+
+<p>the property is left_handed and the object is benjamin; in other words, Benjamin is
+left-handed.</p>
+
+<p>4.<i> Rules</i> have the general form <font size="1" face="Courier">Head:- Body</font>,
+which looks like this in a program: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>relation(object,object,...,object):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>relation(object,...,object),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>relation(object,...,object).</em></font></dd>
+</dl>
+
+<p>5. You are free to choose names for the relations and objects in your programs, subject
+to the following constraints:</p>
+
+<p>Object names must begin with a lower-case letter, followed by any number of characters;
+characters are upper-case or lower-case letters, digits, and underscores.</p>
+
+<p>Properties and relation names must start with a lower-case letter, followed by any
+combination of letters, digits, and underscore characters.</p>
+
+<p><i>6.</i> A <i>predicate</i> is the symbolic name (identifier) for a relation and a
+sequence of arguments. A Prolog program is a sequence of clauses and directives, and a
+procedure is a sequence of clauses defining a predicate. Clauses that belong to the same
+predicate must follow one another.</p>
+
+<p><i>7. Variables</i> enable you to write general facts and rules and ask general
+questions.</p>
+
+<p>Variable names in Visual Prolog must begin with a capital letter or an underscore
+character (_), after which you can use any number of letters (upper-case or lower-case),
+digits, or underscores.</p>
+
+<p>Variables in Prolog get their values by being matched to constants in facts or rules.
+Until it gets a value, a variable is said to be free; when it gets a value, it becomes
+bound.</p>
+
+<p>You can't store information globally by binding a value to a variable, because a
+variable is only bound within a clause.</p>
+
+<p>8. If you only need certain information from a query, you can use <i>anonymous
+variables</i> to ignore the values you don't need. In Prolog, the anonymous variable is
+represented by a lone underscore (_).</p>
+
+<p>The anonymous variable can be used in place of any other variable; it matches anything.
+The anonymous variable will never get set to a value.</p>
+
+<p>9. Asking Prolog questions about the facts in your program is known as <i>querying the
+Prolog system</i>; the query is commonly called a <i>goal</i>. Prolog tries to satisfy a
+goal (answer the query) by starting at the top of the facts, looking at each fact until it
+reaches the bottom.</p>
+
+<p>10. A <i>compound goal</i> is a goal made up of two or more parts; each part of the
+compound goal is called a <i>subgoal</i>. Compound goals can be <i>conjunctions</i>
+(subgoal A and subgoal B) or <i>disjunctions</i> (subgoal A or subgoal B).</p>
+
+<p>11. Comments make your programs easier to read; you can enclose a comment with
+delimiters<font size="1" face="Courier"> /* like this */</font> or precede a single-line
+comment with a percent sign, <font size="1" face="Courier">% like this</font>.</p>
+
+<p>12. There are several ways Prolog can match one thing to another:</p>
+
+<p>Identical structures match each other.</p>
+
+<p>A free variable matches a constant or a previously-bound variable (and becomes bound to
+that value).</p>
+
+<p>Two free variables can match (and be bound to) each other. As long as the binding
+lasts, they are treated as a single variable; if one gets a value the other will
+immediately have the same value.</p>
+
+<p><a href="learn2.htm">Go to next section</a></p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

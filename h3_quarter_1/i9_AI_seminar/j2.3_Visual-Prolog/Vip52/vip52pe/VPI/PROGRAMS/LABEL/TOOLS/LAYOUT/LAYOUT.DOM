@@ -1,0 +1,62 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	LAYOUT.DOM
+ Purpose:	Global domains for Layout
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global domains
+  LAYOUT_RCTLIST = RCT*
+
+  LAYOUT_ALIGN = left;
+		 top;
+		 right;
+		 bottom;
+		 center_hor;
+		 center_ver;
+		 divider_hor;
+		 divider_ver
+
+  LAYOUT_GRID =	invisible;
+		dot(COLOR);
+		line(COLOR)
+
+  LAYOUT_FIELD_TYPE = line;
+		      ellipse;
+		      rectangle
+
+  LAYOUT_MODE = edit_mode;
+		create_mode(LAYOUT_FIELD_TYPE)
+
+  LAYOUT_PAGE =	rectangle(RCT,BRUSH,COLOR BgColor,BOOLEAN Shadow);
+		roundrect(RCT,BRUSH,INTEGER CornerRad,COLOR BgColor,BOOLEAN Shadow);
+		ellipse(RCT,BRUSH,COLOR BgColor,BOOLEAN Shadow)
+
+  LAYOUT_USER_ACTION = selectBegin;
+		       select(ILIST FieldIdList);
+		       unSelect(ILIST FieldIdList);
+		       sizeBegin(ILIST FieldIdList);
+		       size(ILIST FieldIdList,RCT);
+		       moveBegin(ILIST FieldIdList);
+		       move(ILIST OldIdList,LAYOUT_RCTLIST OldRctList,WINDOW NewWin,ILIST NewIdList,LAYOUT_RCTLIST NewRctList);
+		       copy(ILIST OldIdList,LAYOUT_RCTLIST OldRctList,WINDOW NewWin,ILIST NewIdList,LAYOUT_RCTLIST NewRctList);
+		       createBegin;
+		       create(INTEGER FieldId,RCT);
+		       delete(INTEGER FieldId,RCT);
+		       draw(INTEGER FieldId,RCT);
+		       modified(ILIST FieldIdList)
+
+  LAYOUT_MESSAGE = event(EVENT);
+		   user_action(LAYOUT_USER_ACTION)
+
+  LAYOUT_EVENT_ANSWER = stop;				% Stop action
+			continue			% Default action
+
+  LAYOUT_ANSWER = event_answer(LAYOUT_EVENT_ANSWER)
+
+  LAYOUT_CALLBACK = determ (WINDOW		LayoutPageWin,
+			    LAYOUT_MESSAGE	What,
+			    LAYOUT_ANSWER	Answer) - (i,i,o)

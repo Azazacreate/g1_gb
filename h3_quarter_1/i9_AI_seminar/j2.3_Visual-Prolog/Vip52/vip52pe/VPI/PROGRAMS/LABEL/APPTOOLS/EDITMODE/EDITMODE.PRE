@@ -1,0 +1,19 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	EDITMODE.PRE
+ Purpose:	Global predicate for EDIT MODE object
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  WINDOW em_create(WINDOW Parent,PNT LeftTopPos,EM_CALLBACK) - (i,i,i)
+  em_destroy() - ()
+
+  em_enable() - ()
+  em_disable() - ()
+
+  em_SetPressedButton(EM_PUSH) - (i)

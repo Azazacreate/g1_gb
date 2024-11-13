@@ -1,0 +1,53 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	MAPCTRL.DOM
+ PURPOSE:	Domains definitions for Map viewer/editor custom control
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+
+******************************************************************************/
+global domains
+%  FILE = mapdata	% <-- Move this definition into the <PROJECT>.INC file
+  ULONGLIST = ULONG*
+
+
+  MAPCTRL_DATA = data(MAPCTRL_BGOBJLIST,MAPCTRL_OBJLIST);
+		 filename(STRING)
+  
+  
+  MAPCTRL_BGOBJLIST = MAPCTRL_BGOBJ*
+  MAPCTRL_BGOBJ  = polygon_bg(PNTLIST,PEN,BRUSH);	% Background objects
+		   polyline_bg(PNTLIST,PEN);
+		   circle_bg(PNT,INTEGER,PEN,BRUSH);
+		   bitmap_bg(PNT,STRING BmpFilename,ROP);
+		   picture_bg(PNT,PICTURE,ROP);
+		   text_bg(PNT,STRING Text,INTEGER FontFamily,FONTSTYLE FontStyleFlags,INTEGER FontSize,COLOR)
+
+  MAPCTRL_OBJLIST = MAPCTRL_OBJ*
+  MAPCTRL_OBJ	= polygon(ULONG Id,PNT,PNTLIST,PEN,BRUSH,MAPCTRL_LABEL);	% Foreground objects
+		  circle(ULONG Id,PNT,INTEGER,PEN,BRUSH,MAPCTRL_LABEL);
+		  arrow(ULONG Id,PNT From,PNT To,PEN,MAPCTRL_LABEL);
+		  bitmap(ULONG Id,PNT,STRING BmpFilename,ROP,MAPCTRL_LABEL);
+		  picture(ULONG Id,PNT,PICTURE,ROP,MAPCTRL_LABEL)
+
+  MAPCTRL_LABEL = label(PNT,STRING,FONTFAMILY FontFamily,FONTSTYLE FontStyleFlags,INTEGER FontSize,COLOR);	% PNT relative to object's PNT
+		  nolabel
+
+  MAPCTRL_MODE = view(MENU_ITEM_LIST);	% Application defined right mouse button menu
+		 edit()
+
+  MAPCTRL_MAPSCALE = mapscale(PNT VisibleLeftTopCorner,REAL Scaling)
+  
+  MAPCTRL_EVENT	= event(EVENT);
+		  action(MAPCTRL_ACTION)
+
+  MAPCTRL_ACTION = marker(ULONGLIST ObjectIds,BOOLEAN MarkUnmark);
+		   double_click(ULONG ObjectId)
+
+  MAPCTRL_CALLBACK = determ (WINDOW,MAPCTRL_EVENT)
+

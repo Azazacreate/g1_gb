@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Domains in Classes</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Domains in Classes<!--mstheme--></font></h1>
+<p>From Visual Prolog 5.2 it is possible to declare domains inside classes both
+in the declaration of the class and in the implementation. Domains declared in a
+class declaration are public (protected) and can be used outside the class. The
+domains declared in a class implementation are private and can only be used only
+inside that implementation. Or to put it differently, domains declared in class
+declarations are <b>global</b> domains, while domains declared in a class
+implementation are <b>local</b> to that implementation.</p>
+<p>Notice that domains declared in non-abstract class declarations do not even
+have to be visible in the main module (if they are not really used in the main
+module) like traditional global domains have to (see Improved domains handling)<!--webbot
+bot="PurpleText" preview="Insert link
+" -->.</p>
+<p>Notice as well that a class domain (i.e. a domain declared as a class name)
+also does not have to be visible in the main module if the main module does not
+use this domain.</p>
+<p>It is straightforward to use domains declared in classes. The only thing that
+needs to be mentioned are scoping and qualification rules.</p>
+<p>As already mentioned, a domain declared in an implementation is local to that
+implementation, and inside this implementation the domain is used just like any
+other domain.</p>
+<p>A domain declared in a class declaration can be used <b>directly</b> in all
+classes that inherit (transitively) from that class (including the class
+itself). The domain can be used both in the declarations and in the
+implementations of these classes.</p>
+<p>In classes that do not inherit (transitively) from the class declaring the
+domain, the domain and all functors have to be qualified with the class name of
+the declaring class. The qualification has to refer to the class that really
+declares the domain, it cannot go to a class that merely inherits from that
+class. In other words, the derived classes only &quot;inherit&quot; the ability
+to use a domain.</p>
+<p>Notice that all domains declared in classes are static/class entities. The
+domain belongs to the class not to the individual objects (but like other
+static/class entities they can of course be used freely by objects). Thus if a
+class declares a domain this means that there will exist one domain, rather than
+one per object.</p>
+<p>Being able to declare domains in classes opens the possibility to use classes
+as modules. If a class only declares static/class entities, then it can be
+considered a module.</p>
+<p>Though it is possible to create objects corresponding to such a module (since
+they always have at least a default constructor), these objects are useless,
+since there are no methods on them. (Well, to be precise, such objects do have
+an identity, and this might be used for something, but let's not consider this
+very special aspect).</p>
+<p>The static/class entities of a class can, however, be used as ordinary global
+entities, as long as you remember to qualify them with the class name. One
+advantage of creating modules this way is that the module will have a separate
+name space (as the result of qualification with the class name). This means that
+you can choose names in the module more freely. It also ensures consistent
+naming of all entities in the module. Another advantage is that classes do not
+have to be included in the main module, even if they contain public domains (see
+Improved domains handling)<!--webbot bot="PurpleText" preview="Insert link
+" -->.
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

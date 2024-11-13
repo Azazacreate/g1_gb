@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<title>Code Example</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Code Example <!--mstheme--></font></h1>
+
+<h3><!--mstheme--><font color="#000000">Reading a Prolog Program <!--mstheme--></font></h3>
+
+<p>To get a feel for the Prolog program on this page, you need to know some of the basics
+of Prolog. The example program solves critical path analysis: some processes cannot begin
+until others have finished, and the key is to locate the path from start to finish
+containing those processes which, if delayed, would hold up everything. Solving the
+critical path analysis is a tricky, nontrivial problem to describe, and naturally the
+Prolog program reflects this - it's tricky too. Giving you the full understanding of
+Prolog is clearly beyond the scope of this fact sheet - but you can get a flavor of how a
+program is built using Prolog. </p>
+
+<h3><!--mstheme--><font color="#000000"><b>The Semantics</b> <!--mstheme--></font></h3>
+
+<p>A Prolog program is made up of predicates (roughly corresponding to procedures). A
+predicate describes a relation between its arguments. Each predicate has one or more
+clauses that can be either facts (fixed relations) or rules (conditional relations). Facts
+are here used to establish a relational database describing the duration of processes and
+the order in which they must take place. The fact duration(make_wine,100) says that the
+duration of the process make_wine is 100, and the fact follows(make_wine,store_wine) says
+that the process store_wine must follow the process make_wine. The relations duration and
+follows are used as logical conditions in the other rules. </p>
+
+<h3><!--mstheme--><font color="#000000"><b>The Syntax</b> <!--mstheme--></font></h3>
+
+<p>The DOMAINS section declares the data types for the program, and the PREDICATES section
+declares the predicates for which clauses are given in the CLAUSES section. This latter
+section makes up the executable program. Facts and rules are followed by a
+&quot;.&quot;(dot). Variables start with a capital letter. In rules, &quot;:-&quot; means
+IF and &quot;,&quot; (comma) means AND. Thus &quot;p :- a,b.&quot; means that p is true if
+a and b are true. </p>
+
+<h3><!--mstheme--><font color="#000000">Making it Work<!--mstheme--></font></h3>
+
+<p>In the integrated PDC DOS environment the code can be tested by interactively calling
+the predicates and inspecting the returned values. Alternatively the starting call can be
+put into the program. This way the PDC Prolog compiler will generate a traditional
+self-contained executable file.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><small>DOMAINS
+   process = string
+   path   = process*
+   time   = real
+PREDICATES
+   follows(process,process)        % which process is followed by which
+   duration(process,time)          % the duration for each process 
+   start(process,time,path)
+   stop(process,time,path) 
+   later_start_needed(process,time)
+CLAUSES
+   start(P,0,[P]):-
+     not (follows(_,P)),
+     !. 
+   start(P2,ShiftTime,[P2|Path_to_P1]):-
+     follows(P1,P2), 
+     stop(P1,ShiftTime,Path_to_P1),
+     not (later_start_needed(P2,ShiftTime)), !.
+
+   stop(P,Tstop,List):-
+     start(P,Tstart,List), 
+     duration(P,Duration), 
+     Tstop = Tstart + Duration.
+   later_start_needed(Pcheck,CheckTime):-
+     follows(P,Pcheck),
+     stop(P,FinishP,_),
+     FinishP &gt; CheckTime, !.
+
+   follows(make_wine,store_wine). 
+   follows(store_wine,get_opener). 
+   follows(get_opener,open_wine). 
+   follows(open_wine,say_toast). 
+   follows(say_toast,drink_wine). 
+   follows(make_food,serve_food). 
+   follows(send_invitations,wait_for_friends). 
+   follows(serve_food,say_toast). 
+   follows(wait_for_friends,say_toast).
+
+   duration(make_wine,100). 
+   duration(store_wine,300). 
+   duration(get_opener,2).
+   duration(open_wine,1).
+   duration(say_toast,1).
+   duration(drink_wine,2). 
+   duration(prepare_food,10).
+   duration(serve_food,10).
+   duration(send_invitations,10).
+   duration(wait_for_friends,5).</small>
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

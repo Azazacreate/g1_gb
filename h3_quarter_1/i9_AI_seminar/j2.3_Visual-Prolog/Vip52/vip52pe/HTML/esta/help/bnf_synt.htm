@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<TITLE>BNF Syntax Notation</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='BNF Syntax Notation'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>BNF Syntax Notation</FONT>
+<P ALIGN=LEFT>The syntax for the ESTA language is written in the formal description language called BNF. The following symbols are meta symbols with a special meaning as listed below: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>::=     Is interpreted as 'consists of' or 'is defined as'. 
+<P ALIGN=LEFT>{ }     Curly brackets indicate that the sequence in the  
+<P ALIGN=LEFT>        brackets may be repeated zero or more times. 
+<P ALIGN=LEFT>[ ]     Square brackets state that the sequence in the  
+<P ALIGN=LEFT>        brackets is optional. 
+<P ALIGN=LEFT>&lt; &gt;     Names embedded in angle brackets are syntactic  
+<P ALIGN=LEFT>        elements such as &lt;integers&gt;,&lt;names&gt;etc. All  
+<P ALIGN=LEFT>        syntactic names will be defined i.e.  
+<P ALIGN=LEFT>        they will appear on the left side of the '::='  
+<P ALIGN=LEFT>        symbol in a grammar rule. 
+<P ALIGN=LEFT>|       A vertical bar is read 'or' and is used to separate alternatives.
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT></FONT><B>Example</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;symbol&gt; ::= &lt;letter&gt;{&lt;letter&gt;|&lt;letter&gt;|&lt;digit&gt;|_} 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>&lt;letter&gt; ::= a|b|c|...|x|y|z 
+<P ALIGN=LEFT>             A|B|C|...|X|Y|Z 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>&lt;digit&gt;  ::= 0|1|2|3|4|5|6|7|8|9 
+<P ALIGN=LEFT></FONT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

@@ -1,0 +1,118 @@
+/******************************************************************************
+
+                          COMUTIL.PRE
+                          
+   COMUTIL.LIB predicates definitions.                          
+
+
+******************************************************************************/
+ifndef vpcC_ComutilPreFileIncluded
+constants
+    vpcC_ComutilPreFileIncluded = 1
+
+ifndef vpcC_ComutilDomFileIncluded
+include "comutil.dom"
+enddef
+
+
+GLOBAL PREDICATES
+
+BOOLEAN  comutilP_OleInitialize () - language c
+
+/*void*/ comutilP_OleUninitialize () - language c
+
+/*void*/ comutilP_OleFreeUnusedLibraries () - language c
+
+ULONG comutilP_OleMemAlloc( UNSIGNED uSize ) - (i) language c
+
+/*void*/ comutilP_OleMemFree( ULONG ptr ) - (i) language c
+
+/*void*/ comutilP_StringToBSTR( string src, vpcD_BSTR dest ) - (i,o) language c
+
+/*void*/ comutilP_FreeBSTR( vpcD_BSTR src ) - (i) language c
+
+
+
+vpcD_RESULT comutilP_CreateInstance(vpcD_CLSID clsid,DWORD dwClsContext,vpcD_IID riid,vpcD_IPOINTER ppv) - (i,i,i,o) language c
+
+%% S_OK on success
+vpcD_RESULT comutilP_OleCreateGuid( vpcD_GUID ) - (o) language c
+
+
+%% Returns NOERROR on success
+vpcD_RESULT comutilP_StringFromGUID(
+                vpcD_GUID guid,
+                string ppszGUID
+                                   )
+                                                        - (i,o) language c
+
+
+%% TRUE - Ok , FALSE - Error
+BOOLEAN comutilP_SetClassRootRegistryKeyValue(
+       string pszKey,
+       string pszSubkey,
+       string pszValue
+                                              )
+                                                        - (i,i,i) language c
+
+
+%% TRUE - Ok , FALSE - Error
+BOOLEAN comutilP_DeleteClassRootRegistryKey(
+       string pszKey,
+       string pszSubkey
+                                           )
+                                                        - (i,i) language c
+
+
+vpcD_IPOINTER comutilP_CreateVPInterfaceInstance(
+                vpcD_MPLIST
+                                                )
+                                                        - (i) language c
+
+
+/*void*/ comutilP_DeleteVPInterfaceInstance(vpcD_IPOINTER) - (i) language c
+
+
+/*void*/ comutilP_GetMethodPointer(vpcD_IPOINTER IP,integer MethodIndex,vpcD_MPOINTER MP) - (i,i,o) language c
+
+
+vpcD_RESULT comutilP_QueryInterface(vpcD_IPOINTER,vpcD_GUID,vpcD_IPOINTER ) - (i,i,o) language c
+ULONG comutilP_Release(vpcD_IPOINTER) - (i) language c
+ULONG comutilP_AddRef(vpcD_IPOINTER) - (i) language c
+
+vpcD_RESULT comutilP_CreateAutomationObject(
+                        STRING pszProgID,
+                        vpcD_IPOINTER /* IDispatch** */ ppdisp) - (i,o) language c
+
+
+
+vpcD_RESULT comutilP_DispInvoke(
+    vpcD_IPOINTER pdisp,
+    vpcD_InvokeFlag vpInvokeFlag,
+    STRING pszName,
+    vpcD_VariantArgList list_of_arguments,
+    vpcD_VariantArg result
+                               ) - (i,i,i,i,o) language c
+
+
+%% TypeSafe Utilities to create references to variables :
+
+comutilP_CreateI2RefArg(short,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateI4RefArg(long,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateR4RefArg(real,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateR8RefArg(real,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateCYRefArg(vpcD_CY,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateDATERefArg(vpcD_OLEDATE,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateBSTRRefArg(string,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateDISPATCHRefArg(dword,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateERRORRefArg(long,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateBOOLRefArg(integer,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateVARIANTRefArg(dword,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateUNKNOWNRefArg(dword,vpcD_VariantArg) - (o,o) language c
+comutilP_CreateARRAYRefArg(dword,vpcD_VariantArg) - (o,o) language c
+
+enddef
+
+
+
+

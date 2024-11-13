@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<TITLE>HYPERADVICE Procedure</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='HYPERADVICE Procedure'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>HYPERADVICE Procedure</FONT>
+<P ALIGN=LEFT>See also: <A HREF='CALL_ACT.HTM'>Call Action</A>
+<P ALIGN=LEFT>From ESTA it is possible to activate a specific node in a Windows helpfile. The node will be shown as a topic in the Windows hypertext help system. The procedure is called like this:
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>hyperadvice(&lt;filename&gt;,&lt;node_specification&gt;)
+<P ALIGN=LEFT>&lt;node_specification&gt;  ::= &lt;<A HREF='NUMBER.HTM'>number</A>&gt; </FONT>
+<P ALIGN=LEFT>The node_specification is the context number of the node you want to see. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section brakes 'problems with the brakes' 
+<P ALIGN=LEFT>if brake_long_travel call hyperadvice('hypercar.hlp',1) 
+<P ALIGN=LEFT>if brake_poor call hyperadvice('hypercar.hlp',2) 
+<P ALIGN=LEFT>if brake_veer call hyperadvice('hypercar.hlp',3)</FONT>
+<P ALIGN=LEFT>You can see the example as a whole in CAR.KB. Choose brakes as the answer when asked which kind of problem, your car has. Then you can try out an example of this kind of hypertext integration. 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

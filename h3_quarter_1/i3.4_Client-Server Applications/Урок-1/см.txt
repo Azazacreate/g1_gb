@@ -1,0 +1,11 @@
+with open('test_file.txt', 'rb') as my_file:
+    for element in my_file:
+        total = element.decode('utf-8')
+        print(total)
+
+WORDS = ['разработка', 'сокет', 'декоратор']
+
+for wd in WORDS:
+    converted_word = str(wd.encode('unicode_escape'), 'utf-8')
+    print(f'Буквенное представление: {wd}, тип: {type(wd)}\n'
+          f'Кодовое представление: {converted_word}, тип: {type(converted_word)}\n')

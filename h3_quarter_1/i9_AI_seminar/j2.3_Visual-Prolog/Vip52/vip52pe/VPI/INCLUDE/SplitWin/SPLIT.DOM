@@ -1,0 +1,28 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	SPLIT.DOM
+ Purpose:	Split window object. Top level. Global domains.
+ Written by:	Carsten Kehler Holst
+ Version:	1.0
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:	
+******************************************************************************/
+
+GLOBAL DOMAINS
+
+% Resize bar style.
+    split_style =
+        split_style_3D;
+        split_style_2D
+
+%- split_events_cb ------------------------------------------------------------
+% Passing events to top level or application.
+%------------------------------------------------------------------------------  
+    split_events_cb = determ(
+        window SplitWin,
+        event Event,
+        long RetCode)
+    - (i, i, o)

@@ -1,0 +1,271 @@
+<html>
+
+<head>
+<title>Logik for Perlehøns</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Logik for Perlehøns<!--mstheme--></font></h1>
+<font SIZE="2">
+
+<p></font><font size="3">Prolog er et deklarativt programmeringssprog, som nyder stor
+anerkendelse, når der eksempelvis skal udarbejdes ekspertsystemer, programmer til kunstig
+intelligens eller planlægningsværktøjer. Selvom sproget har langt mindre udbredelse end
+eksempelvis C++ eller Pascal, er der stadig udviklere, der sværger til prolog, og nye
+kommer til fra tid til anden. Sproget er udviklet I begyndelsen af 70érne på
+universitetet I Marseilles I Frankrig. Det danske firma Prolog Development Centert har
+siden1982 været med I front, hvad angår produktion af Prolog-udviklingsværktøjer og
+vertikale løsninger, der er udarbejdet med disse værktøjer. I dag er størstedelen af
+firmaets omsætning placeret I udvikling af løsninger for større kunder, og hele 75
+procent deraf er eksport. I denne artikel skal vi se nærmere på det seneste skud på
+stammen af udviklingsværktøjer fra PDC. Det hedder Visual Prolog og tager dermed kampen
+op mod udviklingsværktøjer fra Microsoft og Borland, eksempelvis Microsoft Visual C++ og
+Delphi. Her er sproget blot Prolog, hvilket gør, at produktet mere eller mindre er uden
+reel konkurrence både I Danmark og på verdensplan. Visual Prolog er på vej I en version
+4.2, men vi har her kastet et smugkig på en version 4.1, der dog ikke varierer dratisk I
+udviklingsmiljøet fra den 4.2, der skulle være færdig I september / oktober. Men først
+lidt om sproget.</font></p>
+
+<h1><!--mstheme--><font color="#000000"><font size="4"><b>Prolog</b></font><font SIZE="2"><!--mstheme--></font></h1>
+
+<p></font><font size="3">Sproget Prolog er som nævnt deklarativt, eller deskriptivt om
+man vil. I modsætning til C, C++, Pascal og lignende sprog er det ikke proceduralt, dvs.
+Man skriver ikke programkoden I funktioner, procedurer og objekter, men derimod I noget,
+der kaldes klausuler. En klausul er en art udsagn, der populært sagt kan evalueres til
+enten sand eller falsk. Et program består af en række klausuler, og afviklingen af
+programmet sker efter, hvilke klausuler der under kørsel evalueres til sande. Dem, der er
+falske, forlades, og programmet vil forsøge at finde nogle andre, der er sande. Hvis
+programmet kan finde en sti igennem lutter sande klausuler, er programmets mission
+opfyldt. Ideen bag denne metode - der, indrømmet, her er forklaret I populær vendinger -
+er, at man kan specificere et problem og skitsere en løsningsmetode I stedet for at
+beskrive, hvordan problemet skal løses. Programmet finder selv løsningen under kørsel.
+Det kan lyde svært, men er utrolig enkelt, hvis ellers opgaven lægger op til en
+Prolog-løsning. Prolog har derudover en række fordele I sig selv: Der er ingen tvivl om,
+at udviklingstiden for et projekt er lavere under Prolog end under de procedurale sprog.
+Årsagen er, at sproget I sig selv giver en mere systematisk udvikling, hvor tilmed
+antallet af linjer I koden er betragteligt lavere, hvilket giver færre fejl. Dertil skal
+lægges, at mange fejl I Prolog-kode på grund af dets natur vil blive fundet på
+oversættelsestidspunktet, hvilket I Visual Prolog forstærkes af, det sproget er udvidet
+med et stringent type-begreb. Visual Prolog er I øvrigt forsynet med over 600
+prædefinerede prædikater.</font></p>
+
+<p><font size="4"><b>Visual Development Environment</b></font><font SIZE="2"></p>
+
+<p></font><font size="3">Under installationen vælger man selv, hvor omfattende
+udviklingsmiljøet skal være. Man vælger, hvad man vil udvikle til, hvilke biblioteker
+man vil have med, om man ønsker eksempler og manualer liggende på disken osv.
+Programudviklingsværktøjets kerne hedder Visual Development Environment (VDE). Det er I
+VDE, at hele programudviklingen foregår, og formålet er at give udvikleren de bedst
+tænkelige muligheder for at udvikle applikationer til en grafisk brugerflade (en GUI).
+Man specificerer blot, hvilke elementer brugerfladen skal bestå af, og så genererer
+udviklingsværktøjet bag kulisserne den nødvendige Prolog-kode. Det spare selvklart
+udvikleren for en masse arbejde, komponenterne til den grafiske brugerflade let lader sig
+udvælge, end der selvfølgelig skal lægges arbejde I at designe den brugerflade, man
+ønsker. Det er muligt at udvikle en lang række forskellige GUI-platforme, blandt andre
+Windows 3.1x (16-bit), Windows 95 (32-bit), Windows og OS/2, og udviklingen foregår
+uafhængigt af, på hvilke platform applikationen skal afvikles. Årsagen til dette hedder
+Visual Programming Interface (VPI), der er en platformsuafhængig API (Application
+Programming Interface). Det betyder, at udvikleren udarbejder den grafiske brugerflade
+under denne API, og når programkoden så skabes, omformer VPI´en automatisk API-kaldene
+til grafiske kaldere, under den ønskede platform. Nogle af komponenterne VDE kan porteres
+direkte til samtlige platforme, mens andre er platformspecifikke. Det skal man
+selvfølgelig tage hensyn til under udviklingen. Det er så udviklerens opgave at
+indlægge selve programmets funktionalitet de korrekte steder under opbygningen af
+brugerfladen. Som altid I de visuelle udviklingsværktøjer er det brugerfladen der er
+udviklerens centrum, funktionaliteten passes ind herefter. Visual Prolog indeholder
+foruden VDE og VPI også de nødvendige Prolog-compilere tilhørende biblioteker og
+adskellige hjølpe- og eksempelfiler. Linkeren vil I øvrigt fra og med version 4.2 være
+PDC´s egen, og 4.2 vil desuden byde på 32-bit debugger og mulighed for at udvikle til
+32-bit Windows uden Microsofts eller Borlands C++-compiler, der er nødvendig I 4.1.</font></p>
+
+<p><font size="4"><b>Et projekt og dets dele</b></font><font SIZE="2"></p>
+
+<p></font><font size="3">Udvikling af en applikation kaldes et projekt, og alle dele af
+projektet styres fra et projektvindue. Når man starter et nyt projekt, sørger en
+såkaldt Application Expert for at generere den nødvendige startkode I forskellige filer.
+Koden afhænger af blandt andet af, til hvilken platform man udvikler, hvilke dele af
+standardfunktionerne der er nødvendige, om der skal være databaseadgang via SQL, ODBC
+eller andet, om der skal produceres en EXE-eller en DLL-fil osv. Når først man har
+specificeret ens ønsker, er projektet klargjort på få sekunder. Udvikleren kan herefter
+opbygge applikationen via et projektvindue, der er delt op I de elementer, som man har
+brug for at behandle på en grafisk brugerflade (se øverst til højre på billedet). Der
+er 10 forskellige elementer ar bearbejde I vinduet, blandt andet menu, Window, Toolbar og
+Cursor. Deres titel svarer til deres virkemåde - eksempelvis styrer Menu-delen hvilke
+menuer, der skal være I applikationens brugerflade. Når man påbegynder en application,
+genereres der som standard menuerne File (med blandt andet Cut, Copy og Paste), Windows og
+Help, hvor det meste dog er inaktivt og kræver, at udvikleren selv forsyner punkterne med
+funktionalitet. Kun den overordnede klausulstruktur er skabt. Man kunne måske nok savne,
+at man ikke umiddelbart får adgang til standardiserede dialoger for nogle af disse
+gængse kommandoer - det er eksempelvis trods alt næsten samme måde, brugeren skal åbne
+en fil på fra program til prigram, og udvikleren kan jo selv afvige fra normen, hvis han
+ønsker det. Der kunne være marked for en art klausulbibliotek her. Et andet eksempel på
+en del af et projekt er Window-delen, hvor man kan indsætte alle de kontroller og bokse,
+man overhovedet kan forestille sig fra sin vanlige Windowsverden, f.eks. push buttons,
+radio buttons, scroll bars, check boxes og list boxes. Blandt mulihederne er også en
+lille grafisk eeditor, med hvilken man kan definere egne bitmaps, eksempelvis til
+definition af markører eller ikoner. </font><font SIZE="2"></p>
+<b>
+
+<p></font><font size="4">Koden genereres automatisk</font></b><font SIZE="2"></p>
+
+<p></font><font size="3">Hele opbygningen foretages ved hjælp af såkaldte eksperter.
+Foruden Application Expert indeholder Visual Prolog andre eksperter, der kan generere kode
+for udvikleren. Den mest brugte er Dialog and Window Export, der styrer opsætning af
+dialoger og vinduer over for brugeren. Her kan man definere, hvordan vinduerne skal se ud,
+og hvad der skal ske for hver eneste handling, brugeren kan lave. Eksempler er tryk på
+taster, bevægelse af og tryk på mus, tryk på indbyggede menuer osv. Desuden findes der
+Toolbar Expert, der bruges til opsætning af toolbars. Når man arbejder med disse
+eksperter, fortæller man, hvilke handlinger der skal tages hensyn til I den application,
+der udvikles. Hele arbejdet ligger så I at fortælle, hvad der skal ske for hver enkelt
+handling, brugeren foretager. Dialog- og vindueseksperten definerer kun de nødvendige
+klausuler, og der medtages kun klausuler for de handlinger, som udvikleren har krævet
+reaktion på, og man kan til hver en tid rette I klausulerne. Da det er værktøjet, der
+generer klausulerne, ved udvikleren også, at opbygningen af den grafiske side af
+applikationen vil resultere I et program, der virker, så længe der ikke er foretaget
+manuelle ændringer. Først når udvikleren selv retter og tilføjer I klausulerne for at
+give programmet den ønskede funktionalitet, kan der opstå fejl. Og det er naturligvis
+kunsten: At kunne tilføje og ændre de rette klausuler. Også her er der dog hjælp, hvis
+man ikke blot vil skrive kode ind direkte I editoren: Man kan vælge at indsætte
+prædikater, klausuler, konstanter, strenge mv. Via valg I menuer, så man ikke skal
+foretage et eneste (forkert) tastetryk. Når der rettes I en kode-ekspert, vil der
+automatisk ske en genskrivning af de dele af klausulerne, som systemet står for. Det
+sikrer, at udviklerens valg altid afspejles I koden. Den del af klausulerne, som
+udvikleren selv har skrevet, bliver ikke berørt, om end der er visse klausuler, som
+programmøren ikke må sætte kode ind I, da den alligevel vil blive overskrevet. Der er
+dog I koden tydeligt gjort opmærksom på disse steder. Udvikleren kan til hver en tid
+foretage afprøvning af det genererede program med tryk på en knap. Herved foretages
+oversættelse, og programmet eksekveres, hvis der ikke opstår fejl.</font><font SIZE="2"></p>
+<b>
+
+<p></font><font size="4">Mere om VDE</font></b><font SIZE="2"></p>
+
+<p></font><font size="3">Under udvikling I VDE ser man ikke bare projektvinduet, der
+holder styr på den applikation, der er under udarbejdelse. Der er også andre vinduer på
+skærmen, eksempelvis et meddelsesvidue, et fejlvidue og vinduer til redigering af kode -
+alt afhængig af hvor I udviklingsprocessen man befinder sig. Der er endvidere stærke
+faciliteter til søgning af fejlfinding. Man kan eksempelvis lede efter prædikater og
+domæner (det er prologs udtryk for typer) I et projekt, og man kan, hvis man får fejl
+under oversættelse, gå direkte over I kildekoden og kigge på fejlen enten ved at slå
+op på den angivne position eller blot ved at dobbeltklikke på fejlen. Der er også
+mulighed for at se en trærepræsentation af koden. Editoren, hvori der arbejdes med kode,
+er syntaksstyret og benytter sig I stor udstrækning af farver til markeringer. Således
+er eksempelvis Prologs nøgleord farvet sorte, mens syntaksfejl har en skarp, rød farve,
+der ikke kan undgå andet end at få udviklerens opmærksomhed. Farven skifter direkte
+under indtastningen, dvs. Der tjekkes for korekte syntaks ved hver eneste lille ændring I
+koden. Farvemulighederne er utallige, og man bestemmer selv - hvis man e3llers kan finde
+vej igennem menustrukturen ned til farvning af tokens. Den ligger godt gemt.</font><font SIZE="2"></p>
+<b>
+
+<p></font><font size="4">Gode manualer</font></b><font SIZE="2"></p>
+
+<p></font><font size="3">Det skal nævnes at vi ikke havde adgang til de seneste 4.1 -
+manualer, men kun til 4.0 - manulaer, og der var desværre en vis inkonsistens mellem
+manualernes gennemgang og udviklingsværktøjets opbygning. Bortset fra det kan det kun
+siges, at manualmængden og -indholdet er glimrende: Der er Getting Started, Der hjælper
+alle igang, en manual over VDE, en over VPI og en total gennemgang af prolog, og det
+virker godt gennemarbejdet. Også on-line manualen var udemærket, omfattende og helt på
+højde med hvad der kræves af et moderne værktøj.</font><font SIZE="2"></p>
+<b>
+
+<p></font><font size="4">Andre detaljer</font></b><font SIZE="2"></p>
+
+<p></font><font size="3">Der medfølger en såkaldt PDC Help Maker, der hjælper til med
+at producere hjælpefiler. Man kan indskrive tekst direkte, markere links osv., og efter
+endt udvikling kan der skabes en fil I RTF- eller IPF-format afhængig af, om man vil
+generere en hjæpefil til Windows eller OD/2 Presentation Manager. Visual Prolog
+begrænser ej heller udvikleren til kun at arbejde med Prolog - der kan udvekles kode med
+andre sprog. Det betyder, at klausuler I Prolog kan kalde eksempelvis C++-funktioner, og
+omvendt kan rutiner I andre sprog kalde Prolog.prædikater. Det er nyttigt, hvis man I
+forvejen har mange stumper specialiseret kode skrevet under andre udviklingsværktøjer -
+og man ved at de fungerer.</font><font SIZE="2"></p>
+<b>
+
+<p></font><font size="4">Konklusion</font></b><font SIZE="2"></p>
+
+<p></font><font size="3">Visual Prolog kan varmt anbefales, vis man vil udvikle programmer
+I prolog - og de progammører, der altid har drømt om at forsøge sig med dette meget
+anderledes sprog, vil også kunne få glæde af værktøjet, da det hjæper den mindre
+kyndige udvikler et godt stykke på vej. Selvfølgelig er det en stor investering at
+begive sig ind I Prolog-verdenen, hvis man ikke kender den, men skal man udvikle
+ekspertsystemer, planlægningsværktøjer eller lignende, bør det være en overvejelse
+værd. Det er ikke lykkedes os at finde nævneværdige fejl eller uhensigtsmæssighedér
+under denne smugkig. Eneste anke er, at der mangler et klausulbibliotek til visse
+standardiserede opgaver, eksempelvis filstyring under Windows. Der er ingen grund til at
+opfinde den dybe tallerken flere gange, og det bliver man nødt til her. Men det ændrer
+ikke at programpakken står så helstøbt og gennemarbejdet. Der er både en standard og
+en professionel version hvor sidstnævnte har flest faciliteter: Først og fremmest er der
+udvikling til 32-bit Windows, OS/2 (16- og 32-bit) SCO Unix og Linux, er de to
+sidstnævnte indere grafisk brugerflade. Desuden er der I den professionelle version
+mulighed for at lægge Prolog-oversat sammen med den udlede application, og man se
+kildekoden til VDE. Visual Prolog kan afprøves I en tidsbegrænset version på denne
+måneds CD-rom.</font></p>
+
+<p><a href="http://www.kontorbladet.dk">Kontorbladet</a></p>
+<font SIZE="2" COLOR="#0000ff">
+
+<p></font><font SIZE="4"><b>Intelligens på hjemmesiden</b></font><font SIZE="2"><i></p>
+
+<p>Af Claus Witfelt</i></font></p>
+
+<p>Nettets virkelige gennembrud vil ske, når vi kan handle på det. Det øjeblik er ikke
+så langt væk, som vi tror. Men hvad er det vi skal handle? Her rækker visionerne ikke
+så langt endnu. Elektroniske ydelser er nok noget af det første, der kan komme på
+nettet. Vi kan købe informationer fx. musik, film, nyheder m.m over nettet, men også
+andre tjenester melder sin ankomst. Det danske firma, Prolog Development Center producerer
+udviklingsværktøjet Visual Prolog. I den nyeste version understøttes internetudvikling.
+Dette betyder, at regelbaserede programmer (fx ekspertsystemer) udviklet i Visual Prolog
+kan sættes på hjemmesider. Dette åbner for vide muligheder. Man kan fx lave automatisk
+support på en hjemmeside. Brugerne indtaster, hvad der er galt, og et ekspertsystem på
+denne hjemmeside giver et automatisk genereret råd. Også i et handelsperspektiv er denne
+facilitet vigtig - brugerne kan hjælpes til at finde de rigtige produkter, eller kommuner
+kan via deres hjemmeside give automatisk vejledning.<font SIZE="2"></p>
+</font>&nbsp;
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

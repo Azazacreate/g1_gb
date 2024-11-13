@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="seen">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>seen</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">seen/0</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>seen</b> </p>
+
+<p align="left">Close input file. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left">Closes the input file and attaches the output
+stream to <b>stdin</b>. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>tell(&quot;dd.txt&quot;),
+write(&quot;line 1\n&quot;),
+write(&quot;line 2\n&quot;),
+write(&quot;line 3\n&quot;),
+told,
+see(&quot;dd.txt&quot;),
+readln(Str1),
+seen,
+display(Str1). 
+</pre>
+</body>
+</html>

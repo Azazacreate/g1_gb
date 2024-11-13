@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Prolog and the CGI</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Prolog and GCI (Common Gateway Interface)<!--mstheme--></font></h1>
+
+<p>In this section we explain how to make Visual Prolog communicate with the world wide
+web through the CGI-interface. </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="vip_and_cgi.htm#cgi using forms">CGI using forms</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="vip_and_cgi.htm#how forms work">How forms work</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="vip_and_cgi.htm#more">More</a> about CGI and ISAPI<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000"><a NAME="CGI using forms"></a>CGI using forms<!--mstheme--></font></h2>
+
+<p>A common way to make Visual Prolog communicate over the web is by using HTML Forms. A
+form has at least one <b>Submit </b>button and may have named input fields. After the user
+has filled out the input fields, he presses the submit button. The form contents are sent
+to a Visual Prolog program that executes on the server and returns an answer to the user.</p>
+
+<p>Here is a small example with Visual Prolog&nbsp;and CGI&nbsp;scripts, that returns a
+table containing the name and value of all fields received from the server.</p>
+
+<p>Execute the test CGI script by pressing the &quot;<b>Submit</b>&quot; button on the
+form below:</p>
+
+<blockquote>
+  <form action="http://vip.pdc.dk/vipexamples/cgiexamples/bin/argtest.exe" method="POST">
+    <input type="hidden" name="secret" value="not any more"><!--mstheme--></font><table BORDER="1" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+      <tr>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica">Item Name: <!--mstheme--></font></td>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica"><input type="text" size="25" name="item" value="Elephant"><!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica">Quantity:&nbsp;<!--mstheme--></font></td>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica"><select name="quantity" size="1">
+          <option selected>3 </option>
+          <option>4 </option>
+          <option>5 </option>
+          <option>6 </option>
+          <option>7 </option>
+        </select>&nbsp;<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica">Justify<!--mstheme--></font></td>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica"><input type="radio" checked name="justify" value="Left">Left&nbsp;<input type="radio" name="justify" value="Center">Center<input type="radio" name="justify" value="Right">Right<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica">Validate: <!--mstheme--></font></td>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica"><input type="checkbox" checked name="validate" value="ON"><!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica">HTMLpath<!--mstheme--></font></td>
+        <td><!--mstheme--><font face="verdana, Arial, Helvetica"><input type="text" size="20" name="htmlpath" value="127.0.0.1"><!--mstheme--></font></td>
+      </tr>
+    </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><input type="submit" value="Submit"></p>
+  </form>
+</blockquote>
+
+<p>Show Visual Prolog <a href="src/argtest.htm">Script Source</a></p>
+
+<p>Show the <a href="vip_and_cgi.htm#htmlformcode">HTML&nbsp;code for the above form</a></p>
+
+<h3><!--mstheme--><font color="#000000"><a NAME="How forms work"></a>How forms work<!--mstheme--></font></h3>
+
+<p>When the <b>Submit</b> button is pressed, the web browser collects the contents of the
+input fields and their names, encodes them and passes them to the web server using the
+method defined in the form header. The web server starts the Visual Prolog CGI program and
+makes the encoded data available to it. The Visual Prolog program can then decode and
+process the data and return a reply to the user. If the reply conform to the HTML
+standard, the server accepts it and transmits it to the user's browser, where it is
+displayed in the same way as any other HTML&nbsp;document . The advantage of the
+CGI&nbsp;script is that it can process data in real time and send a customized reply to
+the user.</p>
+
+<p>All FORM-code must be encapsulated in the &lt;FORM .....&lt;/FORM&gt;-tags.</p>
+
+<p><font size="3">The first statement in the HTML code is </font></p>
+
+<p><font SIZE="-1" FACE="Courier">&lt;</font><font SIZE="-1" FACE="Courier" COLOR="#800080">form </font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">action=&quot;</font><font SIZE="-1" FACE="Courier" COLOR="#0000FF">CGI/argtest.exe</font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">&quot; method=&quot;</font><font SIZE="-1" FACE="Courier" COLOR="#0000FF">POST</font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">&quot;</font><font SIZE="-1" FACE="Courier">&gt;. </font></p>
+
+<p><font face="Times New Roman" size="3">When the <b>Submit </b>button is pressed, it
+causes the argtest.exe program to be executed on the web server.</font></p>
+
+<p><font SIZE="-1" FACE="Courier">The <i>&lt;</font><font SIZE="-1" FACE="Courier" COLOR="#800080">input </font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">type=&quot;</font><font SIZE="-1" FACE="Courier" COLOR="#0000FF">hidden</font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">&quot; name=&quot;</font><font SIZE="-1" FACE="Courier" COLOR="#0000FF">secret</font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">&quot; value=&quot;</font><font SIZE="-1" FACE="Courier" COLOR="#0000FF">not any more</font><font SIZE="-1" FACE="Courier" COLOR="#FF0000">&quot;</font><font SIZE="-1" FACE="Courier">&gt;</i> </font></p>
+
+<p><font face="Times New Roman" size="3">code might at first seem a little useless.
+Because it is hidden, the user cannot see it, so how can this code be usefull to us? The
+answer is that is is a very convenient method for passing information to and from the
+application. </font></p>
+
+<h3><!--mstheme--><font color="#000000">The <a NAME="HTMLformCode"></a>HTML&nbsp;code for the Argument Test Form<!--mstheme--></font></h3>
+
+<!--mstheme--></font><pre>&lt;FORM action=&quot;CGI/argtest.exe&quot; method=&quot;POST&quot;&gt;  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><pre>&lt;INPUT type=&quot;hidden&quot; name=&quot;secret&quot; value=&quot;not any more&quot;&gt;
+&lt;TABLE BORDER=1 &gt;
+ &lt;TR&gt;
+  &lt;TD&gt;Item Name: &lt;/TD&gt;
+  &lt;TD&gt;&lt;INPUT type=&quot;text&quot; size=&quot;25&quot; name=&quot;item&quot;  value=&quot;Elephant&quot;&gt;&lt;/TD&gt;
+ &lt;/TR&gt;
+
+ &lt;TR&gt;
+  &lt;TD&gt;Quantity:&nbsp;&lt;/TD&gt;
+  &lt;TD&gt;&lt;SELECT name=&quot;quantity&quot; size=&quot;1&quot;&gt;&lt;OPTION selected&gt;3&lt;/OPTION&gt; &lt;OPTION&gt;4&lt;/OPTION&gt;
+            &lt;OPTION&gt;5&lt;/OPTION&gt; &lt;OPTION&gt;6&lt;/OPTION&gt; &lt;OPTION&gt;7&lt;/OPTION&gt; &lt;/SELECT&gt; &lt;/TD&gt;
+ &lt;/TR&gt;
+
+ &lt;TR&gt;
+  &lt;TD&gt;Justify&lt;/TD&gt;
+  &lt;TD&gt;
+    &lt;INPUT type=&quot;radio&quot; checked name=&quot;justify&quot; value=&quot;Left&quot;&gt;Left
+    &lt;INPUT type=&quot;radio&quot; name=&quot;justify&quot; value=&quot;Center&quot;&gt;Center
+    &lt;INPUT type=&quot;radio&quot; name=&quot;justify&quot; value=&quot;Right&quot;&gt;Right
+  &lt;/TD&gt;
+ &lt;/TR&gt;
+
+ &lt;TR&gt;
+  &lt;TD&gt;Validate: &lt;/TD&gt;
+  &lt;TD&gt;&lt;INPUT type=&quot;checkbox&quot; checked name=&quot;validate&quot;&gt;&lt;/TD&gt;
+ &lt;/TR&gt;
+
+
+ &lt;TR&gt;
+  &lt;TD&gt;HTMLpath&lt;/TD&gt;
+  &lt;TD&gt;&lt;INPUT type=&quot;text&quot; size=&quot;20&quot; name=&quot;htmlpath&quot; value=&quot;127.0.0.1&quot;&gt;&lt;/TD&gt;
+ &lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;INPUT type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+&lt;/FORM&gt;
+  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000"><a NAME="More"></a>More about CGI and ISAPI<!--mstheme--></font></h2>
+
+<p>Technical information about <a href="http://hoohoo.ncsa.uiuc.edu/cgi/">CGI&nbsp;Scripts<br>
+</a>The <a href="isapi.htm">ISAPI</a>&nbsp;interface (An alternative to CGI) </p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

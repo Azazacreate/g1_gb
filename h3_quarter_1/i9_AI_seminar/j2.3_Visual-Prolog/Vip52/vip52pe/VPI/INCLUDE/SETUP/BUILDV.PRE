@@ -1,0 +1,69 @@
+/*****************************************************************************
+
+	(c) Copyright 1984 - 2000 Prolog Development Center A/S
+
+ Project:  BUILD
+ FileName: IBUILD.PRE
+ Purpose: Predicate definitions for IBUILD.PRO
+ Written by: Zaichenko Michael
+ Comments:
+******************************************************************************/
+constants
+  setup_build_pre_included = 1
+
+%BEGIN_DECL, System generated global predicates
+global predicates
+  determ dlg_build_process_Create(WINDOW Parent) - (i)
+%END_DECL
+
+
+constants
+ifndef init32
+ init32 = 0xFFFFFFFF
+enddef
+ifndef init16
+ init16 = 0
+enddef
+
+global domains
+ crc16 = UNSIGNED WORD
+ crc32 = DWORD
+/*******************************************************************/
+  file = infile; archive; fdir;fdir_32;fdir_u;diskfile;log_File
+  build_ArcFPos, Build_FileSize = ULONG
+  build_udate, Build_utime, Build_blksize = USHORT
+
+  build_directory = Build_DIR_ENTRY*
+  build_dir_entry =
+  	small_file(STRING,Build_FILESIZE,Build_UDATE,Build_UTIME,ULONG crc32,BUild_ArcFPos,Build_BLKSIZE);
+	large_file(STRING, Build_FILESIZE,Build_UDATE,Build_UTIME,ULONG crc32,Build_ArcFPos,BINARY);
+	subdir(STRING, Build_DIRECTORY)
+
+  build_install_script=Build_IGRP*
+  build_igrp=struct igroup(INTEGER, Build_ArcFPos, Build_FileSize, ULONG CRC32)
+  build_igrp2=struct install_group(INTEGER, Build_DIRECTORY)
+
+
+  build_file_or_directory = file(STRING) ; directory(STRING)
+  build_include_list  	  = Build_file_or_directory*
+  build_from_path	  = fromInstallRoot; startFromPath(STRING)
+  build_local_excludes	  = no_Exclusions; excluding(SLIST)
+  build_mgrp  		  = struct group(INTEGER, Build_FROM_PATH,Build_LOCAL_EXCLUDES,Build_INCLUDE_LIST)
+  build_make_script	  = Build_mgrp*
+
+
+/************************************************************************
+	The User defined Make Script
+*************************************************************************/
+global predicates
+  procedure build_initValues(STRING path,
+  			     Integer platforms,
+  			     BOOLEAN enableMultiDisks,
+  			     Long    oneDiskSize,
+  			     BOOLEAN needMakeDistributive,
+  			     BOOLEAN needMakePackedImage)
+  			     -(i,i,i,i,i,i)
+  			     
+  procedure build_initScripts(SLIST excludeAll,BUILD_MAKE_SCRIPT)-(i,i)
+  procedure build_initCopyScript(SLIST,INTEGER)-(i,i)
+  determ build_Go()-()

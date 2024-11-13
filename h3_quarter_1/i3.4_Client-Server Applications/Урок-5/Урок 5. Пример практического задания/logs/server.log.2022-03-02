@@ -1,0 +1,4 @@
+2022-03-02 23:16:26,917 CRITICAL config_server_log.py Критическая ошибка
+2022-03-02 23:16:26,928 ERROR config_server_log.py Ошибка
+2022-03-02 23:16:26,928 DEBUG config_server_log.py Отладочная информация
+2022-03-02 23:16:26,928 INFO config_server_log.py Информационное сообщение

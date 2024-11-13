@@ -1,0 +1,362 @@
+/***************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName: PDCSOCK.PRE
+ PURPOSE: Interface to the native Sockets
+ Written by: Compiler Group, PDC Russia
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ        Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    08/05/97    บ  KI  บ  A support for WSAAsyncGetXByY and other Windows 
+    		บ      บ  specific routines was added.
+***************************************************************************/
+
+ifndef pdcsock_pre_included
+
+  ifndef ws_win
+    ifdef platform_32bit
+      ifndef os_os2
+	#error : Unsupported platform
+      enddef
+    elsedef
+      #error : Unsupported platform
+    enddef
+  enddef
+
+  CONSTANTS
+
+    pdcsock_pre_included = 1
+
+  include "source\\psockimp.pre"
+
+			/***************************/
+			/* Synchronous BSD Sockets */
+			/***************************/
+  GLOBAL PREDICATES
+
+	/* NOTE: all predicates below can exit with err_SckGeneral in	*/
+	/*	 case call to the native BSD Sockets returns an error.	*/
+	/*	 Original Sockets error can be obtained by the call to	*/
+	/*	 sck_GetLastError(). None of them can raise Fail.	*/
+
+    /* NOTE: 1st predicate corresponsds to native accept() with	the	*/
+    /*	     2nd (addr) and 3rd (addrlen) parameters equal to NULL	*/
+    procedure SOCKET sck_Accept( SOCKET	ListenSocket ) - (i)
+
+    procedure SOCKET sck_Accept( SOCKET	     ListenSocket,
+				 SCK_ADDRESS AcceptAddr ) - (i,o)
+
+    procedure sck_Bind( SOCKET UnboundSocket, SCK_ADDRESS Name ) - (i,i)
+
+    procedure sck_CloseSocket( SOCKET Socket ) - (i)
+
+    procedure sck_Connect( SOCKET Socket, SCK_ADDRESS Name ) - (i,i)
+
+    procedure SCK_ADDRESS sck_GetPeerName( SOCKET Socket ) - (i)
+
+    procedure SCK_ADDRESS sck_GetSockName( SOCKET Socket ) - (i)
+
+    procedure SCK_OPTION sck_GetSockOpt( SOCKET		  Socket,
+					 SCK_OPTION_LEVEL OptionLevel,
+					 SCK_OPTION_NAME  OptionName ) - (i,i,i)
+
+    /* NOTE: can exit with err_SckInvalidParms in case command	*/
+    /*	     conflicts with flow pattern			*/
+    procedure ULONG sck_IoCtlGet( SOCKET	    Socket,
+				  SCK_IOCTL_COMMAND Command ) - (i,i)
+
+    /* NOTE: can exit with err_SckInvalidParms in case command	*/
+    /*	     conflicts with flow pattern			*/
+    procedure sck_IoCtlSet( SOCKET	      Socket,
+			    SCK_IOCTL_COMMAND Command,
+			    ULONG	      Argument ) - (i,i,i)
+
+    procedure sck_Listen( SOCKET Socket, INTEGER BackLog ) - (i,i)
+
+% ???:	the predicate should not look for RecvLength == 0, it seems to
+%	be the problem of upper layers
+%
+
+    procedure sck_Recv( SOCKET		Socket,
+			INTEGER		RecvLength,
+			SCK_FLAGS_LIST	RecvFlags,
+			BINARY		RecvBuffer ) - (i,i,i,o)
+
+    procedure sck_Recv_DG( SOCKET	  Socket,
+			   INTEGER	  RecvLength,
+			   SCK_FLAGS_LIST RecvFlags,
+			   BINARY	  RecvBuffer ) - (i,i,i,o)
+
+% ???:	the predicate should not look for RecvLength == 0, it seems to
+%	be the problem of upper layers
+
+    procedure sck_RecvFrom( SOCKET	   Socket,
+			    INTEGER	   RecvLength,
+			    SCK_FLAGS_LIST RecvFlags,
+			    SCK_ADDRESS	   FromAddr,
+			    BINARY	   RecvBuffer ) - (i,i,i,o,o)
+
+    procedure sck_RecvFrom_DG( SOCKET	      Socket,
+			       INTEGER	      RecvLength,
+			       SCK_FLAGS_LIST RecvFlags,
+			       SCK_ADDRESS    FromAddr,
+			       BINARY	      RecvBuffer ) - (i,i,i,o,o)
+
+    /* NOTE: 1st predicate corresponds to the case, when value NULL for	*/
+    /*	     the argument TimeOut is passed to the native select(). It	*/
+    /*	     It means, that select() will block indefinitely, until at	*/
+    /*	     least one descriptor meets the specified criteria.		*/
+    procedure sck_Select( SOCKETS_LIST	     In_ReadFds,
+			  SOCKETS_LIST	     In_WriteFds,
+			  SOCKETS_LIST	     In_ExceptFds,
+			  SOCKETS_LIST	     Out_ReadFds,
+			  SOCKETS_LIST	     Out_WriteFds,
+			  SOCKETS_LIST	     Out_ExceptFds ) - (i,i,i,o,o,o)
+
+    procedure sck_Select( SOCKETS_LIST	     In_ReadFds,
+			  SOCKETS_LIST	     In_WriteFds,
+			  SOCKETS_LIST	     In_ExceptFds,
+			  SCK_SELECT_TIMEVAL TimeOut,
+			  SOCKETS_LIST	     Out_ReadFds,
+			  SOCKETS_LIST	     Out_WriteFds,
+			  SOCKETS_LIST	     Out_ExceptFds ) - (i,i,i,i,o,o,o)
+
+    procedure INTEGER sck_Send( SOCKET		Socket,
+				BINARY		DataToSend,
+				SCK_FLAGS_LIST	SendFlags ) - (i,i,i)
+
+    procedure INTEGER sck_SendTo( SOCKET	 Socket,
+				  BINARY	 DataToSend,
+				  SCK_FLAGS_LIST SendFlags,
+				  SCK_ADDRESS	 ToAddress ) - (i,i,i,i)
+
+    /* NOTE: can exit with err_SckInvalidParms in case functor for 	*/
+    /*	     OptionValue conflicts with OptionName			*/
+    procedure sck_SetSockOpt( SOCKET		Socket,
+			      SCK_OPTION_LEVEL	OptionLevel,
+			      SCK_OPTION_NAME	OptionName,
+			      SCK_OPTION	OptionValue ) - (i,i,i,i)
+
+    procedure sck_ShutDown( SOCKET Socket, INTEGER How ) - (i,i)
+
+    procedure SOCKET sck_Socket( INTEGER AddrFamily,
+				 INTEGER Type,
+				 INTEGER Protocol ) - (i,i,i)
+
+			/************************/
+			/* Asynchronous Sockets */
+			/************************/
+  GLOBAL PREDICATES
+
+	/* NOTE: all predicates below can exit with err_SckGeneral in	*/
+	/*	 case call to the native Sockets returns an error.	*/
+	/*	 Original Sockets error can be obtained by the call to	*/
+	/*	 sck_GetLastError(). None of them can raise Fail.	*/
+
+    procedure sck_AsyncSelect( SOCKET		Socket,
+			       SCK_HWND		HWindow,
+			       UNSIGNED		Msg,
+			       SCK_EVENTS_LIST	EventsList ) - (i,i,i,i)
+
+    procedure SCK_EVENT sck_GetSelectEvent( LONG LParam ) - (i)
+
+    procedure SCK_ERROR sck_GetSelectError( LONG LParam ) - (i)
+
+    ifdef os_os2
+
+      /* Get/set timeout parameters for select() (Asynchronous Sockets) */
+      procedure sck_ASelectTimeOut( SCK_SELECT_TIMEVAL TimeVal )
+							- (i), (o) language c
+      /* Set notification procedure */
+      procedure SCK_NOTIFY_FNS sck_ASetNotifyFNS( SCK_NOTIFY_FNS NotifyFNS )
+							- (i) language c
+    enddef
+    	
+
+			/*********************/
+			/* Addresses support */
+			/*********************/
+  GLOBAL PREDICATES
+
+	/* NOTE: all predicates below can exit with err_SckInvalidParms.*/
+	/*	 None of them can raise Fail.				*/
+
+    procedure SCK_ADDRESS sck_MergeAddress( SCK_FAMILY	Sa_Family,
+					    BINARY	Sa_Data ) - (i,i)
+
+    procedure sck_SplitAddress( SCK_ADDRESS Address,
+    				SCK_FAMILY  Sa_Family,
+				BINARY	    Sa_Data ) - (i,o,o)
+
+    procedure SCK_ADDRESS sck_MergeAddress_IN( SCK_FAMILY  Sin_Family,
+					       SCK_PORT    Sin_Port,
+					       SCK_IN_ADDR Sin_Addr ) - (i,i,i)
+
+    procedure sck_SplitAddress_IN( SCK_ADDRESS	Address,
+				   SCK_FAMILY	Sin_Family,
+				   SCK_PORT	Sin_Port,
+				   SCK_IN_ADDR	Sin_Addr ) - (i,o,o,o)
+
+			/**********************/
+			/* Conversion support */
+			/**********************/
+  GLOBAL PREDICATES
+
+	/* NOTE: sck_InetAddr() and sck_InetNtoa() can	*/
+	/*	 exitwith err_SckInvalidParms.		*/
+
+    procedure SCK_IN_ADDR sck_InetAddr( STRING DottedAddr ) - (i)
+
+    procedure STRING sck_InetNtoa( SCK_IN_ADDR AddrIN ) - (i)
+
+    procedure ULONG sck_Htonl( ULONG HostLong )
+				- (i) language lang_StdCall as htonl_FNS
+
+    procedure USHORT sck_Htons( USHORT HostShort )
+				- (i) language lang_StdCall as htons_FNS
+
+    procedure ULONG sck_Ntohl( ULONG NetLong )
+				- (i) language lang_StdCall as ntohl_FNS
+
+    procedure USHORT sck_Ntohs( USHORT NetShort )
+				- (i) language lang_StdCall as ntohs_FNS
+
+			/**********************/
+			/* Get_X_by_Y support */
+			/**********************/
+  GLOBAL PREDICATES
+
+	/* NOTE: all predicates below can exit with err_SckGeneral. */
+	/*	 None of them can raise Fail.			    */
+
+    procedure SCK_HOSTENT sck_GetHostByAddr( SCK_IN_ADDR AddressIN,
+					     INTEGER	 Type ) - (i,i)
+
+    procedure SCK_HOSTENT sck_GetHostByName( STRING HostName ) - (i)
+
+    procedure STRING sck_GetHostName( INTEGER ReqNameLen ) - (i)
+
+    procedure SCK_PROTOENT sck_GetProtoByName( STRING ProtoName ) - (i)
+
+    procedure SCK_PROTOENT sck_GetProtoByNumber( INTEGER ProtoNumber ) - (i)
+
+    /* NOTE: 1st predicate corresponsds to native getservbyname() with	*/
+    /*	     the optional last parameter equals to zero			*/
+    procedure SCK_SERVENT sck_GetServByName( STRING ServiceName ) - (i)
+
+    procedure SCK_SERVENT sck_GetServByName( STRING ServiceName,
+					     STRING ProtocolName ) - (i,i)
+
+    /* NOTE: 1st predicate corresponsds to native getservbyport() with	*/
+    /*	     the optional last parameter equals to zero			*/
+    procedure SCK_SERVENT sck_GetServByPort( INTEGER Port ) - (i)
+
+    procedure SCK_SERVENT sck_GetServByPort( INTEGER Port,
+					     STRING  ProtocolName) - (i,i)
+
+			/*********************************/
+			/* MS Windows specific routines */
+			/*********************************/
+
+  ifdef ws_win
+  
+    GLOBAL PREDICATES
+    
+      procedure SCK_HANDLE sck_AsyncGetHostByAddr(SCK_HWND	HWindow,
+						  UNSIGNED	Msg,
+						  SCK_IN_ADDR	AddressIN,
+						  INTEGER	Type,
+						  INTEGER	ReqBuflen ) - (i,i,i,i,i)
+						    
+      procedure SCK_HANDLE sck_AsyncGetHostByName(SCK_HWND	HWindow,
+						  UNSIGNED	Msg,
+						  STRING 	HostName,
+						  INTEGER	ReqBuflen ) - (i,i,i,i)
+
+      procedure SCK_HANDLE sck_AsyncGetProtoByName(SCK_HWND	HWindow,
+						   UNSIGNED	Msg,
+						   STRING 	ProtoName,
+						   INTEGER	ReqBuflen ) - (i,i,i,i)
+
+      procedure SCK_HANDLE sck_AsyncGetProtoByNumber(SCK_HWND	HWindow,
+						     UNSIGNED	Msg,
+						     INTEGER 	ProtoNumber,
+						     INTEGER	ReqBuflen ) - (i,i,i,i)
+
+      procedure SCK_HANDLE sck_AsyncGetServByName(SCK_HWND	HWindow,
+						  UNSIGNED	Msg,
+						  STRING 	ServName,
+						  INTEGER	ReqBuflen ) - (i,i,i,i)
+						  
+      procedure SCK_HANDLE sck_AsyncGetServByName(SCK_HWND	HWindow,
+						  UNSIGNED	Msg,
+						  STRING 	ServName,
+						  STRING 	ProtocolName,
+						  INTEGER	ReqBuflen ) - (i,i,i,i,i)
+						   
+      procedure SCK_HANDLE sck_AsyncGetServByPort(SCK_HWND	HWindow,
+						  UNSIGNED	Msg,
+						  INTEGER 	ServPort,
+						  INTEGER	ReqBuflen ) - (i,i,i,i)
+
+      procedure SCK_HANDLE sck_AsyncGetServByPort(SCK_HWND	HWindow,
+						  UNSIGNED	Msg,
+						  INTEGER 	ServPort,
+						  STRING 	ProtocolName,
+						  INTEGER	ReqBuflen ) - (i,i,i,i,i)
+						    
+      procedure sck_CancelAsyncRequest( SCK_HANDLE Handle ) - (i)
+
+      procedure SCK_HOSTENT sck_GetAsyncHostent( SCK_HANDLE Handle ) - (i)
+      
+      procedure SCK_PROTOENT sck_GetAsyncProtoent( SCK_HANDLE Handle ) - (i)
+      
+      procedure SCK_SERVENT sck_GetAsyncServent( SCK_HANDLE Handle ) - (i)
+
+      procedure SCK_ERROR sck_GetAsyncError( LONG LParam ) - (i)
+
+      procedure UNSIGNED sck_GetAsyncBuflen( LONG LParam ) - (i)
+
+      procedure sck_SetLastError( SCK_ERROR ErrorCode )
+				- (i) language lang_StdCall as wsa_setLastError_FNS
+      
+      procedure BOOLEAN sck_IsBlocking() - language lang_StdCall as wsa_isBlocking_FNS
+      
+      procedure sck_CancelBlockingCall()
+      
+      procedure SCK_BLOCKFUNC sck_SetBlockingHook( SCK_BLOCKFUNC BlockingFunction )
+      
+      procedure sck_UnhookBlockingHook()
+  
+  enddef
+			/*****************/
+			/* Miscellaneous */
+			/*****************/
+  GLOBAL PREDICATES
+
+    /* NOTE: it can be used to obtain the native Socket's error if some	*/
+    /*	     predicate exits with err_SckGeneral			*/
+    procedure SCK_ERROR sck_GetLastError() - language lang_StdCall as lastError_FNS
+    
+    procedure sck_Cleanup()
+
+    ifdef os_os2
+
+      procedure sck_Startup()
+
+      procedure SCK_ERROR sck_GetLastNetDbError()
+				- language lang_StdCall as lastNetDbError_FNS
+
+    enddef
+    
+    ifdef ws_win
+
+      procedure sck_Startup( WORD	  VersionRequested,
+			     SCK_WSA_DATA WSA_Data,
+			     INTEGER	  RetCode ) - (i,o,o)
+
+    enddef
+
+enddef	/* pdcsock_pre_included */

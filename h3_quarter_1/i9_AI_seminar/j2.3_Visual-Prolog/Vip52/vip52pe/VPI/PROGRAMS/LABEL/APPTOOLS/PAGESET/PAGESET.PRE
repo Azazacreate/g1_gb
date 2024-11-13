@@ -1,0 +1,22 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	PAGESET.PRE
+ Purpose:	Global predicates for Page setup
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  pageset_set_default(FONT,STRING Number,INTEGER FormPage,COLOR ColorPage,STRING Comment,
+	REAL LeftMarg,REAL TopMarg,REAL HorSpace,REAL VertSpace,
+	REAL LabelWidth,REAL LabelHeight,UNSIGNED NoHor,UNSIGNED NoVert,
+	BOOLEAN Page_Roll,BOOLEAN Landscape) - (i,i,i,i,i,i,i,i,i,i,i,i,i,i,i)
+  pageset_get_default(STRING Number,INTEGER FormPage,COLOR ColorPage,STRING Comment,
+	REAL LeftMarg,REAL TopMarg,REAL HorSpace,REAL VertSpace,
+	REAL LabelWidth,REAL LabelHeight,UNSIGNED NoHor,UNSIGNED NoVert,
+	BOOLEAN Page_Roll,BOOLEAN Landscape) - (o,o,o,o,o,o,o,o,o,o,o,o,o,o)
+  pageset_get_current(WINDOW ParentWin,FONT) - (i,i)
+  pageset_get_current1(WINDOW ParentWin,FONT) - (i,i)

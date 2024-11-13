@@ -1,0 +1,164 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Improved Global Domain Handling</title>
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Improved Global Domain Handling<!--mstheme--></font></h1>
+
+<p>Note that everything we say here about global domains also counts for domains
+corresponding to names of global facts sections (i.e. global databases).</p>
+<p>From VIP 5.2 the handling of global domains is improved, so that global
+domains no longer need to be included in all modules of a program.</p>
+<p>Now a global domain only needs to be included into:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">the main module (which is the module containing the goal) <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">those modules that actually use the domain<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>There are three main benefits from this feature:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It is possible to give a program an include structure that more precisely
+    match the structure of the program.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">When a global domain is changed, recompilation time is reduced (provided
+    the include structure of the program is changed to take advantage of the
+    feature, of course).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It is possible to create and use pre-compiled libraries (using global
+    domains).<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Note that class names are considered to be global domains (in some respects)
+and, as such, class declarations (prior to VIP 5.2) also had to be included in
+every module. This constraint has been removed in VIP 5.2 . In fact, you can now
+declare globally accessible domains in classes (see <a href="domains_in_classes.htm">Domains
+in classes</a>), and these classes need not even to be included into the main
+module (if they are not actually used in the main module).</p>
+<p>Let us consider include &quot;styles&quot; of programs. There are (of course)
+many ways to structure a program. Here we shall consider two &quot;old&quot;
+styles and then a suggestion for a new style.</p>
+
+<p>The VDE has a default structuring mechanism that fits well for beginners,
+small-scale programming, prototyping, etc. The structuring mechanism is that
+every module includes a <i>&lt;project&gt;.inc</i> file, which then in turn
+includes a <i>&lt;module&gt;.dom</i> file and a <i>&lt;module&gt;.pre</i> file
+for each module. In the dom file you are supposed to declare the global domains
+and facts of the module. And in the pre file you are supposed to declare the
+global predicates. Since every module includes the inc file, which includes all
+dom and pre files, you have access to every global domain and every global
+predicate in every module. This is nice for &quot;easy programming&quot;
+(programming in the small).</p>
+
+<p>When you make large programs, there are drawbacks of this style, however:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If you change a global domain declaration or a global predicate
+    declaration, you have to recompile all modules of the project. <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">When creating larger programs (especially with many programmers) having
+    access to everything from everywhere, tends to lead to spaghetti programs.
+    I.e. programs where every part of a program references to all other parts of
+    the program.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Therefore, it is quite common to structure larger programs differently. When
+creating larger programs, you would often move the includes of all the <i>pre</i>
+files out of the <i>inc</i> file, and include them only into those modules that
+actually use the corresponding <i>pre</i> files. Until VIP v. 5.2, you could not
+do the same with the dom files, because Visual Prolog used to require that all
+global domains were declared in all modules (and even in the same order).</p>
+<p>The benefit from moving <i>pre</i> file includes from the inc file into the
+using them <i>pro</i> files are:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">When you change the declaration of a global predicate, only those modules
+    that include the corresponding <i>pre</i> file need to be recompiled.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If a module does not include a certain <i>pre</i> file, then you cannot
+    call the predicates declared in that <i>pre</i> file. Subsequently it is
+    easier to maintain a certain usage structure between modules, with reduction
+    in spaghetti code as a consequence. Of course, it is still possible to
+    create spaghetti code, but it is easier to avoid it. Especially it is easier
+    to avoid that new programmers on a project, who do not yet know the program
+    structure, accidentally circumvent a good program structure. New programmers
+    on a project can also learn about the overall structure of a program by
+    investigating the include structure. <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Since the overall number of predicates that can be declared in a module is
+    limited; therefore, more global predicates can be used in a project and more
+    local predicates can be declared in each module.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>As it was mentioned, it is now possible to move not only <i>pre</i> file
+inclusions into the <i>pro</i> files, but also the dom file inclusions. Recall
+however, that all global domains still have to be included into the main module
+(i.e. the one with the goal). If you also move the <i>dom</i> file inclusions
+from the <i>inc</i> file into the pro files then you, of course, immediately
+extend the mentioned above benefits with the following:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">When you change the declaration of a global domain, only those modules
+    that include the corresponding dom file need to be recompiled. (This, of
+    course, also includes the main module). <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Now it is also possible to use domains only in those files, where you
+    intend its usage. <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Since the overall number of domains that can be declared in a module is
+    limited; therefore, more global domains can be used in a project and more
+    local domains can be declared in each module.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Now, when the main module is the only one that has to include all global
+domains, you might consider making the main module very small (so that
+recompilation will be fast). An easy way to make the main module small is to
+replace the goal in its original place with a clause of a new global predicate
+(lets name it <i>run</i>).</p>
+<p>And then create a new module containing a lot of includes and a goal:</p>
+<blockquote>
+  <!--mstheme--></font><pre><b><font color="#808000">goal</font></b>
+    run().</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<p>The declaration of <i>run</i> must be visible, of course, both in the old
+main module and in the new one.</p>
+<p>Another thing you might consider is to put the global domains as well as the
+global predicates of a module into the same file. Typically, you need to use
+both the predicates and the domains, if you need to use a module at all. Putting
+both domains and predicates in the same file will, of course, increase the
+amount of code to compile in the case of the main module, how much that will
+mean depends on your program. If you put both domain and predicate declarations
+in the same file then we recommend that you give it extension ph, i.e. <i>&lt;module&gt;.ph</i>.
+This is also the extension we recommend for files containing class declarations.</p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

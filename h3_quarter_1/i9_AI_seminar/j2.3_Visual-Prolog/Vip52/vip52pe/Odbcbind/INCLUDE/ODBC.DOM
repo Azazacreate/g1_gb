@@ -1,0 +1,518 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	ODBC.DOM
+ Purpose:	Global domains and constants for ODBC binding
+ Written by:	Sergey Alexeev
+ Build:		010.000309
+ Comments:
+******************************************************************************/
+constants
+ odbc_Dom_Included = 1
+
+global domains
+HENV  = LONG
+HSTMT = LONG
+HDBC  = LONG
+HAM   = LONG	% Pointer to static memory, must be released after use ('odbcReleaseHam' predicate)
+HUL   = LONG	% Pointer to static memory (unsigned long), must be released after use ('odbcReleaseHul' predicate)
+
+constants
+% Constants for odbcGetData, odbcGetTypeInfo, odbcBindCol, odbcBindParameter,
+%	odbcDescribeCol, odbcDescribeParam (DataType), odbcColAttributes, odbcSetParam
+%*******************************************************************************
+odbc_string	= 1	% as STRING prolog type
+odbc_bit	= 2	% size in ODBC 1 bit, as INTEGER prolog type
+odbc_byte	= 3	% size in ODBC 1 byte, as INTEGER prolog type
+odbc_integer	= 4	% size in ODBC 2 byte, as INTEGER prolog type
+odbc_long	= 5	% size in ODBC 4 byte, as LONG prolog type
+odbc_float	= 6	% size in ODBC 4 byte, as REAL prolog type
+odbc_real	= 7	% size in ODBC 8 byte, as REAL prolog type
+odbc_date	= 8	% as STRING prolog type
+odbc_time	= 9	% as STRING prolog type
+odbc_timestamp	= 10	% as STRING prolog type
+odbc_binary	= 11	% as BINARY prolog type
+odbc_numeric	= 12	% as STRING prolog type
+odbc_memo	= 13	% as STRING prolog type
+
+global domains
+% Domains for odbcGetData, odbcGetHam (Data)
+%*******************************************************************************
+ODBC_DATA = s(STRING);		% String
+	    bit(INTEGER);	% Bit
+	    byte(INTEGER);	% Byte
+	    i(INTEGER);		% Integer
+	    l(LONG);		% Long integer
+	    f(REAL);		% Float
+	    r(REAL);		% Real
+	    d(STRING);		% Date (MM-DD-YYYY)
+	    t(STRING);		% Time (HH:MM:SS)
+	    ts(STRING);		% Time stamp (MM-DD-YYYY HH:MM:SS)
+	    b(BINARY);		% Binary
+	    n(STRING);		% Numeric (digital data in the string format)
+	    null
+constants
+% Constants for odbcBindParameter (ParamType)
+%*******************************************************************************
+odbc_param_input		= 1
+odbc_param_input_output		= 2
+% Constants for odbcColAttributes (ColumnType)
+%*******************************************************************************
+odbc_column_auto_increment	= 1
+odbc_column_case_sensitive	= 2
+odbc_column_count		= 3
+odbc_column_display_size	= 4
+odbc_column_label		= 5
+odbc_column_length		= 6
+odbc_column_money		= 7
+odbc_column_name		= 8
+odbc_column_nullable		= 9
+odbc_column_owner_name		= 10
+odbc_column_precision		= 11
+odbc_column_qualifier_name	= 12
+odbc_column_scale		= 13
+odbc_column_searchable		= 14
+odbc_column_table_name		= 15
+odbc_column_type		= 16
+odbc_column_type_name		= 17
+odbc_column_unsigned		= 18
+odbc_column_updatable		= 19
+% Output constants for odbcColAttributes (Data nu(UNSIGNED))
+odbc_no_nulls		= 1
+odbc_nullable		= 2
+odbc_nullable_unknown	= 3
+% Output constants for odbcColAttributes (Data se(UNSIGNED))
+odbc_unsearchable	= 1
+odbc_like_only		= 2
+odbc_all_except_like	= 3
+odbc_searchable		= 4
+% Output constants for odbcColAttributes (Data up(UNSIGNED))
+odbc_attr_readonly		= 1
+odbc_attr_write			= 2
+odbc_attr_readwrite_unknown	= 3
+global domains
+% Domains for odbcColAttributes (Data)
+%*******************************************************************************
+ODBC_COLUMN_DATA = ai(BOOLEAN);
+		   cs(BOOLEAN);
+		   co(UNSIGNED);
+		   ds(LONG);
+		   la(STRING);
+		   le(LONG);
+		   mo(BOOLEAN);
+		   na(STRING);
+		   nu(UNSIGNED);
+		   on(STRING);
+		   pr(LONG);
+		   qn(STRING);
+		   sc(LONG);
+		   se(UNSIGNED);
+		   tn(STRING);
+		   ty(UNSIGNED);
+		   ta(STRING);
+		   un(BOOLEAN);
+		   up(UNSIGNED)
+
+constants
+% Constants for odbcDataSources and odbcDrivers(Direction)
+%*******************************************************************************
+odbc_fetch_first	= 1
+odbc_fetch_next		= 2
+% Constants for odbcDriverConnect (DriverCompletion)
+%*******************************************************************************
+odbc_driver_prompt		= 1
+odbc_driver_complete		= 2
+odbc_driver_complete_required	= 3
+odbc_driver_noprompt		= 4
+% Constants for odbcExtendedFetch (Direction) and use allow (for odbcDataSources)
+%*******************************************************************************
+%odbc_fetch_first	= 1
+%odbc_fetch_next	= 2
+odbc_fetch_last		= 3
+odbc_fetch_prior	= 4
+odbc_fetch_absolute	= 5
+odbc_fetch_relative	= 6
+odbc_fetch_bookmark	= 7
+% Constants for odbcFreeStmt (Option)
+%*******************************************************************************
+odbc_drop		= 1
+odbc_close		= 2
+odbc_unbind		= 3
+odbc_reset_params	= 4
+% Constants for odbcGetConnectOption (Option)
+%*******************************************************************************
+odbc_access_mode		= 1
+odbc_autocommit			= 2
+odbc_current_qualifier		= 3
+odbc_login_timeout		= 4
+odbc_odbc_cursors		= 5
+odbc_opt_trace			= 6
+odbc_opt_tracefile		= 7
+odbc_packet_size		= 8
+odbc_quiet_mode			= 9
+odbc_translate_dll		= 10
+odbc_translate_option		= 11
+odbc_txn_isolation		= 12
+% Constants for odbcGetFunctions (Function)
+%*******************************************************************************
+% The following table lists valid values for fFunction for ODBC core functions.
+odbc_api_sqlallocconnect	= 1
+odbc_api_sqlallocenv		= 2
+odbc_api_sqlallocstmt		= 3
+odbc_api_sqlbindcol		= 4
+odbc_api_sqlcancel		= 5
+odbc_api_sqlcolattributes	= 6
+odbc_api_sqlconnect		= 7
+odbc_api_sqldescribecol		= 8
+odbc_api_sqldisconnect		= 9
+odbc_api_sqlerror		= 10
+odbc_api_sqlexecdirect		= 11
+odbc_api_sqlexecute		= 12
+odbc_api_sqlfetch		= 13
+odbc_api_sqlfreeconnect		= 14
+odbc_api_sqlfreeenv		= 15
+odbc_api_sqlfreestmt		= 16
+odbc_api_sqlgetcursorname	= 17
+odbc_api_sqlnumresultcols	= 18
+odbc_api_sqlprepare		= 19
+odbc_api_sqlrowcount		= 20
+odbc_api_sqlsetcursorname	= 21
+odbc_api_sqlsetparam		= 22
+odbc_api_sqltransact		= 23
+% The following table lists valid values for fFunction for ODBC extension level 1 functions.
+odbc_api_sqlbindparameter	= 24
+odbc_api_sqlcolumns		= 25
+odbc_api_sqldriverconnect	= 26
+odbc_api_sqlgetconnectoption	= 27
+odbc_api_sqlgetdata		= 28
+odbc_api_sqlgetfunctions	= 29
+odbc_api_sqlgetinfo		= 30
+odbc_api_sqlgetstmtoption	= 31
+odbc_api_sqlgettypeinfo		= 32
+odbc_api_sqlparamdata		= 33
+odbc_api_sqlputdata		= 34
+odbc_api_sqlsetconnectoption	= 35
+odbc_api_sqlsetstmtoption	= 36
+odbc_api_sqlspecialcolumns	= 37
+odbc_api_sqlstatistics		= 38
+odbc_api_sqltables		= 39
+% The following table lists valid values for fFunction for ODBC extension level 2 functions.
+odbc_api_sqlbrowseconnect	= 40
+odbc_api_sqlcolumnprivileges	= 41
+odbc_api_sqldatasources		= 42
+odbc_api_sqldescribeparam	= 43
+odbc_api_sqldrivers		= 44
+odbc_api_sqlextendedfetch	= 45
+odbc_api_sqlforeignkeys		= 46
+odbc_api_sqlmoreresults		= 47
+odbc_api_sqlnativesql		= 48
+odbc_api_sqlnumparams		= 49
+odbc_api_sqlparamoptions	= 50
+odbc_api_sqlprimarykeys		= 51
+odbc_api_sqlprocedurecolumns	= 52
+odbc_api_sqlprocedures		= 53
+odbc_api_sqlsetpos		= 54
+odbc_api_sqlsetscrolloptions	= 55
+odbc_api_sqltableprivileges	= 56
+% Constants for odbcGetInfo (DataType)
+%*******************************************************************************
+% Driver Information
+
+% The following values of fInfoType return information about the ODBC driver,
+% such as the number of active statements, the data source name, and the API 
+% conformance levels.
+odbc_active_connections		= 1
+odbc_active_statements		= 2
+odbc_data_source_name		= 3
+odbc_driver_hdbc		= 4
+odbc_driver_henv		= 5
+odbc_driver_hlib		= 6
+odbc_driver_hstmt		= 7
+odbc_driver_name		= 8
+odbc_driver_odbc_ver		= 9
+odbc_driver_ver			= 10
+odbc_fetch_direction		= 11
+odbc_file_usage			= 12
+odbc_getdata_extensions		= 13
+odbc_lock_types			= 14
+odbc_odbc_api_conformance	= 15
+odbc_odbc_sag_cli_conformance	= 16
+odbc_odbc_ver			= 17
+odbc_pos_operations		= 18
+odbc_row_updates		= 19
+odbc_search_pattern_escape	= 20
+odbc_server_name		= 21
+%DBMS Product Information
+
+% The following values of fInfoType return information about the DBMS product,
+% such as the DBMS name and version.
+odbc_database_name		= 22
+odbc_dbms_name			= 23
+odbc_dbms_ver			= 24
+% Data Source Information
+
+% The following values of fInfoType return information about the data source,
+% such as cursor characteristics and transaction capabilities.
+odbc_accessible_procedures	= 25
+odbc_accessible_tables		= 26
+odbc_bookmark_persistence	= 27
+odbc_concat_null_behavior	= 28
+odbc_cursor_commit_behavior	= 29
+odbc_cursor_rollback_behavior	= 30
+odbc_data_source_read_only	= 31
+odbc_default_txn_isolation	= 32
+odbc_mult_result_sets		= 33
+odbc_multiple_active_txn	= 34
+odbc_need_long_data_len		= 35
+odbc_null_collation		= 36
+odbc_owner_term			= 37
+odbc_procedure_term		= 38
+odbc_qualifier_term		= 39
+odbc_scroll_concurrency		= 40
+odbc_scroll_options		= 41
+odbc_static_sensitivity		= 42
+odbc_table_term			= 43
+odbc_txn_capable		= 44
+odbc_txn_isolation_option	= 45
+odbc_user_name			= 46
+% Supported SQL
+
+% The following values of fInfoType return information about the SQL
+% statements supported by the data source. These information types do
+% not exhaustively describe the entire ODBC SQL grammar. Instead, they
+% describe those parts of the grammar for which data sources commonly
+% offer different levels of support.
+% Applications should determine the general level of supported grammar
+% from the SQL_ODBC_SQL_CONFORMANCE information type and use the other
+% information types to determine variations from the stated conformance level.
+odbc_alter_table		= 47
+odbc_column_alias		= 48
+odbc_correlation_name		= 49
+odbc_expressions_in_orderby	= 50
+odbc_group_by			= 51
+odbc_identifier_case		= 52
+odbc_identifier_quote_char	= 53
+odbc_keywords			= 54
+odbc_like_escape_clause		= 55
+odbc_non_nullable_columns	= 56
+odbc_odbc_sql_conformance	= 57
+odbc_odbc_sql_opt_ief		= 58
+odbc_order_by_columns_in_select	= 59
+odbc_outer_joins		= 60
+odbc_owner_usage		= 61
+odbc_positioned_statements	= 62
+odbc_procedures			= 63
+odbc_qualifier_location		= 64
+odbc_qualifier_name_separator	= 65
+odbc_qualifier_usage		= 66
+odbc_quoted_identifier_case	= 67
+odbc_special_characters		= 68
+odbc_subqueries			= 69
+odbc_union			= 70
+% SQL Limits
+
+% The following values of fInfoType return information about the
+% limits applied to identifiers and clauses in SQL statements,
+% such as the maximum lengths of identifiers and the maximum number
+% of columns in a select list. Limitations may be imposed by either
+% the driver or the data source.
+odbc_max_binary_literal_len	= 71
+odbc_max_char_literal_len	= 72
+odbc_max_column_name_len	= 73
+odbc_max_columns_in_group_by	= 74
+odbc_max_columns_in_order_by	= 75
+odbc_max_columns_in_index	= 76
+odbc_max_columns_in_select	= 77
+odbc_max_columns_in_table	= 78
+odbc_max_cursor_name_len	= 79
+odbc_max_index_size		= 80
+odbc_max_owner_name_len		= 81
+odbc_max_procedure_name_len	= 82
+odbc_max_qualifier_name_len	= 83
+odbc_max_row_size		= 84
+odbc_max_row_size_includes_long	= 85
+odbc_max_statement_len		= 86
+odbc_max_table_name_len		= 87
+odbc_max_tables_in_select	= 88
+odbc_max_user_name_len		= 89
+% Scalar Function Information
+
+% The following values of fInfoType return information about
+% the scalar functions supported by the data source and the driver.
+odbc_convert_functions		= 90
+odbc_numeric_functions		= 91
+odbc_string_functions		= 92
+odbc_system_functions		= 93
+odbc_timedate_add_intervals	= 94
+odbc_timedate_diff_intervals	= 95
+odbc_timedate_functions		= 96
+% Conversion Information
+
+% The following values of fInfoType return a list of the SQL data
+% types to which the data source can convert the specified SQL data
+% type with the CONVERT scalar function.
+odbc_convert_bigint		= 97
+odbc_convert_binary		= 98
+odbc_convert_bit		= 99
+odbc_convert_char		= 100
+odbc_convert_date		= 101
+odbc_convert_decimal		= 102
+odbc_convert_double		= 103
+odbc_convert_float		= 104
+odbc_convert_integer		= 105
+odbc_convert_longvarbinary	= 106
+odbc_convert_longvarchar	= 107
+odbc_convert_numeric		= 108
+odbc_convert_real		= 109
+odbc_convert_smallint		= 110
+odbc_convert_time		= 111
+odbc_convert_timestamp		= 112
+odbc_convert_tinyint		= 113
+odbc_convert_varbinary		= 114
+odbc_convert_varchar		= 115
+global domains
+% Domains for odbcGetInfo (Data)
+%*******************************************************************************
+ODBC_INFO_DATA = i(INTEGER);
+		 l(LONG);
+		 s(STRING)
+constants
+% Constants for odbcGetStmtOption (Option)
+%*******************************************************************************
+odbc_async_enable		= 1
+odbc_bind_type			= 2
+odbc_concurrency		= 3
+odbc_cursor_type		= 4
+odbc_keyset_size		= 5
+odbc_max_length			= 6
+odbc_max_rows			= 7
+odbc_noscan			= 8
+odbc_query_timeout		= 9
+odbc_retrieve_data		= 10
+odbc_rowset_size		= 11
+odbc_simulate_cursor		= 12
+odbc_use_bookmarks		= 13
+odbc_get_bookmark		= 14
+odbc_row_number			= 15
+% Constants for odbcSetConnectOption (Option) use constants for odbcGetConnectOption
+%*******************************************************************************
+% 	Constants for odbcSetConnectOption (Param l(LONG))
+%*******************************************************************************
+%odbc_access_mode		= 1
+	odbc_mode_read_only		= 1
+	odbc_mode_read_write		= 2
+%odbc_autocommit		= 2
+	odbc_autocommit_off		= 1
+	odbc_autocommit_on		= 2
+%odbc_current_qualifier		= 3	% Param must be s()
+%odbc_login_timeout		= 4	% Param must be l()
+%odbc_odbc_cursors		= 5
+	odbc_cur_use_if_needed		= 1
+	odbc_cur_use_odbc		= 2
+	odbc_cur_use_driver		= 3
+%odbc_opt_trace			= 6
+	odbc_opt_trace_off		= 1
+	odbc_opt_trace_on		= 2
+%odbc_opt_tracefile		= 7	% Param must be s()
+%odbc_packet_size		= 8	% Param must be l()
+%odbc_quiet_mode		= 9	% Param must be l()
+%odbc_translate_dll		= 10	% Param must be s()
+%odbc_translate_option		= 11	% Param must be l()
+%odbc_txn_isolation		= 12
+	odbc_txn_read_uncommitted	= 1
+	odbc_txn_read_committed		= 2
+	odbc_txn_repeatable_read	= 3
+	odbc_txn_serializable		= 4
+	odbc_txn_versioning		= 5
+global domains
+% Domains for odbcSetConnectOption (Param)
+%*******************************************************************************
+ODBC_CO_DATA = l(LONG);
+	       s(STRING)
+constants
+% Constants for odbcSetPos (Option)
+%*******************************************************************************
+odbc_position	= 1
+odbc_refresh	= 2
+odbc_update	= 3
+odbc_delete	= 4
+odbc_add	= 5
+% Constants for odbcSetPos (Lock)
+%*******************************************************************************
+odbc_lock_no_change	= 1
+odbc_lock_exclusive	= 2
+odbc_lock_unlock	= 3
+% Constants for odbcSetScrollOptions (Concurrency)
+%*******************************************************************************
+odbc_concur_read_only	= 1
+odbc_concur_lock	= 2
+odbc_concur_rowver	= 3
+odbc_concur_values	= 4
+% Constants for odbcSetScrollOptions (crowKeyset)
+%*******************************************************************************
+odbc_scroll_forward_only	= -3
+odbc_scroll_static		= -2
+odbc_scroll_keyset_driven	= -1
+odbc_scroll_dynamic		= 0
+% Constants for odbcSetStmtOption (Option) use constants for odbcGetStmtOption
+%*******************************************************************************
+% 	Constants for odbcSetStmtOption (Param)
+%*******************************************************************************
+%odbc_async_enable		= 1
+	odbc_async_enable_off		= 1
+	odbc_async_enable_on		= 2
+%odbc_bind_type			= 2
+	odbc_bind_by_column		= 1
+%odbc_concurrency		= 3
+%	odbc_concur_read_only		= 1	Sets in odbcSetScrollOptions (Concurrency)
+%	odbc_concur_lock		= 2
+%	odbc_concur_rowver		= 3
+%	odbc_concur_values		= 4
+%odbc_cursor_type		= 4
+	odbc_cursor_forward_only	= 1
+	odbc_cursor_static		= 2
+	odbc_cursor_keyset_driven	= 3
+	odbc_cursor_dynamic		= 4
+%odbc_keyset_size		= 5
+%odbc_max_length		= 6
+%odbc_max_rows			= 7
+%odbc_noscan			= 8
+	odbc_noscan_off			= 1
+	odbc_noscan_on			= 2
+%odbc_query_timeout		= 9
+%odbc_retrieve_data		= 10
+	odbc_rd_on			= 1
+	odbc_rd_off			= 2
+%odbc_rowset_size		= 11
+%odbc_simulate_cursor		= 12
+	odbc_sc_non_unique		= 1
+	odbc_sc_try_unique		= 2
+	odbc_sc_unique			= 3
+%odbc_use_bookmarks		= 13
+	odbc_ub_off			= 1
+	odbc_ub_on			= 2
+% Constants for odbcSpecialColumns (ColType)
+%*******************************************************************************
+odbc_best_rowid		= 1
+odbc_rowver		= 2
+% Constants for odbcSpecialColumns (Nullable) see allow (odbcColAttributes (Data nu(UNSIGNED)))
+%odbc_no_nulls		= 1
+%odbc_nullable		= 2
+% Constants for odbcSpecialColumns (Scope)
+%*******************************************************************************
+odbc_scope_currow	= 1
+odbc_scope_transaction	= 2
+odbc_scope_session	= 3
+% Constants for odbcStatistics (Unique)
+%*******************************************************************************
+odbc_index_unique	= 1
+odbc_index_all		= 2
+% Constants for odbcStatistics (Accuracy)
+%*******************************************************************************
+odbc_ensure		= 1
+odbc_quick		= 2
+% Constants for odbcTransact (Type)
+%*******************************************************************************
+odbc_commit	= 1
+odbc_rollback	= 2

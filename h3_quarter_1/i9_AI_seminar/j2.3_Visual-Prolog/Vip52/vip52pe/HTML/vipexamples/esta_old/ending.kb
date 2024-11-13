@@ -1,0 +1,6 @@
+vars("parameter again\ntype boolean\nquestion 'Do you want''t another consultation ?'\n\n","again","again",[],[c_str("Do you want't another consultation ?",40)],fact,fact([]),"")
+section("section start 'This is the end of consultation'\n\ncall save_values('1aid.dat')  /* Clear datafile */\nif again chain '1aid.kb'\n\nif not again (advice 'Bye.',\n	      call clear_dialog(),\n	      chain 'EXPERTS.KB'\n	      )\n","start",[c_str("This is the end of consultation",14)])
+paragraph("start",1,c_bool(true,0),[call("save_values",56,[c_str("1aid.dat",68)])])
+paragraph("start",2,c_var("again",106),[chain("1aid.kb")])
+paragraph("start",3,not_(c_var("again",138)),[display([c_str("Bye.",152)]),call("clear_dialog",173,[]),chain("EXPERTS.KB")])
+title("Sub knowledge base (ending.kb)\n\n\n	 _______________________________________\n	|					|\n	|	Ending of consultation		|\n	|_______________________________________|\n\n\n")

@@ -1,0 +1,73 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project: PARSER
+ FileName: PARSGLO.DOM
+ PURPOSE: GLOBAL Domain definitions for Parser
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+
+GLOBAL DOMAINS
+	SUFFIX=STRING
+	FILENAME=string
+	TEXT=string
+	FIRST=first(integer,PRODNAMES,SINGPROD,SUFFIX)
+	FIRSTLIST=FIRST*
+	PRODNAME=string
+	PRODNAMES=PRODNAME*
+	PRIORITY=integer
+	PRODBODY=list(PRODNAME, integer, STAR_PLUS, SEPARATOR); 
+		 groups(PRODGROUPS)
+	TOKK=name(string,integer);
+		 cmp(STRING,integer, PRODNAMES)
+	PRIORGROUP=SINGPROD*
+	PRODGROUPS=PRIORGROUP*
+	SEPARATOR=sep(STRING);   
+		 none
+	STAR_PLUS=star; 
+		 plus
+	SINGPROD=prod(ASSOC,GRAMTOKL,integer,TERM)
+	ASSOC=right(integer);  
+		 left()
+	GRAMTOK=prodname(PRODNAME,integer);
+		tok(TOKK, CURSORDEMAND)
+	GRAMTOKL=GRAMTOK*
+	CURSORDEMAND=curdemand(PRODNAME);
+		 none()
+	TERM=name(string,integer); 
+		 term(string,integer,PRODNAMES); 
+ 		dom(PRODNAME,integer); 
+ 		list(PRODNAME)
+	TOK=userdefined_();
+ 		productions_();
+		domains_();
+		equal();
+		star();
+		plus();
+		separator_();
+		id(STRING);
+		arrow();
+		lpar();
+		rpar();
+		upper(STRING);
+		priorsepp();
+		rightassoc_();
+		comma();
+		colon();
+		nill()
+	TOKL=CURSORTOK*
+	CURSORTOK=t(TOK,integer)
+	PARSER=SECTION*
+	SECTION=userprods_(PRODNAMES); 
+		userdoms_(PRODNAMES); 
+		productions_(PRODUCTIONS)
+	PRODUCTION=p(PRODNAME,integer,PRODBODY)
+	PRODUCTIONS=PRODUCTION*
+	TERML=TERM*
+	TOKKL=TOKK*
+	CUT=setcut();
+		nill()
+   

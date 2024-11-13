@@ -1,0 +1,35 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName: COLSETUP.PRE
+ Purpose: Predicate definitions for COLSETUP.PRO
+ Written by: Lars Henrik Jacobsen
+ Comments:
+******************************************************************************/
+ifndef colsetup_dom_included
+ #Error: this file requires include: colsetup.dom
+enddef 
+
+constants
+  colsetup_pre_included = 1
+
+global predicates
+determ  colsetup_set_configuration(WINDOW,STRING,INTEGER,COLOR_CALLBACK,COLOR_LIST)  - (i,i,i,i,i)
+/*                          (Parent_window,Title,Flavour,Callback,Initial Color list)  */
+/*
+  This predicate presents a dialog box containing a scrollable listbox
+  with all the display elements and a preset palette to choose a color from.
+
+  The palette contains a sample of each of the primary colors (red,green,blue)
+  and each of the secondary colors (yellow,magenta,cyan) in 7 shades 
+  supplemented with 5 gray levels plus white and black.
+
+  The current display item is highlighted in the listbox in the standard way,
+  whereas the current color is highlighted in the palette with a depressed
+  button (if the color is available in the palette).
+*/
+%BEGIN_DECL, System generated global predicates
+global predicates
+procedure  dlg_color_selection_Create(WINDOW) - (i)
+%END_DECL

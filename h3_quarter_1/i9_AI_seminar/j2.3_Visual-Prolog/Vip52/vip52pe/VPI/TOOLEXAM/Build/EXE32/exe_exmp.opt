@@ -1,0 +1,3 @@
+compileropt("exe_exmp.pro")
+fileopt("exe_exmp.pro")
+linkeropt("-TPE -SCUI -E_PDCPrologStart -oexe_exmp.EXE -Mexe_exmp.MAP ..\\..\\..\\..\\LIB\\WIN32\\MSC\\INIT32.OBJ ..\\..\\..\\..\\LIB\\WIN32\\MSC\\CMAIN.OBJ exe_exmp.OBJ exe_exmp.SYM  ..\\..\\..\\..\\LIB\\WIN32\\PROLOG.LIB ..\\..\\..\\..\\LIB\\WIN32\\MSC\\WIN32.LIB") 

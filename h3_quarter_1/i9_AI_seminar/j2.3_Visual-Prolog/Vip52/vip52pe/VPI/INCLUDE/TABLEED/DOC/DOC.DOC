@@ -1,0 +1,1709 @@
+{\rtf1\ansi\ansicpg1251\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f4\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Times;}
+{\f5\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Helvetica;}{\f6\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}Courier;}{\f7\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Geneva;}
+{\f8\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Tms Rmn;}{\f9\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Helv{\*\falt Arial};}{\f10\froman\fcharset0\fprq2{\*\panose 00000000000000000000}MS Serif;}
+{\f11\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}MS Sans Serif;}{\f12\froman\fcharset0\fprq2{\*\panose 00000000000000000000}New York;}{\f13\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}System{\*\falt Arial};}
+{\f14\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}{\f15\fswiss\fcharset0\fprq2{\*\panose 020b0604030504040204}Tahoma;}{\f16\froman\fcharset204\fprq2{\*\panose 00000000000000000000}TIMES NEW ROMAN CYR{\*\falt Times New Roman};}
+{\f17\fnil\fcharset2\fprq2{\*\panose 00000000000000000000}Marlett;}{\f18\fswiss\fcharset0\fprq2{\*\panose 020b0506020202030204}Arial Narrow;}{\f19\fswiss\fcharset0\fprq2{\*\panose 020b0706040902060204}Haettenschweiler;}
+{\f20\froman\fcharset0\fprq2{\*\panose 02020404030301010803}Garamond;}{\f21\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}News Gothic MT;}{\f22\fscript\fcharset0\fprq2{\*\panose 00000000000000000000}Lucida Handwriting;}
+{\f23\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Lucida Sans;}{\f24\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Lucida Sans Unicode;}{\f25\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Book Antiqua;}
+{\f26\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}OCR A Extended;}{\f27\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Calisto MT;}{\f28\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Abadi MT Condensed Light;}
+{\f29\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Copperplate Gothic Bold;}{\f30\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Copperplate Gothic Light;}{\f31\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}Lucida Console;}
+{\f32\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}HelvC;}{\f33\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}TimesC;}{\f34\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}AcadeDL;}
+{\f35\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}AcadeDL Italic;}{\f36\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}CourDL;}{\f37\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}FixHelvDL;}
+{\f38\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}FuturaEugenia;}{\f39\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Futuris;}{\f40\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}HelvDL;}
+{\f41\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Izhitsa;}{\f42\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Jikharev;}{\f43\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Lazurski;}
+{\f44\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Pragmatica;}{\f45\fnil\fcharset2\fprq2{\*\panose 00000000000000000000}Anastasia;}{\f46\fnil\fcharset2\fprq2{\*\panose 00000000000000000000}FretsA;}
+{\f47\fnil\fcharset2\fprq2{\*\panose 00000000000000000000}FretsB;}{\f48\fnil\fcharset2\fprq2{\*\panose 00000000000000000000}FretsC;}{\f49\fnil\fcharset2\fprq2{\*\panose 01010601010101010101}Monotype Sorts;}
+{\f50\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}AVTOTRUETYPE002;}{\f51\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}ER Kurier KOI-8;}{\f52\fswiss\fcharset2\fprq2{\*\panose 00000000000000000000}CommonBullets;}
+{\f53\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Geometr231 Hv BT;}{\f54\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich Lt BT;}{\f55\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich LtCn BT;}
+{\f56\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich XCn BT;}{\f57\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Geometr231 Lt BT;}{\f58\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Geometr231 BT;}
+{\f59\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich Ex BT;}{\f60\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich Cn BT;}{\f61\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Futura XBlk BT;}
+{\f62\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich UBlkEx BT;}{\f63\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Galliard BT;}{\f64\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}Busorama Md BT;}
+{\f65\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Swis721 Th BT;}{\f66\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Futura XBlkCn BT;}{\f67\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Futura XBlkIt BT;}
+{\f68\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Futura XBlkCnIt BT;}{\f69\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}AvantGarde Md BT;}{\f70\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}AvantGarde Bk BT;}
+{\f71\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Century Gothic;}{\f72\fscript\fcharset0\fprq2{\*\panose 030f0702030302020204}Comic Sans MS;}{\f73\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}MS Outlook;}
+{\f74\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Bookshelf Symbol 3;}{\f75\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Izhitsa CE;}{\f76\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Izhitsa Tur;}
+{\f77\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Geometr231 Hv BT Tur;}{\f78\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich Lt BT Tur;}{\f79\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich LtCn BT Tur;}
+{\f80\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich XCn BT Tur;}{\f81\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Geometr231 Lt BT Tur;}{\f82\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Geometr231 BT Tur;}
+{\f83\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich Cn BT Tur;}{\f84\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich UBlkEx BT Tur;}{\f85\froman\fcharset162\fprq2{\*\panose 00000000000000000000}Galliard BT Tur;}
+{\f86\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Swis721 Th BT Tur;}{\f87\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Futura XBlkCn BT Tur;}{\f88\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Futura XBlkIt BT Tur;}
+{\f89\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Futura XBlkCnIt BT Tur;}{\f90\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}Letter Gothic;}{\f91\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}Courier 16.67 Pitch;}
+{\f92\froman\fcharset0\fprq2{\*\panose 00000000000000000000}CG Times;}{\f93\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Univers;}{\f94\froman\fcharset2\fprq2{\*\panose 05050102010205020202}MT Extra;}
+{\f95\fswiss\fcharset0\fprq2{\*\panose 020b0a04020102020204}Arial Black;}{\f96\froman\fcharset0\fprq2{\*\panose 02050604050505020204}Bookman Old Style;}{\f97\froman\fcharset0\fprq2{\*\panose 00050102010706020507}Map Symbols;}
+{\f98\fswiss\fcharset0\fprq2{\*\panose 020b0806030902050204}Impact;}{\f99\fscript\fcharset0\fprq2{\*\panose 00000000000000000000}TypoUpright BT;}{\f100\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Humanst521 BT;}
+{\f101\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}Charlesworth;}{\f102\froman\fcharset0\fprq2{\*\panose 00000000000000000000}BernhardMod BT;}{\f103\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Lithograph;}
+{\f104\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Zurich BlkEx BT;}{\f105\fscript\fcharset0\fprq2{\*\panose 00000000000000000000}OzHandicraft BT;}{\f106\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}GoudyHandtooled BT;}
+{\f107\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Dauphin;}{\f108\fmodern\fcharset2\fprq1{\*\panose 00000000000000000000}OCR-A BT;}{\f109\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Serifa BT;}
+{\f110\froman\fcharset0\fprq2{\*\panose 00000000000000000000}PosterBodoni BT;}{\f111\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Futura Lt BT;}{\f112\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}FuturaBlack BT;}
+{\f113\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}Bremen Bd BT;}{\f114\froman\fcharset0\fprq2{\*\panose 00000000000000000000}AmerType Md BT;}{\f115\froman\fcharset0\fprq2{\*\panose 00000000000000000000}GoudyOlSt BT;}
+{\f116\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Souvenir Lt BT;}{\f117\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Serifa Th BT;}{\f118\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Kabel Ult BT;}
+{\f119\froman\fcharset0\fprq2{\*\panose 00000000000000000000}ZapfEllipt BT;}{\f120\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}CopprplGoth Bd BT;}{\f121\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}BernhardFashion BT;}
+{\f122\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}Allegro BT;}{\f123\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Benguiat Bk BT;}{\f124\fmodern\fcharset2\fprq1{\*\panose 00000000000000000000}OCR-B-10 BT;}
+{\f125\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}BankGothic Md BT;}{\f126\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Kabel Bk BT;}{\f127\fscript\fcharset0\fprq2{\*\panose 00000000000000000000}English111 Vivace BT;}
+{\f128\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}LithographLight;}{\f129\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Futura Md BT;}{\f130\fscript\fcharset0\fprq2{\*\panose 00000000000000000000}Staccato222 BT;}
+{\f131\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Swiss911 XCm BT;}{\f132\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Baltica;}{\f133\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}StylusImperialCyr;}
+{\f134\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}StylusImperial;}{\f135\froman\fcharset238\fprq2{\*\panose 00000000000000000000}TIMES CE;}{\f136\froman\fcharset204\fprq2{\*\panose 00000000000000000000}TIMES Cyr;}
+{\f137\froman\fcharset161\fprq2{\*\panose 00000000000000000000}TIMES Greek;}{\f138\froman\fcharset162\fprq2{\*\panose 00000000000000000000}TIMES Tur;}{\f139\froman\fcharset186\fprq2{\*\panose 00000000000000000000}TIMES Baltic;}
+{\f140\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}HELVETICA CE;}{\f141\fswiss\fcharset204\fprq2{\*\panose 00000000000000000000}HELVETICA Cyr;}{\f142\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}HELVETICA Greek;}
+{\f143\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}HELVETICA Tur;}{\f144\fswiss\fcharset186\fprq2{\*\panose 00000000000000000000}HELVETICA Baltic;}
+{\f145\froman\fcharset238\fprq2{\*\panose 00000000000000000000}TIMES NEW ROMAN CYR CE{\*\falt Times New Roman};}{\f146\froman\fcharset161\fprq2{\*\panose 00000000000000000000}TIMES NEW ROMAN CYR Greek{\*\falt Times New Roman};}
+{\f147\froman\fcharset162\fprq2{\*\panose 00000000000000000000}TIMES NEW ROMAN CYR Tur{\*\falt Times New Roman};}{\f148\froman\fcharset186\fprq2{\*\panose 00000000000000000000}TIMES NEW ROMAN CYR Baltic{\*\falt Times New Roman};}
+{\f149\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Lucida Sans Unicode CE;}{\f150\fswiss\fcharset204\fprq2{\*\panose 00000000000000000000}Lucida Sans Unicode Cyr;}
+{\f151\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Lucida Sans Unicode Greek;}{\f152\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Lucida Sans Unicode Tur;}
+{\f153\fmodern\fcharset238\fprq1{\*\panose 00000000000000000000}Lucida Console CE;}{\f154\fmodern\fcharset204\fprq1{\*\panose 00000000000000000000}Lucida Console Cyr;}{\f155\fmodern\fcharset161\fprq1{\*\panose 00000000000000000000}Lucida Console Greek;}
+{\f156\fmodern\fcharset162\fprq1{\*\panose 00000000000000000000}Lucida Console Tur;}{\f157\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Zurich Ex BT CE;}{\f158\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Zurich Ex BT Greek;}
+{\f159\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich Ex BT Tur;}{\f160\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Futura XBlk BT CE;}{\f161\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Futura XBlk BT Greek;}
+{\f162\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Futura XBlk BT Tur;}{\f163\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}AvantGarde Md BT CE;}{\f164\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}AvantGarde Md BT Greek;}
+{\f165\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}AvantGarde Md BT Tur;}{\f166\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}AvantGarde Bk BT CE;}
+{\f167\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}AvantGarde Bk BT Greek;}{\f168\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}AvantGarde Bk BT Tur;}{\f169\fscript\fcharset238\fprq2{\*\panose 00000000000000000000}TypoUpright BT CE;}
+{\f170\fscript\fcharset161\fprq2{\*\panose 00000000000000000000}TypoUpright BT Greek;}{\f171\fscript\fcharset162\fprq2{\*\panose 00000000000000000000}TypoUpright BT Tur;}{\f172\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Humanst521 BT CE;}
+{\f173\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Humanst521 BT Greek;}{\f174\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Humanst521 BT Tur;}{\f175\froman\fcharset238\fprq2{\*\panose 00000000000000000000}BernhardMod BT CE;}
+{\f176\froman\fcharset161\fprq2{\*\panose 00000000000000000000}BernhardMod BT Greek;}{\f177\froman\fcharset162\fprq2{\*\panose 00000000000000000000}BernhardMod BT Tur;}{\f178\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Zurich BlkEx BT CE;}
+{\f179\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Zurich BlkEx BT Greek;}{\f180\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Zurich BlkEx BT Tur;}{\f181\fscript\fcharset238\fprq2{\*\panose 00000000000000000000}OzHandicraft BT CE;}
+{\f182\fscript\fcharset161\fprq2{\*\panose 00000000000000000000}OzHandicraft BT Greek;}{\f183\fscript\fcharset162\fprq2{\*\panose 00000000000000000000}OzHandicraft BT Tur;}
+{\f184\fdecor\fcharset238\fprq2{\*\panose 00000000000000000000}GoudyHandtooled BT CE;}{\f185\fdecor\fcharset161\fprq2{\*\panose 00000000000000000000}GoudyHandtooled BT Greek;}
+{\f186\fdecor\fcharset162\fprq2{\*\panose 00000000000000000000}GoudyHandtooled BT Tur;}{\f187\froman\fcharset238\fprq2{\*\panose 00000000000000000000}Serifa BT CE;}{\f188\froman\fcharset161\fprq2{\*\panose 00000000000000000000}Serifa BT Greek;}
+{\f189\froman\fcharset162\fprq2{\*\panose 00000000000000000000}Serifa BT Tur;}{\f190\froman\fcharset238\fprq2{\*\panose 00000000000000000000}PosterBodoni BT CE;}{\f191\froman\fcharset161\fprq2{\*\panose 00000000000000000000}PosterBodoni BT Greek;}
+{\f192\froman\fcharset162\fprq2{\*\panose 00000000000000000000}PosterBodoni BT Tur;}{\f193\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Futura Lt BT CE;}{\f194\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Futura Lt BT Greek;}
+{\f195\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Futura Lt BT Tur;}{\f196\fdecor\fcharset238\fprq2{\*\panose 00000000000000000000}FuturaBlack BT CE;}{\f197\fdecor\fcharset161\fprq2{\*\panose 00000000000000000000}FuturaBlack BT Greek;}
+{\f198\fdecor\fcharset162\fprq2{\*\panose 00000000000000000000}FuturaBlack BT Tur;}{\f199\fdecor\fcharset238\fprq2{\*\panose 00000000000000000000}Bremen Bd BT CE;}{\f200\fdecor\fcharset161\fprq2{\*\panose 00000000000000000000}Bremen Bd BT Greek;}
+{\f201\fdecor\fcharset162\fprq2{\*\panose 00000000000000000000}Bremen Bd BT Tur;}{\f202\froman\fcharset238\fprq2{\*\panose 00000000000000000000}AmerType Md BT CE;}{\f203\froman\fcharset161\fprq2{\*\panose 00000000000000000000}AmerType Md BT Greek;}
+{\f204\froman\fcharset162\fprq2{\*\panose 00000000000000000000}AmerType Md BT Tur;}{\f205\froman\fcharset238\fprq2{\*\panose 00000000000000000000}GoudyOlSt BT CE;}{\f206\froman\fcharset161\fprq2{\*\panose 00000000000000000000}GoudyOlSt BT Greek;}
+{\f207\froman\fcharset162\fprq2{\*\panose 00000000000000000000}GoudyOlSt BT Tur;}{\f208\froman\fcharset238\fprq2{\*\panose 00000000000000000000}Souvenir Lt BT CE;}{\f209\froman\fcharset161\fprq2{\*\panose 00000000000000000000}Souvenir Lt BT Greek;}
+{\f210\froman\fcharset162\fprq2{\*\panose 00000000000000000000}Souvenir Lt BT Tur;}{\f211\froman\fcharset238\fprq2{\*\panose 00000000000000000000}Serifa Th BT CE;}{\f212\froman\fcharset161\fprq2{\*\panose 00000000000000000000}Serifa Th BT Greek;}
+{\f213\froman\fcharset162\fprq2{\*\panose 00000000000000000000}Serifa Th BT Tur;}{\f214\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Kabel Ult BT CE;}{\f215\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Kabel Ult BT Greek;}
+{\f216\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Kabel Ult BT Tur;}{\f217\froman\fcharset238\fprq2{\*\panose 00000000000000000000}ZapfEllipt BT CE;}{\f218\froman\fcharset161\fprq2{\*\panose 00000000000000000000}ZapfEllipt BT Greek;}
+{\f219\froman\fcharset162\fprq2{\*\panose 00000000000000000000}ZapfEllipt BT Tur;}{\f220\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}CopprplGoth Bd BT CE;}{\f221\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}CopprplGoth Bd BT Greek;}
+{\f222\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}CopprplGoth Bd BT Tur;}{\f223\fdecor\fcharset238\fprq2{\*\panose 00000000000000000000}BernhardFashion BT CE;}
+{\f224\fdecor\fcharset161\fprq2{\*\panose 00000000000000000000}BernhardFashion BT Greek;}{\f225\fdecor\fcharset162\fprq2{\*\panose 00000000000000000000}BernhardFashion BT Tur;}{\f226\fdecor\fcharset238\fprq2{\*\panose 00000000000000000000}Allegro BT CE;}
+{\f227\fdecor\fcharset161\fprq2{\*\panose 00000000000000000000}Allegro BT Greek;}{\f228\fdecor\fcharset162\fprq2{\*\panose 00000000000000000000}Allegro BT Tur;}{\f229\froman\fcharset238\fprq2{\*\panose 00000000000000000000}Benguiat Bk BT CE;}
+{\f230\froman\fcharset161\fprq2{\*\panose 00000000000000000000}Benguiat Bk BT Greek;}{\f231\froman\fcharset162\fprq2{\*\panose 00000000000000000000}Benguiat Bk BT Tur;}{\f232\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}BankGothic Md BT CE;}
+{\f233\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}BankGothic Md BT Greek;}{\f234\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}BankGothic Md BT Tur;}{\f235\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Kabel Bk BT CE;}
+{\f236\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Kabel Bk BT Greek;}{\f237\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Kabel Bk BT Tur;}{\f238\fscript\fcharset238\fprq2{\*\panose 00000000000000000000}English111 Vivace BT CE;}
+{\f239\fscript\fcharset161\fprq2{\*\panose 00000000000000000000}English111 Vivace BT Greek;}{\f240\fscript\fcharset162\fprq2{\*\panose 00000000000000000000}English111 Vivace BT Tur;}
+{\f241\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Futura Md BT CE;}{\f242\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Futura Md BT Greek;}{\f243\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Futura Md BT Tur;}
+{\f244\fscript\fcharset238\fprq2{\*\panose 00000000000000000000}Staccato222 BT CE;}{\f245\fscript\fcharset161\fprq2{\*\panose 00000000000000000000}Staccato222 BT Greek;}{\f246\fscript\fcharset162\fprq2{\*\panose 00000000000000000000}Staccato222 BT Tur;}
+{\f247\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Swiss911 XCm BT CE;}{\f248\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Swiss911 XCm BT Greek;}{\f249\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Swiss911 XCm BT Tur;}
+{\f250\fswiss\fcharset0\fprq2{\*\panose 020b0506030101010103}Abadi MT Condensed;}{\f251\froman\fcharset2\fprq2{\*\panose 05020102010507070707}Wingdings 2;}{\f252\froman\fcharset2\fprq2{\*\panose 05040102010807070707}Wingdings 3;}
+{\f253\fswiss\fcharset0\fprq2{\*\panose 020b0604030504040204}Verdana;}{\f254\froman\fcharset2\fprq0{\*\panose 00000000000000000000}MT Symbol;}{\f255\froman\fcharset238\fprq2 Times New Roman CE;}{\f256\froman\fcharset204\fprq2 Times New Roman Cyr;}
+{\f258\froman\fcharset161\fprq2 Times New Roman Greek;}{\f259\froman\fcharset162\fprq2 Times New Roman Tur;}{\f260\froman\fcharset186\fprq2 Times New Roman Baltic;}{\f261\fswiss\fcharset238\fprq2 Arial CE;}{\f262\fswiss\fcharset204\fprq2 Arial Cyr;}
+{\f264\fswiss\fcharset161\fprq2 Arial Greek;}{\f265\fswiss\fcharset162\fprq2 Arial Tur;}{\f266\fswiss\fcharset186\fprq2 Arial Baltic;}{\f267\fmodern\fcharset238\fprq1 Courier New CE;}{\f268\fmodern\fcharset204\fprq1 Courier New Cyr;}
+{\f270\fmodern\fcharset161\fprq1 Courier New Greek;}{\f271\fmodern\fcharset162\fprq1 Courier New Tur;}{\f272\fmodern\fcharset186\fprq1 Courier New Baltic;}{\f345\fswiss\fcharset238\fprq2 Tahoma CE;}{\f346\fswiss\fcharset204\fprq2 Tahoma Cyr;}
+{\f348\fswiss\fcharset161\fprq2 Tahoma Greek;}{\f349\fswiss\fcharset162\fprq2 Tahoma Tur;}{\f350\fswiss\fcharset186\fprq2 Tahoma Baltic;}{\f353\froman\fcharset0\fprq2 TIMES NEW ROMAN CYR{\*\falt Times New Roman};}
+{\f363\fswiss\fcharset238\fprq2 Arial Narrow CE;}{\f364\fswiss\fcharset204\fprq2 Arial Narrow Cyr;}{\f366\fswiss\fcharset161\fprq2 Arial Narrow Greek;}{\f367\fswiss\fcharset162\fprq2 Arial Narrow Tur;}{\f368\fswiss\fcharset186\fprq2 Arial Narrow Baltic;}
+{\f375\froman\fcharset238\fprq2 Garamond CE;}{\f376\froman\fcharset204\fprq2 Garamond Cyr;}{\f378\froman\fcharset161\fprq2 Garamond Greek;}{\f379\froman\fcharset162\fprq2 Garamond Tur;}{\f380\froman\fcharset186\fprq2 Garamond Baltic;}
+{\f825\fswiss\fcharset238\fprq2 Arial Black CE;}{\f826\fswiss\fcharset204\fprq2 Arial Black Cyr;}{\f828\fswiss\fcharset161\fprq2 Arial Black Greek;}{\f829\fswiss\fcharset162\fprq2 Arial Black Tur;}{\f830\fswiss\fcharset186\fprq2 Arial Black Baltic;}
+{\f831\froman\fcharset238\fprq2 Bookman Old Style CE;}{\f832\froman\fcharset204\fprq2 Bookman Old Style Cyr;}{\f834\froman\fcharset161\fprq2 Bookman Old Style Greek;}{\f835\froman\fcharset162\fprq2 Bookman Old Style Tur;}
+{\f836\froman\fcharset186\fprq2 Bookman Old Style Baltic;}{\f843\fswiss\fcharset238\fprq2 Impact CE;}{\f844\fswiss\fcharset204\fprq2 Impact Cyr;}{\f846\fswiss\fcharset161\fprq2 Impact Greek;}{\f847\fswiss\fcharset162\fprq2 Impact Tur;}
+{\f848\fswiss\fcharset186\fprq2 Impact Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;
+\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid 
+\snext0 Normal;}{\s1\qj\sb240\sa60\keepn\nowidctlpar\widctlpar\adjustright \b\f1\fs28\lang2057\kerning28\cgrid \sbasedon0 \snext0 heading 1;}{\*\cs10 \additive Default Paragraph Font;}{\s15\qj\sa240\nowidctlpar\widctlpar\adjustright \fs32\lang2057\cgrid 
+\sbasedon0 \snext15 PDC Heading 2;}{\s16\qc\sb240\sa360\keepn\nowidctlpar\widctlpar\adjustright \b\f1\fs56\lang2057\kerning28\cgrid \sbasedon1 \snext16 PDC Heading 1;}{\s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid \sbasedon0 \snext17 
+PDC Heading 3;}{\s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid \sbasedon0 \snext18 Predicate Heading 1;}{\s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid \sbasedon0 \snext19 Predicate Heading 2;}{
+\s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid \sbasedon0 \snext20 Predicate Body;}{\s21\qj\nowidctlpar\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\lang2057\cgrid \sbasedon0 \snext21 header;}{
+\s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid \sbasedon20 \snext22 Example;}{\s23\qj\nowidctlpar\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\lang2057\cgrid \sbasedon0 \snext23 footer;}{\*\cs24 \additive \sbasedon10 
+page number;}}{\*\listtable{\list\listtemplateid-1\listsimple{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat0\levelspace0\levelindent0{\leveltext\'01*;}{\levelnumbers;}}{\listname ;}\listid-2}{\list\listtemplateid-606716748\listsimple{\listlevel
+\levelnfc23\leveljc0\levelfollow0\levelstartat0\levelspace0\levelindent0{\leveltext\'01-;}{\levelnumbers;}\fbias0 \fi-360\li4620\jclisttab\tx4620 }{\listname ;}\listid731198876}{\list\listtemplateid67698703\listsimple{\listlevel\levelnfc0\leveljc0
+\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }{\listname ;}\listid1195773215}}{\*\listoverridetable{\listoverride\listid-2\listoverridecount1{\lfolevel\listoverrideformat{\listlevel
+\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent283{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-283\li1418 }}\ls1}{\listoverride\listid-2\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc23
+\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li420 }}\ls2}{\listoverride\listid1195773215\listoverridecount0\ls3}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls4}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls5}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls6}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls7}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls8}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls9}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls10}{\listoverride\listid1195773215
+\listoverridecount1{\lfolevel\listoverrideformat{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelold\levelspace0\levelindent360{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li360 }}\ls11}{\listoverride\listid731198876
+\listoverridecount0\ls12}}{\*\revtbl {Unknown;}}{\info{\title Grid custom control}{\subject Application programmer's reference guide}{\author Alexander Butovsky}{\keywords Grid}{\operator Popov}{\creatim\yr1997\mo5\dy23\hr15\min34}{\revtim\yr1998\mo11\dy16\hr14\min38}
+{\version163}{\edmins2487}{\nofpages34}{\nofwords7216}{\nofchars-32766}{\*\company INTELLIGENCE-BANK, Ltd}{\nofcharsws0}{\vern71}}\paperw12242\paperh15842\margl1797\margr1797 
+\widowctrl\ftnbj\aendnotes\aftnstart0\hyphhotz0\aftnnar\lytprtmet\hyphcaps0\viewkind1\viewscale100\pgbrdrhead\pgbrdrfoot \fet0\sectd \linex0\headery709\footery945\colsx709\endnhere\titlepg\sectdefaultcl {\header \pard\plain \s21\qj\nowidctlpar\widctlpar
+\tqc\tx4320\tqr\tx8640\adjustright \fs20\lang2057\cgrid {\b\f1\ul Table editor custom control v.1.0\tab \tab Page }{\field{\*\fldinst {\cs24\b\f1\ul  PAGE }}{\fldrslt {\cs24\b\f1\ul\lang1024 2}}}{
+\par }}{\footer \pard\plain \s23\qj\nowidctlpar\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\lang2057\cgrid {\b\f1\ul \tab \tab 
+\par }{\b\f1 \'a91997 Prolog Development Center A/S
+\par }}{\footerf \pard\plain \s23\qj\nowidctlpar\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\lang2057\cgrid {\b\f1\ul \tab \tab 
+\par }{\b\f1 \'a91997 Prolog Development Center A/S
+\par }{
+\par }}{\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}
+{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \s16\qc\sb240\sa360\keepn\nowidctlpar\widctlpar\adjustright \b\f1\fs56\lang2057\kerning28\cgrid {
+Table editor custom control
+\par }\pard\plain \nowidctlpar\widctlpar\box\brdrs\brdrw15\brsp60 \tx567\tx2127\adjustright \fs20\lang2057\cgrid {\tab Copyright:\tab \'a91998 Prolog Development Center A/S
+\par \tab Version:\tab 1.0
+\par \tab Build:\tab 009.981112
+\par \tab Tested with:\tab Visual Prolog v.5.1 build 555a
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {
+\par }\pard\plain \s15\qj\sa240\nowidctlpar\widctlpar\adjustright \fs32\lang2057\cgrid {1. Overview}{\f16\lang1049 
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {Purpose
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab Table editor custom control is a screen object for browsing and edit
+ing information structured as a rectangular table. Table editor is based on a Grid custom control. In addition to the Grid functionality Table editor have many high level functions like internal data storage, sorting, filtering, undo-redo, etc.
+\par 
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {Sorts of cell information and tools to edit cell contents.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab 
+Each Table editor cell may display  integer, real, long or text information. Clicking a mouse button user may open one of the listed bellow controls inside the cell in order to edit it\rquote s contents:
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li1418\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {edit control,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li1418\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {listbutton control,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li1418\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {listedit control,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li1418\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {any custom control,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li1418\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {no control .
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab The application may decide which control to open in certain cell dynamically (during runtime).
+\par 
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {Multiple instances
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab 
+One or more instances of the Table editor custom control may be created inside one or more windows or dialogs at the same time. Each copy may have it\rquote s own properties like:
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li420\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+general properties of the Table editor  (TABLEEDIT_PROPERTIES),
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li420\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {individual co
+lumn properties  (TABLEEDIT_COLUMNPROPERTIES)
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li405\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+style, font, number of columns and rows and it\rquote s own application defined callback function (or they may share one callback function if desirable.
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {Interaction between the Table editor and the application
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab The Table editor custom control have internal storage for data to be displayed.}{\fs22\lang1033 
+\par }{\lang1033 The }{Table editor}{\lang1033  has two modes: 
+\par {\pntext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {\b\lang1033 nobuffering}{\lang1033 
+  - all data are passed to table editor during initialization and stored internally.
+\par {\pntext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {\b\lang1033 buffering}{\lang1033 
+  - table editor has the internal bufer with limited size and asks for next potion of data when necessary using special callback function. Using table editor in this mode is recommended for browsing of big databases which cannot be stored internally.
+
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab Table editor uses Callback function  to notify the application about user actions inside the Table editor. It\rquote 
+s the applications responsibility to provide suitable reactions to the user actions and events handling. If an event or user action is not handled by the application, then the Table editor control provides default handling.
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {
+\par }{\lang1033 Code structure
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab 
+The source code consists of  TABLEED.DOM (domains declaration), TABLEED.PRE (predicates declaration) and TABLEED.PRO (including also TABMAIN.PRO, TABLEED1.PRO, TABLEED2.PRO, TABLEED3.PRO, TABLEED4.PR
+O) (implementation). "TEMPLATE" directory contains TABLEED.DOM, TABLEED.PRE, TABLEED.PRO templates. 
+\par 
+\par }{\b\i\fs24 
+\par Multilanguage support
+\par }{\tab File TABLEED.CON contains 3 sets of string constants for menu:
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-284\li1843\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {in English,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-284\li1843\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {in Danish,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-284\li1843\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {in Russian.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\tab Application programmer must declare one of the constants below }{\ul before including file TABLEED.CON}{  in order to select one of the languages:
+\par 
+\par \tab \tab language_english = 1
+\par \tab    or
+\par \tab \tab language_danish  = 1
+\par \tab    or
+\par \tab \tab language_russian = 1
+\par 
+\par \tab If the support for any other language is desirable, open TABLEED.CON and add one more section with  constants string.
+\par 
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {
+\par Integration of the Table editor tool with the application by templates
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab For integration of the Table editor tool with the application programmer should follow next steps:
+\par {\pntext\pard\plain\fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 1.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls3\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls3\adjustright {
+Copy TABLEED.DOM, TABLEED.PRE, TABLEED.PRO templates to application directory.}{\cf1 
+\par {\pntext\pard\plain\fs20\cf1\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 2.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls4\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls4\adjustright {\cf1 
+Replace all occurrences of "TABLEED_DIR" string in }{TABLEED.DOM, TABLEED.PRE, TABLEED.PRO}{\cf1  templates with actual path to the TABLEED tool files.
+\par {\pntext\pard\plain\fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 3.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls5\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls5\adjustright {Copy GRID custom control}{\b  }{
+templates to application directory.}{\cf1 
+\par {\pntext\pard\plain\fs20\cf1\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 4.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls6\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls6\adjustright {\cf1 
+Replace all occurrences of  "GRID_DIR" string in GRID}{\b\cf1  }{\cf1 templates with actual path to the GRID tool files.
+\par {\pntext\pard\plain\fs20\cf1\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 5.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls7\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls7\adjustright {\cf1 Replace "PROJECT" string in 
+}{TABLEED.PRO}{\cf1  and GRID.PRO templates with actual name of the project.
+\par {\pntext\pard\plain\fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 6.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls8\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls8\adjustright {
+Include GRID.DOM and TABLEED.DOM into the <PROJECT>.INC.
+\par {\pntext\pard\plain\fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 7.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls9\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls9\adjustright {
+Include TABLEED.PRE into the project modules operating with Table editor.
+\par {\pntext\pard\plain\fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 8.\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls10\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls10\adjustright {Declare one of the "language_}{\i 
+xxx}{" constants in the <PROJECT>.INC.
+\par {\pntext\pard\plain\s17 \fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 9.\tab}}\pard\plain \s17\qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlbody\ilvl0\ls11\pnrnot0\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}\ls11\adjustright \b\i\lang2057\cgrid {
+\b0\i0\fs20 Add GRID.PRO and TABLEED.PRO template files to the list of project modules.
+\par }\pard \s17\qj\nowidctlpar\widctlpar\adjustright {\b0\i0\fs20 
+\par }{Example application}{\fs22 
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab Directory VPI\\TOOLEXAM\\TABLEED contains an example program demonstrating how to use the Table editor custom control in the application.
+\par 
+\par }\pard\plain \s15\qj\sa240\nowidctlpar\widctlpar\adjustright \fs32\lang2057\cgrid {\page 2. Using Table editor custom control in application
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {Integration of the Table editor custom control with the program
+\par }\pard\plain \qj\sb120\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab To use the Table editor custom control application programmer should follow next steps:
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {1. Register class for the Table editor custom controls on Task window e_Create event:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5103\adjustright \f2\fs18\lang2057\cgrid {  task_win_eh(Win,e_Create(_),0):-
+\par \tab tb_project_toolbar_Create(Win),
+\par \tab tb_help_line_Create(Win),
+\par \tab msg_Create(100),
+\par }{\cf9 \tab % REGISTER CLASS FOR THE TABLE EDITOR CUSTOM CONTROL
+\par }{\tab class_Create(}{\cf1 "tableed_class"}{,}{\cf1  tableed_class_handler}{),
+\par \tab !.\tab }{\cf9 
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\f1\fs18 
+\par }{    Destroy class on TaskWindow e_Destroy event.
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5103\adjustright \f2\fs18\lang2057\cgrid {  task_win_eh(_Win,e_Destroy(),0):-\tab 
+\par }{\cf9 \tab % DESTROY CLASS FOR THE TABLE EDITOR CUSTOM CONTROL
+\par }{\tab class_Destroy(}{\cf1 "tableed_class"}{),fail.\tab }{\cf9 
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par 2. Supply the class with the event handler. Normally class event handler looks like:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670\adjustright \f2\fs18\lang2057\cgrid {\b Nobuffering mode:
+\par }{\cf1 tableed_class_handler}{(Win,e_Create(_),0):-!,\tab }{\cf9 % CALL tableedit_Init ON
+\par \tab /*Put here predicates assigning*/\tab % E_CREATE EVENT
+\par \tab /* init arguments values       */
+\par \tab /* TableProperties = ...       */
+\par \tab /* ColumnProperties  = ...     */
+\par \tab /* InputData  = ...            */
+\par }{\tab }{\cf1 tableedit_Init}{(Win,TableProperies,ColumnProperties,InputData).
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx4962\adjustright {\cf1 tableed_class_handler}{(Win,EVENT,0):-}{\cf9 \tab % CALL tableedit_HandleEvent}{
+\par \tab }{\cf1 tableedit_HandleEvent}{(Win,EVENT).}{\cf9 \tab % ON ANY OTHER EVENT
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670\adjustright \f2\fs18\lang2057\cgrid {
+\par }{\b Buffering mode:
+\par }{PREDICATES
+\par \tab ....
+\par \tab buffAnswerFunc : TABLEEDIT_ANSWERDATA_FUNC
+\par \tab ....
+\par CLAUSES
+\par }{\cf1 tableed_class_handler}{(Win,e_Create(_),0):-!,\tab }{\cf9 % CALL tableedit_Init ON
+\par \tab /*Put here predicates assigning*/\tab % E_CREATE EVENT
+\par \tab /* init arguments values       */
+\par \tab /* TableProperties = \tab [bufferingmode(buffering(buffAnswerFunc,BuffSize,Maxows)),...]*/
+\par \tab /* ColumnProperties  = ...     */
+\par }{\tab }{\cf1 tableedit_Init}{(Win,TableProperies,ColumnProperties,[]).
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx4962\adjustright {\cf1 tableed_class_handler}{(Win,EVENT,0):-}{\cf9 \tab % CALL tableedit_HandleEvent}{
+\par \tab }{\cf1 tableedit_HandleEvent}{(Win,EVENT).}{\cf9 \tab % ON ANY OTHER EVENT
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx993\tx5670\adjustright \f2\fs18\lang2057\cgrid {\cf9 
+\par /* Data Request for table editor in buffering mode*/
+\par }{buffAnswerFunc(_Win,FromRow,ToRow,Data):-
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670\adjustright {\tab }{\cf9 /* Put here predicate for get data from external database*/
+\par }{\tab getDataFromDatabase(FromRow,ToRow,Data),
+\par \tab !.
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx4962\adjustright {
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Note that data argument is empty for }{\i tableedit_Init}{ predicate in buffering mode because special callback function is used here to retrieve data from database.
+\par 
+\par 3. In order to create the Table editor custom control inside a window or inside a dialog, application programmer has 2 opportunities:
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+Create the Table editor custom control using }{\i win_CreateDynControl}{ VPI global predicate. Code fragment below creates top level window and Table editor custom control inside.
+\par }\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl12\ls0\pnrnot0\pndec }\ilvl12\adjustright {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {PREDICATES
+\par   test_window_eh : EHANDLER
+\par \tab . . . . . . . . . . .}{\cf9  
+\par }{CLAUSES
+\par \tab . . . . . . . . . . .}{\cf9  
+\par \tab %--- Top level window create ---
+\par }{\tab Win = win_Create(w_TopLevel,RCT,"Table editor test",no_menu,ParentWin,
+\par \tab \tab \tab win_Flags,}{\cf1 test_window_eh}{,0),
+\par }{\cf9 
+\par 
+\par \tab %--- Table editor custom control create on e_Create EVENT---
+\par }{\cf1 \tab test_window_eh(Win,e_Create(_),0):-  
+\par \tab \tab \tab RCT = win_GetClientRect(Win),
+\par \tab \tab \tab Wdef = wdef(wc_Custom,RCT,"",u_Pixels),
+\par \tab \tab \tab WinDefList = [customctl(Wdef,tableed_class,tableed_id,[])],
+\par \tab \tab \tab win_CreateDynControl(WinDefList,Win),!.
+\par }{\tab . . . . . . . . . . .
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl12\ls0\pnrnot0\pndec }\ilvl12\adjustright \fs20\lang2057\cgrid {
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+Load a dialog containing Table editor custom control from the project resources using usual call to }{\i win_CreateResDialog}{. The dialog specified by }{\i idd_TableEditor_test_dialog}{
+ resource identifier in the following example may contain one or more Grid custom controls:
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\f2\fs18 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {\tab win_CreateResDialog(Parent,wd_Modal,idd_TableEditor_test_dialog,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx1418\adjustright {\tab \tab dlg_TableEditor_test_eh,0),!.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {General (table) properties of the Table editor custom control.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par \tab All table properties are optional which means that if certain property is not listed then Table editor uses default value.
+\par \tab Application programmer can use the following table properties:
+\par 
+\par }{\b raised}{(BOOLEAN) - defines table editor grid  exterior (b_true - raised, b_false - plain);
+\par \tab Default: b_true
+\par }{\b defcellcolor}{(COLOR) - defines a default cells color (If most of cells have identical color, it is useful \tab to set it to }{\b defcellcolor}{(...) property for faster redrawing); 
+\par \tab Default: color_LtGray
+\par }{\b backcolor}{(COLOR) - defines a default grid background color for the area not occupied with the cells; 
+\par \tab Default: color_Gray
+\par }{\b emptycolor}{(COLOR) - defines a default cell color for }{\b void }{values;
+\par \tab Default: color_LtGray
+\par }{\b titlebackcolor}{(COLOR) - defines a background color for column title;
+\par \tab Default: color_LtGray
+\par }{\b titleforecolor}{(COLOR) - defines a foreground color for column title;
+\par \tab Default: color_Black
+\par }\pard \qj\nowidctlpar\widctlpar\tx1134\adjustright {\b rowselector}{(GRID_ROW_SELECTOR, \tab \tab - show or not row number in row selector field
+\par {\pntext\pard\plain\s21 \fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 -\tab}}\pard\plain \s21\qj\fi-367\li4620\nowidctlpar\widctlpar\tx4253\jclisttab\tx4620{\*\pn \pnlvlblt\ilvl0\ls12\pnrnot0\pnindent4620\pnhang{\pntxtb -}}\ls12\adjustright 
+\fs20\lang2057\cgrid {see GRID_ROW_SELECTOR domain in Grid
+\par {\pntext\pard\plain\s21 \fs20\lang2057\cgrid \hich\af0\dbch\af0\loch\f0 -\tab}}\pard \s21\qj\fi-360\li4620\nowidctlpar\widctlpar\tx4253\jclisttab\tx4620{\*\pn \pnlvlblt\ilvl0\ls12\pnrnot0\pnindent4620\pnhang{\pntxtb -}}\ls12\adjustright {documentation
+
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1134\adjustright \fs20\lang2057\cgrid {\tab INTEGER Width,\tab \tab \tab - width of row selector field
+\par \tab BOOLEAN ActiveRowPointer);\tab - show or not active row pointer
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\tab Default: grid_number,50,b_false
+\par }{\b nonscrollcol}{(INTEGER) - number of non scrollable columns (beginning from the leftmost column);
+\par \tab Default: 0
+\par }{\b sortedby}{(INTEGER }{\i Column}{) - default sorting by }{\i Column;
+\par }{\tab Default: 1
+\par }{\b allmarker}{(BOOLEAN) - allmarker is allowed/forbidden;
+\par \tab Default: b_false
+\par }{\b areamarker}{(TABLEEDIT_MARKERMODE Mode) - area marker mode;
+\par \tab Mode: }{\b none}{ - area marker is forbidden
+\par }\pard \qj\nowidctlpar\widctlpar\tx1276\adjustright {\tab }{\b singular}{ - single cell marker only
+\par \tab }{\b singlearea}{ - single area marker only
+\par \tab }{\b multi}{ - multiple area marker is allowed
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\tab Default: singular
+\par }{\b colmarker}{(TABLEEDIT_MARKERMODE) - column marker mode;
+\par \tab  Default: none
+\par }{\b rowmarker}{(TABLEEDIT_MARKERMODE) - row marker mode;
+\par \tab Default: singular
+\par }{\b insert_rows}{(BOOLEAN)  - row inserting by means of  "Ins" hotkey and corresponding menu item is enabled/disabled;
+\par \tab Default: b_true
+\par }{\b delete_rows}{(BOOLEAN) - delet rows is allowed/forbidden by "Del" key or from menu;
+\par \tab Default: b_true
+\par }{\b filter}{(BOOLEAN }{\i Mode}{) - filtration by column is allowed/forbidden (set }{\i Mode}{ as defaul for 
+\par each  }{\b filter}{(..)  column  property),(this property is actual for initialization, when most part of column have the  same }{\b filter}{(..) column propertis);
+\par \tab Default: b_true (for each column default is }{\b filter}{(b_true))
+\par 
+\par }{\b menu}{(MENU_ITEM_LIST) - custom right mouse menu items;
+\par \tab Default: []
+\par }{\b readonly}{(BOOLEAN }{\i Mode}{) - allow/forbid to change value by editing,cut,paste operation (set \tab }{\i Mode}{ as defaul for each }{\b readonly}{(..) column property),(this property is actual for initialization, \tab 
+when most part of column have the same }{\b readonly}{(..) column propertis);
+\par \tab Default: b_false
+\par }{\b undo_redo}{(BOOLEAN) - undo,redo operations ara allowed/forbidden;
+\par \tab Default: b_true
+\par }{\b paste}{(BOOLEAN) - paste operations are allowed/forbidden;
+\par \tab Default: b_true
+\par }{\b cut}{(BOOLEAN) - cut operations are allowed/forbidden;
+\par \tab Default: b_true
+\par }{\b headers}{(INTEGER }{\i NRows}{) - first }{\i NRows}{ are headers (header row does not participate \tab in sorting and \tab filtration);
+\par \tab Default: 0 rows
+\par }{\b footers}{(INTEGER }{\i NRows}{) - last }{\i NRows}{ are fuuters (fuuter row does not participate in sorting and \tab filtration);
+\par \tab Default: 0 rows
+\par }{\b callback}{(TABLEEDIT_CALLBACK }{\i Callback}{) - external }{\i Callback}{;
+\par \tab Default: internal dummy callback
+\par }{\b\cf1\lang1033 compare}{\cf1\lang1033 (TABLEEDIT_COMPARE) - external (user defined) compare function;}{
+\par \tab Default: internal }{\cf1\lang1033 compare function;}{
+\par }{\b find(}{BOOLEAN}{\b ) -}{ find are allowed/forbidden;}{\b 
+\par }{\tab Default: allowed - b_true}{\cf1\lang1033 ;}{
+\par }{\b bufferingmode}{(TABLEEDIT_BUFFERING)
+\par \tab Default: nobuffering}{\cf1\lang1033 ;}{
+\par 
+\par \tab The TABLEEDIT_BUFFERING domain is shown below:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_BUFFERING =
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2410\adjustright {\tab nobuffering;
+\par \tab buffering(TABLEEDIT_ANSWERDATA_FUNC,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx3544\adjustright {\tab INTEGER RowBuffSize,
+\par \tab INTEGER MaxRows)\tab 
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par \tab The TABLEEDIT_ANSWERDATA_FUNC domain is shown below:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_ANSWERDATA_FUNC = 
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx3119\adjustright {\tab determ(WINDOW TableEditWindow,
+\par \tab INTEGER FromRow,
+\par \tab INTEGER ToRow,
+\par \tab TABLEEDIT_DATA Data) - (i,i,i,o)
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {
+\par 
+\par Individual column properties of the Table editor custom control.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par \tab All properties are optional which means that if certain property is not listed then column uses default value.
+\par \tab Application programmer can use the following column properties:
+\par 
+\par }{\b title}{(STRING) - Column title;
+\par \tab Default: ""
+\par }{\b width}{(INTEGER) - Column width;
+\par \tab Default: 100 pixels
+\par }{\b backcolor}{(COLOR) - column cells background color;
+\par \tab Default: color_LtGray
+\par }{\b forecolor}{(COLOR) - column cells foreground color;
+\par \tab Default: color_Black
+\par }{\b alignment}{(GRID_HORALIGNMENT) - column cells alignment;
+\par \tab Default: grid_right_align
+\par }\pard\plain \s21\qj\nowidctlpar\widctlpar\tx709\adjustright \fs20\lang2057\cgrid {\tab See GRID_HORALIGNMENT domain in Grid documentation
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\b maxlength}{(UNSIGNED);
+\par \tab Default: 0x7FFF
+\par }{\b readonly}{(BOOLEAN) - allow/forbid to change value by editing,cut,paste operation;
+\par \tab Default: b_false
+\par }{\b filter}{(BOOLEAN) - filtration by column is allowed/forbidden
+\par \tab Default: b_true
+\par }{\b 
+\par filterlist}{(TABLEEDIT_ORFILTERLIST) - column filter list;
+\par \tab Default: [ ]
+\par \tab 
+\par \tab The TABLEEDIT_ORFILTERLIST domain is shown below:
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {
+\par TABLEEDIT_ORFILTERLIST = TABLEEDIT_ORFILTER*
+\par TABLEEDIT_ORFILTER = 
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\tx4820\adjustright {\tab }{\cf10 % INTEGER FILTERS\tab % Row is }{\ul\cf10 VISIBLE}{\cf10  if:
+\par }{\tab if_min(INTEGER Limit);\tab }{\cf2 % value >= Limit}{
+\par \tab if_max(INTEGER Limit);\tab }{\cf2 % value <= Limit
+\par }{\tab \tab }{\cf2 % value from Lim1 to Lim2
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\adjustright {\tab if_range(INTEGER Lim1,INTEGER Lim2);
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx4820\adjustright {\tab }{\cf2 % value is not equal to Fval
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\adjustright {\tab if_not(INTEGER Fval);
+\par \tab }{\cf10 % LONG FILTERS
+\par }{\tab lf_min(LONG);
+\par \tab lf_max(LONG);
+\par \tab lf_range(LONG,LONG);
+\par \tab lf_not(LONG);
+\par \tab }{\cf10 % REAL FILTERS}{
+\par \tab rf_min(REAL);
+\par \tab rf_max(REAL);
+\par \tab rf_range(REAL,REAL);
+\par \tab rf_not(REAL);
+\par \tab }{\cf10 % STRING FILTERS}{
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\tx4820\adjustright {\tab s_f(STRING Fval);\tab }{\cf2 % value is equal to Fval}{
+\par \tab s_f_not(STRING Fval);\tab }{\cf2 % value is not equal to Fval}{
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\adjustright {\tab }{\cf10 % VOID FILTERS}{
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\tx4820\adjustright {\tab fvoid;\tab }{\cf2 % value is void
+\par }{\tab fvoid_not\tab }{\cf2 % value is not void
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par 
+\par }{\b resizable}{(BOOLEAN) - resize of column is allowed/forbidden;
+\par \tab Default: b_true
+\par }{\b sortmode}{(TABLEEDIT_SORTMODE) - column sort mode;
+\par \tab Default: ascending([])
+\par 
+\par \tab The TABLEEDIT_SORTMODE domain is shown below:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_SORTMODE = 
+\par }{\cf2 % ILIST defines dependence of sorting on other columns}{\fs24\cf2 
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2268\tx5245\adjustright {\tab ascending(ILIST Columns);\tab }{\cf2 % ascending sort mode
+\par }{\tab descending(ILIST Columns);\tab }{\cf2 % descending sort mode
+\par }{\tab none\tab }{\cf2 % sorting is impossible}{
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par 
+\par }{\b defaultvalue}{(TABLEEDIT_CELLDATA) - "insert row" operations are uses row with default cells data;
+\par \tab Default: void
+\par }{\b validationrule}{(TABLEEDIT_RULELIST) - column validation ruls;
+\par \tab Default: [ ]
+\par \tab The TABLEEDIT_RULELIST domain is shown below:
+\par }{\b 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_RULELIST = TABLEEDIT_RULE*
+\par TABLEEDIT_RULE = 
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\adjustright {\tab }{\cf10 % Validation ruls for string data:
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\tx5103\adjustright {\tab s_length(INTEGER Length);\tab }{\cf2 % Number of chars
+\par }{\tab s_min(INTEGER Min);\tab }{\cf2 % Number of chars: From .. 
+\par }{\tab s_max(INTEGER Max);\tab }{\cf2 % Number of chars: .. To
+\par }{\tab s_upper;\tab }{\cf2 % Upper case convertion
+\par }{\tab s_lower;\tab }{\cf2 % Lower case convertion
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\adjustright {\tab }{\cf10 % Validation ruls for integer data:
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\tx5103\adjustright { \tab i_min(INTEGER Min);\tab }{\cf2 % Value from .. 
+\par }{\tab i_max(INTEGER Max);\tab }{\cf2 % Value to ..
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\adjustright {\cf10 \tab % Validation ruls for real data:
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\tx5103\adjustright { \tab r_min(REAL Min);\tab }{\cf2 % Value from .. 
+\par }{\tab r_max(REAL Max);\tab }{\cf2 % Value to ..
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\adjustright {\cf10 \tab % Validation ruls for long data:
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\tx5103\adjustright { \tab l_min(LONG Min);\tab }{\cf2 % Value from .. 
+\par }{\tab l_max(LONG Max)\tab }{\cf2 % Value to ..
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\b 
+\par mandatory}{(BOOLEAN) - Mandatory rule: allow/forbid void values. The handling is made as well \tab as validation rule.
+\par \tab Default: b_false
+\par }{\b 
+\par validationtext}{(STRING }{\i ValidationText}{) - Text for validation rule message.
+\par \tab Default: ""
+\par 
+\par Handling of }{\b validationtext(}{\i ValidationTex}{\b )}{, }{\b validationrule(}{\i RuleList}{\b )}{, and }{\b mandatory(...)}{ properties:
+\par \tab For  }{\b integer, real, long}{ column types:
+\par \tab 1) If }{\i ValidationText}{ is not empty string ("") and  the value does not satisfy to a validation rule (Min, Max) or mandatory rule or the value is not consistent with field type, then dialog with }{\i ValidationText}{
+ appears,  the field remains active with the illegal value entered by user. }{\i ValidationText}{ may contain a special symbol \ldblquote %\rdblquote . When tool displays prompt dialog it replaces this special symbol with the value entered by user.
+\par \tab 2) If }{\i ValidationText }{ is empty string and the value does not satisfy to a validation rule or mandatory rule or the value is not consistent with field type, then value remains not changed. The message dialog not appears.
+\par \tab For  }{\b string}{ column types:
+\par \tab 1) If }{\i ValidationText}{ is not empty string ("") and  the value does not satisfy to a validation rule (Min, Max, Length) or mandatory rule or the value is not consistent with field type, then dialog with }{\i ValidationText}{ appears,  
+the field remains active with the illegal value entered by user. }{\i ValidationText}{ may contain a special symbol \ldblquote %\rdblquote . When tool displays prompt dialog it replaces this special symbol with the value entered by user.
+\par \tab 2) If }{\i ValidationText }{ is empty string and the value does not satisfy to a validation rule
+\par (Min, Max,Length,Upper,Lower), then  message dialog not appears and value is corrected according to a validation rule:
+\par }\pard \qj\nowidctlpar\widctlpar\tx2127\adjustright {[s_min(Min)]:\tab the string is supplemented by blanks up to specified number of chars;
+\par [s_max(Max)]:\tab the string is limited by specified number of chars;
+\par [s_length(Value)]:\tab is processed as well as  [s_min(Value),s_max(Value)];
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\tab 3) Independent of }{\i ValidationText}{:
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx426\tx2127\adjustright \f2\fs18\lang2057\cgrid {\f0\fs20 [s_upper]:}{\f0\fs20\cf1 \tab upper case convertion;
+\par }{\f0\fs20 [s_lower]:}{\f0\fs20\cf1 \tab lower case convertion.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {The message dialog not appears.
+\par }{\ul Mandatory rule is ignored if }{\i\ul ValidationText = "" for  }{\b\ul string}{\ul  column types.}{\f13\fs24\ul 
+\par }{\b 
+\par column_type}{(TABLEEDIT_TYPE) - column type.
+\par \tab The TABLEEDIT_TYPE domain is shown below:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_TYPE = 
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\tx3402\adjustright {\tab te_integer;\tab }{\cf2 % INTEGER column type}{
+\par \tab te_real;\tab }{\cf2 % REAL column type
+\par }{\tab te_long;\tab }{\cf2 % LONG column type
+\par }{\tab te_string\tab }{\cf2 % STRING column type
+\par }{\tab te_picture\tab }{\cf2 % Picture column type}{
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1843\adjustright {\tab \tab 
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab }{\ul If data type in column differs from a string type, it is necessary to specify a type of a column. }{
+\par \tab Default: te_string
+\par }{\b 
+\par control}{(TABLEEDIT_CONTROL_TYPE) - control type for  grid_edit_cell(...) marker.
+\par \tab The TABLEEDIT_CONTROL_TYPE domain is shown below:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_CONTROL_TYPE = 
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2694\tx5103\adjustright {\tab edit;\tab }{\cf2 % edit control
+\par }{\tab listbutton(SLIST);\tab }{\cf2 % listbutton control
+\par }{\tab listedit(SLIST);\tab }{\cf2 % listedit control
+\par }{\tab }{\cf2 % custom control}{
+\par \tab custom(STRING ClassName,CTL_FLAGS Ctl_Flags,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2977\tx5103\adjustright {\tab GRID_PUT_CUSTOM_DATA, GRID_GET_CUSTOM_DATA)
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab Default: edit control.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\adjustright \f2\fs18\lang2057\cgrid {
+\par \tab GRID_GET_CUSTOM_DATA = determ (WINDOW CustWin,STRING OutStr)-(i,o)
+\par \tab GRID_PUT_CUSTOM_DATA = determ (WINDOW CustWin,STRING OutStr)-(i,i)
+\par }\pard\plain \s21\li709\nowidctlpar\widctlpar\tx709\adjustright \fs20\lang2057\cgrid {
+\par \tab See GRID_PUT_CUSTOM_DATA, GRID_GET_CUSTOM_DATA domains in Grid documentation.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {
+\par 
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar\adjustright \b\i\lang2057\cgrid {Handling Table editor custom control callback function
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\tab Callback function notifies an application about use
+r actions in the Table editor control. Application have an opportunity to allow the action (fail) or forbid it. Examples below show some common situations:
+\par 
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+Forbid the setting of the real value =2.2 into row 2 column 1:
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {
+\par PREDICATES
+\par   tab_Callback : TABLEEDIT_CALLBACK 
+\par \tab ...
+\par CLAUSES
+\par \tab ...
+\par   tab_Callback(_TableEditorWin,Event):- 
+\par \tab Event = modified(2,1,_,r(2.2)),!.
+\par 
+\par 
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard\plain \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright \fs20\lang2057\cgrid {
+Forbid the setting of the row marker into first row (the marker not to appear):
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab ...
+\par   tab_Callback(_TableEditorWin,Event):- 
+\par \tab Event = action(row_marker_beg(1)),!.
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1134{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard\plain \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright \fs20\lang2057\cgrid {
+Forbid the setting of the row marker into first row (the marker will be seted and cancelled):
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab ...
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx1134{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {  tab_Callback(_TableEditorWin,Event):- 
+\par \tab Event = marker(M,b_true),
+\par \tab M = grid_row_marker([gl(1,1)]),!.
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {
+\par Handling Table editor custom control callback function in }{\fs28 buffering}{ mode
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab Examples below show some common situations:
+\par 
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+Handle the setting of the value  to external database:
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 
+\par /*
+\par \tab User is about to Change cell data by editing or "cut","paste" operation or application Change cell data by }{\i\fs20\cf9 tableedit_SetData/6, tableedit_SetRowData/4, tableedit_SetClipBoardData/6, tableedit_SetCellData/4
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event = modified(Row,Column,_OldValue,NewValue),!,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cf9 \tab /* Put here predicate for set data to external database*/
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab setDataToDatabase(Row,Column,NewValue),
+\par \tab fail.
+\par 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*
+\par \tab The user inseted row by "Insert row" operation.}{\i\fs20\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(TableEditorWin,Event):-
+\par \tab Event = insert_row(Row,InsData),!,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cf9 \tab /* Put here predicate for insert row to external database*/
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab insertRowToDatabase(Row,InsData),
+\par \tab }{\cf9 /* Get old MaxRow from table editor*/
+\par }{\tab MaxRows = tableedit_MaxRows(TableEditorWin),
+\par \tab NewMaxRows = MaxRows + 1,
+\par \tab }{\cf9 /* Set New MaxRow to table editor*/
+\par }{\tab tableedit_Buff_SetMaxRows(TableEditorWin,NewMaxRows),
+\par \tab fail.
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*
+\par \tab The user deleted row by "Delete row" operation.}{\i\fs20\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event = delete_row(Row,_DelData),!,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cf9 \tab /* Put here predicate for delete row to external database*/
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab deleteRowFromDatabase(Row),
+\par \tab }{\cf9 /* Get old MaxRow from table editor*/
+\par }{\tab MaxRows = tableedit_MaxRows(Win),
+\par \tab NewMaxRows = MaxRows - 1,
+\par \tab }{\cf9 /* Set New MaxRow to table editor*/
+\par }{\tab tableedit_Buff_SetMaxRows(Win,NewMaxRows),
+\par \tab fail.
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*
+\par }{\cf9\lang1033 \tab For example}{\fs24\cf9\lang1033 , }{\cf9 forbid choice of the "cut" operation from column 2.}{\i\fs20\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event =  cut_beg(_FromRow,_ToRow,FromColumn,ToColumn),
+\par \tab Column = 2,
+\par \tab Column >= FromColumn, Column <= ToColumn,
+\par \tab !.
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*
+\par \tab User is coped, pasted or cuted data by "copy","pste","cut" operations.
+\par }{\cf9\lang1033 For example}{\fs24\cf9\lang1033 , }{\cf9 forbid the "copy","paste","cut" and notify, if row range is more than 300.}{\i\fs20\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event =  copy(FromRow,ToRow,_FromColumn,_ToColumn),
+\par \tab RowLimit = 300,
+\par \tab ToRow - FromRow >= RowLimit,
+\par \tab dlg_Note("Area too large for copying"),
+\par \tab !.
+\par 
+\par tab_Callback(_TableEditorWin,Event):-
+\par \tab Event =  paste(FromRow,ToRow,_FromColumn,_ToColumn),
+\par \tab RowLimit = 300,
+\par \tab ToRow - FromRow >= RowLimit,
+\par \tab dlg_Note("Area too large for pasting"),
+\par \tab !.
+\par 
+\par tab_Callback(_TableEditorWin,Event):-
+\par \tab Event =  cut(FromRow,ToRow,_FromColumn,_ToColumn),
+\par \tab RowLimit = 300,
+\par \tab ToRow - FromRow >= RowLimit,
+\par \tab dlg_Note("Area too large for cuting"),
+\par \tab !.
+\par }{\cf9 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*\tab The user set filter by }{\cf9\lang1033 
+"Filter by selection","Filter excluding selection" or "Show all rows"}{\cf9  operation.}{\i\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event = }{\cf1\lang1033 filter(Filterlist)}{,!,
+\par }{\cf9 \tab /* Put here predicate for handle filter for external database*/
+\par }{\tab handleFiltersForDatabase(}{\cf1\lang1033 Filterlist,NewMaxRows}{),
+\par \tab }{\cf9 /*Set New MaxRow to table editor*/
+\par }{\tab tableedit_Buff_SetMaxRows(Win,NewMaxRows),
+\par \tab }{\cf9 /* Reset Table editor data*/
+\par }{\tab tableedit_SetAllData(Win,[]),
+\par \tab fail.
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*
+\par \tab The user sorted data by }{\cf9\lang1033 "Sort ascending","Sort descending"}{\cf9  operation.}{\i\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event = }{\cf1\lang1033 sort(Column,Sortmode)}{,!,
+\par }{\cf9 \tab /* Put here predicate for handle sorting for external database*/
+\par }{\tab handleSortForDatabase(}{\cf1\lang1033 Column,Sortmode}{),
+\par \tab }{\cf9 /* Reset Table editor data*/
+\par }{\tab tableedit_SetAllData(Win,[]),
+\par \tab fail.
+\par }{\cf9 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\cf9 /*
+\par \tab The user change PictureNameId string, set picture for
+\par }{\i\cf9 \tab }{\cf9 PictureNameId.}{\i\cf9 
+\par */}{\cf9 
+\par }{tab_Callback(_TableEditorWin,Event):-
+\par \tab Event = modified(Row,Column,_OldValue,NewValue), 
+\par }{\cf9 \tab % For example, column 4 is te_picture type
+\par }{\tab Column = 4,
+\par \tab NewValue = p(_,_,PictureNameId),
+\par }{\cf9 \tab /* Put here predicate for get Picture by PictureNameId string*/
+\par }{\tab get_PictureByNameId(PictureNameId,Pic,Stretch),
+\par 
+\par \tab NewValue1 = p(Pic,Stretch,PictureNameId),
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cf9 \tab /* Put here predicate for set data to external database*/
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab setDataToDatabase(Row,Column,NewValue1),!,
+\par \tab fail.
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {
+\par Callback messages.
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }{\b marker}{(GRID_MARKER,BOOLEAN MarkUnMark) - informs an application that user is about to Set new marker and UnSet old marker.
+\par See GRID_MARKER domain in Grid documentation or tableedit_GetMarker(\'85) global predicate below.
+\par }{\b modified}{(INTEGER Row,INTEGER Column,
+\par \tab TABLEEDIT_CELLDATA OldValue, TABLEEDIT_CELLDATA NewValue) - informs an application that user is about to Change cell data by
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+NOBUFFERING MODE: editing or "cut", "paste", "undo", "redo" operation;
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {BUFFERING MODE: editin
+g or "cut", "paste" operation or tableedit_SetData/6, tableedit_SetRowData/4, tableedit_SetClipBoardData/6, tableedit_SetCellData/4 global predicates;
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\b 
+\par copy_beg}{(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn) - allowed/forbidden choice of "copy" operation.
+\par }{\b 
+\par find}{(STRING FindString, TABLEEDIT_DIRECTION FindDirection, INTEGER Column, \tab TABLEEDIT_MATCH Match, BOOLEAN CaseSensitive,BOOLEAN FindNext) - user choice of find operation.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+NOBUFFERING MODE: notice and handling.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {BUFFERING MODE: only notice.
+
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\b 
+\par copy}{(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn) - informs an application that user is about to coped data to clipboard by "copy" operation.
+\par }{\b 
+\par paste_beg}{(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn) - allow / forbid choice of "paste" operation.
+\par 
+\par }{\b paste}{(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn) - informs an application that user is about to pasted data from clipboard by "paste" operation.
+\par }{\b 
+\par cut_beg}{(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn) - allow / forbid choice of "cut" operation.
+\par }{\b 
+\par cut}{(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn) - informs an application that user is about to cuted data to clipboard by "cut" operation.
+\par 
+\par }{\b sort_beg}{(INTEGER }{\i Column}{) - allow / forbid choice of  sorting operations - "Sort ascending" and "Sort descending".
+\par 
+\par }{\b sort}{(INTEGER }{\i Column}{,TABLEEDIT_SORTMODE }{\i SortMode}{) - The user has made sorting by }{\i Column}{ according to }{\i SortMode}{.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {NOBUFFERING MODE: not
+ice and handling.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {BUFFERING MODE: only notice.
+
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }{\b filter_beg}{(TABLEEDIT_FILTERS FilterList) - allow / forbid choice of "Filter by selection", "Filter excluding selection" or "Show all rows" operations.
+\par 
+\par }{\b 
+\par filter}{(TABLEEDIT_FILTERS FiltertList) - The user has made a filtration according to FiltertList.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+NOBUFFERING MODE: notice and handling.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {BUFFERING MODE: only notice.
+
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par \tab The TABLEEDIT_FILTERS domain is shown below:
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {TABLEEDIT_FILTERS = TABLEEDIT_COLUMNFILTER*
+\par TABLEEDIT_COLUMNFILTER = columnfilter(INTEGER Column,TABLEEDIT_ORFILTERLIST) 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par (TABLEEDIT_ORFILTERLIST domain is described above in chapter }{\i "Individual column properties of the Table editor custom control"}{)
+\par 
+\par }{\b insert_row_beg}{(INTEGER Row,TABLEEDIT_COLUMNDATA RowData) - allow / forbid choice of "insert row" operation.
+\par }{\b 
+\par insert_row}{(INTEGER Row,TABLEEDIT_COLUMNDATA InsRow) - The user inset row by:
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+NOBUFFERING MODE: "Insert row", "Undo" or  "Redo" operation. Notice and handling.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+BUFFERING MODE: "Insert row" operation. Only notice.
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }{\b delete_row_beg}{(GRID_LINELIST ListOfRowForDeleting) - allow / forbid choice of "delete row" operation.
+\par See GRID_LINELIST domain in Grid documentation.
+\par 
+\par }{\b delete_row}{(INTEGER Row,TABLEEDIT_COLUMNDATA DelRow) - The user delete row by "Delete row", "Undo" or  "Redo" operation.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+NOBUFFERING MODE: "Delete row", "Undo" or  "Redo" operation. Notice and handling.
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-283\li283\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls1\pnrnot0\pnf3\pnstart1\pnindent283\pnhang{\pntxtb \'b7}}\ls1\adjustright {
+BUFFERING MODE: "Delete row" operation. Only notice.
+\par }\pard \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }{\b menu_beg}{(INTEGER Row,INTEGER Column)-}{\cgrid0  }{\cgrid0 forbidding context menu in Row and Column}{\cgrid0 .}{\cgrid0 
+\par }{\b 
+\par Menu}{(MENU_TAG Id, GRID_MARKER CurrentMarker) - The user has chosen menu item (one of given in }{\i menu(...)}{ table property).
+\par See GRID_MARKER domain in Grid documentation or tableedit_GetMarker(\'85) global predicate below.
+\par 
+\par }{\b action}{(TABACTION) - advanced messages.
+\par 
+\par \tab The TABACTION domain is shown below:
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {
+\par TABACTION =
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Beginning of a row marking  (the marker is not yet present)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab row_marker_beg(INTEGER Row);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Beginning of a column marking  (the marker is not yet present)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab col_marker_beg(INTEGER Column);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Beginning of a area marking  (the marker is not yet present)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab area_marker_beg(INTEGER Row,INTEGER Column);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Beginning of a all marking  (the marker is not yet present)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab all_marker_beg;
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Beginning of a edit marking  (the marker is not yet present)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab edit_cell_beg(INTEGER Row,INTEGER Column);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Beginning of column resizeing  (the resize marker is not yet present)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab resize_column_beg(INTEGER Column);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % Column resizeing 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx1276{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab resize_column(INTEGER Column,INTEGER Width);
+\par \tab hscroll_create;
+\par \tab vscroll_create;
+\par \tab hscroll_destroy;
+\par \tab vscroll_destroy
+\par }\pard\plain \s15\qj\sa240\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs32\lang2057\cgrid {
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {Handling Table editor custom control compare function
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par \tab Application have an opportunity to}{\lang1033  use internal priorities of sorting or user defined (external) compare function. If }{\b\lang1033 compare(ExtCompareFunction)}{\lang1033 
+ property is not defined then Table editor uses default internal function. If external function is defined but fails on certain call then Table editor also uses default internal function. }{
+Example below show how application programmer may use external compare function for correct sorting of the rows containing dates in one of the columns (for ex. in column 3). Predicate }{\i compareFunc}{
+ fails for all other columns except column 3 - table editor uses default internal comparison for these columns.
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {
+\par PREDICATES
+\par }{\lang1033   compareFunc : TABLEEDIT_COMPARE
+\par }{\cf1\lang1033   convertdata(}{\lang1033 TABLEEDIT_CELLDATA}{\cf1\lang1033 ,STRING)
+\par }{\tab ...
+\par CLAUSES
+\par \tab ...
+\par  }{\cf1\lang1033 compareFunc(_Win,Column,First,Second,equal):-
+\par \tab Column = 3,
+\par \tab convertdata(First,Str1),
+\par \tab convertdata(Second,Str2),
+\par \tab Str1 = Str2,!.
+\par   compareFunc(_Win,Column,First,Second,less):-
+\par \tab Column = 3,
+\par \tab convertdata(First,Str1),
+\par \tab convertdata(Second,Str2),
+\par \tab dt_minstr_to_offset(Str1,"%DD-%MD-%YS",Offset1),
+\par \tab dt_minstr_to_offset(Str2,"%DD-%MD-%YS",Offset2),
+\par \tab Offset1 < Offset2,!.
+\par   compareFunc(_,Column,_,_,more):-
+\par \tab Column = 3,!.
+\par }\pard\plain \s17\qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\i\lang2057\cgrid {
+\par  Compare function:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\f2\fs16\cf1\lang1033 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx5954{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\lang1033 TABLEEDIT_COMPARE = determ(WINDOW\tab TableEditWindow,
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx2977\tx5954{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\lang1033 \tab INTEGER\tab Column,
+\par \tab TABLEEDIT_CELLDATA\tab CellData1,
+\par \tab TABLEEDIT_CELLDATA\tab CellData2,
+\par \tab TABLEEDIT_COMPARESTATUS\tab Equal_More_Less) - (i,i,i,i,o)
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx1134{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par 
+\par }\pard\plain \s15\qj\sa240\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs32\lang2057\cgrid {3. Global predicates
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_Init /4}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx5529{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_Init(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx2977\tx5529{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab TABLEEDIT_PROPERTIES\tab TableProperties,
+\par \tab TABLEEDIT_COLUMNLIST\tab ColumnProperties,
+\par \tab TABLEEDIT_DATA\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {TABLEEDIT_PROPERTIES = TABLEEDIT_PROPERTY*
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par TABLEEDIT_PROPERTY domain is described above in }{\i "General (table) properties of the Table editor custom control"}{.}{\i 
+\par }{
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {TABLEEDIT_COLUMNLIST = TABLEEDIT_COLUMN*
+\par TABLEEDIT_COLUMN = column(TABLEEDIT_COLUMNPROPERTIES)
+\par TABLEEDIT_COLUMNPROPERTIES = TABLEEDIT_COLUMNPROPERTY* 
+\par 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {TABLEEDIT_COLUMNPROPERTY domain is described above in }{\i "Individual column properties of the Table editor custom control".
+\par }{
+\par Invokes the Table editor custom control.
+\par Predicate should be called by class event handler on e_Create event (see example bellow). 
+\par }{\i TableEditorWindow}{ is the Table editor custom control window handle. 
+\par }{\i TableProperties}{  defines the general exterior of the Table editor control.
+\par }{\i ColumnProperties}{ defines the column exterior of the Table editor control.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b 
+\par buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\i InputData}{ -}{\lang1033 
+ parameter is ignored for buffering mode, table editor uses special callback function for data requests from external database.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Examples:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Next example shows initialisation of  the Table editor with external callback function, }{\lang1033 
+consisting from three columns with data and titles.}{\fs24\lang1033 
+\par }{\lang1033 The first column has a real  type and }{"Real Data" title.}{\lang1033 
+\par The second column has a string type and }{"String Data" title.}{\lang1033 
+\par The third column has a string type, }{"Date" title and type of control is custom (}{\lang1033 in this case - 
+\par }{ date custom control).}{\lang1033 
+\par The other }{\i\lang1033 Table}{\lang1033  and }{\i\lang1033 Column}{\lang1033  properties have default values.
+\par }{\b 
+\par Nobuffering mode:
+\par }{tableed_class_handler(TableEditorWindow,e_Create(_),0):-!,
+\par }\pard\plain \s22\keep\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\tab ...
+\par   tableedit_Init(TableEditorWindow,
+\par \tab [callback(tab_Callback)],
+\par \tab [
+\par \tab \tab column([title("Real Data"), column_type(te_real),  
+\par  \tab \tab column([title("String Data")]),
+\par \tab \tab column([title("Date"),\tab \tab \tab \tab \tab \tab \tab \tab \tab \tab \tab control(custom("date",[],date_put_string,date_get_string)),
+\par \tab \tab \tab alignment(grid_left_align)])
+\par \tab ],
+\par \tab [ 
+\par \tab \tab [r(1.0),s("1s"),sc("10-04-97",255)], %(255 - is red color)
+\par \tab \tab [r(2.0),s("2s"),sc("11-04-97",255)],
+\par \tab \tab [r(3.0),s("3s"),sc("12-04-97",255)],
+\par \tab \tab [r(4.0),s("4s"),sc("13-04-97",255)],
+\par \tab \tab [r(5.0),s("5s"),sc("14-04-97",255)],
+\par \tab \tab [r(6.0),s("6s"),void],
+\par \tab \tab [r(7.0),s("7s"),void]
+\par \tab ]
+\par \tab ),fail.
+\par }\pard\plain \s20\keep\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b Buffering mode:
+\par }{PREDICATES
+\par \tab ....
+\par \tab buffAnswerFunc : TABLEEDIT_ANSWERDATA_FUNC
+\par \tab ....
+\par CLAUSES
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {tableed_class_handler(TableEditorWindow,e_Create(_),0):-!,
+\par \tab ...
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cf1 BuffSize = 30,
+\par get_MaxRowsFromExternalDatabase(}{MaxRows}{\cf1 ),
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab ...
+\par tableedit_Init(TableEditorWindow,
+\par \tab [callback(tab_Callback), \tab \tab \tab bufferingmode(buffering(buffAnswer,Buff,MaxRows))],
+\par \tab [
+\par \tab \tab column([title("Real Data"), column_type(te_real),  
+\par  \tab \tab column([title("String Data")]),
+\par \tab \tab column([title("Date"),\tab \tab \tab \tab \tab \tab \tab \tab \tab \tab \tab control(custom("date",[],date_put_string,date_get_string)),
+\par \tab \tab \tab alignment(grid_left_align)])
+\par \tab ],
+\par \tab []
+\par \tab ),fail.
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx567\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\cf9 
+\par /* Data Request for table editor in buffering mode*/
+\par }{buffAnswerFunc(_Win,FromRow,ToRow,Data):-
+\par }\pard \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab }{\cf9 /* Get data from external database*/
+\par }{\tab getDataFromDatabase(FromRow,ToRow,Data),
+\par \tab !.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetProperties /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx851{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_PROPERTIES tableedit_GetProperties(WINDOW \tab TableEditorWindow)
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get entire list of General properties from Table editor.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par TABLEEDIT_PROPERTIES = TABLEEDIT_PROPERTY*
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par TABLEEDIT_PROPERTY domain is described above in }{\i "General (table) properties of the Table editor custom control"}{.}{\i 
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetProperties /2}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx4111{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetProperties(WINDOW TableEditWindow, \tab TABLEEDIT_PROPERTIES)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Change some General Editor's properties.
+\par }{\lang1033 The predicate reset listed General properties of table editor and makes handling the table according to current properties (including sorting and filtration, etc; "undo-redo" data are lost). 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par TABLEEDIT_PROPERTIES = TABLEEDIT_PROPERTY*
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par TABLEEDIT_PROPERTY domain is described above in }{\i "General (table) properties of the Table editor custom control"}{.}{\i 
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetColumnProperties /2}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_COLUMNPROPERTIES
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4820{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {  tableedit_GetColumnProperties(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3828\tx4820{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab Column)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get entire list of  Column  properties from Table editor .
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par TABLEEDIT_COLUMNPROPERTIES = TABLEEDIT_COLUMNPROPERTY* 
+\par 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {TABLEEDIT_COLUMNPROPERTY domain is described above in }{\i "Individual column properties of the Table editor custom control".
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetColumnProperties /3}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetColumnProperties(WINDOW TableEditWindow,}{\b 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx2410{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\b \tab }{INTEGER\tab Column,
+\par \tab TABLEEDIT_COLUMNPROPERTIES\tab ColumnProperties)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Change some column  properties.
+\par }{\lang1033 The predicate reset listed Column properties for a specified column of table editor and makes handling the table according to current properties (including sorting and filtration, etc; "undo-redo" data are lost). 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par TABLEEDIT_COLUMNPROPERTIES = TABLEEDIT_COLUMNPROPERTY* 
+\par 
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {TABLEEDIT_COLUMNPROPERTY domain is described above in }{\i "Individual column properties of the Table editor custom control".
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetMarker /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure GRID_MARKER tableedit_GetMarker(WINDOW TableEditWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get current marker.
+\par \tab The GRID_MARKER domain is shown below:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par GRID_MARKER = 
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % }{\cf2\lang1033 Rows specified in }{\i\cf2 LineList}{\cf2\lang1033  are marked
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab grid_row_marker(GRID_LINELIST LineList);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % }{\cf2\lang1033 Columns specified in}{\i\cf2\lang1033  }{\i\cf2 ColumnList}{\i\cf2\lang1033  }{\cf2\lang1033 
+are marked
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab grid_col_marker(GRID_LINELIST ColumnList);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % }{\cf2\lang1033 Areas specified in}{\i\cf2\lang1033  }{\i\cf2 AreaList}{\i\cf2\lang1033  }{\cf2\lang1033 are marked
+
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab grid_area_marker(GRID_AREALIST AreaList);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % }{\cf2\lang1033 All table}{\i\cf2\lang1033  }{\cf2\lang1033 are marked
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab grid_all_marker;
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % }{\cf2\lang1033 The control is open in specified cell
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx1701\tx4536{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab grid_edit_cell(INTEGER\tab Row,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3544\tx4536{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab Column);
+\par }\pard\plain \qj\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab }{\cf2 % }{\cf2\lang1033 No marker
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx1701{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab grid_no_marker
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {
+\par GRID_LINE=gl(INTEGER\tab FromRowColumn,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx1560{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab ToRowColumn)
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {GRID_LINELIST=GRID_LINE*
+\par 
+\par GRID_AREA=ga(INTEGER\tab FromRow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx1560{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab ToRow,
+\par \tab INTEGER\tab FromColumn,
+\par \tab INTEGER\tab ToColumn)
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {GRID_AREALIST=GRID_AREA*
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetMarker /2}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetMarker(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3544{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab GRID_MARKER\tab Marker)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Set }{\cf1\lang1033 specified}{ marker.
+\par For GRID_MARKER domain declaration see }{\i tableedit_GetMarker}{ predicate above.
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetAllData /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_DATA tableedit_GetAllData(WINDOW TableEditorWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get entire data as 2-d list of  TABLEEDIT_CELLDATA terms.
+\par }{\lang1033 In the beginning of the list there are the data, being in the table, then data, filtered by  filtration (if the filtration was carried out).
+\par }{
+\par \tab The TABLEEDIT_DATA domain is shown below:
+\par 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {TABLEEDIT_DATA = TABLEEDIT_COLUMNDATA*
+\par TABLEEDIT_COLUMNDATA = TABLEEDIT_CELLDATA*
+\par TABLEEDIT_CELLDATA =
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx2552{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab i(INTEGER);
+\par \tab ic(INTEGER,COLOR);
+\par \tab l(LONG);
+\par \tab lc(LONG,COLOR);
+\par \tab r(REAL);
+\par \tab rc(REAL,COLOR);
+\par \tab s(STRING);
+\par \tab sc(STRING,COLOR);
+\par \tab p(TABLEEDIT_PICTUREMODE PictureMode,
+\par \tab   BOOLEAN Stretch,
+\par \tab   STRING PictureText);
+\par \tab void;
+\par \tab voidc(COLOR).
+\par 
+\par }\pard\plain \qj\fi720\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\b Stretch:}{ Strech on/off.
+\par }{\b PictureText}{: Name of picture (}{\lang1033\cgrid0 should be unique}{).
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx2552{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par TABLEEDIT_PICTUREMODE = 
+\par \tab fromfile(STRING DOSFileName);
+\par \tab fromres(RESID ResId);
+\par \tab none
+\par }\pard\plain \qj\fi720\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\b 
+\par PictureMode:}{ Table editor will accept pictures as either fromres(BMPResourceId) or fromfile(BMPFileName).}{\fs18 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx2552{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetAllVisibleData /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_DATA 
+\par \tab tableedit_GetAllVisibleData(WINDOW TableEditorWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get entire data as 2-d list of  TABLEEDIT_CELLDATA terms.
+\par }{\lang1033 Get only data, being in the table.
+\par }{For TABLEEDIT_DATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetAllData /2}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure
+\par \tab tableedit_SetAllData(WINDOW TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab TABLEEDIT_DATA InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Reset all data.
+\par }{\lang1033 The predicate reset all data and makes handling of data, according to current properties (including sorting and filtration, "undo-redo" data are lost). 
+\par }{For TABLEEDIT_DATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\i InputData}{ -}{\lang1033  parameter is ignored for buffering mode, data request from external database and data buffer}{
+\f13\fs22\lang1033  }{\lang1033 is refreshed.
+\par .
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_Buff_InvalidateArea /5}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx993{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_Buff_InvalidateArea(WINDOW Win,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER FrRow,
+\par \tab INTEGER ToRow,
+\par \tab INTEGER FRColumn,
+\par \tab INTEGER ToColumn)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Area invalidate.
+\par }{\ul Ignore for NObuffering mode.
+\par 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 invalidate area in range (FrRow,ToRow,FrColumn,ToColumn), request from external database and data buffer}{\f13\fs22\lang1033  }{
+\lang1033 is refreshed.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetActiveRow /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure INTEGER tableedit_GetActiveRow(WINDOW TableEditorWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get serial number of row }{\lang1033 which is active in the table}{.
+\par If }{\i ActiveRowPointer}{ in }{\b rowselector}{ General property equal b_true, }{\lang1033 then the active row will be marked by the }{Active Row Pointer.
+\par Row and column numbering directions - from top to bottom and from left to right. Numbering starts from 1.
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }{\lang1033 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetActiveRow /2}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetActiveRow(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3969{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab ActiveRow) 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 The predicate makes  a specified row is active.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }{\lang1033 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {\lang1033 tableedit_MaxCol}{ /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure INTEGER tableedit_MaxCol(WINDOW }{TableEditorWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 The predicate return number of columns in table.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }{\lang1033 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_MaxRows /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure INTEGER }{tableedit_MaxRows}{\lang1033 (WINDOW }{TableEditorWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 The predicate return number of rows in Table editor (rows, being in the table + filtered rows = all rows)
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 The predicate return number of rows in external database, seting for table editor.
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_MaxVisibleRows /1}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure INTEGER }{tableedit_MaxVisibleRows}{\lang1033 (WINDOW }{TableEditorWindow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {
+\par Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 The predicate return number of rows, being in the table (without filtered rows).
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 The predicate return number of rows in external database, seting for table editor.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetData /5}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_DATA tableedit_GetData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx5103{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab INTEGER\tab ToRow,
+\par \tab INTEGER\tab FromCol,
+\par \tab INTEGER\tab ToCol)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get data for certain area as 2-d list of  TABLEEDIT_CELLDATA terms.
+\par }{\lang1033 Possible to get only data, being in the table.
+\par }{For TABLEEDIT_DATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par Row and column numbering directions - from top to bottom and from left to right. Numbering starts from 1.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetData /6}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetData(WINDOW\tab TableEditWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab INTEGER\tab ToRow,
+\par \tab INTEGER\tab FromColumn,
+\par \tab INTEGER\tab ToColumn,
+\par \tab TABLEEDIT_DATA InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Change data for specified table area as 2-d list of  TABLEEDIT_CELLDATA terms.
+\par Row and column numbering directions - from top to bottom and from left to right. Numbering starts from 1. FromRow, FromColumn - top / left corner. ToRow, ToColumn - bottom / right - limit corner.
+\par For TABLEEDIT_DATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 On each changed cell is generated modified(...) callback.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetRowData /3}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure STRING tableedit_GetRowData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4536{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab INTEGER\tab ToRow)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get clipboard format data from table (row range).
+\par Clipboard data format is strings with cell values separated by tabs (\\t) and rows separated by new line (\\r\\n).
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetRowData /3}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetRowData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3686{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab STRING\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Set clipboard format data to table (from row).
+\par Clipboard data format is strings with cell values separated by tabs (\\t) and rows separated by new line (\\r\\n).
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetRowData /4}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetRowData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3686{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab INTEGER\tab ToRowLimit,
+\par \tab STRING\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Set clipboard format data to table (from row to row).
+\par Clipboard data format is strings with cell values separated by tabs (\\t) and rows separated by new line (\\r\\n).
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 On each changed cell is generated modified(...) callback.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetClipBoardData /5}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure STRING tableedit_GetClipBoardData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx5245{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab INTEGER\tab ToRow, 
+\par \tab INTEGER\tab FromColumn,
+\par \tab INTEGER\tab ToColumn) 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get clipboard format data from table (area range).
+\par Clipboard data format is strings with cell values separated by tabs (\\t) and rows separated by new line (\\r\\n).
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetClipBoardData /6}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_SetClipBoardData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4395{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab INTEGER\tab ToRow, 
+\par \tab INTEGER\tab FromColumn,
+\par \tab INTEGER\tab ToColumn,
+\par \tab STRING\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {
+\par Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Set clipboard format data to table (area range).
+\par Clipboard data format is strings with cell values separated by tabs (\\t) and rows separated by new line (\\r\\n). FromRow, FromColumn - top / left corner. ToRow, ToColumn - bottom / right - limit corner.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 On each changed cell is generated modified(...) callback.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetCellData /3}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_CELLDATA 
+\par \tab tableedit_GetCellData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab Row,
+\par \tab INTEGER\tab Column)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Get data for specified cell as TABLEEDIT_CELLDATA term.
+\par For TABLEEDIT_CELLDATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetCellData /4}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure TABLEEDIT_CELLDATA 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx709\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_SetCellData(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab Row,
+\par \tab INTEGER\tab Column) \tab \tab       \tab TABLEEDIT_CELLDATA\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Set data to specified cell as TABLEEDIT_CELLDATA term.
+\par For TABLEEDIT_CELLDATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 On  changed cell is generated modified(...) callback.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetColumnFilter /4}{\f0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx5245{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx567{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_SetColumnFilter(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3686\tx5103{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab Column,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3686{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab TABLEEDIT_ORFILTERLIST ColumnFilterList)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Predicate change filers for specified column and }{\lang1033 
+makes handling the table according to current filters ("undo-redo" data are lost). 
+\par }{The TABLEEDIT_ORFILTERLIST domain see above in }{\i "Individual column properties of the Table editor custom control"}{.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_ReSetFilters /2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx4111\tx6521{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx567\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_ReSetFilters(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab TABLEEDIT_FILTERS\tab TableFilters)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Predicate set filers for specified columns, unset for other columns and }{\lang1033 
+makes handling the table according to current filters ("undo-redo" data are lost). 
+\par }{
+\par \tab The TABLEEDIT_FILTERS domain is shown below:
+\par 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {TABLEEDIT_FILTERS = TABLEEDIT_COLUMNFILTER*
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4536{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {TABLEEDIT_COLUMNFILTER = 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx284{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab columnfilter(INTEGER Column, TABLEEDIT_ORFILTERLIST ColumnFilterList)
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {
+\par The TABLEEDIT_ORFILTERLIST domain see above in }{\i "Individual column properties of the Table editor custom control"}{.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b 
+\par buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {
+\par Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_Sort /2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx4111\tx6521{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx567\tx3402{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_Sort(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx2268\tx3402{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab Column)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Predicate }{\lang1033 makes sorting the table by column according to current }{\b\lang1033 sortmode}{\lang1033 
+(Mode) column property ("undo-redo" data are lost). 
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_DeleteRows /2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx709\tx4962{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_DeleteRows(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3261\tx4962{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab GRID_LINELIST\tab RowsList)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Predicate }{\lang1033 delete from table specified in }{\i\lang1033 RowsList}{\lang1033  rows.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\tab The GRID_LINELIST domain is shown below:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par GRID_LINE=gl(INTEGER\tab FromRowColumn,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx1560{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab ToRowColumn)
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {GRID_LINELIST=GRID_LINE*
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b 
+\par buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_InsertRows /3
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx5529{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure tableedit_InsertRows(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3686\tx5529{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab FromRow,
+\par \tab TABLEEDIT_DATA\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {I}{\lang1033 nsert }{\i\lang1033 InputData}{\lang1033  into the table starting from }{\i\lang1033 FromRow}{\lang1033 . 
+\par }{For TABLEEDIT_DATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_InsertRowsToEnd /2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure INTEGER 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx993\tx5954{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_InsertRowsToEnd(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4111\tx5670\tx5954{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab TABLEEDIT_DATA\tab InputData)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {I}{\lang1033 nsert }{\i\lang1033 InputData}{\lang1033  at the end of the table. End of the table is the position after the last 
+row but before footer rows if exists. 
+\par Predicate returns row number where }{\i\lang1033 InputData}{\lang1033  is inserted.
+\par }{For TABLEEDIT_DATA domain declaration see }{\i tableedit_GetAllData}{ predicate above.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_InsertDefRowsToEnd /2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure INTEGER 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx993\tx5954{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_InsertDefRowsToEnd(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4395\tx5954{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab INTEGER\tab NumberOfRows)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Insert at the end of the table certain number of }{\b\lang1033 default}{\lang1033  rows.
+ End of the table is the position after the last row but before footer rows if exists.
+\par }{\b\lang1033 Default}{\lang1033  row consists from default cell values, which are determined in }{\b\lang1033 defaultvalue(...)}{\lang1033  column properties.}{\f13\fs24\lang1033 
+\par }{\i NumberOfRows}{ - number of }{\b default}{ rows.}{\b\lang1033 
+\par }{\lang1033 Predicate returns row number where }{\b\lang1033 default}{\lang1033  rows is inserted.
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs18\lang2057\cgrid {\b 
+\par buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\cf1 llegal parameter value}{.
+\par 
+\par }\pard\plain \s18\qj\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_HandleEvent /2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {determ tableedit_HandleEvent(WINDOW TableEditorWindow,EVENT)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\tab (i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Global predicate handles all Table editor custom control events. Table editor class handler may call }{\i tableedit_HandleEvent}{
+ on all events except for }{\i e_Create}{. See chapter  }{\i "Using Table editor custom control in application"}{ for more details.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {No errors.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {\f2 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetVisitOrder /4
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {procedure
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab tableedit_SetVisitOrder(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3544\tx5529{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright {\tab GRID_KEY\tab Key,
+\par \tab INTEGER\tab ShiftCtlAlt,
+\par \tab GRID_KEY_ACTION\tab Action)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{(i,i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar{\*\pn \pnlvlcont\ilvl0\ls0\pnrnot0\pndec }\adjustright \fs20\lang2057\cgrid {Changes the action, performed by Table editor control when user presses Enter key or Tab key. 
+\par Get current action settings.
+\par 
+\par By default Tableeditor control moves the active cell:
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {down on Enter key,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {
+to the right on Tab key and when the maximum number of symbols is exceeded,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {up on Shift-Enter keys,
+\par {\pntext\pard\plain\f3\fs20\lang2057\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \qj\fi-360\li360\nowidctlpar\widctlpar{\*\pn \pnlvlblt\ilvl0\ls2\pnrnot0\pnf3\pnstart1\pnindent360\pnhang{\pntxtb \'b7}}\ls2\adjustright {to the left on Shift-Tab keys.
+
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\i Key}{ argument is one of the:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\tab grid_key_enter;
+\par \tab grid_key_tab;
+\par \tab grid_max_length
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\i Action}{ argument is one of the:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\tab grid_left;
+\par \tab grid_right;
+\par \tab grid_up;
+\par \tab grid_down
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\cf1 Illegal parameter value}{.
+\par }{\f2 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetVisitOrder /3
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {determ GRID_KEY_ACTION
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529\adjustright {\tab tableedit_GetVisitOrder(WINDOW\tab TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3544\tx5529\adjustright {\tab GRID_KEY\tab Key,
+\par \tab INTEGER\tab ShiftCtlAlt)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{(i,i,i)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Get current action settings.
+\par See }{\i tableedit_SetVisitOrder}{ for more details.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\i tableedit_GetVisitOrder}{  fails if action is not assigned for the given }{\i Key}{ and }{\i ShiftCtrlAlt}{ combination.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {No errors.
+\par }{\f2 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_Find /6
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\lang1033 determ INTEGER 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529\adjustright {\lang1033 \tab tableedit_Find(WINDOW }{TableEditorWindow}{\lang1033 ,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx2268\adjustright {\lang1033 \tab STRING FindString,
+\par \tab TABLEEDIT_DIRECTION,
+\par \tab INTEGER Column,
+\par \tab TABLEEDIT_MATCH,
+\par \tab BOOLEAN CaseSensitive)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{\lang1033 (i,i,i,i,i,i)}{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Return value:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Returns row where searchstring is found.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Find }{\cf1\lang1033 position}{ of specified string.
+\par }{\f2\fs16\cf1\lang1033 
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx2835\tx3969\adjustright \f2\fs20\lang2057\cgrid {\lang1033 TABLEEDIT_DIRECTION =\tab up;\tab }{\f0\lang1033 %Find up from active row poiter}{\lang1033 
+\par \tab down;\tab }{\f0\lang1033 %Find down from active row poiter}{\lang1033 
+\par \tab allup;\tab }{\f0\lang1033 %Find entire table from the bottom to the top}{\lang1033 
+\par \tab alldown\tab }{\f0\lang1033 %Find entire table from the top to the bottom}{\lang1033 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx2835\adjustright {\lang1033 
+\par 
+\par TABLEEDIT_MATCH =\tab entire;\tab }{\f0\lang1033 % Entire string
+\par }{\lang1033 \tab from_start;\tab }{\f0\lang1033 % match from start of the string}{\lang1033 
+\par \tab any_part\tab }{\f0\lang1033 % any part of the string
+\par }\pard\plain \s22\keep\keepn\nowidctlpar\widctlpar\tx993\tx5670\adjustright \f2\fs18\lang2057\cgrid {\b buffering mode:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\lang1033 Actual only for }{\b\lang1033 nobuffering}{\lang1033  mode.
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\tx2835\adjustright \f2\fs20\lang2057\cgrid {\lang1033 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {\i tableedit_Find}{  fails if string is not found.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {No errors.
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_Buff_SetMaxRows/2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529\adjustright {\lang1033 \tab tableedit_Buff_SetMaxRows(WINDOW }{TableEditorWindow}{\lang1033 ,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3544\adjustright {\lang1033 \tab INTEGER MaxRows)
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{\lang1033 (i,i)}{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Set number of rows in table editor for }{\b buffering}{ mode. }{\i MaxRows}{ }{\lang1033 should be equal to number of rows in external database.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {No errors.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_OptimizeColumnsWidth/2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529\adjustright {\lang1033 \tab tableedit_OptimizeColumnsWidth(WINDOW }{TableEditorWindow}{\lang1033 ,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx4111\adjustright {\lang1033 \tab BOOLEAN }{NotResizableResize}{\lang1033 )
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{\lang1033 (i,i)}{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Proportional}{\b  s}{tretch of columns,}{\b  }{\lang1033\cgrid0 according to  window  width.
+\par }{NotResizableResize = b_true \endash  ignore }{\i resizable(b_false)}{ column property.}{\f13\fs24\lang1033\cgrid0 
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {No errors.
+\par 
+\par tableedit_GetInvisibleMarkers(WINDOW,BOOLEAN InvisibleVisible)
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_GetInvisibleMarkers/1
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure BOOLEAN 
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529\adjustright {\lang1033 \tab tableedit_GetInvisibleMarkers(WINDOW }{TableEditorWindow}{\lang1033 )
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{\lang1033 (i)}{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Return value:
+\par }{\b0 Get state of markers.
+\par b_false \endash  The markers are visible.
+\par b_true \endash  The markers are invisible.
+\par }{Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {No errors.
+\par 
+\par }\pard\plain \s18\qj\sb120\sa120\nowidctlpar\widctlpar\adjustright \cbpat3 \b\f2\lang2057\cgrid {tableedit_SetInvisibleMarkers/2
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Syntax:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\lang1033 procedure
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx426\tx5529\adjustright {\lang1033 \tab tableedit_GetInvisibleMarkers(WINDOW }{TableEditorWindow,
+\par }\pard \s20\keep\keepn\nowidctlpar\widctlpar\tx3969\tx5529\adjustright {\tab BOOLEAN Invisible}{\lang1033 )
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Flow pattern:
+\par }\pard\plain \s20\keep\keepn\nowidctlpar\widctlpar\adjustright \f2\fs20\lang2057\cgrid {\b \tab }{\lang1033 (i,i)}{
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Remarks:
+\par }{\b0 Set state for markers (Visible / Invisible).
+\par b_false \endash  The markers are visible.
+\par b_true \endash  The markers are invisible.
+\par }{Fail:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {Never fails.
+\par }\pard\plain \s19\qj\sb120\nowidctlpar\widctlpar\adjustright \b\fs20\lang2057\cgrid {Errors:
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang2057\cgrid {No errors.
+\par 
+\par 
+\par }}

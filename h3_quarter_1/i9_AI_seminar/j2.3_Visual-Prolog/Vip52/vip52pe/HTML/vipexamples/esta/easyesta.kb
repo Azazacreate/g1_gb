@@ -1,0 +1,11 @@
+vars("parameter par2section : ' '\ntype category\n\nexplanation ' '\n\noptions\n  section_go_on - 'section to go on forever',\n  section_stop - 'section to stop consultation'.\n\nquestion 'Choose a section from the list below...'\n\n","par2section","",[c_str(" ",58)],[c_str("Choose a section from the list below...",182)],category,category([option("section_go_on","section to go on forever"),option("section_stop","section to stop consultation")],[]),"")
+section("section start : 'Start '\n\n\nadvice 'hit ok to try do_section_of...' /* is not shown in second and next loop! */\n/*\ndo_section_of par2section\n*/\n/*	this works slightly better but not perfect!*/\nif par2section = 'section_go_on' do section_go_on\nif par2section = 'section_stop' do section_stop\n\n\nchain ''\n\n","start",[c_str("Start ",16)])
+section("section section_stop : ' '\n\nadvice 'you said quit.'	/* this advice is not shown! */\n\nexit\n\n","section_stop",[c_str(" ",23)])
+section("section section_go_on : ' '\n\n/* advice is not shown in second or next loop! */\n\nadvice 'this section let you go on forever \nbecause you return to the main section (start) \nwhich ends with a chain.'\n\n","section_go_on",[c_str(" ",24)])
+paragraph("section_go_on",1,c_bool(true,0),[display([c_str("this section let you go on forever \nbecause you return to the main section (start) \nwhich ends with a chain.",91)])])
+paragraph("section_stop",1,c_bool(true,0),[display([c_str("you said quit.",37)])])
+paragraph("section_stop",2,c_bool(true,0),[exit])
+paragraph("start",1,c_bool(true,0),[display([c_str("hit ok to try do_section_of...",34)])])
+paragraph("start",2,rel(c_var("par2section",195),eq,c_str("section_go_on",209)),[refer("section_go_on",228)])
+paragraph("start",3,rel(c_var("par2section",245),eq,c_str("section_stop",259)),[refer("section_stop",277)])
+paragraph("start",4,c_bool(true,0),[chain("")])

@@ -1,0 +1,465 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>solver</title>
+<meta NAME="Version" CONTENT="8.0.3410">
+<meta NAME="Date" CONTENT="10/11/96">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+<b>
+
+<h1><!--mstheme--><font color="#000000">About the Web Equation Solver<!--mstheme--></font></h1>
+
+<h2><!--mstheme--><font color="#000000">Introduction<!--mstheme--></font></h2>
+
+<p>The Web Equation Solver (WES) is a tool that makes it possible to build numerical
+calculation models based on numerical equations. The WES is task independent and depends
+only on the possibility of representing the task as a set of numerical equations.</p>
+
+<p>The magic facility of the WES is the possibility of making multidirectional
+calculations depend upon a set of known (preset) and unknown (void) data. Here the 'data'
+term means the set of variables used in the equations. By using the preset data and a set
+of numerical equations, the WES calculates the unknown data if possible.</p>
+
+<p>If the model is represented by the following equation: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Cost=Price*Amount,</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>there are tree possible ways to use it: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>1) Cost=Price*Amount, if Price and Amount are known and Cost is void</p>
+    <p>2) Price=Cost/Amount, if Cost and Amount are known and Price is void</p>
+    <p>3) Amount=Cost/Price, if Cost and Price are known and Amount is void</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>The WES considers a known variable if its value is numerical (INTEGER or REAL). On the
+other hand the WES considers an unknown variable if its value is an empty string. The
+result of the calculation is REAL.</p>
+
+<p>So, if the user sends a set of data like: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Amount = 10,</p>
+    <p>Cost = 1200,</p>
+    <p>Price = &quot;&quot;,</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>to the WES, then WES will use way No 2 (Price=Cost/Amount) to find the following
+result: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Amount = 10,</p>
+    <p>Cost = 1200,</p>
+    <p>Price=120.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>The model described above is a very simple model represented by only one equation. A
+real model can have a set of numerical equations and even conditions for when to use which
+of them.</p>
+
+<p>The Web Solver works via the Internet or the Intranet communication using the CGI
+Protocol.</p>
+
+<p>No other software is needed on the client's computer, except for usual Internet
+communication tools like MS Internet Explorer, Netscape Navigator etc.</p>
+
+<p>The User Interface and the Calculation Model for comunicating with the WES can be
+programmed by writing the appropriate .HTM files.</p>
+<font FACE="Arial"><i><b>
+
+<p>Programming the Web Solver</p>
+</b></i></font>
+
+<p>To program the WES,&nbsp; it is necessary to prepare two pages in html format: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">The Start page for the task, which is used as the initial page.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">The Template page, which is used by the WES for sending the results of the calculations
+    to the user and for receiving new data.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>Usually the Template page and the Start page are almost identical. The only difference
+is that in the Template page you should use some special symbols and definitions. When the
+WES solves the equation set, it replaces some symbols and sends the modified page to the
+user. Then the user makes new data inputs, and the process continues in the same way. Thus
+the data exchange between the user and the Web Solver is based on html pages that are
+dynamically created at each step.</p>
+
+<p>First we should consider the structure and coding of the Template page, as it is the
+main page used in the communication process.</p>
+
+<p>The template page must contain some necessary special data: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">Equations <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">The name of the template page <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">Input fields <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">Message output field <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana">Resulting data coloring scripts<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<i><b><font FACE="Arial">
+
+<p></font></b></i><strong>Equations </strong></p>
+
+<p>The equations must be entered in the Template page in the following form (here we use
+the equation explained above): </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;slvRULE&quot;
+    VALUE=&quot;Price*Amount+(-1)*Cost&quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>where: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&quot;slvRule&quot; is the predefined name</p>
+    <p>&quot;Price*Amount+(-1)*Cost&quot; is the equation.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>You can see that the form of the equation differs from the form discussed before. That
+is because the current version of the Web Solver only permits the use of first order
+linear equations and only understands the operations plus (+) and multiply (*). If you
+need the subscription operation, it should be used as the multiplication by (-1).
+Furthermore, the equations must be in a form where the left (or right) part of the
+equation is 0. Then you do not need to use this part of the equation.</p>
+
+<p>Thus the equation explained before in the form of: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Cost=Price*Amount </p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>is the same as: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Price*Amount-Cost=0</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>and the Web Solver will understand it as: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Price*Amount+(-1)*Cost</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>If the model has more than one equation, then the equations must be separated by a
+comma and a new line, e.g.: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;slvRULE&quot; </p>
+    <p>VALUE=&quot;Price*Amount+(-1)*Cost,</p>
+    <p>Amount1+Amount2+(-1)*Amount &quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>which means that the variable Amount can be found as the sum of &nbsp;
+&quot;Amount1&quot; and &quot;Amount2&quot;.</p>
+<b>
+
+<p>The Name of the Template</p>
+</b>
+
+<p>From the name of the template page, the Web Solver gets the name of the file to be used
+as the template at the next step.</p>
+
+<p>It should be entered in the following form: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;slvTEMPL&quot; VALUE=&quot;
+    EXAMPLE.TPL&quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>where </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&quot;slvTEMPL&quot; is the predefined name and</p>
+    <p>&quot;EXAMPLE.TPL&quot; is the name of the HTML page used as the template.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>Input Fields</p>
+</b>
+
+<p>The input fields makes it possible to enter source data to the Solver and to get the
+Solver's solutions.</p>
+
+<p>Each input field must be used in this form: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;TEXT&quot; MAXLENGTH=&quot;30&quot; NAME=&quot;Cost&quot;
+    VALUE=&quot;$vCost$&quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>where: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>MAXLENGTH may have any convenient value,</p>
+    <p>NAME=&quot;Cost&quot; - defines the name of the Variable also used in the equation
+    (here we use names from the described example),</p>
+    <p>VALUE=&quot;$vCost$&quot; shows the place where the output data will be entered by the
+    Web Solver. The Dollar chars are used as marked brackets, and the 'v' char shows that the
+    string $vCost$ should be replaced by the value of the Variable &quot;Cost&quot; when this
+    is found.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>Thus for the above example, we should have this set of input field definitions: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;TEXT&quot; MAXLENGTH=&quot;30&quot; NAME=&quot;Price&quot;
+    VALUE=&quot;$vPrice$&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;TEXT&quot; MAXLENGTH=&quot;30&quot; NAME=&quot;Cost&quot;
+    VALUE=&quot;$vCost$&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;TEXT&quot; MAXLENGTH=&quot;30&quot; NAME=&quot;Amount&quot;
+    VALUE=&quot;$vAmount$&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;TEXT&quot; MAXLENGTH=&quot;30&quot; NAME=&quot;Amount1&quot;
+    VALUE=&quot;$vAmount1$&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;TEXT&quot; MAXLENGTH=&quot;30&quot; NAME=&quot;Amount2&quot;
+    VALUE=&quot;$vAmount2$&quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>The input field can be placed at any needed position in the HTML page, e.g. in a table
+cell.</p>
+<b>
+
+<p>Message Output Field</p>
+</b>
+
+<p>The purpose of the message output field is to send messages from the Web Solver to the
+end user.</p>
+
+<p>The Web Solver can inform the end user about successfully resolved equations or about
+invalid data and maybe invalid sets of data.</p>
+
+<p>The message output field must be defined in a form like: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;TEXTAREA ROWS=&quot;3&quot; COLS=&quot;60&quot;
+    NAME=&quot;slvMSG&quot;&gt;$mMsg$&lt;/TEXTAREA&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>Where: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>ROWS and COLS may have any reasonable value,</p>
+    <p>&quot;slvMSG&quot; is the predefined name,</p>
+    <p>$mMsg$ is the predefined string which will be substituted by the Web Solver's message
+    to the end user.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<b>
+
+<p>Resolved Data Marking Scripts</p>
+</b>
+
+<p>During the communication with the end user, the Web Solver provides the end user with
+information on different situations.</p>
+
+<p>The main message will be sent to the Message Output field. The Web Solver can also mark
+some variables. It is the programmer that chooses how to mark a variable. The
+programmeronly has to place the special data in the template in a form like: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>$c&lt;VariableName&gt;$ where VariableName is the name of the variable used in the
+    equation.</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>The user may define the script that will replace this special data depending on the
+event, in the form of: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;EventName&quot; VALUE=&quot;Any String,
+    defined by Programmer&quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>where &quot;EventName&quot; is one of the predefined event names.</p>
+
+<p>There is a set of predefined event names, which can be used:</p>
+<i><u>
+
+<p>Wrong Input Data Events:</p>
+</u><b>
+
+<p>usrOnInvalidData</b></i> - If the user enters an invalid number.</p>
+<i><b>
+
+<p>usrOnSrcConflict</b></i> - If the source data and the equations conflict. </p>
+
+<p>This needs to be described in detail:</p>
+
+<p>If we have an equation like: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Cost=Price*Amount </p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>and the user enters numbers for all variables, e.g.: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Cost=100,</p>
+    <p>Price=15,</p>
+    <p>Amount=1000,</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>there is a conflict between the source data and the equation - 15*1000 does not equal
+100.</p>
+
+<p>The Web Solver checks this situation before calculating and informs the user if such a
+conflict has occured.</p>
+
+<p>The Web Solver also marks the conflicting variables using substitution at
+$c&lt;VariableName&gt;$ for each variable.</p>
+<i><b>
+
+<p>usrOnResConflict</p>
+</b></i>
+
+<p>The same situation may occur without a conflict between the source data and the
+equations, but with a conflict between the resolved data on one hand and the entered data
+and the equations on the other hand. The Web Solver checks this kind of situation after
+the calculation has been made. It can also mark the variables of the conflict.</p>
+<i><u>
+
+<p>Resolution Results:</p>
+</u><b>
+
+<p>usrOnPreset</b></i> - The value of the variable was preset by the user.</p>
+<i><b>
+
+<p>usrOnVoid</b></i> - The value of the variable in the user's input is void. </p>
+<i><b>
+
+<p>usrOnNotSolved</b></i> - The value of the variable in the user's input is void and was
+not resolved.</p>
+<i><b>
+
+<p>usrOnSolved</b></i> - The Web Solver resolved the value of the variable with any
+result.</p>
+<i><b>
+
+<p>usrOnNegative</b></i> - The Web Solver resolved the value of the variable. The result
+is Negative.</p>
+<i><b>
+
+<p>usrOnZero</b></i> - The Web Solver resolved the value of the variable. The result is
+Zero.</p>
+
+<p>&nbsp;</p>
+
+<p>Here is an example of the substitution script definitions. Here we only color the
+results, but any other information in the HTML format could be colored as well. </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnInvalidData&quot;
+    VALUE=&quot;BGCOLOR=#0080ff&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnSrcConflict&quot;
+    VALUE=&quot;BGCOLOR=#008000&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnResConflict&quot;
+    VALUE=&quot;BGCOLOR=#ffff00&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnPreset&quot; VALUE=&quot;&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnVoid&quot; VALUE=&quot;&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnSolved&quot;
+    VALUE=&quot;BGCOLOR=#00ffff&quot;&gt;</p>
+    <p>&lt;INPUT TYPE=&quot;HIDDEN&quot; NAME=&quot;usrOnNotSolved&quot;
+    VALUE=&quot;BGCOLOR=#00800f&quot;&gt;</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>If the results do not have to be marked, the script can be an empty string. Neither is
+it necessary to use marking rules. </p>
+</b><b>&nbsp;</b>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

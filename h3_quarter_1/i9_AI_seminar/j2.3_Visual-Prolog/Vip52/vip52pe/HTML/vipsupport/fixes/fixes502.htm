@@ -1,0 +1,169 @@
+<html>
+
+<head>
+<title>Problems Solved in Visual Prolog 5.02</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1 align="left"><!--mstheme--><font color="#000000">Problems Solved in Visual Prolog 5.02<!--mstheme--></font></h1>
+
+<p>Following is a list of problems found in in Visual Prolog, version 5.01, and solved in
+the version 5.02. Each of the reported problems&nbsp; receives an ID, a short heading, a
+description of a problem, and some text under the Version Info entry. There are also a number
+of small problems solved in the version that are not listed here.</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems solved in the <a href="fixes502.htm#problems solved in the compiler">Compiler</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems solved in the <a href="fixes502.htm#problems solved in the prolog.lib">PROLOG.LIB</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems solved in the <a href="fixes502.htm#problems solved in the vpi">VPI</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems solved in the <a href="fixes502.htm#problems solved in the vde">VDE</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems solved in the <a href="fixes502.htm#problems solved in the linker">Linker</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Problems solved in the <a href="fixes502.htm#problems solved in the debugge">Debugger</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the Compiler">Problems Solved in the Compiler</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">nocopy does not work with single facts<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>ProblemID: R980506.01 Compiler </p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the PROLOG.LIB">Problems Solved in the
+PROLOG.LIB</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">Ctrl+Break and Ctrl+C in Win32 text mode should work in the same way as for DOS.<!--mstheme--></font></h4>
+
+<h5><!--mstheme--><font color="#000000">Description:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>For DOS text mode programs pressing Ctrl+Break and Ctrl+C will abort the program during
+  run time if&nbsp; the &quot;Break Check&quot; option in&nbsp; the &quot;Compiler
+  Options&quot; dialog is enabled.</p>
+  <p>In the version 5.01 this option can be enabled only for the DOS text mode.</p>
+</blockquote>
+
+<h5><!--mstheme--><font color="#000000">Version Info:<!--mstheme--></font></h5>
+
+<blockquote>
+  <p>Since v. 5.02 the &quot;Break Check&quot; option can be enabled both for Win32 text
+  mode and DOS text mode. Ctrl+Break and Ctrl+C work in the same way under Win32 and DOS
+  text mode.</p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the VDE">Problems Solved in the VDE</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">Multiprogrammer project is broken when one user adds a control and another adds a
+module simultaneously.<!--mstheme--></font></h4>
+
+<dl>
+  <dd>ProblemID: R980501.01 VDE.PVCS BUG</dd>
+</dl>
+
+<h4><!--mstheme--><font color="#000000">Some dialogs/windows stored in separate files cannot be imported into other projects
+from projects created by VDE v.4.0<!--mstheme--></font></h4>
+
+<dl>
+  <dd>The problem can arise when the project that had been created by VDE v. 4.0&nbsp; was
+    converted to the multiprogrammer mode by later versions of the VDE.</dd>
+</dl>
+
+<h4><!--mstheme--><font color="#000000">Moving of an external file of a resource causes an error<!--mstheme--></font></h4>
+
+<dl>
+  <dd>Moving of external files of resources between subdirectories (with replacing of
+    reference to this file in the project). The problem is that an external resource file
+    contains specification of the path where it is placed. And when it is moved manually this
+    path will not be corrected correspondingly.</dd>
+</dl>
+
+<h4><!--mstheme--><font color="#000000">Open file sometimes leads to the error message 6000<!--mstheme--></font></h4>
+
+<dl>
+  <dd>ProblemID: R980423.03 VDE BUG</dd>
+</dl>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the VPI">Problems Solved in the VPI</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">Leak memory in edit_PasteStr<!--mstheme--></font></h4>
+
+<dl>
+  <dd>ProblemID: R980423.01 VPI.Editor BUG</dd>
+</dl>
+
+<dl>
+  <dd>&nbsp;</dd>
+  <dd>After using edit_PasteStr/2 memory was captured until program is ended. Often using this
+    predicate may cause problem.</dd>
+</dl>
+
+<h4><!--mstheme--><font color="#000000">draw_TextInRect works invalid after a call of draw_Text<!--mstheme--></font></h4>
+
+<blockquote>
+  <dl>
+    <dt>ProblemID: R980504.01 VPI BUG</dt>
+  </dl>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000">Wrap editor has problems in updating of&nbsp; an Edit window and sometimes gives GPF
+in Win16 and in Win32 with BC++ linker.<!--mstheme--></font></h4>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the Linker">Problems Solved in the Linker</a><!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">There is a case when a loader cannot load a 16bit image.<!--mstheme--></font></h4>
+
+<dl>
+  <dd>A&nbsp; loader cannot load a 16bit image created by the PDC Linker. An error message
+    like &quot;Insufficient memory&quot; or &quot;Device is busy&quot; is issued.</dd>
+</dl>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Problems Solved in the Debugge">Problems Solved in the Debugge</a>r<!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000">Debugger should give a warning if Source File is newer<!--mstheme--></font></h4>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

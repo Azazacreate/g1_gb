@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<title>Visual Prolog 5.02 Upgrade Notes</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h5 align="right"><!--mstheme--><font color="#000000">Visual Prolog Technical Support<!--mstheme--></font></h5>
+<b>
+<h2><!--mstheme--><font color="#000000"><a name="5.2upgrade"></a>Upgrading Visual Prolog from 5.02 to 5.1 version<!--mstheme--></font></h2>
+<p>Release 5.1 of Visual Prolog is almost 100% compatible with the
+previous&nbsp; 5.02 release.</p>
+</b>
+<p>Note, please, that the following packages have been changed in Visual Prolog
+5.1 and are not fully backward compatible:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#http_layer">HTTP Layer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#report">Report</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Visual Prolog 5.1 is not fully compatible with some <a href="#examples">examples</a>
+from Visual Prolog 5.02.</p>
+<h3><!--mstheme--><font color="#000000">&nbsp;<a name="HTTP_Layer"></a>HTTP Layer<!--mstheme--></font></h3>
+<p>In order to avoid intersection of domain names in the HTTP Layer
+(SOCKBIND\INCLUDE\HTTPLAY) and the Document Handling (DOC_TOOL\Include)
+packages, the <b>URI </b>domain of the HTTP Layer Package has been renamed <strong>httplay_URI</strong>.
+This causes incompatibility with user applications, written with the help of the
+HTTP Layer, version 5.02, and with the HTTP example.</p>
+<blockquote>
+  <h4 align="JUSTIFY"><!--mstheme--><font color="#000000"><a name="HTTP Example"></a><b>HTTP Example</b><!--mstheme--></font></h4>
+  <p>The following errors are generated while compiling an HTTP example
+  (SOCKBIND\EXAMPLES\HTTP) from Visual Prolog 5.02:&nbsp; 100, 209.</p>
+  <p>We recommend you to use a new version of the example. However, if you
+  prefer to compile an old&nbsp; version or to upgrade your own application, do
+  the following:</p>
+  <p>In&nbsp; the<b> </b>HTTP32.PRO replace the predicate:</p>
+  <blockquote>
+    <p><code>form_referer(STRING,URI)</code></p>
+  </blockquote>
+  <p>with</p>
+  <blockquote>
+    <p><code>form_referer(STRING,<i> </i>HTTPLAY_URI<i>)</i>,</code>.</p>
+  </blockquote>
+</blockquote>
+<b>
+<h3><!--mstheme--><font color="#000000"></b><a name="Report"></a>Report Package<b><!--mstheme--></font></h3>
+<p></b>The Report package has been changed in order to avoid incompatibility of
+the Report and the Own_Draw packages in one module. However, it is not fully
+backward compatible with old versions of Logidemo example and user applications,
+written with the help of the Report package, version 5.02.<b></p>
+</b>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="Logidemo"></a>LOGIDEMO Example<!--mstheme--></font></h4>
+  <p>If you compile the VIP 5.02 LOGIDEMO example, or&nbsp; a project created by
+  VIP 5.02&nbsp;&nbsp; immediately after installation of VIP 5.1, you will get a
+  number of error messages. We recommend you to use a new version of the
+  example. However, if you prefer to compile an old Logidemo example or to
+  upgrade your own application, use the following strategy:</p>
+  <ol>
+    <li>
+      <p align="left">Replace the <b>own_member</b> predicate with the&nbsp;<b>mmmember</b>
+      predicate in the file TOOLS\REPORTS\REPORTS.PRO</p>
+    </li>
+    <li>
+      <p align="JUSTIFY">Add the predicate <b>mmmember</b> in
+      TOOLS\REPORTS\REPORTS.PRO file</p>
+    </li>
+  </ol>
+  <blockquote>
+    <i><b>
+    <!--mstheme--></font><pre></b></i>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>determ mmmember(OD_ITEMSTATE,OD_STATE)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>determ mmmember(OD_ITEMACTION,OD_ACTION)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+  <ol start="3">
+    <li>
+      <p align="JUSTIFY">Add <b>mmmember</b> to CLAUSE&nbsp; in
+      TOOLS\REPORTS\REPORTS.PRO file</p>
+    </li>
+  </ol>
+  <blockquote>
+    <!--mstheme--></font><pre>CLAUSE<i><b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </b></i>
+  </blockquote>
+  <blockquote>
+    <blockquote>
+      <i><b>
+      <!--mstheme--></font><pre></b></i>mmmember([X|_],X):-!.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>mmmember([_|T],X):-mmmember(T,X).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+  <ol start="4">
+    <li>In the VDE Project window click &quot;Cursor&quot;.</li>
+    <li>Create a cursor with the <em>idc_zoomout</em> constant. Browse to
+      VPI\INCLUDE\REPORT\RES\WIN\zoomout.cur</li>
+  </ol>
+</blockquote>
+<b>
+<h3><!--mstheme--><font color="#000000"><a name="Examples"></a>Examples</b><!--mstheme--></font></h3>
+<ol>
+  <li>Note, please, that the following examples from Visual Prolog 5.02 are not
+    fully compatible with Visual Prolog 5.1:</li>
+</ol>
+<blockquote>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">OOP\EXAMPLES\SHAPES<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">VPI\TOOLEXAM\DATECUST<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">VPI\TOOLEXAM\REPTEST<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">WINBIND\DEMOS\DEMO5<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<blockquote>
+  <p>We recommend you to use new versions of these examples, if possible.</p>
+</blockquote>
+<ol start="2">
+  <li>The following example has been changed in the version 5.1 and moved to <a href="../technotes/foreign/msvc/readme.htm">FOREIGN\EXAMPLES\MSVC/NONGUI</a>
+    directory:</li>
+</ol>
+<blockquote>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a name="C_PRODLL"></a>VPI\EXAMPLES\C_PRODLL<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

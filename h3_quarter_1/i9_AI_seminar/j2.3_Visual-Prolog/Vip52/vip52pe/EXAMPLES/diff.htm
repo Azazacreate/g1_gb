@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Symbolic differentiation</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1>Symbolic differentiation</h1>
+
+<p>Visual Prolog is well suited for symbolic mathematics because
+it is easy and elegant to handle expressions as Prolog
+structures.</p>
+
+<p>A typical dialog with the system could be </p>
+
+<p><em>write an expression: 10*x^4</em></p>
+
+<p><em>Differentiated expression: </em></p>
+
+<p><em>0*x^4+10*4*x^3*1</em></p>
+
+<p><em>Reduced expression:</em></p>
+
+<p><em>40*x^3</em></p>
+
+<p>&nbsp;</p>
+
+<p>The Diff program consist of the following parts:</p>
+
+<ol>
+    <li>Scanning and parsing a string into the EXPression
+        structure.</li>
+    <li>The actual differentation</li>
+    <li>reducing an expression</li>
+    <li>converting an expression back to a string.</li>
+</ol>
+
+<p>Of these parts, the reducing of an expression is the most
+complicated. From the Goal-section, the main parts of the
+program, can be examined.</p>
+
+<p><em>tokl(STR,TOKL) </em>: converts the string to a list of
+tokens.</p>
+
+<p><em>s_exp(TOKL,OL,EXP) </em>: used by the parser.</p>
+
+<p><em>d(EXP,&quot;x&quot;,EXP1)</em> : differentiate the
+expression.<br>
+<br>
+<em>reduce(EXP1,EXP2)</em> : the expression is reduced.<br>
+</p>
+
+<p><a href="diff.prj">Diff.prj</a></p>
+</body>
+</html>

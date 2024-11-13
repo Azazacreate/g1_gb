@@ -1,0 +1,84 @@
+<html>
+
+<head>
+<title>Class Access Control</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><a name="62fd7f6d"></a><b>Class Member Access Control</b><!--mstheme--></font></h1>
+<p>Access rights to class members in Visual Prolog are provided either by
+default (depending on the declaration placement) or by the access specifier
+PROTECTED.
+<p>A class member can be:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#b792e204">public</a>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#e97aa622">private</a>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#57ab4a15">protected</a>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>&nbsp;</p>
+<a name="b792e204"></a><b>Public class members</b> can be used outside the class
+in which they are declared. By default all domains, predicates, and facts
+declared in <a href="class_declaration.htm">class declarations</a> are public.
+<p><a name="e97aa622"></a><b>Private class members</b> can be used only inside
+the implementation of the class in which they are declared. All domains,
+predicates, and facts declared in the class <a href="class_implementation.htm#3cd99d1b">implementations</a>
+are private.
+<p><a name="57ab4a15"></a><b>Protected class members</b> can be used only inside
+the class in which they are declared and in classes directly inherited from this
+class.
+<p>The protected access mode is set by the PROTECTED keyword preceding
+declarations of domains, facts or predicates sections in <a href="class_declaration.htm">class
+declarations</a>.
+<!--mstheme--></font><pre>PROTECTED {DOMAINS | PREDICATES | FACTS}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm"><b>See also</b></a><b><!--mstheme--></font></h5>
+</b>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

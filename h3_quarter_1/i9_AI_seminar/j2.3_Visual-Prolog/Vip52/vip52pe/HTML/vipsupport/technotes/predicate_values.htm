@@ -1,0 +1,515 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Predicate Values</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Predicate Values<!--mstheme--></font></h1>
+<p><span class="EmailStyle24">Visual Prolog supports a notion of <i>predicate
+values</i>.<span style="mso-spacerun: yes">&nbsp; </span><i>Predicate values</i>
+are the predicates that can be treated as <i>values</i> in the sense that they
+can be:</span></p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal"><span class="EmailStyle24">passed as parameters and
+    returned from functions,&nbsp;</span><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">stored in facts,<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal"><span class="EmailStyle24">held in variables,</span><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal"><span class="EmailStyle24">compared for identity.</span><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal">Like plain predicates they can, of course, also be invoked
+on arguments. Predicate values do however differ from most other Visual Prolog
+values in the following respects: &nbsp;</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal">There exist <b>no</b> literals for predicate
+    values.&nbsp;&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal">Predicate values have <b>no</b> persistent
+    representation. (The text representation of a predicate value is simply a
+    hexadecimal number (i.e. the value of a pointer)).&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal">Predicate values have many usages. One of the most
+important usages is for callbacks. &nbsp;</p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">A
+callback is a predicate that is used to call <b>back</b> from some <i>used
+entity</i> to the user of this entity. For example:&nbsp;&nbsp;&nbsp;</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">a
+    call back from a server to a client, or<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">a
+    call back from a service to the service user, or<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">a
+    call back from a routine to a routine user. &nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal">Callbacks are normally used for one or both of the
+following purposes:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal">to handle asynchronous events<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p class="MsoNormal">to provide advanced/dynamic parameterization &nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">When
+dealing with asynchronous events a program registers a callback with some event
+source. This event source then invoke the callback whenever an event occur. “Data
+ready” in asynchronous communication is a typical example of such an
+asynchronous event. Another very typical example is a windows event handler.
+&nbsp;</p>
+<p class="MsoNormal">As an example of advanced/dynamic parameterization assume a
+tool that can create a certain kind of window. This window has the ability to
+change the shape of the cursor (mouse pointer) when it enters certain parts of
+the window. The window is however intended to work in many different situations,
+and therefore it can not know which cursor to use in which parts of the window.
+In fact the choice of cursor might depend on numerous things of which the window
+have no knowledge at all. Subsequently the window simply leave the choice of
+cursor to the program that uses the window. And the way does that is by invoking
+a callback predicate, asking the surrounding program what cursor to use, when
+the mouse enters a certain part of the window. Since the window makes such a
+callback each time the mouse enters a certain part it need not receive the same
+cursor each time, the choice of cursor may dynamically depend on things external
+to the window. &nbsp;</p>
+<p class="MsoNormal">Notice that predicate values are values of predicate
+domains (please, refer to the online Help for details about declaring predicate
+domains, etc).</p>
+<h2><!--mstheme--><font color="#000000">Object Predicate Values<!--mstheme--></font></h2>
+<p class="MsoNormal">&nbsp;Visual Prolog support a notion of <i>object predicate
+values</i>. Object predicate values is a generalization of <i><u>predicate
+values</u></i> (and as such the reader is encouraged to understand that notion
+first) An object predicate value is a <b>non-static</b> predicate of a <b>specific</b>
+object. This is opposed to ordinary/plain predicate values which are either
+global, local or static predicates.</p>
+<p class="MsoNormal">Seen from outside an object predicate value, look like a
+plain predicate value, because the object to which it belongs is subsumed by the
+value itself. Therefore the invocation of an object predicate value looks
+exactly the same as the invocation of a plain predicate value: It is simply
+applied to arguments. But the execution will (nevertheless) take place in the
+context of the specific object to which the object predicate value relates.
+&nbsp;</p>
+<p class="MsoNormal">So the main reason for using object predicate values over
+predicate values is that the execution will occur in a specific context.</p>
+<p class="MsoNormal">To illustrate this semantics let us consider an example:</p>
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">First
+we declare an object predicate domain (please refer to the online help for
+details about declaring object predicate domains, etc): &nbsp;</p>
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">global domains</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">    </span>objectIntInt = </span><b><span style="color:olive">object procedure</span></b><span style="color:black"> integer (integer)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">The
+domain <i>objectIntInt</i> declares object predicates from integer to integer
+with procedure mode. Now let us declare a predicate of this domain. Recall that
+the predicate must be a non-static member predicate, and subsequently it must be
+declared in a class:</p>
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">class</span></b><span style="color:black"> cLast</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>last : objectIntInt</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">endclass </span></b><span style="color:black">cLast</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">To
+really illustrate that <i>last</i> is indeed a non-static member predicate, we
+let it’s return value depend on the state of the object. In fact we will let
+it return the parameter it was called with at the previous invocation. So we
+store the parameter in a fact from one invocation to the next:</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black">&nbsp;</span><b><span style="color:olive">implement</span></b><span style="color:black"> cLast</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">facts</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:blue">% invariant: “lastParamater” holds </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <blockquote>
+    <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:blue">% the parameter value from last 
+%invocation of “last”</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:blue"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>% initially assume 0 as value from “last” invocation</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">single</span></b><span style="color:black"> lastParameter(integer </span><span style="color:green">Last</span><span style="color:black">)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>lastParamenter(</span><span style="color:blue">0</span><span style="color:black">).<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>last(</span><span style="color:green">ThisParameter</span><span style="color:black">, </span><span style="color:green">LastParameter</span><span style="color:black">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>lastParameter(</span><span style="color:green">LastParameter</span><span style="color:black">),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>assert(lastParamenter(</span><span style="color:green">ThisParameter</span><span style="color:black">)).</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">endclass </span></b><span style="color:black">cLast</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">So
+far the only thing special about this example is the way the predicate <i>last</i>
+is declared. And before we really use <i>last</i> as a an object predicate
+value, let us use it like a normal non-static member predicate:</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black">&nbsp;</span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span>test1() – </span><b><span style="color:olive">procedure</span></b><span style="color:black"> ()</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span>test1() :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">O1</span><span style="color:black"> = cLast::new(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">O2</span><span style="color:black"> = cLast::new(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">_</span><span style="color:black"> = </span><span style="color:green">O1</span><span style="color:black">:last(1),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">_</span><span style="color:black"> = </span><span style="color:green">O2</span><span style="color:black">:last(2),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">V1</span><span style="color:black"> = </span><span style="color:green">O1</span><span style="color:black">:last(3),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">V2</span><span style="color:black"> = </span><span style="color:green">O2</span><span style="color:black">:last(4),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>writef(</span><span style="color:blue">“V1 = %, V2 = %”</span><span style="color:black">, </span><span style="color:green">V1</span><span style="color:black">, </span><span style="color:green">V2</span><span style="color:black">), nl,</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black; mso-ansi-language: DA" lang="DA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang="DA" style="color:
+green;mso-ansi-language:DA">O1</span><span lang="DA" style="color:black;
+mso-ansi-language:DA">:delete(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black; mso-ansi-language: DA" lang="DA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang="DA" style="color:
+green;mso-ansi-language:DA">O2</span><span lang="DA" style="color:black;
+mso-ansi-language:DA">:delete().</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black">&nbsp;If
+we invoke <i>test1</i> then it will first create two objects <i>O1</i> and <i>O2</i>.
+Then it invoke <i>last</i> on <i>O1</i> with parameter 1 and on <i>O2</i> with
+parameter 2. Both <i>O1</i> and <i>O2</i> will store their parameter in there
+respective <i>lastParameter</i> fact. So, when <i>last</i> is invoked again we
+will retrieve 1 and 2, respectively. Subsequently, the invocation will produce
+the output:</span></p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><span style="font-family:&quot;Courier New&quot;;color:black">V1 = 1, V2 = 2</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">&nbsp;Now
+let us do the same again, only this time we will use the predicates as values
+held in variables:</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black">&nbsp;</span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span>test2() – </span><b><span style="color:olive">procedure ()</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span>test2() :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">O1</span><span style="color:black"> = cLast::new(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">O2</span><span style="color:black"> = cLast::new(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">P1</span><span style="color:black"> = </span><span style="color:green">O1</span><span style="color:black">:last, </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <blockquote>
+    <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:blue">% P1 is a member of the object predicate </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color: blue">%  </span><span style="color:blue">domain objectIntInt</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">P2</span><span style="color:black"> = </span><span style="color:green">O2</span><span style="color:black">:last,</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">_</span><span style="color:black"> = </span><span style="color:green">P1</span><span style="color:black">(1),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">_</span><span style="color:black"> = </span><span style="color:green">P2</span><span style="color:black">(2),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">V1</span><span style="color:black"> = </span><span style="color:green">P1</span><span style="color:black">(3),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style="color:green">V2</span><span style="color:black"> = </span><span style="color:green">P2</span><span style="color:black"> (4),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>writef(</span><span style="color:blue">“V1 = %, V2 = %”</span><span style="color:black">, </span><span style="color:green">V1</span><span style="color:black">, </span><span style="color:green">V2</span><span style="color:black">), nl,</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black; mso-ansi-language: DA" lang="DA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang="DA" style="color:
+green;mso-ansi-language:DA">O1</span><span lang="DA" style="color:black;
+mso-ansi-language:DA">:delete(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black; mso-ansi-language: DA" lang="DA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang="DA" style="color:
+green;mso-ansi-language:DA">O2</span><span lang="DA" style="color:black;
+mso-ansi-language:DA">:delete().</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA">&nbsp;</span>The
+first thing to notice is that an object predicate value consists of both an
+object and a predicate. Invocation of an object predicate value is, however,
+completely identical to invocation of an ordinary predicate value, i.e. you do
+not apply the value to an object, you simply invoke it on appropriate
+parameters.</p>
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">&nbsp;&nbsp;The
+effect of running <i>test2</i> is exactly the same as when running <i>test1</i>:
+Executing <i>P1(1) </i>will store 1 in the <i>lastParameter</i> fact of <i>O1</i>.
+Likewise the next call of <i>P1</i> will retrieve the value stored in the <i>lastParamater</i>
+fact of <i>O1</i>. And completely similarly <i>P2</i> will refer to <i>O2</i>.</p>
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">Object
+predicate values are at least as useful for callbacks as plain predicate values
+(please refer to the description of predicate values for a discussion of
+callbacks). The benefit from using object predicate values (over plain predicate
+values) is that the call back come back to a specific context, namely the object
+to which the callback belongs. This makes it possible to deal with several
+different callbacks of the same kind because each callback will end up in its
+own context.</p>
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">Let’s
+walk through an example. Assume that we have a number of “things” that are
+interested in knowing when a certain value changes. (For the sake of the example
+this value is simply an integer.) These things want to be notified
+asynchronously about the change in value. Therefore they register a “dataReady”
+<i>listener</i> at a data ready <i>source</i>. In this example we choose to
+transfer the new value together with the data ready <i>notification</i>, but
+with more complex data we might let the <i>listener</i> pick up the data itself.</p>
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">We
+represent the data ready source by an object of class cDataReadySource. If we
+have several pieces of data that can “become ready”, then we can use one
+instance of cDataReadySource per data piece, making it possible to listen to
+notifications for exactly those of interest. cDataReadySource supports
+registering and unregistering of listeners. It also have a predicate for setting
+the value in question.</p>
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">&nbsp;Listener
+are represented by object procedure values (i.e. object callbacks).</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:navy">&nbsp;</span><b><span style="color:olive">class</span></b><span style="color:black"> cDataReadySource</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">    </span><b><span style="color:olive">domains</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">        </span>dataReadyListener = </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">object procedure</span></b><span style="color:black"> (</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">cDataReadySource </span><span style="color:green">EventSource,</span><span style="color:black"> </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">integer </span><span style="color:green">NewValue</span><span style="color:black">)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">    </span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">        </span>addDataReadyListener(dataReadyListener </span><span style="color:green">Listener</span><span lang="DA" style="color:
+black;mso-ansi-language:DA">) – </span><b><span style="color:olive">procedure</span></b><span lang="DA" style="color:black;mso-ansi-language:DA"> (i)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">        </span>removeDataReadyListener(dataReadyListener </span><span style="color:
+green">Listener</span><span lang="DA" style="color:black;mso-ansi-language:DA">) – </span><b><span style="color:olive">procedure</span></b><span lang="DA" style="color:black;mso-ansi-language:DA"> (i)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">    </span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">        </span>setValue(integer </span><span style="color:green">NewValue</span><span style="color:black">) – </span><b><span style="color:olive">procedure</span></b><span style="color:black"> (i)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">endclass</span></b><span style="color:black"> cDataReadySource</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">&nbsp;The
+implementation is quite straightforward. We store the currently registered
+listeners in a fact, and, when the data is changed, we notify all registered
+listeners of this.</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:black">&nbsp;</span><b><span style="color:olive">implement</span></b><span style="color:black"> cDataReadySource</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black; mso-ansi-language: DA" lang="DA">&nbsp;&nbsp;&nbsp; </span><b><span lang="DA" style="color:olive;
+mso-ansi-language:DA">facts</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:blue">% Invariant: listener_db contains </span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <blockquote>
+    <!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:blue">% the currently registered listeners 
+% (multiple registrations are ignored)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang="DA" style="color:black;mso-ansi-language:
+DA">listener_db(dataReadyListener </span><span lang="DA" style="color:green;
+mso-ansi-language:DA">Listner</span><span lang="DA" style="color:black;
+mso-ansi-language:DA">)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black; mso-ansi-language: DA" lang="DA">&nbsp;&nbsp;&nbsp; </span><b><span lang="DA" style="color:olive;
+mso-ansi-language:DA">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>addDataReadyListener(</span><span lang="DA" style="color:green;mso-ansi-language:DA">Listener</span><span lang="DA" style="color:black;mso-ansi-language:DA">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>listener_db(</span><span lang="DA" style="color:green;mso-ansi-language:DA">Listener</span><span lang="DA" style="color:black;mso-ansi-language:DA">), </span><span lang="DA" style="color:blue;mso-ansi-language:DA">% already registered</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>!.</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>addDataReadyListener(</span><span lang="DA" style="color:green;mso-ansi-language:DA">Listener</span><span lang="DA" style="color:black;mso-ansi-language:DA">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>assert(listener_db(</span><span lang="DA" style="color:green;mso-ansi-language:DA">Listener</span><span lang="DA" style="color:black;mso-ansi-language:DA">)).</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA">&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span lang="DA" style="color:black;mso-ansi-language:DA"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun:
+yes">&nbsp;&nbsp;</span>removeDataReadyListener(</span><span lang="DA" style="color:green;
+mso-ansi-language:DA">Listener</span><span lang="DA" style="color:black;
+mso-ansi-language:DA">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>retractAll(listener_db(</span><span style="color:green">Listener</span><span style="color:black">)).</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dataIsReady(integer </span><span style="color:green">NewValue</span><span style="color:black">) – </span><b><span style="color:olive">procedure</span></b><span style="color:black"> ()</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dataIsReady(</span><span style="color:green">NewValue</span><span style="color:black">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>this(</span><span style="color:green">This</span><span style="color:black">),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>listener_db(</span><span style="color:green">Listener</span><span style="color:black">),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Listener(</span><span style="color:green">This, NewValue</span><span style="color:black">),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>fail.</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dataIsReady().	</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>setValue(</span><span style="color:green">NewValue</span><span style="color:black">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dataIsReady(</span><span style="color:green">NewValue</span><span style="color:black">).</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">endclass</span></b><span style="color:black"> cDataReadySource</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">Let
+us also try to use the class above in a context. &nbsp;Assume that we have
+system which count how many users that are active, this count is used in a
+number of places. One of these places is a status window which displays the
+count. For the sake of the example we imagine that there is a global predicate <i>getUserCountSource</i>
+which will return a cDataReadySource object corresponding to the count.</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:navy">&nbsp;</span><b><span style="color:olive">global predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp; </span>cDataReadySource getUserCountSource() – </span><b><span style="color:olive">procedure</span></b><span style="color:black"> ()</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align:none;text-autospace:none">We
+implement our status window as a class <i>cStatusWindow</i>. The declaration of <i>cStatusWindow</i>
+is not very interesting in this context, all we are concerned with is the
+implementation. In the implementation we put our <i>dataReadyListener</i> and in
+the constructor of the class we register this listener with the user count data
+source. We of course also unregister the listener in the destructor.</p>
+<!--mstheme--></font><pre style="mso-layout-grid-align:none;text-autospace:none"><span style="color:navy">&nbsp;</span><b><span style="color:olive">class</span></b><span style="color:black"> cStatusWindow</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>updateWindow(integer </span><span style="color:green">NewValue</span><span style="color:black">) – </span><b><span style="color:olive">procedure</span></b><span style="color:black"> (i)</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>updateWindow(</span><span style="color:green">NewValue</span><span style="color:black">) :- …</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">predicates</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>onUserCountChanged : cDataReadySource::dataReadyListener</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>onUserCountChanged(</span><span style="color:green">_Source</span><span style="color:black">, </span><span style="color:green">NewValue</span><span style="color:black">) :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>updateWindow(NewValue).</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp; </span><b><span style="color:olive">clauses</span></b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>new() :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">UserCountSource</span><span style="color:black"> = getUserCountSource(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">UserCountSource</span><span style="color:black">:addListener(onUserCountChanged).<span style="mso-spacerun:
+yes">&nbsp; </span></span><span style="color:blue">% THIS is subsumed</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black">&nbsp;</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="color:black"><span style="mso-spacerun:
+yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>delete() :-</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">UserCountSource</span><span style="color:black"> = getUserCountSource(),</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><span style="mso-spacerun: yes; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:green">UserCountSource</span><span style="color:black">:removeListener(onUserCountChanged).</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre style="margin-left:17.85pt;mso-layout-grid-align:none;
+text-autospace:none"><b><span style="color:olive">endclass</span></b><span style="color:black"> cStatusWindow</span></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p class="MsoNormal" style="mso-layout-grid-align: none; text-autospace: none">No
+matter how many status windows we create they will all be updated when the user
+count change.
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

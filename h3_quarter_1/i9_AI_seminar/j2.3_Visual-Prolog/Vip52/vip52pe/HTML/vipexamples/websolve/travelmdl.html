@@ -1,0 +1,190 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>TravelMdl</title>
+<meta NAME="Version" CONTENT="8.0.3410">
+<meta NAME="Date" CONTENT="10/11/96">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+
+<h1><!--mstheme--><font color="#000000">About the Travel Expenses Model.<!--mstheme--></font></h1>
+
+<p>The Travel Model is a simple model, that can calculate the expenses of traveling by
+car..</p>
+
+<p>The model is based on an easy set of equations: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Dist=Speed*Time,</p>
+    <p>GasTot=Dist*GasPU,</p>
+    <p>GasCost=GasTot*GasPrice,</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>where: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Dist - The distance of the travel (in kilometer or in miles)</p>
+    <p>Speed - The average speed of the car (km/h of ml/h)</p>
+    <p>Time - The number of hours spent on traveling</p>
+    <p>GasPU - The amount of gasoline used by the car per unit of distance (liter or gallon)</p>
+    <p>GasTot - The total amount of gasoline used for the travel (liter or gallon)</p>
+    <p>GasPrice - The price of gasoline per unit (liter or gallon)</p>
+    <p>GasCost - The total cost of gasoline used for the travel</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>which is transformed manually to: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>Speed*Time+(-1)*Dist,</p>
+    <p>Dist*GasPU+(-1)*GasTot,</p>
+    <p>GasTot*GasPrice+(-1)*GasCost</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="Verdana">
+
+<p>The user communicates with the Solver by means of an Input / Output form as shown
+below:</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="2" CELLPADDING="3" WIDTH="378" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP" HEIGHT="36"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Distance</b></font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP" HEIGHT="36"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="Dist" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Travel Time</b></font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="Time" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Travel Speed</b></font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="Speed" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Gasoline / Dist. Unit</b></font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="GasPU" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Amount of Gasoline</b></font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="GasTot" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Price of Gas / Vol. Unit</b> </font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="GasPrice" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="70%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><b>Total Cost of Gasoline</b></font><!--mstheme--></font></td>
+    <td WIDTH="30%" VALIGN="TOP"><!--mstheme--><font face="Verdana"><font FACE="Arial"><p ALIGN="RIGHT"><input TYPE="TEXT" MAXLENGTH="30" NAME="GasCost" size="20"> </font><!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+
+<p>&nbsp;</p>
+
+<p>When using the travel model you should input data to the right side fields and then
+press the &quot;Resolve&quot; button.</p>
+
+<p>You can input any data, which is known at the moment.</p>
+
+<p>All values that can be resolved, will be resolved.</p>
+
+<p>At the next step of the communication the data calculated at the previous step will be
+used as input data.</p>
+
+<p>You can give a field the value Void by emptying it. Click on it with the mouse and
+delete the value.</p>
+
+<p>The results of the calculations are colored in order for you to see if your input data
+is invalid or conflicting.</p>
+
+<p>The values calculated by the Solver are also colored.</p>
+
+<p>The set of colors used for marking the results of the calculations is shown in the
+table below:</p>
+
+<!--mstheme--></font><table BORDER="1" CELLSPACING="2" CELLPADDING="7" WIDTH="423" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+  <tr>
+    <td WIDTH="75%" VALIGN="TOP"><!--mstheme--><font face="Verdana">Void or preset the value of the parameter<!--mstheme--></font></td>
+    <td WIDTH="25%" VALIGN="TOP"><!--mstheme--><font face="Verdana">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="75%" VALIGN="TOP"><!--mstheme--><font face="Verdana">The value calculated by the Solver<!--mstheme--></font></td>
+    <td WIDTH="25%" VALIGN="TOP" BGCOLOR="#00ffff"><!--mstheme--><font face="Verdana">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="75%" VALIGN="TOP"><!--mstheme--><font face="Verdana">The conflicting result data values<!--mstheme--></font></td>
+    <td WIDTH="25%" VALIGN="TOP" BGCOLOR="#ffff00"><!--mstheme--><font face="Verdana">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="75%" VALIGN="TOP"><!--mstheme--><font face="Verdana">The conflicting source data values<!--mstheme--></font></td>
+    <td WIDTH="25%" VALIGN="TOP" BGCOLOR="#00ff00"><!--mstheme--><font face="Verdana">&nbsp;<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="75%" VALIGN="TOP"><!--mstheme--><font face="Verdana">Invalid source data (not number)<!--mstheme--></font></td>
+    <td WIDTH="25%" VALIGN="TOP" BGCOLOR="#0000ff"><!--mstheme--><font face="Verdana">&nbsp;<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+
+<p>The message window displays messages from the Web Solver.</p>
+
+<p>In the field placed at the bottom of the page you can see the equations used in the
+model.</p>
+<font SIZE="5"><b>
+
+<p>Try it! It is easy to use!</p>
+
+<p>&nbsp;</b></font> 
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,733 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Source for main Program</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Source for main Program<!--mstheme--></font></h1>
+
+<!--mstheme--></font><pre>/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  license
+ FileName: license.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments: 
+******************************************************************************/
+
+include &quot;license.inc&quot;
+include &quot;include\\pdcrunt.pre&quot;
+include &quot;www\\include\\cgi\\cgitools.pre&quot;
+include &quot;database.pre&quot;
+include &quot;www\\include\\cgi\\cgitools.pro&quot;
+
+/*****************************************************************************
+  Generate some common links
+*****************************************************************************/
+
+predicates
+  procedure write_common_links()
+clauses
+  write_common_links():-
+	  write(&quot;&lt;P&gt;\n&quot;),
+	  write(&quot;&lt;A HREF=\&quot;license.exe\&quot;&gt;Users&lt;/A&gt;\n&quot;),
+	  write(&quot;&lt;A HREF=\&quot;license.exe?action=show_all_software\&quot;&gt;Software&lt;/A&gt;\n&quot;),
+	  write(&quot;&lt;/P&gt;\n&quot;).
+
+/*****************************************************************************
+	Lookup PARM in ParmList, Return empty string if not found
+*****************************************************************************/
+
+predicates
+  procedure lookupParm(string ParmName,parmList,string Value)-(i,i,o)
+
+clauses
+  lookupParm(_,[],&quot;&quot;).
+  lookupParm(ParmName,[parm(ParmName,Value)|_],Value):-!.
+  lookupParm(ParmName,[_|List],Value):-
+	lookupParm(ParmName,List,Value).
+
+/*****************************************************************************
+	Remove empty parameter values
+*****************************************************************************/
+
+predicates
+  procedure remove_empty(parmList,parmList)-(i,o)
+
+clauses
+  remove_empty([],[]).
+  remove_empty([parm(_,&quot;&quot;)|Rest],Filtered):-!,
+	remove_empty(Rest,Filtered).
+  remove_empty([H|Rest],[H|Filtered]):-
+	remove_empty(Rest,Filtered).
+
+
+/*****************************************************************************
+	Handling of list of generic fields for a Form
+  Passing in a list of Field Specifiers with Parameter names, and a list
+  of actual prameter values. Write the FORM elements for this.
+*****************************************************************************/
+
+domains
+  fieldSpec = text(integer Size); textarea(integer Rows,integer Cols)
+  field = field(string FieldName,string Title,fieldSpec)
+  fieldList = field*
+
+predicates
+  procedure write_FieldList(fieldList,parmList)-(i,i)
+  procedure write_Field(string Title,string FieldName,fieldSpec,string Value)-(i,i,i,i)
+
+clauses
+  write_Field(Title,FieldName,text(Size),Value):-
+	write(&quot;&lt;td&gt;&quot;,Title,&quot; &lt;td&gt;&lt;input type=\&quot;text\&quot; name=\&quot;&quot;,FieldName,&quot;\&quot; VALUE=\&quot;&quot;,Value,&quot;\&quot; size=\&quot;&quot;,Size,&quot;\&quot;&gt;\n&quot;).
+  write_Field(Title,FieldName,textarea(Rows,Cols),Value):-
+	write(&quot;&lt;td&gt;&quot;,Title,&quot; &lt;td&gt;&lt;textarea name=\&quot;&quot;,FieldName,&quot;\&quot; Rows=\&quot;&quot;,Rows,&quot;\&quot; Cols=\&quot;&quot;,Cols,&quot;\&quot;&gt;&quot;,Value,&quot;&lt;/textarea&gt;\n&quot;).
+
+  write_FieldList([],_).
+  write_FieldList([field(FieldName,Title,FieldSpec)|FieldList],ParmList):-
+	lookupParm(FieldName,ParmList,Value),
+	write(&quot;&lt;tr&gt;&quot;),
+	write_Field(Title,FieldName,FieldSpec,Value),
+	write(&quot;&lt;/tr&gt;&quot;),
+	write_FieldList(FieldList,ParmList).
+
+/*****************************************************************************
+  Generate the inputform for Users/users
+*****************************************************************************/
+
+predicates
+  procedure write_user_form(string Title,string Action,userId,string UserName,parmList)
+  procedure write_user_form_id(userId)
+
+clauses
+  write_user_form(Title,Action,UserId,UserName,ParmList):-
+	FieldList = [
+		field(&quot;Type&quot;,&quot;Computer Type:&quot;,text(40)),
+		field(&quot;Speed&quot;,&quot;Computer Speed:&quot;,text(40)),
+		field(&quot;Ram&quot;,&quot;MB Ram:&quot;,text(40)),
+		field(&quot;Disk&quot;,&quot;MB Disk:&quot;,text(40)),
+		field(&quot;ScreenCard&quot;,&quot;Screen Card:&quot;,text(40)),
+		field(&quot;NetCard&quot;,&quot;Net Card:&quot;,text(40)),
+		field(&quot;SoundCard&quot;,&quot;Sound Card:&quot;,text(40)),
+		field(&quot;Comments&quot;,&quot;Comments:&quot;,textarea(4,32))],
+	write(&quot;&lt;form method=\&quot;POST\&quot; action=\&quot;license.exe\&quot;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;b&gt;&quot;,Title,&quot;&lt;/b&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; name=\&quot;action\&quot; VALUE=\&quot;&quot;,Action,&quot;\&quot;&gt;\n&quot;),
+	write_user_form_id(UserId), % For the updating, the ID is needed !
+	write(&quot;&lt;table&gt;\n&quot;),
+	write(&quot;&lt;tr&gt;&lt;td&gt;Name: &lt;td&gt;&lt;input type=\&quot;text\&quot; name=\&quot;name\&quot; VALUE=\&quot;&quot;,UserName,&quot;\&quot; size=\&quot;40\&quot;&gt;&lt;/tr&gt;\n&quot;),
+	write_FieldList(FieldList,ParmList),
+	write(&quot;&lt;/table&gt;\n&quot;),
+	write(&quot;&lt;p&gt;\n&lt;input type=\&quot;submit\&quot; VALUE=\&quot;Submit\&quot;&gt;\n&quot;),
+	write(&quot;&lt;input type=\&quot;reset\&quot; VALUE=\&quot;Reset\&quot;&gt;\n&quot;),
+	write(&quot;&lt;/p&gt;\n&lt;/form&gt;\n&quot;).
+
+  write_user_form_id(0):-!.
+  write_user_form_id(UserId):-  
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; NAME=\&quot;id\&quot; VALUE=\&quot;&quot;,UserId,&quot;\&quot;&gt;\n&quot;).
+
+/*****************************************************************************
+  Generate the inputform for Software
+*****************************************************************************/
+
+predicates
+  procedure write_software_form(string Title,string Action,softwareId,string SoftwareName,integer LegalNoOfLicenses,integer UsedNoOfLicenses,parmList)
+  procedure write_software_form_id(softwareId)
+
+clauses
+  write_software_form(Title,Action,SoftwareId,SoftwareName,LegalNoOfLicenses,UsedNoOfLicenses,ParmList):-
+	FieldList = [
+		field(&quot;Version&quot;,&quot;Version:&quot;,text(40)),
+		field(&quot;OS&quot;,&quot;Platform:&quot;,text(40)),
+		field(&quot;SerNo&quot;,&quot;Serial No.:&quot;,text(40)),
+		field(&quot;Date&quot;,&quot;Date:&quot;,text(40)),
+		field(&quot;Developer&quot;,&quot;Developer&quot;,textarea(4,32)),
+		field(&quot;Supplier&quot;,&quot;Supplier:&quot;,text(40)),
+		field(&quot;Medium&quot;,&quot;Medium:&quot;,text(40)),
+		field(&quot;Comments&quot;,&quot;Comments:&quot;,textarea(4,32))],
+	write(&quot;&lt;form method=\&quot;POST\&quot; action=\&quot;license.exe\&quot;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;b&gt;&quot;,Title,&quot;&lt;/b&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; name=\&quot;action\&quot; VALUE=\&quot;&quot;,Action,&quot;\&quot;&gt;\n&quot;),
+	write_software_form_id(SoftwareId),
+	write(&quot;&lt;table&gt;\n&quot;),
+	write(&quot;&lt;tr&gt;&lt;td&gt;Name: &lt;td&gt;&lt;input type=\&quot;text\&quot; name=\&quot;name\&quot; VALUE=\&quot;&quot;,SoftwareName,&quot;\&quot; size=\&quot;40\&quot;&gt;&lt;/tr&gt;\n&quot;),
+	write(&quot;&lt;tr&gt;&lt;td&gt;Number of Licenses: &lt;td&gt;&lt;input type=\&quot;text\&quot; name=\&quot;nooflicenses\&quot; VALUE=\&quot;&quot;,LegalNoOfLicenses,&quot;\&quot; size=\&quot;3\&quot;&gt;\n&quot;),
+	write(&quot; (Used Licenses: &quot;,UsedNoOfLicenses,&quot;)&lt;/tr&gt;\n&quot;),
+	write_FieldList(FieldList,ParmList),
+	write(&quot;&lt;/table&gt;\n&quot;),
+	write(&quot;&lt;p&gt;\n&lt;input type=\&quot;submit\&quot; VALUE=\&quot;Submit\&quot;&gt;\n&quot;),
+	write(&quot;&lt;input type=\&quot;reset\&quot; VALUE=\&quot;Reset\&quot;&gt;\n&quot;),
+	write(&quot;&lt;/p&gt;\n&lt;/form&gt;\n&quot;).
+
+  write_software_form_id(0):-!.
+  write_software_form_id(SoftwareId):-  
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; NAME=\&quot;id\&quot; VALUE=\&quot;&quot;,SoftwareId,&quot;\&quot;&gt;\n&quot;).
+
+
+/*****************************************************************************
+	Writing the collumnlist for a table, based on the generic values
+*****************************************************************************/
+
+domains
+  colList = string*
+
+predicates
+  procedure write_ColList(colList,parmList)-(i,i)
+  lookupParmBR(string ParmName,parmList,string Value)-(i,i,o)
+
+clauses
+  write_ColList([],_).
+  write_ColList([ParmName|Rest],ParmList):-
+	lookupParmBR(ParmName,ParmList,Value),
+	write(&quot;&lt;td align=right&gt;&quot;),
+	write(Value),
+	write_ColList(Rest,ParmList).
+
+  % Return &lt;br&gt; instead of empty string if parm not found
+  lookupParmBR(ParmName,ParmList,Value):-
+	lookupParm(ParmName,ParmList,Value),
+	Value&gt;&lt;&quot;&quot;,!.
+  lookupParmBR(_,_,&quot;&lt;BR&gt;&quot;).
+
+
+/*****************************************************************************
+  Command: Show Page with list of ALL users
+*****************************************************************************/
+
+predicates
+  procedure show_all_users()
+  procedure write_user_table(colList)
+
+clauses
+  show_all_users():-
+	write(&quot;&lt;head&gt;&lt;/head&gt;\n&quot;),
+	write(&quot;&lt;body&gt;\n&quot;),
+	write(&quot;&lt;H1&gt;Workstations &amp; Servers&lt;/H1&gt;\n\n&quot;),
+	write(&quot;&lt;HR&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;table border=1&gt;\n&quot;),
+	write(&quot;&lt;TR&gt;&lt;TD&gt;Name &lt;TD&gt;Computer Type&lt;TD&gt;Speed(Mhz)&lt;TD&gt;Ram(MB)&lt;TD&gt;Disk(GB)&lt;/tr&gt;\n&quot;),
+	ColList = [&quot;Type&quot;,&quot;Speed&quot;,&quot;Ram&quot;,&quot;Disk&quot;],
+	write_user_table(ColList),
+	write(&quot;&lt;/table&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;table bgcolor=yellow border=1&gt;&lt;tr&gt;&lt;td&gt;\n&quot;),
+	write_user_form(&quot;Add User or Server&quot;,&quot;add_new_user&quot;,0,&quot;&quot;,[]),
+	write(&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;\n&quot;),
+	write_common_links(),
+	write(&quot;&lt;/body&gt;\n&quot;).
+
+  write_user_table(ColList):-
+	user(UserId,FullName,ParmList),
+	  write(&quot;&lt;TR&gt;&lt;TD&gt;&lt;A HREF=\&quot;license.exe?action=show_user&amp;user=&quot;,
+		UserId,&quot;\&quot;&gt;&quot;,FullName,&quot;&lt;/A&gt;&quot;),
+	  write_ColList(ColList,ParmList),
+	  write(&quot;&lt;/TR&gt;\n&quot;),
+	  fail.
+  write_user_table(_).
+
+/*****************************************************************************
+  Command: Show Page for given User
+*****************************************************************************/
+
+predicates
+  procedure show_user(userId)
+  procedure show_softwareforusertable(userId)
+  procedure write_adduseoflicense_form(userId)
+  procedure write_addsoftw_options(userId)
+  procedure cond_write_heading(userId)
+
+clauses
+  show_user(UserId):-
+	write(&quot;&lt;head&gt;&lt;/head&gt;\n&quot;),
+	write(&quot;&lt;body&gt;\n&quot;),
+	user(UserId,UserName,ParmList),!,
+	write(&quot;&lt;H1&gt;&quot;,UserName,&quot;&lt;/H1&gt;\n&quot;),
+	write(&quot;&lt;HR&gt;\n&quot;),
+	write(&quot;&lt;P&gt;\n&quot;),
+	cond_write_heading(UserId), % Write only heading if some software are registered
+	show_softwareforusertable(UserId),
+	write(&quot;&lt;/P&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;table bgcolor=gray border=1&gt;\n&quot;),
+	write(&quot;&lt;tr&gt;&lt;td&gt;&lt;A HREF=\&quot;license.exe?action=delete_user&amp;user=&quot;,UserId,&quot;\&quot;&gt;Delete &quot;,UserName,&quot;&lt;/A&gt;&lt;/tr&gt;\n&quot;),
+	write(&quot;&lt;/table&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;\n&lt;table bgcolor=yellow border=1&gt;\n&lt;tr&gt;&lt;td&gt;\n\n&quot;),
+	write_adduseoflicense_form(UserId),
+	write(&quot;\n&lt;td&gt;\n\n&quot;),
+	write_user_form(&quot;Update Information&quot;,&quot;renameuser&quot;,UserId,UserName,ParmList),
+	write(&quot;&lt;/table&gt;\n\n&quot;),
+	write_common_links(),
+	write(&quot;&lt;/body&gt;\n&quot;).
+
+  show_user(UserId):-
+	write(&quot;&lt;H1&gt;Unknown userid &quot;,UserId,&quot;&lt;/H1&gt;\n&quot;),
+	write(&quot;&lt;/body&gt;\n&quot;).
+
+  show_softwareforusertable(UserId):-
+	user_software(UserId,SoftwareId,SoftwareName,LicenseProblem),
+	  write(&quot;&lt;A HREF=\&quot;license.exe?action=delete_userforsoftware&amp;user=&quot;,
+			UserId,&quot;&amp;software=&quot;,SoftwareId,&quot;\&quot;&gt;Del&lt;/A&gt;--&gt; \n&quot;),
+	  write(&quot;&lt;A HREF=\&quot;license.exe?action=show_software&amp;software=&quot;,
+			SoftwareId,&quot;\&quot;&gt;&quot;,SoftwareName,&quot;&lt;/A&gt;&quot;,LicenseProblem),
+	  write(&quot;&lt;BR&gt;\n&quot;),
+	fail.
+  show_softwareforusertable(_).
+	
+  write_adduseoflicense_form(UserId):-
+	write(&quot;&lt;form method=\&quot;POST\&quot; action=\&quot;license.exe\&quot;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;b&gt;Add new licenses&lt;/b&gt;&lt;br&gt;\n&quot;),
+	write(&quot;(Multiple selection is possible)&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; name=\&quot;action\&quot; VALUE=\&quot;add_software_to_user\&quot;&gt;\n&quot;),
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; NAME=\&quot;name\&quot; VALUE=\&quot;&quot;,UserId,&quot;\&quot;&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;select name=\&quot;LIST\&quot; size=\&quot;16\&quot; multiple&gt;\n&quot;),
+	write_addsoftw_options(UserId),
+	write(&quot;&lt;/select&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;p&gt;\n&lt;input type=\&quot;submit\&quot; VALUE=\&quot;Register\&quot; name=\&quot;B1\&quot;&gt;\n&quot;),
+	write(&quot;&lt;input type=\&quot;reset\&quot; VALUE=\&quot;Reset\&quot; name=\&quot;B2\&quot;&gt;\n&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;/form&gt;\n&quot;).
+
+  write_addsoftw_options(UserId):-
+	software(SoftwareId,SoftwareDescription),
+	  not(license(UserId,SoftwareId)),
+	  write(&quot;&lt;option VALUE=\&quot;&quot;,SoftwareId,&quot;\&quot;&gt;&quot;,SoftwareDescription,&quot;&lt;/option&gt;\n&quot;),
+	fail.
+  write_addsoftw_options(_).
+         
+  cond_write_heading(UserId):-
+	license(UserId,_),!, % write heading if at least one software registered !
+	write(&quot;&lt;b&gt;Licenses already registered:&lt;/b&gt;&lt;BR&gt;\n&quot;).
+  cond_write_heading(_).
+
+/*****************************************************************************
+  Command: Show Page for a given Software
+*****************************************************************************/
+
+predicates
+  procedure show_software(softwareId)
+  procedure show_usersforsoftwaretable(softwareId)
+  procedure write_adduseoflicense_software_form(softwareId)
+  procedure write_addusers_options(softwareId)
+
+clauses
+  show_software(SoftwareId):-
+	write(&quot;&lt;head&gt;&lt;/head&gt;\n&quot;),
+	write(&quot;&lt;body&gt;\n&quot;),
+	software(SoftwareId,SoftwareName,LegalNoOfLicenses,UsedNoOfLicenses,ParmList),!,
+	write(&quot;&lt;H1&gt;&quot;,SoftwareName,&quot;&lt;/H1&gt;\n&quot;),
+	write(&quot;&lt;HR&gt;\n&quot;),
+	write(&quot;&lt;P&gt;&lt;b&gt;&quot;,UsedNoOfLicenses,&quot; Users:&lt;/b&gt;&lt;br&gt;\n&quot;),
+	show_usersforsoftwaretable(SoftwareId),
+	write(&quot;&lt;/P&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;table bgcolor=gray border=1&gt;\n&quot;),
+	write(&quot;&lt;tr&gt;&lt;td&gt;&lt;A HREF=\&quot;license.exe?action=delete_software&amp;software=&quot;,SoftwareId,&quot;\&quot;&gt;Delete &quot;,SoftwareName,&quot;&lt;/A&gt;&lt;/tr&gt;\n&quot;),
+	write(&quot;&lt;/table&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;\n&lt;table bgcolor=yellow border=1&gt;\n&lt;tr&gt;&lt;td&gt;\n\n&quot;),
+	write_adduseoflicense_software_form(SoftwareId),
+	write(&quot;\n&lt;td&gt;\n\n&quot;),
+	write_software_form(&quot;Update&quot;,&quot;updatesoftware&quot;,SoftwareId,SoftwareName,LegalNoOfLicenses,UsedNoOfLicenses,ParmList),
+	write(&quot;&lt;/table&gt;\n\n&quot;),
+	write_common_links(),
+	write(&quot;&lt;/body&gt;\n&quot;).
+  show_software(_):-
+	errorexit().	% Software ID Not found !
+
+  show_usersforsoftwaretable(SoftwareId):-
+	software_user(SoftwareId,UserId,FullName),
+	  write(&quot;&lt;A HREF=\&quot;license.exe?action=delete_softwareforuser&amp;user=&quot;,
+		UserId,&quot;&amp;software=&quot;,SoftwareId,&quot;\&quot;&gt;Del&lt;/A&gt;--&gt; &quot;),
+	  write(&quot;&lt;A HREF=\&quot;license.exe?action=show_user&amp;user=&quot;,
+		UserId,&quot;\&quot;&gt;&quot;,FullName,&quot;&lt;/A&gt;&lt;BR&gt;\n&quot;),
+	fail.
+  show_usersforsoftwaretable(_).
+
+  write_adduseoflicense_software_form(SoftwareId):-
+	write(&quot;&lt;form method=\&quot;POST\&quot; action=\&quot;license.exe\&quot;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;b&gt;Register new users&lt;/b&gt;&lt;br&gt;\n&quot;),
+	write(&quot;(Multiple selection is possible)&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; name=\&quot;action\&quot; VALUE=\&quot;add_user_to_software\&quot;&gt;\n&quot;),
+	write(&quot;&lt;input TYPE=\&quot;hidden\&quot; NAME=\&quot;name\&quot; VALUE=\&quot;&quot;,SoftwareId,&quot;\&quot;&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;select name=\&quot;LIST\&quot; size=\&quot;20\&quot; multiple&gt;\n&quot;),
+	write_addusers_options(SoftwareId),
+	write(&quot;&lt;/select&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;p&gt;\n&lt;input type=\&quot;submit\&quot; VALUE=\&quot;Register\&quot; name=\&quot;B1\&quot;&gt;\n&quot;),
+	write(&quot;&lt;input type=\&quot;reset\&quot; VALUE=\&quot;Reset\&quot; name=\&quot;B2\&quot;&gt;\n&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;/form&gt;\n&quot;).
+
+  write_addusers_options(SoftwareId):-
+	user(UserId,UserName),
+	  not(license(UserId,SoftwareId)),
+	  write(&quot;&lt;option VALUE=\&quot;&quot;,UserId,&quot;\&quot;&gt;&quot;,UserName,&quot;&lt;/option&gt;\n&quot;),
+	fail.
+  write_addusers_options(_).
+
+/*****************************************************************************
+  Command: Show page with all software
+*****************************************************************************/
+
+predicates
+  procedure show_all_software()
+  procedure show_licensestable()
+  procedure conditional_coloredtd(integer,integer)
+
+clauses
+  show_all_software():-
+	write(&quot;&lt;head&gt;&lt;/head&gt;\n&quot;),
+	write(&quot;&lt;body&gt;\n&quot;),
+	write(&quot;&lt;H1&gt;Software&lt;/H1&gt;\n&quot;),
+	write(&quot;&lt;HR&gt;\n&quot;),
+	show_licensestable,
+	write(&quot;&lt;p&gt;&lt;b&gt;Add New Software&lt;/b&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;table border=1 bgcolor=\&quot;#FFFF00\&quot;&gt;&lt;tr&gt;&lt;td&gt;&quot;),
+	write_software_form(&quot;&quot;,&quot;add_new_software&quot;,0,&quot;&quot;,0,0,[]),
+	write(&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot;),
+	write_common_links(),
+	write(&quot;&lt;/body&gt;\n&quot;).
+
+  show_licensestable():-
+	write(&quot;&lt;/p&gt;&lt;table border=1&gt;\n&quot;),
+	write(&quot;&lt;tr&gt;&lt;th&gt;Software&lt;th&gt;Actual Licenses&lt;th&gt;Used Licenses&lt;tr&gt;\n&quot;),
+	  software(SoftwareId,NameOfSoftware,LegalNoOfLicenses,UsedNoOfLicenses),
+	  write(&quot;&lt;tr&gt;&quot;),
+	  conditional_coloredtd(LegalNoOfLicenses,UsedNoOfLicenses),
+	  write(&quot;&lt;A HREF=\&quot;license.exe?action=show_software&amp;software=&quot;,
+				SoftwareId,&quot;\&quot;&gt;&quot;,NameOfSoftware,&quot;&lt;/A&gt;&lt;BR&gt;\n&quot;),
+	  conditional_coloredtd(LegalNoOfLicenses,UsedNoOfLicenses),
+	  write(LegalNoOfLicenses),
+	  conditional_coloredtd(LegalNoOfLicenses,UsedNoOfLicenses),
+	  write(UsedNoOfLicenses),
+	  write(&quot;&lt;/tr&gt;\n&quot;),
+	fail.
+  show_licensestable():-
+	write(&quot;&lt;/table&gt;&lt;/p&gt;\n&quot;).
+
+  conditional_coloredtd(ActualNoOfLicenses,UsedNoOfLicenses):-
+	ActualNoOfLicenses&gt;=UsedNoOfLicenses,!,
+	write(&quot;&lt;td&gt;&quot;).
+  conditional_coloredtd(_,_):-
+	write(&quot;&lt;td bgcolor=\&quot;#FF0000\&quot;&gt;&quot;).
+
+/*****************************************************************************
+  Command: Add new User
+*****************************************************************************/
+
+predicates
+  procedure add_new_user(string Name,parmList)
+
+clauses
+  add_new_user(Name,ParmList):-
+	ID = getnewid(),
+	remove_empty(ParmList,Filtered),
+	add_user(Id,Name,Filtered),
+	show_all_users().
+
+/*****************************************************************************
+  Command: Delete User - has been confirmed
+*****************************************************************************/
+
+predicates
+  procedure confirmed_delete_user(userId)
+
+clauses
+  confirmed_delete_user(User):-
+	remove_user(User),
+	show_all_users().
+	
+/*****************************************************************************
+  Command: Request to delete user
+*****************************************************************************/
+
+predicates
+  procedure delete_user(userId)
+
+clauses
+  delete_user(UserId):-
+	write(&quot;&lt;head&gt;&lt;/head&gt;\n&quot;),
+	write(&quot;&lt;body&gt;\n&quot;),
+	user(UserId,UserName),!,
+	write(&quot;&lt;H1&gt;Are you Sure ?&lt;/H1&gt;\n&quot;),
+	write(&quot;&lt;hr&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;A HREF=\&quot;license.exe?action=confirmed_delete_user&amp;user=&quot;,UserId,&quot;\&quot;&gt;Yes, Please Delete &quot;,UserName,&quot;&lt;/A&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;A HREF=\&quot;license.exe\&quot;&gt;UPS That was a mistake&lt;/A&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;/body&gt;\n&quot;).
+  delete_user(_):-
+	errorexit().	% UserID Not Found
+	
+/*****************************************************************************
+  Command: Add new licenses for a user
+*****************************************************************************/
+
+predicates
+  procedure add_software_to_user(userId,parmList)
+
+clauses
+  add_software_to_user(UserId,[parm(&quot;B1&quot;,_)|_]):-!,
+	show_user(UserId).
+  add_software_to_user(UserId,[parm(&quot;LIST&quot;,X)|LIST]):-
+	str_int(X,SoftwareId),!,
+	add_license(UserId,SoftwareId),
+	add_software_to_user(UserId,LIST).
+  add_software_to_user(_,_):-
+	errorexit().  % SoftwareID NOT Found !
+
+/*****************************************************************************
+  Command: Delete a license for a User - from the User's page
+*****************************************************************************/
+
+predicates
+  procedure delete_userforsoftware(userId,softwareId)
+
+clauses
+  delete_userforsoftware(UserId,Software):-
+	remove_license(UserId,Software),
+	show_user(UserId).
+
+/*****************************************************************************
+  Command: Rename user
+*****************************************************************************/
+
+predicates
+  procedure renameuser(userId,string Name,parmList)
+
+clauses
+  renameuser(UserId,UserName,ParmList):-
+	remove_empty(ParmList,Filtered),
+	update_user(UserId,UserName,Filtered),
+	show_user(UserId).
+	
+/*****************************************************************************
+  Command: Add new user for a given software
+*****************************************************************************/
+
+predicates
+  procedure add_user_to_software(softwareId,parmlist)
+
+clauses
+  add_user_to_software(Software,[parm(&quot;B1&quot;,_)|_]):-!,
+	show_software(Software).
+  add_user_to_software(Software,[parm(&quot;LIST&quot;,User)|LIST]):-
+	str_int(User,UserId),!,
+	add_license(UserId,Software),
+	add_user_to_software(Software,LIST).
+  add_user_to_software(_,_):-
+	errorexit().
+
+/*****************************************************************************
+  Command: Delete a software for a user
+*****************************************************************************/
+
+predicates
+  procedure delete_softwareforuser(userId,softwareId)
+
+clauses
+  delete_softwareforuser(User,Software):-
+	remove_license(User,Software),
+	show_software(Software).
+
+/*****************************************************************************
+  Command: Rename software
+*****************************************************************************/
+
+predicates
+  procedure updatesoftware(softwareId,string Name,integer NoOfLicenses,parmList)
+
+clauses
+  updatesoftware(SoftwareId,SoftwareName,NoOfLicenses,ParmList):-
+	remove_empty(ParmList,Filtered),
+	update_software(SoftwareId,SoftwareName,NoOfLicenses,Filtered),
+	show_software(SoftwareId).
+
+/*****************************************************************************
+  Command: Add new software
+*****************************************************************************/
+
+predicates
+  procedure add_new_software(string Name,integer NoOfLicenses,parmList)
+
+clauses
+  add_new_software(Name,NoOfLicenses,ParmList):-
+	Id = getnewid(),
+	remove_empty(ParmList,Filtered),
+	add_software(Id,Name,NoOfLicenses,Filtered),
+	show_all_software().
+
+/*****************************************************************************
+  Command: Delete a software - has been confirmed
+*****************************************************************************/
+
+predicates
+  procedure confirmed_delete_software(softwareId)
+
+clauses
+  confirmed_delete_software(SoftwareId):-
+	remove_software(SoftwareId),
+	show_all_software().
+
+/*****************************************************************************
+  Command: Request to delete software
+*****************************************************************************/
+
+predicates
+  procedure delete_software(softwareId)
+
+clauses
+  delete_software(SoftwareId):-
+	write(&quot;&lt;head&gt;&lt;/head&gt;\n&quot;),
+	write(&quot;&lt;body&gt;\n&quot;),
+	software(SoftwareId,SoftwareName),!,
+	write(&quot;&lt;H1&gt;Are you Sure ?&lt;/H1&gt;\n&quot;),
+	write(&quot;&lt;hr&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;A HREF=\&quot;license.exe?action=confirmed_delete_software&amp;software=&quot;,SoftwareId,&quot;\&quot;&gt;Yes, Please Delete &quot;,SoftwareName,&quot;&lt;/A&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;p&gt;&lt;A HREF=\&quot;license.exe?action=show_all_software\&quot;&gt;UPS That was a mistake&lt;/A&gt;&lt;/p&gt;\n&quot;),
+	write(&quot;&lt;/body&gt;\n&quot;).
+  delete_software(_):-
+	errorexit(). %Software ID NOT found !
+
+/*****************************************************************************
+	Select Action !
+
+ Based on the first parameter value in the ParmList, Select which action to
+ perform !
+*****************************************************************************/
+
+predicates
+  procedure select_action(parmlist)-(i)
+  procedure convNoOfLicenses(string,integer)-(i,o) % Returns 0 if string invalid
+
+clauses
+  select_action([]):-!,
+	show_all_users().
+  select_action([parm(&quot;action&quot;,&quot;show_all_users&quot;)]):-!,
+	show_all_users().
+  select_action([parm(&quot;action&quot;,&quot;show_all_software&quot;)]):-!,
+	show_all_software().
+  select_action([parm(&quot;action&quot;,&quot;show_user&quot;),parm(&quot;user&quot;,User)]):-
+	str_int(User,UserId),!,
+	show_user(UserId).
+  select_action([parm(&quot;action&quot;,&quot;show_software&quot;),parm(&quot;software&quot;,Software)]):-
+	str_int(Software,SoftwareId),!,
+	show_software(SoftwareId).
+  select_action([parm(&quot;action&quot;,&quot;add_new_software&quot;),parm(&quot;name&quot;,Name),parm(&quot;nooflicenses&quot;,SNo)|ParmList]):-
+	convNoOfLicenses(SNo,NoOfLicenses),!,
+	add_new_software(Name,NoOfLicenses,ParmList),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;add_new_user&quot;),parm(&quot;name&quot;,Name)|ParmList]):-!,
+	add_new_user(Name,ParmList),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;add_user_to_software&quot;),parm(&quot;name&quot;,Software)|List]):-
+	str_int(Software,SoftwareId),!,
+	add_user_to_software(SoftwareId,List),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;add_software_to_user&quot;),parm(&quot;name&quot;,User)|List]):-
+	str_int(User,UserID),!,
+	add_software_to_user(UserId,List),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;renameuser&quot;),parm(&quot;id&quot;,User),parm(&quot;name&quot;,Name)|ParmList]):-
+	str_int(User,UserID),!,
+	renameuser(UserID,Name,ParmList),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;updatesoftware&quot;),parm(&quot;id&quot;,Software),parm(&quot;name&quot;,Name),parm(&quot;nooflicenses&quot;,SNo)|ParmList]):-
+	str_int(Software,SoftwareId),
+	convNoOfLicenses(SNo,NoOfLicenses),!,
+	updatesoftware(SoftwareId,Name,NoOfLicenses,ParmList),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;delete_softwareforuser&quot;),parm(&quot;user&quot;,User),parm(&quot;software&quot;,Software)]):-
+	str_int(User,UserID),str_int(Software,SoftwareId),!,
+	delete_softwareforuser(UserID,SoftwareId),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;delete_userforsoftware&quot;),parm(&quot;user&quot;,User),parm(&quot;software&quot;,Software)]):-
+	str_int(User,UserID),str_int(Software,SoftwareId),!,
+	delete_userforsoftware(UserId,SoftwareId),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;confirmed_delete_software&quot;),parm(&quot;software&quot;,Software)]):-
+	str_int(Software,SoftwareId),!,
+	confirmed_delete_software(SoftwareId),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;delete_software&quot;),parm(&quot;software&quot;,Software)]):-
+	str_int(Software,SoftwareId),!,
+	delete_software(SoftwareId),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;delete_user&quot;),parm(&quot;user&quot;,User)]):-
+	str_int(User,UserID),!,
+	delete_user(UserID),
+	db_save().
+  select_action([parm(&quot;action&quot;,&quot;confirmed_delete_user&quot;),parm(&quot;user&quot;,User)]):-
+	str_int(User,UserID),!,
+	confirmed_delete_user(UserID),
+	db_save().
+  select_action(List):-
+	write(&quot;Unknown input argument for licenseViewer\n&quot;),
+	write(List),nl,
+	errorexit().
+
+  convNoOfLicenses(SNo,NoOfLicenses):-
+	trap(str_int(SNo,NoOfLicenses),_,fail),!.
+  convNoOfLicenses(_,0).
+
+
+/*****************************************************************************
+	Main Goal
+*****************************************************************************/
+
+goal
+        write(&quot;Content-type: text/html\n\n&quot;),
+	write(&quot;&lt;html&gt;\n&quot;),
+	db_load(&quot;c:\\licenses\\dd.dba&quot;),
+	ParmList = cgi_GetParmList(),
+%	write(&quot;&lt;PRE&gt;Command: &quot;,ParmList,&quot;&lt;PRE&gt;\n&quot;),
+	select_action(ParmList),
+	write(&quot;&lt;/html&gt;\n&quot;).
+
+ </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

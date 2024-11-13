@@ -1,0 +1,36 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  trans
+ FileName: calc.dom
+ Purpose:  Project's global declarations
+ Written by: Sergey Alexeev
+ Comments:
+*****************************************************************************/
+
+global domains
+  CALC_ITEM	=	i(ULONG Id,REAL Quantity)
+  CALC_COST	=	c(ULONG SourceId,ULONG TargetId,REAL CostOnUnit)
+  CALC_MOVE	=	m(ULONG SourceId,ULONG TargetId,REAL Quantity)
+
+  CALC_ITEMLIST		=	CALC_ITEM*
+  CALC_COSTLIST		=	CALC_COST*
+  CALC_MOVELIST		=	CALC_MOVE*
+
+  RLIST = REAL*
+  ULLIST = ULONG*
+
+  CALC_MESSAGE_DETAILS	=	none;
+				minimum;
+				middle;
+				maximum
+
+  CALC_EVENT =	begin_time(ULONG Time);
+		end_time(ULONG Time);
+		find_way(ULLIST);
+		move(ULLIST,REAL Quantity);
+		reduce(ULONG SourceId,ULONG TargetId,REAL OldTransportation,REAL NewTransportation);
+		status(REAL OverchargeSources,REAL UnderchargeSources,REAL UnsatisfiedTarget,CALC_MOVELIST FirstTransportation)
+
+  CALC_CALLBACK = determ (CALC_EVENT What)

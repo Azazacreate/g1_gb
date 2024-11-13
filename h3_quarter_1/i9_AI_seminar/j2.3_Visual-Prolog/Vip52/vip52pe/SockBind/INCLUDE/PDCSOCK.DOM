@@ -1,0 +1,126 @@
+/***************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName: PDCSOCK.DOM
+ PURPOSE: Interface to the native Sockets
+ Written by: Compiler Group, PDC Russia
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ	Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    08/05/97    บ  KI  บ  A support for WSAAsyncGetXByY and other Windows 
+    		บ      บ  specific routines was added.
+***************************************************************************/
+
+ifndef pdcsock_dom_included
+
+  ifndef ws_win
+    ifdef platform_32bit
+      ifndef os_os2
+	#error: Unsupported platform
+      enddef
+    elsedef
+      #error: Unsupported platform
+    enddef
+  enddef
+
+  CONSTANTS
+
+    pdcsock_dom_included = 1
+
+  GLOBAL DOMAINS
+
+    ifdef os_os2
+      SOCKET		= INTEGER	/* Native BSD Socket	*/
+    elsedef
+      SOCKET		= UNSIGNED	/* Native BSD Socket	*/
+    enddef
+
+    SOCKETS_LIST	= SOCKET*
+
+    SCK_ERROR		= INTEGER
+
+    SCK_FAMILY		= USHORT	/* Family definition	*/
+    SCK_PORT		= USHORT	/* Port identifier	*/
+    SCK_IN_ADDR		= ULONG		/* Represents <in_addr>	*/
+    SCK_ADDRESS		= BINARY	/* Represents <sockaddr>*/
+
+    SCK_IOCTL_COMMAND	= LONG		/* Commands for ioctl()	*/
+
+    SCK_FLAG		= INTEGER	/* Flags for send/recv	*/
+    SCK_FLAGS_LIST	= SCK_FLAG*
+
+    SCK_OPTION_NAME	= INTEGER	/* Option's name	*/
+    SCK_OPTION_LEVEL	= INTEGER	/* Option's level	*/
+
+    SCK_OPTION 		= sck_SimpleOpt( INTEGER OptionVal );
+			  sck_LingerOpt( USHORT L_OnOff, USHORT L_Linger )
+
+    SCK_SELECT_TIMEVAL  = struct sck_select_timeval( LONG Tv_Sec,
+						     LONG Tv_U_Sec )
+
+    ifdef os_os2
+
+      SCK_H_ADDRTYPE	= INTEGER
+      SCK_H_ADDRLEN	= INTEGER
+      SCK_P_PROTO	= INTEGER
+      SCK_S_PORT	= INTEGER
+
+    elsedef
+
+      SCK_HANDLE	= UNSIGNED
+      
+      SCK_BLOCKFUNC	= procedure INTEGER ()
+       
+      SCK_H_ADDRTYPE	= SHORT
+      SCK_H_ADDRLEN	= SHORT
+      SCK_P_PROTO	= SHORT
+      SCK_S_PORT	= SHORT
+
+      VENDOR_INFO_PTR	= ULONG
+
+      SCK_WSA_DATA	= struct sck_wsa_data( WORD		Version,
+					       WORD		HighVersion,
+					       STRING		Description,
+					       STRING		SystemStatus,
+					       USHORT		MaxSockets,
+					       USHORT		MaxUdpDg,
+					       VENDOR_INFO_PTR	VendorInfo )
+
+    enddef
+
+    SCK_SLIST		= STRING*
+    SCK_ALIST		= SCK_IN_ADDR*
+
+    SCK_HOSTENT		= struct sck_hostent( STRING	     H_Name,
+					      SCK_SLIST	     H_Aliases,
+					      SCK_H_ADDRTYPE H_AddrType,
+					      SCK_H_ADDRLEN  H_AddrLen,
+					      SCK_ALIST	     H_AddrList )
+
+    SCK_PROTOENT	= struct sck_protoent( STRING	   P_Name,
+					       SCK_SLIST   P_Aliases,
+					       SCK_P_PROTO P_Proto )
+
+    SCK_SERVENT		= struct sck_servent( STRING	 S_Name,
+					      SCK_SLIST	 S_Aliases,
+					      SCK_S_PORT S_Port,
+					      STRING	 S_Proto )
+
+    SCK_EVENT		= LONG		/* Async. select events	*/
+    SCK_EVENTS_LIST	= SCK_EVENT*
+
+    SCK_HWND            = UNSIGNED	/* Async. select window */
+
+    ifdef os_os2
+
+      SCK_NOTIFY_FNS	= procedure ( 	SCK_HWND,    	/* Window	 */
+				   	UNSIGNED,	/* Message	 */
+				   	SOCKET,		/* Socket	 */
+				   	ULONG		/* Event + Error */
+				    ) - (i,i,i,i) language c
+
+    enddef
+
+enddef	/* pdcsock_dom_included */

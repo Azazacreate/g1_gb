@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Untitled Normal Page</title>
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><pre>/*****************************************************************************
+
+		Copyright (c) Prolog Development Center A/S
+
+ Project:  GENI
+ FileName: GENI.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include &quot;geni.inc&quot;
+include &quot;cgitools.pre&quot;
+
+DOMAINS
+  CONDITIONS = CNO*
+  HISTORY = RNO*
+  RNO, CNO, FNO = INTEGER
+  CATEGORY = STRING
+
+DATABASE - geni
+  rule(RNO,CATEGORY,CATEGORY,CONDITIONS,STRING)
+  cond(CNO,STRING,STRING OPTIONS) 
+  topic(STRING maingoal,STRING purpose)
+  head(STRING headline, STRING helptopic) 
+  default_startpage(STRING FILENAME)
+
+DATABASE - tmp
+  determ kb(STRING)
+  yes(CNO)
+  no(CNO)
+  fact(FNO,CATEGORY,CATEGORY)
+  whymeet
+
+DATABASE - htmltekst
+ tekstblok(STRING)
+
+PREDICATES
+  % Inferences engine
+  infer()
+  nondeterm go(HISTORY,CATEGORY,STRING ruleExplanation)
+  determ check(RNO,HISTORY,CONDITIONS)
+  determ notest(CNO)
+  inpq(HISTORY,RNO,CNO,STRING,STRING OPTIONS)
+
+ % Answer the WHY Question
+  gen_why(HISTORY,RNO,STRING,CNO)
+  
+  % Explanations
+  sub_cat(CATEGORY,CATEGORY,CATEGORY)
+  show_conditions(CONDITIONS,string)
+  show_rule(RNO,string)
+  report(HISTORY,string)
+%  evalans(string) 
+  reverse(CONDITIONS,CONDITIONS)
+  reverse1(CONDITIONS,CONDITIONS,CONDITIONS)
+  determ is_htmlfile(STRING)
+  consult_htm(STRING FileName,STRING HtmlContent)-(i,o)
+  gethtmlbody(STRING InputHtml,STRING TheBody)
+
+  endpage(string)
+  endpage_Why()
+
+clauses
+  infer():-
+	topic(Maingoal,_),
+	go([],MainGoal,&quot;&quot;),!.
+  infer():-
+	errorexit.
+
+  go( _, Mygoal, Rulexpl ):-
+  	is_htmlfile(Rulexpl),!,
+	consult_htm(Rulexpl,HTMLtext),
+	gethtmlbody(HTMLtext,Bodytext),
+	not(rule(_,Mygoal,_,_,_)),!,nl,
+	write(&quot;I think the answer is : &quot;,Mygoal),nl,
+	write(Bodytext),nl,
+	endpage(&quot;&quot;).
+  go( _, Mygoal, Rulexpl ):-
+	not(rule(_,Mygoal,_,_,_)),!,nl,
+	write(&quot;I think the answer is : &quot;,Mygoal),nl,
+	write(Rulexpl),nl,
+	endpage(&quot;&quot;).
+  go( HISTORY, Mygoal,_ ):-
+	rule(RNO,Mygoal,NY,COND,Rulexpl),
+	check(RNO,HISTORY, COND),
+	go([RNO|HISTORY],NY,Rulexpl).
+  go( _, Mygoal,_ ):-
+	rule(_RNO,Mygoal,_NY,_COND,_Rulexpl),!,true,
+	write(&quot;&amp;ltH&gt; Sorry, but I have no answer for this problem! &lt;/H&gt;\n&quot;),
+	endpage(&quot;&quot;).
+
+  check( RNO, HISTORY, [CNO|REST] ):-
+	yes(CNO),!,
+	check(RNO, HISTORY, REST).
+  check( _, _, [CNO|_]):-
+	no(CNO),
+	!,fail.
+  check( RNO, HISTORY, [CNO|REST]):-
+	cond(CNO,NCOND,OPTIONS),
+	fronttoken(NCOND,&quot;not&quot;,_COND),
+	frontchar(_COND,_,COND),
+	cond(CNO1,COND,OPTIONS),
+	notest(CNO1), !, 
+	check(RNO, HISTORY, REST).
+  check(_,_, [CNO|_] ):-
+	cond(CNO,NCOND,OPTIONS),
+	fronttoken(NCOND,&quot;not&quot;,_COND),
+	frontchar(_COND,_,COND),
+	cond(CNO1,COND,OPTIONS),
+	yes(CNO1),
+	!,
+	fail.
+  check( RNO, HISTORY, [CNO|REST] ):-
+	cond(CNO,TEXT,OPTIONS),!,
+	inpq(HISTORY,RNO,CNO,TEXT,OPTIONS),
+	check(RNO, HISTORY, REST).
+  check( _, _, []).
+
+  notest(CNO):-no(CNO),!.
+  notest(CNO):-not(yes(CNO)),!.
+
+  is_htmlfile(FILE):-
+  	filenameext(File,_Name,Mask),
+  	Mask = &quot;.htm&quot;,!.
+  is_htmlfile(FILE):-
+  	filenameext(File,_Name,Mask),
+  	Mask = &quot;.html&quot;,!.
+
+  consult_htm(FileName,HTMLTEKST):-
+	syspath(ExeStartupPath,_ProgName),
+	filenamepath(FullName,ExeStartupPath,FileName),
+	trap(file_str(FullName,HTMLTEKST),_,writef(&quot;File % is not found! Correct problem!\n&quot;,FullName)),!.
+  consult_htm(_,&quot;&quot;):-
+	errorexit.
+
+
+  gethtmlbody(TEXT,BODY):-
+  	upper_lower(TEXT,LOWERTEXT),
+	searchstring(LOWERTEXT,&quot;&amp;ltbody&quot;,LEN1),
+	frontstr(LEN1,LOWERTEXT,_,TXT1),
+	searchchar(TXT1,'&gt;',BODY_TAG_LEN),
+	STARTPOS = LEN1+BODY_TAG_LEN+1,
+	searchstring(LOWERTEXT,&quot;&lt;/body&gt;&quot;,ENDPOS),
+	LEN = ENDPOS-STARTPOS,
+	substring(TEXT,STARTPOS,LEN,BODY),!.
+  gethtmlbody(_,&quot;&quot;):-
+	errorexit.
+ 
+  inpq(HISTORY,RNO,CNO,TEXT,_):- 
+	whymeet,!,
+	gen_why(HISTORY,RNO,TEXT,CNO),
+	endpage_Why(),
+	exit.
+  inpq(_HISTORY,_RNO,CNO,TEXT,&quot;&quot;):-!, 
+	write(&quot;\nIs it true that: &quot;,TEXT,&quot;\n&amp;ltBR&gt;&quot;),
+	format(CONDSTR,&quot;cond_%&quot;,CNO),
+	endpage(CONDSTR),
+	exit.
+  inpq(_HISTORY,_RNO,CNO,TEXT,FILENAME):-
+	is_htmlfile(FILENAME),!,
+  	consult_htm(FILENAME,HtmlText),
+        gethtmlbody(HtmlText,BodyText),
+        write(BodyText),
+	write(&quot;\nIs it true that: &quot;,TEXT,&quot;\n&amp;ltBR&gt;&quot;),
+	format(CONDSTR,&quot;cond_%&quot;,CNO),
+	endpage(CONDSTR),!,
+	exit.
+  inpq(_HISTORY,_RNO,CNO,TEXT,PICTURE):- 
+	write(&quot;\nIs it true that: &quot;,TEXT,&quot;  &quot;,PICTURE,&quot;\n&quot;),
+	format(CONDSTR,&quot;cond_%&quot;,CNO),
+	endpage(CONDSTR),!,
+	exit.
+
+  gen_why(HISTORY,RNO,_TEXT,_CNO):-
+	write(&quot;Why&amp;ltBR&gt;\n&quot;),
+	rule( RNO, Mygoal1, Mygoal2, _ ,_),!,
+	sub_cat(Mygoal1,Mygoal2,Lstr),
+	concat(&quot;I try to show that: &quot;,Lstr,Lstr1),
+	concat(Lstr1,&quot;&amp;ltBR&gt;\nBy using rule number &quot;,Ls1),
+	str_int(Str_num,RNO),
+	concat(Ls1,Str_num,Ans),
+	show_rule(RNO,Lls1),
+	concat(Ans,Lls1,Ans1),
+	report(HISTORY,Sng),
+	concat(Ans1,Sng,Answ),
+	write(Answ),nl.
+  gen_why(_HISTORY,_RNO,_TEXT,_CNO):-
+	errorexit.
+
+  show_rule(RNO,Strg):-
+	rule( RNO, Mygoal1, Mygoal2, CONDINGELSER,_),!,
+	str_int(RNO_str,RNO),
+	concat(&quot;&amp;ltBR&gt;\n Rule &quot;,RNO_str,Ans),
+	concat(Ans,&quot;: &quot;,Ans1),
+	sub_cat(Mygoal1,Mygoal2,Lstr),
+	concat(Ans1,Lstr,Ans2),
+	concat(Ans2,&quot;&amp;ltBR&gt;\n     if &quot;,Ans3),
+	reverse(CONDINGELSER,CONILS),
+	show_conditions(CONILS,Con),
+	concat(Ans3,Con,Strg).
+  show_rule(_,&quot;&quot;):-
+	errorexit.
+
+  show_conditions([],&quot;&quot;):-!.
+  show_conditions([COND],Ans):-
+	cond(COND,Ans,_),!.
+  show_conditions([COND|REST],Ans):-
+	cond(COND,Text,_),!,
+	concat(&quot;&amp;ltBR&gt;\n    and &quot;,Text,Nstr),
+	show_conditions(REST,Next_ans),
+	concat(Next_ans,Nstr,Ans).
+  show_conditions(_,&quot;&quot;):-
+	errorexit.
+
+  sub_cat(Mygoal1,Mygoal2,Lstr):-
+	format(LStr,&quot;% is a %&quot;,MyGoal1,MyGoal2).
+
+  report([],&quot;&quot;):-!.
+  report([RNO|REST],Strg) :-
+	rule( RNO, Mygoal1, Mygoal2, _,_),!,
+	sub_cat(Mygoal1,Mygoal2,Lstr),
+	concat(&quot;\n&amp;ltBR&gt;I have shown that: &quot;,Lstr,L1),
+	concat(L1,&quot;\n&amp;ltBR&gt;By using rule number &quot;,L2),
+	str_int(Str_RNO,RNO),
+	concat(L2,Str_RNO,L3),
+	concat(L3,&quot;:\n &amp;ltBR&gt;&quot;,L4),
+	show_rule(RNO,Str),
+	concat(L4,Str,L5),
+	report(REST,Next_strg),
+	concat(L5,Next_strg,Strg).
+  report(_,&quot;&quot;):-
+	errorexit.
+
+  reverse(X,Y):-
+	reverse1([],X,Y).
+
+  reverse1(Y,[],Y):-!.
+  reverse1(X1,[U|X2],Y):-!,
+	reverse1([U|X1],X2,Y).
+  reverse1(_,_,_):-errorexit.
+
+/*=============================================================================
+        Finishes up the HTML document for the results page.
+=============================================================================*/
+
+PREDICATES
+  write_conditions()
+  write_kb()
+
+CLAUSES
+  endpage(&quot;&quot;) :-!,
+	write_kb,
+	write_conditions,
+        write(&quot;&amp;ltCenter&gt;&quot;),
+        write(&quot;&amp;ltFONT SIZE=+6 &gt;&amp;ltI&gt;&amp;ltB&gt;&quot;), 
+	/*write(&quot;&amp;ltp&gt;\n&quot;),
+        writef(&quot;&amp;ltForm&gt; &amp;lta href=\&quot;/geni.htm\&quot;&gt;&amp;ltimg src=\&quot;/stop.gif\&quot;&gt;&lt;/a&gt;\n&quot;),
+        write(&quot;&lt;/p&gt;&lt;/form&gt;\n&quot;),*/
+        write(&quot;&lt;/Center&gt;&quot;), 
+        write(&quot;&lt;/FONT&gt;\n&quot;),
+        write(&quot;&lt;/BODY&gt;\n&quot;), 
+        write(&quot;&lt;/HTML&gt;\n&quot;). 
+
+  endpage(CONDITION) :-
+	write_kb,
+	write_conditions,
+	writef(&quot;&amp;ltinput type=\&quot;hidden\&quot; name=\&quot;%s\&quot;  value=\&quot;yes\&quot;&gt;\n&quot;,CONDITION),
+       % write(&quot;&amp;ltCenter&gt;&quot;),
+        write(&quot;&amp;ltFONT SIZE=+6 &gt;&amp;ltI&gt;&amp;ltB&gt;&quot;), 
+        write(&quot;&amp;ltinput type=\&quot;hidden\&quot; name=\&quot;answer\&quot;  value=\&quot;Yes\&quot;&gt;\n&quot;),
+	write(&quot;&amp;ltp&gt;&amp;ltInput type=\&quot;SUBMIT\&quot; value=\&quot;Yes\&quot;&gt;\n&quot;),
+	writef(&quot;&amp;ltInput type=\&quot;BUTTON\&quot; value=\&quot;No\&quot; onclick=\&quot;form.%s.value='no';submit()\&quot;&gt;\n&quot;,CONDITION),
+	writef(&quot;&amp;ltInput type=\&quot;BUTTON\&quot; value=\&quot;Why\&quot; onclick=\&quot;form.%s.value='why';submit()\&quot;&gt;\n&quot;,CONDITION),
+        writef(&quot;&lt;/Form&gt;\n&quot;),%&amp;ltForm action=\&quot;/geni.htm\&quot;&gt;\n&quot;),
+	%writef(&quot;&amp;ltInput type=\&quot;SUBMIT\&quot; value=\&quot;                         S T O P                       \&quot;&gt;\n&quot;),
+        write(&quot;&lt;/p&gt;&lt;/form&gt;\n&quot;),
+        %write(&quot;&lt;/Center&gt;&quot;), 
+        write(&quot;&lt;/FONT&gt;\n&quot;),
+        write(&quot;&lt;/BODY&gt;\n&quot;), 
+        write(&quot;&lt;/HTML&gt;\n&quot;). 
+ 
+  endpage_Why():-
+	write_kb,
+	write_conditions,
+	write(&quot;&amp;ltp&gt;&amp;ltInput type=\&quot;SUBMIT\&quot; value=\&quot;Continue\&quot;&gt;\n&quot;),
+        write(&quot;&lt;/p&gt;&lt;/form&gt;\n&quot;),
+        write(&quot;&lt;/FONT&gt;\n&quot;),
+        write(&quot;&lt;/BODY&gt;\n&quot;),
+        write(&quot;&lt;/HTML&gt;\n&quot;). 
+
+  write_conditions:-
+	yes(CNO),
+	  format(CONDITION,&quot;cond_%&quot;,CNO),
+          writef(&quot;&amp;ltinput type=\&quot;hidden\&quot; name=\&quot;%s\&quot;  value=\&quot;yes\&quot;&gt;\n&quot;,CONDITION),
+          fail.
+  write_conditions:-
+	no(CNO),
+	  format(CONDITION,&quot;cond_%&quot;,CNO),
+          writef(&quot;&amp;ltinput type=\&quot;hidden\&quot; name=\&quot;%s\&quot;  value=\&quot;no\&quot;&gt;\n&quot;,CONDITION),
+          fail.
+  write_conditions.
+
+
+  write_kb:-
+	kb(KB),!,
+	writef(&quot;&amp;ltinput type=\&quot;hidden\&quot; name=\&quot;knowledgebase\&quot;  value=\&quot;%s\&quot;&gt;\n&quot;,KB).
+  write_kb:-
+	errorexit().
+
+/******************************************************
+	Write StartPage
+******************************************************/
+
+PREDICATES
+  startpage
+  userdefined_startpage()
+  write_startform()
+
+CLAUSES
+  startpage :-
+        write(&quot;Content-type: text/html\n\n&quot;),
+        write(&quot;&amp;ltHTML&gt;\n&quot;),
+        write(&quot;&amp;ltHEAD&gt;\n&quot;),
+        write(&quot;&amp;ltTITLE&gt;\n&quot;),
+        write(&quot;Prolog Development Center A/S EXPERT SYSTEM\n&quot;),
+        write(&quot;&lt;/TITLE&gt;\n&quot;),
+        write(&quot;&lt;/HEAD&gt;\n&quot;), 
+        write(&quot;&amp;ltBODY bgcolor=yellow&gt;\n&quot;).
+
+  write_startform():-
+        write(&quot;&amp;ltform action=\&quot;/geni/geni.exe\&quot; method=\&quot;post\&quot;&gt;\n&quot;).
+
+  userdefined_startpage():-
+	default_startpage(FILENAME),
+  	consult_htm(FILENAME,HtmlText),!,
+        gethtmlbody(HtmlText,BodyText),
+        write(BodyText).
+  userdefined_startpage():-
+	kb(KB),!,
+	write(&quot;&amp;ltH1&gt;Geni Expert system&lt;/H1&gt;\n&quot;),
+	writef(&quot;&amp;ltH2&gt;Knowledgebase: %&lt;/H2&gt;&amp;ltHR&gt;&quot;,KB).
+  userdefined_startpage():-
+	errorexit.
+
+/******************************************************
+  Consult in the knowledgebase
+******************************************************/
+
+PREDICATES
+  consult_kb(PARMLIST Inp,PARMLIST Rest)
+CLAUSES
+  consult_kb([parm(&quot;knowledgebase&quot;,KB)|Rest],Rest):-
+	assert(kb(KB)), 
+	filenameext(Name,KB,&quot;.gni&quot;),
+	syspath(ExeStartupPath,_ProgName),
+	filenamepath(FullName,ExeStartupPath,Name),
+	consult(FullName,geni),!.
+  consult_kb(_,[]):- 
+	errorexit.
+
+
+/******************************************************
+  Assert the Yes/No answers from the parameter string
+******************************************************/
+
+PREDICATES
+  assert_conditions(PARMLIST)
+  assert_cond(CNO,STRING Val)
+CLAUSES
+  assert_conditions([]):-!.
+  assert_conditions([parm(Name,Val)|Rest]):-
+	concat(&quot;cond_&quot;,CondNumberStr,Name),
+	str_int(CondNumberStr,COND),!,
+	assert_cond(COND,Val),
+	assert_conditions(Rest).
+  assert_conditions([_Parm|Rest]):-!,
+	assert_conditions(Rest).
+  assert_conditions(_):-
+	errorexit.
+
+  assert_cond(CNO,&quot;yes&quot;):-!,assert(yes(CNO)).
+  assert_cond(CNO,&quot;no&quot;):-!,assert(no(CNO)).
+  assert_cond(_CNO,&quot;why&quot;):-!,assert(whymeet).
+  assert_cond(_,_):-errorexit.
+
+
+/*********************************************************************************************/
+/***********               M A I N G O A L                                            ********/
+/*********************************************************************************************/
+
+GOAL
+	startpage,
+	CGI_String = cgi_GetString(),		% Comment this out if you want to debug
+%	file_str(&quot;c:\\dd.dat&quot;,CGI_String),	% To faciliate debugging
+	str_namelist(CGI_String,ParmList),
+	consult_kb(ParmList,ParmList1),
+	userdefined_startpage(),
+	write_startform(),
+	assert_conditions(ParmList1),
+        infer().
+  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font><pre>&nbsp;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

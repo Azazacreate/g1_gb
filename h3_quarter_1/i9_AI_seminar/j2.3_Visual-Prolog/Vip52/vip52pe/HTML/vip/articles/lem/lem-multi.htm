@@ -1,0 +1,794 @@
+<html>
+
+<head>
+<title>LEM </title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font SIZE="4"><b>
+
+<h1 ALIGN="CENTER"><!--mstheme--><font color="#000000">LEM - Multi Agent Simulator Implemented <br>
+in Visual Prolog<!--mstheme--></font></h1>
+</b></font><font SIZE="2">
+
+<p ALIGN="CENTER">Serguei Krivov** Anju Dahiya* , and Jaweed Ashraf * <br>
+**: scholar of Intercultural Open University, The Netherlands<br>
+present add: Indian Inst. of Ecology and Environment<br>
+A-15, Paryavaran Complex,<br>
+New Delhi 110030 INDIA e-mail: <a href="mailto:s_krivov@hotmail.com">s_krivov@hotmail.com</a><br>
+$ * : Lab. 317, School of Life Sciences,<br>
+Jawaharlal Nehru University,<br>
+New Delhi-110067 INDIA e-mail: <a href="mailto:a_dahiya@hotmail.com">a_dahiya@hotmail.com</a><br>
+$ : <i>address for correspondence</i></p>
+<b>
+
+<h2><!--mstheme--><font color="#000000">&nbsp;</b></font><b>Abstract<!--mstheme--></font></h2>
+</b>
+
+<p ALIGN="JUSTIFY">In this paper we describe implementation of general-purpose
+ecological-simulator called LEM (Logic for Eco- Modeling). LEM is a forward chaining
+rule-based system that supports interactive development of individual-based ecological
+models. The behavior of agents and reaction of environment on the actions of agents is
+specified by the sets of production rules. We have developed a number of ecological
+simulation sample models such as migration of avi-fauna within limited space; emergence of
+communication and cooperative behavior under various conditions and evolution of complex
+food webs in an ecosystem. No knowledge of computer languages is required for developing
+new models under LEM. It seems to us that LEM is the first general-purpose,
+individual-based modeling tool that could completely relieve ecologists and Alife
+researchers from programming work. Prolog has not been used earlier for developing
+simulators and the main objective of this paper is to show how Visual Prolog could be used
+for building simulators.</p>
+<b><i>
+
+<p ALIGN="JUSTIFY">Key Words:</i></b> LEM; multi-agent simulation; rule-based programming;
+model; trial-resolution-result algorithm.</p>
+<b>
+
+<h2><!--mstheme--><font color="#000000"><small>1. Multiagent Simulation &#150; New Approach to the Study of Complex Adaptive
+Systems</small></b><!--mstheme--></font></h2>
+
+<p ALIGN="JUSTIFY">&#145;Complex adaptive system&#146; (CAS) is the term used to refer to
+a system with the following properties (Hraber et al.[13]): a collection of primitive
+components, called &quot;agents&quot;; nonlinear interactions among agents and between
+agents and their environment; unanticipated global behaviors that result from the
+interactions. Agents adapt their behavior to other agents and to the environmental
+constraints, thus behaviors of component evolve over time. Eco-systems and economies are
+often considered as an instances of this category of complex adaptive systems (Forrest and
+Jones [11]; Holland [12]; Hraber et al.[13]).</p>
+
+<p ALIGN="JUSTIFY">It is difficult to write a system of differential equations that take
+into account more than two or three factors that contribute to system dynamics. Useful and
+predictive mathematical treatments are difficult, primarily due to the non-linearities,
+discreteness, spatial inhomogeneities, and the changing behavior of the primitive elements
+of the system (Hraber et al.[13]). Such a complex system could be studied by creating an
+artificial universe of robotic animals via computer simulation and conducting experiments
+in so created universe. This approach termed as &#145;multiagent simulation&#146; or as
+&#145;individual based modeling&#146; has emerged during the last decade (Hraber et
+al.[13]; Drogoul and Farber [2]).</p>
+
+<p ALIGN="JUSTIFY">Development of a multiagent simulator that reproduces natural behavior
+in simulated environment is significant for enhancement of robots that operate in real
+environment. However, most often multiagent simulation is used as a tool for research in
+ethology and ecology and economics. The Boids by Reynolds [8], Tierra by Ray [7], ECHO
+(Holland, [12]), ant model &#150; MANTA, (Drogoul and Ferber, [2]), LEE (Menczer and
+Belew, [6]), Food web simulator &#150; Gecko, (Schmitz et al., [9]) are examples of
+multiagent simulators. Ecological concepts considered in these simulators are as follows: <i>Trophic
+levels, Food chain and Food web, Community assembly processes, Niche, ,Biodiversity,
+Patchiness, Seasonality.</i> </p>
+
+<p ALIGN="JUSTIFY">We believe that the development of methods for Multiagent simulation of
+societies may bring considerable contribution to the science of animal behavior and the
+study of ecosystems. This belief inspired us for a research project related to the
+development of a Visual Prolog based system for multiagent simulation of ecosystems. The
+overall structure of LEM models, syntax of model specification language and the
+functionality of LEM modules and a provisional manual for LEM users, are now available on
+Internet at the URL (s)- </p>
+<b>
+
+<p ALIGN="JUSTIFY">http://www1.50megs.com/lem/ OR http://www.50megs.com/www1/lem/ </b><font SIZE="3"></p>
+
+<p ALIGN="JUSTIFY"></font><a href="http://geocities.com/siliconvalley/cable/3109/"><b>http://geocities.com/SiliconValley/Cable/3109/</b></a></p>
+<b>
+
+<h2><!--mstheme--><font color="#000000"></b><small>2. Logic Based General Systems Theory as a framework for modeling and
+simulation of CAS</small><b><font SIZE="3"><!--mstheme--></font></h2>
+
+<h3><!--mstheme--><font color="#000000">2.1 Logic Based approach to General Systems Theory</font></b><i><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY">Logic based approach to General Systems Theory</i> has been introduced
+earlier by Krivov [5] as a formal framework for modeling and simulation of Complex
+Systems. This framework serves as the methodological basis for the implementation of LEM.
+&nbsp; Krivov also showed that the new approach to system modeling is especially
+appropriate for research on Artificial Life and Complex Adaptive Systems. Its utility is
+illustrated by the fact that it provides natural expressions for such concepts as <i>pattern
+of organization, emergence </i>and<i> evolution, chaos, order.</i> </p>
+
+<p ALIGN="JUSTIFY">The starting point of <i>Logic based approach to General Systems Theory</i>
+is the observation that the classical definition of a system (Klir, [14]) is virtually
+identical to the definition of<i> Model </i>in predicate calculus. Models are used for the
+representation of algebraic structures such as groups, rings, fields&#146; etc. (Suppes,
+[17]; Lightstone, [15]). However, these may also be used as semantic structures
+representing the meaning of natural language expressions. <i>Model</i> and<i> System </i>both
+are defined as a pair <i>&lt;Objects, Relations&gt;</i> where <i>Objects</i> is a set of
+objects described and <i>Relations</i> is a set of relations i.e. predicates of different
+arity which pertain to the objects. The similarity between the definitions of a system and
+of a model brings forth the possibility of designing a logic based axiomatic theory of
+systems. The formal framework designed is the result of refinement of Krivov's earlier
+papers, where he considered the prospective for the use of models for description of
+imaginative activity (Krivov, [3]) and reasoning about common sense situations (Krivov,
+[4]). </p>
+
+<p ALIGN="JUSTIFY">The main idea of the present proposal for Logic Based General Systems
+Theory is the use of &#145;models&#146; for the description of system states and
+histories. Model is redefined as a triple:</p>
+
+<p ALIGN="JUSTIFY">&lt;<i>Objects,Relations,
+ModalOperators&gt;[time1,time2,time3&#133;time_n];</p>
+</i>
+
+<p ALIGN="JUSTIFY">Where the set <i>ModalOerators </i>describes interactions between <i>Objects</i>
+that take place during the given time-sequence and set <i>Relations </i>describes the
+relations between the <i>Objects</i>. Isomorphism of models may be interpreted as
+isomorphism of systems. When one model has different isomorphic images in some other
+model, it is a <i>repetitive pattern</i> for that model. A model has <i>symmetry</i> when
+it has an isomorphic mapping into itself. The existence of a repetitive pattern usually
+implies existence of some symmetry.</p>
+
+<p ALIGN="JUSTIFY">The dynamics of a system is described by the set of dynamic patterns:</p>
+<i>
+
+<p ALIGN="JUSTIFY">Cond(t1),Cond(t2),&#133;,Cond(tn)-&gt;OPS(tn+1)</i> (If condition of
+the RHS could match the model then the model should be extended by the set of modal
+operators OPS(tn+1) that describe the state of the system at the time tn). </p>
+
+<p ALIGN="JUSTIFY">The Logic based General Systems Theory facilitates formal definition of
+the 'pattern of organization' that is more general and even more natural in comparison
+with such definitions phrased in terms of cellular automata or formal grammar theories. In
+consequence, the proposed theory gives a novel view of 'organization', 'structure',
+'behavior', 'chaos', &#145;order&#146;, and 'emergence'. Logic Based General Systems
+Theory is intended to be a framework for simulation and analysis of Complex Adaptive
+Systems i.e. ecosystems, social systems, economies etc. </p>
+<b><font SIZE="3">
+
+<h3><!--mstheme--><font color="#000000"></font><font size="4">2.2 An abstract model of a Complex Adaptive system</font></b><font size="3"><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY"></font>Krivov [5] introduced the abstract computational
+model of the ecosystem. This model is based on the theoretical framework designed. The
+core algorithm of LEM is a practical implementation of this abstract model. </p>
+
+<p ALIGN="JUSTIFY">In the model agents are considered as collections of states and rules
+that define the agents' actions and states, depending on the state of the environment.
+Environment is a collection of cells that store agents and modal operators describing both
+the agents' actions and the reactions of the environment to their actions. There are two
+kinds of rule tables. Action_Table is a set of rules for computing actions. It is
+associated with agents. The_Law is a set of rules for computing the reactions of the
+environment to the actions of the agents. In the model the environment is reduced to the
+set of production rules that defines the outcome for all possible patterns of interactions
+that may take place in the ecosystem. . In fact, all the properties of the environment are
+completely defined by this rule table; it defines &quot;The Laws of Nature&quot; for the
+given system. The rules of this table could define patterns of social interactions,
+patterns of chemical reaction, or even a discreet approximation for the dynamic equations
+of a particle moving in the field of force. This model facilitates the study of adaptation
+and natural selection. The definition of the environment via rule tables reduces the
+problem of classification of the environment to classification of the logical properties
+of the production rules that constitute the environment. </p>
+<i>
+
+<p ALIGN="JUSTIFY">Ecosystem </i>is defined as a couple <i>&lt;{Site}<sub>I</sub>,The_Law
+&gt;,</i> where<sub> </sub><i>{Site}<sub>I</sub></i> is a square grid of <i>sites </i>and<i>
+The_Law </i>is a set of rules that define the law of interaction in the ecosystem.</p>
+
+<p ALIGN="JUSTIFY">Each <i>site</i> is a container that can keep a number of agents,
+relations, and operators. Thus at any particular moment of time a site may be represented
+as a model: </p>
+<i>
+
+<p ALIGN="JUSTIFY">&lt;Agents, Predicates, Operators &gt;.</p>
+</i>
+
+<p ALIGN="JUSTIFY">As far as LEM is concerned regarding the implementation of the Abstract
+model of CAS , there exist one to one correspondences between the description of LEM core
+algorithm and the description of abstract model. Last two sections of this paper are
+devoted to the detailed description of LEM architecture. A detailed description of
+abstract model may be found in the Ph.D. thesis of Krivov [5]. </p>
+
+<font SIZE="2">
+
+<h2 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000">&nbsp;</font><b>3. The structure of LEM models<!--mstheme--></font></h2>
+<font SIZE="3">
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114249"></a><a NAME="_Toc459115372">3.1 Agents</a></font></b><font size="3"><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY"></font>Agents are main entities of a LEM model. There
+are 3 main categories of agents: Envo-agents, Producers and Etho-Agents. Besides these
+three, there is also a special class of agents called landmarks that serve for identifying
+places. Landmarks are visible only to the modeler and they do not play any role in
+interaction of agents within an ecosystem.</p>
+
+<p ALIGN="JUSTIFY">Each category of agents could be further subdivided into species. The
+agents that belong to the same specie have similar appearance on the screen. They have the
+same shape and color. They may also share some other parameters.</p>
+
+<p ALIGN="JUSTIFY">Envo-Agents represents non-living environmental factors such as
+buildings, rocks, lakes etc. They may be used for the representation of the types of
+landscape. They may also be used for representing those living elements of environment
+that are used by all other agents merely as elements of environment. Envo-agents have no
+state variables.</p>
+
+<p ALIGN="JUSTIFY">Producers represent the producers of the ecosystem. They have one
+integer state variable that represents their biomass. Producers have also fixed growth
+rate that is common for producers of the same specie.</p>
+
+<p ALIGN="JUSTIFY">Etho-agents represent primary, secondary and tertiary consumers. Only
+etho-agents are capable of generating actions. Each etho-agent has a schemata- a set of
+rules that define the behavior of the agent. The action of an etho-agent is calculated by
+applying the rules from its schemata to the current environmental conditions and the
+current states of the agent. Etho-agents could have any number of states. Each state has
+double representation- as integer and as symbol. The state map is the set of pairs <i>&lt;symbol,
+integer range&gt;</i> that defines the quality of the current integer state. Agents are
+sensitive only to the qualitative aspect of their states. Etho-agents are unisexual i.e.
+either male or female. They could interact with each other and they could interact with
+producers and envo-agents.</p>
+
+<p ALIGN="JUSTIFY"><a href="lem-multi1.gif"><img src="lem-multi1_small.gif" alt="LEM-multi1.gif (82440 bytes)" border="0" WIDTH="100" HEIGHT="75"></a><b><font SIZE="1"></p>
+
+<p ALIGN="left"><a NAME="_Toc459114247"></a><a NAME="_Toc459115370">LEM screenshot</a></font><font SIZE="3"></p>
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114250"></a><a NAME="_Toc459115373"></a>3.2 Ecosystem</font></b><font size="3"><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY"></font>The eco-systems of LEM are grids of sites. Each
+site is a right square that could accommodate any number of agents of all the three
+categories. Landmarks are not kept on the sites, they are stored separately from other
+agents. In LEM, ecosystem agents could interact only with those agents that are located at
+the same site at the moment of interaction. From topological point of view the ecosystem
+is either 2 dimensional surface or tore. If an ecosystem is a 2-dimensional surface then
+all agents that reach the border of the ecosystem change their direction of motion by 180
+degrees. If an ecosystem is a tore then all agents that reach the border of the ecosystem
+should vanish at the border and arrive from the opposite site of the ecosystem. </p>
+
+<p ALIGN="JUSTIFY">The most important part of LEM ecosystem is the rule table that
+specifies the patterns of interaction among agents and their outcome. This rule-table
+called <i>The_Law</i> assigns one reaction to each action of etho-agent. The producers
+that in fact are distributed on the site could receive many reactions during one
+time-step. The overall effect or the actual reaction on producer is obtained by summing up
+the reactions that producer had received.</p>
+
+<p ALIGN="JUSTIFY">Etho-agents are free to select any action which they
+&quot;consider&quot; to be appropriate under given environmental conditions. The law table
+defines the success or failure for the actions of the agents. Thus, it actually defines
+the environmental pressure that an agent has to bear. The law table is especially
+important for developing ALife evolutionary models. It gives an opportunity to study the
+evolution of the same category of agents under different types of environmental pressure.<b><font SIZE="3"></p>
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114251"></a><a NAME="_Toc459115374">3.3 Types of models</a></font></b><font size="3"><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY"></font>Currently LEM supports 4 types of models. The
+type of a model is to be specified by the term:</p>
+<i>
+
+<p ALIGN="JUSTIFY">model_type(MODELTYPE1,MODELTYPE2),</i> </p>
+
+<p ALIGN="JUSTIFY">Where <i>MODELTYPE1</i> is either <i>simple</i> or <i>evolution</i> and
+<i>MODELTYPE2</i> is either <i>linear</i> or <i>cyclic.</i></p>
+
+<p ALIGN="JUSTIFY">In a simple model, all etho-agents share one set of schema. The
+schemata should be preprogrammed. This class of models is intended for individual based
+simulations of ecological systems. When <i>MODELTYPE1 </i>takes the value <i>evolution </i>each
+etho-agent has it&#146;s own private schemata. The schemata are rules that define the
+agent&#146;s behavior. In evolutionary models, these rules serve as chromosomes. It means
+that each newborn etho-agent inherits its schemata from parents after schemata of parents
+undergo the processes of crossover and mutation. <i>MODELTYPE2</i> defines the
+representation of time in the model. The linear time is just integer value that denotes
+the current step of the simulation. In cyclic models there are options for representation
+of seasons and periods of the day i.e. morning, night etc. The day and the year could be
+divided into any number of periods. The modeler should specify the list of these periods
+and their duration.<b><font SIZE="3"></p>
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114252"></a><a NAME="_Toc459115375">3.4 Interactions of agents within LEM ecosystem</a></font></b><font size="3"><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY"></font>Unlike Swarm [10] LEM has only one rigid schedule
+of simulation. It would be appropriate to call it &quot;Trial-Resolution-Result&quot;
+algorithm (TRR). While designing this algorithm, we pursued the objective to represent the
+dichotomy between the `will' of an individual and the `will' of its surroundings in an
+algorithmic form.</p>
+
+<p ALIGN="JUSTIFY">There are 3 major steps in TRR algorithm: In the first step, all
+etho-agents select actions that they consider as being the most relevant to their current
+situation. The action of an agent could be either transitive i.e. directed to another
+agent, or non-transitive. While selecting, the action and making an effort to perform this
+action the agents enter into different forms of interactions with others. </p>
+
+<p ALIGN="JUSTIFY">In the second step, the actual results of the interaction are defined.
+As a matter of fact, viz. interactions of individuals in human, animal and even plant
+societies are often accompanied by the contradictions of `wills'. In such a case, the
+individuals participating in the interaction are `interested' in opposite outcomes from
+the interactions. The rule table-<i>The Law-</i>serves for the purpose of resolution of
+contradictions between individual efforts of agents. This table assigns certain symbolic
+or numeric value to the action of individual, which is called `reaction'. The `reactions'
+may denote success or failure as a consequence of the given action. They may also denote
+the income and the loss in the value of some parameter.</p>
+
+<p ALIGN="JUSTIFY">In the third stage, the real spatial positions and the states of the
+agents are modified according to the rate specific for the combination of given action and
+reaction.</p>
+<b><font SIZE="3">
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114254"></a><a NAME="_Toc459115377">3.5 LEM model specification</a></font></b><font size="3"><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY"></font>LEM models or model templates are specified via
+text editor in a special Model Specification Language (MSL). At the moment, this language
+consists of Visual Prolog terms. Loading and saving of models employ Visual Prolog Data
+Base predicates.<b><font SIZE="3"></p>
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114270"></a><a NAME="_Toc459115393">3.6 LEM database</a></font></b><font size="3"><!--mstheme--></font></h3>
+
+<p></font>LEM has fast internal database system that allows saving the most
+important elements of the simulations. Database could be kept in RAM or in hard drive.
+Database has a query system and a pattern tracer. Pattern tracer is a simple data-mining
+tool that allows detecting patterns in the information stored in the database. </p>
+<b>
+
+<h2 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000">4. How LEM Was Implemented In Visual Prolog?<!--mstheme--></font></h2>
+<font SIZE="3">
+
+<h3><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114280"></a><a NAME="_Toc459115403">4.1 OOP in
+Visual Prolog<!--mstheme--></font></h3>
+</a></font></b><font size="3">
+
+<p ALIGN="JUSTIFY"></font>Visual Prolog has full-fledged OOP subsystem that
+was extensively used in the implementation of LEM. The complete description of the
+subsystem is available online in PDC home page. In Visual Prolog, all Class predicates are
+as it is called in the C++ terminology Virtual methods. (Refer the Visual Prolog Manual
+[16])<b><font SIZE="3"></p>
+
+<h3><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114281"></a><a NAME="_Toc459115404">4.2 Class
+Hierarchy</a></font><font size="3"><!--mstheme--></font></h3>
+
+<p></font><font SIZE="2">The diagram that represents LEM class hierarchy:</p>
+</font>
+
+<p><a href="lem-diagram.gif"><img src="lem-diagram_small.gif" alt="LEM-diagram.gif (6215 bytes)" border="0" WIDTH="100" HEIGHT="81"></a> </b><small>(click for full size)</small><b></p>
+<font SIZE="3">
+
+<h3><!--mstheme--><font color="#000000"></font><font size="4"><a NAME="_Toc459114282"></a><a NAME="_Toc459115405">4.3 One
+cycle of a simulation</a></font></b><font size="3"><!--mstheme--></font></h3>
+
+<p></font>This section describes the cycle of simulation. As soon as many
+classes are involved in the core simulation cycle the description will be given separately
+for each class.</p>
+<font SIZE="2">
+<b>
+
+<p><a NAME="_Toc459114283"></a><a NAME="_Toc459115406">One cycle of a simulation in
+Ishvara</a></b></p>
+
+</font>
+
+<p>The method step (integer NTimes) of the class Ishvara is the top predicate of the
+simulation cycle. As it could be seen from the method definition given below it call
+NTimes times the method step() of the class Ecosystem (ES:step())..<i></p>
+
+<p>step(Times):-</p>
+
+<blockquote>
+  <p>ecosys(ES),!,</p>
+  <p>step2(ES,Times).</p>
+</blockquote>
+
+<p>step2(_ES,0):-!.</p>
+
+<p>step2(ES, N):-</p>
+
+<blockquote>
+  <p>ES:step(),</p>
+  <p>monitore_pop_dynamics(),</p>
+  <p>NN = N - 1,!,</p>
+  <p>step2(ES,NN).<font SIZE="2"></p>
+  </font>
+</blockquote>
+</i>
+
+<p ALIGN="JUSTIFY">The formal syntax for using the <i>members</i> of an object is:</p>
+
+<blockquote>
+  <p><font FACE="Courier New">[</font>ObjectVariable:]
+  name_of_member_predicate[( list_of_arguments ) ]</p>
+</blockquote>
+
+<p>Here the square brackets are used to mark optional elements. (Visual Prolog Manual
+[16]). Thus code <i>ES:step() ,</i> represents the call of predicate
+<i>step(),</i>which is a member predicate of object <i>ES. </i>Object <i>ES</i> belongs to
+the class Ecosystem.<b></p>
+
+<p ALIGN="JUSTIFY"><a NAME="_Toc459114284"></a><a NAME="_Toc459115407">One cycle of a
+simulation in Ecosystem</a></b></p>
+
+<p>The following is the definition of method <i>step() </i>in class<i> Ecosystem:</p>
+
+<p>step():-kill(),</p>
+
+<blockquote>
+  <p>Dynamic::step_time(),</p>
+  <p>step_db1(),</p>
+  <p>step_agents1(),</p>
+  <p>step_sites(), </p>
+  <p>step_agents2(),</p>
+  <p>reproduce(),</p>
+  <p>step_db2().<font SIZE="2"></p>
+  </font>
+</blockquote>
+</i>
+
+<p>The call of static predicate <i>Dynamic::step_time() </i>increments time variable.
+Methods<i><font FACE="Courier New" SIZE="2"> </font>reproduce()</i>and<i>
+kill()<font FACE="Courier New" SIZE="2"> </font></i>performs the
+operations of creation for agent that should be born and destruction of agent that should
+die.<font FACE="Courier New" SIZE="2"> </font>The call <i>step_db1()
+</i>performs necessary database initialization. The predicate <i>step_db2()</i> is
+responsible for tracing of patterns in runtime. </p>
+
+<p>The predicate <i>step_agents1() </i>is defined as follows:<i></p>
+
+<p>step_agents1():-</p>
+
+<blockquote>
+  <p>agent(_Id, Ag),</p>
+  <p>Ag:step1(),</p>
+  <p>fail.</p>
+</blockquote>
+
+<p>step_agents1().</i> </p>
+
+<p>As it could be seen from this code, the predicate <i>step_agents1() </i>calls virtual
+method <i>step1()</i> for each agent kept in agents data base ( <i>agent(_Id, Ag)).</i></p>
+
+<p>Method <i>step_sites() </i>calls method <i>Site:step() </i>for each side kept in the
+site database (<i>site(_X,_Y,Site)).</p>
+
+<p>step_sites():-</p>
+
+<blockquote>
+  <p>site(_X,_Y,Site),</p>
+  <p>Site:step(),</p>
+  <p>fail.</p>
+</blockquote>
+
+<p>step_sites().</i></p>
+
+<p>The predicate <i>step_agents2() </i>is defined as follows:<i></p>
+
+<p>step_agents2():-</p>
+
+<blockquote>
+  <p>monitore(Mon),</p>
+  <p>display_grid(Mon),</p>
+  <p>agent(_Id, Ag),</p>
+  <p>Ag:step2(),</p>
+  <p>Ag:monitore(gui,Mon),</p>
+  <p>fail.</p>
+</blockquote>
+
+<p>step_agents2().</i></p>
+
+<p>As it could be seen from this code , the predicate <i>step_agents2() </i>calls virtual
+methods <i>step2()</i> and <i>monitore(gui,Mon) </i>for each agent kept in agents database
+.</p>
+<b>
+
+<p ALIGN="JUSTIFY"><a NAME="_Toc459114285"></a><a NAME="_Toc459115408">One cycle of a
+simulation in Site</a></b></p>
+
+<p>The method <i>step<font FACE="Courier New" SIZE="2">()</font></i>
+of class <i>Site</i> is defined as follows:<i></p>
+
+<p>step():-</p>
+
+<blockquote>
+  <p>retractall(reaction(_,_,_)),</p>
+  <p>retractall(moveto(_,_)),</p>
+  <p>time_from(T),</p>
+  <p>T1 = T-1,</p>
+  <p>retractall(sound(_,_,T1)),</p>
+  <p>death(),</p>
+  <p>the_law(TheLaw),</p>
+  <p>reactions(TheLaw).<font SIZE="2"></p>
+  </font>
+</blockquote>
+</i>
+
+<p>The main task of this method is to apply the Law-rule-table to the set of agents
+located currently at the site. This task is accomplished by the call <i>reactions (TheLaw</i>)
+which is defined as follows:<i></p>
+
+<p>reactions(TheLaw):-</p>
+
+<blockquote>
+  <p>TheLaw:rule(LHS,RHS),</p>
+  <p>matchlist(LHS,Env),</p>
+  <p>select(RHS,Choise),</p>
+  <p>firelist(Choise,Env),</p>
+  <p>fail.</p>
+</blockquote>
+
+<p>reactions(_TheLaw).</i><b></p>
+
+<p ALIGN="JUSTIFY"><a NAME="_Toc459114286"></a><a NAME="_Toc459115409">One cycle of a
+simulation in agents</a></b></p>
+
+<p>As it could be seen from previous section, two methods <i>step1()</i>and<i><font FACE="Courier New" SIZE="2"> </font>step2() </i>of the class
+<font FACE="Courier New" SIZE="2"><i>Agent</i></font> play important part in
+simulation cycle. These two methods are `virtual'<i> </i>methods and they are defined by
+different ways in different subclasses of the class <font FACE="Courier New" SIZE="2"><i>Agent</i></font>. The definitions are as follows:</p>
+
+<p>1. In Envo-agent<i></p>
+
+<p>step1().</p>
+
+<p>step2().</i></p>
+
+<p>Both methods do nothing.</p>
+
+<p>2. In Producer</p>
+<i>
+
+<p>step1().</p>
+
+<p>step2():-</p>
+
+<blockquote>
+  <p>place(TheSite),</p>
+  <p>this(TheAgent),</p>
+  <p>TheSite:total_consumption(TheAgent, TC ),</p>
+  <p>growth_rate(GR),</p>
+  <p>biomass(BM),</p>
+  <p>NewBM = BM + GR*BM - TC,</p>
+  <p>NewBm&gt;0,!,</p>
+  <p>assert(biomass(NewBM)).</p>
+</blockquote>
+
+<p>step2():-</p>
+
+<blockquote>
+  <p>place(TheSite),</p>
+  <p>this(TheAgent),</p>
+  <p>assert(TheSite:saction(TheAgent, &quot;producer&quot; ,aact1(die))).<font SIZE="2"></p>
+  </font>
+</blockquote>
+</i>
+
+<p>First method does nothing. Second one updates the variable <i>biomass(Biomass)</i></p>
+
+<p>2. In Etho-Agent</p>
+<i>
+
+<p>step1():- !,</p>
+
+<blockquote>
+  <p>do_action().</p>
+</blockquote>
+
+<p>step2():- !,</p>
+
+<blockquote>
+  <p>change_state(),!.</p>
+</blockquote>
+</i>
+
+<p>First method computes the action of the agent and deposits the action into the site
+where the agent is currently located. Second method changes the states and the spatial
+location of the agent. The second method uses the facts</p>
+
+<p><i>OldSite:reaction(TheAgent,_, React)<font FACE="Courier New" SIZE="2"> </font></i>and <i>OldSite:moveto(TheAgent,xyza(X,Y,Z,A)) </i></p>
+
+<p>which come as the output from the method <i>step()</i> of the class <i>Site<font FACE="Courier New">.
+</font> </p>
+
+<p>do_action():-</p>
+
+<blockquote>
+  <p>place(TheSite),</p>
+  <p>this(TheAgent),</p>
+  <p>ag_specie(Sp ),</p>
+  <p>retract(TheSite:ag(TheAgent,Sp)),!,</p>
+  <p>compute_action(TheSite,Action ),!,</p>
+  <p>assert(myaction(Action )),</p>
+  <p>assert(TheSite:ag(TheAgent,Sp)),</p>
+  <p>assert(TheSite:saction(TheAgent,Sp ,Action)).</p>
+</blockquote>
+
+<p>change_state():- !,</p>
+
+<blockquote>
+  <p>place(OldSite),</p>
+  <p>this(TheAgent),</p>
+  <p>OldSite:reaction(TheAgent,_, React),!,</p>
+  <p>OldSite:moveto(TheAgent,xyza(X,Y,Z,A)),</p>
+  <p>set_state(React),!,</p>
+  <p>update_route(),</p>
+  <p>set_location( xyza(X,Y,Z,A)),</p>
+  <p>world(EcoSys),</p>
+  <p>ag_specie(SpName),</p>
+  <p>Site::site_coord(X,Y,SX, SY),</p>
+  <p>EcoSys:site(SX,SY,NewSite),!,</p>
+  <p>retract(place(_)),</p>
+  <p>retractall(OldSite:ag(TheAgent,SpName)),!,</p>
+  <p>assert(place(NewSite),situation),</p>
+  <p>assert(NewSite:ag(TheAgent,SpName)).<b></p>
+  </b>
+</blockquote>
+</i><b>
+
+<h2><!--mstheme--><font color="#000000"><small>5. How rule-based programming could enhance the simulation technology</small><!--mstheme--></font></h2>
+</b><font size="1">
+
+<p ALIGN="JUSTIFY"></font>Although LEM is rule-based system, it<b> </b>has
+surprisingly high performance. On Pentium 133 MHz, 32 Mb RAM LEM could handle a population
+of 1000 &#150;10000 agents with a reasonable speed (0.2-1 steps per one second). LEM could
+maintain huge populations of agents. The maximum population that appears in one of the
+experiments is 18000 (Krivov [5]). However, this is not the ultimate limit.<font SIZE="3"></p>
+</font>
+
+<p ALIGN="JUSTIFY">LEM is applicable to the study of a variety of problems related to
+complex adaptive systems. These include, among others: migration; emergence of collective
+behavior; social interaction; sexual reproduction; evolution of environments; evolution of
+learning; multiple species, ecologies and even prey-predator population dynamics. Some
+important kinds of sample models (still in developing stage) implemented under LEM are:</p>
+
+<ol>
+  <li>Daily migration of Peafowl in the Campus of Jawaharlal Nehru University (Dahiya et al.,
+    [1]). This is the part of an ongoing project (undertaken in collaboration with the lab. of
+    Prof. Jaweed Ashraf at School of Life Sciences, Jawaharlal Nehru University, New Delhi) to
+    design an individual based ecological modeling methodology for the assessment of the
+    distribution of the individual species. The ultimate objective of this work is to create a
+    computer program for <i>environmental impact assessment</i>. </li>
+  <li>Emergence of communication and cooperative behavior under various conditions. </li>
+  <li>Emergence and evolution of a complex food web in an ecosystem</li>
+</ol>
+
+<p ALIGN="JUSTIFY">The interactive character of modeling makes LEM outstanding among other
+general-purpose simulators. So far as LEM is based on rule based methodology it inherits
+all the strengths of this methodology along with the shortcomings. Nevertheless, LEM
+models are not as fast as compiled models. Our experience shows that the penalty for speed
+required while using rule based programming paradigm is negligible in comparison to the
+convenience and flexibility that LEM inherits from rule based systems. The specification
+of ecological model on specific to this area language makes LEM modeling affordable for
+ecologists (who do not have special training in programming). LEM supports interactive
+development of individual based ecological models. User could define any number of species
+of agents with different behaviors that belong to 3 basic types -environmental agents,
+producers, and etho-agents. Thus LEM could model ecosystems with an arbitrary and as
+complex food chain as desired. </p>
+
+<p ALIGN="JUSTIFY">We conclude with the hope that LEM will represent both a remarkable
+theoretical framework and a useful simulation tool for Ecologists and the Alife research
+community.<b><i></p>
+
+<h2><!--mstheme--><font color="#000000"></i></b>Acknowledgements<!--mstheme--></font></h2>
+
+<p ALIGN="JUSTIFY">We are grateful to Carsten Cristoffersen from Prolog Development Center
+(PDC) Denmark for timely sending a complementary copy of Visual Prolog compiler.
+Outstanding features of Visual Prolog 5.1 helped Dr. Krivov to implement the design of LEM
+in a very short time. The grants provided by Council of Scientific and Industrial Research
+(CSIR), New Delhi, India, to Dr. Dahiya are humbly acknowledged. We are grateful to Peter
+Van Wonterghem, Ph.D. Scholar of Jawaharlal Nehru University who lent us his laptop for
+implementing LEM and typing this paper.<b></p>
+
+<h2><!--mstheme--><font color="#000000">References</b><!--mstheme--></font></h2>
+
+<p>Journals &amp; Proccedings:</p>
+
+<p>[1] Dahiya, Anju, Serguei Krivov and Jaweed Ashraf (1999), &quot;Study of route
+selection dynamics and local migration of avi-fauna within a real ecosystem using LEM
+multi-agent simulator&quot;, Proccedings of Vth International Conference on Cognitive
+Systems, Dec. 15<sup>th</sup>-18<sup>th</sup>- New Delhi India.</p>
+
+<p ALIGN="JUSTIFY">[2] Drogoul, Alexis and Jacques Ferber (1992). &quot;Multi-agent
+simulation as a tool for modeling societies: application to social differentiation in ant
+colonies&quot;. Lecture notes in artificial intelligence, Cristiano Castelfranchi, Eric
+Werner (Eds.). <i>Artificial Social Systems 4th European workshop on modeling autonomous
+agents in a multi-agent world, MAAMAW&#146;92</i>, S. Martino al Cimino, Italy. Springer
+Verlag, 830, pp. 3-23.</p>
+
+<p ALIGN="JUSTIFY">[3] Krivov, Serguei (1988). &quot;On one version of Computer
+Methaphor&quot;. In: <i>Proceedings of 25th All Soviet Union student conference</i>,
+philosophy section, Novosibirsk University. (in Russian).</p>
+
+<p ALIGN="JUSTIFY">[4] Krivov, Serguei (1998). &quot;The formal semantic for Jaina
+logic&quot;. <i>Arhat Vachana.</i> Vol.10 (4): pp 9-29.</p>
+
+<p ALIGN="JUSTIFY">[5] Krivov, Serguei (1999). <i>A logic based framework for artificial
+Life.</i> Ph.D. Thesis. The Inter-cultural Open University, The Netherlands. </p>
+
+<p ALIGN="JUSTIFY">(Web site: http://geocities.com/SiliconValley/Cable/3109/serguei.html</p>
+
+<p ALIGN="JUSTIFY">[6] Menczer, Filippo and Richard K. Belew, (1994). &quot;Complex
+Environments to Complex Behaviors&quot;. <i>Adaptive Behavior</i>. Vol. 4(¾):
+pp.317­363.</p>
+
+<p ALIGN="JUSTIFY">[7] Ray T. (1992). &quot;Evolution, ecology, and optimization of
+digital organisms&quot;. Santa Fe Institute working paper 92-08-042.
+(http://www.hip.atr.co.jp/~ray/tierra/tierra.html)</p>
+
+<p ALIGN="JUSTIFY">[8] Reynolds, Craig W. (July 1987). &quot;Flocks, Herds, and Schools: A
+Distributed Behavioral Model&quot;. In: <i>the proceeding of SIGGRAPH `87</i> (Computer
+Graphics 21(4), edited by Maureen C. Stone, pp. 25­34). </p>
+
+<p ALIGN="JUSTIFY">(Web site: <a href="http://reality.sgi.com/employees/craig/boids.html">http://reality.sgi.com/employees/craig/boids.html</a>)</p>
+
+<p ALIGN="JUSTIFY">[9] Schmitz, O.J. and G. Booth. (1996). &quot;Modeling food web
+complexity: the consequence of individual based spatially explicit behavioral ecology on
+trophic interactions&quot;.<i> Evolutionary Ecology</i> (in press).</p>
+
+<p>[10] Swarm Development Group (1998). <i>Brief overview of Swarm</i>. SantaFe Institute.
+USA. </p>
+
+<p ALIGN="JUSTIFY">Books:</p>
+
+<p ALIGN="JUSTIFY">[11] Forrest, S. and T. Jones (1994). &quot;Modeling complex adaptive
+systems with Echo&quot;. In: R.J. Stonier and X.H. Yu, Eds. <i>Complex Systems: Mechanisms
+of Adaptation</i>. IOS Press, Amsterdam. 3­21. </p>
+
+<p ALIGN="JUSTIFY">[12] Holland, J. H. (1995). <i>Hidden order: how Adaptation builds
+Complexity</i>. Addison- Wesley, Reading, MA.</p>
+
+<p ALIGN="JUSTIFY">[13] Hraber, Peter T, Terry Jones and Stephanie Forrest (1996).
+&quot;The Ecology of ECHO&quot;. <i>Artificial Life</i> (in Press). </p>
+
+<p ALIGN="JUSTIFY">[14] Klir, George J. (1991). <i>Facets of Systems Science</i>. Plenum
+Press New York.</p>
+
+<p ALIGN="JUSTIFY">[15] Lightstone, A. H. (1978). &quot;Mathematical Logic&quot;. In:<i>
+An Introduction to model theory.</i> H. B. Enderton University of California. Plenum Press
+New York. Pp. 107-128.</p>
+
+<p ALIGN="JUSTIFY">[16] Prolog Development Center (PDC), (1999).<i>Visual Prolog reference
+Manual.</i> PDC Denmark. (Web site: )</p>
+
+<p>[17] Suppes, Patrick (1969). <i>Introduction to Logic.</i> 12<sup>th</sup> publishing
+D. Van Nostrand Company. INC Holland. Pp. 246-304.<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

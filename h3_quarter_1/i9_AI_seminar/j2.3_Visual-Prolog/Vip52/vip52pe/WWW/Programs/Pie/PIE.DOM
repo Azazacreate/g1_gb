@@ -1,0 +1,67 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  PIE
+ FileName: PIE.DOM
+ Purpose: 
+ Written by: PDC
+ Comments:
+******************************************************************************/
+
+%  use_extdbase    = 1
+%  wdwmode = 1	/* Define this for terminal mode ... stdio if not. */
+ 
+GLOBAL DOMAINS
+  TERM  = reference
+		var(VID);
+		cmp(REFSYMB,TERML);list(TERM,TERM); nill;
+		atom(REFSYMB); int(REFINT);
+		str(REFSTR); char(REFCHAR)
+
+  TERML = reference TERM*
+
+  REFINT	= reference INTEGER
+  REFSYMB	= reference STRING
+  REFSTR	= reference STRING
+  REFCHAR	= reference char
+  VID		= reference STRING
+
+/*---------- INTERPRETER ENVIRONMENT ------------------*/
+  E	= e(VID,TERM)
+  ENV	= reference E*
+
+/*---------- MISC HANDY DOMAIN DECLARATIONS ------------------*/
+  OP	= STRING	% Storing of operators
+  XFY	= STRING	% xfy; yfx; xfx; yfy; fx; fy; xf; yf
+  ASSOC = x; y		% The associavity to the left or the right
+  PRIOR = INTEGER	% Priority of operators
+  MODE	= SYMBOL	% Display mode for term writer
+
+  FILE = temp; seeing; telling
+
+  ifdef use_extdbase
+    DB_SELECTOR = clause_db
+    CLAUSE = clause(STERM,STERM)
+  enddef
+
+/*---------- SCANNER DOMAINS ------------------*/
+  TOK		= lbrack; rbrack; lpar; rpar; lcurly; rcurly;
+		  var(STRING);	  atom(STRING);
+		  int(INTEGER); str(STRING); char(CHAR);
+		  comma; bar; dot
+
+  CURSORTOK	= t(TOK,CURSOR_POSITION)
+  CURSOR_POSITION	= INTEGER
+  TOKL		= CURSORTOK*
+
+/*---------- PARSER DOMAINS ------------------*/
+  STERM            = var(STRING);
+		     cmp(STRING,STERML);
+		     list(STERM,STERM); nill;
+		     atom(STRING);
+		     int(INTEGER);
+		     str(STRING);
+		     char(CHAR)
+
+  STERML           = STERM*

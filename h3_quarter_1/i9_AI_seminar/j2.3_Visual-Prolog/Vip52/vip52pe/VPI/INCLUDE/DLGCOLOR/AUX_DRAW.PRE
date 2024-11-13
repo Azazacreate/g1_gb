@@ -1,0 +1,18 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  CHUTE
+ FileName: AUX_DRAW.PRE
+ Purpose: Predicate definitions for AUX_DRAW.PRO
+ Written by: Lars Henrik Jacobsen
+ Comments: Auxiliary drawing preds - Version 1.01
+******************************************************************************/
+constants
+  aux_draw_pre_included = 1
+
+global predicates
+procedure  centre_text_in_rct(WINDOW,STRING,RCT,INTEGER,INTEGER) - (i,i,i,o,o)
+procedure  centre_rect_in_window(WINDOW,RCT,RCT) - (i,i,o)
+procedure  draw_button(WINDOW,COLOR,Boolean) - (i,i,i)
+procedure  RCT draw_3d_frame_in_rect(WINDOW,RCT,Boolean) - (i,i,i)

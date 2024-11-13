@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>Category Parameter</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Category Parameter'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Category Parameter</FONT>
+<P ALIGN=LEFT>A category parameter is used, when the parameter is known to take one of a predefined set of values. For instance, it may be decided that color must be one of red, green, blue or purple. The available options are described in the options field. After giving the keyword <B>options</B>, members of the list of options are given separated by commas and terminated by a period. An option is defined by a name and optionally by an explanatory text. Note that ESTA converts everything to lower case before displaying the automatically generated listbox. To avoid unexpected box entries it is therefore a good idea to use lower case letters for the individual entries in an options field. 
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for a category parameter is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;category parameter&gt; ::=  
+<P ALIGN=LEFT>            &lt;<A HREF='DECLARAT.HTM'>declaration field</A>&gt; 
+<P ALIGN=LEFT>            type category 
+<P ALIGN=LEFT>            [&lt;<A HREF='EXPLANAT.HTM'>explanation field</A>&gt;] 
+<P ALIGN=LEFT>            &lt;options field&gt; 
+<P ALIGN=LEFT>            [&lt;<A HREF='RULES_FI.HTM'>rules field</A> (with <A HREF='TEXT_EXP.HTM'>text expressions</A>)&gt;] 
+<P ALIGN=LEFT>            [&lt;<A HREF='QUESTION.HTM'>question field</A>&gt;] 
+<P ALIGN=LEFT>            [&lt;<A HREF='PICTURE_.HTM'>picture field</A>&gt;] 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>&lt;options field&gt; ::= options &lt;<A HREF='NAME.HTM'>name</A>&gt; [ - &lt;<A HREF='STRING.HTM'>string</A>&gt;] {,&lt;name&gt; [ - &lt;string&gt;]}.</FONT> 
+<P ALIGN=LEFT>If the category parameter gets its value from an answer to a question, ESTA will show a dialog box, with the question and a listbox with the option names or the explanatory texts, if these are given. The user then selects the answer from the listbox. As an alternative, the user can select an option by clicking on a field in a picture. To do this, the fields in the picture must be defined and linked to the options using the hotspot editor, which is accessed via the menu command <A HREF='PICTURES.HTM'>Pictures Database</A>. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>parameter car 'the kind of car' 
+<P ALIGN=LEFT>type category  
+<P ALIGN=LEFT>explanation  
+<P ALIGN=LEFT>'Identify your car with one of the listed types as closely as you can' 
+<P ALIGN=LEFT>option 
+<P ALIGN=LEFT> ambulance 
+<P ALIGN=LEFT> policecar 
+<P ALIGN=LEFT> sedan - 'car' 
+<P ALIGN=LEFT> van. 
+<P ALIGN=LEFT>question 'Which kind of car do you have ?' 
+<P ALIGN=LEFT>picture 'cars'</FONT> 
+<P ALIGN=LEFT>This parameter looks like this in a dialog: 
+<P ALIGN=LEFT>{bml CAT_PAR1.BMP}
+<P ALIGN=LEFT>Without the picture, the parameter would look like this:
+<P ALIGN=LEFT>{bml CAT_PAR2.BMP} 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

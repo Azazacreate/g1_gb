@@ -1,0 +1,187 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+<title></title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************</p>
+
+<p>&nbsp;</p>
+
+<p>Copyright (c) 1998 Prolog-Soft Ltd.</p>
+
+<p>&nbsp;</p>
+
+<p>Project: Universal Solver</p>
+
+<p>FileName: SOLVER.DOM</p>
+
+<p>Purpose: The Solver Engine Global domains</p>
+
+<p>Written by: Victor Yukhtenko</p>
+
+<p>Comments:</p>
+
+<p>******************************************************************************/</p>
+
+<p>CONSTANTS</p>
+
+<p>slvC_SourceIsVoid = 0</p>
+
+<p>slvC_SourceIsSet = 2</p>
+
+<p>slvC_CurrentlyIsEmpty = 0</p>
+
+<p>slvC_CurrentlyIsNeeded = 1</p>
+
+<p>slvC_CurrentlyResolved = 2</p>
+
+<p>&nbsp;</p>
+
+<p>slvErrC_VarNotFound = 1</p>
+
+<p>slvErrC_InvalidRuleSet= 2</p>
+
+<p>slvErrC_InvalidRule = 3</p>
+
+<p>slvErrC_ClearingWhileRunning = 4</p>
+
+<p>slvErrC_InvalidSourceSetData = 5</p>
+
+<p>slvErrC_InvalidFinalSetData = 6</p>
+
+<p>&nbsp;</p>
+
+<p>GLOBAL DOMAINS</p>
+
+<p>% Solver Domains</p>
+
+<p>SlvD_Var = slvT_Var(STRING varName,INTEGER varSrcStatus,INTEGER varCurStatus,REAL
+value)</p>
+
+<p>SlvD_VarList = slvD_Var*</p>
+
+<p>SlvD_RuleSrc = slvT_RuleSrc(INTEGER ruleId,STRING ruleCondition,STRING ruleEquation)</p>
+
+<p>SlvD_RuleSrcList = SlvD_RuleSrc*</p>
+
+<p>&nbsp;</p>
+
+<p>SlvPD_Update = determ ()</p>
+
+<p>SlvPD_ErrAndWarn = determ (INTEGER pos,STRING commentText) - (i,i)</p>
+
+<p>SlvPD_Message = determ (INTEGER messageId,STRING) - (i,i)</p>
+
+<p>SlvD_Property = </p>
+
+<p>slvT_UpdateSolution(BOOLEAN b_TrueIfImmidiately);</p>
+
+<p>slvT_UpdateCB(SlvPD_Update);</p>
+
+<p>slvT_MessageCB(SlvPD_Message);</p>
+
+<p>slvT_ErrAndWarnCB(SlvPD_ErrAndWarn);</p>
+
+<p>slvT_Default()</p>
+
+<p>/*****************************************************************************</p>
+
+<p>The Solver Engine Global Predicates</p>
+
+<p>******************************************************************************/</p>
+
+<p>&nbsp;</p>
+
+<p>GLOBAL PREDICATES</p>
+
+<p>&nbsp;</p>
+
+<p>% --- Run Handling</p>
+
+<p>procedure slvP_RunStatus(BOOLEAN b_trueIfIsRuning) - (o)</p>
+
+<p>procedure slvP_StopRunning</p>
+
+<p>slvP_ResolveNet(SLIST varNameList) - (i)</p>
+
+<p>slvP_ResolveNet()</p>
+
+<p>procedure slvP_SetProperty(SlvD_Property) - (i)</p>
+
+<p>&nbsp;</p>
+
+<p>% --- Data Reset </p>
+
+<p>procedure slvP_ClearData</p>
+
+<p>% --- Variables Handling</p>
+
+<p>procedure slvP_DelVariable(STRING varName) - (i)</p>
+
+<p>procedure slvP_RenameVariable(STRING oldVarName,STRING newVarName) - (i,i)</p>
+
+<p>procedure slvP_SetVarList(slvD_VarList) - (i)</p>
+
+<p>procedure INTEGER /*varSourceStatus*/ slvP_GetVariable(STRING varName,INTEGER
+varCurrentStatus,REAL value) - (i,o,o)</p>
+
+<p>procedure slvP_GetVarList(slvD_VarList) - (o)</p>
+
+<p>% --- Rules Handling</p>
+
+<p>procedure slvP_SetRules(STRING ruleSetScript) - (i)</p>
+
+<p>procedure slvP_GetRules(STRING ruleSetScript) - (o)</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

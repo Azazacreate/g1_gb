@@ -1,0 +1,32 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: SCORES.PRE
+ Purpose: Predicate definitions for SCORES.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+
+global predicates
+	scoreReset(WINDOW)		- (i)
+	scoreResetHigh(WINDOW)		- (i)
+	
+	scoreTheCreator(WINDOW,STRING)	- (i,i)
+	
+	scoreIncFlip(WINDOW)		- (i)
+	scoreIncTurn(WINDOW)		- (i)
+	scoreIncMove(WINDOW)		- (i)
+	
+	
+	scoreDrawCurrent(WINDOW)	- (i)
+	scoreDlgShowHigh(WINDOW)	- (i)
+	scoreDlgSuccess(WINDOW)		- (i)			
+	scoreRead(WINDOW)		- (i)
+	scoreWrite(WINDOW)		- (i)
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  dlg_scores_high_Create(WINDOW Parent) - (i)
+%END_DECL

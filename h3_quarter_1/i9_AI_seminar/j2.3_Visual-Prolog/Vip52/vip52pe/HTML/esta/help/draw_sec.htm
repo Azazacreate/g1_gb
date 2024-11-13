@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<TITLE>Draw Section Tree</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Draw Section Tree'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Draw Section Tree</FONT>
+<P ALIGN=LEFT><B>Keyboard: Alt+S+T</B>
+<P ALIGN=LEFT>See also: <A HREF='EDIT_SEC.HTM'>Edit Section</A>, <A HREF='DRAW_PAR.HTM'>Draw Parameter Tree</A>
+<P ALIGN=LEFT>ESTA features a graphical presentation of <A HREF='SECTIONS.HTM'>sections</A>. This command will draw a tree for the individual section calls starting at a given section. By means of illustration, consider the following knowledge base: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start : ' the start section ' 
+<P ALIGN=LEFT>do  subsection_a 
+<P ALIGN=LEFT>do  subsection_b 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>section subsection_a : ' subsection a ' 
+<P ALIGN=LEFT>advice 'This is subsection a' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>section subsection_b  ' subsection b ' 
+<P ALIGN=LEFT>advice 'This is subsection b' </FONT>
+<P ALIGN=LEFT>A section tree starting with 'start' would be displayed as follows: 
+<P ALIGN=LEFT>{bml Sec_Tree.bmp}
+<P ALIGN=LEFT>The generated tree is displayed in a window, which can be. You can use the mouse to move around and scroll to see all parts of the tree. Double-clicking in a section box will activate an editor window with the section definition. The tree will be updated dynamically whenever changes are made to the involved sections. 
+<P ALIGN=LEFT>By default the maximum level for a tree is equal to 10. You can change the level in the file &quot;winesta.def&quot;. 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

@@ -1,0 +1,11 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	MAPHNDL.PRE
+ Purpose:	Map viewer and editor for TRANS project. Global predicates.
+ Written by:	Alexander Butovsky
+ Comments:
+******************************************************************************/
+
+include "tools\\maphndl\\maphndl.pre"

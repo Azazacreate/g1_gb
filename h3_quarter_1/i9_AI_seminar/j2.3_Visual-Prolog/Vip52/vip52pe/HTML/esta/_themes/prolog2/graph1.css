@@ -1,0 +1,96 @@
+.mstheme
+{
+	separator-image: url(modhorsa.gif);
+	list-image-1: url(modbul1a.gif);
+	list-image-2: url(modbul1a.gif);
+	list-image-3: url(modbul1a.gif);
+	nav-banner-image: url(topbar.gif);
+	navbutton-horiz-normal: url(modhbuda.gif);
+	navbutton-horiz-hovered: url(modhbuha.gif);
+	navbutton-horiz-pushed: url(modhbusa.gif);
+	navbutton-vert-normal: url(modvbuda.gif);
+	navbutton-vert-hovered: url(modvbuha.gif);
+	navbutton-vert-pushed: url(modvbusa.gif);
+	navbutton-home-normal: url(modhomda.gif);
+	navbutton-home-hovered: url(modhomha.gif);
+	navbutton-home-pushed: url(modhomsa.gif);
+	navbutton-next-normal: url(modnexda.gif);
+	navbutton-next-hovered: url(modnexha.gif);
+	navbutton-next-pushed: url(modnexsa.gif);
+	navbutton-prev-normal: url(modpreda.gif);
+	navbutton-prev-hovered: url(modpreha.gif);
+	navbutton-prev-pushed: url(modpresa.gif);
+	navbutton-up-normal: url(modupda.gif);
+	navbutton-up-hovered: url(modupha.gif);
+	navbutton-up-pushed: url(modupsa.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: verdana, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 6;
+	font-style: normal;
+	font-weight: normal;
+	text-align: right;
+	vertical-align: bottom;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: verdana, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 2;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-vert-navtxt
+{
+	font-family: verdana, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 2;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxthome
+{
+	font-family: arial, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtnext
+{
+	font-family: arial, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtprev
+{
+	font-family: arial, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtup
+{
+	font-family: arial, Arial, Helvetica;
+	color: rgb(0, 0, 0);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+ul
+{
+	list-style-image: url(modbul1a.gif);
+}
+ul ul
+{
+	list-style-image: url(modbul1a.gif);
+}
+ul ul ul
+{
+	list-style-image: url(modbul1a.gif);
+}

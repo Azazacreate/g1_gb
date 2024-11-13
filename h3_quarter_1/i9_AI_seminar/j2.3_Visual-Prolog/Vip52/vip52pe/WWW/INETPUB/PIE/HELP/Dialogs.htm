@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<TITLE>Dialogs</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='dlg_term;dlg_savefilename;dlg_openfilename;dlg_note;dlg_ask;Dialog'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Dialogs</FONT>
+<P ALIGN=LEFT><B>dlg_ask</B>(<I>Prompt,ButtonList,Result</I>)
+<P ALIGN=LEFT>Prompts user for a Yes/No response.
+<P ALIGN=LEFT><I>Prompt</I> contains the text that is displayed in the dialog.
+<P ALIGN=LEFT><I>ButtonList</I> must not be empty. The first three strings are used to specify the texts in the buttons, others (if exist) are ignored. If a string is empty, the corresponding button is invisible. If one or two strings are specified, then only one or two buttons are displayed.
+<P ALIGN=LEFT><I>Result</I> returns the user choice.
+<P ALIGN=LEFT><B>dlg_term</B>(<I>Term</I>)
+<P ALIGN=LEFT>Read the term througn dialog exactly as <B>read/1</B> does.
+<P ALIGN=LEFT><B>dlg_str</B>(<I>Prompt,InitStr,Result</I>)
+<P ALIGN=LEFT>A dialog to prompt the user for a string response
+<P ALIGN=LEFT>Returns user string response if the OK button is pressed. The <I>InitStr</I> is the initial contents of the string. The title <I>Prompt</I> must be given but it may be an empty string.
+<P ALIGN=LEFT><B>dlg_note</B>(<I>Title,Msg</I>)
+<P ALIGN=LEFT>Pop up a box containing a message <I>Msg</I> and OK button. Default title is &quot;Note&quot; if <I>Title</I> is an empty string.
+<P ALIGN=LEFT><B>dlg_openfilename</B>(<I>Title,FileType,FileExt,FileName</I>)
+<P ALIGN=LEFT><B>dlg_savefilename</B>(<I>Title,FileType,FileExt,FileName</I>)
+<P ALIGN=LEFT>Activates dialog box to select a filename.
+<P ALIGN=LEFT><I>Title</I> Specifies the title of the dialog.
+<P ALIGN=LEFT><I>FileType</I> Specifies the file type description (for example, &quot;Prolog Files&quot;).
+<P ALIGN=LEFT><I>FileExt</I> Specifies the file extension (for example &quot;*.PRO&quot;).
+<P ALIGN=LEFT><I>FileName</I> Contains the choosen filename, if the OK button is pressed
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

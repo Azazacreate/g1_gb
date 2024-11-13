@@ -1,0 +1,15 @@
+<HTML>
+<HEAD>
+<TITLE>Chain Action</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Chain Action'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Chain Action</FONT>
+<P ALIGN=LEFT>The chain action enables ESTA to consult new knowledge bases. If the knowledge can be structured so that it is possible to divide it up into several smaller knowledge bases, it will enhance the overview of knowledge. The <A HREF='BNF_SYNT.HTM'>syntax</A> for the chain action is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;chain&gt; ::= chain &lt;<A HREF='FILENAME.HTM'>filename</A>&gt;</FONT>  
+<P ALIGN=LEFT>Parameter values may be transferred between two knowledge bases by calling <A HREF='SAVE_VAL.HTM'>save_values</A> before chaining and let the first action in the new knowledge base be a call of <A HREF='RESTORE_.HTM'>restore_values</A>. Note that only parameter values can be transferred between knowledge bases. The definitions get lost when a knowledge base is chained. 
+<P ALIGN=LEFT>If the filename parameter is an empty text, eg, <B>chain ''</B>, ESTA will chain to the current knowledge base, in effect restarting it. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT>The action chain 'car.kb' starts a consultation of the knowledge base car.kb. Notice that the new knowledge base will be loaded into memory and that the 'old' knowledge base thereby will be lost. 
+</BODY>
+</HTML>

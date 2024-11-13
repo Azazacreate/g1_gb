@@ -1,0 +1,26 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DLL2
+ FileName: DLL2.PRE
+ Purpose: Predicate definitions for DLL2.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+ifndef ws_win
+ #Error: This examples works under Windows-32 platform only
+enddef 
+ifndef platform_32bit
+ #Error: This examples works under Windows-32 platform only
+enddef 
+
+%BEGIN_DECL, System generated global predicates
+global predicates
+
+%END_DECL
+ procedure dll_mark_gstack(stackmark)     - (o) language stdcall as "dll2_mark_gstack"
+ procedure dll_release_gstack(stackmark) - (i) language stdcall as "dll2_release_gstack"
+ procedure callCallback(myCallback Callback) - (i) language stdcall as "dll2_callCallback"
+ procedure getstring(string ) - (o) language stdcall as "dll2_getstring"
+ 

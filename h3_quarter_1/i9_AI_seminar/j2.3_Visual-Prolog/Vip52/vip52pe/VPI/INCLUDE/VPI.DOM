@@ -1,0 +1,263 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName: VPI.DOM
+ PURPOSE: Domain definitions for VPI Layer
+ Written by:
+ Comments:
+
+******************************************************************************/
+
+include "types.dom"
+
+global domains
+  CURSOR	= INTEGER  % A resource ID
+
+global domains
+  PICTURE	= REF		% A handle to a picture
+  WINDOW	= REF		% A handle to a window
+  RESID		= UNSIGNED
+  WINLIST	= WINDOW*
+  CTLID		= INTEGER
+  CLASSNAME	= STRING
+
+global domains
+  PNT	= struct pnt(INTEGER X,INTEGER Y)
+  PNTLIST = PNT*
+
+  RCT = struct rct(INTEGER Left,INTEGER Top,INTEGER Rigt,INTEGER Bottom)
+% Note should this domain have an extra alternative like client
+
+global domains
+  COLOR = LONG	% Tree bytes of RGB color
+
+global domains
+  DRAWMODE	= INTEGER
+
+global domains
+  PATSTYLE	= INTEGER
+
+global domains
+  PENSTYLE	= INTEGER
+
+global domains
+  BRUSH 	= struct brush(PATSTYLE,COLOR)
+  PENWIDTH	= INTEGER
+  PEN 		= struct pen(PENWIDTH,PENSTYLE,COLOR)
+
+global domains
+  BK_MODE = INTEGER
+
+global domains
+  DRAWTOOLS = struct draw_tools(PEN,BRUSH,DRAWMODE,FONT,COLOR FG,COLOR BG,BK_MODE)
+
+global domains
+  WINTYPE	= INTEGER
+
+global domains % Window Style Flag, describes properties for windows
+  WSFLAG	= LONG
+  WSFLAGS	= WSFLAG*
+
+constants
+  ctl_flag	= wsflag
+  ctl_flags	= wsflags
+
+global domains
+  MENU = res_menu(RESID); dyn_menu(MENU_ITEM_LIST); no_menu
+  MENU_ITEM_LIST = MENU_ITEM*
+  MENU_ITEM =
+	txt(	MENU_TAG,	% Integer value that specify this menu entry
+		STRING,		% text
+		INTEGER Mnemonic,% Char value for letter in Accelerator key
+		BOOLEAN Enabled,
+		INTEGER ItemState,
+		MENU_ITEM_LIST);
+	ownerdraw(
+		MENU_TAG,
+		LONG Val,		% 32-bit val passed in e_drawowner
+		BOOLEAN Enabled,
+		BOOLEAN Checked,
+		MENU_ITEM_LIST);
+	separator;	% Draws a horizontal line in the menu
+	menu_break	% Column break in menu
+  MENU_TAG	 = unsigned
+
+% The SCROLLCODE values are returned in events when a scrollbar is moved
+  SCROLLCODE= INTEGER
+
+global domains	% SCROLL_TYPE is used to select which scrollbar is operated
+  SCROLL_TYPE	= INTEGER
+
+  FONTFAMILY = INTEGER
+
+  FONTSTYLE = FS*
+  FS = INTEGER
+
+  FONT = BINARY  % Handled as a LOGFONT under Windows
+
+  OD_ACTION = UNSIGNED
+  OD_ITEMACTION = OD_ACTION*
+
+  OD_STATE = UNSIGNED
+  OD_ITEMSTATE = OD_STATE*
+
+global domains
+  EVENT =
+	e_Create(LONG CreationData);	% First event sent to new window.
+
+	e_Destroy;		% Object has been destroyed. Last event sent to window.
+
+	e_GetFocus;		% Window is getting focus
+
+	e_LoseFocus;		% Window is losing focus
+
+	e_Size(INTEGER Width,INTEGER Height); % Window has been resized
+
+	e_Move(INTEGER X,INTEGER Y);	% Window has been move to a new place
+
+	e_Update(RCT);	% A part of the window needs updating
+
+	e_EraseBackground;	%
+
+	e_CloseRequest;	% User has clicked the close box.
+
+	e_MouseDown(PNT,INTEGER ShiftControlAlt,INTEGER Button);
+	e_MouseUp(PNT,INTEGER ShiftControlAlt,INTEGER Button);
+	e_MouseDbl(PNT,INTEGER ShiftControlAlt,INTEGER Button);
+	e_MouseMove(PNT,INTEGER ShiftControlAlt,ILIST Buttons);
+
+	e_Char(INTEGER Char,INTEGER ShiftControlAlt);
+	e_KeyDown(INTEGER Char,INTEGER ShiftControlAlt);
+	e_KeyUp(INTEGER Char,INTEGER ShiftControlAlt);
+
+	e_VScroll(SCROLLCODE,INTEGER Pos);  % vertical scrollbar activated
+	e_HScroll(SCROLLCODE,INTEGER Pos);  % horizontal scrollbar activated
+
+	e_Menu(MENU_TAG,INTEGER ShiftControlAlt);
+
+	e_InitMenu;
+
+	e_Control(INTEGER Id,WINTYPE,WINDOW,CONTROL_INFO); % Notification
+
+	e_Timer(LONG TimerId);
+
+	e_OwnerMeasureItem(UNSIGNED CtlType,UNSIGNED CtlId,
+	                   UNSIGNED ItemId,LONG data);
+
+	e_OwnerDraw(UNSIGNED Ctltype, UNSIGNED CtlId, UNSIGNED ItemID,
+	            OD_ITEMACTION ItemAction, OD_ITEMSTATE ItemState,
+							WINDOW Window,
+							RCT RectItem,
+							LONG ItemData);
+
+	e_DDE(DDE_CONV Conv,DDE_EVENT Event);
+
+	e_EndSession(BOOLEAN AbortPosible);
+
+	e_Native(UNSIGNED Message,UNSIGNED WParam, LONG LParam);
+
+	e_User(LONG Id,LONG Ptr);
+
+	e_EndApplication(LONG Id);
+
+	e_State(STATE_INFO);
+
+	e_Activate;
+
+	e_Deactivate
+
+  % Extra info for e_Control notification events
+  CONTROL_INFO =
+		scroll(SCROLLCODE,INTEGER);	 % Kind of scroll + position
+		getfocus();			             % Control is getting focus
+		losefocus();			           % Control is losing focus
+		modified();			             % Content modified
+		selchanged();	     	% Selection is changed
+		activated();		% Press button or DblClick in listbox
+		closeup();		% ListBox or ListEdit is closed up
+		dropdown()		% ListBox or ListEdit is dropped down
+
+  % Extra info for e_State events
+  STATE_INFO =
+		font(FONT);	        % win_SetFont is called
+		text(STRING);		% win_SetText is called
+		disabled();		% window is disabled by win_SetState
+		enabled();		% window is enabled by win_SetState
+		invisible();	     	% window is invisible by win_SetState
+		visible()	     	% window is visible by win_SetState
+
+  % Dynamic windows, dialog and control creation.
+  WINDEF=
+	resdlg(RESID ResID, WINTYPE wType);
+	dlg(WDEF,WSFLAGS);
+	dlg_font(WDEF,STRING,INTEGER,WSFLAGS);
+	topwin(WDEF,MENU,WSFLAGS);
+	childwin(WDEF,CTLID,WSFLAGS);
+	icon(WDEF,CTLID,RESID,WSFLAGS);
+	ctl(WDEF,CTLID,WSFLAGS);
+	customctl(WDEF,CLASSNAME,CTLID,WSFLAGS)
+
+  WDEF	= struct wdef(WINTYPE,RCT,STRING,UNIT_TYPE)
+  WINDEF_LIST	= WINDEF*
+
+global domains	% Co-ordinate system to be used for WINDEF handling
+  UNIT_TYPE	= INTEGER
+
+global domains		% Raster operation used in pict_draw
+  ROP	= INTEGER
+
+global domains
+  ALIGN	= INTEGER
+
+global domains
+  MAPMODE = INTEGER
+
+global domains
+
+  ERRHANDLER = determ (WINDOW,UNSIGNED) - (I,I) language c
+  EHANDLER = determ LONG (WINDOW,EVENT) - (I,I) language c
+
+%DDE domains
+
+global domains
+  DDE_INITFLAGS=INTEGER*
+
+global domains	%for dde_StartAdv()
+  DDE_ADVFLAGS=INTEGER*
+
+  DDE_FORMAT=INTEGER
+
+  DDE_CONV		= REF	%conversation handle
+  DDE_CONVLIST	= DDE_CONV*
+  DDE_CONVMULT	= REF	%handle to multiply conversation
+  DDE_TRANSID	= REF	%transaction identifier
+
+  DDE_SERVICE_INFO	= struct service_info(STRING Service,STRING Topic)
+  DDE_SERVICE_INFO_LIST=DDE_SERVICE_INFO*
+
+  DDE_DATA=str(STRING);bin(BINARY);pict(PICTURE);nodata
+
+  DDE_EVENT=	% S: Server event; C: Client event
+	advdata(STRING Topic,STRING Item,DDE_DATA);			% C
+	advreq(STRING Topic,STRING Item);				% S
+	advstart(STRING Topic,STRING Item);				% S
+	advstop(STRING Topic,STRING Item);				% S
+	connect(STRING Service,STRING Topic);				% S
+	connect_confirm(STRING Service,STRING Topic);			% S
+	disconnect();							% S/C
+	error();							% S/C
+	execute(STRING Topic,STRING Command);				% S
+	poke(STRING Topic,STRING Item,DDE_DATA);			% S
+	request(STRING Topic,STRING Item);				% S
+	wildconnect(STRING Service,STRING Topic);			% S
+	trans_complete(STRING Topic,STRING Item,DDE_TRANSID,DDE_DATA)	%C
+
+
+global domains
+  METAFILE = UNSIGNED
+
+  ACCELERATOR = struct a( INTEGER Char, INTEGER ShiftControlAlt, MENU_TAG )
+  ACCEL_LIST = ACCELERATOR*

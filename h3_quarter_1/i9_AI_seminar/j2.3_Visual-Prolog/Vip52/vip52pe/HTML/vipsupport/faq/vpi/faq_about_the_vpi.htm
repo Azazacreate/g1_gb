@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>FAQ about the VPI</title>
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="VPI"></a>FAQ about the VPI<!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000"><a name="What is the VPI ?">What is the VPI?<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>The VPI (Visual Programming Interface) is an extensive tool for creating windows-based
+  user interfaces. VPI is a high level operating system independent API (Application
+  Programming Interface). All VPI features are supported on all GUI platforms: Windows 3.1,
+  3.11, NT, 95 and OS/2.</p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000"></a><a name="How do I call the GUI functions, that I need from VPI?">How do I call the
+GUI functions that I need from VPI?<!--mstheme--></font></h4>
+
+<blockquote>
+  <p>The full power of the underlying (native) OS is always available to you. Visual Prolog
+  is supplied with the definitions and constants necessary to call the MS Windows Win31
+  native API directly. Most other GUI functions can easily be defined as Global C predicates
+  by using the C header definition from the SDK help files. </p>
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000"></a><a name="Is there a way to play a waveform file with VP 5.02?">Is there a way to
+play a waveform file with VP 5.x?</a><!--mstheme--></font></h4>
+
+<dl>
+  <dd>Unfortunately we still do not supply a standard predicate for this task. </dd>
+  <dd>You can do this using standard Windows API functions sndPlaySound or PlaySound or any
+    third party library.</dd>
+  <dd>In this case you should provide <a href="../../technotes/call_api_predicates.htm">Global
+    Predicate declaration</a>.</dd>
+  <dd>Check the APICALL example in VPI/EXAMPLES - it shows how to play WAV files by making a
+    call to sndPlaySound.</dd>
+</dl>
+
+<h4><!--mstheme--><font color="#000000"><a name="Is UNICODE supported by VIP 5.x?">Is UNICODE supported by VIP 5.x?</a><!--mstheme--></font></h4>
+
+<blockquote>
+  <p>Currently UNICODE is not supported by the Visual Prolog. We plan to support it in one
+  of the next versions. <br>
+  However, you might succeed by just using the current Visual Prolog 5.x, since it should be
+  possible to make resources and calls to the Win32 API which handles UNICODE.</p>
+</blockquote>
+
+<p><a href="how_to_update_multiple_dialog_wi.htm">How to update multiple dialog windows?</a></p>
+
+<p><a href="how_to_check_wether_application_.htm">How to check whether application is
+already active?</a></p>
+
+<p><a href="can_you_point_me_to_some_informa.htm">Can you point me to some
+information in the Visual Prolog&nbsp; manuals, online documentation, or example
+applications to assist&nbsp; with adding color to windows ? </a></p>
+
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

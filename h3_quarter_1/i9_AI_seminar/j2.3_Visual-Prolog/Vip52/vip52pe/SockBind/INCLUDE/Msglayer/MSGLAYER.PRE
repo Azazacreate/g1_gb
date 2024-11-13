@@ -1,0 +1,33 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SERVER
+ FileName: SOCKHAND.PRE
+ Purpose: Predicate definitions for SOCKHAND.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+
+GLOBAL PREDICATES
+  procedure SOCKET msglay_Listen(USHORT Port, MSGLAY_HANDLER) -(i,i)
+  procedure SOCKET msglay_Connect(STRING Addr_Name, USHORT Port, MSGLAY_HANDLER, MSGLAY_OPTLIST) -(i,i,i,i)
+  procedure msglay_GetRemoteInf( SOCKET, STRING RemoteHostName_or_IPAddr, USHORT RemotePort ) - (i,o,o)
+  procedure msglay_SetHandler(SOCKET, MSGLAY_HANDLER, MSGLAY_OPTLIST) -(i,i,i)
+  procedure msglay_WriteBin(SOCKET, BINARY) -(i,i)
+  procedure msglay_WriteStr(SOCKET, STRING) -(i,i)
+  procedure msglay_GetOptions(SOCKET, MSGLAY_OPTLIST) -(i,o)
+  procedure msglay_SetOptions(SOCKET, MSGLAY_OPTLIST) -(i,i)
+  procedure msglay_Close(SOCKET) -(i)
+  procedure msglay_CloseSoft(SOCKET) -(i)
+  procedure msglay_CloseAll()
+  procedure msglay_CloseSession()
+  procedure msglay_LastError(UNSIGNED) -(o)
+  
+  % Getting the messages with wrong format, after a msglay_errReadPacked
+  % error event. Fail if there are no messages with wrong format
+  determ msglay_GetWrongMsgBin(SOCKET, BINARY) -(i,o)
+  determ msglay_GetWrongMsgStr(SOCKET, STRING) -(i,o)
+  
+

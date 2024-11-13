@@ -1,0 +1,613 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName: vpi.con
+ Purpose: declaration of VPI 
+ Written by: PDC
+ Comments:
+
+******************************************************************************/
+
+
+constants
+vpi_include = 1
+/*---------------------------------------------------------------------------
+	Standard dialog pushbutton control IDs
+---------------------------------------------------------------------------*/
+idc_ok      = 1		/* DEFAULT BUTTON WAS CLICKED */
+idc_cancel  = 2		/* CANCEL BUTTON WAS CLICKED */
+idc_help    = 3		/* HELP BUTTON WAS CLICKED */
+
+/*---------------------------------------------------------------------------
+	Standard application icon & edit cursor IDs
+---------------------------------------------------------------------------*/
+vpi_application_icon	= 9012	/* APPLICATION ICON */
+vpi_edit_cursor		= 9002	/* EDIT CURSOR */
+vpi_mdiwindow_menu	= 9011	/* MDI WINDOW MENU */
+
+vpi_strcon_prn_cancel   = 9000   
+vpi_strcon_prn_page     = 9001
+
+/* 9100 - 9199 editor string & dialog constants */
+
+/************************* Keys definition ************************/
+k_f1     = 331            /* function key 1 */
+k_f2     = 332
+k_f3     = 333
+k_f4     = 334
+k_f5     = 335
+k_f6     = 336
+k_f7     = 337
+k_f8     = 338
+k_f9     = 339
+k_f10    = 340
+k_f11    = 341
+k_f12    = 342
+k_f13    = 343
+k_f14    = 344
+k_f15    = 345            /* FUNCTION KEY 15 */
+k_up     = 301            /* UP ARROW */
+k_down   = 302            /* DOWN ARROW */
+k_right  = 303            /* RIGHT ARROW */
+k_left   = 304            /* LEFT ARROW */
+k_prev   = 305            /* PREVIOUS SCREEN */
+k_next   = 306            /* NEXT SCREEN */
+k_lhome  = 307            /* LINE HOME */
+k_lend   = 308            /* LINE END */
+k_home   = 309            /* HOME */
+k_end    = 310            /* END */
+k_ins    = 312            /* INSERT */
+k_ctrl_left  = 313
+k_ctrl_right = 314
+k_wleft  = k_ctrl_left    /* WORD LEFT */
+k_wright = k_ctrl_right   /* WORD RIGHT */
+k_btab   = 315            /* BACK TAB */
+k_help   = 316            /* HELP */
+k_clear  = 317            /* CLEAR */
+k_del    = 127            /* DELETE (SAME AS ascii */
+k_break  = 3              /* Control break */
+k_shift  = 16
+k_ctrl   = 17
+k_alt    = 18
+k_enter    = 13
+k_tab    = 9
+k_ctrl_a = 1
+k_ctrl_b = 2
+k_ctrl_c = 3
+k_ctrl_d = 4
+k_ctrl_e = 5
+k_ctrl_f = 6
+k_ctrl_g = 7
+k_ctrl_h = 8
+k_ctrl_i = 9
+k_ctrl_j = 10
+k_ctrl_k = 11
+k_ctrl_l = 12
+k_ctrl_m = 13
+k_ctrl_n = 14
+k_ctrl_o = 15
+k_ctrl_p = 16
+k_ctrl_q = 17
+k_ctrl_r = 18
+k_ctrl_s = 19
+k_ctrl_t = 20
+k_ctrl_u = 21
+k_ctrl_v = 22
+k_ctrl_w = 23
+k_ctrl_x = 24
+k_ctrl_y = 25
+k_ctrl_z = 26
+k_app = 93             /* App local menu key */  
+
+
+
+
+attr_have_color			= 101
+attr_have_mouse			= 102
+attr_num_timers			= 103
+attr_color_activeborder		= 104
+attr_color_activecaption	= 105
+attr_color_appworkspace		= 106
+attr_color_desktop		= 107
+attr_color_btnface		= 108
+attr_color_btnshadow		= 109
+attr_color_btntext		= 110
+attr_color_captiontext		= 111
+attr_color_graytext		= 112
+attr_color_highlight		= 113
+attr_color_highlighttext	= 114
+attr_color_inactiveborder 	= 115
+attr_color_inactivecaption 	= 116
+attr_color_inactivecaptiontext 	= 117
+attr_color_menu 		= 118
+attr_color_menutext		= 119
+attr_color_scrollbar		= 120
+attr_color_window		= 121
+attr_color_windowframe		= 122
+attr_color_windowtext		= 123
+attr_color_tooltiptext		= 124
+attr_color_tooltipback		= 125
+attr_color_windowstatictext     = 126
+attr_color_btnhilight     	= 127
+attr_color_3ddkshadow     	= 128
+attr_color_3dlight     		= 129
+
+/* Object Size Attrbuutes */
+attr_ctl_button_height		= 200
+attr_ctl_checkbox_height	= 201
+attr_ctl_edit_text_height	= 202
+attr_ctl_horz_sbar_height	= 203
+attr_ctl_vert_sbar_width	= 204
+attr_ctl_radiobutton_height	= 205
+attr_ctl_static_text_height	= 206
+attr_icon_width			= 207
+attr_icon_height		= 208
+
+/* Predefined Windows */
+attr_screen_window	= 300
+attr_task_window	= 301
+
+/* System Metric Attributes */
+attr_screen_height	= 400
+attr_screen_width	= 401
+attr_screen_hres	= 402
+attr_screen_vres	= 403
+attr_printer_height	= 404
+attr_printer_width	= 405
+attr_printer_hres	= 406
+attr_printer_vres	= 407
+attr_printer_q_raw	= 408
+
+/* Window Metric Attributes */
+attr_docframe_width	= 500
+attr_docframe_height	= 501
+attr_frame_width	= 502
+attr_frame_height	= 503
+attr_dblframe_width	= 504
+attr_dblframe_height	= 505
+attr_menu_height	= 506
+attr_title_height	= 507
+
+/* Window Attributes */
+
+attr_native_window		= 602
+
+attr_win_instance		= 10001
+attr_win_mdi			= 10002
+attr_win_mdi_client_hwnd      	= 10003
+attr_win_tbar                 	= 10004
+attr_win_sbar                 	= 10005
+attr_win_3dcontrols           	= 10006
+attr_suppress_update_check    	= 10007
+attr_erasebackground    	= 10008
+attr_CheckPortability    	= 10009
+attr_win_lbar                 	= 10010
+attr_win_rbar                 	= 10011
+
+% Print setup selection
+prnsetup_all        =  0
+prnsetup_pages      =  1
+prnsetup_selection  =  2
+
+% Mdi handling
+  mdiwin_horizontal	= 0
+  mdiwin_vertical	= 1
+  mdiwin_skipdisabled	= 2
+
+%dlg_GetFileName 
+  dlgfn_save     = 	 1
+  dlgfn_multisel  =      2
+  dlgfn_bufsize = 3
+
+%dlg_MessageBox predicate 
+  mesbox_iconinformation  =    	 0
+  mesbox_iconquestion     = 	 1
+  mesbox_iconerror        =      2
+  mesbox_iconexclamation  =    	 3
+
+  mesbox_buttonsok        = 	 0
+  mesbox_buttonsokcancel  = 	 1
+  mesbox_buttonsyesno 	  =	 2
+  mesbox_buttonsyesnocancel = 	 3
+  mesbox_buttonsretrycancel =	 4
+  mesbox_buttonsabortretryignore = 5
+
+  mesbox_defaultfirst     = 	 0 
+  mesbox_defaultsecond    = 	 1
+  mesbox_defaultthird     = 	 2
+
+  mesbox_suspendapplication = 	 0
+  mesbox_suspendsystem      = 	 1
+
+%vpi_ShowHelp 
+  help_opsyswindows = 0
+  help_opsysos2     = 1
+
+% draw_Text flags
+  dtext_bottom	         =  0
+  dtext_center           =  2
+  dtext_expandtabs       =  3
+  dtext_externalleading  =  4
+  dtext_left             =  5
+  dtext_noclip           =  6
+  dtext_noprefix         =  7
+  dtext_right            =  8
+  dtext_singleline       =  9
+  dtext_tabstop          =  10
+  dtext_top              =  11
+  dtext_vcenter          =  12
+  dtext_wordbreak        =  13
+
+% returned dde values
+  dderes_fnotprocessed	= 0x0000
+  dderes_fbusy 		= 0x4000
+  dderes_fack		= 0x8000
+
+ %for dde_StartAdv()
+  ddeadv_NoData = 1
+  ddeadv_AckReq = 2
+
+  ddecf_Text 		= 1
+  ddecf_Bitmap 		= 2
+  ddecf_Metafilepict	= 3
+  ddecf_Sylk		= 4
+  ddecf_DIF		= 5
+  ddecf_Tiff		= 6
+  ddecf_OEMText		= 7
+  ddecf_Dib		= 8
+  ddecf_Palette		= 9
+  ddecf_PenData		= 10
+  ddecf_Riff		= 11
+  ddecf_Wave		= 12
+
+  %Callback filter flags for use with standard applications
+  ddef_fail_selfconnections  = 0x00001000
+  ddef_fail_connections      = 0x00002000
+  ddef_fail_advises          = 0x00004000
+  ddef_fail_executes         = 0x00008000
+  ddef_fail_pokes            = 0x00010000
+  ddef_fail_requests         = 0x00020000
+  ddef_fail_allsvrxactions   = 0x0003f000
+  ddef_skip_connect_confirms = 0x00040000
+  ddef_skip_registrations    = 0x00080000
+  ddef_skip_unregistrations  = 0x00100000
+  ddef_skip_disconnects      = 0x00200000
+  ddef_skip_allnotifications = 0x003c0000
+  ddef_clientonly            = 0x00000010
+
+ %mapmode
+  mm_Arbitrary	= 0	% Mapping specified by map_setscaling()
+  mm_Text	= 1	% Logical == device pixel. X:Right, Y:Down.
+  mm_HiMetric	= 2	% Logical == 0.01 milimeter. X:Right, Y:Up.
+  mm_LoMetric	= 3	% Logical == 0.1 milimeter. X:Right, Y:Up.
+  mm_HiEnglish	= 4	% Logical == 0.001 inch. X:Right, Y:Up.
+  mm_LoEnglish	= 5	% Logical == 0.01 inch. X:Right, Y:Up.
+  mm_Twips	= 6	% Logical == 1/20 of a point. X:Right, Y:Up.
+
+
+  align_Left	= 0
+  align_Center	= 1
+  align_Right	= 2
+
+ %for raster operations
+  rop_Blackness	= 1  % Black
+  rop_Whiteness	= 2  % White
+  rop_DstInvert	= 3  % Not Dst
+  rop_MergeCopy	= 4  % Pat And Src
+  rop_MergePaint= 5  % (Not Src) Or Dst
+  rop_NotSrcCopy= 6  % Not Src
+  rop_NotSrcErase= 7  % Not(Src Or Dst)
+  rop_PatCopy	= 8  % Pat
+  rop_PatInvert	= 9  % Dst Xor Pat
+  rop_PatPaint	= 10 % (Not Src) Or Pat Or Dst
+  rop_SrcAnd	= 11 % Src And Dst
+  rop_SrcCopy	= 12 % Src
+  rop_SrcErase	= 13 % (Not Dst) And Src
+  rop_SrcInvert	= 14 % Src Xor Dst
+  rop_SrcPaint	= 15 % Src Or Dst
+
+
+  u_Pixels	= 0
+  u_DlgPlatform	= 1
+  u_DlgBase	= 2
+
+% what keys and buttons are pressed
+ c_Nothing	= 0
+ c_Shift	= 1
+ c_Control	= 2
+ c_Alt		= 4
+ c_ShiftCtl	= 3
+ c_ShiftAlt	= 5
+ c_CtlAlt	= 6
+ c_ShiftCtlAlt	= 7
+ mouse_button_left 	= 0
+ mouse_button_right 	= 1
+ mouse_button_middle 	= 2
+
+%Owner draw 
+
+ odstate_Selected  = 1   % item status is selected
+ odstate_Grayed    = 2   % item is to be grayed( only for menus )
+ odstate_Disabled  = 3   % item is to be disabled
+ odstate_Checked   = 4   % item is to be checked( only for menus )
+ odstate_Focus     = 5   % item has focus
+
+  odact_DrawEntire   = 1     % draw entire item
+ifdef ws_win
+  odact_Focus        = 2     % gain focus
+enddef
+  odact_Select       = 3     % selection is changed
+
+  od_Button	  = 0  % Owner-drawn button
+  od_LBoxEdit	= 1  % Owner-drawn combo box
+  od_LBox   	= 2  % Owner-drawn list box 
+  od_Menu	    = 3  % Owner-drawn menu
+
+%Font
+
+  fs_Bold	= 0x01
+  fs_Italic	= 0x02
+  fs_UnderLine	= 0x04
+
+
+  ff_System	= 1
+  ff_Fixed	= 2
+  ff_Times	= 3
+  ff_Helvetica	= 4
+
+ %scrollbar
+  sb_Horz	= 0	% Horizontal window-scrollbar
+  sb_Vert	= 1	% Vertical window-scrollbar
+  sb_Ctl	= 2	% Scrollbar controls in dialog or window
+
+
+  sc_None	= 0	% nowhere (event should be ignored)
+  sc_LineUp	= 1	% one line up
+  sc_LineDown	= 2	% one line down
+  sc_PageUp	= 3	% previous page
+  sc_PageDown	= 4	% next page
+  sc_Thumb	= 5	% thumb repositioning
+  sc_ThumbTrack	= 6	% dynamic thumb tracking
+  sc_Top	= 7	% To top
+  sc_Bottom	= 8	% To bottom
+
+ %menu item
+  mis_None = 0
+  mis_Checked = 1
+  mis_Help    = 2
+
+%window styles
+
+  wsf_Border	= 1 	% WS_BORDER
+  wsf_SizeBorder= 2 	% WS_THICKFRAME
+  wsf_DlgBorder	= 3 	% WS_EX_DLGMODALFRAME
+
+  wsf_Close	= 4     % WS_SYSMENU
+  wsf_Maximize	= 5     % WS_MAXIMIZEBOX
+  wsf_Minimize	= 6     % WS_MINIMIZEBOX
+  wsf_HScroll	= 7     % WS_HSCROLL
+  wsf_VScroll	= 8     % WS_VSCROLL
+  wsf_TitleBar	= 9     % WS_CAPTION
+
+  % Initial state of window
+  wsf_Visible	= 10    % WS_VISIBLE	DEFAULT
+  wsf_Invisible	= 11    % ~WS_VISIBLE
+  wsf_Disabled	= 12    % WS_DISABLED
+  wsf_Enabled	= 13    % ~WS_DISABLED	DEFAULT
+  wsf_Maximized	= 14    % WS_MAXIMIZE
+  wsf_Minimized	= 15    % WS_MINIMIZE
+  wsf_Restored	= 16    % WS_MINIMIZE
+
+  wsf_ClipChildren= 17  % WS_CLIPCHILDREN
+  wsf_ClipSiblings= 18  % WS_CLIPSIBLINGS
+  wsf_Topmost	  = 19  % WS_EX_TOPMOST
+  wsf_Transparent = 20  % WS_EX_TRANSPARENT
+
+  wsf_Checked		=  22
+  wsf_Default		=  23
+  wsf_Group		=  25
+  wsf_TabStop		=  26
+  wsf_ReadOnly		=  27
+  wsf_MultiLine		=  28
+  wsf_MultiSelect	=  29
+  wsf_MultiColumn	= 30
+  wsf_AlignLeft		= 31
+  wsf_AlignCenter	= 32
+  wsf_AlignRight	= 33
+  wsf_LeftText		= 34
+  wsf_OwnerDraw		= 35
+  wsf_NoBorder		= 38
+  wsf_Simple		= 39
+  wsf_NoWrap		= 40
+  wsf_NoPrefix		= 41
+  wsf_UpperCase		= 42
+  wsf_LowerCase		= 43
+  wsf_Password		= 44
+  wsf_AutoVScroll	= 45
+  wsf_AutoHScroll	= 46
+  wsf_NoHideSel		= 47
+  wsf_OEMConvert	= 48
+  wsf_WantReturn	= 49
+  wsf_3State		= 50
+  wsf_Auto		= 51
+  wsf_NoNotify		= 52
+  wsf_Sort		= 53
+  wsf_NoReDraw		= 54
+  wsf_OwnerDrawVariable	= 55
+  wsf_HasStrings	= 56
+  wsf_UseTabStops	= 57
+  wsf_NoIntegralHeight	= 58
+  wsf_WantKeyboardInput	= 59
+  wsf_ExtendedSel	= 60
+  wsf_DisableNoScroll	= 61
+  wsf_BlackRect		= 62
+  wsf_GrayRect		= 63
+  wsf_WhiteRect		= 64
+  wsf_BlackFrame	= 65
+  wsf_GrayFrame		= 66
+  wsf_WhiteFrame	= 67
+  wsf_Auto3State	= 68
+  wsf_ChildDialog       = 69
+  wsf_NoClipSiblings    = 70
+
+  ctl_HScroll		= 7 
+  ctl_VScroll		= 8 
+  ctl_Invisible		= 11
+  ctl_Disabled		= 12
+  ctl_Checked		=  22
+  ctl_Default		=  23
+  ctl_Group		=  25
+  ctl_TabStop		=  26
+  ctl_ReadOnly		=  27
+  ctl_MultiLine		=  28
+  ctl_MultiSelect	=  29
+  ctl_MultiColumn	= 30
+  ctl_AlignLeft		= 31
+  ctl_AlignCenter	= 32
+  ctl_AlignRight	= 33
+  ctl_LeftText		= 34
+  ctl_OwnerDraw		= 35
+  ctl_NoBorder		= 38
+  ctl_Simple		= 39
+  ctl_NoWrap		= 40
+  ctl_NoPrefix		= 41
+  ctl_UpperCase		= 42
+  ctl_LowerCase		= 43
+  ctl_Password		= 44
+  ctl_AutoVScroll	= 45
+  ctl_AutoHScroll	= 46
+  ctl_NoHideSel		= 47
+  ctl_OEMConvert	= 48
+  ctl_WantReturn	= 49
+  ctl_3State		= 50
+  ctl_Auto		= 51
+  ctl_NoNotify		= 52
+  ctl_Sort		= 53
+  ctl_NoReDraw		= 54
+  ctl_OwnerDrawVariable	= 55
+  ctl_HasStrings	= 56
+  ctl_UseTabStops	= 57
+  ctl_NoIntegralHeight	= 58
+  ctl_WantKeyboardInput	= 59
+  ctl_ExtendedSel	= 60
+  ctl_DisableNoScroll	= 61
+  ctl_BlackRect		= 62
+  ctl_GrayRect		= 63
+  ctl_WhiteRect		= 64
+  ctl_BlackFrame	= 65
+  ctl_GrayFrame		= 66
+  ctl_WhiteFrame	= 67
+  ctl_Auto3State	= 68
+
+ %window types
+  w_TopLevel	= 1	% document window
+  w_Child	= 2	% Child window
+  w_Screen	= 3	% screen window
+  w_Task	= 4	% task window
+
+  wd_Modal	= 6	% modal dialog
+  wd_ModeLess	= 7	% modeless dialog
+
+  wc_PushButton	= 8	% button control
+  wc_RadioButton= 9	% radio button control
+  wc_CheckBox	= 10	% check box control
+  wc_HScroll	= 11	% horizontal scroll bar control
+  wc_VScroll	= 12	% vertical scroll bar control
+  wc_Edit	= 13	% edit control
+  wc_Text	= 14	% static text control
+  wc_LBox	= 15	% list box control
+  wc_LBoxButton	= 16	% button with list
+  wc_LBoxEdit	= 17	% edit field with list
+  wc_GroupBox	= 18	% group box
+  wc_Icon	= 19	% icon control
+  wc_Custom 	= 20 % custom control
+
+  w_Print	= 25	% Internal use only
+  w_Picture	= 26	% Internal use only
+  w_Metafile	= 27	% Internal use only
+
+
+  bk_Transparent= 1
+  bk_Opaque	= 2
+
+ %pen style
+  ps_Solid	= 0	% Solid pen.
+  ps_Dash	= 1	% Dashed pen.
+  ps_Dot	= 2	% Dotted pen.
+  ps_DashDot	= 3	% Alternating dashes and dots.
+  ps_DashDotDot	= 4	% Alternating dashes and double dots.
+  ps_Hollow	= 5	% Creates a null pen.
+
+ %brush style
+  pat_Hollow	= 1
+  pat_Solid	= 2
+  pat_Horz	= 3
+  pat_Vert	= 4
+  pat_FDiag	= 5
+  pat_BDiag	= 6
+  pat_Cross	= 7
+  pat_DiagCross	= 8
+
+ %draw mode
+  dm_Black	= 0  % Black.
+  dm_NotMergePen= 1 % ~(Pen | Screen Pixel)
+  dm_MaskNotPen	= 2  % (~Screen Pixel) & Pen)
+  dm_NotCopyPen	= 3  % ~Pen
+  dm_MaskPenNot	= 4  % (~Pen) & Screen Pixel
+  dm_Not	= 5  % ~Screen
+  dm_XorPen	= 6 % Pen ^ Screen Pixel
+  dm_NotMaskPen	= 7 % ~(Pen & Screen Pixel)
+  dm_MaskPen	= 8 % Pen & Screen Pixel
+  dm_NotXorPen	= 9 % ~(Pen ^ Screen Pixel)
+  dm_Nop	= 10  % Screen
+  dm_MergeNotPen= 11  % (~Screen Pixel) | Pen)
+  dm_CopyPen	= 12  % Pen
+  dm_MergePenNot= 13  % (~Pen) | Screen Pixel)
+  dm_MergePen	= 14 % Pen | Screen Pixel
+  dm_White	= 15  % White.
+
+ %colors
+	color_Red	  = 0x000000FF
+	color_Green	  = 0x0000FF00
+	color_Blue	  = 0x00FF0000
+	color_Cyan	  = 0x00FFFF00
+	color_Magenta	  = 0x00FF00FF
+	color_Yellow	  = 0x0000FFFF
+	color_Black	  = 0x00000000
+	color_DkGray	  = 0x00404040
+	color_Gray	  = 0x00808080
+	color_LtGray  	  = 0x00C0C0C0
+	color_White	  = 0x00FFFFFF
+
+ %cursor types
+  cursor_Arrow	= 1 % Standard arrow cursor.
+  cursor_Cross	= 2 % Crosshair cursor.
+  cursor_Ibeam	= 3 % Text I-beam cursor.
+  cursor_Icon	= 4 % Empty icon.
+  cursor_Size	= 5 % A square with a smaller square inside its lower-right corner.
+  cursor_SizeNESW	= 6 % Double-pointed cursor pointing northeast and southwest.
+  cursor_SizeNS	= 7 % Double-pointed cursor pointing north and south.
+  cursor_SizeNWSE	= 8 % Double-pointed cursor pointing northwest and southeast.
+  cursor_SizeWE	= 9 % Double-pointed cursor pointing west and east.
+  cursor_Uparrow	= 10 % Vertical arrow cursor.
+  cursor_Wait	= 11 % Hourglass cursor.
+  cursor_user	= 12 % First resource ID to use
+% More cursor's can be defined in the resource file
+
+
+
+  resp_default  = 0
+  resp_2        = 1
+  resp_3        = 2
+
+  pictRotate_copy       = 0
+  pictRotate_90deg      = 1
+  pictRotate_180deg     = 2
+  pictRotate_270deg     = 3
+
+  checkbox_off          = 0
+  checkbox_on           = 1
+  checkbox_undeterm     = 2

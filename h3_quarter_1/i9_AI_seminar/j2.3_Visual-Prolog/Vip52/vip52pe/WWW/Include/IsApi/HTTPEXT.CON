@@ -1,0 +1,68 @@
+/*****************************************************************************
+
+                Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:
+ FileName: HTTPEXT.CON
+ Purpose: Constants for the version 1.1 HTTP Server
+          Extension interface.
+ Written by:
+ Comments:
+     This module contains definitions from the Microsoft HTTPEXT.H
+
+
+******************************************************************************/
+
+ifndef _HTTPEXT_CON_
+
+CONSTANTS
+
+                _HTTPEXT_CON_           =               1
+
+
+%% the following are the status codes to be returned by the http_ExtensionProc
+
+   HSE_STATUS_SUCCESS                     =  1
+   HSE_STATUS_SUCCESS_AND_KEEP_CONN       =  2
+   HSE_STATUS_PENDING                     =  3
+   HSE_STATUS_ERROR                       =  4
+
+
+%% The following are the values to request services with the ServerSupportFunction.
+%%  Values from 0 to 1000 are reserved for future versions of the interface
+
+   HSE_REQ_BASE                           =  0
+   HSE_REQ_SEND_URL_REDIRECT_RESP         =  1
+   HSE_REQ_SEND_URL                       =  2
+   HSE_REQ_SEND_RESPONSE_HEADER           =  3
+   HSE_REQ_DONE_WITH_SESSION              =  4
+   HSE_REQ_END_RESERVED                   =  1000
+
+
+%%
+%%  These are Microsoft specific extensions
+%%
+
+   HSE_REQ_MAP_URL_TO_PATH                =  1001
+   HSE_REQ_GET_SSPI_INFO                  =  1002
+   HSE_APPEND_LOG_PARAMETER               =  1003
+   HSE_REQ_SEND_URL_EX                    =  1004
+
+
+%%
+%%  Flags for TerminateExtension
+%%
+%%    HSE_TERM_ADVISORY_UNLOAD - Server wants to unload the extension,
+%%          extension can return b_true if OK, b_false if the server should not
+%%          unload the extension
+%%
+%%    HSE_TERM_MUST_UNLOAD - Server indicating the extension is about to be
+%%          unloaded, the extension cannot refuse.
+%%
+
+ HSE_TERM_ADVISORY_UNLOAD                  = 1
+ HSE_TERM_MUST_UNLOAD                      = 2
+
+
+enddef
+

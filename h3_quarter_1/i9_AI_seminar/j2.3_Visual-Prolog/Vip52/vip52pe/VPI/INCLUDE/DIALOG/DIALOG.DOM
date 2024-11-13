@@ -1,0 +1,118 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+				VISUAL Prolog
+
+ FileName: DIALOG.DOM
+ PURPOSE: Domain definitions for dialog package
+ Written by:
+ Comments:
+
+******************************************************************************/
+constants
+  dialog_dom_included = 1
+
+global domains
+
+  DIALOG_CONTROL_ID   = INTEGER
+
+  DIALOG_FIELD_LIST   = DIALOG_FIELD*
+
+  DIALOG_FIELD        = df(DIALOG_CONTROL_ID,DIALOG_ITEM,DIALOG_ERROR_PROMPT)
+
+  DIALOG_ERROR_PROMPT = own_prompt(STRING Prompt) ;
+  			dlg_prompt(DIALOG_CONTROL_ID) ;
+                        str_prompt(STRING NameControl);
+                        nopr
+
+  /* Dialog Items */
+
+  DIALOG_CONTROL_ID_L = DIALOG_CONTROL_ID*
+
+
+  DIALOG_ITEM = 	checkbox(INTEGER Checked);
+                    	radiobuttongroup(DIALOG_CONTROL_ID_L);
+                    	pushbutton(STRING Title);
+                    	editstr(STRING Text, DIALOG_STR_PROPS Properties);
+                    	editint(DIALOG_INT Value, DIALOG_INT_PROPS Properties);
+                    	editlong(DIALOG_LONG Value, DIALOG_LONG_PROPS Properties);
+                    	editreal(DIALOG_REAL Value, DIALOG_REAL_PROPS Properties);
+                    	statictext(STRING Text);
+                    	listbox(SLIST Elements,ILIST Selected);
+                    	listbutton(SLIST Elements,INTEGER Selected);
+                    	listedit(SLIST Elements, STRING InitialValue);
+		     	scrollbar(INTEGER LineInc,INTEGER PageInc,
+				INTEGER Min,INTEGER Max,INTEGER Position);
+                    	custom(STRING Text, LONG Value);
+  			datafield(STRING Data)
+
+
+  DIALOG_INT  = void; i(INTEGER)
+
+  DIALOG_REAL = void; r(REAL)
+
+  DIALOG_LONG = void; l(LONG)
+
+  DIALOG_STR_PROPS    = DIALOG_STR_PROP*
+
+  DIALOG_STR_PROP = 	mandatory;               % Mandatory entry
+               		length(INTEGER);         % Length: number of chars
+               		default(STRING);         % default value
+               		upper;                   % Upper case
+               		lower                    % Lower case
+
+  DIALOG_INT_PROPS  = DIALOG_INT_PROP*
+
+  DIALOG_INT_PROP = 	mandatory;               % Mandatory entry
+               		default(INTEGER);        % default value
+               		range(INTEGER, INTEGER); % Range: From .. To
+               		minimum(INTEGER);        % Open Range : From .. 
+               		maximum(INTEGER)         % Open Range : .. To
+
+  DIALOG_LONG_PROPS = DIALOG_LONG_PROP*
+
+  DIALOG_LONG_PROP = 	mandatory;               % Mandatory entry
+               		default(LONG);           % default value
+               		range(LONG, LONG);       % Range: From .. To
+               		minimum(LONG);           % Open Range : From .. 
+               		maximum(LONG)            % Open Range : .. To
+
+  DIALOG_REAL_PROPS = DIALOG_REAL_PROP*
+
+  DIALOG_REAL_PROP = 	mandatory;           % Mandatory entry
+               		default(REAL);           % default value
+               		range(REAL, REAL);       % Range: From .. To
+               		minimum(REAL);           % Open Range : From .. 
+               		maximum(REAL);           % Open Range : .. To
+               		decimals(UNSIGNED)       % Number of decimals
+
+  DIALOG_ENABLE_LIST = 	DIALOG_ENABLE*
+
+  DIALOG_ENABLE =  	enable(DIALOG_CONTROL_ID, BOOLEAN) ;
+			show(DIALOG_CONTROL_ID, BOOLEAN)
+
+
+  /* Dialog Item Values */
+
+  DIALOG_VAL_LIST    = 	DIALOG_VAL*
+
+  DIALOG_VAL         = 	dv(DIALOG_CONTROL_ID,DIALOG_ITEM_VAL)
+
+
+  DIALOG_ITEM_VAL    = 	checkbox(INTEGER Checked);
+                    	radiobuttongroup(DIALOG_CONTROL_ID Pushed);
+                    	pushbutton(STRING Title);
+                    	editstr(STRING Value);
+                    	editint(DIALOG_INT Value);
+                    	editlong(DIALOG_LONG Value);
+                    	editreal(DIALOG_REAL Value);
+                    	statictext(STRING Text);
+			listbox(SLIST Selections,ILIST SelectedIndices);
+			listbutton(STRING SelectionStr,INTEGER Selection);
+			listedit(STRING Selection);
+			scrollbar(INTEGER Position);
+                    	custom(STRING Text, LONG Value);
+  			datafield(STRING Data);
+  			alllist(SLIST ItemList)
+

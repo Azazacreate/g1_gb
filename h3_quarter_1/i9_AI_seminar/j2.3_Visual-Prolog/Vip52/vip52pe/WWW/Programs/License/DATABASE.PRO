@@ -1,0 +1,414 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  LICENSE
+ FileName: DATABASE.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "license.inc"
+include "database.pre"
+
+facts - licenses
+  single idcounter(unsigned)
+  nocopy software_db(softwareId,string SoftwareName,integer NoOfLicenses,parmList)
+  nocopy user_db(userId,string UserName,parmList)
+  single user_field_list_db(fieldList)
+  single software_field_list_db(fieldList)
+  license_db(userId,softwareId)
+
+clauses
+  idcounter(0).
+  user_field_list_db([
+		field("ON","Type","Computer Type",text(40)),
+		field("ON","Speed","Computer Speed",text(40)),
+		field("ON","Ram","MB Ram",text(40)),
+		field("ON","Disk","GB Disk",text(40)),
+		field("OFF","ScreenCard","Screen Card",text(40)),
+		field("OFF","NetCard","Net Card",text(40)),
+		field("OFF","SoundCard","Sound Card",text(40)),
+		field("OFF","Comments","Comments",textarea(4,32))] ).
+
+  software_field_list_db([
+		field("ON","Version","Version:",text(40)),
+		field("ON","OS","Platform:",text(40)),
+		field("ON","SerNo","Serial No.:",text(40)),
+		field("ON","Date","Date:",text(40)),
+		field("ON","Developer","Developer",textarea(4,32)),
+		field("ON","Supplier","Supplier:",text(40)),
+		field("ON","Medium","Medium:",text(40)),
+		field("ON","Comments","Comments:",textarea(4,32))] ).
+
+/******************************************************************************
+	Sorting during backtracking !
+******************************************************************************/
+domains
+ user = struct e(userId,string UserName)
+ userL = user*
+ software = struct e(softwareId,string SoftwareName)
+ softwareL = software*
+
+predicates
+  nondeterm retsorted(userL,User)-(i,e(o,o))
+  nondeterm retsorted(softwareL,software)-(i,e(o,o))
+
+  nondeterm retsorted(user,userL,userL,User)-(i,i,i,e(o,o))
+  nondeterm retsorted(software,softwareL,softwareL,software)-(i,i,i,e(o,o))
+
+  procedure split(user, userL,userL,userL)-(i,i,o,o)
+  procedure split(software, softwareL,softwareL,softwareL)-(i,i,o,o)
+
+clauses
+  split (_,[],[],[]).
+  split (X,[Y|T],[Y|Less],Greater) :-
+   	X = e(_,NameX), upper_lower(NameX,SX),
+   	Y = e(_,NameY), upper_lower(NameY,SY),
+   	SX > SY,!,
+   	split (X,T,Less,Greater).
+  split(X,[Y|T],Less,[Y|Greater]) :-
+   	split (X,T,Less,Greater).
+
+  retsorted([H|T],RetElem):-		% First split the list
+   	split(H,T,Less,Greater),
+   	retsorted(H,Less,Greater,RetElem).
+
+  retsorted(_,Less,_,RetElem):-		% Then first return all that are smaller
+	retsorted(Less,RetElem).
+  retsorted(H,_,_,H).			% and Return the >middle Elem<
+  retsorted(_,_,Greater,RetElem):-	% and finally return Elems that are greather
+	retsorted(Greater,RetElem).
+
+/******************************************************************************
+	Count the lenght of a list
+******************************************************************************/
+domains
+  userlist = userId*
+predicates
+  list_len(userlist,integer Len)
+clauses
+  list_len([],0).
+  list_len([_|T],Len):-
+	list_len(T,TailLen),
+	Len=TailLen+1.
+
+/******************************************************************************
+	Load and save of the database
+******************************************************************************/
+facts - dbfilename
+  determ dbfilename(string DBFileName)
+
+clauses
+  db_save():-
+	dbfilename(DBFileName),!,
+	save(DBFileName,licenses).
+  db_save():-
+	errorexit().
+
+  db_load(DBFileName):-
+	syspath(ExeStartupPath,_),
+	filenamepath(FullName,ExeStartupPath,DBFileName),
+	assert(dbfilename(FullName)),
+	trap(consult(FullName,licenses),_,write("<H1>No database</H1>")),
+	!.
+  db_load(_).
+
+
+/******************************************************************************
+	Small Helping predicates
+******************************************************************************/
+
+predicates
+  nondeterm software_elems(software)-(o)
+  nondeterm user_elems(user)-(o)
+  nondeterm software_user_elems(softwareId,user)-(i,o)
+  nondeterm user_software_elems(userId,software)-(i,o)
+  procedure count_licenses(softwareId,integer UsedNoOfLicenses)
+  procedure check_license_problem(softwareId,string LicenseProblem)-(i,o)
+
+clauses
+  software_elems(e(Id,Name)):-
+	software_db(Id,Name,_,_).
+
+  user_elems(e(Id,Name)):-
+	user_db(Id,Name,_).
+
+  software_user_elems(SoftwareId,e(UserId,UserName)):-
+	license_db(UserId,SoftwareId),
+	user_db(UserId,UserName,_).
+
+  user_software_elems(UserId,e(SoftwareId,SoftwareName)):-
+	license_db(UserId,SoftwareId),
+	software_db(SoftwareId,SoftwareName,_,_).
+
+  count_licenses(SoftwareId,UsedNoOfLicenses):-
+	findall(UserId,license_db(UserId,SoftwareId),List),
+	list_len(List,UsedNoOfLicenses).
+
+  check_license_problem(SoftwareId," <font color=red><---Check licenses</font>") :-
+	count_licenses(SoftwareId,UsedNoOfLicenses),
+	software_db(SoftwareId,_,LegalNoOfLicenses,_),
+	UsedNoOfLicenses>LegalNoOfLicenses,!.
+  check_license_problem(_,"").
+	
+
+/******************************************************************************
+	Accessing and updating the DB
+******************************************************************************/
+clauses
+  % flow (o,o) is Nondeterm
+  software(Id,Name):-
+	free(Id),free(Name),!,
+	findall(E,software_elems(E),L),
+	retsorted(L,e(Id,Name)).
+  % Other flows are determ
+  software(Id,Description):-
+	software_db(Id,Description,_,_),!.
+
+  software(SoftwareId,NameOfSoftware,LegalNoOfLicenses,UsedNoOfLicenses):-
+	software(SoftwareId,NameOfSoftware,LegalNoOfLicenses,UsedNoOfLicenses,_).
+
+  % flow (o,o,o,o,o) is Nondeterm
+  software(SoftwareId,NameOfSoftware,LegalNoOfLicenses,UsedNoOfLicenses,ParmList):-
+	free(SoftwareId),!,
+	software(SoftwareId,NameOfSoftware), % Return Sorted !
+	software_db(SoftwareId,_,LegalNoOfLicenses,ParmList),
+	count_licenses(SoftwareId,UsedNoOfLicenses).
+
+  software(SoftwareId,NameOfSoftware,LegalNoOfLicenses,UsedNoOfLicenses,ParmList):-
+	software_db(SoftwareId,NameOfSoftware,LegalNoOfLicenses,ParmList),
+	!,
+	count_licenses(SoftwareId,UsedNoOfLicenses).
+
+  % flow (i) is Determ
+  user(Name):-
+	user_db(_,Name,_),!.
+
+  % flow (o,o) is Nondeterm
+  user(Id,Name):-
+	free(Id),free(Name),!,
+	findall(E,user_elems(E),L),
+	retsorted(L,e(Id,Name)).
+  % Other flows are determ
+  user(Id,Name):-
+	user_db(Id,Name,_),!.
+
+  user(Id,Name,ParmList):-
+	free(Id),!,
+	user(Id,Name),
+	user_db(Id,_,ParmList).
+  user(Id,FullName,ParmList):-
+	user_db(Id,FullName,ParmList),!.
+
+  % flow (o,o) and (o,i) is nondeterm
+  license(User,Software):-
+	free(User),!,
+	license_db(User,Software).
+  % flow (i,o) is also nondeterm
+  license(User,Software):-
+	free(Software),!,
+	license_db(User,Software).
+  % flow (o,o) is determ
+  license(User,Software):-
+	license_db(User,Software),!.
+
+  software_user(SoftwareId,UserId,UserName):-
+	findall(User,software_user_elems(SoftwareId,User),L),
+	retsorted(L,e(UserId,UserName)).
+	
+  user_software(UserId,SoftwareId,SoftwareName,LicenseProblem):-
+	findall(Software,user_software_elems(UserId,Software),L),
+	retsorted(L,e(SoftwareId,SoftwareName)),
+	check_license_problem(SoftwareId,LicenseProblem).
+
+  add_software(Id,_,_,_):-
+	software_db(Id,_,_,_),!,
+	errorexit(err_memo_used).
+  add_software(_,SoftwareName,_,_):-
+	software_db(_,SoftwareName,_,_),!,
+	errorexit(err_descr_used).
+  add_software(_,"",_,_):-
+	errorexit(err_emptydescr).
+  add_software(Id,SoftwareName,NoOfLicenses,ParmList):-
+	assert(software_db(Id,SoftwareName,NoOfLicenses,ParmList)).
+
+  update_software(_,"",_,_):-!,
+	errorexit(err_emptydescr).
+  update_software(_,_,NoOfLicenses,_):-
+	NoOfLicenses<0,
+	!,
+	errorexit(err_nooflicensesmustbepositive).
+  update_software(Id,Name,NoOfLicenses,ParmList):-
+	retract(software_db(Id,_,_,_)),!,
+	assert(software_db(Id,Name,NoOfLicenses,ParmList)).
+  update_software(_,_,_,_):-
+	errorexit(err_unknown_memo_in_update).
+
+  remove_software(Id):-
+	retractall(license_db(_,Id)),
+	retractall(software_db(Id,_,_,_)).
+
+  add_user(Id,_,_):-
+	user_db(Id,_,_),!,
+	errorexit(err_memo_used).
+  add_user(_,UserName,_):-
+	user_db(_,UserName,_),!,
+	errorexit(err_descr_used).
+  add_user(_,"",_):-
+	errorexit(err_emptydescr).
+  add_user(Id,UserName,ParmList):-
+	assert(user_db(Id,UserName,ParmList)).
+
+  update_user(_,"",_):-!,
+	errorexit(err_emptydescr).
+  update_user(Id,UserName,ParmList):-
+	retract(user_db(Id,_,_)),!,
+	assert(user_db(Id,UserName,ParmList)).
+  update_user(_,_,_):-
+	errorexit(err_unknown_memo_in_update).
+
+  remove_user(Id):-
+	retractall(user_db(Id,_,_)),
+	retractall(license_db(Id,_)).
+
+  add_license(User,_):-
+	not(user_db(User,_,_)),!,
+	errorexit(err_unknown_user).
+  add_license(_,Softw):-
+	not(software_db(Softw,_,_,_)),!,
+	errorexit(err_unknown_software).
+  add_license(User,Softw):-
+	license_db(User,Softw),!,	
+	errorexit(err_license_alreadyfound).
+  add_license(User,Softw):-
+	assert(license_db(User,Softw)).
+
+  remove_license(User,Softw):-
+	retract(license_db(User,Softw)),
+	!.
+  remove_license(_,_):-
+	errorexit(err_license_notfound).
+
+  get_user_field_list(FieldList):-
+	user_field_list_db(FieldList).
+
+  set_user_field_list(FieldList):-
+	assert(user_field_list_db(FieldList)).
+
+  get_software_field_list(FieldList):-
+	software_field_list_db(FieldList).
+
+  set_software_field_list(FieldList):-
+	assert(software_field_list_db(FieldList)).
+
+  getnewid(No1):-
+	idcounter(No),
+	No1=No+1,
+	assert(idcounter(No1)).
+
+/*
+Proposal for interfacing to SQL database !
+
+CONSTANTS
+  constODBCName="softw"
+  constUser="sa"
+  constPassWord=""
+
+/*****************************************************************************
+	Tools for easy ODBC Handling
+*****************************************************************************/
+
+DOMAINS
+  ODBCREF = odbcref(HENV,HDBC,HSTMT)
+  Record  = ODBC_DATA*
+  ODBCTypeList = INTEGER*
+
+PREDICATES
+  determ ODBCREF tryInitquery(STRING SQLQuery)
+  procedure endquery(ODBCREF)
+  determ tryfetchNext(ODBCREF)
+  nondeterm fetchrow_nd(ODBCREF,ODBCTypeList,Record)
+  procedure getCols(ODBCREF,INTEGER colNo,ODBCTypeList,Record)
+
+CLAUSES
+  % Initialize Everything !
+  tryinitquery(SQLQuery,odbcref(HENV,HDBC,HSTMT)):-
+	odbcinit(),
+	odbcAllocEnv(HENV),
+	odbcAllocConnect(HENV,HDBC),
+	odbcConnect(HENV,HDBC,constODBCName,constUser,constPassWord),
+	odbcAllocStmt(HENV,HDBC,HSTMT),
+	trap(odbcExecDirect(HENV,HDBC,HSTMT,SQLQuery),_,write(SQLQUERY)),
+	tryfetchNext(odbcref(HENV,HDBC,HSTMT)).
+
+  % Close Down Everything !
+  endquery(odbcref(HENV,HDBC,HSTMT)):-
+	odbcFreeStmt(HENV,HDBC,HSTMT,odbc_drop),
+	odbcDisconnect(HENV,HDBC),
+	odbcFreeConnect(HENV,HDBC),
+	odbcFreeEnv(HENV),
+	odbcDestroy().
+
+  % Fetch next record; fail at the end
+  tryfetchNext(odbcref(HENV,HDBC,HSTMT)):-
+	trap(odbcFetch(HENV,HDBC,HSTMT),_,fail),!.
+  tryfetchNext(ODBCREF):-
+	endquery(ODBCREF),
+	fail.
+
+  % BackTrack all the records
+  fetchrow_nd(ODBCREF,TypeList,Record):-
+	getCols(ODBCREF,1,TypeList,Record).
+  fetchrow_nd(ODBCREF,TypeList,Record):-
+	tryfetchNext(ODBCREF),
+	fetchrow_nd(ODBCREF,TypeList,Record).
+
+  getCols(_,_,[],[]):-!.
+  getCols(odbcref(HENV,HDBC,HSTMT),ColNo,[Type|RestTypes],[ColData|RestData]):-!,
+	odbcGetData(HENV,HDBC,HSTMT,ColNo,Type,1024,ColData,_), % 2DO Bad with the Fixed Size !!!!
+	ColNo1 = ColNo+1,
+	getCols(odbcref(HENV,HDBC,HSTMT),ColNo1,RestTypes,RestData).
+  getCols(_,_,_,_):-errorexit.
+
+/*****************************************************************************
+	Connecting Predicates with the SQL Tables
+*****************************************************************************/
+
+PREDICATES
+  nondeterm software(STRING Description)-(o)
+  nondeterm users_oo(STRING Id,STRING FullName)-(o,o)
+  nondeterm users_io(STRING Id,STRING FullName)-(i,o)
+  nondeterm license_io(STRING User,STRING Software)-(i,o)
+  nondeterm software_user_io(STRING Software,STRING Id,STRING User)-(i,o,o)
+
+CLAUSES
+  software(Description):-
+	ODBCREF = tryinitquery("select Description from software order by Description"),
+	fetchrow_nd(ODBCREF,[odbc_string],Record),
+	Record = [s(Description)].
+
+  users_oo(Id,FullName):-
+	ODBCREF = tryinitquery("select Id,FullName from persons order by FullName"),
+	fetchrow_nd(ODBCREF,[odbc_string,odbc_string],Record),
+	Record = [s(Id),s(FullName)].
+
+  users_io(Id,FullName):-
+	format(Query,"select FullName from persons where persons.Id='%' order by FullName",Id),
+	ODBCREF = tryinitquery(Query),
+	fetchrow_nd(ODBCREF,[odbc_string],Record),
+	Record = [s(FullName)].
+
+  license_io(User,Software):-
+	format(Query,"select Software,Person from licenser where Person='%' order by Software",User),
+	ODBCREF = tryinitquery(Query),
+	fetchrow_nd(ODBCREF,[odbc_string],Record),
+	Record = [s(Software)].
+
+  software_user_io(Software,Id,User):-
+	format(Query,"SELECT Persons.Id, Persons.FullName FROM Licenser INNER JOIN Persons ON Licenser.Person = Persons.Id WHERE Licenser.Software ='%' ORDER BY Persons.FullName",Software),
+	ODBCREF = tryinitquery(Query),
+	fetchrow_nd(ODBCREF,[odbc_string,odbc_string],Record),
+	Record = [s(MEMO),s(User)].
+*/

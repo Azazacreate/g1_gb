@@ -1,0 +1,172 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALCULA
+ FileName: GLOBAL.PRE
+ Purpose: Lexical Analysis of the source code
+ Written by: Eugene Akimov
+ Comments: 
+******************************************************************************/
+
+domains
+  NUMBER_OF_EXTRA_CHARACTERS 	= integer
+  NUMBER_OF_SPACES		= integer
+
+predicates
+  scan(integer CursorPos,SOURCE Text,TOKL Tokl) - determ (i,i,o)
+  get_operator(string Str,OP Operator,SOURCE Text,SOURCE Text,NUMBER_OF_EXTRA_CHARACTERS NumbExtrPar) - determ (i,o,i,o,o)
+  get_string(CURSORPOS CursorPos,SOURCE Text,SOURCE Text,string Str) - determ (i,i,o,o)
+  get_token(CURSORPOS CursorPos,string Str,TOK Token,SOURCE Text,SOURCE Text,NUMBER_OF_EXTRA_CHARACTERS NumbExtrPar) - determ (i,i,o,i,o,o)
+  is_a_space(char StrChar) - determ (i)
+  skip_spaces(SOURCE Text,SOURCE Text,NUMBER_OF_SPACES NumbSpace) - procedure (i,o,o)
+  string_token(string Str,TOK Token) - determ (i,o),(o,i)
+  
+clauses
+  get_operator("=",eq,Rest,Rest,0).
+  get_operator(">",ne,Rest1, Rest2,1):-
+	frontchar(Rest1,'<',Rest2),
+	!.
+  get_operator(">",ge,Rest1,Rest2,1):-
+	frontchar(Rest1,'=',Rest2),
+	!.
+  get_operator(">",gt,Rest,Rest,0).
+  get_operator("<",ne,Rest1,Rest2,1):-
+	frontchar(Rest1,'>',Rest2),
+	!.
+  get_operator("<",le,Rest1,Rest2,1):-
+	frontchar(Rest1,'=',Rest2),
+	!.
+  get_operator("<",lt,Rest,Rest,0).
+  
+  get_string(_,Source_In,Source_Out,String):-
+      % This fails if double-quote is not found.
+	searchchar(Source_In,'"',Location_of_Quote),
+	!,
+	Length_of_String = Location_of_Quote - 1,
+	frontstr(Length_of_String,Source_In,String,Temp),
+	frontchar(Temp,_,Source_Out).
+  get_string(Position,_,_,_):- 
+  	is_a_deeper_error(Position),
+  	replace_error("String not terminated.",Position),
+  	fail.
+
+  get_token(_,Fronttoken,Token,Rest,Rest,0):-
+  	string_token(Fronttoken,Token),
+	!.
+  get_token(Position,"\"",str(String),Rest1,Rest2,Character_Count):-
+  	!,
+      % Look for matching double-quote and, if found, 
+      % extract string up to the quote.
+	get_string(Position,Rest1,Rest2,String),
+	str_len(String,Length),
+	Character_Count = Length + 1.
+  get_token(_,String,op(Operator),Rest1,Rest2,Character_Count):- 
+  	get_operator(String,Operator,Rest1,Rest2,Character_Count),
+  	!.
+  get_token(_,String,name(String),Rest,Rest,0):-
+	isname(String),
+	!.
+  get_token(Position,_,_,_,_,_):-
+  	is_a_deeper_error(Position),
+  	replace_error("Illegal token.",Position),
+  	fail.
+
+  is_a_space(' ').	
+  is_a_space('\t').	
+  is_a_space('\n').
+
+  scan(Starting_Position,Source,[t(Token,Location_of_Token)|Tail]):-
+	skip_spaces(Source,New_Source,Number_of_Spaces),
+	Location_of_Token = Starting_Position + Number_of_Spaces,
+	fronttoken(New_Source,Fronttoken,Rest),
+	!,
+
+      % Make the case of each token unimportant.
+	upper_lower(Fronttoken,Lower_Case_Fronttoken),
+	get_token(Location_of_Token, 
+		  Lower_Case_Fronttoken, 
+		  Token, 
+		  Rest, 
+		  New_Rest, 
+		  Number_of_Extra_Characters_Used),
+	str_len(Fronttoken,Length_of_Fronttoken),
+	New_Starting_Position = Location_of_Token 
+				+ Length_of_Fronttoken 
+				+ Number_of_Extra_Characters_Used,
+	scan(New_Starting_Position,New_Rest,Tail).
+  scan(_,_,[]).
+
+  skip_spaces(Source,New_Source,Number_of_Spaces):-
+	frontchar(Source,Char,Source1),
+	is_a_space(Char),
+	!,
+	skip_spaces(Source1,New_Source,Number_of_Spaces_in_Source1),
+	Number_of_Spaces = Number_of_Spaces_in_Source1 + 1.
+  skip_spaces(Source,Source,0).
+
+  string_token("blank",clear):-
+	!.
+  string_token("clear",clear):-
+	!.
+  string_token(",",comma):-
+	!.
+  string_token("/",div):-
+	!.
+  string_token("do",do):-
+	!.
+  string_token("else",else):-
+	!.
+  string_token("enddo",enddo):-
+	!.
+  string_token("endif",endif):-
+	!.
+  string_token("for",for):-
+	!.
+  string_token("get",input):-
+	!.
+  string_token("if",if_):-
+	!.
+  string_token("input",input):-
+	!.
+  string_token("read",input):-
+	!.
+  string_token("(",lpar):-
+	!.
+  string_token("memory",memory):-
+	!.
+  string_token("storage",memory):-
+	!.
+  string_token("-",minus):-
+	!.
+  string_token("*",mult):-
+	!.
+  string_token("nl",nl):-
+	!.
+  string_token(String,number(Real)):-
+	str_real(String,Real),
+	!.
+  string_token("display",output):-
+	!.
+  string_token("output", output):-
+	!.
+  string_token("show",output):-
+	!.
+  string_token("write",output):-
+	!.
+  string_token("+",plus):-
+	!.
+  string_token("^",power):-
+	!.
+  string_token(")",rpar):-
+	!.
+  string_token("then",then):-
+	!.
+  string_token("time",time):-
+	!.
+  string_token("to",to):-
+	!.
+  string_token("while",while):-
+	!.
+
+ 

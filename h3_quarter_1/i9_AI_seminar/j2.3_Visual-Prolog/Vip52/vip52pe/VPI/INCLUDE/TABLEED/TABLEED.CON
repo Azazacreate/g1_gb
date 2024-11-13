@@ -1,0 +1,147 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	TABLEED.CON
+ Purpose:	Constants for Table Editor object
+ Written by:	Andrey Skobelev
+ Version:	1.0
+ Build:		009.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+
+******************************************************************************/
+ifndef language_english
+  ifndef language_danish
+    ifndef language_russian
+      >>>> Application must declare one of the constants below before including
+ 	   this file in order to select one of the languages for dialogs
+
+		language_english = 1
+	   or
+		language_danish  = 1
+	   or
+		language_russian = 1
+
+    enddef
+  enddef
+enddef
+
+constants
+
+ifdef language_english
+  %**************************
+  % Popup menu Texts
+  %**************************
+  tableedit_con_undotext =	"Undo \tCtrl+Z"
+  tableedit_con_redotext =	"Redo \tCtrl+Y"
+  tableedit_con_copytext =	"Copy \tCtrl+C"
+  tableedit_con_pastetext =	"Paste \tCtrl+V"
+  tableedit_con_cuttext =	"Cut \tCtrl+X"
+  tableedit_con_sortAtext =	"Sort ascending"
+  tableedit_con_sortDtext =	"Sort descending"
+  tableedit_con_filterStext =	"Filter by selection"
+  tableedit_con_filterEtext =	"Filter excluding selection"
+  tableedit_con_showRowstext =	"Show all rows"
+  tableedit_con_insRowtext =	"Insert Row\tIns"
+  tableedit_con_delRowtext =	"Delete Rows\tDel"
+
+  tableedit_con_find =	"Find"
+  tableedit_con_findnext =	"Find next \tShift+F3"
+  tableedit_con_Notfind =	"The searching is finished"
+  tableedit_con_Scope =	"Entire Scope"  
+  tableedit_con_FromPoiter =	"From Pointer"
+  tableedit_con_Backward =	"Backward"
+  tableedit_con_Forward =	"Forward"
+  tableedit_con_Fromstart =	"From start"
+  tableedit_con_Entirestring =	"Entire string"
+  tableedit_con_Anypart =	"Any part"
+  tableedit_con_Casesensitive =	"Case sensitive"
+  tableedit_con_Columns =	"Columns:"
+  tableedit_con_What =	"What:"
+  tableedit_con_Origin =	"Origin"
+  tableedit_con_Diretion =	"Direction"
+  tableedit_con_Match =	"Match"
+  tableedit_con_Cancel =	"Cancel"
+  tableedit_con_ColumnNote =	"Choose a column for search"
+
+  tableedit_con_noteTitle = "?"
+enddef
+
+ifdef language_danish
+  %**************************
+  % Popup menu Texts
+  %**************************
+  tableedit_con_undotext =	"Fortryd redigering \tCtrl+Z"
+  tableedit_con_redotext =	"Gentag redigering \tCtrl+Y"
+  tableedit_con_copytext =	"Kopier \tCtrl+C"
+  tableedit_con_pastetext =	"Inds \tCtrl+V"
+  tableedit_con_cuttext =	"Klip \tCtrl+X"
+  tableedit_con_sortAtext =	"Sorter stigende"
+  tableedit_con_sortDtext =	"Sorter faldende"
+  tableedit_con_filterStext =	"Vis kun valgte vжrdier"
+  tableedit_con_filterEtext =	"Vis ikke valgte vжrdier"
+  tableedit_con_showRowstext =	"Vis alle rжkker"
+  tableedit_con_insRowtext =	"Indsжt Rжkke\tIns"
+  tableedit_con_delRowtext =	"Slet Rжkke\tDel"
+
+  tableedit_con_find =	"Find"
+  tableedit_con_findnext =	"Find next \tShift+F3"
+  tableedit_con_Notfind =	"The searching is finished"
+  tableedit_con_Scope =	"Entire Scope"  
+  tableedit_con_FromPoiter =	"From Pointer"
+  tableedit_con_Backward =	"Backward"
+  tableedit_con_Forward =	"Forward"
+  tableedit_con_Fromstart =	"From start"
+  tableedit_con_Entirestring =	"Entire string"
+  tableedit_con_Anypart =	"Any part"
+  tableedit_con_Casesensitive =	"Case sensitive"
+  tableedit_con_Columns =	"Columns:"
+  tableedit_con_What =	"What:"
+  tableedit_con_Origin =	"Origin"
+  tableedit_con_Diretion =	"Direction"
+  tableedit_con_Match =	"Match"
+  tableedit_con_Cancel =	"Cancel"
+  tableedit_con_ColumnNote =	"Choose a column for search"
+  
+  tableedit_con_noteTitle = "?"
+enddef
+
+ifdef language_russian
+  %**************************
+  % Popup menu Texts
+  %**************************
+  tableedit_con_undotext =	"Отменить \tCtrl+Z"
+  tableedit_con_redotext =	"Повторить \tCtrl+Y"
+  tableedit_con_copytext =	"Копировать \tCtrl+C"
+  tableedit_con_pastetext =	"Вставить \tCtrl+V"
+  tableedit_con_cuttext =	"Вырезать \tCtrl+X"
+  tableedit_con_sortAtext =	"Сортировка по возростанию"
+  tableedit_con_sortDtext =	"Сортировка по убыванию"
+  tableedit_con_filterStext =	"Фильтровать по выбранному"
+  tableedit_con_filterEtext =	"Фильтровать исключая выбранное"
+  tableedit_con_showRowstext =	"Показать все строки"
+  tableedit_con_insRowtext =	"Вставить строку\tIns"
+  tableedit_con_delRowtext =	"Удалить строку\tDel"
+
+  tableedit_con_find =	"Поиск"
+  tableedit_con_findnext =	"Поиск далее \tShift+F3"
+  tableedit_con_Notfind =	"Поиск окончен."
+  tableedit_con_Scope =	"Полностью"  
+  tableedit_con_FromPoiter =	"От указателя"
+  tableedit_con_Backward =	"Назад"
+  tableedit_con_Forward =	"Вперед"
+  tableedit_con_Fromstart =	"От начала"
+  tableedit_con_Entirestring =	"Полностью"
+  tableedit_con_Anypart =	"Любая часть"
+  tableedit_con_Casesensitive =	"Учитывать регистр"
+  tableedit_con_Columns =	"Колонки:"
+  tableedit_con_What =	"Что искать:"
+  tableedit_con_Origin =	"Откуда искать"
+  tableedit_con_Diretion =	"Направление"
+  tableedit_con_Match =	"Совпадение"
+  tableedit_con_Cancel =	"Отменить"
+  tableedit_con_ColumnNote =	"Выберите колонку для поиска."
+
+  tableedit_con_noteTitle = "?"
+enddef

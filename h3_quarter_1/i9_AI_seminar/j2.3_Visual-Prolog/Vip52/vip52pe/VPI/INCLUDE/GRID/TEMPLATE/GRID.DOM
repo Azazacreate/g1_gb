@@ -1,0 +1,18 @@
+/******************************************************************************
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	GRID.DOM
+ Purpose:	GRID custom control template file
+ Written by:	Sergey Alexeev
+ Version:	2.0
+ Build:		025.991028
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:
+******************************************************************************/
+ifdef use_grid
+ #Error: Grid tool was alredy included by Visual Prolog Application Expert
+enddef 
+
+% Replace GRID_DIR with actual path to GRID tool:
+include "GRID_DIR\\grid.dom"

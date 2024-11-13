@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="Template" content="D:\SOFTWARE\OFFICE95\OFFICE\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>Known Problems in VIP 5.0</title>
+
+
+
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h5 align="right"><!--mstheme--><font color="#000000">Visual Prolog Technical Support<!--mstheme--></font></h5>
+
+<h1 align="left"><!--mstheme--><font color="#000000">Known Problems in Visual Prolog 5.0<!--mstheme--></font></h1>
+
+<p>We are currently aware of the following problems in Visual Prolog 5.0, build 541!<br>
+Note please that a lot of problems have been solved in Visual Prolog <a href="../fixes/fixes501.htm">5.01</a>, <a href="../fixes/fixes502.htm">5.02</a>, <a href="../fixes/fixes51.htm">5.1</a>. You can <a href="../../vip/vipinfo/ordrfrm1.htm">order a
+new Visual Prolog 5.1 CD</a> now.</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler">Known Compiler Problems</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib">Known Problems in the PROLOG.LIB</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde">Known Problems in the Visual Development Environment (VDE)</a> <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi">Known Problems in the VPI</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#debugger">Known Problems with the Debugger</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker">Known Problems with the PDC Link Editor</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">Known Problems with the PDC's Document Handling Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000"><a name="Compiler"></a>Known Compiler Problems<!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Procedure checking<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>We are still missing one analysis function to be used while checking procedure
+      predicates. We are unable to check that there must be one non-failing clause for each
+      possible combination of the input parameters. <br>
+      Ex. it will cause a problem when append is used in the (i,i,o) procedure version like: </li>
+  </ol>
+  <blockquote>
+    <!--mstheme--></font><pre>  PREDICATES
+    append(list,list,list) - procedure(i,i,o)
+  CLAUSES
+    append([],L,L).
+    append([H|L1],L2,[H|L3]):-
+         append(L1,L2,L3).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <blockquote>
+    <p>It is easy to see that this predicate will not fail, because there is no matching on
+    the second parameter, and for the first parameter, there is a clause that will match for
+    both the empty list and the nonempty list! </p>
+    <p>The Visual Prolog compiler can still not detect this, but will give a warning for a
+    possible failure!</p>
+  </blockquote>
+  <ol start="2">
+    <li>It is not yet recognized that trap(procedure,_,erroneous) can not fail.</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Last call optimization does not work for functions and Class methods<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>Please be aware of this. It is going to be implemented in one of the following
+  versions.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Problem with retract<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>We just found a special situation with retract which is not handled properly. If you
+  have a predicate, that makes&nbsp; a nondeterm call to retract, and then calls the same
+  predicate recursively, it will retract too much! Ex.:</p>
+  <blockquote>
+    <p><code>clear_fact([First|Tail]):-<br>
+    retract(a(First)), % &lt;-- Use a cut here to avoid the Bug<br>
+    clear_fact(Tail),<br>
+    fail.<br>
+    clear_fact(_).</code></p>
+  </blockquote>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="PROLOG.LIB"></a>Known Problems in the PROLOG.LIB<!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">The Visual Prolog external database has different formats in 16 and 32 bit<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>This is inconvenient and will be changed in a future version. One of the results is
+  that the 16bit VDE uses one .VPR file for a project and the 32bit VDE uses another format.
+  The program VIPCONVERT must be used to switch between the platforms.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Problems trapping exceptions in the DLL's.<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>If a GPF or other exception happens in a prolog .DLL, which is called from a Prolog
+  main program, and linked-in statically, this exception is trapped in the main program (but
+  not as expected in the .DLL). After this exception is trapped wrongly you should not make
+  further calls to the .DLL, but instead close down your application.</p>
+  <p>There are no problems when calling a .DLL dynamically, and in properly debugged
+  programs this situation will not happen.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Invalid float exceptions handling under OS/2 &amp; Win32<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>If the FPU raised a float exception, our handler catches it and passes the control to
+  RUN_Error(). However,&nbsp; the FPU remains in the erroneous state, so other calls to it
+  will fail. Under OS/2 there can be the 2<sup>nd</sup> float exception in DOSCALLS.DLL,
+  when our handler returns the control to the operating system, because OS/2 tries to
+  restore invalid FPU&#146;s context.</p>
+</blockquote>
+
+<blockquote>
+  <p>These problems are not seen in normal floating point operations!</p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="VDE"></a>Known Problems in the VDE<!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Spaces in filenames when using C as main target<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>The VDE, the linker and the compiler have problems with using external C compilers and
+  linkers placed in directories, which contain spaces. </p>
+  <p>The Visual Prolog does understand quoted filenames like &quot;c:\program
+  files\msvc\bin\link.exe&quot; but the problem is that the PATH to the C compiler is set in
+  one place, and the utility names in other places. This gives problems in the concatenating
+  of the two items.</p>
+  <p>Things work if you manually modify the scripts. </p>
+  <p>A little trick you might use, if you have some tools installed under PROGRAM FILES\, is
+  that you instead refer to the name &quot;PROGRA~1&quot;.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Conversion of HAM to 5.0 format is irreversible<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>After conversion of .HAM file to the 5.0 format, it is not possible to go back As soon
+  as VIPCONV has converted a .HAM file to the new 5.0 format, it can not be converted back
+  to the 4.0 format.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Possible BUG when Dialog Expert Pack is updating source<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>When using the dialog pack, there is a significant delay while the source file is being
+  updated. If during this time, you hit 'edit' to edit the file, then the source update is
+  wrong. The code that was being added is at the beginning of the file.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Problem with non-existent Project on Command Line<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>When&nbsp; VIP.EXE (both 16- and 32- bit) is started with a non-existing .VPR file on
+  the command line, it does not report an error instead it loads the last loaded project.</p>
+</blockquote>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Application Expert dialog uses accelerator keys that conflict with other sheets in
+  same dialog<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>It can lead to unexpected behaviors, so have this in mind if you use the accelerator
+  keys.</p>
+  <h4><!--mstheme--><font color="#000000">Using Ctrl-X, Ctrl-C or Ctrl-V in Menu Editor<!--mstheme--></font></h4>
+  <p>Please note that there is the following dangerous behavior in the menu editor: If you
+  are editing the Constant prefix then Ctrl-X, Ctrl-C or Ctrl-V do not work there. You
+  should use the right-mouse popup menu.</p>
+  <h4><!--mstheme--><font color="#000000">Using multiprogrammer mode<!--mstheme--></font></h4>
+  <ol>
+    <li>TheCode Expert setting for Automatic update of Source code of a resource is not saved,
+      when there is no changes in the resource (dialog, menu etc.).</li>
+    <li>The setting for generation of Help file is not properly saved in the .PRJ file, so the
+      setting needs to be set for each .VPR file in the project team.</li>
+  </ol>
+  <h4><!--mstheme--><font color="#000000">Help Maker<!--mstheme--></font></h4>
+  <p>The current version of the Visual Prolog does not allow importing the .RTF files
+  containing graphics. An attempt to import .RTF file with embedded objects causes the
+  necessity to restart Visual Prolog. Nevertheless, it does not mean you cannot import file
+  with graphics at all, because it is possible to replace embedded objects in the source
+  .RTF file with the references to image files.</p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="VPI"></a>Known Problems in the VPI<!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Modal Dialog with Invisible flag is&nbsp; visible<!--mstheme--></font></h4>
+  <h4><!--mstheme--><font color="#000000">The e_control event: e_control(scroll(sc_thumbtrack,Pos)<!--mstheme--></font></h4>
+  <p>The Pos variable is specified as an INTEGER, but it is in fact a SHORT. This is seen if
+  you set a scrollbar to Min=-1000, Max=+1000.</p>
+  <h4><!--mstheme--><font color="#000000">Easywin does not support C as main Target<!--mstheme--></font></h4>
+  <h4><!--mstheme--><font color="#000000">Modeless dialog &#145;Tab&#146; problem.<!--mstheme--></font></h4>
+  <p>Tab does not work for the modeless dialogs, which have modal dialog as a parent. </p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="Debugger"></a>Known Problems with the Debugger<!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Visual Prolog 5.0 includes the&nbsp; very first version of the VIP debugger<!--mstheme--></font></h4>
+  <p>The following problems are known in the first version of VIP debugger:</p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>The values of output variables are sometimes not displayed (the following string is
+      shown: &quot;???&quot;)</li>
+    <li>Sometimes a console application will terminate unexpectedly after F7/F8.</li>
+    <li>There are problems sometimes when debugging programs using classes.</li>
+    <li>When fail happens, the debugger&nbsp; immediately jumps to a continue point with no
+      visual indication of a fail.</li>
+    <li>The content of the call stack is not always correct, there might be extra entries.</li>
+    <li>Tracing into Procedure variables does not work with F7 or F8, it is needed to set a
+      breakpoint to catch execution.</li>
+    <li>The debugger will catch all errorexits that happens in the program, we need a better
+      solution for this.</li>
+  </ol>
+  <p>Note, please, that in Visual Prolog 5.1 the debugger has been greatly improved.</p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="UNIX"></a>Known Problems under UNIX<!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Fact initialization does not work properly<!--mstheme--></font></h4>
+  <p>Initialization for facts specified in the program doesn't work properly, it can cause
+  problems when retracting them. Please initialize the facts by doing <strong>assert</strong>.</p>
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000"><a name="Linker"></a>Known Problems with the Linker<!--mstheme--></font></h2>
+
+<blockquote>
+  <p>We only know about problems when you link in non-PDC non-PROLOG object modules or
+  libraries.</p>
+  <p>1. For Win32 only. There is the PDC Linker's bug in the implementation of indirect call
+  to an import function, if its address is situated in the data segment.</p>
+  <p>2. For Win32 only. PDC Linker generates the import library in the MS Library format.
+  Note, that MSC supports archive format for libraries, but not MS Library format. So, there
+  is a compatibility problem, if a DLL which was built by the PDC Linker is used from an
+  executables which where built by MSC. This problem can be solved with implicit imports
+  definitions placed in the DEF-file. Note also, that the PDC Linker implements the exports
+  by names, not by ordinals. So, it's recommended for a user to have the following symbol
+  definitions in his DEF-file:</p>
+  <blockquote>
+    <p><code>NAME - but not _NAME@N or _NAME@N1 @N2</code></p>
+  </blockquote>
+  <p>General suggestion: If using C modules or other libraries (created using MSC or BC)
+  then it is better to use this tool at main target.</p>
+  <p>3. The generated Executables are bigger than those linked with the previous SLR linker.
+  The reason is that the segments are suffixed with Zeros.</p>
+</blockquote>
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="DOC_TOOL">Known Problems with the PDC's Document Handling
+Package</a><!--mstheme--></font></h2>
+
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">The .RTF parser bug in using colored fonts<!--mstheme--></font></h4>
+</blockquote>
+
+<blockquote>
+  <p>If a colored phrase in an .RTF document is followed by a table (right after), this
+  table erroneously is colored also. </p>
+  <p><strong>Workaround</strong> : add any uncolored char (single blank) just after the
+  colored phrase.</p>
+</blockquote>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<TITLE>Knowledge Base Files</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Knowledge Base Files'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Knowledge Base Files</FONT>
+<P ALIGN=LEFT>When you open a knowledge base file, ESTA will load the file into memory and the knowledge base is ready to be consulted or modified.  
+<P ALIGN=LEFT>When you save a knowledge base, ESTA will write the contents of the knowledge base currently present in memory to the file. 
+<P ALIGN=LEFT>ESTA allows only one knowledge base in memory at a time. Thus before ESTA opens or creates a new knowledge base, it erases the active knowledge base in memory and closes all windows associated with it. If the active knowledge base has been modified, ESTA will prompt you for saving before the new knowledge base is opened or created. When a knowledge base is saved using an existing file name, the old version will be renamed with the extension &quot;.BAK&quot;. Remember that it is a good habit to save the knowledge base regularly during development, to avoid loss of data in the event of a system crash. 
+<P ALIGN=LEFT>ESTA supports two different ways of storing a knowledge base: 
+</UL>
+<OL>
+<LI>On compiled form  
+<LI>On text form  
+</OL>
+<P ALIGN=LEFT><B>ad 1. Compiled knowledge base files (*.KB) </B>
+<P ALIGN=LEFT>When you choose to save a knowledge base in memory to a compiled knowledge base file with the extension &quot;.KB&quot;, ESTA will store the knowledge base in compiled form. Maintaining the stored knowledge base is done by opening the file and using ESTA's built-in facilities. The compiled form is used to maximize performance, since ESTA stores and reads compiled knowledge base files much faster than text files. 
+<P ALIGN=LEFT><B>ad 2. Text knowledge base files (*.KBT)</B> 
+<P ALIGN=LEFT>The text format is used as an alternative way to maintain a knowledge base. Any text editor may be used to create or modify a text knowledge base file. The text knowledge base file can then be consulted using the open command and specifying a *.kbt extension. ESTA will write a knowledge base in memory to a text knowledge base file whenever the file is saved using the *.KBT extension.  
+<P ALIGN=LEFT>The syntax of a knowledge base in text form is the same as for the individual elements of a knowledge base, with the following addition. Each item group, that is, the title, the parameters, the sections, must begin with a line containing a <B>#</B>, followed by a <B>t</B>, <B>p</B> or <B>s</B>. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>#t 
+<P ALIGN=LEFT>This is a very small example with one parameter and one section 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>#p 
+<P ALIGN=LEFT>parameter understand  'you understand' 
+<P ALIGN=LEFT>type boolean 
+<P ALIGN=LEFT>question 'do you understand' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>#s 
+<P ALIGN=LEFT>section start  'the only section in the example' 
+<P ALIGN=LEFT>if understand advice 'good' 
+<P ALIGN=LEFT>if not understand advice 'read it again' </FONT>
+<P ALIGN=LEFT>The only difference between a compiled knowledge base and a text knowledge base is the way that it's stored on disk. ESTA's internal representation of a knowledge base is always the same, meaning you can save/open/maintain *.kbt or *.kb versions of a knowledge base as you like.
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

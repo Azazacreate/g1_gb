@@ -1,0 +1,19 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  HTTP32
+ FileName: HTTP32.PRE
+ Purpose: Predicate definitions for HTTP32.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_format_request_Create(WINDOW Parent) - (i)
+  dlg_view_response_Create(WINDOW Parent,STRING Title,httplay_response) - (i,i,i)
+%END_DECL

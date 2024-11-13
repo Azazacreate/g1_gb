@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<TITLE>Question Field</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Question Field'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Question Field</FONT>
+<P ALIGN=LEFT>The question field is used when the value of a parameter should be determined by an answer to a question. The <A HREF='BNF_SYNT.HTM'>syntax</A> for the question field is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;question field&gt; ::= question &lt;<A HREF='TEXT_EXP.HTM'>text expression</A>&gt;</FONT>
+<P ALIGN=LEFT>Notice that ESTA does not automatically add a question mark, so the text itself must contain one if you wish it to be grammatically correct. If a parameter is used as part of the question text, then the value of that parameter will be established before the question is posed. 
+<P ALIGN=LEFT>If the question text is omitted, ESTA will generate a default text, based on the description text from the <A HREF='DECLARAT.HTM'>declaration field</A>, according to the type of the parameter. For <A HREF='BOOLEAN1.HTM'>boolean parameters</A> the default is: 
+<P ALIGN=LEFT><I>Is it true that &lt;description-text&gt; ?</I> 
+<P ALIGN=LEFT>For <A HREF='TEXT_PAR.HTM'>text</A>, <A HREF='NUMBER_P.HTM'>number</A> or <A HREF='CATEGORY.HTM'>category</A> parameters, the default is: 
+<P ALIGN=LEFT><I>What is the value of &lt;description-text&gt; ?</I>  
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>parameter name 'the name of the user' 
+<P ALIGN=LEFT>type text 
+<P ALIGN=LEFT>question 'What is your name ?' 
+<P ALIGN=LEFT>   
+<P ALIGN=LEFT>parameter owns_car 'owns a car' 
+<P ALIGN=LEFT>type boolean 
+<P ALIGN=LEFT>question 'Does ' name ' own a car ?'</FONT> 
+<P ALIGN=LEFT>In the last example, the parameter <B>name</B> will be evaluated, if no value is attached. If name already got a value, this value will be inserted in the question text. 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

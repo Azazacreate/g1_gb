@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Routing Problem Prototype</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><a NAME="_Toc342996015"></a><b><font SIZE="+2">A Simple Routing Distance Problem</font></b>
+<!--mstheme--></font></h1>
+
+<p><font SIZE="+0">Suppose you want to construct a prototype computer system to find the
+best route between two U.S. cities. <br>
+You could use Visual Prolog to build a miniature initial version of the system since it
+will then be easier to explore and investigate alternative ways of solving the problem.
+The complete system will be able to answer questions such as:</font> </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <p><i><font SIZE="+0">Is there a direct road from one particular town to another?</font></i></p>
+  <p><i><font SIZE="+0">Which towns are situated less than ten miles from a particular town?</font></i></p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><font SIZE="+0">The following is the simplified map used for the prototype:</font></p>
+
+<p align="center"><img src="route.gif" WIDTH="351" HEIGHT="194"></p>
+
+<p>Execute the program as a CGI script by pressing the &quot;<b>Submit Query</b>&quot;
+button on the form below: </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form action="http://vip.pdc.dk/vipexamples/cgiexamples/bin/route.exe" method="POST">
+    <p>What is the distance from <select name="From" size="4">
+      <option value="tampa" selected>Tampa </option>
+      <option value="gordon">Gordon </option>
+      <option value="houston">Houston </option>
+      <option value="kansas_city">Kansas City </option>
+    </select>&nbsp;to <select name="To" size="4">
+      <option value="tampa">Tampa </option>
+      <option value="gordon" selected>Gordon </option>
+      <option value="houston">Houston </option>
+      <option value="kansas_city">Kansas City </option>
+    </select>&nbsp;<input type="submit"></p>
+  </form>
+  <p>Show <a href="src/route.htm">Source</a>&nbsp; to Route-application.</p>
+  <p>Show <a href="src/routecgisource.htm">Source</a> to Route-application incl.
+  cgi-support.</p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><font SIZE="+0">The following program is a classic example of using backtracking and
+recursion to solve a route planning problem:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre><b>DOMAINS
+</b>  town = symbol
+  distance = integer
+
+<b>PREDICATES
+</b>  nondeterm road(town,town,distance)
+  nondeterm route(town,town,distance)
+
+<b>CLAUSES
+</b>  road(tampa,houston,200).
+  road(gordon,tampa,300).
+  road(houston,gordon,100).
+  road(houston,kansas_city,120).
+  road(gordon,kansas_city,130).
+
+route(Town1,Town2,Distance):-
+  road(Town1,Town2,Distance).
+
+route(Town1,Town2,Distance):-
+        road(Town1,X,Dist1),
+        route(X,Town2,Dist2),
+        Distance=Dist1+Dist2,!.
+</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">Each clause for the <b>road</b> predicate is a <i>fact </i>that
+describes a road (and its length in miles) that goes from one town to another. </font></p>
+
+<p><font SIZE="+0">The <b><i>route</i></b> clauses indicate that it is possible to make a
+route from one town to another over several stretches of road. Following the route, the
+driver travels a distance given by the third parameter, <b><i>distance</i></b>.</font></p>
+
+<p><font SIZE="+0">The <b><i>route</i></b> predicate is defined recursively; a route can
+simply consist of one single stretch of road, as in the first clause:</font> </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <p><i>route(Town1,Town2,Distance):-<br>
+  &nbsp;&nbsp;&nbsp;road(Town1,Town2,Distance).</i></p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><font SIZE="+0">In this case the total distance is merely the length of the road.</font></p>
+
+<p><font SIZE="+0">A route from <i>Town1</i> to <i>Town2</i> could also be created by
+first driving from <i>Town1</i> to <i>X</i>, then following some other route from <i>X</i>
+to <i>Town2</i>. The total distance is the sum of the distance from <i>Town1</i> to <i>X</i>
+and the distance from <i>X</i> to <i>Town2</i>, as shown in the second clause for <b><i>route</i></b>.</font>
+</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <p><i>route(Town1,Town2,Distance):-<br>
+  &nbsp; &nbsp; road(Town1,X,Dist1),<br>
+  &nbsp; &nbsp; route(X,Town2,Dist2),<br>
+  &nbsp;&nbsp; &nbsp;Distance=Dist1+Dist2,!.</i></p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p><font SIZE="+0">Try the program with the goal:</font></p>
+
+<blockquote>
+  <!--mstheme--></font><pre>route(tampa,kansas_city, X).    </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p><font SIZE="+0">Can the program handle all possible combinations of starting point and
+destination? If not, can you modify the program to avoid any omissions?</font></p>
+
+<p><font SIZE="+0">The next example will give you an idea of how to get this routing
+program to make a list of towns visited en route. Such a list prevents Visual Prolog from
+choosing a route that involves visiting the same town twice, thereby avoiding going around
+in circles, and ensures that the program doesn't go into an infinite loop. When you've
+solved problems of this type, you can enlarge the program by adding more cities and roads.</font></p>
+
+<p><font SIZE="+0">&nbsp;</font> 
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

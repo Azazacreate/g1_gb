@@ -1,0 +1,28 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TOOLBARS
+ FileName: TOOLBARS.PRE
+ Purpose: Predicate definitions for TOOLBARS.PRO
+ Written by: Ilyin Yuri
+ Comments:
+
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  tb_status_line_Create(WINDOW Parent) - (i)
+  tb_moveable_Create(WINDOW Parent) - (i)
+%END System Mark
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  tb_inside_Create(WINDOW Parent) - (i)
+  win_inside_Create(WINDOW Parent) - (i)
+  tb_right_Create(WINDOW Parent) - (i)
+  tb_left_Create(WINDOW Parent) - (i)
+  win_demo_Create(WINDOW Parent) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

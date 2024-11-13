@@ -1,0 +1,236 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	TABLEED.DOM
+ Purpose:	Table editor object based on GRID custom control. Global domains.
+ Written by:	Sergey Alexeev & Alexander Butovsky
+ Version:	1.0
+ Build:		009.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+******************************************************************************/
+ifndef grid_dom_included
+ #Error this file requires include: grid.dom
+enddef 
+
+constants
+	tableed_dom_included = 1
+
+global domains
+
+TABLEEDIT_PICTUREMODE = fromfile(STRING DOSFileName);
+			fromres(RESID ResId);
+			none
+
+TABLEEDIT_DATA = TABLEEDIT_COLUMNDATA*
+TABLEEDIT_COLUMNDATA = TABLEEDIT_CELLDATA*
+TABLEEDIT_CELLDATA = i(INTEGER);
+		     ic(INTEGER,COLOR);
+		     l(LONG);
+		     lc(LONG,COLOR);
+		     r(REAL);
+		     rc(REAL,COLOR);
+		     s(STRING);
+		     sc(STRING,COLOR);
+		     p(TABLEEDIT_PICTUREMODE,BOOLEAN Stretch,STRING PictureText);
+		     void;
+		     voidc(COLOR)
+
+% General properties of the Table editor.
+% All properties are optional which means that if
+% certain property is not listed then Table editor
+% uses default value.
+TABLEEDIT_PROPERTIES = TABLEEDIT_PROPERTY*
+TABLEEDIT_PROPERTY = raised(BOOLEAN);				% Default: b_true
+		     defcellcolor(COLOR);			% Default: color_LtGray
+		     backcolor(COLOR);				% Default: color_Gray
+		     emptycolor(COLOR);				% Default: color_LtGray
+		     titlebackcolor(COLOR);			% Default: color_LtGray
+		     titleforecolor(COLOR);			% Default: color_Black
+		     rowselector(GRID_ROW_SELECTOR,		% Default: grid_number,50,b_false NEW!
+								% See GRID_ROW_SELECTOR domain in grid.dom
+				 INTEGER Width,			
+				 BOOLEAN ActiveRowPointer);
+		     nonscrollcol(INTEGER);			% Default: 0
+		     sortedby(INTEGER);				% Default: 1
+		     allmarker(BOOLEAN);			% Default: b_false
+		     areamarker(TABLEEDIT_MARKERMODE);		% Default: singular
+		     colmarker(TABLEEDIT_MARKERMODE);		% Default: none
+		     rowmarker(TABLEEDIT_MARKERMODE);		% Default: singular
+		     insert_rows(BOOLEAN);			% Default: b_true
+		     delete_rows(BOOLEAN);			% Default: b_true
+		     filter(BOOLEAN);				% Default: b_true
+		     menu(MENU_ITEM_LIST);			% Default: []
+		     readonly(BOOLEAN);				% Default: b_false
+		     undo_redo(BOOLEAN);			% Default: b_true
+		     paste(BOOLEAN);				% Default: b_true
+		     cut(BOOLEAN);				% Default: b_true
+		     headers(INTEGER);				% Default: 0 rows
+		     footers(INTEGER);				% Default: 0 rows
+		     callback(TABLEEDIT_CALLBACK);		% Default: internal dummy callback
+		     compare(TABLEEDIT_COMPARE);		% Default: internal dummy compare function
+		     find(BOOLEAN);				% default b_true
+		     bufferingmode(TABLEEDIT_BUFFERING)		% Default: nobuffering
+
+TABLEEDIT_BUFFERING =	nobuffering;
+			buffering(TABLEEDIT_ANSWERDATA_FUNC,INTEGER RowBuffSize,INTEGER MaxRows)
+
+TABLEEDIT_ANSWERDATA_FUNC = determ (WINDOW	TableEditWindow,
+			    INTEGER 		FromRow,
+			    INTEGER 		ToRow,
+			    TABLEEDIT_DATA	Data) - (i,i,i,o)
+
+TABLEEDIT_MARKERMODE = none;		% No marker
+		       singular;	% Singular marker
+		       singlearea;	% Single area marker
+		       multi		% Multi area marker
+		       
+
+TABLEEDIT_COLUMNLIST = TABLEEDIT_COLUMN*
+TABLEEDIT_COLUMN = column(TABLEEDIT_COLUMNPROPERTIES)
+
+TABLEEDIT_FILTERS = TABLEEDIT_COLUMNFILTER*
+TABLEEDIT_COLUMNFILTER = columnfilter(INTEGER Column,TABLEEDIT_ORFILTERLIST)
+TABLEEDIT_ORFILTERLIST = TABLEEDIT_ORFILTER*
+TABLEEDIT_ORFILTER = if_min(INTEGER Limit);	% Visible values >= Limit
+		     if_max(INTEGER Limit);	% Visible values <= Limit
+		     % Visible values from Lim1 to Lim2
+		     if_range(INTEGER Lim1,INTEGER Lim2);
+		     % Visible values are not equal Fval
+		     if_not(INTEGER Fval);
+
+		     lf_min(LONG);
+		     lf_max(LONG);
+		     lf_range(LONG,LONG);
+		     lf_not(LONG);
+
+		     rf_min(REAL);
+		     rf_max(REAL);
+		     rf_range(REAL,REAL);
+		     rf_not(REAL);
+
+		     % Visible values are equal Fval
+		     s_f(STRING Fval);
+		     % Visible values are not equal Fval
+		     s_f_not(STRING Fval);
+
+		     fvoid;
+		     fvoid_not
+
+% Individual column properties.
+% All properties are optional which means that if
+% certain property is not listed then column
+% uses default value.
+TABLEEDIT_COLUMNPROPERTIES = TABLEEDIT_COLUMNPROPERTY*
+TABLEEDIT_COLUMNPROPERTY = title(STRING);			% Default: ""
+			   width(INTEGER);			% Default: 100 pixels
+			   backcolor(COLOR);			% Default: color_LtGray
+			   forecolor(COLOR);			% Default: color_Black
+			   alignment(GRID_HORALIGNMENT);	% Default: grid_right_align
+								% See GRID_HORALIGNMENT domain in grid.dom
+			   maxlength(UNSIGNED);			% Default: 0x7FFF
+			   readonly(BOOLEAN);			% Default: b_false
+			   filter(BOOLEAN);			% Default: b_true
+			   filterlist(TABLEEDIT_ORFILTERLIST);	% Default: []
+			   resizable(BOOLEAN);			% Default: b_true
+			   sortmode(TABLEEDIT_SORTMODE);	% Default: ascending([])
+			   defaultvalue(TABLEEDIT_CELLDATA);	% Default: void
+			   validationrule(TABLEEDIT_RULELIST);	% Default: []
+			   validationtext(STRING);		% Default: ""
+			   column_type(TABLEEDIT_TYPE);		% Default: string
+			   control(TABLEEDIT_CONTROL_TYPE);	% Default: edit control
+			   mandatory(BOOLEAN)			% Default: b_false
+
+TABLEEDIT_TYPE = te_integer;	% INTEGER column type
+		 te_real;	% REAL column type
+		 te_long;	% LONG column type
+		 te_string;	% STRING column type (default: STRING column type)
+		 te_picture	% picture column type		
+								 								 .
+TABLEEDIT_CONTROL_TYPE = edit; 
+			 listbutton(SLIST);
+			 listedit(SLIST);
+			 custom(STRING ClassName,CTL_FLAGS Ctl_Flags,
+                    	   GRID_PUT_CUSTOM_DATA,GRID_GET_CUSTOM_DATA)
+			% See GRID_PUT_CUSTOM_DATA,GRID_GET_CUSTOM_DATA domains in grid.dom
+
+TABLEEDIT_SORTMODE = ascending(ILIST);
+		     descending(ILIST);
+		     none
+
+TABACTION =	row_marker_beg(INTEGER Row);
+		col_marker_beg(INTEGER Column);
+		area_marker_beg(INTEGER Row,INTEGER Column);
+		all_marker_beg;
+		edit_cell_beg(INTEGER Row,INTEGER Column);
+		resize_column_beg(INTEGER Column);
+		resize_column(INTEGER Column,INTEGER Width);
+		hscroll_create;
+		vscroll_create;
+		hscroll_destroy;
+		vscroll_destroy
+
+TABLEEDIT_EVENT = action(TABACTION);
+		  marker(GRID_MARKER,BOOLEAN MarkUnMark);% See GRID_MARKER domain in grid.dom
+		  modified(INTEGER Row,INTEGER Column,
+		  	TABLEEDIT_CELLDATA OldValue,TABLEEDIT_CELLDATA NewValue);
+		  copy(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn);
+		  paste(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn);
+		  cut(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn);
+		  undo();
+		  redo();
+		  sort(INTEGER Column,TABLEEDIT_SORTMODE);
+		  filter(TABLEEDIT_FILTERS);
+		  insert_row(INTEGER Row,TABLEEDIT_COLUMNDATA);
+		  delete_row(INTEGER Row,TABLEEDIT_COLUMNDATA);
+		  find(STRING,TABLEEDIT_DIRECTION,INTEGER Column,TABLEEDIT_MATCH,BOOLEAN CaseSensitive,BOOLEAN FindNext);
+		  menu(MENU_TAG,GRID_MARKER); % See GRID_MARKER domain in grid.dom
+		  copy_beg(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn);
+		  paste_beg(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn);
+		  cut_beg(INTEGER FromRow,INTEGER ToRow,INTEGER FromColumn,INTEGER ToColumn);
+		  sort_beg(INTEGER Column);
+		  menu_beg(INTEGER Row,INTEGER Column);
+		  filter_beg(TABLEEDIT_FILTERS);
+		  insert_row_beg(INTEGER Row,TABLEEDIT_COLUMNDATA RowData);
+		  delete_row_beg(GRID_LINELIST ListOfRowForDeleting); % See GRID_LINELIST domain in grid.dom
+		  closerequest()
+
+TABLEEDIT_CALLBACK = determ (WINDOW		TableEditWindow,
+			     TABLEEDIT_EVENT	What) - (i,i)
+
+TABLEEDIT_COMPARESTATUS = equal; %CellData1 = CellData2
+			  more;  %CellData1 > CellData2
+			  less   %CellData1 < CellData2
+
+TABLEEDIT_COMPARE = determ (WINDOW		TableEditWindow,
+			    INTEGER 		Column,
+			    TABLEEDIT_CELLDATA	CellData1,
+			    TABLEEDIT_CELLDATA  CellData2,
+			    TABLEEDIT_COMPARESTATUS Equal_More_Less) - (i,i,i,i,o)
+TABLEEDIT_DIRECTION =	up;
+			down;
+			allup;
+			alldown
+
+TABLEEDIT_MATCH = 	entire;
+			from_start;
+			any_part
+
+TABLEEDIT_RULELIST = TABLEEDIT_RULE*
+TABLEEDIT_RULE = % String fields:
+		 s_length(INTEGER Length);	   % Number of chars
+		 s_min(INTEGER Min);		   % Number of chars: From .. 
+		 s_max(INTEGER Max);		   % Number of chars: .. To
+		 s_upper;			   % Upper case
+		 s_lower;			   % Lower case
+		 % Integer fields
+ 		 i_min(INTEGER Min);		   % Value from .. 
+		 i_max(INTEGER Max);		   % Value to ..
+		 % Real fields
+ 		 r_min(REAL Min);		   % Value from .. 
+		 r_max(REAL Max);		   % Value to ..
+		 % Long fields
+ 		 l_min(LONG Min);		   % Value from .. 
+		 l_max(LONG Max)		   % Value to ..
+

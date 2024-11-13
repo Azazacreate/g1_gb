@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="str_int;str_atom;char_int">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Conversion Predicates</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">Conversion
+Predicates </font></h3>
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">str_int/2,
+str_atom/2, char_int/2</font><font color="#0000FF"> </font></h3>
+
+<p align="left"><b>str_int</b>(<i>Str,Int</i>) <b><br>
+str_atom</b>(<i>Str,Atom</i>) <b><br>
+char_int</b>(<i>Char,Int</i>) </p>
+
+<p align="left">Conversion between terms of two types </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>str_int/2</b> - performs conversion between
+string and integer. </p>
+
+<p align="left"><b>str_atom/2</b> - performs conversion between
+string and atom. </p>
+
+<p align="left"><b>char_int/2</b> - performs conversion between
+character and its ASCII code. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>str_int(&quot;123&quot;,INT)
+INT=123
+1 Solution
+str_atom(STR,atomic)
+STR=&quot;atomic&quot;
+1 Solution
+char_int(C,65)
+C='A'
+1 Solution </pre>
+</body>
+</html>

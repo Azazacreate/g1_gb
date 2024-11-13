@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<META NAME="Template" CONTENT="E:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<H1>Using Visual Prolog DLL's from Java</H1>
+<P>This directory contains examples of how to use a Dynamic Link Library (DLL) created with Visual Prolog in a Java program (see <A HREF="../readme.htm">Using Visual Prolog DLL’s from other languages</A> for an overview of the examples).</P>
+<P>All these examples uses the same Visual Prolog DLL’s that are found in the <A HREF="../DLLS/readme.htm">DLLS</A> directory, so these have to be compiled before any of the examples are compiled and run.</P>
+<H2>Notes for Java</H2>
+<P>Please also read the <A HREF="../readme.htm#notes">common notes</A>.</P>
+<P>There is no common way to use a Visual Prolog DLL from Microsoft Java and Sun Java. In the case of Microsoft Java we use the <A HREF="http://www.windows.com/java/resource/jdirect.htm">J/Direct</A> technology, and in the case of Sun Java we use <A HREF="http://java.sun.com/products/jdk/1.2/docs/guide/jni/spec/jniTOC.doc.html">JNI</A>. Both these two technologies are too complex to describe in details here. In this context we will merely map Visual Prolog types to Java types:</P>
+
+<UL>
+<LI>Input types are mapped as follows:</LI></UL>
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=280>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P><B>Visual Prolog</B></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><P>Java</B></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>Integer</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>Int</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>Real</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>Double</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>Unsigned</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>short</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>String</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>class String</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER">&nbsp;</P>
+
+<UL>
+<LI>Output types are mapped as follows:</LI></UL>
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=280>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P><B>Visual Prolog</B></TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<B><P>Java</B></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>Integer</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>int[]</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>Real</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>double[]</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>Unsigned</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>short[]</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP">
+<P>String</TD>
+<TD WIDTH="50%" VALIGN="TOP">
+<P>Int[]</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER">&nbsp;</P>
+<P>The actual value returned is the first stored as the first and only element of the array. In the string case the interger array contains a <B>pointer</B> to the string as its first element.</P>
+<H2>Known Restrictions</H2>
+<P>We don’t provide examples that use Visual Prolog DLL with VPI because of: there is no way to obtain in Java a window handle that is required in an export function of such DLL.</P>
+<P>We don’t provide examples that use Visual Prolog DLL with callbacks because of: there is no way to declare a pointer to a method at Java that can be used out of JVM context.</P>
+<H2>Examples</H2><DIR>
+<DIR>
+
+<P>MSVJ example: <A HREF="msvj/readme.htm">Microsoft Visual Java program which uses a non-GUI Visual Prolog DLL</A>.</P>
+<P>SunJava example: <A HREF="sunjava/readme.htm">Sun Java program which uses a non-GUI Visual Prolog DLL</A>.</P></DIR>
+</DIR>
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DBSERVER
+ FileName: DBSERVER.PRE
+ Purpose: Predicate definitions for DBSERVER.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+%END_DECL
+
+global database  - dbase
+  dbNames(string DBName)
+  db(string DBName,string Key,string Text)
+  locked(socket, string DBName, string Key)
+  determ helpWinOpen()
+
+

@@ -1,0 +1,10 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	EDITFORM.PRE
+ Purpose:	FORMS EDITOR template file
+ Written by:	Andrew Skobelev
+ Comments:
+******************************************************************************/
+include "tools\\editform\\editform.pre"

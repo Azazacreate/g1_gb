@@ -1,0 +1,1618 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="keywords" content="Visual Prolog knowledge base, Visual Prolog, Visual Prolog Technical Support, 
+Visual Prolog Support, Prolog, Technical Support, VIP Support, Support, Visual Prolog 5.2, developer, 
+software design, knowledge base, Visual Prolog knowledge base, Visual Prolog knowledgebase, knowledgebase, 
+known problems, Visual Prolog known problems, Visual Prolog solved problems, solved problems,
+problems, Setup, Language, Visual Prolog Compiler, Compiler, PROLOG.LIB,Visual Development Environment,
+VDE, Visual Programming Interface,VPI, Visual Prolog Debugger, Debugger, Linker, Visual Prolog packages,packages, 
+Visual Prolog predicates">
+<meta name="description" content="Visual Prolog Knowledge Base. In this section we have documented
+ the problems we know about in the supported versions of Visual Prolog. Often we provide steps to work around the
+problem. If a bug is fixed in a new release, information about this fix is
+published in the &quot;Version Info&quot; section of the article describing the
+problem.">
+<meta name="revisit-after" content="7 days">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Visual Prolog Knowledge Base</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Visual Prolog Knowledge Base<!--mstheme--></font></h1>
+<p>In this section, we have documented the problems we know about in the <a href="../supported_versions_of_visual_pro.htm">supported
+versions</a> of Visual Prolog. Often we provide steps to work around the
+problem. If a bug is fixed in a new release, information about this fix is
+published in the &quot;Version Info&quot; section of the article describing the
+problem.</p>
+<p>Note, please, that Visual Prolog 5.1 is supplied in two major builds: build
+564 and build 565. Some of the problems found in Visual Prolog 5.1, build 564,
+were solved in the build 565.&nbsp;To check the build of your copy, use the Help
+| About command.</p>
+<p>Please, see the following sections for detailed information:</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup">Setup</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#language">Language</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde">Visual Development Environment (VDE)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi">Visual Programming Interface (VPI)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#debugger">Debugger</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker">Linkers</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm">Visual Prolog Packages</a>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#doc_tool">PDC's Document Handling
+        Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#report">Report and Own_Draw Packages</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#tree">Tree Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#treebrowser">TreeBrowser Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#sockbind">SOCKBIND</a><!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#grid">GRID Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_packages.htm#examples">Examples</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_interface.htm">Interfacing with other Languages</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="pdcindex_unix.htm">SCO and Linux Versions</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>We are working to correct these problems in one of the future versions of
+Visual Prolog.&nbsp;</p>
+<h5><!--mstheme--><font color="#000000">See also:<!--mstheme--></font></h5>
+<p align="center"><a href="../faq/general/how_to_find_answers_online.htm">How to
+Find Answers Online?</a> | <a href="../faq/pdcindex.htm">Support Questions and
+Answers</a> | <a href="../upgrade/upgrade51to52.htm">Upgrade Notes</a> | <a href="../patches/pdcindex.htm">Patches</a>
+| <a href="bugs50.htm">Known Problems in Visual Prolog 5.0</a> | <a href="bugs502.htm">Known
+Problems in Visual Prolog 5.02</a> | <a href="../technotes/pdcindex.htm">Technical
+Notes</a> | <a href="../write_us/pdcindex.htm">Write Us</a></p>
+<!--msthemeseparator--><p align="center"><img src="../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Setup"></a> Setup Problems<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_setup program requires an internet">Setup program requires
+    an Internet browser to be installed at a computer</a> <a href="#setup_in some cases bitmaps in the setup wizard dialogs are corrupted">(Visual
+    Prolog 5.1, build 564)</a>&nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_installation problem under netscape navigator">Installation
+    problem under Netscape Navigator (Visual Prolog 5.1, build 564)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_in some cases bitmaps in the setup wizard dialogs are corrupted">In
+    some cases bitmaps in the Setup wizard dialogs are corrupted (Visual Prolog
+    5.1, build 564, and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_a problem with 4-character extensions">A problem with long
+    filenames under OS/2 installed on a FAT hard disk</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_os2_problem with directories and files, which names contain spaces">A
+    problem with installation of Visual Prolog into a directory, which name
+    includes spaces (OS/2 platform, HPFS hard disk)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_error 7022 while installation">Error message &quot;Cannot
+    write to file&quot; while installation (Visual Prolog 5.1, build 564)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_ctl3d32.dll problem">CTL3D32.DLL problem</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4 align="left"><!--mstheme--><font color="#000000"><a name="Setup_Setup program requires an Internet"></a>Setup
+  program requires an Internet browser to be installed at a computer<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">FIX<!--mstheme--></font></h6>
+  <p align="left">When AutoRun feature is ON under Windows, the installation
+  process begins with the presentation of the &quot;Introduction to Visual
+  Prolog&quot; (Intro.HTM) and other HTML files. You need to have an Internet
+  browser (Netscape Navigator or Microsoft Explorer) installed to read these
+  files. If a browser is missed, your system will try to open these files with
+  the help of other programs.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to Visual Prolog 5.1, build 564 only.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <ol>
+    <li>
+      <p align="left">If an Internet browser is not installed at your computer,
+      it is possible to run a setup program from the&nbsp; <code>full\vprol\Install
+      directory</code>.</p>
+    </li>
+  </ol>
+  <blockquote>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+        <p align="left">To install Windows version of Visual Prolog, run&nbsp;&nbsp;
+        <code>full\vprol\Install\setup.exe</code>.</p>
+      <!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+        <p align="left">To install OS/2 version of Visual Prolog, run&nbsp;&nbsp;
+        <code>full\vprol\Install\setupos2.exe</code>.</p>
+      <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <ol start="2">
+    <li>
+      <p align="left">We recommend you to install a browser, because HTML files
+      supplied with Visual Prolog 5.1 include useful and important information.</p>
+    </li>
+  </ol>
+  <h4 align="left"><!--mstheme--><font color="#000000"><a name="Setup_Installation problem under Netscape Navigator"></a>Installation
+  problem under Netscape Navigator<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">FIX<!--mstheme--></font></h6>
+  <p align="left">Clicking on the &quot;Install Visual Prolog&quot; button in
+  the &quot;Installation Notes&quot; does not cause installation under Netscape
+  Navigator.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to Visual Prolog 5.1, build 564 only.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <p align="left">It is possible to run a setup program from the&nbsp; <code>full\vprol\Install</code>
+  directory.</p>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <p align="left">To install Windows version of Visual Prolog, run&nbsp;&nbsp;
+      <code>full\vprol\Install\setup.exe</code>.</p>
+    <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <p align="left">To install OS/2 version of Visual Prolog, run&nbsp;&nbsp; <code>full\vprol\Install\setupos2.exe</code>.</p>
+    <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h4 align="left"><!--mstheme--><font color="#000000"><a name="Setup_Error 7022 while installation"></a>Error
+  message &quot;Cannot write to file&quot; while installation<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">FIX<!--mstheme--></font></h6>
+  <p align="left">The error message &quot;Cannot write to file&quot; can be
+  caused by a corrupted file.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to Visual Prolog 5.1, build 564.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <p>Visual Prolog does not install any .DLLs, modifies no .INI files, does not
+  alter registry, etc.<br>
+  That is why, it is possible to install Visual Prolog just by copying the <code>full\vprol\run</code>
+  directory to your disk.</p>
+  <p>Short trip through &quot;Visual Prolog Subdirectories&quot; description
+  will help you to understand, what directories you really need to copy to your
+  HDD. The description is included into both:</p>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Visual Prolog online Help system (<code>full\vprol\run\bin\vip.hlp</code>)<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;Introduction to Visual Prolog&quot; (<code>full\vprol\run\Intro.HTM)</code>
+      -<br>
+      <i>see: &quot;</i>Product information&quot; -&gt; &quot;The Visual Prolog
+      CD&quot;).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h4 align="left"><!--mstheme--><font color="#000000"><a name="Setup_In some cases bitmaps in the Setup wizard dialogs are corrupted"></a>In
+  some cases bitmaps in the Setup wizard dialogs are corrupted<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">FIX<!--mstheme--></font></h6>
+  <p align="left">The reason of the problem is <a href="wrong_generation_of_res_files_fo.htm">wrong
+  generation of RES files</a> for some bitmaps.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to Visual Prolog 5.1, build 564, and
+  previous versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Setup_A problem with 4-character extensions"></a>A problem with
+  long filenames under OS/2 installed on a FAT hard disk<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">Problem<!--mstheme--></font></h6>
+  <p>Some files in the <code>HTML, Foreign, SOCKBIND,</code> and <code>WWW </code>directories
+  have long filenames that are not supported by OS/2 installed on a hard disk
+  with FAT formatting.<br>
+  Since <code>Intro.HTM </code>includes images with long names and refers to
+  pages with long names, it cannot be viewed and used properly.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to Visual Prolog 5.1, builds 564 and
+  565.&nbsp;</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <p align="left">We recommend installing OS/2 version of Visual Prolog to the
+  disk with the HPFS file system.</p>
+  <h4 align="left"><!--mstheme--><font color="#000000"><a name="Setup_CTL3D32.DLL problem"></a>CTL3D32.DLL problem<!--mstheme--></font></h4>
+  <h6 align="left"><!--mstheme--><font color="#000000">R000503.006:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+  <p align="left">While installing or using Visual Prolog, some users receive
+  the following error message: <code>&quot;The application uses CTL3D32.DLL,
+  which is not the correct version. This version of CTL3D32.DLL is designed only
+  for Windows NT systems&quot;.</code></p>
+  <p align="left">Some Visual Prolog programmers report that users of their
+  applications also come across the problem with CTL3D32.DLL.
+  <h5 align="left"><!--mstheme--><font color="#000000">Cause<!--mstheme--></font></h5>
+  <p>The Visual Prolog installation program uses a service called CTL3D32.DLL
+  that works under Windows 95, 98, and NT.<br>
+  Unfortunately, before Visual Prolog was installed, another installation
+  program had upgraded this DLL at user's computer to one that works only under
+  Windows NT. This upgrade was the reason of the error message.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  Replace an invalid CTL3D32.DLL in your system directory with a correct one.<br>
+  You can restore the DLL from a back up copy of your system, or from
+  appropriate Windows distribution.<br>
+  For example, in case of Windows 98, to expand the file in question from the
+  cab file on the disk, the following command can be used:<!--mstheme--></font><pre>Win98_CD&gt;extract /A /e win98_22.cab ctl3d32.dll /L My_HDD:\tmp </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p>Then the expanded DLL from <code>My_HDD:\tmp\ctl3d32.dll</code> should be
+  moved to the required system location.</p>
+  <p>We recommend Visual Prolog programmers, who supply applications using
+  CTL3D32.DLL, to include appropriate information about the problem into their
+  documentation.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p align="left">The information applies to&nbsp;all versions of Visual Prolog.</p>
+</blockquote>
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Language"></a> Language Problems<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_last call optimization does not work for functions and class methods">Last
+    call optimization does not work for functions and Class methods</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_a problem with multiple inheritance">A problem with
+    multiple inheritance (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_an error in using of a non-static object">An error in
+    using of a non-static object</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_bug with not(not( x ))">Bug with <code>not(not( x ))</code>&nbsp;
+    (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_missed detection of absence of&nbsp; local single fact initialization">Missed
+    detection of absence of local single fact initialization in the CLAUSES
+    section (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_bug in the &quot;strong type conversion&quot; check.">Bug
+    in the &quot;Strong Type Conversion&quot; check.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_the command line compiler fails to generate an obj file">The
+    command line compiler fails to generate an OBJ file, when -Z+ option is
+    specified</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_if a filename is longer   than 32 chars">If a filename
+    is longer&nbsp;&nbsp; than 32 chars, and one declares a predicate with a
+    procedure domain, the linker can not find this predicate&nbsp;</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_problems of integer-valued calculations">Problems of
+    integer-valued calculations</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_database domain can be treated as a return domain in a predicate declaration">Database
+    domain can be treated as a return domain in a predicate declaration</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_compiler treats variable names, indentical to some standard predicate names as predicate names">Compiler
+    treats variable names, identical to some standard predicate names, as
+    predicate names</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_error in free gstack">Error in free gstack</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#compiler_7087 error">7087 error: Invalid Parameter</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_bugs in visual prolog classes">Bugs in Visual Prolog
+    classes</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_a predicate type in the end of the predicates section is ignored, without generating an error.">A
+    predicate type in the end of the predicates section is ignored, without
+    generating an error.</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_general protection fault error  when a big obj file is used">GPF,
+    when a big OBJ file is used</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_gpf, while compiling, caused by visual prolog incompatibility with qdcspi.dll">GPF,
+    while compiling, caused by Visual Prolog incompatibility with QDCSPI.DLL</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_non-stable gpf, while  allocating memory for a new object">Non-stable
+    GPF, while allocating memory for a new object</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_a call of a method of a class">A call of a method of a
+    class that is declared with &quot;language stdcall&quot; calling convention
+    leads to application crush</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <span style="mso-spacerun: yes">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_the visual prolog &quot;external database&quot;">The
+    Visual Prolog external database has different formats in 16 and 32 bit</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_problems of trapping exceptions in&nbsp; dll's.">Problems
+    of exception trapping in DLL's.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_bug in the storage11 predicate">Bug in the <b>storage/11</b>
+    predicate</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_not(bound(_))does not convert &quot;fail&quot; to &quot;true&quot;"><code>not(bound(_))</code>does
+    not convert &quot;fail&quot; to &quot;true&quot; (Visual Prolog 5.1, build
+    564)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_str_len predicate generates gpf"><strong>str_len</strong>
+    predicate generates GPF if a negative value&nbsp; is passed to the Length
+    variable (Visual Prolog 5.1, build 564)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_a problem with the disk predicate">A problem with the
+    <b>disk</b> predicate, when the UNC is used</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_db_statistics problem"><b>db_statistics</b> predicate
+    problem</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#prolog.lib_easywin does not support c as main target">Easywin
+    does not support C as main Target</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_the readblock predicate error">The <b>readblock</b>
+    predicate error</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_the flush predicate">The <b>flush</b> predicate
+    generates the error &quot;7006 Invalid Handle&quot; under Windows NT/2000
+    for console output</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_trunc">The <b>trunc</b>(X) predicate with a negative
+    X in Visual Prolog 5.x returns different result than in PDC Prolog 3.31</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_dirfiles">Bug in the <b>dirfiles</b> predicate</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_openwrite">It is possible to move an opened file
+    created by the <b>openwrite</b> predicate under WIN 2000</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_a single fact cannot contain a class domain">A
+    single fact cannot contain a class domain</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_filenameext">The <b>filenameext</b> predicate has
+    different behavior under 16-bit and 32-bit Windows</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_trap">Bug in the <b>trap</b> predicate</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#plolof.lib_invalid 505 error message">Invalid 505 error message
+    while using the <b>val</b> predicate</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_term_str  fails">The<b> term_str</b> predicate fails
+    with (i,o,i) flow pattern</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_div"><b>div</b> with a negative divisor problem</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_error in the consult predicate">Error in the <b>consult</b>
+    predicate</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_upgrading one file projects from previous versions to visual prolog 5.2">Upgrading
+    one file projects from previous versions to Visual Prolog 5.2</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#compiler_gpf, while division by zero at dell computers">GPF,
+    while division by zero at DELL computers</a></p>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p><a href="#prolog.lib_the existfile predicate problem">The <b>existfile</b>
+    predicate problem</a></p>
+  </span><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Last call optimization does not work for functions and Class methods"></a>Last
+  call optimization does not work for functions and Class methods<!--webbot
+  bot="PurpleText" preview="Check" --><!--mstheme--></font></h4>
+  <p>Please be aware of this. It is going to be implemented in one of the
+  following versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_A problem with multiple inheritance"></a>A problem with
+  multiple inheritance<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R000313.003:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>If a class has more than one parent, then, while using an object of such
+  class for access to base class methods, the multiple inheritance engine does
+  not always work properly.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_An error in using of a non-static object"></a>An error
+  in using of a non-static object<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R981116.04:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+  <p>Since the current version of Visual Prolog does not check whether an object
+  exists, an attempt to use a non-static class member (a predicate or a fact)
+  after deleting of an appropriate object causes an error.</p>
+  <h5><!--mstheme--><font color="#000000">Example<!--mstheme--></font></h5>
+  <dl>
+    <blockquote>
+      <!--mstheme--></font><pre>CLASS cA</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p1</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>ENDCLASS</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;FACTS - base1</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f1(cA)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>IMPLEMENT cA</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;p1.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>ENDCLASS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </dl>
+  <blockquote>
+    <!--mstheme--></font><pre>GOAL</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <dl>
+    <blockquote>
+      <!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A = cA::new,</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;  &nbsp;assert(f1(A)),</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A:delete,</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f1(OA),</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OA:p1. %GPF</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </dl>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1 and previous versions.</p>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Bug with not(not( x ))"></a>Bug with not(not( x ))<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R000313.007:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>In the following example compiler deletes double <code>not</code> in Visual
+  Prolog 5.1 (build 564) and previous versions.</p>
+  <blockquote>
+    <!--mstheme--></font><pre>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>nondeterm x(integer)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>x(1).</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>x(1).</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>x(1).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>not_test</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>not_test :-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <!--mstheme--></font><pre>not(not(x(1))),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+      <blockquote>
+        <blockquote>
+          <!--mstheme--></font><pre>write(&quot;Hello&quot;), nl,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+        </blockquote>
+      </blockquote>
+      <blockquote>
+        <!--mstheme--></font><pre>fail.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+      <!--mstheme--></font><pre>not_test.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>GOAL</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>not_test.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, build 564, and previous
+  versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Missed detection of absence of&nbsp; LOCAL SINGLE FACT initialization"></a>Missed
+  detection of absence of local single fact initialization in the CLAUSES
+  section.<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R000313.011:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>In some complex cases, the compiler cannot correctly detect that a LOCAL
+  SINGLE FACT was not initialized by one and only one clause.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, build 564, and previous
+  versions.<br>
+  Fixed in Visual Prolog 5.1, build 565.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Bug in the &quot;Strong Type Conversion&quot; check."></a>Bug
+  in the &quot;Strong Type Conversion&quot; check.<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">&nbsp;R990519.01:&nbsp;&nbsp;&nbsp; BUG<!--mstheme--></font></h6>
+  <p>Sometimes the Compiler mistakenly generates the warning 248 &quot;Integral
+  data type conversion is not strongly compatible&quot; in the case, when a
+  &quot;smaller&quot; type (for example, <b>short</b>) is converted to a
+  &quot;larger&quot; numeric type (for example, <b>real</b>).</p>
+  <p>The Visual Prolog Compiler makes this checking, when the &quot;Strong Type
+  Conversion Check&quot; compiler option is switched ON in VDE's Compiler
+  Options dialog, or<strong> -ustr+</strong> option is specified for the command
+  line compiler.</p>
+  <h5><!--mstheme--><font color="#000000">Example<!--mstheme--></font></h5>
+  <p>The following program gives two incorrect 248 warnings.</p>
+  <!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;real_pred(real)-(i)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>clauses</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;real_pred(7). % No warnings should be given here !</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>goal</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;X = val(short,7),</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;real_pred(X). % No warnings should be given here !</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.2, and previous versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_The command line compiler fails to generate an OBJ file"></a>The
+  command line compiler fails to generate an OBJ file, when -Z+ option is
+  specified&nbsp;<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990314.02:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>The command line compiler fails to generate an OBJ file, when -Z+ option is
+  specified, without a warning that -Z is not supported.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.<br>
+  Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_If a filename is longer   than 32 chars"></a>If a
+  filename is longer than 32 chars, and one declares a predicate with a
+  procedure domain, the linker can not find this predicate&nbsp;<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990827.03:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Problems of integer-valued calculations"></a>Problems of
+  integer-valued calculations<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R991129.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>By default, results of arithmetic operations with explicitly specified
+  integer-valued operands are treated as &quot;unsigned&quot;.</p>
+  <p>This can lead to some sorts of problems. For instance, the following
+  example&nbsp;</p>
+  <!--mstheme--></font><pre>goal </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unsig = 1-2, write(&quot;Integer_value = &quot;, Unsig). </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p>instead of the expected correct value &quot;-1&quot; returns its unsigned
+  representation &quot;4294967295&quot;.</p>
+  <p>Moreover, if you add a positive number to such intermediate value you will
+  get the error &quot;119 Arithmetic overflow&quot;. For example:&nbsp;</p>
+  <!--mstheme--></font><pre>goal </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>Unsig = 1-2 + 3, % Result: the error &quot;119 Arithmetic overflow&quot;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <p>Usage of variables in integer-valued expressions solves this problem. For
+  instance, the following example will work correctly:&nbsp;</p>
+  <!--mstheme--></font><pre>goal </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>Int = 4, </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>Unsig = 1-2 + 3 + Int, % Result: no errors </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <p>However, be careful, if the order of calculation will be specified using
+  parentheses, the error can occur:&nbsp;</p>
+  <!--mstheme--></font><pre>goal </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>Int = 4, </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>Unsig = (1-2 + 3) + Int,  </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% Result: the error &quot;119 Arithmetic overflow&quot;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Database domain can be treated as a return domain in a predicate declaration"></a>Database
+  domain can be treated as a return domain in a predicate declaration<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990128.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5><!--mstheme--><font color="#000000">Example<!--mstheme--></font></h5>
+  <!--mstheme--></font><pre>database - dirtest</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>list(SLIST)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>dirtest % &lt;-- error 404 </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>testline(ITEM)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>clauses</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>dirtest:- % &lt;-- error 404</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.2, and previous versions.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Bugs in Visual Prolog classes"></a>Bugs in Visual Prolog
+  classes<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990818.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>Bugs in Visual Prolog classes in some cases cause GPF.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_A predicate type in the end of the predicates section is ignored, without generating an error"></a>A
+  predicate type in the end of the predicates section is ignored, without
+  generating an error.<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R991011.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Compiler treats variable names, indentical to some standard predicate names as predicate names"></a>Compiler
+  treats variable names, identical to some standard predicate names, as
+  predicate names<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990921.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>The following program generates a syntax error:</p>
+  <!--mstheme--></font><pre>goal</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>Format = &quot;1&quot;.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Error in free gstack"></a>Error in free gstack <!--webbot
+  bot="PurpleText" preview="Discuss with CG" --><!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990920.03:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>It is difficult to give clear instructions on how to avoid the problem, but
+  if you use '_' instead of '_Name' for the void output arguments in the last
+  call of a clause, which only has input scalar arguments - you will avoid the
+  problem.</p>
+  <h5><!--mstheme--><font color="#000000">Example<!--mstheme--></font></h5>
+  <!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre><span style="mso-spacerun: yes">  use_gstack(integer)-(o)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  p()</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;clauses</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </span>
+  <!--mstheme--></font><pre>&nbsp;</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>predicates</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre><span style="mso-spacerun: yes">  use_gstack(integer)-(o)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  p()</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;clauses</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  use_gstack(Y):-</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>           Y = 1,</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>           write(&quot;Y=&quot;,Y),nl,</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>           concat(&quot;&quot;,&quot;X&quot;,_),   </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <!--mstheme--></font><pre>% - THIS SPOILS Y, BECAUSE Y
+% IS ON GSTACK !</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <!--mstheme--></font><pre>           write(&quot;Y=&quot;,Y),nl.</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>&nbsp;</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>  p():-</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>           time(_,_,_,_),</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>           use_gstack(_OnceVar).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <!--mstheme--></font><pre>% Here Is the BUG</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% It works for '_'</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <!--mstheme--></font><pre>% Last Call Optimization is active</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% Since there is a Void output variable </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>%   in the last call, this must be</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>%   placed on GStack</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% Since the Clause does NOT use GStack, </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>%   GStack is released just before</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>%   the last Call!</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>% Bad Combination !</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>goal</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>           p().</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1, and previous versions.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_7087 error"></a>7087 error: Invalid Parameter<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990924.01&nbsp;&nbsp;&nbsp; : FIX<!--mstheme--></font></h6>
+  <p>The following program gives 7087 error in Visual Prolog 5.1:</p>
+  <!--mstheme--></font><pre>database
+    d(string)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>predicates
+    p(string)
+    - procedure (i)</pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>clauses
+   p(S) :-
+       concat(S, &quot;a&quot;, Sa),
+       assert(d(Sa)),
+       p(Sa),
+       p(S).
+       </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>goal
+    p(&quot;a&quot;).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p>The problem takes place in some cases, when the default 100 MB GStack size
+  has been exceeded.&nbsp;&nbsp;</p>
+  <p>In Visual Prolog 5.2 the message &quot;1001 GStack overflow &quot; is
+  generated.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1.</p>
+  <p>Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000">A problem with a name of a static class predicate<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990722.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>If the following predicate:</p>
+  <!--mstheme--></font><pre>p(integer) - procedure () language stdcall as &quot;_P&quot;</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <p>is declared in the section of static predicates of a class, the
+  &quot;Unrecognized name&quot; linker error is generated.&nbsp;<br>
+  The reason of the bug is that &quot;@4&quot; is not added automatically, when
+  a predicate is declared in a class.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1.</p>
+  <p>Fixed in&nbsp; Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_General Protection Fault error  when a big OBJ file is used"></a>General
+  Protection Fault error, when a big OBJ file is used<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R000217.005:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>There exists a limit for total amount of relocations (fixups) in a segment
+  of an object file in COFF format. When the limit equal to 65536 is exceeded, a
+  GPF occurs.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1.</p>
+  <p>Fixed in Visual Prolog 5.2. Since Visual Prolog 5.2, the following error
+  message is generated: &quot;611. Too many relocations are detected for a
+  segment of an object file in COFF format&quot;.</p>
+  <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+  <p>Make a compilation unit (project module) smaller, for example, by breaking
+  it into several compilation units.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_Non-stable GPF, while  allocating memory for a new object"></a>Non-stable
+  GPF, while allocating memory for a new object<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990413.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1.<br>
+  Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000">Error in handling duplicate stack overflow<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990310.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <p>After catching an error 1010 &quot;Stack Overflow&quot; in trap, the next
+  call of the predicate with this 1010 error does not work correct and does not
+  give out the runtime error 1010 or does not catch this error in trap.</p>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1.<br>
+  Fixed in Visual Prolog 5.2.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="Compiler_A call of a method of a class"></a>A call of a method of
+  a class that is declared with &quot;language stdcall&quot; calling convention
+  leads to application crush<!--mstheme--></font></h4>
+  <h6><!--mstheme--><font color="#000000">R990716.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to Visual Prolog 5.1.<br>
+  Fixed in Visual Prolog 5.2.</p>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_The Visual Prolog &quot;external database&quot;"></a>The
+    Visual Prolog external database has different formats in 16- and 32-bit VDE<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R950730.32:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>This is inconvenient and will be changed in one of future versions. One
+    of the results is that the 16bit VDE uses one .VPR file for a project and
+    the 32bit VDE uses another format. The program VIPCONVERT must be used to
+    switch between the platforms.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_Problems of trapping exceptions in&nbsp; DLL's."></a>Problems
+    of exception trapping in&nbsp; DLLs.<!--webbot bot="PurpleText"
+    preview="Discuss with AK" --><!--mstheme--></font></h4>
+    <p>If a GPF or other exception happens in a prolog .DLL, which is called
+    from a Prolog main program, and linked in statically, this exception is
+    trapped in the main program (but not as expected in the .DLL). After this
+    exception is trapped wrongly, you should not make further calls to the .DLL,
+    but instead close down your application.</p>
+    <p>There are no problems when calling a .DLL dynamically, and in properly
+    debugged programs, this situation will not happen.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_Bug in the storage11 predicate"></a>Bug in the
+    storage/11 predicate<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990201:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>When the <strong>storage/11</strong> predicate in the Visual Prolog DLL
+    is called from Visual Basic or Delphi application, the predicate returns a
+    wrong value for <em>UsedStack</em>.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_not(bound(_))does not convert &quot;fail&quot; to &quot;true&quot;"></a>not(bound(_))does
+    not convert &quot;fail&quot; to &quot;true&quot;<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000313.012:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>In most cases, it is possible to change:</p>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><code>not(bound(_))</code> to <code>free(_)</code>,<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><code>not(free(_))</code> to <code>bound(_)</code><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <blockquote>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564.<br>
+    Fixed in Visual Prolog 5.1, build 565.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_str_len predicate generates GPF"></a><strong>str_len</strong>
+    predicate generates GPF if a negative value is passed to the Length variable<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000313.013:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.<br>
+    Fixed in Visual Prolog 5.1, build 565.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_A problem with the disk predicate"></a>A problem
+    with the disk predicate, when the <a href="language/unc_r991123.01.htm">UNS</a>
+    is used<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R991126.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>The <b>disk </b>predicate does not work properly if a network drive is
+    not mapped.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_db_statistics problem"></a>db_statistics problem<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R991123.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>The <b>db_statistics</b> predicate does not work, when the program
+    containing it has been started from a <a href="language/unc_r991123.01.htm">UNC</a>
+    path.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>The <b>bt_statistics </b>predicate can be used if an index for a
+    database(s), where each record only has a single key, is used.</p>
+    <h4><!--mstheme--><font color="#000000">Invalid 505 error message while using the <b>val</b> predicate<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R991221.04:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>When two user-defined domains are equivalent to the same standard Visual
+    Prolog domain, converting of one of the user-defined domains into another
+    with the help of the <b>val</b> predicate mistakenly causes 505 Type error:
+    &quot;Illegal variable type for this position.&quot;</p>
+    <h5><!--mstheme--><font color="#000000">Example&nbsp;<!--mstheme--></font></h5>
+    <!--mstheme--></font><pre>domains </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>a = integer </pre><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font><pre>b = integer</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>predicates </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>p(a)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>clauses </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>p(A) :- </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <!--mstheme--></font><pre>B = val(b, A). % Wrong 505</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+    </blockquote>
+    <!--mstheme--></font><pre>goal </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>p(7).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1.<br>
+    Fixed in Visual Prolog 5.2</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_Easywin does not support C as main Target"></a>Easywin
+    does not support C as main Target<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R970710.02:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_The readblock predicate error"></a>The readblock
+    predicate error<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990817.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>The <b>readblock</b> predicate generates the run-time error 1111:
+    &quot;Wrong number of bytes read from file&quot; if a number of bytes to
+    read exceeds 4096.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_The flush predicate"></a>The <b>flush</b> predicate
+    generates the error &quot;7006 Invalid Handle&quot; under Windows NT/2000
+    for console output <!--webbot bot="PurpleText" preview="Discuss" --><!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990826.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>The <b>flush</b> predicate works differently under Windows95/98 and
+    Windows NT/2000. Under Windows NT/2000, the operating system raises an error
+    on flush calling with the console output device.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>We recommend to avoid applying of the <b>flush</b> predicate for the
+    console output device (UI Strategy: Easywin, Textmode, VPI+Message window)
+    in 32-bit applications.&nbsp;</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_trap"></a> Bug in the trap predicate<!--webbot
+    bot="PurpleText" preview="Discuss with CG" --><!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R991028.02:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>Sometimes a term allocated in the first call in the <b>trap/3 </b>predicate
+    is spoiled in the third call to the errorhandler.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_trunc"></a>The trunc(X) predicate with a negative X
+    in Visual Prolog 5.x returns different result than in PDC Prolog 3.31<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990818.03:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>The trunc truncates <i>Value</i> to the right of the decimal point,
+    discarding any fractional part. That is trunc &quot;rounds <i>Result</i>
+    toward zero&quot;. Notice that in PDC Prolog 3.31 <b>trunc</b>
+    &quot;rounds&quot; <i>Result</i> toward minus infinity&quot;. In Visual
+    Prolog, the return domain of trunc predicate is the same as the domain of
+    its argument. The <b>val</b> function should be used to convert a real to an
+    integer.</p>
+    <p>In versions of PDC Prolog before the version 3.30, <b>trunc</b> returned
+    an integer.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_dirfiles"></a>Bug in the dirfiles predicate<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R980224.03:&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p><b>dirfiles</b>(Wild, fa_subdir, F, _,_,_,_,_,_,_, _) does not work
+    correctly with Wild=&quot;.&quot;, &quot;..&quot;. It returns
+    &quot;false&quot; instead of &quot;true&quot;.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_openwrite"></a>Under Windows 2000 it is possible to
+    move an opened file created by the <b>openwrite</b> predicate under WIN 2000<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">RRR0103.02:&nbsp;&nbsp;&nbsp; BUG<!--mstheme--></font></h6>
+    <p>Under Windows 2000, it is possible to move an opened file, that was
+    created by the <b>openwrite</b> predicate (for 16-bit programs), within the
+    logical disk space.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_A single fact cannot contain a class domain"></a>A
+    single fact cannot contain a class domain<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R971023.01:&nbsp;&nbsp;&nbsp; BUG<!--mstheme--></font></h6>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_filenameext"></a>The filenameext predicate has
+    different behavior under 16-bit and 32-bit Windows<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R971009.01:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>Under 16-bit platforms, returned strings will be in the upper case.&nbsp;<br>
+    <br>
+    Under 32-bit platforms, returned strings will contain letters in the same
+    cases as they were specified in the input strings.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_term_str  fails"></a>The term_str predicate fails
+    with (i,o,i) flow pattern<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990513.01:&nbsp;&nbsp;&nbsp; <!--webbot bot="PurpleText"
+    preview="Check State" --><!--mstheme--></font></h6>
+    <p>In Visual Prolog 5.1 <b>term_str</b> fails in the cases like the
+    following:</p>
+    <!--mstheme--></font><pre>Domains
+  a = b(integer); c()
+goal 
+  term_str(a,T,&quot;c()&quot;) %  term_str(a,T,&quot;b(2)haha&quot;)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>No error is generated.</p>
+    <p>In Visual Prolog 5.2 the error &quot;1047 Invalid term (spoiled
+    memory)&quot; is generated.&nbsp;</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.</p>
+    <p>Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_div"></a>div with a negative divisor problem<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990818.02:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p><b>div</b> with a negative divisor returns unsigned value for negative
+    results</p>
+    <!--mstheme--></font><pre>Int = 4 div -3 </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <p>returns&nbsp;</p>
+    </blockquote>
+    <!--mstheme--></font><pre>Int = 429… </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>If we explicitly convert it with:</p>
+    <!--mstheme--></font><pre>  Sinned_Int = val(integer, Int)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <p>the result will be correct:&nbsp; &quot;<code>-1</code>&quot;/</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Compiler_GPF, while division by zero at DELL computers"></a>GPF,
+    while division by zero at DELL computers<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000505.004:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>At some Dell computers, the Prolog exception handling engine (in 32-bit
+    VPI programs) cannot correctly catch division by zero like:</p>
+    <blockquote>
+      <!--mstheme--></font><pre>X = 0,
+_Y = 5 div X,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <p>Instead of the error 1032 &quot;Division by zero&quot;, a program
+    generates the error 1009 &quot;General protection fault&quot; or even
+    silently disappears. The error was seen under Windows 98 and Windows NT
+    Service Pack 3/4.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Compiler_GPF, while compiling, caused by Visual Prolog incompatibility with QDCSPI.DLL"></a>GPF,
+    while compiling, caused by Visual Prolog incompatibility with QDCSPI.DLL<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000505.005:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>The VDE conflicts with QDCSPI.DLL from QarterDeck's CleanSweep (only
+    under Windows 95). The problem is seen like GPF, while compiling some files.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>The problem can be fixed by removing QDCSPI.DLL from the WIN95\SYSTEM
+    directory.<br>
+    Note: CleanSweep can use QDCSPI.DLL from its home directory.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_Error in the consult predicate" href="language/error_in_the_consult_predicate.htm"></a>Error
+    in the <b>consult</b> predicate<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">RRR0105.04:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>If the <b>save</b> predicate terminates with an error (e.g., &quot;Disk
+    is full&quot;), then after it, the predicate <b>consult</b> works wrong.</p>
+    <h5><!--mstheme--><font color="#000000"><a href="language/error_in_the_consult_predicate.htm">Example</a><!--mstheme--></font></h5>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000">The term_bin predicate problem<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R980723.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>The <b>term_bin</b> predicate with the (i,i,i) flow pattern causes GPF in
+    the TestGoal</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_Upgrading one file projects from previous versions to Visual Prolog 5.2"></a>Upgrading
+    one file projects from previous versions to Visual Prolog 5.2<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000211.001:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>In Visual Prolog 5.2 the <b>file</b> and <b>db_selector</b> domains have
+    to be declared as global domains also in a one file project.<br>
+    This was not the case in previous versions of Visual Prolog.<br>
+    Therefore, such projects created by previous versions of Visual Prolog are
+    not built.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>It is necessary to declare&nbsp; the <b>file</b> and <b>db_selector</b>
+    domains as global domains in one file projects created by previous versions
+    of Visual Prolog.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Prolog.lib_The existfile predicate problem"></a>The existfile
+    predicate problem<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R980224.02:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p><b>existfile</b>(Arg) with Arg=&quot;.&quot;, &quot;..&quot; returns
+    &quot;fail&quot; instead of &quot;true&quot;.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000">The time predicate is not precise enough<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000413.004:    Problem<!--mstheme--></font></h6>
+    <p>The time predicate works with an underlying operating system. Some operating systems (some UNIX versions, for example) do not support high precision. Also, 32bits Windows system timing functions use miliseconds.<br>
+    Recommended to users: There is QueryPerfomanceCounter API call under 32bits Windows that can be used for more high precision.<br>
+    </p>
+    <p><!--webbot bot="PurpleText"
+    preview="The time predicate is not precise enough
+R000413.004:    Problem
+The time predicate works with an underlying operating system. Some operating systems (some UNIX versions, for example) do not support high precision. Also, 32bits Windows system timing functions use miliseconds.
+Recommended to users: There is QueryPerfomanceCounter API call under 32bits Windows that can be used for more high precision.
+" --></p>
+  </blockquote>
+  <h2 align="left"><!--mstheme--><font color="#000000"><a name="VDE"></a> VDE Problems<!--mstheme--></font></h2>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_compiling of unmodified non-prolog modules">Compiling of
+      unmodified non-Prolog modules</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_problem with directories and files, which names contain spaces">Problem
+      with directories and files, which names contain spaces (Win32)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_os2_problem with directories and files, which names contain spaces">Problem
+      with directories and files, which names contain spaces (OS/2</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_conversion of ham to 5.0 format is irreversible">Conversion
+      of HAM to 5.0 format is irreversible</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_possible bug when updating source code with the help of code experts">Possible
+      BUG when updating source code with the help of Code Experts (Visual Prolog
+      5.1, build 564)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_problem with a non-existing project name in&nbsp; a command line">Problem
+      with a non-existing Project name in&nbsp; a Command line</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_using ctrl-x, ctrl-c or ctrl-v in the menu editor">Using
+      Ctrl-X, Ctrl-C or Ctrl-V in the Menu Editor</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_problem in the multiprogrammer mode">Problem in the
+      multiprogrammer mode</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_wrong generation of res files for some bitmaps">Wrong
+      generation of RES files for some bitmaps (Visual Prolog 5.1, build 564 and
+      previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_a problem with&nbsp; visual studio 6.0&nbsp; resource compiler.">A
+      problem with&nbsp; Visual Studio 6.0&nbsp; resource compiler.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_bug with saving changes in a project">Bug with saving
+      changes in a project, when &quot;AutoSave Project on Exit&quot; option in
+      the Environment dialog is turned off (Visual Prolog 5.1, build 564 and
+      previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_bug with saving changes in a topic">Bug with saving
+      changes in a topic, when&nbsp; &quot;AutoSave Project on Exit&quot; option
+      in the Environment dialog is turned off.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_problems with read-only .prj files">Problems with
+      read-only .PRJ files (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_help maker: a problem with importing&nbsp; .rtf files containing graphics">Help
+      Maker: a problem with importing&nbsp; .RTF files containing graphics</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_hcp help compiler">HCP Help Compiler hangs Visual Prolog
+      if root VIP directory name is longer than 8 characters</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_the &quot;help topics&quot; window">The &quot;Help
+      Topics&quot; window is not initially activated when WIN32 on-line Help is
+      run</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_a windows help compiler is set by default in the application expert while creating an os2 project">A
+      Windows Help Compiler is set by default in the Application Expert while
+      creating an OS/2 project</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_printing problem">A printing problem (Visual Prolog 5.1,
+      build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_default setting for &quot;convert ansi to oem&quot; in the compiler options dialog">Default
+      setting for &quot;Convert ANSI to OEM&quot; in the Compiler Options dialog
+      (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_more windows dialog">Under Windows 95/98 a horizontal
+      scrollbar is missed in the MDI menu Window|More Windows-&gt; &quot;Select
+      window&quot; default dialog (Visual Prolog 5.1)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_checking on the print menu in dos">Checking ON the
+      &quot;Print Menu in DOS .EXE&quot; in the VDE does not set -p option for
+      the Compiler</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#setup_ctl3d32.dll problem">CTL3D32.DLL problem</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vde_gpf at the help compiling stage">GPF at the Help compiling
+      stage in the Windows version of the VDE after changing a target platform
+      from &quot;OS/2 32-bit&quot; to &quot;Windows 32</a>&quot;<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Compiling of unmodified non-Prolog modules"></a>Compiling
+    of unmodified non-Prolog modules<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">Problem <!--webbot bot="PurpleText" preview="Check Feedback" --><!--mstheme--></font></h6>
+  </blockquote>
+  <dl>
+    <dd>A call of the project creating procedures (&quot;Build&quot;;
+      &quot;Run&quot; or &quot;Debug&quot;) causes compiling of unmodified
+      modules if a project includes non-Prolog modules (C, CPP), for which
+      OBJ-file has been created and &quot;Generate Debug Information&quot;
+      option in the Compiler Options Dialog is ON.</dd>
+    <blockquote>
+      <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+      <p>The information applies to Visual Prolog 5.2&nbsp; and previous
+      versions.</p>
+    </blockquote>
+    <dd>
+      <h4><!--mstheme--><font color="#000000"><a name="VDE_Problem with directories and files, which names contain spaces"></a>Problem
+      with directories and files, which names contain spaces (Win32 platforms)<!--mstheme--></font></h4>
+      <h6><!--mstheme--><font color="#000000">R990910.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+      <p>The VDE, the linker and the compiler have problems with using external&nbsp;
+      compilers and linkers placed in directories, which names contain spaces.</p>
+      <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+      <p>The information applies to Visual Prolog 5.1 and previous versions.</p>
+      <p>Fixed in Visual Prolog 5.2.</p>
+      <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+      <p>Things work if you manually modify the scripts.</p>
+      <p>If you refer to the path in your code, the names that include spaces
+      should be surrounded by&nbsp; internal \&quot;\&quot;, like
+      &quot;\&quot;C:\\Program Files\\Visio\\Visio 32.EXE\&quot;&quot;</p>
+      <p>A little trick you might use, if you have some tools installed&nbsp; in
+      the &quot;Program Files&quot; directory, is that you instead refer to the
+      short DOS name, e.g.&nbsp; &quot;C:\PROGRA~1\MICROS~4\VC98 &quot;.<br>
+      If you want to find exact short names of MSVC tools installed in the
+      &quot;Program Files&quot; directory at your computer, please, see \Program
+      Files\..\BIN\VCVARS32.BAT.</p>
+    </dd>
+  </dl>
+  <blockquote>
+    <h5><!--mstheme--><font color="#000000">Recommendations<!--mstheme--></font></h5>
+    <p>Do not&nbsp; install Visual Prolog 5.1 and previous versions into the
+    directories, which names contain spaces.<br>
+    Do not use the directories with such names in your projects if you need to
+    refer to the PATH.</p>
+  </blockquote>
+  <dl>
+    <dd>
+      <h4><!--mstheme--><font color="#000000"><a name="VDE_OS2_Problem with directories and files, which names contain spaces"></a>Problem
+      with directories and files, which names contain spaces (OS/2 platform)<!--mstheme--></font></h4>
+      <h6><!--mstheme--><font color="#000000">Problem:&nbsp;&nbsp;&nbsp;&nbsp;<!--mstheme--></font></h6>
+      <p>Under OS/2 if a hard disc with HPFS formatting is used, The VDE, the
+      linker and the compiler have problems with using project and external&nbsp;
+      tools placed in directories, which names contain spaces.</p>
+      <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+      <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+      <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+      <p>Things work if you manually modify the scripts.</p>
+      <p>If you refer to the path in your code, the names that include spaces
+      should be surrounded by&nbsp; internal \&quot;\&quot;, like
+      &quot;\&quot;C:\\Program Files\\Visio\\Visio 32.EXE\&quot;&quot;</p>
+    </dd>
+  </dl>
+  <blockquote>
+    <h5><!--mstheme--><font color="#000000">Recommendations<!--mstheme--></font></h5>
+    <p>Do not&nbsp; install Visual Prolog 5.2 and previous versions into the
+    directories, which names contain spaces.<br>
+    Do not use the directories with such names in your projects if you need to
+    refer to the path.</p>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Conversion of HAM to 5.0 format is irreversible"></a>Conversion
+    of HAM to 5.x format is irreversible<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000316.005:&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+  </blockquote>
+  <blockquote>
+    <p>After conversion of a .HAM file in an old format (3.x or 4.x versions) to
+    the 5.x format by VIPCONV.EXE, the .HAM file can not be converted back to
+    the 4.0 format.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2&nbsp; and previous versions.</p>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Possible BUG when updating source code with the help of Code Experts"></a>Possible
+    BUG when updating source code with the help of Code Experts<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000316.006:&nbsp;&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+  </blockquote>
+  <blockquote>
+    <p>In some circumstances (a large source file and a relatively slow
+    computer), there is a significant delay while the source file is being
+    updated.&nbsp; If during this time, you hit the <strong>Edit Code</strong>
+    button, then the source update can be wrong, because a Code Expert initiates
+    a new update operation while the previous one is not finished.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.<br>
+    The problem was solved in Visual Prolog 5.1, build 565.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <ol>
+      <li>Avoid using large source files.</li>
+      <li>Check, whether the previously activated Code Expert action had been
+        accomplished before you activate new Code Expert action. These actions
+        are: &quot;OK&quot;, &quot;Edit Code&quot;, &quot;Delete Code&quot;,
+        &quot;Declaration&quot;, &quot;Layout&quot;, &quot;Add Clause&quot;, and
+        &quot;Update Code&quot;.</li>
+    </ol>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Problem with a non-existing Project name in&nbsp; a Command line"></a>Problem
+    with a non-existing Project name in&nbsp; a Command line<!--mstheme--></font></h4>
+  </blockquote>
+  <blockquote>
+    <p>When the VIP.EXE (both 16 and 32 bit) is started with a non-existing .VPR
+    filename in a Command line, it does not report an error, but loads the last
+    loaded project instead.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1&nbsp; and previous versions.</p>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Using Ctrl-X, Ctrl-C or Ctrl-V in the Menu Editor"></a>Using
+    Ctrl-X, Ctrl-C or Ctrl-V in the Menu Editor<!--mstheme--></font></h4>
+  </blockquote>
+  <dl>
+    <dd><code>Ctrl-X, Ctrl-C</code> or <code>Ctrl-V</code> do not work if you
+      are editing a constant prefix in the Menu Editor.</dd>
+    <blockquote>
+      <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+      <p>The information applies to Visual Prolog 5.2&nbsp; and previous
+      versions.</p>
+      <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    </blockquote>
+    <dd>Use the right-mouse pop-up menu.</dd>
+  </dl>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Problem in the multiprogrammer mode"></a>Problem in the
+    multiprogrammer mode<!--mstheme--></font></h4>
+  </blockquote>
+  <dl>
+    <dd>The Code Expert setting for Automatic update of source code of a
+      resource is not saved, when there were no changes in a resource (dialog,
+      menu etc.) if a project was opened from a .PRJ file.</dd>
+    <blockquote>
+      <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+      <p>The information applies to Visual Prolog 5.1&nbsp; and previous
+      versions.</p>
+      <p>Fixed in Visual Prolog 5.2.</p>
+    </blockquote>
+  </dl>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Wrong generation of RES files for some bitmaps"></a>Wrong
+    generation of RES files for some bitmaps<!--mstheme--></font></h4>
+    <p>See <a href="wrong_generation_of_res_files_fo.htm">description</a></p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+  </blockquote>
+  <blockquote>
+    <h4 align="left"><!--mstheme--><font color="#000000"><a name="VDE_A problem with&nbsp; Visual Studio 6.0&nbsp; resource compiler."></a>A
+    problem with&nbsp; Visual Studio 6.0&nbsp; resource compiler.<!--mstheme--></font></h4>
+    <p>Visual Studio resource compiler rc.exe in Visual Studio 6.0 has been
+    moved to the location different from the location in previous versions.</p>
+    <p>This means that if a Visual Prolog programmer specifies, that the Code
+    Generator should generate *.RC and *.H files for the resources in his
+    project, and uses Visual Studio 6.0 resource compiler, build scripts do not
+    work correctly.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>It is necessary to change a rule for resource compilation manually with
+    the help of the Options|Project|Make Options|Rules menu item. For example:</p>
+    <p><small><small>rc-&gt;res:$(CDIR)<font color="#FF0000">..\common\msdev98</font>
+    \BIN\RC -r -I$(CDIR)INCLUDE\ -fo $(OBJDIR)$*.RES $(OBJDIR)$*.RC</small></small></p>
+    <p>Remark: The red part is added.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1&nbsp; and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Bug with saving changes in a project"></a>Bug with saving
+    changes in a project, when &quot;AutoSave Project on Exit&quot; option in
+    the Environment dialog is turned off<!--mstheme--></font></h4>
+    <p>When &quot;AutoSave Project on Exit&quot; option in the Environment
+    dialog is turned off, and changes were done using Dialog Attributes, Window
+    Attributes, or Toolbar Attributes dialogs:</p>
+    <ol>
+      <li>The Question dialog &quot;Save current project&quot; is not invoked on
+        exit, except the cases when:</li>
+    </ol>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Constant names were changed;<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&quot;Storing in Separate File&quot; flag was turned ON/OFF.<br>
+          &nbsp;<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <ol start="2">
+      <li>Any changes in the dialogs Dialog Attributes, Window Attributes, and
+        Toolbar Attributes are not saved on exit, except changes of constant
+        names and a &quot;Storing in Separate File&quot; flag state.</li>
+    </ol>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Bug with saving changes in a topic"></a>Bug with saving
+    changes in a topic, when&nbsp; &quot;AutoSave Project on Exit&quot; option
+    in the Environment dialog is turned off.<!--mstheme--></font></h4>
+    <p>When &quot;AutoSave Project on Exit&quot; option in the Environment
+    dialog is turned off, and a topic name, a topic context string, or topic
+    content were changed, these changes are saved automatically without a
+    warning.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Problems with read-only .PRJ files"></a>Problems with
+    read-only .PRJ files<!--mstheme--></font></h4>
+    <ol>
+      <li>If a user opens a project from a read-only .PRJ file, no message
+        describing that this file is read-only is generated.</li>
+      <li>After choosing Project | Save Project menu item, the following invalid
+        message is generated in the Message window:</li>
+    </ol>
+    <blockquote>
+      <blockquote>
+        <p><code>Project &lt;PrjFilePath&gt;.PRJ saved</code></p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <blockquote>
+      <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+      <p>The information in the item 2 applies to Visual Prolog 5.1, build 564,
+      and previous versions.<br>
+      In the build 565 the following message is generated:</p>
+      <blockquote>
+        <p><code>&quot;Project components have been saved&quot;</code></p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Help Maker: a problem with importing&nbsp; .RTF files containing graphics"></a>Help
+    Maker: a problem with importing&nbsp; .RTF files containing graphics<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R961217.08:&nbsp;&nbsp;&nbsp; Bug<!--mstheme--></font></h6>
+    <p>The current version of the Visual Prolog does not allow to import .RTF
+    files containing graphics. An attempt to import an .RTF file with embedded
+    objects causes the necessity of restarting Visual Prolog.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround:<!--mstheme--></font></h5>
+    <p>It is possible to replace embedded objects in the source .RTF file with
+    the references to image files.</p>
+    <ol>
+      <li>Save each graphic object from the source .RTF file like a separate
+        graphics file.</li>
+      <li>Copy graphics files to the directory chosen for bitmaps in the Options
+        | Help Maker Options (RES by default).</li>
+      <li>Replace graphics in the source .rtf file with references like:<br>
+        {bmc winsock.bmp}</li>
+      <li>&nbsp;Import&nbsp; an .RTF file.</li>
+    </ol>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2&nbsp; and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_HCP Help Compiler"></a>16-bit MS Help Compilers hang Visual
+    Prolog if a root VIP directory name is longer than 8 characters<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R980519.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>16-bit MS Help Compilers hang Visual Prolog DOS session while compiling
+    Help if root VIP directory name is more than eight characters.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.</p>
+    <p>Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_The &quot;Help Topics&quot; window"></a>The &quot;Help
+    Topics&quot; window is not initially activated when WIN32 on-line Help is
+    run.<!--mstheme--></font></h4>
+    <p>&quot;Help Topics&quot; window can be activated only by clicking on the
+    &quot;Help Topics&quot; button in the Help window.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2&nbsp; and previous versions.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>Please see a detailed <a href="help_topics_window.htm">description</a>.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_A Windows Help Compiler is set by default in the Application Expert while creating an OS2 project"></a>A
+    Windows Help Compiler is set by default in the Application Expert while
+    creating an OS/2 project<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000209.010:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>A Help Compiler, that is an external tool, does not belong to a project.
+    The VDE uses a Help Compiler set by default or for a previous project until
+    a user manually change it.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2&nbsp; and previous versions.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>Manually change a Help Compiler name in the &quot;Help Maker&quot; tab of
+    the <b>Application Expert </b>(Ctrl+A). Check and change, if necessary a
+    path to this compiler in the <b>External Tools Directories</b>&nbsp; dialog
+    (<b>Options|Global|External Tools Directories</b> menu item).</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Printing problem"></a>A printing problem<!--mstheme--></font></h4>
+    <p>If you print several pages beginning with the page different from the
+    page number one, the first page of a range is spoiled.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Default setting for &quot;Convert ANSI to OEM&quot; in the Compiler Options dialog"></a>Default
+    setting for &quot;Convert ANSI to OEM&quot; in the Compiler Options dialog<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990226.01<!--mstheme--></font></h6>
+    <p align="left">In the versions previous to Visual Prolog 5.1, build 565 the
+    default setting for &quot;Convert ANSI to OEM&quot; option in the Compiler
+    Options dialog is ON. This causes problems with handling of non-English
+    characters, because the second part of the code table is unavailable.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>Uncheck the &quot;Convert ANSI to OEM&quot; option.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.<br>
+    Since the build 565, the default setting of the option is OFF.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_More Windows dialog"></a>Windows 95/98 in the MDI menu
+    Window|More Windows-&gt; &quot;Select window&quot; default dialog do not
+    have a horizontal scrollbar.<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990827.01<!--mstheme--></font></h6>
+    <p>As a result,&nbsp; filenames with long Paths do not fit into window
+    client area. This prevents selection of windows correspondent to these files
+    by users.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1.&nbsp;<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>User application can catch window native message:</p>
+    <blockquote>
+      <!--mstheme--></font><pre>e_Native(wm_command(9309,_)...) </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <p>and display user dialog that can be resized.
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_Checking ON the Print Menu in DOS"></a>Checking ON the
+    &quot;Print Menu in DOS .EXE&quot; in the VDE does not set -p option for the
+    Compiler<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990314.01:&nbsp;&nbsp;&nbsp; FIX<!--mstheme--></font></h6>
+    <p>Checking ON the &quot;Print Menu in DOS .EXE&quot; in the &quot;Compiler
+    Options&quot; (Options|Project|Compiler Options|Code Generation) does not
+    set -p option for the Compiler! So, Alt+P does not activate (Print / Log
+    file) menu.
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1.&nbsp;<br>
+    Fixed in Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VDE_GPF at the Help compiling stage"></a>GPF at the Help
+    compiling stage in the Windows version of the VDE after changing a target
+    platform from &quot;OS/2 32-bit&quot; to &quot;Windows 32&quot;<!--webbot
+    bot="PurpleText" preview="Discuss with OE and Anb" --><!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000526.005:&nbsp;&nbsp; BUG<!--mstheme--></font></h6>
+    <p>The following sequence of actions in some cases causes GPF
+    (&quot;hcrtf.exe - Application Error…. The memory could not be
+    read...&quot; error message).</p>
+    <ol>
+      <li>In the Windows version of the VDE create a project with
+        &quot;OS/2&quot; as a target platform.</li>
+      <li>Choose &quot;Topics&quot; in the Project window and create Help
+        topics.</li>
+      <li>Choose Project|Rebuild All menu item.</li>
+      <li>Choose Options|Project|Application Expert menu item (CTRL+A).</li>
+      <li>Change a target platform in the &quot;Application Expert&quot; from
+        &quot;OS/2&quot; to &quot;Windows 32&quot;.</li>
+      <li>Choose Project|Rebuild All menu item.</li>
+    </ol>
+    <p>The reason of the problem is that HCRTF Windows Help Compiler cannot
+    resolve the font styles, stored in the RTF file for OS/2 and fails.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>To avoid the error, define font style that will be compatible between
+    OS/2 and Windows. Note that OS/2 Help system allows only 4 predefined fonts:
+    default, Tms Rmn, Courier and Helv.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2.</p>
+    <h4><!--mstheme--><font color="#000000">Creating of a multiprogrammer project with the name of an existing
+    multiprogrammer project and in the same location causes overwriting of all
+    source files of an existing project<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000221.001:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>If a new multiprogrammer project is created with the name of an existing
+    multiprogrammer project and in the same directory, where the old project is
+    located; all prolog source files will be overwritten without any warnings
+    after the &quot;Overwrite&quot; button in the warning &quot;File
+    '&lt;project name&gt;.prj' exists already&quot; is pressed.</p>
+    <h5 align="left"><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+  </blockquote>
+  <h2 align="left"><!--mstheme--><font color="#000000"><a name="VPI"></a> VPI Problems<!--mstheme--></font></h2>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_easywin does not support c as main target">EasyWin does
+      not support C as main Target</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_modeless dialog ‘tab’ problem.">Modeless dialog
+      ‘Tab’ problem.</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_win_gettext bug for a multi-line edit control in os2">win_GetText
+      bug for a multi-line edit control in OS/2 (Visual Prolog 5.1, build 564
+      and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_bug in win_move for task window&nbsp;">Bug in win_Move for
+      a task window&nbsp;(Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_pict_open causes&nbsp; the error 6000">pict_Open causes&nbsp;
+      the error 6000 (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_pict_open causes window caption and main menu&nbsp; flickering">pict_Open
+      causes window caption and main menu&nbsp; flickering</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_mf_load3 bug under win32">mf_Load/3 BUG under Win32
+      (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_vpi_createprocess">vpi_CreateProcess:&nbsp; notification
+      bug for 16-bit GUI applications under WIN NT (Visual Prolog 5.1, build 564
+      and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_vpi_closeprocess">vpi_CloseProcess cannot close 16-bit
+      application under WinNT</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_win_getstate">win_GetState returns wsf_Titlebar in a wrong
+      way (Visual Prolog 5.1, build 564 and previous versions)</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_dlg_choosecolor does not show input custom colors">dlg_ChooseColor
+      does not show input custom colors</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_problem in printing of color bitmaps by black and white printer">Problem
+      in printing of color bitmaps by black-and-white printer</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_incorrect work of dlg_getfilename under windows 2000">Different
+      behavior of dlg_getFileName on different Windows platforms</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_dlg_printsetup predicate conflicts with a third-party printer driver">dlg_printSetup
+      predicate conflicts with a third-party printer driver</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#vpi_smapi_sendmail predicate changes current directory">sMAPI_SendMail
+      predicate changes a current directory</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_EasyWin does not support C as main Target"></a>EasyWin does
+    not support C as main Target<!--mstheme--></font></h4>
+  </blockquote>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_Modeless dialog ‘Tab’ problem."></a>Modeless dialog
+    ‘Tab’ problem.<!--mstheme--></font></h4>
+  </blockquote>
+  <dl>
+    <dd>Tab does not work for the modeless dialogs, which have a modal dialog as
+      a parent.</dd>
+  </dl>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_win_GetText bug for a multi-line edit control in OS2"></a>win_GetText
+    bug for a multi-line edit control in OS/2<!--mstheme--></font></h4>
+    <p>If a multi-line edit control is created using <strong>win_SetText</strong>
+    with a string more than 1K, <strong>win_GetText</strong> truncates the text
+    to about 1K.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_Bug in win_Move for task window&nbsp;"></a>Bug in win_Move
+    for task window&nbsp;<!--mstheme--></font></h4>
+    <p>Top is set lower than expected.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_pict_Open causes&nbsp; the error 6000"></a>pict_Open causes&nbsp;
+    the error 6000<!--mstheme--></font></h4>
+    <p>If pict_Open is used in a DLL with a console .EXE, the error 6000
+    &quot;Bad window handle&quot; is generated.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_pict_Open causes window caption and main menu&nbsp; flickering"></a>pict_Open
+    causes window caption and main menu&nbsp; flickering<!--mstheme--></font></h4>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_mf_Load3 BUG under Win32"></a>mf_Load/3 BUG under Win32<!--mstheme--></font></h4>
+    <p>Predicate <strong>mf_Load/3</strong> returns invalid rectangle values if
+    a metafile contains negative coordinates.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_vpi_CreateProcess"></a>vpi_CreateProcess:&nbsp;
+    notification bug for 16-bit GUI applications under WIN NT.<!--mstheme--></font></h4>
+    <p>While running 16-bit GUI application from 32-bit VPI application using
+    vpi_CreateProcess,&nbsp; e_EndApplication comes to windows event handler
+    before closing it.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_vpi_CloseProcess"></a>vpi_CloseProcess cannot close 16-bit
+    application under WinNT<!--mstheme--></font></h4>
+    <p>Bug exists only for WIN NT and only for GUI 16-bit application.<br>
+    When you run 16-bit GUI application from 32-bit VPI application using
+    vpi_CreateProcess, and then try to close 16-bit application by
+    vpi_CloseProcess, nothing happens, i.e. 16-bit application is not closed.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_win_GetState"></a>win_GetState returns wsf_Titlebar in a
+    wrong way<!--mstheme--></font></h4>
+    <p>If window has a border, the predicate <strong>win_GetState</strong>
+    returns <strong>wsf_Titlebar</strong> no matter, whether window has a title
+    bar or not.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1, build 564, and previous
+    versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_dlg_ChooseColor does not show input custom colors"></a>dlg_ChooseColor
+    does not show input custom colors<!--mstheme--></font></h4>
+    <p>Since dlg_ChooseColor does not show input custom colors, it is impossible
+    to edit a custom color.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_Problem in printing of color bitmaps by black and white printer"></a>Problem
+    in printing of color bitmaps by a black-and-white printer<!--mstheme--></font></h4>
+    <p>The quality of printed images is low.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_Incorrect work of dlg_getFileName under Windows 2000"></a>
+    Different behavior of dlg_getFileName on different Windows platforms<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R990920.02:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>if&nbsp;<i> StartPath =</i> &quot;&quot;,<i> </i>the algorithm for
+    selecting the initial directory varies on different Windows platforms. The
+    reason of the problem is the underlying Windows API.&nbsp;<br>
+    <i>See: MSDN Library, OPENFILENAME topic</i>, <i>lpstrInitialDir.</i></p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2, and previous versions.&nbsp;</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_dlg_printSetup predicate conflicts with a third-party printer driver"></a>dlg_printSetup
+    predicate conflicts with a third-party printer driver<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000410.010:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p>Some third party printer drivers (that are not approved by Microsoft for
+    the correspondent version of Windows) can conflict with the predicate <b>dlg_printSetup.</b></p>
+    <p>For example, <b>dlg_printSetup</b> predicate conflicts with a HP 4000
+    PCL6 printer, when hp4000 driver (Danish version for Windows 95) is used.
+    The same printer with hp5mp driver demonstrates no problems.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.2, and previous versions.&nbsp;</p>
+    <h4><!--mstheme--><font color="#000000"><a name="VPI_sMAPI_SendMail predicate changes current directory"></a>sMAPI_SendMail
+    predicate changes a current directory<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000217.004:&nbsp;&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    <p><b>sMAPI_SendMail</b> predicate changes a current directory. This can
+    cause different errors. In some cases, such behavior of sMAPI_SendMai can be
+    useful.</p>
+    <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+    <p>To avoide the problem sMAPI_SendMail should be called in the following
+    context:</p>
+    <blockquote>
+      <!--mstheme--></font><pre>disk(CURRDIR),
+RC = sMAPI_SendMail( ... ),
+disk(CURRDIR),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+  <h2 align="left"><!--mstheme--><font color="#000000"><a name="Linker"></a> Linkers Problems&nbsp;<!--mstheme--></font></h2>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker_an internal error while importing dll functions">An
+      internal error while importing DLL functions</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker_visual studio 6.0 uses a new format for import libraries">Visual
+      Prolog 5.x does not support Visual Studio 6.0 format for import libraries</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker_build problem when an external linker is used">Build
+      problem when an external linker is used</a><!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#linker_the pdc link editor has no option to set the stacksize">The
+      PDC Link Editor has no option to set the stacksize</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000"><a name="Linker_An internal error while importing DLL functions"></a>An
+    internal error while importing DLL functions<!--mstheme--></font></h4>
+    <p>Importing of DLL functions with extensions different from .DLL (e.g.
+    winspool.drv) causes an internal error.</p>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Linker_Visual Studio 6.0 uses a new format for Import libraries"></a>Visual
+    Prolog 5.x does not support Visual Studio 6.0 format for Import libraries<!--mstheme--></font></h4>
+    <p>Visual Prolog 5.x supports only&nbsp; Visual Studio 5.0&nbsp; format for
+    import libraries.</p>
+    <h5><!--mstheme--><font color="#000000"><strong>Workaround:</strong><!--mstheme--></font></h5>
+    <p>Use the compatibility option in Visual Studio 6.0 to generate 5.0
+    compatible import libraries.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Linker_Build problem when an external linker is used"></a>Build
+    problem when an external linker is used<!--mstheme--></font></h4>
+    <p>The build process will end with the message &quot;Project not built&quot;
+    in a non-DOS mode if an external linker&nbsp; output includes the following
+    strings: &quot;<code>fatal</code>&quot; or &quot;<code>error</code>&quot;.</p>
+    <h5><!--mstheme--><font color="#000000"><strong>Workaround:</strong><!--mstheme--></font></h5>
+    <p>Avoid using of file and directory names including sequences&nbsp; &quot;<code>fatal</code>&quot;
+    or &quot;<code>error</code>&quot; if you are going to use external linkers.</p>
+    <h4><!--mstheme--><font color="#000000"><a name="Linker_The PDC Link Editor has no option to set the stacksize"></a>The
+    PDC Link Editor has no option to set the stacksize<!--mstheme--></font></h4>
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1 and previous versions.</p>
+    <p>Fixed in Visual Prolog 5.2. The <a href="../news/news52/vde/stacksize.htm">-s&lt;StackSize&gt;
+    Linker option</a> that sets the initial stack size for the generated module
+    to the specified StackSize number of bytes has been added.</p>
+    <h5><!--mstheme--><font color="#000000"><strong>Workaround </strong>for Windows<strong>:</strong><!--mstheme--></font></h5>
+    <p>It is possible to edit the STACKSIZE parameter in a DLL/EXE with the help
+    of MS EDITBIN.EXE: EDITBIN.EXE /STACK:newsize FILE</p>
+    <h5><!--mstheme--><font color="#000000">Workaround for OS/2<!--mstheme--></font></h5>
+    <p>The only solution under OS/2 is changing of a linker.</p>
+  </blockquote>
+  <h2 align="left"><!--mstheme--><font color="#000000"><a name="DEBUGGER"></a> Debugger Problems<!--mstheme--></font></h2>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">The values of output variables are sometimes not displayed<!--mstheme--></font></h4>
+  </blockquote>
+  <dl>
+    <dd>The values of output variables are sometimes not displayed while using
+      the predicates <strong>findall</strong> and <strong>not</strong>.</dd>
+  </dl>
+  <blockquote>
+    <h4><!--mstheme--><font color="#000000">Debugger&nbsp; immediately jumps to the continue point with no visual
+    indication of a fail.<!--mstheme--></font></h4>
+    <h4><!--mstheme--><font color="#000000">GPF, while debugging caused by incompatibility of Visual Prolog with a
+    third party tool<!--mstheme--></font></h4>
+    <h6><!--mstheme--><font color="#000000">R000505.006:&nbsp;&nbsp; Problem<!--mstheme--></font></h6>
+    Visual Prolog Debugger&nbsp; conflicts with some old versions of POINT32
+    software (only under Windows 95). Note that Microsoft MSDN documentation
+    (ID: Q148137) reports about conflicts of this IntelliMouse software with
+    some other products, for instance, with CorelDraw version 6 and even with
+    Microsoft Visual Basic. The problem is seen as GPF in the Debugger.
+    <p>Please, contact <a href="mailto:support@visual-prolog.com">Visual-Prolog
+    Support</a> if you come over this problem.</p>
+    <h5><!--mstheme--><font color="#000000">Symptoms<!--mstheme--></font></h5>
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--msthemelist--><tr><td valign="top" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The problem is reproducible.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The problem does not disappear after Visual Prolog reinstallation.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The problem disappears, when you start Windows in Safe mode.<!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+    <p>The information applies to Visual Prolog 5.1.</p>
+  </blockquote>
+  <!--msthemeseparator--><p align="center"><img src="../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+  <h5><!--mstheme--><font color="#000000">See also:<!--mstheme--></font></h5>
+  <p align="center"><a href="pdcindex_packages.htm">Known Problems in VIP
+  packages&nbsp; </a>| <a href="../news/news51.htm">News</a> | <a href="../fixes/fixes51.htm">Solved
+  Problems</a> | <a href="../upgrade/upgrade5to5.1.htm">Upgrade Notes</a> | <a href="../patches/pdcindex.htm">Patches</a>
+  | <a href="../technotes/pdcindex.htm">Technical Notes</a> |<a href="../faq/pdcindex.htm">
+  Support_FAQ</a></p>
+  &nbsp;</span>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<TITLE>_aaaa</TITLE>
+<META NAME="Template" CONTENT="C:\microsoft office\Office\html.dot">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</HEAD>
+<BODY bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<H2><!--mstheme--><font color="#000000">Separation of Concerns<!--mstheme--></font></H2>
+<H3><!--mstheme--><font color="#000000">Separate dispatch and handling<!--mstheme--></font></H3>
+<P>Example: the handling of resize bars in the splitwin module needs to do something on mouseDown, mouseMove, and mouseUp these predicates to handle these things should be grouped together and should then be called from the splitwin event handler.</P>
+<H3><!--mstheme--><font color="#000000">Split functionality early<!--mstheme--></font></H3>
+<P>Don’t make a predicate that is used for two different things where you dispatch on some argument value or worse a database fact in the leaf of call tree. </P>
+<P>In your code you use the same predicate to draw 2D and 3D resize bars. Looking at the code very little is reused and it makes the code more complicated to build it that way instead make two predicates and check at the top level whether you should call split_draw2Dbars or split_draw3Dbars. </P>
+<H2><!--mstheme--><font color="#000000">Copy-Paste<!--mstheme--></font></H2>
+<P>Don’t use copy paste! If you have the same code in several cases carefully consider whether it would make sense to put it in a common predicate.</P>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If the code is in different clauses to the same predicate it should almost always be put in a common predicate<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Also if the code is in different predicates that are closely related and in the same module it should probably be put in a common predicate. If it makes good sense to change the code one place and not the other don’t put it in a common predicate.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If the code are in different modules the code should only be put in a common (here global) predicate if it makes sense independent of the modules. Ask yourself whether it makes sense to change the code one place without changing it the other in that case don’t put it in a common predicate.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<H2><!--mstheme--><font color="#000000">Predicate names<!--mstheme--></font></H2>
+<P>There is no one rule as to how you pick good names for your predicates. So I’m only going to come with a few suggestions here. Use "Is" if you have a predicate that test for something. That way you signal what holds if the predicate succeeds so don’t name the predicate "splitwin_CheckLegalBarPos" but "splitwin_ IsLegalBarPos".</P>
+<P>The predicate name should reflect the meaning of the predicate not the way it is used. So don’t name the predicates "splitwin_MouseInBar", but "splitwin_pnt_IsInBar".</P>
+<P>Sometimes it is very difficult to come up with good names </P>
+<H2><!--mstheme--><font color="#000000">Use direct recursion instead of accumulating arguments<!--mstheme--></font></H2>
+<P>That is, unless there is a purpose with the accumulating argument like in reverse.</P>
+<P>You write:</P>
+<blockquote>
+<!--mstheme--></font><pre>splitwin_DeleteFlags([],<font color="#008000">OutFlags</font>,<font color="#008000">OutFlags</font>) :-
+    !.
+splitwin_DeleteFlags([<font color="#008000">F</font>|<font color="#008000">Flags</font>],<font color="#008000">OutFlags</font>,<font color="#008000">FL</font>) :-
+    <font color="#008000">F</font> = wsf_ClipChildren,
+    !,
+    splitwin_DeleteFlags(<font color="#008000">Flags</font>,<font color="#008000">OutFlags</font>,<font color="#008000">FL</font>).
+splitwin_DeleteFlags([<font color="#008000">F</font>|<font color="#008000">Flags</font>],<font color="#008000">OutFlags</font>,<font color="#008000">FL</font>) :-
+    <font color="#008000">F</font> = wsf_Visible,!,
+    splitwin_DeleteFlags(<font color="#008000">Flags</font>,<font color="#008000">OutFlags</font>,<font color="#008000">FL</font>).
+splitwin_DeleteFlags([<font color="#008000">F</font>|<font color="#008000">Flags</font>],<font color="#008000">OutFlags</font>,<font color="#008000">FL</font>) :-
+    !,
+    splitwin_DeleteFlags(<font color="#008000">Flags</font>,[<font color="#008000">F</font>|<font color="#008000">OutFlags</font>],<font color="#008000">FL</font>).
+splitwin_DeleteFlags(_,_,[]) :-
+    errorexit().</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<P>There is no good reason for using an accumulating argument here it only complicates matters and reverse the list of flags. Furthermore testing for each flag you want to delete in separate clauses is very bad programming style instead you should use member or make a separate predicates that checks whether this is one of the flags you want to delete. </P>
+<P>I would write</P>
+<blockquote>
+<!--mstheme--></font><pre>splitwin_DeleteFlags([],[]).
+splitwin_DeleteFlags([<font color="#008000">F</font>|<font color="#008000">Fs</font>],<font color="#008000">DFs</font>) :-
+    member(<font color="#008000">F</font>,[wsf_ClipChildren,wsf_Visible]),
+    !,
+    splitwin_DeleteFlags(<font color="#008000">Fs</font>,<font color="#008000">DFs</font>).
+splitwin_DeleteFlags([<font color="#008000">F</font>|<font color="#008000">Fs</font>],[<font color="#008000">F</font>|<font color="#008000">DFs</font>]) :-
+    splitwin_DeleteFlags(<font color="#008000">Fs</font>,<font color="#008000">DFs</font>).
+splitwin_DeleteFlags(_,_):-
+    errorExit(splitwin_internal_error). % not needed in new version.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<P>Or maybe make a predicate called <i> list_diff </i> which took the difference between two lists in general and call it</P>
+<blockquote>
+<!--mstheme--></font><pre>list_diff(Flags,[wsf_ClipChildren,wsf_Visible],<font color="#008000">NewFlags</font>).
+
+list_diff([],_,[]):-
+    !.
+list_diff([<font color="#008000">X</font>|<font color="#008000">Xs</font>],<font color="#008000">Ys</font>,<font color="#008000">Zs</font>) :-
+    member(<font color="#008000">X</font>,<font color="#008000">Ys</font>),
+    !,
+    list_diff(<font color="#008000">Xs</font>,<font color="#008000">Ys</font>,<font color="#008000">Zs</font>).
+list_diff([<font color="#008000">X</font>|<font color="#008000">Xs</font>],<font color="#008000">Ys</font>,[<font color="#008000">X</font>|<font color="#008000">Zs</font>]) :-
+    list_diff(<font color="#008000">Xs</font>,<font color="#008000">Ys</font>,<font color="#008000">Zs</font>).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<P>The last solution is preferable because <i> list_diff </i> has a clear meaning independent of its usage.</P>
+<H2><!--mstheme--><font color="#000000">Keep things logically together<!--mstheme--></font></H2>
+<P>In you code you handle the resize bars on <i> mouse_Down</i>,<i> mouse_Move</i>, and
+<i> mouse_Up</i>. You have sensibly enough made a separate predicate for <i> mouse_Move</i>, but you haven’t made separate predicates for the resize bar handling on
+<i> mouse_Down</i> and <i> mouse_&Uacute;p</i>.</P>
+<P>You should make handling predicates for all three events, and call them in the event handler.</P><!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></BODY>
+</HTML>

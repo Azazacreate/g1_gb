@@ -1,0 +1,35 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName: 		TABDLG.DOM
+ Purpose:		Domain definitions for TABDLG.PRO
+ Written by: 	Ole Kjær Christensen
+ Last revised: 21/4/1984 - 2000
+ 
+******************************************************************************/
+constants
+  tabdlg_dom_included = 1
+
+global domains
+	TABDLG_STYLE = top ; bottom ; left ; right	% Location of tabs
+	TABDLG_TITLE = text(STRING Title) ; icon(INTEGER ResID) ; bmp(INTEGER ResID)
+
+	TABDLG_DEF = 
+		dyn(WINDEF_LIST CtlList) ;
+		res(INTEGER ResID)
+
+	TABDLG =
+		tabdlg
+		(	INTEGER			SheetID,	% Logical ID of tab/sheet.
+			TABDLG_TITLE		TabTitle,	% Title of the tab associated with the sheet.
+			TABDLG_DEF		Controls,	% Specification of sheet controls/fields/handler.
+			DIALOG_FIELD_LIST	Fields
+		)
+	TABDLG_LIST = TABDLG*
+
+	TABDLG_ENABLE_LIST = TABDLG_ENABLE*
+
+	TABDLG_ENABLE =
+		enable(CTLID, BOOLEAN);
+		show(CTLID, BOOLEAN)

@@ -1,0 +1,44 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog 
+
+ FileName: VPITREE.DOM
+ PURPOSE: 
+ Written by: 
+ Comments:
+
+******************************************************************************/
+constants
+  vpitree_dom_included = 1
+
+constants
+	tree_DirRight = 0
+	tree_DirLeft  = 1
+	tree_DirDown  = 2
+	tree_DirUp    = 3
+
+global domains
+
+	TREE_PATH          = LONGLIST*
+	LONGLIST           = LONG*
+
+	TREE_NODE_MARK     = marked ;
+			     unmarked
+
+	TREE_SELECTOR      = string
+
+	TREE_DIRECTION     = INTEGER
+
+	TREE_ARROW_TYPE    = INTEGER
+
+	TREE_ARROW_PEN     = tree_arrowPen ( TREE_ARROW_TYPE, PEN )
+	TREE_ARROW_PEN_LIST= TREE_ARROW_PEN*
+
+	TREE_WIN_INFO      = tree_WinInfo ( FONT, TREE_DIRECTION, TREE_ARROW_PEN_LIST );
+
+			     tree_WinInfoAdv ( FONT, TREE_DIRECTION, TREE_ARROW_PEN_LIST, SLIST, PNT )
+
+	TREE               = tree ( TREE_SELECTOR, TREE_NODE_MARK, TREELIST, TREE_ARROW_TYPE )
+	TREELIST           = TREE*

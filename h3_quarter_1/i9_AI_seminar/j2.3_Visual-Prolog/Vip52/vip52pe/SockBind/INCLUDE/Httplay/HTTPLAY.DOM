@@ -1,0 +1,82 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  ---
+ FileName: ===
+ Purpose: A file for HTTP layer
+ Written by: Konstantin Ivanov
+ Comments: Include it in your project!
+******************************************************************************/
+ GLOBAL DOMAINS
+
+  HTTPLAY_ANSWERS=ok(HTTPLAY_REQUEST Request, HTTPLAY_RESPONSE Response);
+ 		 httplay_error(HTTPLAY_REQUEST Request, UNSIGNED Err)
+
+  HTTPLAY_REQUEST=simple_req(httplay_URI);           %simple request
+                         full_req(REQUEST_LINE,                  %full request
+                                    HEADERS_0,
+                                    ENTITY_BODY_0
+                                   )
+  HTTPLAY_RESPONSE=simple_resp(ENTITY_BODY_0);   %simple response
+                            full_resp(STATUS_LINE,             %full response
+                                         HEADERS_0,
+                                         ENTITY_BODY_0
+                                        )
+  HTTPLAY_REQUEST_LIST = HTTPLAY_REQUEST*
+  ENTITY_BODY_0=ENT_BODY*
+  ENT_BODY=entity_body(BINARY)
+
+  REQUEST_LINE=req_line(STRING,httplay_URI,HTTP_VERSION)
+  STATUS_LINE=res_line(HTTP_VERSION,INTEGER,STRING)
+  HEADERS_0=HEADERS*
+  HEADERS=
+                %general headers
+               date_0(HTTPLAY_DATE);
+               pragma(SLIST Directives);
+
+               %request headers
+               authorization(AUTHOR);
+               from(STRING Mailbox);
+               if_modified_since(HTTPLAY_DATE);
+               referer(httplay_URI);
+               user_agent(PRODUCT_VERSION);
+
+               %response headers
+               location(STRING Sheme, STRING URI);
+               server(PRODUCT_VERSION);
+               www_authenticate(STRING Auth_sheme, STRING Realm_value, SLIST Auth_params);
+
+               %entity headers
+               allow(SLIST Methods);                 %a list of methods: "GET","POST","HEAD"
+               content_encoding(STRING Code);       %"x-gzip","gzip","x-compress","compress"
+               content_length(UNSIGNED Length);       % a length of entity-body
+               content_type(STRING Type, STRING SubType, SLIST Params); % e.g. text/html, where text - Type, html - subtype
+               expires(HTTPLAY_DATE);
+               last_modified(HTTPLAY_DATE);
+
+               %unrecognized header (undeclared)
+               unrecognized_header(STRING Name, STRING Value)
+
+  HTTP_VERSION=http_ver(INTEGER Major, INTEGER Minor)              %HTTP-version="HTTP/" Major "." Minor       ,e.g. 1.0
+
+  HTTPLAY_DATE=http_date(STRING WeekDay, DATE_0, TIME_0)        %WeekDay="Mon"|"Tue"|"Wed"|"Thu"|"Fri"|"Sat"|"Sun"
+  DATE_0=date(INTEGER Day,STRING Month,INTEGER Year)       %Month="Jan"|"Feb"|"Mar"|"Apr"|"May"|"Jun"|"Jul"|"Aug"|"Sep"|"Oct"|"Nov"|"Dec"; for e.g. Year=1996
+  TIME_0=time(INTEGER Hours,INTEGER Minutes,INTEGER Seconds)
+
+  httplay_URI=rel_path(STRING Path, SLIST Params, STRING Query);	%rel_path=[path][";"params]["?"query]
+        absoluteURI(STRING Sheme, STRING URI)
+
+  PRODUCT_VERSION=PRODUCT_VER*
+  PRODUCT_VER=prod(STRING Product);
+                    comm(STRING Comment)                                      %comment must be surrouned with parentheses "(" and ")"
+
+  AUTHOR=basic_credentials(STRING Basic_cookie);         %Basic-cookie is base64 coding of a string in next format: [UserID]":"UserPassword, where UserID is optional
+             authoriz(STRING Auth_sheme, SLIST Auth_params)
+
+
+  CONSTANTS
+
+/*  httplay_errInvalidHeader		= 8950
+  httplay_errInvalidDate_or_Time	= 8951
+  httplay_errInvalidResponse		= 8952*/

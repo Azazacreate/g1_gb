@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<title>Cut</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Cut<!--mstheme--></font></h1>
+
+<p>Cut (i.e. !) is a predicate which &quot;cuts&quot; away nondeterminism, i.e.
+&quot;cuts&quot; away the possibility for further solutions (hence the name).</p>
+
+<p>The nondeterminism it cuts away can be divided into two groups (though some cuts will
+fall into both groups):</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Cut's that cut away the possibility to backtrack into a subsequent clause of the current
+    predicate.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Cut's that cut away further solutions to a nondeterministic predicate call.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>There are no other (sensible) uses of a cut, except for the two mentioned above. Once
+these purposes are understood it is easy to put cuts in the right place:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Either the cut is put at a place where backtrack to subsequent clauses is no longer
+    wanted, or/and<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It is put after the call of a nondeterministic (i.e. nondeterm or multi) predicate call,
+    for which only a single solution is important.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The first purpose can be illustrated by the following example:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    p(<font color="#0000FF">17</font>, <font color="#008000">X</font>) :-
+        <font color="#008000">X</font> &gt; <font color="#0000FF">13</font>,
+        !,
+        q(<font color="#008000">X</font>),
+        ...
+    p(<font color="#008000">A</font>, <font color="#008000">X</font>) :-
+        ...</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>In this example we have a cut after the test for X &gt; 13. this is a very typical
+sound use of the first reason: &quot;Our clauses cases out on the input and <strong>now</strong>
+(where <em>now</em> is <strong>immediately</strong> after the test X &gt; 13), we have
+found the right case&quot;.</p>
+
+<p>Such a cut is typically placed just after the head of the clause or after a test close
+to the head of the clause. </p>
+
+<p>The second purpose can be illustrated by the following example:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    firstMember(<font color="#008000">X</font>, <font color="#008000">L</font>) :-
+        member(<font color="#008000">X</font>, <font color="#008000">L</font>),
+        !.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>In this example the cut is&nbsp; placed <strong>immediately</strong> after a
+nondeterministic predicate, of which we are only interested in a single solution.</p>
+
+<p>Above I have highlighted the word <em>immediately</em> twice, and this is because the
+keyword in placing cuts is immediately: they should be placed as early in the clause as
+possible.</p>
+
+<p>You should be suspicious about clauses containing more that one cut.&nbsp; More than
+one cut in a single clause often signals a programming or design error.</p>
+
+<h2><!--mstheme--><font color="#000000"><font color="#FF0000">Red</font> and <font color="#008000">Green</font> Cuts<!--mstheme--></font></h2>
+
+<p>We do <strong>not</strong> generally encourage that cuts are turned green, it is
+perfectly <strong>fine</strong> with red cuts.</p>
+
+<p>The society of traditional Prolog, has defined the notion of red and green cuts. &nbsp;
+Briefly speaking a green cut is a cut, which does <strong>not</strong> change the
+semantics of the predicate in which it occurs, whereas a red one <strong>does</strong>
+change the semantics.</p>
+
+<p>Clearly all the cuts which cut away further solutions from a nondeterministic predicate
+are red by nature.&nbsp; So distinguishing between red and green cuts only has a purpose
+for those cuts, which prevents backtracking to next clauses.</p>
+
+<p>Consider the clauses:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    p(<font color="#008000">X</font>) :-
+        <font color="#008000">X</font> &gt; <font color="#0000FF">0</font>,
+        !,
+        ...
+    p(<font color="#008000">X</font>) :-
+        <font color="#008000">X</font> &lt;= <font color="#0000FF">0</font>,
+        ...</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>The cut in the predicate above is <em>green</em>, because if we remove it the predicate
+will behave in the same way.&nbsp;&nbsp; When the cut is present in the first clause, the
+test <em>X &lt;= 0 </em>in the second clause is not really needed:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><strong>clauses</strong></font>
+    p(<font color="#008000">X</font>) :-
+        <font color="#008000">X</font> &gt; <font color="#0000FF">0</font>,
+        !,
+        ...
+    p(<font color="#008000">X</font>) :-
+        ...</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>Without this test the cut is, however, turned red, because now the predicate will
+behave different if we remove the cut.</p>
+
+<p>Green cuts might seem superfluous, but in fact they are used to remove superfluous
+backtrack points (mainly for performance reasons).&nbsp;&nbsp; In Visual Prolog they may
+however also be needed to &quot;convince&quot; the compiler that some predicate has a
+specific mode (e.g. procedure).</p>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

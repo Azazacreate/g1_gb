@@ -1,0 +1,29 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  CALCCLI
+ FileName: CALCOBJ.PRE
+ Purpose: Predicate definitions for CALCOBJ.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+ifndef ws_win
+ #Error: Tools works under Windows-32 platform only
+enddef 
+ifndef platform_32bit
+ #Error: Tools works under Windows-32 platform only
+enddef 
+
+GLOBAL PREDICATES
+
+create_calculator_objectB()
+release_calculator_objectB()  
+check_calculator_objectB()
+
+calc_PushB(string) - (i)
+calc_get_AccumulatorB( string ) - (o)
+calc_get_OperatorB( string ) - (o)
+calc_get_OpndB( string ) - (o)
+calc_get_DisplB( string ) - (o)

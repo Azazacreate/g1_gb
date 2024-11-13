@@ -1,0 +1,20 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  PICTDRAW
+ FileName: PICTDRAW.PRE
+ Purpose: Predicate definitions for PICTDRAW.PRO
+ Written by: Alexander Gostintsev
+ Comments:
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+%END System Mark
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

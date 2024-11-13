@@ -1,0 +1,498 @@
+<html>
+
+<head>
+<title>Visual Prolog coding standard</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>&nbsp;</p>
+
+<h1><!--mstheme--><font color="#000000">Visual Prolog 6.x coding standard<!--mstheme--></font></h1>
+
+<dl>
+  <dt>This document describes coding standards for Visual Prolog programs, written as part of
+    the Visual Prolog system itself.&nbsp; It is also the standards for examples in user
+    documentation.&nbsp; As such it represents Prolog Development Center's suggested coding standards for users as
+    well.</dt>
+</dl>
+
+<h2><!--mstheme--><font color="#000000">Keywords<!--mstheme--></font></h2>
+
+<p>Keywords are typed in lowercase letters. In documents keywords are typeset with a
+boldfaced sans serif font, for example Arial.&nbsp; Default color is dark yellow.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000"><b>constants
+domains
+database
+facts
+predicates
+class
+interface
+implement
+end
+inherit
+support
+open</b></font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000">Semi-keywords<!--mstheme--></font></h2>
+
+<p>Visual Prolog uses a number of&nbsp; tokens for diverse syntactical
+structuring.&nbsp; These words are all written in lower-case&nbsp; (except the
+calling convention C, which is written C) normal faced sans serif font.&nbsp;
+These semi-keywords are colored in two different colors depending on their
+nature.&nbsp; If the word represent a choice then it is colored purple, whereas
+if it is a structuring word it is colored dark yellow.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#800080">erroneous
+failure
+procedure
+determ
+nondeterm
+multi
+stdcall
+C
+...</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial" color="#808000">language
+as
+...</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>This example show the colors and font</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial"><b><font color="#808000">predicates</font></b><font color="#808000">
+</font>    myPredicate <font face="Arial" color="#000000">: (</font>string <font color="#008000">Value</font><font face="Arial" color="#000000">)
+</font>        <font face="Arial" color="#800080">procedure</font><font face="Arial" color="#000000"> (i) </font><font face="Arial" color="#808000">language </font><font face="Arial" color="#800080">stdcall</font><font face="Arial" color="#808000"> as </font><font color="#0000FF">&quot;_myP&quot;</font></font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000">Literals<!--mstheme--></font></h2>
+
+<p>Literals are colored blue in documents.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font COLOR="#0000ff" face="Arial">1
+&quot;Hello world!&quot;</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000">Identifiers<!--mstheme--></font></h2>
+
+<p>The general format of an identifier can be described by the following EBNF grammar:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">&lt;Identifier&gt; = &lt;Prefix&gt; &lt;WordGroups&gt; &lt;Suffix&gt;
+&lt;WordGroups&gt; = &lt;WordGroup&gt; { ‘_’ &lt;WordGroup&gt; }*
+&lt;WordGroup&gt; = &lt;Word&gt;+</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>Prefixes and suffixes are used to signal the kind of identifier, and will be dealt with
+in connection with each kind of identifiers. The words are capitalized, except for those
+situations where the first letter of the whole identifier has to be lower case.</p>
+
+<p>All variables start with an uppercase letter and everything else starts with a lower
+case letter.</p>
+
+<p>In documents everything except keywords are typeset in a serif font, for example Times
+New Roman</p>
+
+<h3><!--mstheme--><font color="#000000">Constants<!--mstheme--></font></h3>
+
+<p>Constants have no prefix or suffix. They start with a lowercase letter.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">numberOfRows
+pi
+logErrorMsg</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Variables<!--mstheme--></font></h3>
+
+<p>Variables have no prefix or suffix. As mentioned (and demanded by Prolog) variables
+start with an uppercase letter. In documents variables are colored green.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font COLOR="#008000">X
+File
+OutputStream</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Predicates<!--mstheme--></font></h3>
+
+<p>Predicates have no prefix.&nbsp; Predicates have no suffixes, unless it seems to be
+necessary in order to avoid confusion. In such cases the following suffixes should be
+preferred:</p>
+
+<!--mstheme--></font><table border="0" width="490">
+  <tr>
+    <td width="33"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+    <td width="58"><!--mstheme--><font face="verdana, Arial, Helvetica"><font face="Arial">_db</font><!--mstheme--></font></td>
+    <td width="379"><!--mstheme--><font face="verdana, Arial, Helvetica">database functor/predicate<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="33"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+    <td width="58"><!--mstheme--><font face="verdana, Arial, Helvetica"><font face="Arial">_nd</font><!--mstheme--></font></td>
+    <td width="379"><!--mstheme--><font face="verdana, Arial, Helvetica">nondeterm/multi<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="33"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+    <td width="58"><!--mstheme--><font face="verdana, Arial, Helvetica"><font face="Arial">_err</font><!--mstheme--></font></td>
+    <td width="379"><!--mstheme--><font face="verdana, Arial, Helvetica">erroneous<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="33"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+    <td width="58"><!--mstheme--><font face="verdana, Arial, Helvetica"><font face="Arial">_fail</font><!--mstheme--></font></td>
+    <td width="379"><!--mstheme--><font face="verdana, Arial, Helvetica">failure<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="33"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+    <td width="58"><!--mstheme--><font face="verdana, Arial, Helvetica"><font face="Arial">_det</font><!--mstheme--></font></td>
+    <td width="379"><!--mstheme--><font face="verdana, Arial, Helvetica">determ<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="33"><!--mstheme--><font face="verdana, Arial, Helvetica"><!--mstheme--></font></td>
+    <td width="58"><!--mstheme--><font face="verdana, Arial, Helvetica"><font face="Arial">_multi</font><!--mstheme--></font></td>
+    <td width="379"><!--mstheme--><font face="verdana, Arial, Helvetica">multi<!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Notice, that normally <i>multi</i> predicates would be suffixed with _nd, but if
+circumstances demand it _multi can be used instead.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">write
+setWindowFont
+member
+member_nd
+ganttBar_db</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Domains<!--mstheme--></font></h3>
+
+<p>Domains have no prefix. _list is used as suffix to list domains, in cases where the
+list domain does not have a (business-)domain name, i.e. a database record is a list of
+values, but record is a better domain name that value_list, so that is preferred. Notice
+that domains start with a lowercase letter. This also holds for build in domains like
+string, integer, etc.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">string
+integer
+value
+record
+record_list</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Classes<!--mstheme--></font></h3>
+
+<p>Classes have prefix c.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">cString
+cInputFile
+cTemplate</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Interfaces<!--mstheme--></font></h3>
+
+<p>Interfaces no have prefix or suffix, being constants they attar with a lowercase
+letter.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">inputStream</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>COM interfaces traditionally start with an &quot;I&quot;, this &quot;I&quot; kept but
+converted to lowercase:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">iUnknown
+iDispatch</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Monitors<!--mstheme--></font></h3>
+
+<p>Monitors have prefix m.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial">mBatchQueue
+mPrinterQueue
+mPostBoxes</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000">Formatting<!--mstheme--></font></h2>
+
+<p>This section considers formatting of program code. By formatting we mean line breaking,
+indentation and alignment. Indentation refers to the amount of white space at the
+beginning of the line, where as alignment refers to aligning constructs which are not the
+first on the line.</p>
+
+<h3><!--mstheme--><font color="#000000">Line breaking<!--mstheme--></font></h3>
+
+<p>Line breaking follows the following rules:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Lines should normally not be longer than 70 characters.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Outer syntactic constructs are always broken before inner constructs.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">At least one empty line separates clauses of different predicates.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Clauses of the same predicate are <b>not</b> separated by an empty line.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">At least one empty line precedes a section keyword.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Each predicate call in a clause is on a line by itself.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Cut (no matter how tiny it seems) is also on a line by itself.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The head of a clause is on a line by itself.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h3><!--mstheme--><font color="#000000">Indentation<!--mstheme--></font></h3>
+
+<p>By indentation we mean the amount of white space at the beginning of the line.
+Indentation follows the following rules:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Indentation is done in equal steps (for example 4 spaces).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If the components of a set of parentheses must be broken on several lines then a line
+    break must be inserted immediately after the opening parenthesis, and the indentation is
+    increased one step (no alignment) with the opening parenthesis.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h3><!--mstheme--><font color="#000000">Alignment<!--mstheme--></font></h3>
+
+<p>No alignment is used (alignment refers to aligning constructs which are not the first
+on the line, constructs which are the first on the line are &quot;aligned&quot; by
+indentation rules).</p>
+
+<h3><!--mstheme--><font color="#000000">Space characters<!--mstheme--></font></h3>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Space after comma.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Space after comma can be omitted inside functors, including lists.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">No spaces before or after parentheses, unless the parenthesis is next to a token that is
+    normally surrounded by space, such as ' :-'<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Constructs<!--mstheme--></font></h2>
+
+<p>In this section we shall deal with constructs one by one.</p>
+
+<h3><!--mstheme--><font color="#000000">Sections<!--mstheme--></font></h3>
+
+<p>Section keywords are on a line by itself. If the section keyword is indented n steps
+then the constructs of the section is indented n+1 steps.&nbsp;&nbsp; Sections must be
+separated by at least one empty line.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial"><b><font COLOR="#808000">clauses </font></b>
+    p.
+
+<font FACE="Arial" COLOR="#808000"><b>clauses</b></font>
+    q.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000">Classes, Interfaces, Implementations, etc</font><!--mstheme--></font></h3>
+
+<p>The class opening and class closing is on a line by itself. The closing always include
+the class identifier, the section keywords inside the class are indented one step more
+than the class itself.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial"><b><font COLOR="#808000">class</font></b> cSpecialOutputFile <font
+FACE="Arial" COLOR="#808000"><b>supports</b></font> cOutputFile
+    <font FACE="Arial"
+COLOR="#808000"><b>predicates
+</b></font>        ...
+<font FACE="Arial" COLOR="#808000"><b>end class</b></font> cSpecialOutputFile</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>The same goes for other constructs like class (i.e. interface, implementation, monitor,
+etc).</p>
+
+<h3><!--mstheme--><font color="#000000">Predicate declarations<!--mstheme--></font></h3>
+
+<p> Predicate declarations <b>always</b> have names for the
+arguments, these names are formatted as variables.&nbsp; Mode and flow pattern
+declarations is optional.&nbsp;</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font COLOR="#808000"><b><font face="Arial">predicates
+</font></b></font><font face="Arial">    increment : (integer <font
+COLOR="#008000">X</font>) -&gt; integer <font color="#008000">Y</font>
+    bubbleSort : (integer_list <font
+COLOR="#008000">Input</font>) -&gt; integer_list <font color="#008000">SortedList</font>
+    myPredicate_nd :
+       (aVeryLongDomainName <font
+COLOR="#008000">StrangeFirstParamanter</font>,
+        anotherLongDomainName <font
+COLOR="#008000">PlainSecondParameter</font>)
+        <font FACE="Arial" COLOR="#808000">nondeterm</font> (i,o)
+        <font
+FACE="Arial" COLOR="#808000">determ</font> (i,i)</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>Notice the line break after the opening parenthesis and the ordinary increase in
+indentation. Also notice the break before the &#145;&#150;&#145;. Either all arguments are
+on a single line or each of them is on a separate line.</p>
+
+<h3><!--mstheme--><font color="#000000">Domains<!--mstheme--></font></h3>
+
+<p>Functors <b>always</b> have names for their arguments; these names are formatted as
+variables.&nbsp; If a domain declaration is broken on several lines then it is first
+broken after the equal sign.&nbsp; Either all functors are on a single line or each of
+them is on a separate line.&nbsp; Either all arguments of a functor is on a single line or
+each of them is on a separate line.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial"><b><font COLOR="#808000">domains
+</font></b>    value_list = value*
+    value =
+        int(integer <font
+COLOR="#008000">Value</font>);
+        real(real <font COLOR="#008000">Value</font>);
+        str(string <font
+COLOR="#008000">Value</font>).
+    aVeryLongDomainName =
+        x(interger <font
+COLOR="#008000">X</font>); y(integer <font COLOR="#008000">Y</font>).
+    anotherLongDomainName =
+        aFunctorWithManyArguments(
+            integer <font
+COLOR="#008000">X</font>,
+            integer <font COLOR="#008000">Y</font>,
+            integer <font
+COLOR="#008000">Z</font>,
+            integer <font COLOR="#008000">RedColourComponent</font>,
+            integer <font
+COLOR="#008000">BlueColourComponent</font>,
+            integer <font COLOR="#008000">GreenColourComponent</font>).</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<font FACE="Arial">
+
+<h3><!--mstheme--><font color="#000000">Clauses</font><!--mstheme--></font></h3>
+
+<p>The clause head is on a line by itself.&nbsp; Each call in the clauses body is on a
+line by itself.&nbsp; If clause head have to be broken then the arguments are indented two
+steps more than the clause head, because otherwise it would be indented to the same
+position as the clause body.</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial"><b><font COLOR="#808000">clauses
+</font></b>    myPredicate(<font
+COLOR="#008000">X</font>, <font COLOR="#008000">Y</font>) :-
+        callNoOne(<font
+COLOR="#008000">X</font>, <font COLOR="#008000">Y</font>, <font COLOR="#008000">Z</font>),
+        !,
+        callNoTwo(<font
+COLOR="#008000">Z</font>, <font COLOR="#008000">Y</font>).
+    myPredicate(<font
+COLOR="#008000">X</font>, <font COLOR="#008000">Y</font>) :-
+        callNoThree(<font
+COLOR="#008000">X</font>, <font COLOR="#008000">Y</font>).
+
+    aPredicateWithManyArguments(<font
+COLOR="#008000">FirstArgument</font>, <font COLOR="#008000">SecondArgument</font>,
+            <font
+COLOR="#008000">X</font>, <font COLOR="#008000">Y</font>, <font COLOR="#008000">Z</font>, <font
+COLOR="#008000">ErrorNo</font>, <font COLOR="#008000">ErrorMsg</font>) :-
+        callNoOne(<font
+COLOR="#008000">FirstArgument</font>, <font COLOR="#008000">SecondArgument</font>, <font
+COLOR="#008000">X</font>, <font COLOR="#008000">Y</font>, <font COLOR="#008000">Z</font>,
+            <font
+COLOR="#008000">ErrorNo</font>, <font COLOR="#008000">ErrorMsg</font>),
+        callNoTwo(…),
+        …</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000"><font face="Arial">N</font><font face="Arial">on-deterministitic loops</font><!--mstheme--></font></h4><p>A
+construction that is often used in Prolog is &quot;looping&quot; over the
+results of a non-deterministic call.&nbsp; For this construction we propose to
+indent the &quot;loop body&quot; one extra level:</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font face="Arial"><b><font COLOR="#808000">clauses
+</font></b>    myPredicate() :-
+        </font><font face="Arial">member(<font
+COLOR="#008000">X</font>, [<font color="#0000FF">1</font>,<font color="#0000FF">2</font>,<font color="#0000FF">3</font>,<font color="#0000FF">4</font>,<font color="#0000FF">5</font>,<font color="#0000FF">6</font>]),
+            doAction(<font
+COLOR="#008000">X</font>), <font color="#0000FF">% extra indentation in the &quot;loop body&quot;</font>
+        fail.
+    myPredicate().</font></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h2><!--mstheme--><font color="#000000">Formatting code in word<!--mstheme--></font></h2>
+
+<p>This section gives a few hints that make it easier to format code in Microsoft Word.</p>
+
+<p>I have constructed a paragraph style <i>code.</i> And a number of character styles: <i>keyword</i>,&nbsp;
+<i>parameter</i>, <i>var</i>, <i>literal</i> etc</p>
+
+<p>The <i>code</i> paragraph style has the following properties:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It is based on the Body Text paragraph style, which provides correct spacing below a
+    code section.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It turns off proofing (i.e. spell check).<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It indents an amount and set the default tab size to the same amount, I use 0,63 cm
+    because this is the default size in other paragraph styles.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">It has the keep lines together property set, so that program parts are not split across
+    pages.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The <i>keyword</i> character style changes the font to Arial and the font face to bold
+and the color to dark yellow, <i>var</i> changes the color to green and finally <em>literal</em>
+changes the color to blue.</p>
+
+<p>When you type in code you start by selecting the code paragraph style and the type your
+code using soft line breaks (shift+newline), and tab for indentation (reset the option <b>insert
+and backspace set left indent </b>on <b>tools -&gt; options &#133; -&gt; edit</b> sheet).</p>
+<b>
+
+<p>Timesaver</b>: Then double-click one of the keywords and select the keyword character
+style. With that keyword still selected double-click the format painter (the paintbrush in
+the toolbar), and then single-click all your keywords one at the time. When all your
+keywords have been painted press escape or click the format painter again.</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

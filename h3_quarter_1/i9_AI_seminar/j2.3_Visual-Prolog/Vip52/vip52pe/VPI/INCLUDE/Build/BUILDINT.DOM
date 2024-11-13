@@ -1,0 +1,37 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  BUILD
+ FileName: BUILDint.DOM
+ Purpose: Supports the internal (not seen by the user) Global declarations for the PDC Prolog Compiler
+ 	  and PDC Link
+ Written by: Victor Yukhtenko
+ Comments:
+******************************************************************************/
+global domains
+
+  INCLNO = INTEGER
+  OFFSET = UNSIGNED
+  FNAME = STRING
+  DOMNAME = STRING
+  PREDNAME = STRING
+  LOC_GLOB = INTEGER
+  CODESIZE = INTEGER
+
+  COMPINFO =
+        incl(INCLNO,INCLNO,FNAME);
+        dom(DOMNAME,LOC_GLOB,INCLNO,OFFSET);
+        pred(PREDNAME,LOC_GLOB,INCLNO Decl,OFFSET Decl,INCLNO Def,OFFSET Def)
+
+  BROWSINFO_CALLBK = determ (COMPINFO) - (i) language c
+  CompProcessEvent = determ BOOLEAN () -  language c
+
+
+/***********************************************************************
+        Error reporting callback
+***********************************************************************/
+
+  ERR_REP_FNS = determ (INTEGER,BOOLEAN,STRING,UNSIGNED,UNSIGNED,STRING,UNSIGNED) - (i,i,i,i,i,i,i) language c
+
+

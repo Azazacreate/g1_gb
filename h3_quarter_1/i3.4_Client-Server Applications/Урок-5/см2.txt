@@ -1,0 +1,1 @@
+ f'Вызов из функции {sys._getframe().f_code.co_name}.',

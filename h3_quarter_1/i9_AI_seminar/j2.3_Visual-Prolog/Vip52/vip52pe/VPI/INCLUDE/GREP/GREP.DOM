@@ -1,0 +1,19 @@
+/*****************************************************************************
+
+	Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ Project:  Grep package
+ FileName: GPEP.DOM
+ Purpose: Domain definitions for GPEP.PRO
+ Written by: Maksim Avilov
+ Comments:
+******************************************************************************/
+
+constants
+  grep_dom_included = 1
+
+global domains
+  
+  GREP_HANDLER = determ (STRING FileName,ULONG FindPos,STRING FindString) - (i,i,i)

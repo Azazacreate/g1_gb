@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Fifth generation automatic control system for book publishing company</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<font SIZE="2">
+<h1><!--mstheme--><font color="#000000">Fifth generation automatic control system for book publishing company.<!--mstheme--></font></h1>
+</font> 
+<p>by Volkov I.V.</p>
+
+<font SIZE="2">
+<p>&nbsp;</p>
+</font> 
+<p>Prolog [1] was invented by A. Colmerauer in the university of Marseille in
+1971 as high level programming language specialized for
+automating reasoning and text processing. Later advantages
+of Prolog became the basis to choose it as main language in the
+famous japanese project of creation fifth generation
+computers [2]. Visual Prolog is commercial version of this language. It combines scientific basis with practical tools such
+as flexible external database system,
+graphical user interface, effective compiler, debugger and a set of
+ready tools that may be included into application. So it
+is interesting to try it in some commercial domain where intellectual text processing is required. Now i can report
+success of this experiment.</p>
+<p>One of such domains is information business. Moscow commercial
+information
+agency Biznes-Karta (Business Map, www.biznes-karta.ru ) has the database
+containing information about human
+activities in various social spheres: industry, trade, transport, agriculture,
+government, science, medicine, etc. More than 180000
+organizations in Russia and republics of former USSR for which the address, phone, name of chief manager, number of
+personnel, value of main funds and other
+important parameters are available. This information helps people
+to find each other in the conditions of market economy.
+They sell it in three forms: as a pure data in DBF format,
+in the form of electronic database and business reference
+books.</p>
+<p>I came to this firm in the autumn of 1996 and have got a task to modify
+programs for preparation of these books. In
+that time they had several utilities written in C language
+under DOS and for each group of books one separate program
+was used. I decided to rewrite this from scratch using
+my PDC Prolog 3.3 and to create one program for preparation of all books.
+So complicated report generator Publish appeared. It
+transforms database into the text file that compose
+main part of the book using such operations as data coding, sorting,
+filtration, text transformation and formatting. Also
+Publish generates supplementary parts of the book -
+indexes and table of contents. Later i ported this program
+under Windows in Visual Prolog 5.1 and now (according
+to advertisement) Agency of Business Information issues annually
+205 different books with total number of 800000.</p>
+<p>But then they encountered difficulties with organizing of such large
+scale
+production and asked me to write some kind of automatic
+management tool. Recently i have finished it. Automatic control system works on two-stage principle: analysis and
+synthesis. The source data for this program
+are monthly selling for each book and the amount at the warehouse.
+For manipulations with these data the Tableedit tool was
+chosen. There are three different tables: selling, parameters
+that are different for each book and parameters, equal for each
+book. User can input data manually or import from
+book-keeping program. Off course user can edit data in the
+table. On the stage of analysis the program calculates
+average selling rate and predicts the date when the
+stock will be empty. Also more complicated methods of regression analysis
+may be used for the forecast. New calculated data are
+displayed in the same table along with the source data.</p>
+<p>The graphical representation is available. On the stage
+of synthesis automatic control system must calculate the number
+of books that is necessary to print and the date for
+printing-office. There are several methods how to do it.
+The program allows for maximal number of books that can be
+printed per month and the importance of
+different volumes. The hard copy of calculated data is available in different
+formats for different departments of the company.</p>
+<p>Literature.</p>
+<p>1. Colmerauer A. Metamorphosis grammars, In: Natural Language</p>
+<p>communication with</p>
+<p>Computers (L. Bolc, ed.), pp. 139-169, Lecture Notes in Computer</p>
+<p>Science, vol. 63, Springer-</p>
+<p>Verlag, Berlin, 1978.</p>
+<p>2. Simons G.L. Towards fifth-generation computers. NCC Publications,</p>
+<p>1983.</p>
+<p>3. Sterling L., Shapiro E.The art of Prolog. MIT Press Cambridge,</p>
+<p>Massachusetts, 1986.</p>
+<p>1999.12.06. Moscow, Russia.<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

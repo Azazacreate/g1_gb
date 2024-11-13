@@ -1,0 +1,127 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+				VISUAL Prolog
+
+ FileName: DIALOG.PRE
+ PURPOSE: Predicate definitions for dialog package
+ Written by:
+ Comments:
+
+******************************************************************************/
+
+ifndef dialog_dom_included
+ Error: this file requires include: dialog.dom
+enddef 
+
+constants
+  dialog_pre_included = 1
+
+global predicates
+
+%********************************************************
+% Create a new dialog and initialize
+%********************************************************
+
+procedure WINDOW  dialog_CreateModal(WINDOW ParentWindow,RESID ResID,STRING Title,
+	DIALOG_FIELD_LIST InitialFields,EHANDLER,
+	LONG CreationData, DIALOG_VAL_LIST OutputValues, 
+  	INTEGER Button) - (i,i,i,i,i,i,o,o)
+
+procedure WINDOW  dialog_CreateModeless(WINDOW ParentWindow,RESID ResID,STRING Title,
+	DIALOG_FIELD_LIST InitialFields,EHANDLER,
+	LONG CreationData) - (i,i,i,i,i,i)
+
+procedure WINDOW  dialog_Create(WINDOW ParentWindow,WINDEF_LIST StructureOfDialog, 
+	DIALOG_FIELD_LIST InitialFields,EHANDLER,
+	LONG CreationData, DIALOG_VAL_LIST OutputValues, 
+  	INTEGER Button) - (i,i,i,i,i,o,o)
+
+%********************************************************
+% Set Val+type+validation info for a list of controls
+%********************************************************
+procedure   dialog_SetFields(WINDOW, DIALOG_FIELD_LIST) - (i,i)
+
+%********************************************************
+% Change enable/show state for controls
+%********************************************************
+procedure   dialog_SetState(WINDOW, DIALOG_ENABLE_LIST) - (i,i)
+
+%********************************************************
+% Get a list of values for all controls
+%********************************************************
+procedure  DIALOG_VAL_LIST dialog_GetValues(WINDOW) - (i)
+procedure  DIALOG_ITEM_VAL dialog_GetValue (WINDOW,DIALOG_CONTROL_ID) - (i,i)
+
+%********************************************************
+%  Set/Change the values for a list of controls
+%********************************************************
+procedure  dialog_SetValues(WINDOW, DIALOG_VAL_LIST) - (i,i)
+
+%********************************************************
+% predicates TO FETCH THE DIFFERENT TYPES
+% OF DIALOG VALUES FROM A DIALOG_VAL_LIST (VL=ValList)
+%********************************************************
+procedure   INTEGER	  dialog_VLGetCheck(DIALOG_CONTROL_ID,DIALOG_VAL_LIST)	- (i,i)
+procedure   DIALOG_CONTROL_ID dialog_VLGetRadiobutton(DIALOG_CONTROL_ID,DIALOG_VAL_LIST) - (i,i)
+procedure   STRING  	  dialog_VLGetStr(DIALOG_CONTROL_ID,DIALOG_VAL_LIST)	- (i,i)
+procedure   DIALOG_INT  	  dialog_VLGetInt(DIALOG_CONTROL_ID,DIALOG_VAL_LIST) - (i,i)
+procedure   DIALOG_LONG    dialog_VLGetLong(DIALOG_CONTROL_ID,DIALOG_VAL_LIST)	- (i,i)
+procedure   DIALOG_REAL    dialog_VLGetReal(DIALOG_CONTROL_ID,DIALOG_VAL_LIST)	- (i,i)
+procedure   STRING  	  dialog_VLGetListEdit(DIALOG_CONTROL_ID,DIALOG_VAL_LIST)	- (i,i)
+procedure   INTEGER  	  dialog_VLGetScrollBar(DIALOG_CONTROL_ID,DIALOG_VAL_LIST)	- (i,i)
+procedure   dialog_VLGetListBox(DIALOG_CONTROL_ID,DIALOG_VAL_LIST,SLIST,ILIST) - (i,i,o,o)
+procedure   dialog_VLGetListButton(DIALOG_CONTROL_ID,DIALOG_VAL_LIST,STRING,INTEGER)- (i,i,o,o)
+procedure   dialog_VLGetCustom(DIALOG_CONTROL_ID,DIALOG_VAL_LIST,STRING,LONG) - (i,i,o,o)
+procedure   STRING dialog_VLGetDataField(DIALOG_CONTROL_ID,DIALOG_VAL_LIST) - (i,i)
+procedure   SLIST  dialog_VLGetAllList(DIALOG_CONTROL_ID,DIALOG_VAL_LIST) - (i,i)
+
+%********************************************************
+% predicates TO FETCH THE DIFFERENT TYPES OF DIALOG VALUES
+% Based on Window and ControlID
+%********************************************************
+
+procedure   INTEGER	  dialog_GetCheck(WINDOW,DIALOG_CONTROL_ID)		- (i,i)
+procedure  DIALOG_CONTROL_ID dialog_GetRadiobutton(WINDOW,DIALOG_CONTROL_ID FirstFromList)	- (i,i)
+procedure  STRING  	  dialog_GetStr(WINDOW,DIALOG_CONTROL_ID)		- (i,i)
+procedure  DIALOG_INT  	  dialog_GetInt(WINDOW,DIALOG_CONTROL_ID)	- (i,i)
+procedure  DIALOG_LONG    dialog_GetLong(WINDOW,DIALOG_CONTROL_ID)	- (i,i)
+procedure  DIALOG_REAL    dialog_GetReal(WINDOW,DIALOG_CONTROL_ID)	- (i,i)
+procedure  STRING  	  dialog_GetListEdit(WINDOW,DIALOG_CONTROL_ID)	- (i,i)
+procedure  INTEGER  	  dialog_GetScrollBar(WINDOW,DIALOG_CONTROL_ID)	- (i,i)
+procedure  dialog_GetListBox(WINDOW,DIALOG_CONTROL_ID,SLIST,ILIST)	- (i,i,o,o)
+procedure  dialog_GetListButton(WINDOW,DIALOG_CONTROL_ID,STRING,INTEGER) - (i,i,o,o)
+
+procedure  dialog_GetCustom(WINDOW,DIALOG_CONTROL_ID,STRING,LONG) - (i,i,o,o)
+procedure  STRING dialog_GetDataField(WINDOW,DIALOG_CONTROL_ID) - (i,i)
+
+%********************************************************
+% predicates TO SET THE DIFFERENT TYPES OF DIALOG VALUES
+% Based on Window and ControlID
+%********************************************************
+procedure  dialog_SetCheck(WINDOW,DIALOG_CONTROL_ID,INTEGER)			- (i,i,i)
+procedure  dialog_SetRadiobutton(WINDOW,DIALOG_CONTROL_ID FirstFromList,DIALOG_CONTROL_ID Pushed)	- (i,i,i)
+procedure  dialog_SetStr(WINDOW,DIALOG_CONTROL_ID,STRING)			- (i,i,i)
+procedure  dialog_SetInt(WINDOW,DIALOG_CONTROL_ID,DIALOG_INT)			- (i,i,i)
+procedure  dialog_SetLong(WINDOW,DIALOG_CONTROL_ID,DIALOG_LONG)			- (i,i,i)
+procedure  dialog_SetReal(WINDOW,DIALOG_CONTROL_ID,DIALOG_REAL)			- (i,i,i)
+procedure  dialog_SetListEdit(WINDOW,DIALOG_CONTROL_ID,STRING)			- (i,i,i)
+procedure  dialog_SetScrollBar(WINDOW,DIALOG_CONTROL_ID,INTEGER)			- (i,i,i)
+procedure  dialog_SetListBox(WINDOW,DIALOG_CONTROL_ID,ILIST)			- (i,i,i)
+procedure  dialog_SetListButton(WINDOW,DIALOG_CONTROL_ID,INTEGER)		- (i,i,i)
+procedure  dialog_SetCustom(WINDOW,DIALOG_CONTROL_ID,STRING,LONG)		- (i,i,i,i)
+procedure  dialog_SetDataField(WINDOW,DIALOG_CONTROL_ID,STRING)			- (i,i,i)
+
+ determ dialog_CheckEditProperties(WINDOW,DIALOG_CONTROL_ID)			- (i,i)
+ determ dialog_CheckEditProperties(WINDOW)					- (i)
+
+procedure  dialog_SetControlTitle(WINDOW,DIALOG_CONTROL_ID,STRING Title)		- (i,i,i)
+/****************************************************/
+/*                                                  */
+/*  DUMMY predicates                                */
+/*                                                  */
+/****************************************************/
+
+ dialog_no_handler   : EHANDLER
+

@@ -1,0 +1,83 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ Project:  CAPSVPI
+ FileName: BRWSLIST.PRE
+ Purpose: Predicate definitions for BRWSLIST\BRWSLIST.PRO
+ Written by: CAPS team
+ Comments:
+******************************************************************************/
+ifndef treebrws_dom_included
+ #Error: this file requires include: treebrws.dom
+enddef 
+
+constants
+  treebrws_pre_included = 1
+
+global predicates
+determ WINDOW  browselist_Create(
+    WINTYPE  WinType,  % One of the w_***.. constants
+    RCT  Rectangle,  % Client rectangle of the new window
+    STRING  Title,  % Window Title
+    MENU  TitleMenu,  % Window's menu
+    WINDOW  ParentWin,  % Parent window handle
+    WSFLAGS  Flags,  % List of style flags (wsf_*** constants) 
+    LONG  AppData,  % User defined data
+    BROWSELIST_INFORMATIONCALLBACK
+  ) - (i,i,i,i,i,i,i,i)
+
+procedure  browselist_Destroy(WINDOW) - (i)
+
+determ  browselist_KeyToPos(WINDOW,BROWSELIST_USERITEMKEY,ILIST Pos) - (i,i,o)
+
+determ  browselist_GetItem(WINDOW,ilist pos,BROWSELIST_ITEM) - (i,i,o)
+
+determ  browselist_ItemUpdate(WINDOW,ILIST Pos,BROWSELIST_ITEM) - (i,i,i)
+
+determ  browselist_MakeVisible(WINDOW,ILIST Pos) -  (i,i)
+  
+determ  browselist_CursorGet(WINDOW,ILIST Pos,BROWSELIST_USERITEMKEY) - (i,o,o)
+  
+determ  browselist_CursorSet(WINDOW,ILIST Pos) - (i,i)
+
+determ  browselist_CursorMoveNext(WINDOW) - (i)
+
+determ  browselist_CursorMovePrev(WINDOW) - (i)
+  
+determ  browselist_CursorLevelMoveNext(WINDOW) - (i)
+  
+determ  browselist_CursorLevelMovePrev(WINDOW) - (i)
+  
+determ  browselist_CursorMoveNextInLevel(WINDOW) - (i)
+  
+determ  browselist_CursorMovePrevInLevel(WINDOW) - (i)
+  
+procedure  browselist_ScrollPageUp(WINDOW) - (i)
+
+procedure  browselist_ScrollPageDown(WINDOW) - (i)
+  
+procedure  browselist_ScrollLineUp(WINDOW) - (i)
+
+procedure  browselist_ScrollLineDown(WINDOW) - (i)
+
+procedure  browselist_ScrollLeft(WINDOW) - (i)
+
+procedure  browselist_ScrollRight(WINDOW) - (i)
+
+procedure browselist_SetPlusMinusIcon(integer PlusIconIdentifier, integer MinusIconIdentifier) - (i,i)
+
+determ  browselist_OpenItem(WINDOW,ILIST Pos) - (i,i)
+  
+determ  browselist_CloseItem(WINDOW,ILIST Pos) - (i,i)
+  
+determ	browselist_IsOpen(Window,ilist Pos) - (i,i) %CJ961219 En toolbruger får sine ønsker opfyldt
+
+determ	browselist_IsLeaf(Window,ilist Pos) -(i,i) %CJ961219 En toolbruger får sine ønsker opfyldt
+
+determ	browselist_IsClosed(Window,ilist Pos) -(i,i) %CJ961219 En toolbruger får sine ønsker opfyldt  
+
+determ	browselist_PntToNode(WINDOW,PNT,ilist Pos,BROWSELIST_USERITEMKEY) - (i,i,o,o) %Fails if no node at PNT %CJ970127
+
+
+

@@ -1,0 +1,58 @@
+/******************************************************************************
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:       SPLITERR.CON
+ Purpose:        Splitwin tools error constants.
+ Written by:     Andrey Skobelev
+ Version:	1.0
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:        
+******************************************************************************/
+
+constants
+%=============================================================================
+% ============================== Error codes =================================
+%=============================================================================
+
+% On / Off Input argument validation for bottom level.
+% Comments this line for forbid Input argument validation.
+    splitwin_argumentValidation = 1
+
+% Never to be called. Used to supress compiler's warnings only.
+    splitwin_InternalError = 0
+
+% External error codes.
+    splitwin_InvalidWinType = 1
+
+    splitwin_InvalidStartColumnsRows = 2
+
+    splitwin_InvalidSplitWindow = 3
+
+    splitwin_InvalidColumn = 4
+
+    splitwin_InvalidRow = 5
+
+    splitwin_InvalidPaneWindow = 6
+
+    splitwin_InvalidPaneWindowType = 7
+
+    splitwin_InvalidColumnRowSize = 8
+
+% Application is trying to delete last column,
+% minimum number of Columns  is 1
+    splitwin_ImpossibleToDeleteLastColumn = 10
+
+% Application is trying to delete last row,
+% minimum number of Rows  is  1
+    splitwin_ImpossibleToDeleteLastRow = 11
+
+    splitwin_InvalidBarWidth = 12
+    
+    splitwin_InvalidMarginWidth = 13
+
+constants
+% Splitwin package id in e_User(splitwin_Update_id, _) event.
+    splitwin_Update_id = 6793
+

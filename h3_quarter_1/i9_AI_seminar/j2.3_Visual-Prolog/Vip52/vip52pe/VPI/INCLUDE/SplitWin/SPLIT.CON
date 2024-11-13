@@ -1,0 +1,22 @@
+/******************************************************************************
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	SPLIT.ERR
+ Purpose:	Split window object. Top level. Error codes.
+ Written by:	Andrey Skobelev
+ Version:	1.0
+ Build:		007.990304
+ Tested with:   Visual Prolog v.5.1 build 563
+ Comments:	
+******************************************************************************/
+constants
+% On / Off Input argument validation for top level.
+% Comments this line for forbid Input argument validation.
+    split_argumentValidation = 1
+
+% Never to be called. Used to supress compiler's warnings only.
+    split_internal_error	= 0
+
+% External error codes.
+    split_bad_window		= 1

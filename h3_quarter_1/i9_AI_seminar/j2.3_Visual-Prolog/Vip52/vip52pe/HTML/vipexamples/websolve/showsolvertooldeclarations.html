@@ -1,0 +1,211 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+<title></title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="/";</script>
+<script language="JavaScript" src="/vipmenu/js/pdcBar.js"></script>
+<script language="JavaScript" src="/vipmenu/js/pdcBarDef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="/vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="/vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>
+
+<p>/***************************************************************************** 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>Copyright (c) 1998 Prolog-Soft Ltd.</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Project: Universal Solver Engine</p>
+
+<p>FileName: SOLVER.DOM</p>
+
+<p>Purpose: The Solver Engine Global Definitions</p>
+
+<p>Written by: Victor Yukhtenko</p>
+
+<p>******************************************************************************/</p>
+
+<p>CONSTANTS 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    </b><p>slvC_SourceIsVoid = 0</p>
+    <p>slvC_SourceIsSet = 2</p>
+    <p>slvC_CurrentlyIsEmpty = 0</p>
+    <p>slvC_CurrentlyIsNeeded = 1</p>
+    <p>slvC_CurrentlyResolved = 2</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>% error situations coding 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>slvErrC_VarNotFound = 1</p>
+    <p>slvErrC_InvalidRuleSet = 2</p>
+    <p>slvErrC_InvalidRule= 3</p>
+    <p>slvErrC_ClearingWhileRunning = 4</p>
+    <p>slvErrC_InvalidSourceSetData = 5</p>
+    <p>slvErrC_InvalidFinalSetData = 6</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/***************************************************************************** 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>The Solver Engine Global Domains</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>******************************************************************************/</p>
+<b>
+
+<p>GLOBAL DOMAINS</p>
+</b>
+
+<p>% Solver Domains 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>SlvD_Var = slvT_Var(STRING varName,INTEGER varSrcStatus,INTEGER varCurStatus,REAL
+    value)</p>
+    <p>SlvD_VarList = slvD_Var*</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>% predicate domains to define Solver's callbacks 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>SlvPD_Update = <b>determ</b> ()</p>
+    <p>SlvPD_ErrAndWarn = <b>determ</b> (INTEGER pos,STRING commentText) - (i,i)</p>
+    <p>SlvPD_Message = <b>determ</b> (INTEGER messageId,STRING) - (i,i)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>% the Solver's properties 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>SlvD_Property =<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <p>slvT_UpdateSolution(BOOLEAN b_TrueIfImmidiately);</p>
+        <p>slvT_UpdateCB(SlvPD_Update); % set update callback</p>
+        <p>slvT_MessageCB(SlvPD_Message); % set message callback</p>
+        <p>slvT_ErrAndWarnCB(SlvPD_ErrAndWarn); % set syntax analysis results callback</p>
+        <p>slvT_Default() % set default callbacks, handled internally by the Solver</p>
+      <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/***************************************************************************** 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>The Solver Engine Global Predicates</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>******************************************************************************/</p>
+<b>
+
+<p>GLOBAL PREDICATES</p>
+</b>
+
+<p>% --- Run Handling 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><p>procedure</b> slvP_RunStatus(BOOLEAN b_trueIfIsRuning) - (o)</p>
+    <b><p>procedure</b> slvP_StopRunning</p>
+    <p>slvP_ResolveNet(SLIST varNameList) - (i)</p>
+    <p>slvP_ResolveNet() % try to find all void variables</p>
+    <b><p>procedure</b> slvP_SetProperty(SlvD_Property) - (i)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>% --- Data Reset 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><p>procedure</b> slvP_ClearData</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>% --- Variables Handling 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><p>procedure</b> slvP_DelVariable(STRING varName) - (i)</p>
+    <b><p>procedure</b> slvP_RenameVariable(STRING oldVarName,STRING newVarName) - (i,i)</p>
+    <b><p>procedure</b> slvP_SetVarList(slvD_VarList) - (i)</p>
+    <b><p>procedure</b> INTEGER /*varSourceStatus*/ slvP_GetVariable(STRING varName,INTEGER
+    varCurrentStatus,REAL value) - (i,o,o)</p>
+    <b><p>procedure</b> slvP_GetVarList(slvD_VarList) - (o)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>% --- Rules Handling 
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <b><p>procedure</b> slvP_SetRules(STRING ruleSetScript) - (i)</p>
+    <b><p>procedure</b> slvP_GetRules(STRING ruleSetScript) - (o)</p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

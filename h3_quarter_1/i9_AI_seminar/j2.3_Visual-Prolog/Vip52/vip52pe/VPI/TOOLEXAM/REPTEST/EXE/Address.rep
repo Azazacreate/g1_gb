@@ -1,0 +1,76 @@
+%  ****************************************************************************
+%                                 REPORT ENGINE
+%                         Report source text example
+%                                   29-Aug-1997
+% *****************************************************************************
+
+report  myFirstReport
+    margins(2.0,0.8,1.0,1.0);
+    orientation=portrait;
+    units logical(920 1024);
+    fontname=helvetica fontsize=7 alignment=left leftindent=15
+    clip
+    script y0:="Example"; KL:= 2; reinit_dba() end_script
+    header   %fontstyle = bold
+	script x0 := 20* (60+40);
+	Z:="Intelligence Bank, St. Petersburg ' 97"
+	end_script                 
+	text Z at(0,0,600,40) %fontname=times
+	tabs = 0,100,270,610;
+	text "Address Book" at(0,30,200,50) fontsize=10 fontstyle=bold;
+	text "of Visual Prolog Customers all around the world!" at (250,30,700,50);
+    	line at(0,55,700,55);
+    	line at(0,60,700,60)
+    end_header
+     block at(0,20,0,0) 
+     begin
+        text "Report example"  at(140,140,390,170) 
+        fontsize=16;
+        text "ADDRESS BOOK" at(160,170,360,200)
+        fontname=times  fontstyle=normal fontsize=10;
+     end;
+    while get_continent(;CONT)  do at(0,220,0,0)
+    		alignment=left
+		begin
+script KL:= KL + 1
+end_script
+    		text " Continent :" at(0,10,180,30) fontstyle=bold;
+    		text CONT at(180,10,280,30) fontsize=10;
+    	while get_country(CONT;COUNTRY,Color) do at(0,70,0,0)
+%outer_rectangle
+    	  alignment=left fontsize=7
+    	 border=1
+    	        begin
+    	         script
+		  C := "                    " + COUNTRY + "    "+Color;
+    	          if (Color=128)or(Color=8388608)or(Color=8388736)or(Color=32768)
+    	          	then FColor:=16777215 else FColor:=0 end_if;
+		  CustNum := 0;
+		 end_script
+         text C at(0,10,700,50) fontsize = 14 fontstyle= italic
+         var_forecolor(FColor) var_backcolor(Color);
+  	   while get_name(COUNTRY;NAME,Street,City,Phone) do 
+  	 at(0,50,0,0)
+%    	  keep_together
+    	      tabs = 0,180,400,520,700
+    	     header fontname = Fixed fontsize=12
+text " Name	Street	City	Phone	"
+at(0,0,640,30)
+    	     end_header
+    	   		begin
+			script CustNum := CustNum + 1; end_script
+    	   		 text NAME at(0,0,180,35);
+    	   		 text Street at (180,0,400,35);
+    	   		 text City at(400,0,520,35);
+    	   		 text Phone at(520,0,700,35)
+   	   		end;
+   	   text "Customers in the country - " + CustNum at(0,60,280,80) fontsize=10 border=0
+		end
+    	 end
+   footer fontsize=8
+      script date(;D); page(;P); time(;T) end_script
+      text "Printed " + D at(0,40,180,60);
+      text "Page " + P at(300,40,420,60) fontsize=10;
+      text "Time " + T at(600,40,700,60)
+    end_footer
+end_report

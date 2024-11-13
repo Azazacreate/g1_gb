@@ -1,0 +1,214 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog 
+
+ FileName: EDIT.PRE
+ PURPOSE: Predicate declaration for VPI Editors
+ Written by: Alexander Gostintsev
+ Comments:
+
+******************************************************************************/
+
+global predicates
+
+procedure WINDOW edit_Create( WINTYPE wType, RCT rct, STRING FileName,
+                    MENU menu, WINDOW ParentWin, WSFLAGS WinFlags,
+                    FONT font, BOOLEAN ReadOnly, BOOLEAN Indent,
+                    STRING InputStr, ULONG InitPos,EHANDLER handler)
+    - (i,i,i,i,i,i,i,i,i,i,i,i) language c
+
+procedure WINDOW edit_CreateWrap( WINTYPE wType, RCT rct, STRING FileName,
+                    MENU menu, WINDOW ParentWin, WSFLAGS WinFlags,
+                    FONT font, BOOLEAN ReadOnly, BOOLEAN Indent,
+                    BOOLEAN Wrap, STRING InputStr, ULONG InitPos,
+                    EHANDLER handler)
+    - (i,i,i,i,i,i,i,i,i,i,i,i,i) language c
+
+procedure WINDOW edit_CreateHyper( WINTYPE wType, RCT rct, STRING FileName,
+                    MENU menu, WINDOW ParentWin, WSFLAGS WinFlags,
+                    FONT font, BOOLEAN ReadOnly, BOOLEAN Indent,
+                    BOOLEAN Wrap, STRING InputStr, ULONG InitPos,
+                    EHANDLER ) 
+    - (i,i,i,i,i,i,i,i,i,i,i,i,i) language c
+
+procedure edit_CreateSubClass( WINDOW Win, STRING FileName,
+                      FONT font, BOOLEAN ReadOnly, BOOLEAN Indent,
+                      BOOLEAN Wrap, STRING InputStr, ULONG InitPos,
+                      EHANDLER handler) 
+    - (i,i,i,i,i,i,i,i,i) language c
+
+procedure edit_SetTitle( WINDOW, STRING Title ) - (i,i) language C
+
+%Retriving the current text from an editor window
+procedure STRING edit_GetText(WINDOW) - (i) language C
+procedure STRING edit_GetText(WINDOW,UNSIGNED StartPos,UNSIGNED EndPos) - (i,i,i) language C
+
+%Set / Get Current Selection
+procedure BOOLEAN edit_SetSelection(WINDOW Win,ULONG Pos1,ULONG Pos2) - (i,i,i) language C
+procedure edit_GetSelection(WINDOW Win,ULONG Pos1, ULONG Pos2) - (i,o,o) language C
+procedure edit_SelectCurLine(WINDOW) - (i) language C
+procedure BOOLEAN edit_SelectWord(WINDOW Win) - (i) language C
+
+%Return position information
+procedure ULONG edit_GetPos(WINDOW Win) - (i) language C
+procedure edit_GetPos(WINDOW,INTEGER Line,INTEGER Column) - (i,o,o) language C
+procedure INTEGER edit_GetNumberOfLines( WINDOW ) - (i) language C
+
+%Adding new text
+procedure BOOLEAN edit_PasteStr( WINDOW, ULONG Pos, STRING Str) - (i,i,i) language C
+procedure edit_PasteStr(WINDOW Win,STRING NewStr) - (i,i) language C
+procedure edit_AppendStr(WINDOW, STRING Str) - (i,i) language C
+procedure edit_AppendStr(WINDOW, STRING Str, INTEGER MaxNumLines) - (i,i,i) language C
+
+%Editing Functions
+procedure edit_Char( WINDOW, CHAR ) - (i,i) language C
+procedure edit_Enter( WINDOW ) - (i) language C
+procedure edit_Del( WINDOW ) - (i) language C
+procedure edit_Backspace( WINDOW ) - (i) language C
+procedure edit_DelLeftWord( WINDOW ) - (i) language C
+procedure edit_DelRightWord( WINDOW ) - (i) language C
+procedure edit_DelToStartOfLine( WINDOW )- (i) language C
+procedure edit_DelToEndOfLine( WINDOW )- (i) language C
+procedure edit_DeleteLine(WINDOW)- (i) language C
+
+%Moving the Caret
+procedure edit_Left( WINDOW ) - (i) language C
+procedure edit_Right( WINDOW )- (i) language C
+procedure edit_Up( WINDOW )- (i) language C
+procedure edit_Down( WINDOW )- (i) language C
+procedure edit_PgUp( WINDOW )- (i) language C
+procedure edit_PgDn( WINDOW )- (i) language C
+procedure edit_WordLeft( WINDOW )- (i) language C
+procedure edit_WordRight( WINDOW )- (i) language C
+procedure edit_LineHome( WINDOW )- (i) language C
+procedure edit_LineEnd( WINDOW )- (i) language C
+procedure edit_FileHome( WINDOW )- (i) language C
+procedure edit_FileEnd( WINDOW )- (i) language C
+procedure BOOLEAN edit_GotoPos(WINDOW Win, ULONG Pos)- (i,i) language C
+procedure edit_GotoLine(WINDOW,INTEGER Line)- (i,i) language C
+procedure pnt edit_GetCaretPoint(window Win)- (i) language C
+
+%Undo / Redo
+procedure edit_Undo(WINDOW)- (i) language C
+procedure edit_Redo(WINDOW)- (i) language C
+procedure edit_PossibleUnDoReDo(WINDOW,BOOLEAN Undo,BOOLEAN Redo)- (i,o,o) language C
+procedure edit_ClearModified( WINDOW ) - (i) language C
+procedure edit_SetModified( WINDOW ) - (i) language C
+procedure edit_ClearUndoList( WINDOW ) - (i) language C
+procedure BOOLEAN edit_IsModified( WINDOW ) - (i) language C
+
+%Clipboard handling
+procedure edit_Cut(WINDOW)- (i) language C
+procedure edit_Copy(WINDOW)- (i) language C
+procedure edit_Paste(WINDOW)- (i) language C
+procedure edit_Delete(WINDOW)- (i) language C
+
+%Case Reversing
+procedure edit_ReverseCase(WINDOW)- (i) language C
+procedure edit_UpperCase(WINDOW)- (i) language C
+procedure edit_LowerCase(WINDOW)- (i) language C
+
+%Activating editor dialogs
+procedure edit_OptionsDlg()- () language C
+procedure edit_OptionsDlg(WINDOW,INTEGER)- (i,i) language C
+procedure edit_SearchDlg(WINDOW)- (i) language C
+procedure edit_SearchAgain(WINDOW)- (i) language C % Position function
+procedure edit_ReplaceDlg(WINDOW)- (i) language C
+procedure edit_GotoLineDlg(WINDOW)- (i) language C
+procedure edit_GotoPosDlg(WINDOW)- (i) language C
+procedure edit_SetFontDlg(WINDOW)- (i) language C 
+
+%obsolette
+procedure edit_SetFont( WINDOW, FONT )- (i,i) language C as "_win_SetFont"
+
+%Hypertext Links
+procedure edit_CreateHyperField(WINDOW)- (i) language C
+procedure edit_CreateHyperField(WINDOW, STRING)- (i,i) language C
+procedure edit_DeleteHyperField(WINDOW)- (i) language C
+
+%Suspend / Resume editor updating
+procedure edit_Suspend(WINDOW)- (i) language C
+procedure edit_Resume(WINDOW)- (i) language C
+
+%Caret Showing / Hiding
+procedure edit_CaretShow(WINDOW,BOOLEAN HideShow)- (i,i) language C
+
+%Hide/Show status line
+procedure edit_StatusLineShow(WINDOW,BOOLEAN HideShow)- (i,i) language C
+
+%Change status line font
+procedure edit_SetStatusLineFont(window Win, font Font) - (i,i) language C
+
+%Change status line captions
+procedure edit_SetStatusLineCaptions(window Win, string Insert, string Overwrite, string Indent, string NoIndent, string Wrap, string UnWrap, string Modified, string ReadOnly) - (i,i,i,i,i,i,i,i,i) language C
+
+%Change status line captions offset
+procedure edit_SetStatusLineCaptionsOffsets(window Win, unsigned Pos1, unsigned Pos2, unsigned Pos3, unsigned Pos4) - (i,i,i,i,i) language C
+
+%Change status line color
+procedure edit_SetStatusLineColor(window Win, color Background, color ForeColor) - (i,i,i) language C
+
+
+%Color Associations
+procedure edit_SetColoring(WINDOW,INTEGER TypeOfColoring)- (i,i) language C
+procedure edit_SetAssociations(EDIT_ASSLIST Associations)- (i) language C
+procedure EDIT_ASSLIST edit_GetAssociations()- () language C
+
+%Editing Options
+procedure INTEGER edit_GetTabSize()- () language C
+procedure edit_SetTabSize( WINDOW, INTEGER TabSize )- (i,i) language C
+
+procedure edit_IndentSize(integer) - (i), (o) language C
+
+
+procedure BOOLEAN edit_GetIndent(WINDOW)- (i) language C
+procedure edit_SetIndent( WINDOW, BOOLEAN OnOff )- (i,i) language C
+
+procedure BOOLEAN edit_GetInsert(WINDOW)- (i) language C
+procedure edit_SetInsert( WINDOW, BOOLEAN OnOff )- (i,i) language C
+
+procedure edit_GetOptions(ILIST OptionList)- (o) language C
+procedure edit_SetOptions(ILIST OptionList)- (i) language C
+
+%Set/Remove readonly mode
+procedure edit_SetReadOnly( WINDOW, BOOLEAN ReadOnly ) - (i,i),(i,o) language C
+
+%Get Column & Row of editor by WindowPoint
+procedure UNSIGNED edit_GetPointPos( WINDOW, PNT WindowPoint, INTEGER Column, INTEGER Row ) - (i,i,o,o) language C
+
+%Get Offset from begin for Line
+procedure UNSIGNED edit_GetLineOffset( WINDOW, INTEGER Line ) - (i,i) language C
+
+%Get Height of each line
+procedure INTEGER edit_GetLineHeight( WINDOW ) - (i) language C
+
+%Get Height of last visible line
+procedure INTEGER edit_GetLastLineHeight( WINDOW ) - (i) language C
+
+%Enable setting back color of each line
+procedure edit_EnableSetLineColor( WINDOW, BOOLEAN OnOff ) - (i,i) language C
+
+%Set Left Margin
+procedure edit_SetLeftMargin( WINDOW, UNSIGNED Margin ) - (i,i) language C
+
+%Seach string without call of dialog
+procedure BOOLEAN edit_SearchStr( WINDOW, STRING ) - (i,i) language C
+
+%Seach string in another string
+procedure EDIT_POSLIST edit_SearchSubStr( STRING What, STRING Where, SLIST RetList, BOOLEAN BCase, BOOLEAN BWord ) - (i,i,o,i,i) language C
+
+%Get current Ehandler of editor
+procedure EHANDLER edit_GetHandler( WINDOW ) - (i) language C
+
+%Change Ehandler of editor
+procedure edit_SetHandler( WINDOW, EHANDLER Ehandler) - (i,i) language C
+
+%Change Wrap Mode
+determ edit_SetWrap( Window, BOOLEAN ) - (i,i) language C
+
+%Find Word boundaries
+determ edit_BoundWord( WINDOW, Unsigned, Unsigned, Unsigned, Unsigned ) - (i,i,i,o,o) language C
+
+% *****************************************************************

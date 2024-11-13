@@ -1,0 +1,23 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			 VISUAL Prolog
+
+ FileName:  dial_dir.PRE
+ PURPOSE:
+ Written by: Yuri Ilyin 
+ Comments: Version 1.01
+
+******************************************************************************/
+constants
+  dlgdir_pre_included = 1
+
+global predicates
+  procedure BOOLEAN dlg_GetDirectoryName(window Parent,string Title, string OldPath,string NewPath) - (i,i,i,o)	% 6.09.1999 BB! (004)
+  procedure BOOLEAN dlg_GetDirectoryName(WINDOW Parent, STRING OldPath,STRING NewPath) - (i,i,o)
+% Drive = 0 (for A), = 1 (for B), ... etc
+  procedure INTEGER drive_GetType(INTEGER Drive) - (I) language c
+
+  procedure INTEGER drive_GetName( INTEGER Drive, STRING  NameDrive) - (i,o) language c 
+  

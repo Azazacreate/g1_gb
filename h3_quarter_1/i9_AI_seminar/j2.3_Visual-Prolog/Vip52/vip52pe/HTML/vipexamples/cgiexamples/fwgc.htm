@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>The Farmer, Wolf, Goat, Cabbage Problem</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta NAME="Author" CONTENT>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">The Farmer, Wolf, Goat, Cabbage problem <!--mstheme--></font></h1>
+
+<p>Prolog's powerful problem-solving capabilities can be shown with an example, the
+classic farmer-goat-cabbage-problem. </p>
+
+<h3><!--mstheme--><font color="#000000">The problem<!--mstheme--></font></h3>
+
+<blockquote>
+  <p>A farmer and his goat, wolf, and cabbage come to a river that they wish to cross. There
+  is a boat, but it has only room for two, and the farmer is the only one that can row. If
+  the goat and the cabbage get in the boat at the same time, the goat will eat the cabbage.
+  Similarly, if the wolf and the goat are together without the farmer, the goat will be
+  eaten. Devise a series of crossings of the river so that all concerned make it across
+  safely.</p>
+  <p>The state of the system is indicated by a structure STATE, stating where the farmer,
+  the goat, the wolf, and the cabbage are located. The goal is then to find out how to get
+  from the start state to the final state through a series of valid states. </p>
+  <p>The valid states are checked by the predicate 'unsafe'.<br>
+  <br>
+  The problem is that a state must only be visited once. This is handled by collecting the
+  visited states in a list and checking that a new state isn't already in the list.<br>
+  <br>
+  The predicate &quot;go&quot; can be called with a start state and a final state:</p>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p><i>go( state(east,east,east,east), state(west,west,west,west) ).</i></p>
+  <!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p>To execute the program as a CGI&nbsp;script press the &quot;<b>Solve</b>&quot; button
+below </p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <form METHOD="GET" ACTION="http://vip.pdc.dk/vipexamples/cgiexamples/bin/fwgc.exe">
+    <p><br>
+    <input TYPE="SUBMIT" VALUE="Solve">&nbsp;<br>
+    </p>
+  </form>
+  <p>Show <a href="src/fwgc.htm">Source</a> to FWGC-application.</p>
+  <p>Show <a href="src/fwgccgisource.htm">Source</a> to FWGC-application incl. cgi-support.<br>
+  </p>
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

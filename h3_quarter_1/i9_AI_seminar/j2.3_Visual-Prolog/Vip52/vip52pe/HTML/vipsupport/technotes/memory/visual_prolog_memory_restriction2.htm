@@ -1,0 +1,120 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Visual Prolog Memory Restrictions</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Visual Prolog Memory Restrictions<!--mstheme--></font></h1>
+<p>If you get a Memory overflow error, either correct your program or increase
+the size of the correspondent memory area.</p>
+<h2><!--mstheme--><font color="#000000">Stack Size<!--mstheme--></font></h2>
+<p>On 32-bit Windows and OS/2 platforms the linker should specify the total
+stack allocation in the application virtual memory (Stack Size). This can be
+done with PDC Linker option '-s' or with STACKSIZE definition file directive (by
+default, PDC linker reserves 1MB). This reservation specifies the continuous
+range of addresses in the 2GB virtual address space of the processes that is
+reserved for the Stack. Without this type of protection, operations like loading
+DLLs could occupy Stack addresses and jeopardize availability for later use of
+them for stack needs. Notice that the reserved Stack Size cannot be increased
+dynamically by running processes; therefore, if a process attempts to commit for
+stack more memory than the reserved Stack Size, then the memory error is
+generated.</p>
+<p>Notice that such addresses reserving in a process virtual memory, does not
+commit physical memory pages and no space is reserved in the paging (swap) file.
+It is simply saving a free address range until needed by Stack, protecting the
+addresses from other allocation requests. Therefore, since no resources are
+allocated during the operation, this is a quick operation, completely
+independent of the size of the virtual address range (whether a 500MB or a 4K)
+being reserved.</p>
+<p>Also notice that, this reserving a range of virtual addresses for Stack does
+not guarantee that later there will be physical memory available to commit to
+those addresses. While a program execution the Stack will dynamically expand to
+the physical memory available from OS.</p>
+<p>In the 16-bit protected mode versions (16-bit Windows, PharLap DOS extended)
+64 Kbytes will always be allocated for the stack.&nbsp; For plain DOS programs,
+the default stack size is 600 paragraphs (16-byte units). You can increase the
+default stack size using Visual Prolog VDE option Options | Project | Compiler
+Options | Miscellaneous | Stack Size or with the &quot;-S[Value]&quot; compiler
+option.</p>
+<p>In the UNIX version, all stack allocation and sizing is handled automatically
+by the operating system. The virtual stack can grow almost without limit. In
+UNIX there is no imminent danger of stack overrun, but you should be aware that
+the upper size of any process is given by the ulimit (see ulimit(S)), which
+typically will be 10 to 20 MB. This may be changed by setting the tunable kernel
+parameter MAXUMEM by means of idtune (see idtune(ADM)) or some other
+administrative tool. Space allocated to the ordinary data space as well as that
+allocated to the stack, is deducted from this allowable maximum. Hence, if your
+ulimit is 10MB, and you allocate 9.99 MB for some global data, you'll have only
+10K for the stack. If you exceed this limit, the lack of memory will manifest
+itself as a memory fault&nbsp; unexpectedly. To avoid this it's strongly
+recommended always running with stack checking enabled. The overhead is very
+small, and it will give a stack overflow error if less than 1MB is available for
+the stack.</p>
+<p>GStack Size On 32-bit Windows and OS/2 platforms the compiler should specify
+the total stack allocation in the application virtual memory (Stack Size). This
+can be done with the compiler directive gstacksize (the default GStack size is
+100 MB). In 16-bit applications GStack can be dynamically expand to the memory
+available. However, notice that at once no more than 64 KB can be committed.</p>
+<h2><!--mstheme--><font color="#000000">&nbsp;Trail Size<!--mstheme--></font></h2>
+<p>Trail space will seldom be a problem in Visual Prolog. In all versions of
+Visual Prolog, the trail is dynamically allocated, and will be automatically
+increased in size when necessary. In the 32-bit versions of Visual Prolog the
+trail size is practically unlimited. However, in the 16-bit versions the trail
+is limited to 64KB. If the system complains about trail overflow, the first
+priority is to optimize the use of reference domains. If you must use reference
+domains, you should decrease the number of backtrack points by placing some
+additional cuts (use check_determ). The repeat...fail combination will also
+serve to release space for the trail. As a last resort, rearrange your predicate
+calls so that you create fewer reference variables.</p>
+<h2><!--mstheme--><font color="#000000">Heap Size<!--mstheme--></font></h2>
+<p>The heap compiler directive can be used for DOS real mode terminate and stay
+resident programs to specify the Heap Size. In all other cases, the Heap will
+dynamically expand to the memory available. Under 32-bit platforms, all
+addresses from the process virtual address space that are not reserved for Stack
+and Gstack are accessible to Heap. Under 16-bit platforms, at once no more than
+64 KB can be committed.</p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

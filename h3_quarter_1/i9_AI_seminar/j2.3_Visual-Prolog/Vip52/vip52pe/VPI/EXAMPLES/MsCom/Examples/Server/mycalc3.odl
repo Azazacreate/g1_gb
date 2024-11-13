@@ -1,0 +1,74 @@
+// mycalc3.odl : type library source for mycalc3.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (mycalc3.tlb).
+
+[ uuid(FB1AE906-4A0B-11D1-B1F7-00AA0019F5FB), version(1.0) ]
+library Mycalc3
+{
+        importlib("stdole32.tlb");
+
+
+        //  Primary dispatch interface for CMycalc3Doc
+
+        [
+                uuid(FB1AE907-4A0B-11D1-B1F7-00AA0019F5FB),
+        ]
+        dispinterface IMycalc3 
+        {
+                properties:
+                        // NOTE - ClassWizard will maintain property information here.
+                        //    Use extreme caution when editing this section.
+                        //{{AFX_ODL_PROP(CMycalc3DlgAutoProxy)
+                        [id(1)] long Accumulator;
+                        [id(2)] long Operand;                        
+                        [id(3)] long Operator;                        
+			[id(4)] long Display;
+                        //}}AFX_ODL_PROP
+
+                methods:
+                        // NOTE - ClassWizard will maintain method information here.
+                        //    Use extreme caution when editing this section.
+                        //{{AFX_ODL_METHOD(CMycalc3DlgAutoProxy)
+                        [id(5)] void Button(BSTR b);
+                        [id(6)] void Quit();
+                        //}}AFX_ODL_METHOD
+
+        };
+
+	
+		// Dual interface definition
+		[
+			uuid(E92E6F10-4AB5-11d1-B1F8-00AA0019F5FB),
+			oleautomation,
+			dual
+		]
+		interface  IDualMycalc3 : IDispatch
+		{
+			// Properties
+                        [id(1), propput] HRESULT Accumulator([in] long l);
+                        [id(1), propget] HRESULT Accumulator([out,retval] long* l);
+                        [id(2), propput] HRESULT Operand([in] long l);
+                        [id(2), propget] HRESULT Operand([out,retval] long* l);
+                        [id(3), propput] HRESULT Operator([in] long l);
+                        [id(3), propget] HRESULT Operator([out,retval] long* l);
+						[id(4), propput] HRESULT Display([in] long l);
+						[id(4), propget] HRESULT Display([out,retval] long* l);
+			// Methods
+						[id(5)] HRESULT Button(BSTR b);
+                        [id(6)] HRESULT Quit();
+		} ;
+
+
+        //  Class information for CMycalc3Doc
+
+        [ uuid(FB1AE905-4A0B-11D1-B1F7-00AA0019F5FB) ]
+        coclass MycalcClass
+        {
+                dispinterface IMycalc3;
+				[default] interface IDualMycalc3;
+        };
+
+        //{{AFX_APPEND_ODL}}
+        //}}AFX_APPEND_ODL}}
+};

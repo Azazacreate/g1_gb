@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<title>Derived classes</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>Derived Classes and Inheritance<!--mstheme--></font></h1>
+</b>A class can be derived from another class(es), which is called a base
+(parent) class(es).
+<p>The class <i>class_name</i> is called a derived class if any base class is
+specified in the <a href="class_declaration.htm#0e23724b">base class list</a> of
+the <a href="class_declaration.htm">class declaration</a> or of the <a href="class_implementation.htm#3cd99d1b">class
+implementation</a>. A derived class inherits domains, facts, and predicates from
+the specified base classes. 
+<p>Base classes specified in the base class list of a class declaration must not
+be duplicated in the base class list of the class implementation.
+<p>An <a href>abstract class</a> cannot be specified in the class
+implementation's base class list.
+<p>When you declare a derived class (for example, D1 or D2), you list the base
+classes (for example, P1, P2, P3, and P4) in a comma-delimited base class list:
+<blockquote>
+  <!--mstheme--></font><pre>class D1 : P1, P2</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+or
+<blockquote>
+  <!--mstheme--></font><pre>implement D2 : P3, P4</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+When the base classes P1 and P2 are specified in the class D1 <b>declaration</b>,
+then the derived class D1 inherits from the base classes P1 and P2 all public
+domains, facts, and predicates. The inherited facts and predicates become public
+members of class D1 and they can be referenced as members of class D1. On the
+other hand, the derived class D1 inherits only possibility to use public domains
+inherited from the base classes; such domains cannot be qualified with the name
+of D1.
+<p>The derived class D1 also inherits from the base classes P1 and P2 protected
+domains, facts, and predicates, which are declared directly in the base classes
+P1 and P2.
+<p>When the base classes P3 and P4 are specified in the class D2 <b>implementation</b>,
+then the derived class D2 inherits from the base classes P3 and P4 all public
+domains, facts, predicates and that protected domains, facts, and predicates,
+which are declared directly in the base classes P3 and P4. All inherited names
+become private (local) to D2 and can be used only inside the implementation.
+<p>The inherited domains, predicates or facts can be redefined in the derived
+class. Global predicates also can be redefined inside a class, for example, the
+build-in global predicates <a href><b>beep</b></a>, <a href><b>concat</b></a>,
+etc. can be overridden inside a class.
+<p>Members of a base class redefined in a derived class can be accessed from the
+derived class with explicit qualifying a member name by the base class name.
+Using syntax like this:
+<!--mstheme--></font><pre>[object_identifier <b>:</b>][base_class_name <b>::</b>] member_name[(arguments)]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm"><b>See also</b></a><!--mstheme--></font></h5>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,29 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	SCALE.PRE
+ Purpose:	Global predicates for Scale
+ Written by:	Zaichenko Michael
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global predicates
+  WINDOW scale_CreateHor(WINDOW,RCT,INTEGER PixInMM) - (i,i,i)
+  WINDOW scale_CreateVer(WINDOW,RCT,INTEGER PixInMM) - (i,i,i)
+  
+  WINDOW scale_CreateHor(WINDOW,RCT,INTEGER PixInMM,EHANDLER callback) - (i,i,i,i)
+  WINDOW scale_CreateVer(WINDOW,RCT,INTEGER PixInMM,EHANDLER callback) - (i,i,i,i)
+
+  scale_WorkSpace(WINDOW scale,INTEGER,INTEGER) - (i,i,i), (i,o,o)
+
+  scale_Resize(WINDOW,RCT) - (i,i)
+  
+  scale_MovePnt(WINDOW,INTEGER) - (i,i)
+  scale_RemovePnt(WINDOW) - (i)
+
+  scale_MoveRct(WINDOW,INTEGER,INTEGER) - (i,i,i)
+  scale_RemoveRct(WINDOW) - (i)
+
+
+

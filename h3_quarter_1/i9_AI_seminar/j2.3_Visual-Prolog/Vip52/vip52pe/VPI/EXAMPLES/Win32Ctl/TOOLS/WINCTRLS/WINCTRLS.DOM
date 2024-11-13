@@ -1,0 +1,287 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	WINCTRLS.DOM
+ Purpose:	Tree View custom control global declarations
+ Written by:	Sergey Alexeev
+ Version:	1.0
+ Build:		002.000316
+ Tested with:   Visual Prolog v.5.0 build 533
+ Comments:
+******************************************************************************/
+ifndef ws_win
+ #Error: Tools works under Windows-32 platform
+enddef 
+ifndef platform_32bit
+ #Error: Tools works under Windows-32 platform
+enddef 
+
+CONSTANTS
+  winctrls_dom_included = 1
+
+CONSTANTS
+  use_drag_and_drop	= 1
+
+  use_winctrl_TreeView	= 1
+  use_winctrl_ListView	= 1
+  use_winctrl_TabCtrl	= 1
+  use_winctrl_UpDown	= 1
+  use_winctrl_treebut	= 1
+
+CONSTANTS
+ifdef use_winctrl_treebut
+  ifndef use_winctrl_TreeView
+  use_winctrl_TreeView	= 1
+  enddef
+enddef
+ifdef use_winctrl_TreeView
+  ifndef use_winctrl_common
+  use_winctrl_common	= 1
+  enddef
+  ifndef use_drag_and_drop
+  use_drag_and_drop	= 1
+  enddef
+enddef
+ifdef use_winctrl_ListView
+  ifndef use_winctrl_common
+  use_winctrl_common	= 1
+  enddef
+  ifndef use_drag_and_drop
+  use_drag_and_drop	= 1
+  enddef
+enddef
+ifdef use_winctrl_TabCtrl
+  ifndef use_winctrl_common
+  use_winctrl_common	= 1
+  enddef
+enddef
+ifdef use_winctrl_UpDown
+  ifndef use_winctrl_common
+  use_winctrl_common	= 1
+  enddef
+enddef
+
+ifdef use_winctrl_common
+
+CONSTANTS
+wcc_null		= 0xffff
+
+GLOBAL DOMAINS
+  WCC_POINT = LONG
+
+enddef /*** use_winctrl_common ***/
+
+ifdef use_drag_and_drop
+GLOBAL DOMAINS
+  DD_EVENT =	dragbeg;
+		drag;
+		dragend;
+		drop
+  DD_CALLBACK = determ(DD_EVENT,WINDOW ToWin,WINDOW FromWin,PNT,INTEGER MouseButton,STRING Data) - (i,i,i,i,i,i)
+
+enddef /*** use_drag_and_drop ***/
+
+ifdef use_winctrl_TreeView
+
+CONSTANTS
+/* Constants for Tree View control Flags */
+tvs_hasbuttons		= 0x0001 % Displays plus (+) and minus (-) buttons next to parent items. The user clicks the buttons to expand or collapse a parent item's list of child items. To include buttons with items at the root of the tree view, TVS_LINESATROOT must also be specified.
+tvs_haslines		= 0x0002 % Uses lines to show the hierarchy of items.
+tvs_linesatroot		= 0x0004 % Uses lines to link items at the root of the tree-view control. This value is ignored if TVS_HASLINES is not also specified.
+tvs_editlabels		= 0x0008 % Allows the user to edit the labels of tree-view items.
+tvs_disabledragdrop	= 0x0010 % Prevents the tree-view control from sending TVN_BEGINDRAG notification messages.
+tvs_showselalways	= 0x0020 % Causes a selected item to remain selected when the tree-view
+
+/* Constants for Tree View item Flags */
+tvis_selected		= 0x0002 % The item is selected. The appearance of a selected item depends on whether it has the focus and on whether the system colors are used for selection.
+tvis_cut		= 0x0004 % The item is selected as part of a cut and paste operation. 
+tvis_drophilited	= 0x0008 % The item is selected as a drag and drop target.
+tvis_bold		= 0x0010 % The item is bold.
+tvis_expanded		= 0x0020 % The item's list of child items is currently expanded; that is, the child items are visible. This value applies only to parent items.
+
+/* Constants for tv_get_pos predicate Place */
+tvht_nowhere		= 0x0001
+tvht_onitemicon		= 0x0002
+tvht_onitemlabel	= 0x0004
+tvht_onitemindent	= 0x0008
+tvht_onitembutton	= 0x0010
+tvht_onitemright	= 0x0020
+tvht_onitemstateicon	= 0x0040
+tvht_above		= 0x0100
+tvht_below		= 0x0200
+tvht_toright		= 0x0400
+tvht_toleft		= 0x0800
+
+GLOBAL DOMAINS
+% Domain for sending Drag&Drop information. See drag, drop, rdrag and rdrop functors in the TV_MESSAGE domain (parameter Data).
+% You can add specific application data in parameter Advanced. See tv_AdvancedData global predicate.
+  TV_DRAGDROP =	tv_dragdrop(UNSIGNED ItemId,ILIST Flags,RESID BitmapId,STRING Text,STRING Advanced)
+
+  TV_TREELIST = TV_TREE*
+  TV_TREE = tree(UNSIGNED ItemId,ILIST Flags,RESID BitmapId,STRING Text,TV_TREELIST)
+  
+  TV_MESSAGE =	outofmemory;
+		setfocus;
+		losefocus;
+		return(UNSIGNED ItemId);
+		click(PNT);
+		dblclick(PNT);
+		rclick(PNT);
+		rdblclick(PNT);
+		keydown(INTEGER Key);
+		selecting(UNSIGNED ItemIdUnselect,UNSIGNED ItemIdSelect);
+		selected(UNSIGNED ItemIdUnselect,UNSIGNED ItemIdSelect);
+		expanding(UNSIGNED ItemId,BOOLEAN CurrentStatus);
+		expanded(UNSIGNED ItemId,BOOLEAN NewStatus);
+		checked(UNSIGNED ItemId,BOOLEAN CurrentStatus);
+		edit(UNSIGNED ItemId);
+		modified(UNSIGNED ItemId,STRING NewText);
+		begindrag(UNSIGNED ItemId);
+		drag(WINDOW FromWin,STRING Data,UNSIGNED TargetItemId);
+		drop(WINDOW FromWin,STRING Data,UNSIGNED TargetItemId);
+		beginrdrag(UNSIGNED ItemId);
+		rdrag(WINDOW FromWin,STRING Data,UNSIGNED TargetItemId);
+		rdrop(WINDOW FromWin,STRING Data,UNSIGNED TargetItemId);
+		none
+
+  TV_CALLBACK = determ(WINDOW TVWin,TV_MESSAGE What) - (i,i)
+
+enddef /*** use_winctrl_TreeView ***/
+ifdef use_winctrl_ListView
+
+CONSTANTS
+/* Type for List View control Flags */
+lvs_icon		= 0x0000	% Default value
+lvs_report		= 0x0001
+lvs_smallicon		= 0x0002
+lvs_list		= 0x0003
+
+/* Style for List View control Flags */
+lvs_singlesel		= 0x0004
+lvs_showselalways	= 0x0008
+lvs_sortascending	= 0x0010
+lvs_sortdescending	= 0x0020
+lvs_nolabelwrap		= 0x0080
+lvs_autoarrange		= 0x0100
+lvs_editlabels		= 0x0200
+lvs_noscroll		= 0x2000
+lvs_aligntop		= 0x0000	% Default value
+lvs_alignleft		= 0x0800
+
+/* Constants for List View item Flags */
+lvis_focused		= 0x0001
+lvis_selected		= 0x0002
+lvis_cut		= 0x0004
+lvis_drophilited	= 0x0008
+
+/* Constants for lv_get_pos predicate Place */
+lvht_nowhere		= 0x0001
+lvht_onitemicon		= 0x0002
+lvht_onitemlabel	= 0x0004
+lvht_onitemstateicon	= 0x0008
+lvht_above		= 0x0008
+lvht_below		= 0x0010
+lvht_toright		= 0x0020
+lvht_toleft		= 0x0040
+
+GLOBAL DOMAINS
+% Domain for sending Drag&Drop information, see drag, drop, rdrag and rdrop functors in the LV_MESSAGE domain (parameter Data)
+% You can add specific application data in parameter Advanced. See lv_AdvancedData global predicate.
+  LV_DRAGDROP =	lv_dragdrop(UNSIGNED ItemId,STRING Text,RESID LargeBitmapId,RESID SmallBitmapId,ILIST Flags,SLIST SubItemText,STRING Advanced)
+
+  LV_ALIGNMENT = left;
+		 right;
+		 center
+
+  LV_ARRANGE = 	alignleft;
+		aligntop;
+		default;
+		snaptogrid
+
+  LV_RELATIVEPOS =	above;
+			below;
+			toleft;
+			toright
+
+  LV_ITEM = item(UNSIGNED ItemId,STRING Text,RESID LargeBitmapId,RESID SmallBitmapId,ILIST Flags,SLIST SubItemText)
+  LV_ITEMLIST = LV_ITEM*
+  LV_COLUMN = column(STRING Text,INTEGER Width,LV_ALIGNMENT)
+  LV_COLUMNLIST = LV_COLUMN*
+  
+  LV_ORDER = 	ascending;
+		descending;
+		unsorting
+
+  LV_MESSAGE =	outofmemory;
+		setfocus;
+		losefocus;
+		return(UNSIGNED ItemId);
+		click(PNT);
+		dblclick(PNT);
+		rclick(PNT);
+		rdblclick(PNT);
+		keydown(INTEGER Key);
+		selecting(UNSIGNED ItemId,BOOLEAN Select);
+		selected(UNSIGNED ItemId,BOOLEAN Select);
+		focusing(UNSIGNED ItemId,BOOLEAN Select);
+		focused(UNSIGNED ItemId,BOOLEAN Select);
+		columnclick(UNSIGNED ColumnNumber);
+		edit(UNSIGNED ItemId);
+		modified(UNSIGNED ItemId,STRING NewText);
+		begindrag(UNSIGNED ItemId);
+		drag(WINDOW FromWin,STRING Data,PNT,UNSIGNED TargetItemId);
+		drop(WINDOW FromWin,STRING Data,PNT,UNSIGNED TargetItemId);
+		beginrdrag(UNSIGNED ItemId);
+		rdrag(WINDOW FromWin,STRING Data,PNT,UNSIGNED TargetItemId);
+		rdrop(WINDOW FromWin,STRING Data,PNT,UNSIGNED TargetItemId);
+		none
+
+  LV_CALLBACK = determ(WINDOW TVWin,LV_MESSAGE What) - (i,i)
+
+  LV_SORTCALLBACK = determ(WINDOW TVWin,UNSIGNED ItemId1,UNSIGNED ItemId2,UNSIGNED DataToSortCallBack,BOOLEAN FirstUpToSecond) - (i,i,i,i,o)
+
+enddef /*** use_winctrl_ListView ***/
+ifdef use_winctrl_TabCtrl
+
+GLOBAL DOMAINS
+  TC_TITLE =	text(STRING Text);
+		bitmap(RESID BHitmapId);
+		mix(STRING Text,RESID BHitmapId)
+
+  TC_PAGE = page(TC_TITLE,ILIST CtrlIdList)
+  TC_PAGELIST = TC_PAGE*
+
+  TC_MESSAGE =	outofmemory;
+		setfocus;
+		losefocus;
+		click(PNT);
+		rclick(PNT);
+		pagechanging(INTEGER OldPage);
+		pagechanged(INTEGER NewPage)
+
+  TC_CALLBACK = determ(WINDOW TCWin,TC_MESSAGE What) - (i,i)
+
+enddef /*** use_winctrl_TabCtrl ***/
+ifdef use_winctrl_UpDown
+
+CONSTANTS
+uds_wrap		= 0x0001
+uds_setbuddyint		= 0x0002
+uds_alignright		= 0x0004
+uds_alignleft		= 0x0008
+uds_arrowkeys		= 0x0020
+uds_horz		= 0x0040
+uds_nothousands		= 0x0080
+uds_hottrack		= 0x0100
+
+GLOBAL DOMAINS
+  UD_ACCELERATOR = ud_ac(UNSIGNED TimePeriod,INTEGER Increment)
+  UD_ACCELERATORLIST = UD_ACCELERATOR*		% List should be three elements or less
+
+  UD_MESSAGE =	changing;
+		changed(INTEGER Pos)
+
+  UD_CALLBACK = determ(WINDOW UDWin,UD_MESSAGE What) - (i,i)
+
+enddef /*** use_winctrl_TabCtrl ***/

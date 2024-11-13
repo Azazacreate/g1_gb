@@ -1,0 +1,13 @@
+2020-12-07 18:56:22,290 INFO server_v2.py Server logging started
+2020-12-07 18:56:22,317 DEBUG server_v2.py Starting the server at 2020-12-07 18:56:22.274032,
+Waiting for a client to call.
+2020-12-06 18:57:07,975 DEBUG server_v2.py At: 2020-12-07 18:56:22.274032 client: <socket.socket fd=364, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52128)>
+2020-12-06 18:57:07,976 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607270227.9757853, 'user': {'account_name': 'Guest'}}
+2020-12-06 19:08:27,189 INFO server_v2.py Server logging started
+2020-12-06 19:08:27,212 DEBUG server_v2.py Starting the server at 2020-12-06 19:08:27.173043,
+Waiting for a client to call.
+2020-12-06 22:41:11,638 INFO server_v2.py Server logging started
+2020-12-06 22:41:11,682 DEBUG server_v2.py Starting the server at 2020-12-06 22:41:11.565376,
+Waiting for a client to call.
+2020-12-06 22:41:14,573 DEBUG server_v2.py At: 2020-12-06 22:41:11.565376 client: <socket.socket fd=348, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 63705)>
+2020-12-06 22:41:14,573 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607283674.5732188, 'user': {'account_name': 'Guest'}}

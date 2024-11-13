@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<title>Exceptions and Error handling</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Exceptions and Error handling<!--mstheme--></font></h1>
+
+<h2><!--mstheme--><font color="#000000">VIP version 5.x<!--mstheme--></font></h2>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">When an error/exception occur raise an exception with <em>errorExit</em>.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Trap an exception if you want to handle the exception.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Trap an exception if you want to clean up and then reexit (using <em>exit</em>).<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The difference between <em>errorExit</em> and <em>exit</em> is that <em>errorExit</em>
+sets the error-state to that particular source file and position, whereas <em>exit</em>
+leaves the state as it is.&nbsp; Therefore, you should use <em>exit</em> when you reexit
+after cleaning up: the cause and source of the error has not changed.</p>
+
+<h2><!--mstheme--><font color="#000000">VIP version 6.x<!--mstheme--></font></h2>
+
+<p><em>cErrorSystem</em> and <em>trap</em> constitute the error handling system of VIP 6.x
+programs.
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">When an error/exception occur raise an exception with <em>cErrorSystem::raise</em><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Trap an exception if you want to handle the exception, if the exception is handled then
+    clear the error state with <em>cErrorSystem::clear</em> otherwise continue the error with <em>cErrorSystem::continue</em>.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Trap an exception if you want to clean up and then reexit (using <em>cErrorSystem::continue</em>).<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>The error system of VIP 6.x keeps track of an &quot;error stack&quot;.&nbsp; The first
+entry in the (normally) stack corresponds to cErrorSystem::raise, whereas the next entries
+(normally) corresponds to cErrorSystem::continue.&nbsp;&nbsp; If the error is handled then
+there is no longer an error and therefore the &quot;error stack&quot; is cleared.</p>
+
+<p>If the error is not handled on its way out the &quot;error stack&quot; can be dumped
+for debug purposes.</p>
+
+<h2><!--mstheme--><font color="#000000">Internal errors and other errors (VIP 5.x and 6.x)<!--mstheme--></font></h2>
+
+<p>You should distinguish between internal errors and errors which had to do with the
+usage of the tool/module/class/unit. If some internal invariant is violated it is an
+internal error. Typical examples of internal errors are:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A database fact which should have been defined is not defined.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">A predicate which should be a procedure, but which the compiler could not recognize as
+    such are made into a procedure by adding a fall through clause, if that clause is reached
+    it is because the assumption that the previous clause could not fail (an invariant) was
+    wrong.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>Internal errors should share one error code pr. unit.&nbsp; You should always use an
+error code: One for each user error and one for internal error (that is one for each
+unit).</p>
+
+<p>Typical user errors:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If a pane index is wrong<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If a window handle is wrong<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If the predicates are called in the wrong order.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>There are two reasons why one might want to trap an exit:
+
+<ol>
+  <li>Because one wants to handle the exit, say you open a file and get an exit saying that
+    the file does not exists. In that case you want to trap the exit and display some error
+    message saying that the file does not exists. Of course if the exit code was not one of
+    the ones you wanted to handle you have to re-exit with the old code.</li>
+  <li>Because you want to do something regardless of whether the predicate exits, a typical
+    example is that you get some kind of lock do something and release the lock. Here you want
+    to be sure that the lock is released also if this something exits. So you trap, clean up
+    and re-exits (<strong>VIP 5.x:</strong> with the same error code using <em>exit</em>
+    instead of <em>errorExit</em>, <strong>VIP 6.x:</strong> using <em>cErrorSystem::continue</em>).</li>
+</ol>
+
+<p><a href="5x_trap.htm">Trap examples (VIP 5.x)</a></p>
+
+<p><a href="6x_trap.htm">Trap examples (VIP 6.x)</a></p>
+
+<p>&nbsp;</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

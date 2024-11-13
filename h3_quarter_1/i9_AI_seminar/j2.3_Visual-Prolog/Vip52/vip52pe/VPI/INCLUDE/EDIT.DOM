@@ -1,0 +1,70 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName: EDIT.DOM
+ PURPOSE: Domain declaration for VPI Editors
+ Written by: Alexander Gostintsev
+ Comments:
+
+******************************************************************************/
+
+constants
+  edit_dlgcon_find    = 9100   
+  edit_dlgcon_replace = 9101
+  edit_dlgcon_gotopos = 9102
+  edit_dlgcon_gotoline= 9103
+
+  e_RemoveLink = 10002
+  e_FollowLink = 10003
+
+  edit_ftype_pro        = 0
+  edit_ftype_rc         = 1
+  edit_ftype_def        = 2
+  edit_ftype_c          = 3
+  edit_ftype_other      = 4
+
+  hyper_begin   = 11
+  hyper_middle	= 14
+  hyper_end	= 15
+/*---------------------------------------------------------------------------
+	Standard editor help control IDs
+---------------------------------------------------------------------------*/
+edit_HelpFind	= 4
+edit_HelpReplace= 5
+edit_HelpLine	= 6
+edit_HelpPos	= 7
+edit_HelpOptions= 8
+
+/*---------------------------------------------------------------------------
+	Popup editor menu commands
+---------------------------------------------------------------------------*/
+edit_MenuUndo =  9060
+edit_MenuRedo =  9061
+edit_MenuCut =   9063
+edit_MenuCopy =  9064
+edit_MenuPaste=  9065
+edit_MenuDelete= 9066
+edit_MenuFind  = 9077
+edit_MenuReplace=9078
+edit_MenuSearch =9079
+edit_MenuGotoLine=9081
+edit_MenuGotoPos=9082
+edit_MenuFont =  9085
+
+global domains
+
+  HYPER_EVENT=
+	removeLink(STRING);
+	followLink(STRING)
+
+%Associations
+  EDIT_ASSOC = struct ass(STRING FileExtension,INTEGER TypeOfColoring)
+  EDIT_ASSLIST = EDIT_ASSOC*
+
+ EDIT_LEFTMARGIN = edit_LeftMargin(UNSIGNED Y, INTEGER Right, UNSIGNED Nline)
+
+ EDIT_POSLIST = ULONG*
+

@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<H1>Using Visual Prolog DLL's from Microsoft Visual C++</H1>
+<P>This directory contains examples of how to use a Dynamic Link Library (DLL) created with Visual Prolog in Microsoft Visual C++ (see <A HREF="../readme.htm">Using Visual Prolog DLL’s from other languages</A> for an overview of the examples)</P>
+<P>All these examples uses the same Visual Prolog DLL’s that are found in the <A HREF="../DLLS/readme.htm">DLLS</A> directory, so these have to be compiled before any of the examples are compiled and run.</P>
+<H2>Notes for C++</H2>
+<P>Please also read the <A HREF="../readme.htm#notes">common notes</A>.</P>
+
+<UL>
+<LI>&lt;__stdcall&gt; modifier should be set for description of imported function in C/C++ code.</LI></UL>
+
+<P>&nbsp;</P>
+
+<UL>
+<LI>input arguments have type according to type in Visual Prolog:</LI></UL>
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=250>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P><B>Visual Prolog</B></TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<B><P>C/C++</B></TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>integer</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>int</TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>real</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>double</TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>unsigned</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>unsigned</TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>string</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>char*</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER">&nbsp;</P>
+
+<UL>
+<LI>output arguments are pointers to appropriate type:</LI></UL>
+
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=254>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P><B>Visual Prolog</B></TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<B><P>C/C++</B></TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>integer</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>int*</TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>real</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>double*</TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>unsigned</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>unsigned*</TD>
+</TR>
+<TR><TD WIDTH="52%" VALIGN="TOP">
+<P>string</TD>
+<TD WIDTH="48%" VALIGN="TOP">
+<P>char**</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER">&nbsp;</P>
+
+<UL>
+<LI>directive &lt;extern "C"&gt; should be used in C++ case:</LI></UL>
+<DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=2><P>#ifdef __cplusplus<BR>
+extern "C" {<BR>
+#endif<BR>
+/*list of imported functions from DLL*/<BR>
+void APIENTRY dll_mark_gstack(unsigned long *out);<BR>
+void APIENTRY dll_release_gstack(unsigned long in);<BR>
+void APIENTRY setInteger(int In );<BR>
+void APIENTRY getInteger(int* Out);<BR>
+void APIENTRY setReal(double In );<BR>
+void APIENTRY getReal(double* Out );<BR>
+void APIENTRY setString(char* In);<BR>
+void APIENTRY getString(char** Out);<BR>
+#ifdef __cplusplus<BR>
+}<BR>
+#endif</P></DIR>
+</DIR>
+
+</FONT><H2>Examples</H2><DIR>
+<DIR>
+
+<P><A HREF="NonGui/Readme.htm">NONGUI</A>: Visual Prolog project with MSVC as main program which uses non-GUI Visual Prolog DLL.</P>
+<P><A HREF="UseVpi/ReadMe.htm">USEVPI</A>: Microsoft Visual C++ MFC project which uses a Visual Prolog DLL with VPI.</P>
+<P><A HREF="ActiveX/Readme.htm">ActiveX</A>: Microsoft Visual C++ MFC ActiveX project which uses a Visual Prolog DLL with VPI.</P></DIR>
+</DIR>
+</BODY>
+</HTML>

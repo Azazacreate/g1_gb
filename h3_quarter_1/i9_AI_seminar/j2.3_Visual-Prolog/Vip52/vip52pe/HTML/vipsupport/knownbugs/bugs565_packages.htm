@@ -1,0 +1,166 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Known Problems with Visual Prolog Packages in Visual Prolog 5.1, build
+565</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="packages"></a>Known Problems with Visual Prolog
+Packages and Examples<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#doc_tool">Known Problems with the PDC's Document Handling
+    Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#report">Known Problems with the Report Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#sockbind">Known Problems with SOCKBIND</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#directory_browser">Known Problems with the Directory Browser</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#dialog">Known Problems with the Dialog Package</a><!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica"><a href="#examples">Known Problems with Examples</a><!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h3 align="left"><!--mstheme--><font color="#000000"><a name="DOC_TOOL"></a>Known Problems with DOC_TOOL<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">The .RTF parser bug in using colored fonts<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>There is a little bug: if a colored phrase in an .RTF document is followed
+  by a table (right after), this table is colored as well.</p>
+  <p><strong>Workaround:</strong> add any uncolored char (a single blank) just
+  after a colored phrase.</p>
+  <h4><!--mstheme--><font color="#000000">Loosing of special&nbsp; characters&nbsp; embedded in the RTF while RTF
+  -&gt; DOC -&gt; HTM conversion.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>The problem with special charactares is a known problem in the MS Word.
+  Word stores special RTF tokens for these characters, which&nbsp; both DOC_TOOL
+  and any Microsoft Windows Help Compiler cannot process.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround:</strong><!--mstheme--></font></h5>
+  <p>In order to avoid this problem, format the character with the Symbol font
+  (without using Insert | Symbol command). This is the only way to make
+  DOC_TOOL&nbsp; correctly process special characters.</p>
+</blockquote>
+<h3 align="left"><!--mstheme--><font color="#000000"><a name="Report"></a>Known Problems with Report Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Incompatibility of the Report package with examples and applications
+  created by previous versions of Visual Prolog<!--mstheme--></font></h4>
+  <p>See <a href="../upgrade/upgrade5to5.1.htm">Upgrade Notes</a>.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="SOCKBIND"></a>Known Problems with SOCKBIND<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Previous versions of the FTPAgent are incompatible Visual Prolog 5.1<!--mstheme--></font></h4>
+  <p>The incompatibility is due to the fact that an additional parameter has
+  been added to an alternative <i>error</i> of the FTPlayer domain <i>ftplay_reply
+  (</i>\SOCKBIND\INCLUDE\FTPLAYER\FTPLAYER.DOM)<i>.</i></p>
+  <p>The following error is generated while compiling:</p>
+  <!--mstheme--></font><pre>E:SOCK_TR.pro, Pos:5125, 507</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround</strong><!--mstheme--></font></h5>
+  <p>To avoid the compiling error while building old examples with&nbsp; Visual
+  Prolog 5.1, downloaded from WEB, a user should add an argument to this
+  alternative in a source code. To do this, it is necessary to replace:</p>
+  <blockquote>
+    <!--mstheme--></font><pre>scan_process_answer(S,error(ErrStr)):-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <p>with</p>
+  <blockquote>
+    <!--mstheme--></font><pre>scan_process_answer(S,error(<b>_ErrNumber, </b>ErrStr)):-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">FTPAgent issues an extra FTP command<!--mstheme--></font></h4>
+  <p>If the option &quot;Do Full Synchronization&quot; is turned on, an old
+  version of a file is deleted at a target site before transferring of a new
+  version, instead of simple transferring of a new file version without a delete
+  operation. The described problem does not influence the results of
+  synchronization.</p>
+  <h4><!--mstheme--><font color="#000000"><a name="SOCKBIND_The SOURCE directory is missed in the WEB version of Visual Prolog 5.1 Personal Edition."></a>The
+  ..\SOCKBIND\SOURCE directory is missed in the WEB version of Visual Prolog 5.1
+  Personal Edition.<!--mstheme--></font></h4>
+  <p>It is impossible to compile projects and examples that use SOCKBIND (eg.
+  WEBAGENT), because the ..\Sockbind\Source directory is missed.</p>
+  <h5><!--mstheme--><font color="#000000"><strong>Workaround</strong><!--mstheme--></font></h5>
+  <p>Download the <a href="ftp://www.visual-prolog.com/pub/patches/pe/sockbind/source.zip">Source.zip</a>
+  (18 KB)</p>
+  <h5><!--mstheme--><font color="#000000">Version Info<!--mstheme--></font></h5>
+  <p>The information applies to&nbsp;the WEB version of Visual Prolog 5.1
+  Personal Edition.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Directory_Browser"></a>Known Problems with the Directory Browser<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="VPI_Directory browser does not work with a network path under Win16"></a>Directory
+  Browser does not work with a network path under Win16<!--mstheme--></font></h4>
+  <p>The Directory browser uses <strong>disk</strong> predicate that does not
+  support the network path under Win16.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Dialog"></a>Known Problems with the Dialog Package<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000"><a name="VPI_A problem with setting Enabled"></a>A problem with setting
+  Enabled/Disabled and Visible/Invisible flags for controls in inactive sheets.<!--mstheme--></font></h4>
+</blockquote>
+<blockquote>
+  <p>Using of a standard VPI predicate <strong>win_SetState</strong>&nbsp; or a
+  Dialog package predicate <strong>dialog_SetState</strong> for setting
+  Enabled/Disabled and Visible/Invisible flags for controls in inactive sheets
+  does not lead to the expected result.</p>
+</blockquote>
+<blockquote>
+  <h5><!--mstheme--><font color="#000000">Workaround<!--mstheme--></font></h5>
+</blockquote>
+<blockquote>
+  <p>In Visual Prolog 5.1,build 565 it is possible to use a new <a href="../news/news51add/tabdlg_setstate.htm">tabdlg_SetState
+  predicate</a>. This predicate correctly handles controls in inactive sheets.</p>
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><a name="Examples"></a>Known Problems with Examples<!--mstheme--></font></h3>
+<blockquote>
+  <h4><!--mstheme--><font color="#000000">Visual Prolog 5.1&nbsp; is not fully compatible with some examples from
+  Visual Prolog 5.02<!--mstheme--></font></h4>
+  <p>Read <a href="../upgrade/upgrade5to5.1.htm">Upgrade Notes</a>.</p>
+</blockquote>
+<!--msthemeseparator--><p align="center"><img src="../_themes/prolog2/modhorsd.gif" width="300" height="10"></p>
+<h5><!--mstheme--><font color="#000000">See also:<!--mstheme--></font></h5>
+<p><a href="bugs565.htm">Known Problems in the Build 565</a> | <a href="../fixes/fixes51.htm">Solved
+Problems</a> | <a href="../upgrade/upgrade5to5.1.htm">Upgrade Notes</a> | <a href="../patches/pdcindex.htm">Patches</a>
+| <a href="../technotes/pdcindex.htm">Technical Notes</a> |<a href="../faq/pdcindex.htm">
+Support_FAQ</a></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

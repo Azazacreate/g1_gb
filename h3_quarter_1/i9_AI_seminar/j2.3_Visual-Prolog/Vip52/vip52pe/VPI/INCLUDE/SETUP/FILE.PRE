@@ -1,0 +1,119 @@
+/*****************************************************************************
+
+	(c) Copyright 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SETUP
+ FileName: FILE.PRE
+ Purpose: Predicate definitions for FILE.PRO
+ Written by: Michael Zaichenko
+ Comments:
+******************************************************************************/
+constants
+ 	setup_tool_pre_included = 1
+  	init32 = 0xFFFFFFFF	% inital value for crc calculation
+  	i_disk=0		% first distributive disk
+ 	
+global domains
+  crc32 = dword
+  file = archive;outfile;log_File
+  fileHandle=unsigned
+  ul=ulong*
+  il=integer*
+  arcFilePos,fileSize = ulong 
+  udate,utime, blksize = ushort
+  directory = dir_entry*
+  dir_entry = small_file(string FileName, filesize, udate,utime,crc32,arcfilepos,blksize);
+	     large_file(string FileName, filesize, udate,utime,crc32,arcfilepos,binary Array_of_BLKSIZE);
+ 	     subdir(string DirName, directory)
+  file_or_directory = file(string) ; directory(string)
+  install_script = igrp*
+  install_script2 = igrp2*
+  igrp=struct igroup(integer, arcFilePos, fileSize,ulong CRC32)
+  igrp2=struct install_group(integer, directory)
+  diskStat=binary
+  wapi_getDiskSpace =  procedure dword(string,binary,binary,binary)-
+  	(i,i,i,i) language stdcall % for call getDiskFreeSpaceEx
+
+global database - setup_g_database
+  determ progress_w(window Progress)
+  determ install_work_now
+  determ mypath(string)
+  determ path(string)
+  determ sizeOfDiskFile(ulong)
+  nocopy iScript(igrp2)
+  determ diskstat(binary DiskArray)
+
+  bad_Group(integer GroupId)
+  is_Selected (integer)
+  is_Selected2(integer)
+  invisible(integer)		% disabled controls in dlg
+
+
+global database - install_params
+  determ setup_started_on_path(string)
+  determ installPath(string)
+
+global predicates
+  determ file_SetDiskFileSize
+  file_expandDirectory(directory,diskstat) - determ(i,i)
+  file_echo_file(string FileName) - determ(i)	
+  file_my_processEvents
+  file_expand(dir_entry,string,diskstat)-determ(i,i,i)
+  % test crc of expanded file
+  file_test_crc(dword CRC32,dword CRC32,string FileName) -determ (i,i,i)
+  file_setMake(string DirName) - determ(i)
+  file_entriesInDir(directory,integer,integer) - (i,i,o)
+  file_readArcExpanding(unsigned,binary,diskstat) - determ(i,o,i)
+  file_IsDriveNoReadOnly(char Drive) - determ(i)
+  file_pathReduce(window Dialog,ctlid Id)-determ(i,i)
+  % read script - fdir_32 or 16
+  determ  file_readScript
+  file_setOneGroup(boolean State,integer GroupId)-determ(i,i)
+  get_size_one_group_str(integer GroupId,string Size,integer CtrlId)-determ(i,o,i)
+  getSizeSelected(string Path,ulong Size) - determ(i,o)
+  file_setInvisible(window Dlg) -determ (i)
+  % Fill window with slided blue color
+  file_DrawBlueWin(window,rct)-determ(i,i) 
+
+  file_SetSpaceValue(ulong,ulong)-determ(i,i)
+
+  STRING file_longToSplitString(ulong)-determ(i) %MZ add 16.09.96
+  % get file from distributive. Useful for get License.
+  binary file_GetSmallFile(string Filename,integer Group)-determ(i,i)
+
+  % get disk space: Avail,Total in KBytes, BytesPerCluster in bytes.
+  % under Win32 support UNC and drives with capaciti below 2 Tbytes.
+  % under OS/2 32 works only with dive letter and drives with capaciti below 2 GBytes.
+  file_GetDiskFree(string Path, ulong BytesPerCl,ulong FreeKB,ulong TotalKB)-determ(i,o,o,o)
+
+  file_findAllocUnitSize(char Drive ,ulong BytesPerSector,ulong TotalBytesOnDrive)-determ(i,o,o)
+
+ifdef os_os2
+	% from dt_file.c
+  DWORD DTF_SetDateTime(string FileName,udate,uTime)
+			-procedure (i,i,i) language c as "_DTFile_SetDateTime"
+
+  DWORD DTF_GetDriveInfo(char Drive, long BPC,long Avail,long Total)
+  			-procedure(i,o,o,o) language c as "_DTFile_GetDriveInfo"
+enddef
+
+ifdef	os_nt
+ %from kernel32.Dll
+ DWORD winNT_GetDiskFreeSpace(string Drive,dword SecPerClu,dword BPerSec,dword FreeCl,dword TotCl)
+	    -procedure(i,o,o,o,o) language stdcall as "GetDiskFreeSpaceA"
+ DWORD winNT_GetModuleHandle(string ModuleName)-
+ 	    procedure(i) language stdcall as "_GetModuleHandleA"
+ DWORD winNT_GetProcAddress(dword ModuleHandle,string Function)- 
+            procedure (i,i) language stdcall as "_GetProcAddress"
+enddef
+
+  dlg_disk_change_Create(window Parent ,string Disk_Name) -determ(i,i)
+  dlg_readonly_Create(window Parent,string Filename) -  determ(i,i)
+  dlg_license_Create(window Parent,string Text) - determ(i,i)
+  dlg_installation_in_progress_Create(window Parent) - determ (i)
+  dlg_cancelation_Create(window Parent) -  determ (i)
+
+  %Useful for debugging
+  file_open_log()-  procedure()
+  file_close_log()- procedure()
+  file_write_log_msg(string)- procedure(i)

@@ -1,0 +1,1764 @@
+<html>
+
+<head>
+<title>The Visual Prolog Language manual 3 </title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body stylesrc="http://carsten-c2/test/standard_page.htm" bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000"><b><font size="5">Chapter 3.</font><font size="6"> </font><font size="5"><a name="unif_name">Unification and Backtracking</a></font></b><!--mstheme--></font></h2>
+
+<p>This chapter is divided into four main parts. In the first part, we examine in detail
+the process Visual Prolog uses when trying to match a call (from a subgoal) with a clause
+(in the <b>clauses</b> section of the program). This search process includes a procedure
+known as <i>unification</i>, which attempts to match up the data-structures embodied in
+the call with those found in a given clause. In Prolog, unification implements several of
+the procedures you might know from other, more traditional languages--procedures such as
+parameter passing, case selection, structure building, structure access, and assignment.</p>
+
+<p>In the second part, we show you how Visual Prolog searches for solutions to a goal
+(through <i>backtracking</i>) and how to control a search. This includes techniques that
+make it possible for a program to carry out a task that would otherwise be impossible,
+either because the search would take too long (which is less likely with Visual Prolog
+than with other Prologs) or because the system would run out of free memory.</p>
+
+<p>In the third part of this chapter, we introduce a predicate you can use to encourage
+backtracking, and go into more detail about how you can control backtracking. We also
+introduce a predicate you can use to verify that a certain constraint in your program is
+(or is not) met.</p>
+
+<p>To shed more light on the subject, in the fourth part of this chapter we review the
+more important tutorial material (presented so far) from a procedural perspective. We show
+how you can understand the basic aspects of Prolog, a declarative language, by also
+looking at them as procedures.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381496"><font size="5"><b>Matching Things Up: Unification</b></font></a><!--mstheme--></font></h2>
+
+<p>Consider Program 1 in terms of the external goal </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by(X, Y).</em></font></dd>
+</dl>
+
+<p>When Visual Prolog tries to fulfill the goal <font size="1" face="Courier New">written_by(X,
+Y).,</font> it must test each <b><i>written_by</i></b> clause in the program for a match.
+In the attempt to match the arguments <i>X</i> and <i>Y</i> with the arguments found in
+each <b><i>written_by</i></b> clause, Visual Prolog will search from the top of the
+program to the bottom. When it finds a clause that matches the goal, it binds values to
+free variables so that the goal and the clause are identical; the goal is said to <i>unify</i>
+with the clause. This matching operation is called <i>unification</i>. </p>
+
+<dl>
+  <dd><p align="left"><font face="Courier New" size="2"><em>/* Program ch04e01.pro */</em></font></p>
+  </dd>
+  <dd><p align="left"><font face="Courier New" size="2"><em>DOMAINS</em></font></p>
+  </dd>
+  <dd><font face="Courier New" size="2"><em>title,author = symbol</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>pages = unsigned</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font face="Courier New" size="2"><em>PREDICATES</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>book(title, pages)</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>nondeterm written_by(author, title)</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>nondeterm long_novel(title)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font face="Courier New" size="2"><em>CLAUSES</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(fleming, &quot;DR NO&quot;).</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(melville, &quot;MOBY DICK&quot;).</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>book(&quot;MOBY DICK&quot;, 250).</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>book(&quot;DR NO&quot;, 310).</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>long_novel(Title):-</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(_, Title),</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>book(Title, Length),</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>Length &gt; 300.</em></font></dd>
+</dl>
+
+<p>Since <i>X</i> and <i>Y</i> are free variables in the goal, and a free variable can be
+unified with any other argument (even another free variable), the call (goal) can be
+unified with the first <b><i>written_by</i></b> clause in the program, as shown here: </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by( X , Y ).</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(fleming, &quot;DR NO&quot;).</em></font></dd>
+</dl>
+
+<p>Visual Prolog makes a match, <i>X</i> becomes bound to <i>fleming</i>, and <i>Y</i>
+becomes bound to &quot;<i>DR NO</i>.&quot; At this point, Visual Prolog displays </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>X=fleming, Y=DR NO</em></font></dd>
+</dl>
+
+<p>Since Visual Prolog looks for all solutions when you use an external goal, the goal is
+also unified with the second <b><i>written_by</i></b> clause </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by(melville,&quot;MOBY DICK&quot;).</em></font></dd>
+</dl>
+
+<p>and Visual Prolog displays the second solution: </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>X=melville, Y=MOBY DICK</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>2 Solutions</em></font></dd>
+</dl>
+
+<p>If, on the other hand, you give the program the goal </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by(X, &quot;MOBY DICK&quot;).</em></font></dd>
+</dl>
+
+<p>Visual Prolog will attempt a match with the first clause for <b><i>written_by</i></b>: </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by( X ,&quot;MOBY DICK&quot;).</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>| |</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(fleming,&quot;DR NO&quot;).</em></font></dd>
+</dl>
+
+<p>Since &quot;<i>MOBY DICK</i>&quot; and &quot;<i>DR NO</i>&quot; do not match, the
+attempt at unification fails. Visual Prolog then tries the next fact in the program: </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by(melville, &quot;MOBY DICK&quot;).</em></font></dd>
+</dl>
+
+<p>This does unify, and <i>X</i> becomes bound to <i>melville</i>.</p>
+
+<p>Consider how Visual Prolog executes the following: </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>long_novel(X).</em></font></dd>
+</dl>
+
+<p>When Visual Prolog tries to fulfill a goal, it investigates whether or not the call can
+match a fact or the head of a rule. In this case, the match is with </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>long_novel(Title)</em></font></dd>
+</dl>
+
+<p>Visual Prolog looks at the clause for <b><i>long_novel</i></b>, trying to complete the
+match by unifying the arguments. Since <i>X</i> is not bound in the goal, the free
+variable <i>X</i> can be unified with any other argument. <i>Title</i> is also unbound in
+the head of the <b><i>long_novel</i></b> clause. The goal matches the head of the rule and
+unification is made. Visual Prolog will subsequently attempt to satisfy the subgoals to
+the rule. </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>long_novel(Title):-</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(_, Title),</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>book(Title, Length),</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>Length&gt;300.</em></font></dd>
+</dl>
+
+<p>In attempting to satisfy the body of the rule, Visual Prolog will call the first
+subgoal in the body of the rule, <b><i>written_by(_, Title)</i></b><font size="1" face="Courier New">.</font> Notice that, since who authored the book is immaterial, the
+anonymous variable (_) appears in the position of the <b><i>author</i></b> argument. The
+call <b><i>written_by(_, Title)</i></b> becomes the current subgoal, and Prolog searches
+for a solution to this call.</p>
+
+<p>Prolog searches for a match with this subgoal from the top of the program to the
+bottom. In doing so, it achieves unification with the first fact for <b><i>written_by</i></b>
+as follows: </p>
+
+<dl>
+  <dd><font face="Courier New" size="2"><em>written_by(_, Title),</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>| |</em></font></dd>
+  <dd><font face="Courier New" size="2"><em>written_by(fleming,&quot;DR NO&quot;)</em>.</font></dd>
+</dl>
+
+<p>The variable <i>Title</i> becomes bound to &quot;<i>DR NO</i>&quot; and the next
+subgoal, <font size="1" face="Courier New">book(Title, Length)</font>, is called with this
+binding.</p>
+
+<p>Visual Prolog now begins its next search, trying to find a match with the call to <b><i>book</i></b>.
+Since <i>Title</i> is bound to &quot;<i>DR NO</i>&quot;, the actual call resembles <font size="1" face="Courier New">book(&quot;DR NO&quot;, Length)</font>. Again, the search
+starts from the top of the program. Notice that the first attempt to match with the clause
+<font size="1" face="Courier New">book(&quot;MOBY DICK&quot;, 250)</font> will fail, and
+Visual Prolog will go on to the second clause of <b><i>book</i></b> in search of a match.
+Here, the book title matches the subgoal and Visual Prolog binds the variable <i>Length</i>
+with the value 310.</p>
+
+<p>The third clause in the body of <b><i>long_novel</i></b> now becomes the current
+subgoal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Length &gt; 300.</em></font></dd>
+</dl>
+
+<p>Visual Prolog makes the comparison and succeeds; 310 is greater than 300. At this
+point, all the subgoals in the body of the rule have succeeded and therefore the call <font size="1" face="Courier New">long_novel(X) succeeds.</font> Since the <i>X</i> in the call
+was unified with the variable <i>Title</i> in the rule, the value to which <i>Title</i> is
+bound when the rule succeeds is returned to the call and unified with the variable <i>X</i>.
+<i>Title</i> has the value &quot;<i>DR NO</i>&quot; when the rule succeeds, so Visual
+Prolog will output: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>X=DR NO</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<p>In the following chapters, we will show several advanced examples of unification.
+However, there are still a few basics that need to be introduced first, such as complex
+structures. In the next section of this chapter, we'll discuss how Prolog searches for its
+solutions.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381497"><font size="5"><b>Backtracking</b></font></a><!--mstheme--></font></h2>
+
+<p>Often, when solving real problems, you must pursue a path to its logical conclusion. If
+this conclusion does not give the answer you were looking for, you must choose an
+alternate path. For instance, you might have played maze games when you were a child. One
+sure way to find the end of the maze was to turn left at every fork in the maze until you
+hit a dead end. At that point you would back up to the last fork, and try the right-hand
+path, once again turning left at each branch encountered. By methodically trying each
+alternate path, you would eventually find the right path and win the game.</p>
+
+<p>Visual Prolog uses this same backing-up-and-trying-again method, called <i>backtracking</i>,
+to find a solution to a given problem. As Visual Prolog begins to look for a solution to a
+problem (or goal), it might have to decide between two possible cases. It sets a marker at
+the branching spot (known as a <i>backtracking point</i>) and selects the first subgoal to
+pursue. If that subgoal fails (equivalent to reaching a dead end), Visual Prolog will
+backtrack to the back-tracking point and try an alternate subgoal.</p>
+
+<p>Here is a simple example: </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e02.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm likes(symbol,symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>tastes(symbol,symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm food(symbol)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(bill,X):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>food(X),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>tastes(X,good).</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>tastes(pizza,good).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>tastes(brussels_sprouts,bad).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>food(brussels_sprouts).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>food(pizza).</em></font></dd>
+</dl>
+
+<p>This small program is made up of two sets of facts and one rule. The rule, represented
+by the relationship <b><i>likes</i></b>, simply states that Bill likes good-tasting food.</p>
+
+<p>To see how backtracking works, give the program the following goal to solve: </p>
+
+<dl>
+  <dd>likes(bill, What).</dd>
+</dl>
+
+<p><strong>When Prolog begins an attempt to satisfy a goal, it starts at the top of the
+program in search of a match.</strong></p>
+
+<p>In this case, it will begin the search for a solution by looking from the top for a
+match to the subgoal likes(bill, What).</p>
+
+<p>It finds a match with the first clause in the program, and the variable <i>What</i> is
+unified with the variable <i>X</i>. Matching with the head of the rule causes Visual
+Prolog to attempt to satisfy that rule. In doing so, it moves on to the body of the rule,
+and calls the first subgoal located there: <font size="1" face="Courier New">food(X).</font></p>
+
+<p><b><i>When a new call is made, a search for a match to that call also begins at the top
+of the program.</i></b></p>
+
+<p>In the search to satisfy the first subgoal, Visual Prolog starts at the top, attempting
+a match with each fact or head of a rule encountered as processing goes down into the
+program.</p>
+
+<p>It finds a match with the call at the first fact representing the <b><i>food</i></b>
+relationship. Here, the variable <i>X</i> is bound to the value <i>brussels_sprouts</i>.
+Since there is more than one possible answer to the call <font size="1" face="Courier New">food(X)</font>,
+Visual Prolog sets a backtracking point next to the fact <font size="1" face="Courier New">food(brussels_sprouts)</font>.
+This backtracking point keeps track of where Prolog will start searching for the next
+possible match for <font size="1" face="Courier New">food(X).</font></p>
+
+<p><b><i>When a call has found a successful match, the call is said to succeed, and the
+next subgoal in turn may be tried.</i></b></p>
+
+<p>With <i>X</i> bound to <i>brussels_sprouts</i>, the next call made is </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>tastes(brussels_sprouts, good)</em></font></dd>
+</dl>
+
+<p>and Visual Prolog begins a search to attempt to satisfy this call, again starting from
+the top of the program. Since no clause is found to match, the call fails and Visual
+Prolog kicks in its automatic backtracking mechanism. When backtracking begins, Prolog
+retreats to the last backtracking point set. In this case, Prolog returns to the fact <font size="1" face="Courier New">food(brussels_sprouts).</font></p>
+
+<p><b><i>Once a variable has been bound in a clause, the only way to free that binding is
+through backtracking.</i></b></p>
+
+<p>When Prolog retreats to a backtracking point, it frees all the variables set after that
+point, and sets out to find another solution to the original call.</p>
+
+<p>The call was <font size="1" face="Courier New">food(X),</font> so the binding of <font size="1" face="Courier New">brussels_sprouts</font> for <i>X</i> is released. Prolog now
+tries to resolve this call, beginning from the place where it left off. It finds a match
+with the fact <font size="1" face="Courier New">food(pizza)]</font> and returns, this time
+with the variable <i>X</i> bound to the value <i>pizza</i>.</p>
+
+<p>Prolog now moves on to the next subgoal in the rule, with the new variable binding. A
+new call is made, <font size="1" face="Courier New">tastes(pizza, good)],</font> and the
+search begins at the top of the program. This time, a match is found and the goal returns
+successfully.</p>
+
+<p>Since the variable <i>What</i> in the goal is unified with the variable <i>X</i> in the
+<b><i>likes</i></b> rule, and the variable <i>X</i> is bound to the value <i>pizza</i>,
+the variable <i>What</i> is now bound to the value <i>pizza</i> and Visual Prolog reports
+the solution </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>What=pizza</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381498"><font size="4"><b>Visual Prolog's Relentless Search for
+Solutions</b></font></a><!--mstheme--></font></h3>
+
+<p>As we've described earlier, with the aid of backtracking, Visual Prolog will not only
+find the first solution to a problem, but is actually capable of finding all possible
+solutions.</p>
+
+<p>Consider Program 3, which contains facts about the names and ages of some players in a
+racquet club. </p>
+
+<dl>
+  <dd><p align="left"><font size="1" face="Courier New"><em>/* Program ch04e03.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>child = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>age = integer</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm player(child, age)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>player(peter,9).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>player(paul,10).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>player(chris,9).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>player(susan,9).</em></font></dd>
+</dl>
+
+<p>You'll use Visual Prolog to arrange a ping-pong tournament between the nine-year-olds
+in a racquet club. There will be two games for each pair of club players. Your aim is to
+find all possible pairs of club players who are nine years old. This can be achieved with
+the compound goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>player(Person1, 9),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>player(Person2, 9),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1 &lt;&gt; Person2.</em></font></dd>
+</dl>
+
+<p>In natural language: Find <i>Person1</i> (age 9) and <i>Person2</i> (age 9) so that <i>Person1</i>
+is different from <i>Person2</i>.</p>
+
+<p>Visual Prolog will try to find a solution to the first subgoal <font size="1" face="Courier New">player(Person1, 9)</font> and continue to the next subgoal only after
+the first subgoal is reached. The first subgoal is satisfied by matching <i>Person1</i>
+with <i>peter</i>. Now Visual Prolog can attempt to satisfy the next subgoal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>player(Person2, 9)</em></font></dd>
+</dl>
+
+<p>by also matching <i>Person2</i> with <i>peter</i>. Now Prolog comes to the third and
+final subgoal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New">Person1 &lt;&gt; Person2</font></dd>
+</dl>
+
+<p>Since <i>Person1</i> and <i>Person2</i> are both bound to <i>peter</i>, this subgoal
+fails. Because of this, Visual Prolog backtracks to the previous subgoal, and searches for
+another solution to the second subgoal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>player(Person2, 9)</em></font></dd>
+</dl>
+
+<p>This subgoal is fulfilled by matching <i>Person2</i> with <i>chris</i>.</p>
+
+<p>Now, the third subgoal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Person1 &lt;&gt; Person2</em></font></dd>
+</dl>
+
+<p>can succeed, since <i>peter</i> and <i>chris</i> are different. Here, the entire goal
+is satisfied by creating a tournament between the two players, <i>chris</i> and <i>peter</i>.</p>
+
+<p>However, since Visual Prolog must find all possible solutions to a goal, it backtracks
+to the previous goal--hoping to succeed again. Since </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>player(Person2, 9)</em></font></dd>
+</dl>
+
+<p>can also be satisfied by taking <i>Person2</i> to be <i>susan</i>, Visual Prolog tries
+the third subgoal once again. It succeeds (since <i>peter</i> and <i>susan</i> are
+different), so another solution to the entire goal has been found.</p>
+
+<p>Searching for more solutions, Visual Prolog once again backtracks to the second
+subgoal, but all possibilities for this subgoal have been exhausted. Because of this,
+backtracking now continues back to the first subgoal. This can be satisfied again by
+matching <i>Person1</i> with <i>chris</i>. The second subgoal now succeeds by matching <i>Person2</i>
+with <i>peter</i>, so the third subgoal is satisfied, again fulfilling the entire goal.
+Here, another tournament has been scheduled, this time between <i>chris</i> and <i>peter</i>.</p>
+
+<p>Searching for yet another solution to the goal, Visual Prolog backtracks to the second
+subgoal in the rule. Here, <i>Person2</i> is matched to <i>chris</i> and again the third
+subgoal is tried with these bindings. The third subgoal fails, since <i>Person1</i> and <i>Person2</i>
+are equal, so backtracking regresses to the second subgoal in search of another solution. <i>Person2</i>
+is now matched with <i>susan</i>, and the third subgoal succeeds, providing another
+tournament for the racket club (<i>chris</i> vs. <i>susan</i>).</p>
+
+<p>Once again, searching for all solutions, Prolog backtracks to the second subgoal, but
+this time without success. When the second subgoal fails, backtracking goes back to the
+first subgoal, this time finding a match for <i>Person1</i> with <i>susan</i>. In an
+attempt to fulfill the second subgoal, Prolog matches <i>Person2</i> with <i>peter</i>,
+and subsequently the third subgoal succeeds with these bindings. A fifth tournament has
+been scheduled for the players.</p>
+
+<p>Backtracking again goes to the second subgoal, where <i>Person2</i> is matched with <i>chris</i>.
+A sixth solution is found for the racquet club, producing a full set of tournaments.</p>
+
+<p>The final solution tried is with both <i>Person1</i> and <i>Person2</i> bound to <i>susan</i>.
+Since this causes the final subgoal to fail, Visual Prolog must backtrack to the second
+subgoal, but there are no new possibilities. Visual Prolog then backtracks to the first
+subgoal, but the possibilities for <i>Person1</i> have also been exhausted. No more
+solutions can be found for the goal, so the program terminates.</p>
+
+<p>Type in this compound goal for the program: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>player(Person1, 9),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>player(Person2, 9),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1 &lt;&gt; Person2.</em></font></dd>
+</dl>
+
+<p>Verify that Visual Prolog responds with </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Person1=peter, Person2=chris</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1=peter, Person2=susan</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1=chris, Person2=peter</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1=chris, Person2=susan</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1=susan, Person2=peter</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Person1=susan, Person2=chris</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>6 Solutions</em></font></dd>
+</dl>
+
+<p>Notice how backtracking might cause Visual Prolog to come up with redundant solutions.
+In this example, Visual Prolog does not distinguish that <font size="1" face="Courier New">Person1
+= peter</font> is the same thing as <font size="1" face="Courier New">Person2 = peter</font>.
+We will show you later in this chapter how to control the search Visual Prolog generates.</p>
+
+<p><i>Exercise in Backtracking</i></p>
+
+<p>Using Program 3, decide what Visual Prolog will reply to the following goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>player(Person1, 9), player(Person2, 10).</em></font></dd>
+</dl>
+
+<p>Check your answer by typing in the exercise and the given goal when you run the
+program.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381499"><b>A Detailed Look at Backtracking</b></a><!--mstheme--></font></h3>
+
+<p>With this simple example under your belt, you can take a more detailed look at how
+Visual Prolog's backtracking mechanism works. Start by looking at Program 4 in light of
+the following goal, which consists of two subgoals: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(X, wine) , likes(X, books)</em></font></dd>
+</dl>
+
+<p>When evaluating the goal, Visual Prolog notes which subgoals have been satisfied and
+which have not. This search can be represented by a goal tree:</p>
+
+<p align="center"><img src="images/learn16.gif" WIDTH="275" HEIGHT="79"></p>
+
+<p>Before the goal evaluation begins, the goal tree consists of two unsatisfied subgoals.
+In the following goal tree diagrams, a subgoal satisfied in the goal tree is marked with
+an underline, and the corresponding clause is shown beneath that subgoal. </p>
+
+<dl>
+  <dd><p align="left"><font size="1" face="Courier New"><em>/* Program ch04e04.pro */</em></font></p>
+  </dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>name,thing = symbol</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(name, thing)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>reads(name)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_inquisitive(name)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(john,wine):-!.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(lance,skiing):-!.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(lance,books):-!.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(lance,films):-!.</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>likes(Z,books):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>reads(Z),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_inquisitive(Z).</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>reads(john).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_inquisitive(john).</em></font></dd>
+</dl>
+
+<p><i>The Four Basic Principles of Backtracking</i></p>
+
+<p>In this example, the goal tree shows that two subgoals must be satisfied. To do so,
+Visual Prolog follows the first basic principle of backtracking:</p>
+
+<p><b><i>Subgoals must be satisfied in order, from top to bottom.</i></b></p>
+
+<p>Visual Prolog determines which subgoal it will use when trying to satisfy the clause
+according to the second basic principle of backtracking:</p>
+
+<p><b><i>Predicate clauses are tested in the order they appear in the program, from top to
+bottom.</i></b></p>
+
+<p>When executing Program 4, Visual Prolog finds a matching clause with the first fact
+defining the <b><i>likes</i></b> predicate. Take a look at the goal tree now.</p>
+
+<p align="center"><img src="images/learn17.gif" WIDTH="263" HEIGHT="100"></p>
+
+<p>The subgoal <font size="1" face="Courier New">likes(X, wine)</font> matches the fact <font size="1" face="Courier New">likes(john, wine)</font> and binds <i>X</i> to the value <i>john</i>.
+Visual Prolog tries to satisfy the next subgoal to the right.</p>
+
+<p>The call to the second subgoal begins a completely new search with the binding <i>X =
+john</i>. The first clause </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(john, wine)</em></font></dd>
+</dl>
+
+<p>does not match the subgoal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(X, books)</em></font></dd>
+</dl>
+
+<p>since <i>wine</i> is not the same as <i>books</i>. Visual Prolog must therefore try the
+next clause, but <i>lance</i> does not match the value <i>X</i> (because, in this case, <i>X</i>
+is bound to <i>john</i>), so the search continues to the third clause defining the
+predicate <b><i>likes</i></b>: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(Z, books):- reads(Z), is_inquisitive(Z).</em></font></dd>
+</dl>
+
+<p>The argument <i>Z</i> is a variable, so it is able to match with <i>X</i>. The second
+arguments agree, so the call matches the head of the rule. When <i>X</i> matches <i>Z</i>,
+the arguments are <i>unified</i>. With the arguments unified, Visual Prolog will equate
+the value <i>X</i> has (which is <i>john</i>) with the variable <i>Z</i>. Because of this,
+now the variable <i>Z</i> also has the value <i>john</i>.</p>
+
+<p>The subgoal now matches the left side (head) of a rule. Continued searching is
+determined by the third basic principle of backtracking:</p>
+
+<p><b><i>When a subgoal matches the head of a rule, the body of that rule must be
+satisfied next. The body of the rule then constitutes a new set of subgoals to be
+satisfied.</i></b></p>
+
+<p>This yields the following goal tree:</p>
+
+<p align="center"><img src="images/learn18.gif" WIDTH="339" HEIGHT="179"></p>
+
+<p>The goal tree now includes the subgoals </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>reads(Z) and is_inquisitive(Z)</em></font></dd>
+</dl>
+
+<p>where <i>Z</i> is bound to the value <i>john</i>. Visual Prolog will now search for
+facts that match both subgoals. This is the resulting final goal tree:</p>
+
+<p align="center"><img src="images/learn19.gif" WIDTH="339" HEIGHT="204"></p>
+
+<p>According to the fourth basic principle of backtracking:</p>
+
+<p><b><i>A goal has been satisfied when a matching fact is found for each of the
+extremities (leaves) of the goal tree.</i></b></p>
+
+<p>So now the initial goal is satisfied.</p>
+
+<p>Visual Prolog uses the result of the search procedure in different ways, depending on
+how the search was initiated. If the goal is a call from a subgoal in the body of a rule,
+Visual Prolog attempts to satisfy the next subgoal in the rule after the call has
+returned. If the goal is a query from the user, Visual Prolog replies directly: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>X=john</em></font></dd>
+</dl>
+
+<p><font size="1" face="Courier New">1 Solution</font></p>
+
+<p>As you saw in Program 4, having once satisfied an external goal, Visual Prolog
+backtracks to find all alternate solutions. It also backtracks if a subgoal fails, hoping
+to re-satisfy a previous subgoal in such a way that the failed subgoal is satisfied by
+other clauses.</p>
+
+<p>To fulfill a subgoal, Visual Prolog begins a search with the first clause that defines
+the predicate. One of two things can then happen:</p>
+
+<p>It finds a matching clause, in which case the following occurs:</p>
+
+<p>If there is another clause that can possibly re-satisfy the subgoal, Visual Prolog
+places a pointer (to indicate a backtracking point) next to the matching clause.</p>
+
+<p>All free variables in the subgoal that match values in the clause are bound to the
+corresponding values.</p>
+
+<p>If the matching clause is the head of a rule, that rule's body is then evaluated; the
+body's subgoals must succeed for the call to succeed.</p>
+
+<p>It can't find a matching clause, so the goal fails. Visual Prolog backtracks as it
+attempts to re-satisfy a previous subgoal. When processing reaches the last backtracking
+point, Visual Prolog frees all variables that had been assigned new values since the
+backtracking point was set, then attempts to re-satisfy the original call.</p>
+
+<p>Visual Prolog begins a search from the top of the program. When it backtracks to a
+call, the new search begins from the last backtracking point set. If the search is
+unsuccessful, it backtracks again. If backtracking exhausts all clauses for all subgoals,
+the goal fails.</p>
+
+<p><a name="_Toc325381500"><b>Backtracking</b></a></p>
+
+<p>Here is another, slightly more complex, example, illustrating how backtracking takes
+place in Prolog. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e05.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm type(symbol, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm is_a(symbol, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>lives(symbol, symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm can_swim(symbol)</em></font></dd>
+  <dt>&nbsp;</dt>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>type(ungulate,animal).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>type(fish,animal).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_a(zebra,ungulate).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_a(herring,fish).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_a(shark,fish).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>lives(zebra,on_land).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>lives(frog,on_land).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>lives(frog,in_water).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>lives(shark,in_water).</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>can_swim(Y):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>type(X,animal),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>is_a(Y,X),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>lives(Y,in_water).</em></font></dd>
+</dl>
+
+<p>This example program uses an <i>internal goal</i> to illustrate how backtracking works.
+When the program is compiled and run, Visual Prolog will automatically begin executing the
+goal, attempting to satisfy all the subgoals in the <b>goal</b> section.</p>
+
+<p>Visual Prolog calls the <b><i>can_swim</i></b> predicate with a free variable, <i>What</i>.
+In trying to solve this call, Visual Prolog searches the program looking for a match. It
+finds a match with the clause defining <b><i>can_swim</i></b>, and the variable <i>What</i>
+is unified with the variable <i>Y</i>.</p>
+
+<p>Next, Visual Prolog attempts to satisfy the body of the rule. In doing so, Visual
+Prolog calls the first subgoal in the body of the rule, <font size="1" face="Courier New">type(X,
+animal)</font>, and searches for a match to this call. It finds a match with the first
+fact defining the <b><i>type</i></b> relationship.</p>
+
+<p>At this point, <i>X</i> is bound to <i>ungulate</i>. Since there is more than one
+possible solution, Visual Prolog sets a backtracking point at the fact <font size="1" face="Courier New">type(ungulate, animal).</font></p>
+
+<p>With <i>X</i> bound to <i>ungulate</i>, Visual Prolog makes a call to the second
+subgoal in the rule <font size="1" face="Courier New">(is_a(Y, ungulate))</font>, and
+again searches for a match. It finds one with the first fact, <font size="1" face="Courier New">is_a(zebra, ungulate)</font>. <i>Y</i> is bound to <i>zebra</i> and
+Prolog sets a backtracking point at<font size="1" face="Courier New"> is_a(zebra,
+ungulate).</font></p>
+
+<p>Now, with <i>X</i> bound to <i>ungulate</i> and <i>Y</i> bound to <i>zebra</i>, Prolog
+tries to satisfy the last subgoal,<font size="1" face="Courier New"> lives(zebra,
+in_water)</font>. Prolog tries each <b><i>lives</i></b> clause, but there is no <font size="1" face="Courier New">lives(zebra, in_water)</font> clause in the program, so the
+call fails and Prolog begins to backtrack in search of another solution.</p>
+
+<p>When Visual Prolog backtracks, processing returns to the last point where a
+backtracking point was placed. In this case, the last backtracking point was placed at the
+second subgoal in the rule, on the fact<font size="1" face="Courier New"> is_a(zebra,
+ungulate)</font>.</p>
+
+<p>When Visual Prolog reaches a backtracking point, it frees the variables that were
+assigned new values after the last backtracking point and attempts to find another
+solution to the call it made at that time. In this case, the call was<font size="1" face="Courier New"> is_a(Y, ungulate).</font></p>
+
+<p>Visual Prolog continues down into the clauses in search of another clause that will
+match with this one, starting from the point where it previously left off. Since there are
+no other clauses in the program that can match this one, the call fails and Visual Prolog
+backtracks again in an attempt to solve the original goal. </p>
+
+<p>From this position, the last backtracking point was set at <font size="1" face="Courier New">type(ungulate, animal).</font></p>
+
+<p>Visual Prolog frees the variables set in the original call and tries to find another
+solution to the call <font size="1" face="Courier New">type(X, animal)</font>. The search
+begins after the backtracking point. Visual Prolog finds a match with the next <b><i>type</i></b>
+fact in the program <font size="1" face="Courier New">(type(fish, animal))</font>; <i>X</i>
+is bound to <i>fish</i>, and a new backtracking point is set at that fact.</p>
+
+<p>Visual Prolog now moves down to the next subgoal in the rule; since this is a new call,
+the search begins at the top of the program with <font size="1" face="Courier New">is_a(Y,
+fish)</font>.</p>
+
+<p>Visual Prolog finds a match to this call and <i>Y</i> is bound to <i>herring</i>.</p>
+
+<p>Since <i>Y</i> is now bound to <i>herring</i>, the next subgoal called is <font size="1" face="Courier New">lives(herring, in_water)</font>. Again, this is a new call,
+and the search begins from the top of the program.</p>
+
+<p>Visual Prolog tries each <b><i>lives</i></b> fact, but fails to find a match and the
+subgoal fails.</p>
+
+<p>Visual Prolog now returns to the last backtracking point, <font size="1" face="Courier New">is_a(herring, fish).</font></p>
+
+<p>The variables that were bound by this matching are now freed. Starting at the point
+where it last left off, Visual Prolog now searches for a new solution to the call<font size="1" face="Courier New"> is_a(Y, fish)</font>.</p>
+
+<p>Visual Prolog finds a match with the next <b><i>is_a</i></b> clause, and <i>Y</i>
+becomes bound to the symbol <i>shark</i>.</p>
+
+<p>Visual Prolog tries the last subgoal again, with the variable <i>Y</i> bound to <i>shark</i>.
+It calls <font size="1" face="Courier New">lives(shark, in_water)</font>; the search
+begins at the top of the program, since this is a new call. It finds a match and the last
+subgoal to the rule succeeds.</p>
+
+<p>At this point, the body of the <font size="1" face="Courier New">can_swim(Y)</font>
+rule is satisfied. Visual Prolog returns <i>Y</i> to the call <font size="1" face="Courier New">can_swim(What)</font>. Since <i>What</i> is bound to <i>Y</i>, and <i>Y</i>
+is bound to <i>shark</i>, <i>What</i> is now bound to <i>shark</i> in the goal. </p>
+
+<p>Visual Prolog continues processing where it left off in the <b>goal</b> section, and
+calls the second subgoal in the goal. </p>
+
+<p>Visual Prolog completes the program by outputting </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>A shark can swim.</em></font></dd>
+</dl>
+
+<p>and the program terminates successfully.</p>
+
+<h2><!--mstheme--><font color="#000000"><a name="_Toc325381501"><font size="4"><b>Controlling the Search for Solutions</b></font></a><!--mstheme--></font></h2>
+
+<p>Prolog's built-in backtracking mechanism can result in unnecessary searching; because
+of this, inefficiencies can arise. For instance, there may be times when you want to find
+unique solutions to a given question. In other cases, it may be necessary to force Visual
+Prolog to continue looking for additional solutions even though a particular goal has been
+satisfied. In cases such as these, you must control the backtracking process. In this
+section, we'll show you some techniques you can use to control Visual Prolog's search for
+the solutions to your goals.</p>
+
+<p>Visual Prolog provides two tools that allow you to control the backtracking mechanism:
+the <b><i>fail</i></b> predicate, which is used to <i>force</i> backtracking, and the <b><i>cut</i></b>
+(signified by !), which is used to <i>prevent</i> backtracking.</p>
+
+<h3><!--mstheme--><font color="#000000"><b><a name="_Toc325381502"><font size="4">Using the <i>fail</i> Predicate</font></a></b><!--mstheme--></font></h3>
+
+<p>Visual Prolog begins backtracking when a call fails. In certain situations, it's
+necessary to force backtracking in order to find alternate solutions. Visual Prolog
+provides a special predicate, <b><i>fail</i></b>, to force failure and thereby encourage
+backtracking. The effect of the <b><i>fail</i></b> predicate corresponds to the effect of
+the comparison <font size="1" face="Courier New">2 = 3</font> or any other impossible
+subgoal. Program 6 illustrates the use of this special predicate. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e06.pro */</em></font></p>
+  </dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>name = symbol</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm father(name, name)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>everybody</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>father(leonard,katherine).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>father(carl,jason).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>father(carl,marilyn).</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>everybody:-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>father(X,Y),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(X,&quot; is &quot;,Y,&quot;'s
+    father\n&quot;),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>fail.</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>everybody.</em></font></dd>
+</dl>
+
+<p>Once an internal goal has completely succeeded, there is nothing that tells Visual
+Prolog to backtrack. Because of this, an internal call to <b><i>father</i></b> will come
+up with only one solution. However, the predicate <b><i>everybody</i></b> in Program 6
+uses <b><i>fail</i></b> to force backtracking, and therefore finds all possible solutions.</p>
+
+<p>The object of the predicate <b><i>everybody</i></b> is to produce a cleaner response
+from program runs. Compare the answers to the two preceding goals: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Goal father(X, Y).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>X=leonard, Y=katherine</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>X=carl, Y=jason</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>X=carl, Y=marilyn</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>3 Solutions</em></font></dd>
+</dl>
+
+<p>and </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Goal everybody.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>leonard is katherine's father</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>carl is jason's father</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>carl is marilyn's father</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>yes</em></font></dd>
+</dl>
+
+<p>The predicate <b><i>everybody</i></b> uses backtracking to generate more solutions for <font size="1" face="Courier New">father(X, Y)</font> by forcing Prolog to backtrack through the
+body of the <b><i>everybody</i></b> rule: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>father(X, Y), write(X,&quot; is &quot;,Y,&quot;'s
+    father\n&quot;), fail.</em></font></dd>
+</dl>
+
+<p><b><i>fail</i></b> can never be satisfied (it always fails), so Visual Prolog is forced
+to backtrack. When backtracking takes place, Prolog backtracks to the last call that can
+produce multiple solutions. Such a call is labeled <i>non-deterministic</i>. <b><i>A
+non-deterministic call contrasts with a call that can produce only one solution, which is
+a deterministic</i> <i>call</i>.</b></p>
+
+<p>The <b><i>write</i></b> predicate can't be re-satisfied (it can't offer new solutions),
+so Visual Prolog must backtrack again, this time to the first subgoal in the rule.</p>
+
+<p>Notice that it's useless to place a subgoal after <b><i>fail</i></b> in the body of a
+rule. Since the predicate <b><i>fail</i></b> always fails, there would be no way of
+reaching a subgoal located after <b><i>fail</i></b>.</p>
+
+<p><i>Exercises</i></p>
+
+<p>Load and run Program 6 and evaluate the following goals:</p>
+
+<p>a<font size="1">.</font><font size="1" face="Courier New"> father(X, Y).</font></p>
+
+<p>b<font size="1">.</font><font size="1" face="Courier New"> everybody.</font></p>
+
+<p>2. Edit the body of the rule defining <b><i>everybody</i></b> so that the rule ends
+with the call to the <b><i>write</i></b> predicate (delete the call to <b><i>fail</i></b>).
+Now compile and run the program, giving <font size="1" face="Courier New">everybody</font>.
+as the goal. Why doesn't Visual Prolog find all the solutions as it does with the query <font size="1" face="Courier New">father(X, Y)</font>?</p>
+
+<p>3. Relocate the call to <b><i>fail</i></b> at the end of the <b><i>everybody</i></b>
+rule. Again, give the query <font size="1" face="Courier New">everybody</font> as the
+goal. Why are the solutions to <b><i>everybody</i></b> terminated by no? For a clue,
+append <font size="1" face="Courier New">everybody</font>. as a second clause to the
+definition of predicate <b><i>everybody</i></b> and re-evaluate the goal.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381503"><font size="4"><b>Preventing Backtracking: The Cut</b></font></a><!--mstheme--></font></h3>
+
+<p>Visual Prolog contains the cut, which is used to prevent backtracking; it's written as
+an exclamation mark (!). The effect of the cut is simple: It is impossible to backtrack
+across a cut.</p>
+
+<p>You place the cut in your program the same way you place a subgoal in the body of a
+rule. When processing comes across the cut, the call to <b><i>cut</i></b> immediately
+succeeds, and the next subgoal (if there is one) is called. Once a cut has been passed, it
+is not possible to backtrack to subgoals placed before the cut in the clause being
+processed, and it is not possible to backtrack to other predicates defining the predicate
+currently in process (the predicate containing the cut).</p>
+
+<p>There are two main uses of the cut:</p>
+
+<p>When you know in advance that certain possibilities will never give rise to meaningful
+solutions, it's a waste of time and storage space to look for alternate solutions. If you
+use a cut in this situation, your resulting program will run quicker and use less memory.
+This is called a <i>green cut.</i></p>
+
+<p>When the logic of a program demands the cut, to prevent consideration of alternate
+subgoals. This is a <i>red cut</i>.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381504"><b>How to Use the Cut</b></a><!--mstheme--></font></h4>
+
+<p>In this section, we give examples that show how you can use the cut in your programs.
+In these examples, we use several schematic Visual Prolog rules (<i>r1</i>, <i>r2</i>, and
+<i>r3</i>), which all describe the same predicate <b><i>r</i></b>, plus several subgoals (<i>a</i>,
+<i>b</i>, <i>c</i>, etc.).</p>
+
+<p><i>Prevent Backtracking to a Previous Subgoal in a Rule</i> </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>r1 :- a, b, !, c.</em></font></dd>
+</dl>
+
+<p>This is a way of telling Visual Prolog that you are satisfied with the first solution
+it finds to the subgoals <i>a</i> and <i>b</i>. Although Visual Prolog is able to find
+multiple solutions to the call to <i>c</i> through backtracking, it is not allowed to
+backtrack across the cut to find an alternate solution to the calls <i>a</i> or <i>b</i>.
+It is also not allowed to backtrack to another clause that defines the predicate <b><i>r1</i></b>.</p>
+
+<p>As a concrete example, consider Program 7. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e07.pro */</em></font></p>
+  </dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>buy_car(symbol,symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm car(symbol,symbol,integer)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>colors(symbol,symbol)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>buy_car(Model,Color):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(Model,Color,Price),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>colors(Color,sexy),!,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>Price &gt; 25000.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(maserati,green,25000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(corvette,black,24000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(corvette,red,26000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>car(porsche,red,24000).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>colors(red,sexy).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>colors(black,mean).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>colors(green,preppy).</em></font></dd>
+</dl>
+
+<p>In this example, the goal is to find a Corvette with a sexy color and a price that's
+ostensibly affordable. The cut in the <b><i>buy_car</i></b> rule means that, since there
+is only one Corvette with a sexy color in the database, if its price is too high there's
+no need to search for another car.</p>
+
+<p>Given the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>buy_car(corvette, Y)</em></font></dd>
+</dl>
+
+<p>Visual Prolog calls <b><i>car</i></b>, the first subgoal to the <b><i>buy_car</i></b>
+predicate.</p>
+
+<p>It makes a test on the first car, the Maserati, which fails.</p>
+
+<p>It then tests the next <b><i>car</i></b> clauses and finds a match, binding the
+variable <i>Color</i> with the value <i>black</i>.</p>
+
+<p>It proceeds to the next call and tests to see whether the car chosen has a sexy color.
+Black is not a sexy color in the program, so the test fails.</p>
+
+<p>Visual Prolog backtracks to the call to <b><i>car</i></b> and once again looks for a
+Corvette to meet the criteria.</p>
+
+<p>It finds a match and again tests the color. This time the color is sexy, and Visual
+Prolog proceeds to the next subgoal in the rule: the cut. The cut immediately succeeds and
+effectively &quot;freezes into place&quot; the variable bindings previously made in this
+clause.</p>
+
+<p>Visual Prolog now proceeds to the next (and final) subgoal in the rule: the comparison </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Price &lt; 25000.</em></font></dd>
+</dl>
+
+<p>This test fails, and Visual Prolog attempts to backtrack in order to find another car
+to test. Since the cut prevents backtracking, there is no other way to solve the final
+subgoal, and the goal terminates in failure.</p>
+
+<p><i>Prevent Backtracking to the Next Clause</i></p>
+
+<p>The cut can be used as a way to tell Visual Prolog that it has chosen the correct
+clause for a particular predicate. For example, consider the following code: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>r(1):- ! , a , b , c.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>r(2):- ! , d.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>r(3):- ! , c.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>r(_):- write(&quot;This is a catchall
+    clause.&quot;).</em></font></dd>
+</dl>
+
+<p>Using the cut makes the predicate <b><i>r</i></b> deterministic. Here, Visual Prolog
+calls <b><i>r</i></b> with a single integer argument. Assume that the call is r(1). Visual
+Prolog searches the program, looking for a match to the call; it finds one with the first
+clause defining <b><i>r</i></b>. Since there is more than one possible solution to the
+call, Visual Prolog places a backtracking point next to this clause.</p>
+
+<p>Now the rule fires and Visual Prolog begins to process the body of the rule. The first
+thing that happens is that it passes the cut; doing so eliminates the possibility of
+backtracking to another <b><i>r</i></b> clause. This eliminates backtracking points,
+increasing the run-time efficiency. It also ensures that the error-trapping clause is
+executed only if none of the other conditions match the call to <b><i>r</i></b>.</p>
+
+<p>Note that this type of structure is much like a &quot;case&quot; structure written in
+other programming languages. Also notice that the test condition is coded into the head of
+the rules. You could just as easily write the clauses like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>r(X) :- X = 1 , ! , a , b , c.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>r(X) :- X = 2 , ! , d.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>r(X) :- X = 3 , ! , c.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>r(_) :- write(&quot;This is a catchall
+    clause.&quot;).</em></font></dd>
+</dl>
+
+<p>However, you should place the testing condition in the head of the rule as much as
+possible, as doing this adds efficiency to the program and makes for easier reading.</p>
+
+<p>As another example, consider the following program. Run this program and give the query
+<font size="1" face="Courier New">friend(bill, Who)</font> as the goal. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e08.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>friend(symbol,symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>girl(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(symbol,symbol)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>friend(bill,jane):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>girl(jane),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(bill,jane),!.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>friend(bill,jim):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(jim,baseball),!.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>friend(bill,sue):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>girl(sue).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>girl(mary).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>girl(jane).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>girl(sue).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(jim,baseball).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(bill,sue).</em></font></dd>
+</dl>
+
+<p>Without cuts in the program, Visual Prolog would come up with two solutions: Bill is a
+friend of both Jane and Sue. However, the cut in the first clause defining <b><i>friend</i></b>
+tells Visual Prolog that, if this clause is satisfied, it has found a friend of Bill and
+there's no need to continue searching for more friends. A cut of this type says, in
+effect, that you are satisfied with the solution found and that there is no reason to
+continue searching for another friend.</p>
+
+<p>Backtracking can take place inside the clauses, in an attempt to satisfy the call, but
+once a solution is found, Visual Prolog passes a cut. The <b><i>friend</i></b> clauses,
+written as such, will return one and only one friend of Bill's (given that a friend can be
+found).</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381505"><b>Determinism and the Cut</b></a><!--mstheme--></font></h4>
+
+<p>If the <b><i>friend</i></b> predicate (defined in the previous program) were coded
+without the cuts, it would be a non-deterministic predicate (one capable of generating
+multiple solutions through backtracking). In many implementations of Prolog, programmers
+must take special care with non-deterministic clauses because of the attendant demands
+made on memory resources at run time. However, Visual Prolog makes internal checks for
+non-deterministic clauses, reducing the burden on you, the programmer.</p>
+
+<p>However, for debugging (and other) purposes, it can still be necessary for you to
+intercede; the <font size="1" face="Courier New">check_determ</font> compiler directive is
+provided for this reason. If <font size="1" face="Courier New">check_determ</font> is
+inserted at the very beginning of a program, Visual Prolog will display a warning if it
+encounters any non-deterministic clauses during compilation.</p>
+
+<p>You can make non-deterministic clauses into deterministic clauses by inserting cuts
+into the body of the rules defining the predicate. For example, placing cuts in the
+clauses defining the <b><i>friend</i></b> predicate causes that predicate to be
+deterministic because, with the cuts in place, a call to <b><i>friend</i></b> can return
+one, and only one, solution.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381507"><b>The not Predicate</b></a><!--mstheme--></font></h4>
+
+<p>This program demonstrates how you can use the <b><i>not</i></b> predicate to identify
+an honor student: one whose grade point average (GPA) is at least 3.5 and who is not on
+probation. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e10.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>/* Copyright (c) 1986, '95 by Prolog Development
+    Center */</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>DOMAINS</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>name = symbol</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>gpa = real</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm honor_student(name)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm student(name, gpa)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>probation(name)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>honor_student(Name):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>student(Name, GPA),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>GPA&gt;=3.5,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>not(probation(Name)).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>student(&quot;Betty Blue&quot;, 3.5).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>student(&quot;David Smith&quot;, 2.0).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>student(&quot;John Johnson&quot;, 3.7).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>probation(&quot;Betty Blue&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>probation(&quot;David Smith&quot;).</em></font></dd>
+</dl>
+
+<p>There is one thing to note when using <b><i>not</i></b>: <b><i>The not predicate
+succeeds when the subgoal can't be proven true.</i></b> This results in a situation that
+prevents unbound variables from being bound within a <b><i>not</i></b>. When a subgoal
+with free variables is called from within <b><i>not</i></b>, Visual Prolog will return the
+error message <font size="1" face="Courier New">Free variables not allowed in 'not' or
+'retractall'</font>. This happens because, for Prolog to bind the free variables in a
+subgoal, that subgoal must unify with some other clause and the subgoal must succeed. The
+correct way to handle unbound variables within a <b><i>not</i></b> subgoal is with
+anonymous variables.</p>
+
+<p>Here are some examples of correct clauses and incorrect clauses. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, Anyone):- /* 'Anyone' is an output
+    argument */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(sue, Anyone),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>not(hates(bill, Anyone).</em></font></dd>
+</dl>
+
+<p>In this example, <i>Anyone</i> is bound by <font size="1" face="Courier New">likes(sue,
+Anyone)</font> before Visual Prolog finds out that <font size="1" face="Courier New">hates(bill,
+Anyone)</font> is not true. This clause works just as it should.</p>
+
+<p>If you rewrite this so that it calls <b><i>not</i></b> first, you will get an error
+message to the effect that free variables are not allowed in <b><i>not</i></b>. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, Anyone):- /* This won't work right */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>not(hates(bill, Anyone)),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(sue, Anyone).</em></font></dd>
+</dl>
+
+<p>Even if you correct this (by replacing <i>Anyone</i> in <font size="1" face="Courier New">not(hates(bill, Anyone))</font> with an anonymous variable) so that the
+clause does not return the error, it will still return the wrong result. </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, Anyone):- /* This won't work right */</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>not(hates(bill, _)),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes(sue, Anyone).</em></font></dd>
+</dl>
+
+<p>This clause states that Bill likes <i>Anyone</i> if nothing that Bill hates is known
+and if Sue likes <i>Anyone</i>. The original clause stated that Bill likes <i>Anyone</i>
+if there is some <i>Anyone</i> that Sue likes and that Bill does not hate.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381508"><b>Example</b></a><!--mstheme--></font></h4>
+
+<p>Always be sure that you think twice when using the <b><i>not</i></b> predicate.
+Incorrect use will result in an error message or errors in your program's logic. The
+following is an example of the proper way to use the <b><i>not</i></b> predicate. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e11.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm likes_shopping(symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm has_credit_card(symbol,symbol)</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>bottomed_out(symbol,symbol)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>likes_shopping(Who):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>has_credit_card(Who,Card),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>not(bottomed_out(Who,Card)),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(Who,&quot; can shop with the &quot;,Card,
+    &quot; credit card.\n&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>has_credit_card(chris,visa).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>has_credit_card(chris,diners).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>has_credit_card(joe,shell).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>has_credit_card(sam,mastercard).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>has_credit_card(sam,citibank).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>bottomed_out(chris,diners).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>bottomed_out(sam,mastercard).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>bottomed_out(chris,visa).</em></font></dd>
+</dl>
+
+<p>Give the following at the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes_shopping(Who).</em></font></dd>
+</dl>
+
+<p><i>Exercises</i></p>
+
+<p>Suppose an average taxpayer in the USA is a married US citizen with two children who
+earns no less than $500 a month and no more than $2,000 per month. Define a
+special_taxpayer predicate that, given the goal <font size="1" face="Courier New">special_taxpayer(fred).</font>,
+will succeed only if <i>fred</i> fails one of the conditions for an average taxpayer. Use
+the cut to ensure that there is no unnecessary backtracking.</p>
+
+<p>Players in a certain squash club are divided into three leagues, and players may only
+challenge members in their own league or the league below (if there is one).</p>
+
+<p>Write a Visual Prolog program that will display all possible matches between club
+players in the form: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>tom versus bill</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>marjory versus annette</em></font></dd>
+</dl>
+
+<p>Use the cut to ensure, for example, that </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>tom versus bill</em></font></dd>
+</dl>
+
+<p>and </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>bill versus tom</em></font></dd>
+</dl>
+
+<p>are not both displayed.</p>
+
+<p>This is an exercise in backtracking, not a test of your ability to solve murder
+mysteries. Load and run the following program, then enter the goal <font size="1" face="Courier New">killer(X)</font>.</p>
+
+<p>(<b>Note:</b> Bert is guilty because he has a motive and is smeared in the same stuff
+as the victim.) </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e12.pro */</em></font></p>
+  </dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>DOMAINS</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>name,sex,occupation,object,vice,substance
+    = symbol</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>age=integer</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>PREDICATES</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>nondeterm person(name,
+    age, sex, occupation)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>nondeterm had_affair(name,
+    name)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killed_with(name, object)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killed(name)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>nondeterm killer(name)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(vice)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(name,
+    substance)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns(name, object)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>nondeterm
+    operates_identically(object, object)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>nondeterm
+    owns_probably(name, object)</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>nondeterm suspect(name)</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>/* * * Facts about the
+    murder * * */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>CLAUSES</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(bert,55,m,carpenter).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(allan,25,m,football_player).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(allan,25,m,butcher).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(john,25,m,pickpocket).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>had_affair(barbara,john).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>had_affair(barbara,bert).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>had_affair(susan,john).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killed_with(susan,club).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killed(susan).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(money).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(jealousy).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(righteousness).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(bert, blood).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(susan, blood).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(allan, mud).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(john,
+    chocolate).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(barbara,chocolate).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns(bert,wooden_leg).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns(john,pistol).</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>/* * * Background
+    knowledge * * */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>operates_identically(wooden_leg,
+    club).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>operates_identically(bar,
+    club).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>operates_identically(pair_of_scissors,
+    knife).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>operates_identically(football_boot,
+    club).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns_probably(X,football_boot):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(X,_,_,football_player).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns_probably(X,pair_of_scissors):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(X,_,_,hairdresser).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns_probably(X,Object):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns(X,Object).</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>/* * * * * * * * * * * * *
+    * * * * * * * * * *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* Suspect all those who
+    own a weapon with *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* which Susan could have
+    been killed. *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* * * * * * * * * * * * *
+    * * * * * * * * * */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>suspect(X):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killed_with(susan,Weapon)
+    ,</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>operates_identically(Object,Weapon)
+    ,</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>owns_probably(X,Object).</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>/* * * * * * * * * * * * *
+    * * * * * * * * * * * * *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* Suspect men who have had
+    an affair with Susan. *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* * * * * * * * * * * * *
+    * * * * * * * * * * * * */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>suspect(X):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(jealousy),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(X,_,m,_),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>had_affair(susan,X).</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>/* * * * * * * * * * * * *
+    * * * * * * * *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* Suspect females who have
+    had an *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* affair with someone that
+    Susan knew. *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* * * * * * * * * * * * *
+    * * * * * * * */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>suspect(X):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(jealousy),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(X,_,f,_),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>had_affair(X,Man),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>had_affair(susan,Man).</em></font></a></dd>
+  <dd>&nbsp;</dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>/* * * * * * * * * * * * *
+    * * * * * * * * * * * * * *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* Suspect pickpockets
+    whose motive could be money. *</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>* * * * * * * * * * * * *
+    * * * * * * * * * * * * * */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>suspect(X):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>motive(money),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(X,_,_,pickpocket).</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killer(Killer):-</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>person(Killer,_,_,_),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>killed(Killed),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>Killed &lt;&gt; Killer, /*
+    It is not a suicide */</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>suspect(Killer),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(Killer,Goo),</em></font></a></dd>
+  <dd><a name="_Toc325381509"><font size="1" face="Courier New"><em>smeared_in(Killed,Goo).</em></font></a></dd>
+</dl>
+
+<h2><!--mstheme--><font color="#000000"><font size="5"><b><a name="_Toc342123214">Prolog from a Procedural Perspective</a> </b></font><!--mstheme--></font></h2>
+
+<p>Now that you've read chapters <b>2</b>, <b>3</b>, and the first three parts of this
+chapter, you should have a pretty good understanding of the basics of Prolog programming
+and using Visual Prolog. Remember, Prolog is a declarative language, which means that you
+describe a problem in terms of facts and rules and let the computer figure out how to find
+a solution. Other programming languages--such as Pascal, BASIC, and C--are procedural,
+which means that you must write subroutines and functions that tell the computer exactly
+what steps to go through in order to solve the problem.</p>
+
+<p>We're going to back up now and review of some of the material you've just learned about
+Prolog, but this time we're going to present it from a procedural perspective.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381510"><font size="4"><b>How Rules and Facts Are Like Procedures</b></font></a><!--mstheme--></font></h3>
+
+<p>It's easy to think of a Prolog rule as a procedure definition. For instance, the rule </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill,Something):- likes(cindy,Something).</em></font></dd>
+</dl>
+
+<p>means, </p>
+
+<p>&quot;To prove that Bill likes something, prove that Cindy likes it.&quot; </p>
+
+<p>With this in mind, you can see how procedures like </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>say_hello:- write(&quot;Hello&quot;), nl.</em></font></dd>
+</dl>
+
+<p>and </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>greet:-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;Hello, Earthlings!&quot;),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl.</em></font></dd>
+</dl>
+
+<p>correspond to subroutines and functions in other programming languages. </p>
+
+<p>You can even think of Prolog facts of as procedures; for instance, the fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, pasta).</em></font></dd>
+</dl>
+
+<p>means</p>
+
+<p>&quot;To prove that Bill likes pasta, do nothing--and by the way, if the arguments <i>Who</i>
+and <i>What</i> in your query <font size="1" face="Courier New">likes(Who, What)</font>
+are free variables, you can bind them to <i>bill</i> and <i>pasta</i>, respectively.&quot;</p>
+
+<p>Some programming procedures that you might be familiar with from other languages are <i>case
+statements</i>, <i>boolean tests</i>, <i>goto statements</i>, and <i>computational returns</i>.
+In the next sections, by reiterating what we've already covered from a different
+(procedural) point of view, we'll show you how Prolog rules can perform these same
+functions.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381511"><b>Using Rules Like Case Statements</b></a><!--mstheme--></font></h4>
+
+<p>One big difference between rules in Prolog and procedures in other languages is that
+Prolog allows you to give multiple alternative definitions of the same procedure. This
+came up with the &quot;parent&quot; program earlier on page <a href="learn3.htm#parent">*</a>;
+a person can be a parent by being a father or by being a mother, so the definition of
+&quot;parent&quot; is made up of two rules.</p>
+
+<p>You can use multiple definitions like you use a Pascal <b>case</b> statement by writing
+a different definition for each argument value (or set of argument values). Prolog will
+try one rule after another until it finds a rule that matches, then perform the actions
+that rule specifies, as in Program 13. </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e13.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm action(integer)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(1):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;You typed 1.&quot;),nl.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(2):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;You typed two.&quot;),nl.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(3):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;Three was what you typed.&quot;),nl.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(N):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>N&lt;&gt;1, N&lt;&gt;2, N&lt;&gt;3,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;I don't know that number!&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>GOAL</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;Type a number from 1 to 3: &quot;),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>readint(Num),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(Num).</em></font></dd>
+</dl>
+
+<p>If the user types 1, 2, or 3, <b><i>action</i></b> will be called with its argument
+bound to the appropriate value, and it will match only one of the first three rules.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381512"><b>Performing Tests within the Rule</b></a><!--mstheme--></font></h4>
+
+<p>Look more closely at the fourth clause for <b><i>action</i></b>. It will match whatever
+argument it's called with, binding <i>X</i> to that value. So you have to make sure that
+it doesn't print <font size="1" face="Courier New">I don't know that number</font> unless
+the number is indeed out of range. That's the purpose of the subgoals </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>X&lt;&gt;1, X&lt;&gt;2, X&lt;&gt;3</em></font></dd>
+</dl>
+
+<p>where &lt;&gt; means <i>not equal</i>. In order to print <font size="1" face="Courier New">I don't know that number</font>, Prolog must first prove that <i>X</i>
+is not 1, 2, or 3. If any of these subgoals fail, Prolog will try to back up and find
+alternatives--but there aren't any alternatives, so the rest of the clause will never be
+executed.</p>
+
+<p>Notice that <b><i>action</i></b> relies on <i>Choice</i> being bound. If you call <b><i>action</i></b>
+with a free variable as an argument, the goal would match all of the clauses. The first
+three would return alternative solutions, and then the last one would raise an error
+because <b><i>you can't test whether an unbound variable is not equal to a number</i></b>.</p>
+
+<h4><!--mstheme--><font color="#000000"><a name="_Toc325381513"><b>The Cut as a GoTo</b></a><!--mstheme--></font></h4>
+
+<p>Program 13 is somewhat wasteful because, after choosing and executing the correct rule,
+Prolog still keeps looking for alternatives and has to find out the hard way that the last
+rule doesn't apply.</p>
+
+<p>It would save time and memory if you could tell Prolog to stop looking for
+alternatives. And you can, by using the <b>cut</b>, which means,</p>
+
+<p>&quot;If you get this far, don't do any backtracking within this rule, and don't look
+for any alternatives to this rule.&quot;</p>
+
+<p>In other words, &quot;Burn your bridges behind you.&quot; Backtracking is still
+possible, but only at a higher level. If the current rule was called by another rule, and
+the higher rule has alternatives, they can still be tried. But the <b>cut</b> rules out
+alternatives within, and alternatives to, the present rule.</p>
+
+<p>Using cuts, the program can be rewritten as follows: </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e14.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(integer)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(1):-!,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;You typed 1.&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(2):-!,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;You typed two.&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(3):-!,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nl,</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;Three was what you typed.&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(_):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;I don't know that number!&quot;).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>GOAL</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>write(&quot;Type a number from 1 to 3: &quot;),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>readint(Num),</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>action(Num),nl.</em></font></dd>
+</dl>
+
+<p>The <b>cut</b> has no effect unless it is actually executed. That is, in order to
+perform a cut, Prolog must actually get into the rule containing the <b>cut</b> and reach
+the point where the <b>cut</b> is located. </p>
+
+<p>The <b>cut</b> can be preceded by other tests, like this: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>action(X) :- X&gt;3, !, write(&quot;Too
+    high.&quot;).</em></font></dd>
+</dl>
+
+<p>In this rule, the <b>cut</b> won't have any effect unless the subgoal <font size="1" face="Courier New">X&gt;3</font> succeeds first.</p>
+
+<p>Notice that the order of the rules is now significant. In 13, you could have written
+the rules in any order; only one of them will match any particular number. But in Program
+14 you must make sure that the computer doesn't even try the rule that prints I don't know
+that number unless all of the preceding rules have been tried (and have not executed their
+cuts).</p>
+
+<p>The cuts in 14 are what some people call <i>red cuts</i>--cuts that change the logic of
+the program. If you had kept the tests <font size="1" face="Courier New">X&lt;&gt;1</font>,
+<font size="1" face="Courier New">X&lt;&gt;2</font>, and <font size="1" face="Courier New">X&lt;&gt;3</font>,
+changing the program only by inserting a <b>cut</b> in each clause, you would have been
+using <i>green cuts</i>--cuts that save time in a program that would be equally correct
+without them. The efficiency gained is not as great, but there is less risk of making an
+error in the program.</p>
+
+<p>The <b>cut</b> is a powerful, but messy, Prolog operation. In this respect it resembles
+the <b>goto</b> statement in other programming languages--you can do many things with it,
+but it can make your program really hard to understand.</p>
+
+<p><a name="_Toc325381514"><b>Returning Computed Values</b></a></p>
+
+<p>As we have seen, a Prolog rule or fact can return information to the goal that called
+it. This is done by binding arguments that were previously unbound. The fact </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, cindy).</em></font></dd>
+</dl>
+
+<p>returns information to the goal </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>likes(bill, Who).</em></font></dd>
+</dl>
+
+<p>by binding <i>Who</i> to <i>cindy</i>.</p>
+
+<p>A rule can return the results of a computation the same way. Here's a simple example: </p>
+
+<dl>
+  <dd><p align="center"><font size="1" face="Courier New"><em>/* Program ch04e15.pro */</em></font></p>
+  </dd>
+  <dd><font size="1" face="Courier New"><em>PREDICATES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>nondeterm classify(integer,symbol)</em></font></dd>
+  <dd>&nbsp;</dd>
+  <dd><font size="1" face="Courier New"><em>CLAUSES</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>classify(0,zero).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>classify(X,negative):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>X &lt; 0.</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>classify(X,positive):-</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>X &gt; 0.</em></font></dd>
+</dl>
+
+<p>The first argument of <b><i>classify</i></b> must always be either a constant or a
+bound variable. The second argument can be either bound or unbound; it gets matched with
+the symbol <i>zero</i>, <i>negative</i>, or <i>positive</i>, depending on the value of the
+first argument.</p>
+
+<p>Here are some examples of how rules can return values:</p>
+
+<p>You can ask whether 45 is positive by giving the goal: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Goal classify(45, positive).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>yes</em></font></dd>
+</dl>
+
+<p>Because 45 is greater than 0, only the third clause of <b><i>classify</i></b> can
+succeed. In doing so, it matches the second argument with <i>positive</i>. But the second
+argument is already <i>positive</i>, so the match succeeds, and you get the answer <font size="1" face="Courier New">yes</font>.</p>
+
+<p>Conversely, if the match fails, you get no: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Goal classify(45, negative).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>no</em></font></dd>
+</dl>
+
+<p>What happens is this:</p>
+
+<p>Prolog tries the first clause, but the first argument won't match 0 (nor does the
+second argument match <i>zero</i>).</p>
+
+<p>Then it tries the second clause, binding <i>X</i> to 45, but the test X&lt;0 fails.</p>
+
+<p>So it backs out and tries the third clause, but this time the second arguments don't
+match.</p>
+
+<p>To get an actual answer, rather than just yes or no, you must call <b><i>classify</i></b>
+with the second argument free: </p>
+
+<dl>
+  <dd><font size="1" face="Courier New"><em>Goal classify(45, What).</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>What=positive</em></font></dd>
+  <dd><font size="1" face="Courier New"><em>1 Solution</em></font></dd>
+</dl>
+
+<p>Here's what really takes place in this case:</p>
+
+<p>The goal <font size="1" face="Courier New">classify(45, What)</font> won't match the
+head of the first clause, <font size="1" face="Courier New">classify(0, zero)</font>,
+because 45 doesn't match 0. So the first clause can't be used.</p>
+
+<p>Again, the goal <font size="1" face="Courier New">classify(45, What)</font> matches the
+head of the second clause, <font size="1" face="Courier New">classify(X, negative)</font>,
+binding <i>X</i> to 45 and <i>negative</i> to <i>What</i>. But then the text <font size="1" face="Courier New">X&lt;0</font> fails, because <i>X</i> is 45 and it is not true
+that 45&lt;0. So Prolog backs out of this clause, undoing the variable bindings just
+created.</p>
+
+<p>Finally, <font size="1" face="Courier New">classify(45, What)</font> matches <font size="1" face="Courier New">classify(X, positive)</font>, binding <i>X</i> to 45 and <i>What</i>
+to <i>positive</i>. The test <font size="1" face="Courier New">X&gt;0</font> succeeds.
+Since this is a successful solution, Prolog doesn't backtrack; it returns to the calling
+procedure (which in this case is the goal that you typed). And since the variable <i>X</i>
+belongs to the calling procedure, that procedure can use its binding--in this case, to
+print out the value automatically.</p>
+
+<h3><!--mstheme--><font color="#000000"><a name="_Toc325381515"><font size="5"><b>Summary</b></font></a><!--mstheme--></font></h3>
+
+<p>In this chapter we've introduced unification, backtracking, determinism, the predicates
+<b><i>not</i></b> and <b><i>fail</i></b>, and the <b><i>cut</i></b> (!), and we've
+reviewed the important parts of the tutorial information up to this point from a
+procedural perspective.</p>
+
+<p>Prolog facts and rules receive information by being called with arguments that are
+constants or bound variables; they return information to the calling procedure by binding
+variable arguments that were unbound.</p>
+
+<p><i>Unification</i> is the process of matching two predicates and assigning free
+variables to make the predicates identical. This mechanism is necessary so Prolog can
+identify which clauses to call and bind values to variables. These are the major points
+about matching (unification) presented in this chapter:</p>
+
+<p>When Prolog begins an attempt to satisfy a goal, it starts at the top of the program in
+search of a match.</p>
+
+<p>When a new call is made, a search for a match to that call also begins at the top of
+the program.</p>
+
+<p>When a call has found a successful match, the call is said to <i>return</i>, and the
+next subgoal in turn can be tried.</p>
+
+<p>Once a variable has been bound in a clause, the only way to free that binding is
+through backtracking.</p>
+
+<p><i>Backtracking</i> is the mechanism that instructs Prolog where to go to look for
+solutions to the program. This process gives Prolog the ability to search through all
+known facts and rules for a solution. These are the four basic principles of backtracking
+given in this chapter:</p>
+
+<p>Subgoals must be satisfied in order, from top to bottom.</p>
+
+<p>Predicate clauses are tested in the order they appear in the program, from top to
+bottom.</p>
+
+<p>When a subgoal matches the head of a rule, the body of that rule must be satisfied
+next. The body of the rule then constitutes a new set of subgoals to be satisfied.</p>
+
+<p>A goal has been satisfied when a matching fact is found for each of the extremities
+(leaves) of the goal tree.</p>
+
+<p>A call that can produce multiple solutions is <i>non-deterministic</i>, while a call
+that can produce one and only one solution is <i>deterministic</i>.</p>
+
+<p>Visual Prolog provides three tools for controlling the course of your program's logical
+search for solutions: these are the two predicates <b><i>fail</i></b> and <b><i>not</i></b>,
+and the <b><i>cut</i></b>.</p>
+
+<p>The <b><i>fail</i></b> predicate always fails; it forces backtracking in order to find
+alternate solutions.</p>
+
+<p>The <b><i>not</i></b> predicate succeeds when its associated subgoal can't be proven
+true.</p>
+
+<p>The <b><i>cut</i></b> prevents backtracking.</p>
+
+<p>It's easy to think of a Prolog rule as a procedure definition. From a procedural
+perspective, rules can function as <b>case</b> statements, perform boolean tests, act like
+<b>goto</b> statements (using the <b>cut</b>), and return computed values. </p>
+
+<dl>
+  <dd><a name="_Toc325381616"><font size="1" face="Courier New"><em>my_retract(counter(CurrentCount)),</em></font></a></dd>
+  <dd><a name="_Toc325381616"><font size="1" face="Courier New"><em>/* here Prolog will not
+    set backtracking point */</em></font></a></dd>
+  <dd><a name="_Toc325381616"><font size="1" face="Courier New"><em>Count= CurrentCount + 1,</em></font></a></dd>
+  <dd><a name="_Toc325381616"><font size="1" face="Courier New"><em>asserta(counter(Count)),</em></font></a></dd>
+  <dd><a name="_Toc325381616"><font size="1" face="Courier New"><em>...</em></font></a></dd>
+</dl>
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

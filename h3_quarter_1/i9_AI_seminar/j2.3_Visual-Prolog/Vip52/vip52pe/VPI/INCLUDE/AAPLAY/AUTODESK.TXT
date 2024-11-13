@@ -1,0 +1,41 @@
+Autodesk
+Distribution Policy for Autodesk Animation Players
+A Tips & Techniques document for use with AA Player
+
+
+Introduction:
+ This document outlines the distribution  policy for presenters,  
+programmers, or developers who are using any Autodesk Animation 
+Player or Player Developers Kit, and wish to distribute the Autodesk 
+player along with their presentation or program.
+This information sheet sets forth Autodesk's policy regarding the copying and 
+distribution of some of its players and associated libraries (jointly referred to as 
+the
+"Players").
+1. Autodesk permits the copying and distribution of the following 
+Players*:
+ AAPLAY.EXE
+ ANIPLAY.EXE
+ AAPLAYHI.EXE
+ AAWIN.EXE
+2. Other supporting files which may be freely copied and distributed 
+include the  following:
+AAPLAY.DLL
+MCIAAP.DRV
+VBPLAY.VBX
+VBPLAY.EXE
+AAVGA.DLL
+AASHOW.EXE
+Additional files which fit into this category are available in Animation 
+Support Developers Kit from Autodesk.
+3. The Players should not be modified, except they may be 
+recompiled so that the copyright notice of Autodesk does not show 
+up on the splash screen for your animations. Proprietary notices 
+which are embedded in the code should not be removed.
+4. Products which include a Player should include a copyright notice 
+in the documentation for the Player indicating that the Player is 
+copyrighted by Autodesk,  Inc.
+
+
+*Other players may be subject to restriction.
+

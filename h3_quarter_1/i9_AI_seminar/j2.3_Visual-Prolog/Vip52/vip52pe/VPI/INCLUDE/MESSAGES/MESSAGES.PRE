@@ -1,0 +1,27 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName: MESSAGES.PRE
+ PURPOSE: Predicate definitions for messages window handling
+ Written by:
+ Comments:
+
+******************************************************************************/
+constants
+ message_pre_included = 1
+
+global predicates
+
+  procedure WINDOW msg_create(INTEGER NoOfLines)  - (i)
+  procedure WINDOW msg_create(INTEGER NoOfLines,STRING Title)  - (i,i)
+  procedure msg_close()
+  procedure msg_AppendStr(STRING StringToBeAppended) - (i)
+  determ WINDOW msg_GetWin()
+  procedure msg_SetLines(INTEGER NoOfLines) - (i)
+  procedure msg_Clear()
+  procedure msg_Resize(WINDOW TaskWindow) - (i)
+  procedure msg_SetFocus()
+  procedure msg_FastUpdate( BOOLEAN FastUpdate ) - (i),(o)

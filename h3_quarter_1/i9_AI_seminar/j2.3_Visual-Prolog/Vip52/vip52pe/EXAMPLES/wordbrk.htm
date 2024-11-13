@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<TITLE>Dividing Words into Syllables</TITLE>
+<META NAME="Template" CONTENT="E:\MSOffice97\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<H1>Dividing Words into Syllables</H1>
+<P>Using a very simple algorithm that involves looking at the sequence of vowels and consonants a word contains, a computer program can decide how to divide words into syllables. For instance, consider the two sequences:</P><DIR>
+<DIR>
+
+<P>1) <I>vowel consonant vowel</P><DIR>
+<DIR>
+
+</I><P>In this case, the word is divided after the first vowel. For example, this rule can be applied to the following words:</P><DIR>
+<DIR>
+
+<P>ruler &gt; ru-ler</P>
+<P>prolog &gt; pro-log</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>2) <I>vowel consonant consonant vowel</P><DIR>
+<DIR>
+
+</I><P>In this case, the word is divided between the two consonants. For example,</P><DIR>
+<DIR>
+
+<P>number &gt; num-ber</P>
+<P>panter &gt; pan-ter</P>
+<P>console &gt; con-sole</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P>These two rules work well for most words but fail with words like <I>handbook</I> and <I>hungry</I>, which conform to neither pattern. To divide such words, your program would have to use a library containing all words.</P>
+<P>Write a Visual Prolog program to divide a word into syllables. The program will first ask for a word to be typed in, and then attempt to split it into syllables using the two rules just given. As we've mentioned, this will not always produce correct results.</P>
+<P>First, the program should split the word up into a list of characters. You therefore need the following domain declarations:</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>DOMAINS</P><DIR>
+<DIR>
+
+<P>letter = symbol</P>
+<P>word= letter*</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><P>You must have a predicate that determines whether the letter is a vowel or a consonant. However, the two rules given can also work with the vocals (the usual vowels--<I>a</I>, <I>e</I>, <I>i</I>, <I>o</I>, and <I>u</I>--plus the letter <I>y</I>). The letter <I>y</I> sounds like (and is considered to be) a vowel in many words, for example, <I>hyphen</I>, <I>pity</I>, <I>myrrh</I>, <I>syzygy</I>, and <I>martyr</I>. To account for the vocals, you have the clauses</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>vocal(a). vocal(e). vocal(i).</P>
+<P>vocal(o). vocal(u). vocal(y).</P></DIR>
+</DIR>
+
+</FONT><P>for the predicate <B><I>vocal</B></I>. A consonant is defined as a letter that is not a vocal:</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>consonant(L) <B>:-</B> not(vocal(L)).</P></DIR>
+</DIR>
+
+</FONT><P>You also need two more predicates. First, you need the <B><I>append</B></I> predicate.</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>append(word, word, word)</P></DIR>
+</DIR>
+
+</FONT><P>Second, you need a predicate to convert a string to a list of the characters in that string:</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>string_word(string, word)</P></DIR>
+</DIR>
+
+</FONT><P>This predicate will use the standard predicate <B><I>frontstr</B></I> (described in chapter 12), as well as the standard predicates <B><I>free</B></I> and <B><I>bound</B></I> (where <B><I>free(X) </B></I>succeeds if <I>X</I> is a free variable at the time of calling, and <B><I>bound(Y)</B></I> succeeds if <I>Y</I> is bound), to control which clause to activate, dependent on the flow-pattern.</P>
+<P>Now you're ready to attack the main problem: defining the predicate <B><I>divide</B></I> that separates a word into syllables. <B><I>divide</B></I> has four parameters and is defined recursively. The first and second parameters contain, respectively, the <I>Start</I> and the <I>Remainder</I> of a given word during the recursion. The last two arguments return, respectively, the first and the last part of the word after the word has been divided into syllables.</P>
+<P>As a example, the first rule for <B><I>divide</B></I> is:</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>divide(Start, [T1, T2, T3|Rest], D, [T2, T3|Rest]) <B>:-</P><DIR>
+<DIR>
+
+</B><P>vocal(T1), consonant(T2), vocal(T3),</P>
+<P>append(Start, [T1], D).</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><P>where <I>Start</I> is a list of the first group of characters in the word to be divided. The next three characters in the word are represented by <I>T1</I>, <I>T2</I>, and <I>T3</I>, while <I>Rest</I> represents the remaining characters in the word. In list <I>D</I>, the characters <I>T2</I> and <I>T3</I>, and the list <I>Rest</I> represent the complete sequence of letters in the word. The word is divided into syllables at the end of those letters contained in <I>D</I>.</P>
+<P>This rule can be satisfied by the call:</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>divide([p, r], [o, l, o, g], P1, P2)</P></DIR>
+</DIR>
+
+</FONT><P>To see how, insert the appropriate letters into the clause:</P><DIR>
+<DIR>
+
+<FONT FACE="Courier New" SIZE=1><P>divide([p, r], [o, l, o|[g]], [p, r, o], [l, o | [g]]) <B>:-</P><DIR>
+<DIR>
+
+</B><P>vocal(o), consonant(l), vocal(o),</P>
+<P>append([p, r], [o], [p, r, o]).</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</FONT><P>The <B><I>append</B></I> predicate concatenates the first vocal to the start of the word. <I>P1</I> becomes bound to <I>[p, r, o]</I>, and <I>P2</I> is bound to <I>[l, o, g]</I>.</P>
+<P><a HREF="WORDBRK.PRJ">WORDBRK.PRJ</a></P></BODY>
+</HTML>

@@ -1,0 +1,135 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	MAPCTRL.PRE
+ PURPOSE:	Predicate definitions for Map viewer/editor custom contol
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+
+******************************************************************************/
+global predicates
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 	Map custom control initialization		*/
+/*							*/
+/*  mapctrl_Init(WINDOW,	% Control window	*/
+/*               COLOR          % Background color      */
+/*		 MAPCTRL_DATA,	% Data to show		*/
+/*               MAPCTRL_MODE   % View or edit          */
+/*               MAPCTRL_MAPSCALE  % Scaling factor	*/
+/*               MAPCTRL_CALLBACK) % Callback           */
+/*                                                      */
+/* RETURN VALUE: none					*/
+/* FAIL: newer fails                                    */
+/*                                                      */
+/********************************************************/
+
+  procedure mapctrl_Init(WINDOW,COLOR,MAPCTRL_DATA,MAPCTRL_MODE,MAPCTRL_MAPSCALE,MAPCTRL_CALLBACK) - (i,i,i,i,i,i)
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 	Map custom control event handling		*/
+/*							*/
+/*  Put mapctrl_HandleEvent call into the clause for all*/
+/*  events (except for e_Create) of the class handler	*/
+/*							*/
+/*  mapctrl_HandleEvent(WINDOW,	% Control window	*/
+/*		 	EVENT)	% Event			*/
+/*                                                      */
+/*                                                      */
+/********************************************************/
+  determ mapctrl_HandleEvent(WINDOW,EVENT) - (i,i)
+
+/**** global PREDICATE **********************************/
+/*							*/
+/* 	Save Map custom control data to disk		*/
+/*							*/
+/*  mapctrl_SaveData(WINDOW,	% Control window	*/
+/*		     STRING)	% Filename		*/
+/*                                                      */
+/********************************************************/
+  procedure mapctrl_SaveData(WINDOW,STRING) - (i,i)
+
+/**** global predicates *********************************/
+/*							*/
+/* 	Get list of objects currently marked in		*/
+/*		Map custom control 			*/
+/*                                                      */
+/*      Set marker in Map custom control                */
+/*                                                      */
+/********************************************************/
+  procedure ULONGLIST mapctrl_GetMarker(WINDOW) - (i)
+  procedure mapctrl_SetMarker(WINDOW,ULONGLIST) - (i,i)
+
+
+/**** global predicates **********************************/
+/*						 	 */
+/* 	  Add object(s) to Map custom control 		 */
+/*                                                       */
+/*     Remove object(s) from Map custom control 	 */
+/*                                                       */
+/*********************************************************/
+  procedure mapctrl_AddObjects(WINDOW,MAPCTRL_OBJLIST)	- (i,i)
+  procedure mapctrl_RemoveObjects(WINDOW,ULONGLIST)	- (i,i)
+
+/**** global predicates **********************************/
+/*						 	 */
+/*   Get foreground object's label text by known Id 	 */
+/*                                                       */
+/*   Get foreground object's coordinates by known Id 	 */
+/*                                                       */
+/*   Get foreground object's Id by known label text 	 */
+/*                                                       */
+/*********************************************************/
+  determ STRING mapctrl_GetObjectText(WINDOW,ULONG)	- (i,i)
+  determ PNT mapctrl_GetObjectCoor(WINDOW,ULONG)	- (i,i)
+  determ ULONG mapctrl_GetObjectId(WINDOW,STRING)	- (i,i)
+
+/**** global predicates **********************************/
+/*						 	 */
+/*   	  Get current mapping and scaling status	 */
+/*                                                       */
+/*   	    Set new mapping and scaling status  	 */
+/*                                                       */
+/*********************************************************/
+  procedure MAPCTRL_MAPSCALE mapctrl_GetMapScale(WINDOW)	- (i)
+  procedure mapctrl_SetMapScale(WINDOW,MAPCTRL_MAPSCALE)	- (i,i)
+
+/**** global predicates **********************************/
+/*						 	 */
+/*   	  Convert Window coordinates into Map coor-	 */
+/*                  dinates and back                     */
+/*                                                       */
+/*********************************************************/
+  procedure PNT mapctrl_WinToMap(WINDOW,PNT)	- (i,i)
+  procedure PNT mapctrl_MapToWin(WINDOW,PNT)	- (i,i)
+
+/**** global predicates **********************************/
+/*						 	 */
+/*   	  	   Get current mode			 */
+/*   	    	    Set new mode 		 	 */
+/*                                                       */
+/*********************************************************/
+  procedure MAPCTRL_MODE mapctrl_GetMode(WINDOW)	- (i)
+  procedure mapctrl_SetMode(WINDOW,MAPCTRL_MODE)	- (i,i)
+
+/**** global PREDICATE ***********************************/
+/*						 	 */
+/*   	  Generate new unical foreground object Id	 */
+/*                                                       */
+/*********************************************************/
+  procedure ULONG mapctrl_GetNewId(WINDOW) - (i)
+
+/**** global predicates **********************************/
+/*						 	 */
+/*   	  Remove all foreground arrows from map		 */
+/*   	  Remove all foreground circles from map	 */
+/*                                                       */
+/*********************************************************/
+  procedure mapctrl_RemoveArrows(WINDOW)  - (i)
+  procedure mapctrl_RemoveCircles(WINDOW) - (i)

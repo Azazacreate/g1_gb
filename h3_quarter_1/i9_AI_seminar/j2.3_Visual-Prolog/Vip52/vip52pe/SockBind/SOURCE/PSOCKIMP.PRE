@@ -1,0 +1,338 @@
+/***************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ FileName: PSOCKIMP.PRE
+ PURPOSE: Interface to the native Sockets. Implementation's specific
+ Written by: Compiler Group, PDC Russia
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ        Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    08/05/97    บ  KI  บ  A support for WSAAsyncGetXByY and other Windows 
+    		บ      บ  specific routines was added.
+***************************************************************************/
+
+ifndef psockimp_pre_included
+
+  ifndef ws_win
+    ifdef platform_32bit
+      ifndef os_os2
+	#error : Unsupported platform
+      enddef
+    elsedef
+      #error : Unsupported platform
+    enddef
+  enddef
+
+  CONSTANTS
+
+    psockimp_pre_included = 1
+
+			/****************************/
+			/* Native Sockets functions */
+			/****************************/
+  GLOBAL PREDICATES
+
+    procedure SOCKET bsd_Accept( SOCKET	     Socket,
+				 SCK_ADDRESS Address,
+				 BINARY	     AddrLen )
+				- (i,i,i) language lang_StdCall as bsd_Accept_FNS
+
+    procedure INTEGER bsd_Bind( SOCKET	    Socket,
+				SCK_ADDRESS Name,
+				INTEGER     NameLen )
+				- (i,i,i) language lang_StdCall as bsd_Bind_FNS
+
+    procedure INTEGER bsd_CloseSocket( SOCKET Socket )
+				- (i) language lang_StdCall as bsd_CloseSocket_FNS
+
+    procedure INTEGER bsd_Connect( SOCKET	Socket,
+				   SCK_ADDRESS	Name,
+				   INTEGER	NameLen )
+				- (i,i,i) language lang_StdCall as bsd_Connect_FNS
+
+    procedure SCK_HOSTENT bsd_GetHostByAddr( BINARY  Address,
+					     INTEGER AddrLen,
+					     INTEGER Type )
+				- (i,i,i) language lang_StdCall as bsd_GetHostByAddr_FNS
+
+    procedure SCK_HOSTENT bsd_GetHostByName( STRING Name )
+				- (i) language lang_StdCall as bsd_GetHostByName_FNS
+
+    procedure INTEGER bsd_GetHostName( STRING Name, INTEGER NameLen )
+				- (i,i) language lang_StdCall as bsd_GetHostName_FNS
+
+    procedure INTEGER bsd_GetPeerName( SOCKET	   Socket,
+				       SCK_ADDRESS Name,
+				       BINARY	   NameLen )
+				- (i,i,i) language lang_StdCall as bsd_GetPeerName_FNS
+
+    procedure SCK_PROTOENT bsd_GetProtoByName( STRING Name )
+				- (i) language lang_StdCall as bsd_GetProtoByName_FNS
+
+    procedure SCK_PROTOENT bsd_GetProtoByNumber( INTEGER Number )
+				- (i) language lang_StdCall as bsd_GetProtoByNumber_FNS
+
+    procedure ULONG bsd_GetServByName( STRING Name, STRING Proto )
+				- (i,i) language lang_StdCall as bsd_GetServByName_FNS
+
+    procedure ULONG bsd_GetServByPort( INTEGER Port, STRING Proto )
+				- (i,i) language lang_StdCall as bsd_GetServByPort_FNS
+
+    procedure INTEGER bsd_GetSockName( SOCKET	   Socket,
+				       SCK_ADDRESS Name,
+				       BINARY	   NameLen )
+				- (i,i,i) language lang_StdCall as bsd_GetSockName_FNS
+
+    procedure INTEGER bsd_GetSockOpt( SOCKET		Socket,
+				      SCK_OPTION_LEVEL	Level,
+				      SCK_OPTION_NAME	OptName,
+				      BINARY		OptVal,
+				      BINARY		ValueLen )
+				- (i,i,i,i,i) language lang_StdCall as bsd_GetSockOpt_FNS
+
+    procedure SCK_IN_ADDR bsd_InetAddr( STRING DottedAddres )
+				- (i) language lang_StdCall as bsd_InetAddr_FNS
+
+    procedure ULONG bsd_InetNtoa( SCK_IN_ADDR AddrIN )
+				- (i) language lang_StdCall as bsd_InetNtoa_FNS
+
+    ifdef os_os2
+
+      procedure INTEGER bsd_IoCtl( SOCKET	     Socket,
+				   SCK_IOCTL_COMMAND Command,
+				   BINARY	     ArgPtr,
+				   INTEGER	     ArgLen )
+				- (i,i,i,i) language lang_StdCall as bsd_IoCtl_FNS
+    elsedef
+
+      procedure INTEGER bsd_IoCtl( SOCKET	     Socket,
+				   SCK_IOCTL_COMMAND Command,
+				   BINARY	     ArgPtr )
+				- (i,i,i) language lang_StdCall as bsd_IoCtl_FNS
+    enddef
+
+    procedure INTEGER bsd_Listen( SOCKET Socket, INTEGER BackLog )
+				- (i,i) language lang_StdCall as bsd_Listen_FNS
+
+    procedure INTEGER bsd_Recv( SOCKET	Socket,
+				BINARY	Buffer,
+				INTEGER	BuffLen,
+				INTEGER Flags )
+				- (i,i,i,i) language lang_StdCall as bsd_Recv_FNS
+
+    procedure INTEGER bsd_RecvFrom( SOCKET	Socket,
+				    BINARY	Buffer,
+				    INTEGER	BuffLen,
+				    INTEGER	Flags,
+				    SCK_ADDRESS	From,
+				    BINARY	FromLen )
+				- (i,i,i,i,i,i) language lang_StdCall as bsd_RecvFrom_FNS
+
+    procedure INTEGER bsd_Select( INTEGER	     NFds,
+				  BINARY	     ReadFds,
+				  BINARY	     WriteFds,
+				  BINARY	     ExceptFds,
+				  SCK_SELECT_TIMEVAL TimeOut )
+				- (i,i,i,i,i) language lang_StdCall as bsd_Select_FNS
+
+    procedure INTEGER bsd_Send( SOCKET	Socket,
+				BINARY	Buffer,
+				INTEGER	BuffLen,
+				INTEGER Flags )
+				- (i,i,i,i) language lang_StdCall as bsd_Send_FNS
+
+    procedure INTEGER bsd_SendTo( SOCKET	Socket,
+				  BINARY	Buffer,
+				  INTEGER	BuffLen,
+				  INTEGER	Flags,
+				  SCK_ADDRESS	To,
+				  INTEGER	ToLen )
+				- (i,i,i,i,i,i) language lang_StdCall as bsd_SendTo_FNS
+
+    procedure INTEGER bsd_SetSockOpt( SOCKET		Socket,
+				      SCK_OPTION_LEVEL	Level,
+				      SCK_OPTION_NAME	OptName,
+				      BINARY		OptVal,
+				      INTEGER		ValueLen )
+				- (i,i,i,i,i) language lang_StdCall as bsd_SetSockOpt_FNS
+
+    procedure INTEGER bsd_ShutDown( SOCKET Socket, INTEGER How )
+				- (i,i) language lang_StdCall as bsd_ShutDown_FNS
+
+    procedure SOCKET bsd_Socket( INTEGER AddrFamily,
+				 INTEGER Type,
+				 INTEGER Protocol )
+				- (i,i,i) language lang_StdCall as bsd_Socket_FNS
+
+    ifdef os_os2
+
+      procedure INTEGER bsd_SockInit() - language lang_StdCall as bsd_SockInit_FNS
+
+    enddef
+
+			/************************/
+			/* Asynchronous Sockets */
+			/************************/
+  GLOBAL PREDICATES
+
+    ifndef os_os2
+
+      procedure INTEGER wsa_AsyncSelect( SOCKET	   Socket,
+					 SCK_HWND  HWindow,
+					 UNSIGNED  Msg,
+					 SCK_EVENT Events )
+				- (i,i,i,i) language lang_StdCall as wsa_AsyncSelect_FNS
+				
+      procedure SCK_HANDLE wsa_AsyncGetHostByAddr( SCK_HWND  	HWindow,
+					 	   UNSIGNED  	Msg,
+					 	   BINARY  	Address,
+					           INTEGER 	AddrLen,
+					           INTEGER 	Type,
+					           BINARY  	Buffer,
+					           INTEGER 	BufferLen )
+				- (i,i,i,i,i,i,i) language lang_StdCall as wsa_AsyncGetHostByAddr_FNS
+				
+      procedure SCK_HANDLE wsa_AsyncGetHostByName( SCK_HWND  	HWindow,
+					 	   UNSIGNED  	Msg,
+					 	   STRING 	Name,
+					           BINARY  	Buffer,
+					           INTEGER 	BufferLen )
+				- (i,i,i,i,i) language lang_StdCall as wsa_AsyncGetHostByName_FNS
+
+      procedure SCK_HANDLE wsa_AsyncGetProtoByName( SCK_HWND  	HWindow,
+					 	    UNSIGNED  	Msg,
+					 	    STRING 	ProtoName,
+					            BINARY  	Buffer,
+					            INTEGER 	BufferLen )
+				- (i,i,i,i,i) language lang_StdCall as wsa_AsyncGetProtoByName_FNS
+				
+      procedure SCK_HANDLE wsa_AsyncGetProtoByNumber(SCK_HWND  	HWindow,
+					 	     UNSIGNED  	Msg,
+					 	     INTEGER 	ProtoNumber,
+					             BINARY  	Buffer,
+					             INTEGER 	BufferLen )
+				- (i,i,i,i,i) language lang_StdCall as wsa_AsyncGetProtoByNumber_FNS
+				
+       procedure SCK_HANDLE wsa_AsyncGetServByName( SCK_HWND  	HWindow,
+					 	    UNSIGNED  	Msg,
+					 	    STRING 	ServName,
+					 	    STRING 	ProtoName,
+					            BINARY  	Buffer,
+					            INTEGER 	BufferLen )
+				- (i,i,i,i,i,i) language lang_StdCall as wsa_AsyncGetServByName_FNS
+				
+      procedure SCK_HANDLE wsa_AsyncGetServByPort(SCK_HWND  	HWindow,
+					 	    UNSIGNED  	Msg,
+					 	    INTEGER 	PortNumber,
+					 	    STRING 	ProtoName,
+					            BINARY  	Buffer,
+					            INTEGER 	BufferLen )
+				- (i,i,i,i,i,i) language lang_StdCall as wsa_AsyncGetServByPort_FNS
+								
+      procedure INTEGER wsa_CancelAsyncRequest( SCK_HANDLE Handle ) - (i) language lang_StdCall as wsa_CancelAsyncRequest_FNS
+      
+      procedure INTEGER wsa_CancelBlockingCall() - language lang_StdCall as wsa_CancelBlockingCall_FNS
+      
+      procedure SCK_BLOCKFUNC wsa_SetBlockingHook( SCK_BLOCKFUNC BlockingFunction ) - (i) language lang_StdCall as wsa_SetBlockingHook_FNS
+      
+      procedure INTEGER wsa_UnhookBlockingHook() - language lang_StdCall as wsa_UnhookBlockingHook_FNS
+
+      procedure INTEGER wsa_Cleanup() - language lang_StdCall as wsa_Cleanup_FNS
+
+      procedure INTEGER wsa_Startup( WORD VersionRequested, BINARY WSAData )
+				- (i,i) language lang_StdCall as wsa_Startup_FNS
+
+      ifdef platform_32bit
+
+	procedure DWORD get_OS_Version() - language lang_StdCall as get_OS_Version_FNS
+	
+      enddef
+
+    enddef
+
+			/***********************/
+			/* C support functions */
+			/***********************/
+  GLOBAL PREDICATES
+
+    procedure SCK_ALIST c_MakeAListFromArray( SCK_ALIST ArrayPtr )
+				- (i) language c as c_MakeAListFromArray_FNS
+
+    procedure SCK_SLIST c_MakeSListFromArray( SCK_SLIST ArrayPtr )
+				- (i) language c as c_MakeSListFromArray_FNS
+
+    procedure c_MakeFdsFromSockList( SOCKETS_LIST SocketsList,
+				     INTEGER	  OldNFds,
+				     BINARY	  FdSet,
+				     INTEGER	  NewNFds )
+				- (i,i,o,o) language c as c_MakeFdsFromSockList_FNS
+
+    procedure SOCKETS_LIST c_MakeSockListFromFds( SOCKETS_LIST	SocketsList,
+						  BINARY	FdSet )
+				- (i,i) language c as c_MakeSockListFromFds_FNS
+
+    ifdef os_os2
+
+      procedure c_Os2_Initiate() - language c as c_Os2_Initiate_FNS
+
+      procedure c_Os2_Terminate() - language c as c_Os2_Terminate_FNS
+
+      procedure c_Os2_AsyncSelect( SOCKET    Socket,
+				   SCK_HWND  HWindow,
+				   UNSIGNED  Msg,
+				   SCK_EVENT Events )
+				- (i,i,i,i) language c as c_Os2_AsyncSelect_FNS
+
+      procedure c_Os2_CheckAcception( SOCKET ListenSocket,
+				      SOCKET AcceptedSocket )
+				- (i,i) language c as c_Os2_CheckAcception_FNS
+
+      procedure c_Os2_RegClose( SOCKET Socket )
+				- (i) language c as c_Os2_RegClose_FNS
+
+      procedure c_Os2_RegConnect( SOCKET Socket )
+				- (i) language c as c_Os2_RegConnect_FNS
+
+      procedure c_Os2_RegListen( SOCKET Socket )
+				- (i) language c as c_Os2_RegListen_FNS
+
+      procedure c_Os2_RegShutDown( SOCKET Socket, INTEGER How )
+				- (i,i) language c as c_Os2_RegShutDown_FNS
+
+      procedure c_Os2_ResetFdRead( SOCKET Socket, INTEGER AlsoResetFdOOB )
+				- (i,i) language c as c_Os2_ResetFdRead_FNS
+
+      procedure c_Os2_ResetFdWrite( SOCKET Socket, INTEGER SendRC )
+				- (i,i) language c as c_Os2_ResetFdWrite_FNS
+				
+      procedure c_Os2_CheckConnect( SOCKET Socket, INTEGER RetCode )
+				- (i,i) language c as c_Os2_CheckConnect_FNS
+
+    enddef
+
+			/****************************/
+			/* Prolog library functions */
+			/****************************/
+  GLOBAL PREDICATES
+
+    procedure mem_MovMem( BINARY   Src,
+			  BINARY   Dst,
+			  UNSIGNED Len ) - (i,i,i) language c as mem_MovMem_FNS
+
+    procedure mem_MovMem( ULONG	   Src,
+			  ULONG	   Dst,
+			  UNSIGNED Len ) - (i,i,i) language c as mem_MovMem_FNS
+
+    procedure mem_MovMem( STRING   Src,
+			  STRING   Dst,
+			  UNSIGNED Len ) - (i,i,i) language c as mem_MovMem_FNS
+
+    procedure get_MemWord( ULONG Ptr, WORD Val ) - (i,o) language c as get_MemWord_FNS
+
+    procedure get_MemDWord( ULONG Ptr, DWORD Val ) - (i,o) language c as get_MemDWord_FNS
+
+enddef	/* psockimp_pre_included */

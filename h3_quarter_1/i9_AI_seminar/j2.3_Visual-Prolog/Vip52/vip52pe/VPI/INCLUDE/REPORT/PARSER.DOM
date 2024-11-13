@@ -1,0 +1,366 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	PARSER.DOM
+ Purpose:	Parser Domain Definition
+ Written by:	Alexander Grachev
+ Version:	1.3
+ Build:		019.990201
+ Tested with:	Visual Prolog v.5.1 build 563
+ Comments:
+*****************************************************************************/
+constants
+ifndef idc_zoomin
+  idc_zoomin = cursor_Arrow
+  idc_zoomout= cursor_Arrow
+  rep_avoid_mousedown = 1
+enddef
+ifndef reperr_40
+  reperr_40 = 16040 % Printer not installed
+enddef
+ifndef reperr_41
+  reperr_41 = 16041 % Invalid values are assigned to mandatory plan property
+enddef
+ifndef reperr_42
+  reperr_42 = 16042 % End of the plan period should be greater then Start, Plan Duration or PlanHandle < 2147483647
+enddef
+ifndef reperr_43
+  reperr_43 = 16043 % There is no corresponding pane to GANTT Block in the script
+enddef
+ifndef reperr_44
+  reperr_44 = 16044 % There is no corresponding pane to SCHEME Block in the script
+enddef
+ifndef reperr_45
+  reperr_45 = 16045 % Gantt property is set repeatedly
+enddef
+ifndef reperr_46
+  reperr_46 = 16046 % Attempt to start a new print job while printing already in progress
+enddef
+ifndef reperr_47
+  reperr_47 = 16047 % Attempt to start the Generation while the old one is in progress
+enddef
+
+domains
+  REPORT          = report(NAME,PAGEPROPERTIES,PROPERTIES,SCRIPT,HEADER,BLOCKLIST,FOOTER)
+
+  NAME            = name(STRING)
+
+  HEADER          = header(PROPERTIES,SCRIPT,ATOMBLOCKLIST);
+		    noheader()
+
+  FOOTER          = footer(PROPERTIES,SCRIPT,ATOMBLOCKLIST);
+		    nofooter()
+
+  SCRIPT          = script(STMTS)
+
+  STMTS           = STMT*
+
+  HEADERLIST	  = HEADER*
+  
+  STMT            = predcall(PREDCALL);
+		    assign(VARIABLE,EXP);
+		    while_st(COND,STMTS);
+		    if_else_st(COND,STMTS,STMTS);
+		    if_st(COND,STMTS)
+
+  BLOCKLIST       = BLOCK*
+
+  BLOCK           = while(COND,BLOCK_RECT,PROPERTIES,HEADER,SCRIPT,BLOCKLIST);
+		    ifthen(COND,BLOCK_RECT,PROPERTIES,HEADER,SCRIPT,BLOCKLIST);
+		    block(BLOCK_RECT,PROPERTIES,HEADER,SCRIPT,BLOCKLIST);
+		    plan(BLOCK_RECT,PLANPROPERTIES,HEADER,SCRIPT,BLOCKLIST);
+		    atomblock(ATOMBLOCK);
+		    gantt(GANTTPROPERTIES);
+		    scheme(SCHEMEPROPERTIES);
+		    histogramm();
+		    pagebreak();
+		    noblock()
+
+  ATOMBLOCKLIST   = ATOMBLOCK*
+
+  ATOMBLOCK       = text(EXPS,BLOCK_RECT,PROPERTIES);
+		    bmp_file(STRING,BLOCK_RECT,PROPERTIES);
+		    atomblock(BLOCK_RECT,PROPERTIES,ATOMBLOCKLIST);
+		    line(BLOCK_RECT,PROPERTIES);
+		    calendar(CALPROPERTIES);
+		    noatomblock()
+
+  BLOCK_RECT      = rect(REAL,REAL,REAL,REAL);
+		    norect()
+
+  PROPERTIES      = PROPERTY*
+
+  PROPERTY        = alignment(ALIGNMENT_VAL);
+		    backcolor(LONG);
+		    border(INTEGER);
+		    clip();
+		    defaulttabs(EXP);
+		    enlarge();
+		    expandable();
+		    fonttype(PFONT);
+		    forecolor(LONG);
+		    horizontal_block();
+		    keep_together();
+		    leftindent(REAL);
+		    new_page();
+		    outer_rect();
+		    recurrent();
+		    tabs(ILIST);
+		    topindent(REAL);
+		    var_forecolor(EXP);
+		    var_backcolor(EXP);
+		    var_border(EXP);
+		    var_font(EXP);
+		    vertical_block();
+		    wrap()
+
+  PAGEPROPERTIES  = PAGEPROPERTY*
+
+  PAGEPROPERTY    = margins(REAL,REAL,REAL,REAL);
+		    units(UNITS);
+		    orientation(BOOLEAN)
+
+  UNITS           = pixel();
+  		    cm();
+		    logical(INTEGER,INTEGER)
+
+  FONTLIST	  = PFONT*
+  
+  PFONT           = fontname(STRING);
+		    fontstyle(FONTSTYLE);
+		    fontsize(INTEGER);
+		    fontstruct(FONT)
+
+  ALIGNMENT       = alignment(ALIGNMENT_VAL);
+  		    nill
+  		    
+  ALIGNMENT_VAL	  = center;
+  		    left;
+  		    right
+  		    
+  ALIGNMENTLIST	  = ALIGNMENT_VAL*
+  FONTSTYLE_VAL	  = normal;
+  		    bold;
+  		    italic;
+  		    bold_italic
+  		    
+  PLANPROPERTIES  = planproperties(INTEGER,INTEGER,EXP,EXP,EXP,EXP,VGRIDLIST,ILIST,LLIST,INTEGER)
+
+  GANTTPROPERTIES = GANTTPROPERTY*
+
+  GANTTPROPERTY   = paneorder(INTEGER);
+  		    mode(MODE);
+  		    title(TITLELIST,FONTLIST);
+		    horgrid(LONG);
+		    vertgrid(VGRIDLIST);
+		    fonttype(PFONT);
+  		    rightcolumns(WIDTHLIST)
+
+  TITLELIST       = TITLESTR*
+
+  TITLESTR        = lefttitle(STRING,FONTLIST,ALIGNMENT);
+		    columntitle(SLIST,FONTLIST,ALIGNMENT);
+		    subcolumntitle(SLIST,FONTLIST,ALIGNMENT);
+		    righttitle(STRING,FONTLIST,ALIGNMENT);
+		    rightsubcolumntitle(SLIST,FONTLIST,ALIGNMENT)
+
+  MODE            = expanded();
+		    collapsed()
+
+  VGRIDLIST       = VGRID*
+
+  VGRID           = vgrid(INTEGER,UNSIGNED)
+
+  SCHEMEPROPERTIES= SCHEMEPROPERTY*
+  
+  SCHEMEPROPERTY  = paneorder(INTEGER);
+  		    period(INTEGER);
+  		    title(TITLELIST,FONTLIST);
+		    fonttype(PFONT);
+  		    subrows(INTEGER);
+  		    subcolumns(WIDTHLIST);
+  		    rightcolumns(WIDTHLIST)
+  		    
+  WIDTHLIST 	  = WIDTHPROP*
+  WIDTHPROP	  = widthprop(INTEGER,ALIGNMENT)
+  
+  CALPROPERTIES   = CALENDAR*
+
+  CALENDAR        = calendar(STRING,STEP);
+  		    calendar_style(CALENDARSTYLE)
+
+  STEP            = days(INTEGER);
+  		    hour(INTEGER);
+		    mins(INTEGER)
+
+  CALENDARSTYLE   = absolute;
+  		    relative
+  		    
+  COND            = eq(EXP,EXP);
+		    not_eq(EXP,EXP);
+		    less(EXP,EXP);
+		    less_eq(EXP,EXP);
+		    more(EXP,EXP);
+		    more_eq(EXP,EXP);
+		    or_(COND,COND);
+		    xor_(COND,COND);
+		    and_(COND,COND);
+		    not_(COND);
+		    predcall(PREDCALL)
+
+  EXPS            = EXP*
+
+  EXP             = plus(EXP,EXP);
+		    minus(EXP,EXP);
+		    mult(EXP,EXP);
+		    div(EXP,EXP);
+		    ident(VARIABLE);
+		    cin_s(STRING);
+		    cin_i(INTEGER);
+		    cin_l(LONG);
+		    cin_r(REAL)
+
+  PREDCALL        = predcall(STRING,EXPS,VARLIST_OUT)
+
+  VARLIST_OUT     = outparam(VAR_OUT);
+		    noout()
+
+  VAR_OUT         = VARIABLE*
+
+  VARIABLE        = ident(STRING)
+  
+  VAR_VAL	  = id(STRING);
+  		    int(INTEGER);
+  		    long(LONG);
+  		    real(REAL)
+
+  LLIST		  = LONG*
+
+  TOK		  = 
+		    absolute();
+		    alignment();
+		    and_();
+		    assign();
+		    at();
+		    backcolor();
+		    begin();
+		    bitmap();
+		    block();
+		    bold();
+		    border();
+		    calendar();
+		    call(STRING);
+		    center();
+		    clip();
+		    cm();
+		    collapsed();
+		    columntitle();
+		    comma();
+		    days();
+		    day_off();
+		    defaulttabs();
+		    divider();
+		    div();
+		    do();
+		    duration_period();
+		    else();
+		    end();
+		    end_period();
+		    end_report();
+		    end_header();
+		    end_footer();
+		    end_script();
+		    end_title();
+		    end_while();
+		    end_if();
+		    enlarge();
+		    equal();
+		    expandable();
+		    expanded();
+		    fontname();
+		    fontsize();
+		    fontstyle();
+		    footer();
+		    forecolor();
+		    gantt();
+		    header();
+		    histogramm();
+		    holidays();
+		    horgrid();
+		    horizontal();
+		    hour();
+		    id(STRING);
+		    if_();
+		    int(INTEGER);
+		    italic();
+		    keep_together();
+		    landscape();
+		    lbracket();
+		    left();
+		    leftindent();
+		    leftmargin();
+		    lefttitle();
+		    less();
+		    less_eq();
+		    line();
+		    logical();
+		    long(LONG);
+		    margins();
+		    mins();
+		    minus();
+		    mode();
+		    more();
+		    more_eq();
+		    mult();
+		    new_page();
+		    nill;
+		    normal();
+		    not_();
+		    not_eq();
+		    or_();
+		    orientation();
+		    outer_rect();
+		    pagebreak();
+		    panehandle();
+		    period();
+		    pixel();
+		    plan();
+		    planhandle();
+		    portrait();
+		    plus();
+		    rbracket();
+		    real(REAL);
+		    recurrent();
+		    relative();
+		    report();
+		    right();
+		    rightcolumns();
+		    rightmargin();
+		    rightsubcolumntitle();
+		    righttitle();
+		    scheme();
+		    script();
+  		    semicolon();
+  		    start_period();
+		    str(STRING);
+		    subcolumns();
+		    subcolumntitle();
+		    subrows();
+		    tabs();
+		    text();
+		    then();
+		    time_off();
+		    title();
+		    topindent();
+		    underline();
+		    units();
+		    var_forecolor();
+		    var_backcolor();
+		    var_border();
+		    var_font();
+		    vertgrid();
+		    vertical();
+		    while();
+		    wrap();
+		    xor_()

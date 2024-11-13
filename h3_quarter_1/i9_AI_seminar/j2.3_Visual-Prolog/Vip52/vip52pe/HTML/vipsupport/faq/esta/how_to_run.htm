@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>How to Run the WEB Version of ESTA at a Local Server</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">How to Run the WEB Version of ESTA at a Local Server?<!--mstheme--></font></h1>
+
+<p>To run ESTA and others Web applications from the &lt;<i>VIP_root</i>&gt;\WWW\Programs\ sub-directory at a local
+computer, you need to fulfill the following steps: 
+
+<ol>
+  <li>If you have no local server at your computer, install MS Personal WEB Server. </li>
+  <li>Load w3esta.PRJ from the &lt;<i>VIP_root</i>&gt;\WWW\Programs\ESTA\ directory into the Visual Prolog VDE. </li>
+  <li>In the &quot;Application Expert&quot; choose the&nbsp; &quot;Other Options&quot; tab.&nbsp;<br>
+    Click &quot;Project Directories&quot; and then choose the &quot;Output&quot; tab.&nbsp;<br>
+ You will
+    see that ESTA's final files will be placed into the &lt;<i>VIP_root</i>&gt;\WWW\Inetpub\ESTA sub-directory. </li>
+  <li>Build a project. </li>
+  <li>Copy the content of&nbsp; &lt;<i>VIP_root</i>&gt;\WWW\Inetpub\ESTA directory into your server directory (e.g.,
+    Inetpub\wwwroot\ESTA if you use MS Personal WEB server). </li>
+  <li>Provide the possibility to run executables from this directory. There are several ways
+    to do it: </li>
+</ol>
+
+<blockquote>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Use the &quot;Advanced Options&quot; item in the Personal WEB server.
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="top" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Click on the &quot;Edit Properties&quot; button,<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Check &quot;Execute&quot;. <br>
+        <!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Another way to provide this possibility is to use the &quot;File|Properties&quot; menu
+      command in the Windows Explorer&nbsp; to invoke the Properties dialog for this directory.
+      <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!--msthemelist--><tr><td valign="top" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Choose the &quot;WEB Sharing&quot; tab,<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Check the &quot;Share this directory&quot; checkbox.<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">In the &quot;Edit Alias&quot; dialog check all checkboxes.<!--mstheme--></font><!--msthemelist--></td></tr>
+      <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<ol start="8">
+  <li>Start a browser that supports forms. </li>
+  <li>To run ESTA, type in your browser : http://&lt;<i>your server</i>&gt;/esta
+    [/index.htm]</li>
+</ol>
+
+<h3><!--mstheme--><font color="#000000">Notes:<!--mstheme--></font></h3>
+
+<ol>
+  <li>Pictures should be stored in /images sub-directory with the same names as in ESTA
+    pictures.dba, but in the GIF format.</li>
+  <li>Hotspots are not supported in the WEB version of ESTA. However, if&nbsp; you manually
+    include &lt;a href&gt; HTML code, it will work correctly.</li>
+</ol>
+
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

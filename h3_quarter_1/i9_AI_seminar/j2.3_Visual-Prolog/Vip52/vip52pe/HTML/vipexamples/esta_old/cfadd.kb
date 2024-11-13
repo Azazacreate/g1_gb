@@ -1,0 +1,7 @@
+vars("parameter cold_because_of_ice : ''\ntype number\nrange -1.0  1.0\nrules\n0.8 if ice_on_the_river,\n-1.0.","cold_because_of_ice","",[],[],number,number(range(float(-1),float(1)),[if_(c_float(0.8,73),c_var("ice_on_the_river",80)),exp(monmin(c_float(1,100)))]),"")
+vars("parameter ice_on_the_river : ''\ntype boolean\nquestion 'Is part of the river frozen over? '\n","ice_on_the_river","",[],[c_str("Is part of the river frozen over? ",56)],fact,fact([]),"")
+vars("parameter it_is_snowing : ''\ntype boolean\nquestion 'Is it snowing? '","it_is_snowing","",[],[c_str("Is it snowing? ",53)],fact,fact([]),"")
+vars("parameter cold_because_of_snow : ''\ntype number\nrange -1.0  1.0\nrules\n0.7 if it_is_snowing,\n-1.0.","cold_because_of_snow","",[],[],number,number(range(float(-1),float(1)),[if_(c_float(0.7,74),c_var("it_is_snowing",81)),exp(monmin(c_float(1,98)))]),"")
+vars("parameter cold_weather_cf : ''\ntype number\nrange -1.0  1.0\nrules\ncf_add(cold_because_of_snow,cold_because_of_ice).","cold_weather_cf","",[],[],number,number(range(float(-1),float(1)),[exp(c_func("calc_cf",69,[c_var("cold_because_of_snow",76),c_var("cold_because_of_ice",97)]))]),"")
+section("section start : ''\nadvice\n'The statement ''it is very cold weather'' is true with\na certainty factor of ' cold_weather_cf","start",[c_str("",16)])
+paragraph("start",1,c_bool(true,0),[display([c_str("The statement 'it is very cold weather' is true with\na certainty factor of ",28),c_var("cold_weather_cf",109)])])

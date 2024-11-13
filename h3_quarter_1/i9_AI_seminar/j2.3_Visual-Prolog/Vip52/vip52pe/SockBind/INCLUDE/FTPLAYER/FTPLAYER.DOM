@@ -1,0 +1,27 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+                
+ Tool:  FTP layer
+ FileName: ftplayer.dom
+ Purpose: A layer over Message layer for FTP using applications
+ Written by: Konstantin Ivanov
+ Comments: Include it in your project!
+******************************************************************************/
+CONSTANTS
+  ftplay_ActionSend 	= 0
+  ftplay_ActionReceive 	= 1
+  
+GLOBAL DOMAINS
+  FTPLAY_REPLY=
+  		connect(STRING,USHORT);
+  		err_connect(STRING,STRING,USHORT);
+		ok;
+		ok_str(STRING);
+		ftplay_error( UNSIGNED, STRING );
+		error_rep(INTEGER,STRING);
+		seq(INTEGER,STRING);
+		close;
+		progress( BOOLEAN ActionType, STRING FileName, UNSIGNED BlockSize )
+		
+  FTPLAY_DEBUG_HNDL = determ(STRING)

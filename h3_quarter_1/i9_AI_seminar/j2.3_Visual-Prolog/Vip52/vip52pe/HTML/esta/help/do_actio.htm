@@ -1,0 +1,17 @@
+<HTML>
+<HEAD>
+<TITLE>Do Action</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Do Action'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Do Action</FONT>
+<P ALIGN=LEFT>The do action simply transfers control to a new section. The do action enables 'data-driven' search to be carried out between sections. In the AI litterature this is also referred to as 'forward chaining'. The <A HREF='BNF_SYNT.HTM'>syntax</A> for the do action is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;do&gt; ::= do &lt;<A HREF='NAME.HTM'>section-name</A>&gt;</FONT> 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start 'first section to be executed' 
+<P ALIGN=LEFT>   if answer = 'yes' (do positive_section, do next_section) 
+<P ALIGN=LEFT>   if answer = 'no' do negative_section</FONT> 
+<P ALIGN=LEFT>Depending on the value of the parameter answer, control is transferred to either positive_section followed by next_section, if the answer was yes; or to the negative_section, if the answer was no.
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

@@ -1,0 +1,12 @@
+Simple Word Processor
+
+This example illustrates how to make simple WYSWIG word processor
+using Win32 RichEdit control.
+
+NOTE:
+
+1. Application needs RICHED32.DLL. This DLL is supplied with
+   Windows 95, Windows NT 4.0 or with MSVC 4.0 or higher.
+
+2. All operations with RichEdit control is possible via
+   VPI's e_Native/3 message

@@ -1,0 +1,62 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALC
+ FileName: XCALC.PAR
+ Purpose: Parsing predicats for XCalc and XCalc2 examples
+ Written by: Eugene Akimov
+ Comments: Use Parsing predicates
+******************************************************************************/
+
+predicates
+  s_expr(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_expr1(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_expr5(TOKL Tokl,TOKL Tokl,EXPR Expression,EXPR Expression) - determ (i,o,i,o)
+  s_expr2(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_expr6(TOKL Tokl,TOKL Tokl,EXPR Expression,EXPR Expression) - determ (i,o,i,o)
+  s_expr3(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+  s_expr7(TOKL Tokl,TOKL Tokl,EXPR Expression,EXPR Expression) - determ (i,o,i,o)
+  s_expr4(TOKL Tokl,TOKL Tokl,EXPR Expression) - determ (i,o,o)
+
+clauses
+  s_expr(LL1,LL0,Expr):-
+	s_expr1(LL1,LL0,Expr).
+
+  s_expr1(LL1,LL0,OutExpr):-
+	s_expr2(LL1,LL2,Expr),
+	s_expr5(LL2,LL0,Expr,OutExpr).
+
+  s_expr2(LL1,LL0,OutExpr):-
+	s_expr3(LL1,LL2,Expr),
+	s_expr6(LL2,LL0,Expr,OutExpr).
+
+  s_expr3(LL1,LL0,OutExpr):-
+	s_expr4(LL1,LL2,Expr),
+	s_expr7(LL2,LL0,Expr,OutExpr).
+
+  s_expr4([t(lpar,_)|LL1],LL0,parenthetical(Expr)):-!,
+	s_expr(LL1,LL2,Expr),
+	expect(t(rpar,_),LL2,LL0).
+  s_expr4([t(number(Real),_)|LL],LL,number(Real)):-!.
+  s_expr4(LL,_,_):-syntax_error("expr4",LL),fail.
+
+  s_expr5([t(plus,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr2(LL1,LL2,Expr1),
+	s_expr5(LL2,LL0,add(Expr,Expr1),OutExpr).
+  s_expr5([t(minus,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr2(LL1,LL2,Expr1),
+	s_expr5(LL2,LL0,subtract(Expr,Expr1),OutExpr).
+  s_expr5(LL,LL,Expr,Expr).
+
+  s_expr6([t(mult,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr3(LL1,LL2,Expr1),
+	s_expr6(LL2,LL0,multiply(Expr,Expr1),OutExpr).
+  s_expr6([t(div,_)|LL1],LL0,Expr,OutExpr):-!,
+	s_expr3(LL1,LL2,Expr1),
+	s_expr6(LL2,LL0,divide(Expr,Expr1),OutExpr).
+  s_expr6(LL,LL,Expr,Expr).
+
+  s_expr7([t(power,_)|LL1],LL0,Expr,power(Expr,Expr1)):-!,
+	s_expr3(LL1,LL0,Expr1).
+  s_expr7(LL,LL,Expr,Expr).

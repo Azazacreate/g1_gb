@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html" ; &lt;meta name=" generator" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Template" content="C:\microsoft office\Office\html.dot">
+<title></title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../../";</script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Using Visual Prolog DLLs from Microsoft Visual C++<!--mstheme--></font></h1>
+<p>The directory \Foreign\Examples\Msvc contains examples of how to use a
+Dynamic Link Library (DLL) created with Visual Prolog in Microsoft Visual C++
+(see <a href="../foreign.htm">Using Visual Prolog DLLs from other languages</a>
+for an overview of the examples)</p>
+<p>All these examples use the same <a href="../dlls/readme.htm">Visual Prolog
+DLLs</a> that are found in the DLLS directory, so these have to be compiled
+before any of the examples are compiled and run.</p>
+<h2><!--mstheme--><font color="#000000">Notes for C++<!--mstheme--></font></h2>
+<p>Please also read the <a href="../foreign.htm#notes">common notes</a>.</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt;__stdcall&gt; modifier should be set for description of imported
+    function in C/C++ code.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">input arguments have type according to type in Visual Prolog:<br>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <div align="left">
+    <!--mstheme--></font><table border="1" cellspacing="1" cellpadding="7" width="250" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Visual Prolog</b><!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>C/C++</b><!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">integer<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">int<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">real<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">double<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">unsigned<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">unsigned<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">string<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">char*<!--mstheme--></font></td>
+      </tr>
+    </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </div>
+</blockquote>
+<p align="CENTER">&nbsp;</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">output arguments are pointers to appropriate type:<br>
+  <!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <div align="left">
+    <!--mstheme--></font><table border="1" cellspacing="1" cellpadding="7" width="254" bordercolordark="#669999" bordercolorlight="#CCFFFF">
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>Visual Prolog</b><!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica"><b>C/C++</b><!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">integer<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">int*<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">real<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">double*<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">unsigned<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">unsigned*<!--mstheme--></font></td>
+      </tr>
+      <tr>
+        <td width="52%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">string<!--mstheme--></font></td>
+        <td width="48%" valign="TOP"><!--mstheme--><font face="verdana, Arial, Helvetica">char**<!--mstheme--></font></td>
+      </tr>
+    </table><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </div>
+</blockquote>
+<p align="CENTER">&nbsp;</p>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">directive &lt;extern &quot;C&quot;&gt; should be used in C++ case:<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>#ifdef __cplusplus<br>
+    extern &quot;C&quot; {<br>
+    #endif<br>
+    /*list of imported functions from DLL*/<br>
+    void APIENTRY dll_mark_gstack(unsigned long *out);<br>
+    void APIENTRY dll_release_gstack(unsigned long in);<br>
+    void APIENTRY setInteger(int In );<br>
+    void APIENTRY getInteger(int* Out);<br>
+    void APIENTRY setReal(double In );<br>
+    void APIENTRY getReal(double* Out );<br>
+    void APIENTRY setString(char* In);<br>
+    void APIENTRY getString(char** Out);<br>
+    #ifdef __cplusplus<br>
+    }<br>
+    #endif</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<h2><!--mstheme--><font color="#000000">Examples<!--mstheme--></font></h2>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <p>NONGUI: Visual Prolog project with MSVC as the main program, which uses
+    non-GUI Visual Prolog DLL.</p>
+    <p>USEVPI: Microsoft Visual C++ MFC project, which uses a Visual Prolog DLL
+    with VPI.</p>
+    <p>ActiveX: Microsoft Visual C++ MFC ActiveX project, which uses a Visual
+    Prolog DLL with VPI.</p>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

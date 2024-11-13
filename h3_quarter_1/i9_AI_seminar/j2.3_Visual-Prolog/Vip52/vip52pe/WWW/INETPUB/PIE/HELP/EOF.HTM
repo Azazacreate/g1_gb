@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="eof">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>eof</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">eof/0</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left"><b>eof</b> </p>
+
+<p align="left">Check for end-of-file </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left">The <b>eof/0</b> checks whether the current file
+positionis at the end of the file. If so, <b>eof/0</b> succeeds;
+otherwise, it fails. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>my_consult(FileName) :-
+  see(FileName),
+    repeat,
+      read(Term),
+      assertz(Term),
+    eof. 
+</pre>
+</body>
+</html>

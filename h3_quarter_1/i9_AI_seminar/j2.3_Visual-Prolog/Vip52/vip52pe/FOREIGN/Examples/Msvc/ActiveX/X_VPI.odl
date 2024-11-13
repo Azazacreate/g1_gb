@@ -1,0 +1,51 @@
+// X_VPI.odl : type library source for ActiveX Control project.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(D7E5E83B-82C5-11D2-A822-10005A149E0D), version(1.0),
+  helpfile("X_VPI.hlp"),
+  helpstring("X_VPI ActiveX Control module"),
+  control ]
+library X_VPILib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	[ uuid(D7E5E83C-82C5-11D2-A822-10005A149E0D),
+	  helpstring("Dispatch interface for X_VPI Control"), hidden ]
+	dispinterface _DX_VPI
+	{
+		properties:
+			//{{AFX_ODL_PROP(CX_VPICtrl)
+			//}}AFX_ODL_PROP
+
+		methods:
+			//{{AFX_ODL_METHOD(CX_VPICtrl)
+			//}}AFX_ODL_METHOD
+	};
+
+	[ uuid(D7E5E83D-82C5-11D2-A822-10005A149E0D),
+	  helpstring("Event interface for X_VPI Control") ]
+	dispinterface _DX_VPIEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			//{{AFX_ODL_EVENT(CX_VPICtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	[ uuid(D7E5E83E-82C5-11D2-A822-10005A149E0D),
+	  helpstring("X_VPI Control"), control ]
+	coclass X_VPI
+	{
+		[default] dispinterface _DX_VPI;
+		[default, source] dispinterface _DX_VPIEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

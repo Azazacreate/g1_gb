@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<TITLE>Boolean Expression</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Boolean Expression'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Boolean Expression</FONT>
+<P ALIGN=LEFT>Boolean expressions - or conditions - guide the logic of ESTA's dialog.They are used as part of if-statements in section declarations and rules fields of parameters. Boolean expressions are either true, false or unknown. They consist of: 
+</OL>
+<UL>
+<LI><A HREF='BOOLEAN1.HTM'>boolean parameters</A>  
+<LI>comparisons between <A HREF='NUMBER_E.HTM'>number expressions</A>  
+<LI>comparisons between <A HREF='BNF_SYNT.HTM'>names</A> and <A HREF='STRING.HTM'>strings</A>  
+<LI>compound boolean expressions 
+</UL>
+<P ALIGN=LEFT>Comparisons between number expressions or between names and strings may be written using one of the relational operators: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;   smaller than 
+<P ALIGN=LEFT>&lt;=  smaller than or equal to 
+<P ALIGN=LEFT>=   equal to 
+<P ALIGN=LEFT>&gt;   greater than 
+<P ALIGN=LEFT>&gt;=  greater than or equal to 
+<P ALIGN=LEFT>&lt;&gt;  different from </FONT>
+<P ALIGN=LEFT>When strings are compared, the characters of the two strings are compared one by one by replacing the characters by their ASCII values. Thus, the comparison 'A' &lt; 'B' is true because 65 (the ASCII value of 'A') is less than 66 (the ASCII value of 'B'). The comparison goes from left to right until a pair of letters gives a result. 
+<P ALIGN=LEFT>Compound boolean expressions are formed using the logical operators: <B>and</B>, <B>or</B> and <B>not</B>. <B>Not</B> has the highest priority of the logical operators - actually even higher than the mathematical operators. On the other hand, <B>and</B> and <B>or</B> have lower priority than the mathematical operators. As in number expressions parantheses may be used to implement any order of evaluation. 
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for a boolean expression is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;boolean-expression&gt;   ::= 
+<P ALIGN=LEFT>    &lt;number-expression&gt; &lt;relational-op&gt; &lt;number-expression&gt; | 
+<P ALIGN=LEFT>    &lt;text-expression&gt; &lt;relational-op&gt; &lt;text-expression&gt; | 
+<P ALIGN=LEFT>    &lt;boolean-expression&gt; and &lt;boolean-expression&gt; | 
+<P ALIGN=LEFT>    &lt;boolean-expression&gt; or &lt;boolean-expression&gt; | 
+<P ALIGN=LEFT>    not [(] &lt;boolean-expression&gt; [)] | 
+<P ALIGN=LEFT>    true | 
+<P ALIGN=LEFT>    false | 
+<P ALIGN=LEFT>    unknown | 
+<P ALIGN=LEFT>    &lt;parameter-name&gt; | 
+<P ALIGN=LEFT>    known(&lt;parameter-name&gt;) 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>&lt;relational-op&gt;        ::= &lt;  |  &gt;  |  &lt;=  |  &gt;=  |  =  |  &lt;&gt; 
+<P ALIGN=LEFT></FONT>
+<P ALIGN=LEFT>The function known returns true if the parameter has a value, otherwise it returns false. 
+<P ALIGN=LEFT><B>Examples</B>
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>number_of_days_required / 7 &lt; weeks_required 
+<P ALIGN=LEFT>favourite_colour = 'red' 
+<P ALIGN=LEFT>not pays_highest_rate_tax 
+<P ALIGN=LEFT>has_retired or is_unwell 
+<P ALIGN=LEFT>date_of_birth &lt; 1960 and owns_a_car 
+<P ALIGN=LEFT>x and not y or z    /* (x and not(Y)) or z) */</FONT> 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

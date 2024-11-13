@@ -1,0 +1,22 @@
+# ----------------------------------------------------------------------------
+#C
+# ----------------------------------------------------------------------------
+JDK	   = h:\jdk1.2beta4
+OBJS       = stub.obj
+CFLAGS     = -nologo -Zi -DWIN32 -I$(JDK)\include -I$(JDK)\include\win32
+# ----------------------------------------------------------------------------
+#Java
+# ----------------------------------------------------------------------------
+JAVAC = $(JDK)\Bin\javac.exe
+JAVAH = $(JDK)\Bin\javah.exe
+# ----------------------------------------------------------------------------
+#
+# ----------------------------------------------------------------------------
+all: 
+    copy ..\..\Dlls\exe\testdll.dll .\*.*
+    copy ..\..\Dlls\exe\testdll.lib .\*.*
+    $(JAVAC) -d . main.java
+    $(JAVAC) -d . java_pro.java
+    $(JAVAH) -jni -o Java_ProJNI.h Java_Pro
+    cl $(CFLAGS) /c stub.c
+    link -nologo -dll -out:stub.dll testdll.lib stub.obj

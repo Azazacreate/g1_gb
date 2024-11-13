@@ -1,0 +1,14 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	REPTOOL.DOM
+ Purpose:	Report Tool Domain File
+ Written by:	Alexander Grachev
+ Version:	1.3
+ Build:		018.981112
+ Tested with:	Visual Prolog v.5.1 build 555a
+ Comments:
+******************************************************************************/
+% Replace REPTOOL_DIR with actual path to REPORT tool:
+include "..\\..\\include\\Report\\preview.dom"

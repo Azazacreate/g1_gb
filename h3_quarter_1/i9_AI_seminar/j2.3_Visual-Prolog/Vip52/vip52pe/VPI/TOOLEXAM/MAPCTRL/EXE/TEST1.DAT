@@ -1,0 +1,27 @@
+;****************************************************
+;*     This is my first file containing map data    *
+;****************************************************
+;
+; 1. Background objects
+;
+polygon_bg([pnt(20,20),pnt(120,32),pnt(140,96),pnt(35,160)],pen(2,0,16711680),brush(2,65535))
+polygon_bg([pnt(170,66),pnt(250,30),pnt(300,200),pnt(150,220)],pen(3,0,0),brush(2,16777215))
+polyline_bg([pnt(33,33),pnt(48,90),pnt(116,211),pnt(288,137)],pen(6,0,65280))
+circle_bg(pnt(80,80),20,pen(2,0,255),brush(2,12632256))
+circle_bg(pnt(320,207),30,pen(2,0,65280),brush(2,65535))
+text_bg(pnt(190,110),"New York",4,[2,1],12,16711680)
+bitmap_bg(pnt(38,148),"Hus.bmp",12)
+bitmap_bg(pnt(208,38),"Hus.bmp",12)
+;
+; 2. Foreground objects
+;
+polygon(777,pnt(470,270),[pnt(-10,-20),pnt(-18,48),pnt(30,-26),pnt(40,70)],pen(2,0,16711680),brush(2,65535),nolabel)
+polygon(778,pnt(110,220),[pnt(-10,-20),pnt(-18,48),pnt(30,-26),pnt(40,70)],pen(2,0,16711680),brush(2,65535),nolabel)
+polygon(779,pnt(270,27),[pnt(-10,-20),pnt(-18,48),pnt(30,-26),pnt(40,70)],pen(2,0,16711680),brush(2,65535),nolabel)
+circle(780,pnt(170,55),36,pen(2,0,16711680),brush(2,65535),nolabel)
+circle(781,pnt(300,300),20,pen(2,0,16711680),brush(2,65535),nolabel)
+bitmap(782,pnt(450,100),"Silo.bmp",12,label(pnt(30,5),"New SILO",4,[1],11,16711680))
+bitmap(783,pnt(50,300),"Silo.bmp",12,label(pnt(30,5),"Old SILO",4,[1],11,16711680))
+arrow(784,pnt(446,90),pnt(446,312),pen(3,0,0),nolabel)
+arrow(785,pnt(211,101),pnt(10,312),pen(3,0,0),nolabel)
+arrow(786,pnt(246,190),pnt(426,190),pen(3,0,0),nolabel)

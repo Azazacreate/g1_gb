@@ -1,0 +1,89 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog 
+
+ FileName: VPITREE.PRE
+ PURPOSE: 
+ Written by: 
+ Comments:
+
+******************************************************************************/
+ifndef vpitree_dom_included
+ Error: this file requires include: vpitree.dom
+enddef 
+constants
+  vpitree_pre_included = 1
+
+global predicates
+
+ procedure WINDOW tree_Create (
+		WINTYPE WinType,
+		RCT,
+		STRING Title,
+		MENU Menu,
+		WINDOW Parent,
+		WSFLAGS Flags,
+		EHANDLER Eventhandler,
+		LONG CreationData,
+		TREE Tree,
+		TREE_WIN_INFO TreeWindowInfo,
+		TREE_PATH Path ) - ( i, i, i, i, i, i, i, i, i, i, i )
+
+% Main predicate - creates a tree window with the tree Tree,
+% the path Path and the c-eventhandler EventHandler.
+
+  procedure tree_CreateSubclass( WINDOW, TREE, TREE_WIN_INFO, TREE_PATH ) - ( i, i, i, i )
+% Creates the tree for the given window  
+
+  procedure SLIST tree_GetAllNodes ( WINDOW ) - ( i )
+% Collects all tree Selectors
+
+  procedure TREE_SELECTOR tree_GetSelectedNode ( WINDOW ) - ( i )
+% Returns the currently selected node's Selector
+
+  determ TREE_SELECTOR tree_GetParentNode ( WINDOW ) - ( i )
+% Returns the parent's Selector for the selected node
+
+  procedure TREE_ARROW_TYPE tree_GetNodeArrowType ( WINDOW ) - ( i )
+% Returns the currently selected node's arrow type
+
+  procedure TREE_WIN_INFO tree_GetWinInfo ( WINDOW ) - ( i )
+% Gets tree window data
+
+  procedure RCT tree_GetWinRect ( WINDOW, WINDOW OutWindow ) - ( i, i )
+% Used to obtain relative tree-window coordinates in OutWindow
+
+  determ TREE_SELECTOR tree_GetCurrentSearch ( WINDOW ) - ( i )
+% Returns selector used in a current serch, or fails
+
+  procedure tree_SetSelectedNode ( WINDOW, TREE_SELECTOR Selector ) - ( i, i )
+% Moves selection to the first node matching the Selector
+
+  procedure tree_SetDirection ( WINDOW, INTEGER ) - ( i, i )
+% Sets new direction for tree drawing
+
+  procedure tree_SetFont ( WINDOW, FONT ) - ( i, i )
+% Sets new font for tree Selectors
+
+  procedure tree_Update ( WINDOW, TREE, TREE_PATH ) - ( i, i, i )
+% Used to change the tree in a window without deleting the window
+
+  procedure tree_OpenCloseNode ( WINDOW ) - ( i )
+% explodes/implodes subtree from the selected node
+
+  determ tree_SearchFirstNode ( WINDOW, TREE_SELECTOR ) - ( i, i )
+% Selects first node using the Selector
+
+  procedure tree_SearchNodeAgain ( WINDOW ) - ( i )
+% Selects next node using the choosen Selector
+
+  procedure tree_MoveToSelectedNode ( WINDOW ) - ( i )
+% Makes selected node visible
+
+  procedure tree_MoveToParentNode ( WINDOW ) - ( i )
+% Moves selection from child node to the parent node
+
+  procedure tree_Print ( WINDOW Win, STRING Title ) - ( i, i )
+%Prints a tree

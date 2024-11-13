@@ -1,0 +1,3 @@
+file = open('test_file.txt', "rb")
+for line in file:
+    print(line.decode(encoding="utf-8"))

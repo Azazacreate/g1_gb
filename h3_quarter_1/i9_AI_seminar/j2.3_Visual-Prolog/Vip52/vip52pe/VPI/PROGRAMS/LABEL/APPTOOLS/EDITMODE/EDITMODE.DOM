@@ -1,0 +1,21 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:	Label Expert
+ FileName:	EDITMODE.DOM
+ Purpose:	Global domains for EDIT MODE object
+ Written by:	Sergey Alexeev
+ Build:		008.981112
+ Comments:
+******************************************************************************/
+global domains
+  EM_PUSH =	edit_mode;
+		text;
+		counter;
+		bitmap;
+		rectangle;
+		circle;
+		line
+
+  EM_CALLBACK = determ (EM_PUSH) - (i)

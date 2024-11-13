@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>FAQ about the PDC Link Editor</title>
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../../../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2 align="left"><!--mstheme--><font color="#000000"><a name="Linker"></a>Q&amp;A about the PDC Link Editor (Linker)<!--mstheme--></font></h2>
+
+<h4><!--mstheme--><font color="#000000"><a name="The PDC linker">The PDC linker (PDC Link Editor) is supplied in two versions
+included into /BIN directory: PDCLINK.DLL and PDCLINK.EXE.&nbsp; What version to choose?</a><!--mstheme--></font></h4>
+
+<blockquote>
+  <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!--msthemelist--><tr><td valign="top" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">PDCLINK.DLL - a version of PDC Link Editor integrated with the VDE. Visual Prolog VDE
+      calls the PDC Link Editor when you choose one of the following VDE <b>Project</b> submenu
+      entries:<blockquote>
+        <!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <!--msthemelist--><tr><td valign="top" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Project|Build<!--mstheme--></font><!--msthemelist--></td></tr>
+          <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Project|Rebuild All<!--mstheme--></font><!--msthemelist--></td></tr>
+          <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul2d.gif" width="12" height="12" hspace="15"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Project|Link Only<!--mstheme--></font><!--msthemelist--></td></tr>
+        <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+      </blockquote>
+    <!--mstheme--></font><!--msthemelist--></td></tr>
+    <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">PDCLINK.EXE - a stand-alone linker version. Note that we can ensure its correct work
+      only with source (object) files that are produced by the compilers supported by the VDE.
+      (See the list in the Main program list button in the Target tab of the Application
+      Expert.)<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h4><!--mstheme--><font color="#000000"><a name="How can I link projects created by Visual Prolog, v. 4.x ?">How can I link
+projects created by Visual Prolog, v. 4.x?</a><!--mstheme--></font></h4>
+
+<dl>
+  <dd>Visual Prolog 5.0 is supplied with a new integrated linker. To generate correct script
+    for the new linker, do the following: </dd>
+</dl>
+
+<blockquote>
+  <blockquote>
+    <ol>
+      <li>Start Visual Prolog</li>
+      <li>Choose Options|Project|Application Expert (<b>Ctrl+A</b>).</li>
+      <li>Choose Target tab. </li>
+      <li>Change to any other Platform (e.g., Windows32).</li>
+      <li>Change the Platform back to the original type (e.g., Windows16).</li>
+      <li>Press OK.</li>
+    </ol>
+  </blockquote>
+</blockquote>
+
+<dl>
+  <dd>Alternatively you can copy OPTLINKS.EXE from the previous VIP installation to the ... <code>\BIN</code>.</dd>
+</dl>
+
+&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

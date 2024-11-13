@@ -1,0 +1,57 @@
+LICENCE AGREEMENT 
+
+iMMap Trial Versions
+
+1. LICENCE SCOPE. A licence is hereby granted by Image Intelligence Ltd to 
+the licencee to use this trial version for 
+evaluation purposes only for a period of 30 days, where evaluation purposes 
+exclude any use, for example, on publically accessible web pages or in any 
+areas of a networked environment accessible to anyone other than the design 
+team or evaluation personnel.
+
+2. Purchase under a separate licence agreement is required before any other 
+use is permitted.
+
+3. LIABILITY EXCLUSION. The author and copyright holders of this software 
+shall not be liable for any damages whatsoever (including, without limitation, 
+damages for loss of business profits, business interruption, loss of business 
+information, or other pecuniary, intellectual or personal loss) suffered by 
+anyone as a result of using, modifying or distributing this software. No 
+guarantee or representation, either express of implied, is made about the 
+software's suitability for any purpose. Java is a developing language - you 
+use this software entirely at your own risk. The licencee is responsible for 
+checking that the software is virus-free before use.
+
+4. GUARANTEE. All software is provided by us "as-is" and without any kind of 
+guarantee. 
+
+5. COPYRIGHT. Copyright and ownership of the software subsists with Image 
+Intelligence Ltd., Herefordshire, England. In purchasing a licence for one-site 
+use as defined above the licensee obtains a licence limited to using a copy 
+of the software in the fashion described in the documentation available on 
+our website. The licencee may not rent, lease or resell the software or 
+any copy of it. The licencee may not modify, reverse engineer, decompile 
+or disassemble the software, the programme code or any part of it, or 
+allow any such activity on the part of any third party. 
+
+6. BREACH OF LICENCE AGREEMENT. If any part of this agreement is broken 
+by the licencee, the licence is revoked, the software and any copies 
+possessed by the licencee must be destroyed, and all outstanding 
+contractual obligations of Image Intelligence Ltd. towards the licencee 
+are cancelled without refund of any money paid by the licencee. This does 
+not exclude further criminal or civil proceedings against the licencee.
+
+7. JURISDICTION. The conditions of the granting of location licences under 
+this agreement are covered by the laws of the United Kingdom and in 
+particular by the Copyright, Designs and Patent Act 1988 and Schedule 5 
+paragraph 1 of the (United Kingdom) Value Added Tax Act, Image Intelligence 
+Ltd being a company established, registered and trading from the United 
+Kingdom. The place of supply of the sale of such licences, and the place 
+of their sale, is as defined by the latter act.
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<title>Class Implementation</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><b>Class Implementation<!--mstheme--></font></h1>
+<h2><!--mstheme--><font color="#000000">Syntax<!--mstheme--></font></h2>
+<!--mstheme--></font><pre>IMPLEMENT </b>&lt;class_name&gt; [: &lt;base_class_list&gt;]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>{<a href><b>DOMAINS</b></a><b> </b>&lt;<i>domains_declarations</i>&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>{[STATIC] <a href="facts_sections_in_the_class_impl.htm"><b>FACTS</b></a> &lt;facts_declarations&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>{[STATIC]<b> <a href>PREDICATES</a></b> &lt;predicates_declarations&gt;}</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>{<b>CLAUSES </b>&lt;predicates_bodies&gt;}<b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>ENDCLASS [</b>&lt;class_name&gt;<b>]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</b>Each class, except <a href>abstract</a> classes, must have one and the only
+one implementation in the project. The class implementation can be placed into
+any project source file in which the class declaration is visible.
+<p>Abstract classes should not have implementations.
+<p>The elements of the class implementation syntax are:
+<p>All names declared in the class implementation are <a href="class_access_control.htm#e97aa622">private</a>.
+<h4><!--mstheme--><font color="#000000"><b>IMPLEMENT Keyword<!--mstheme--></font></h4>
+</b>The class implementation section begins with the keyword IMPLEMENT. The
+IMPLEMENT keyword should be followed by the <b>class implementation header</b>
+that includes the class name and an optional list of base (parent) classes.
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt; <b><i>class_name</i></b> &gt;<br>
+    <i>The class_name </i>specifies the name of the class. The class name is to
+    be unique within a project.
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">&lt;<b><i>base_class_list</i>&gt;<br>
+    </b>The base class list includes a base (parent) class or classes from which
+    the derived class <i>class_name</i> will inherit public and protected
+    domains, predicates, facts, and clauses. Notice that all inherited names
+    become private. (See example 2).<br>
+    Each class can be met in this list only once. The class cannot be specified
+    as the base class for itself.<br>
+    Abstract classes cannot be specified in the implementation base class list.<br>
+    For example:
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>IMPLEMENT C : P1, P2</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<h3><!--mstheme--><font color="#000000"><b>Example<!--mstheme--></font></h3>
+</b>
+<!--mstheme--></font><pre>CLASS xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>PREDICATES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>inc</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>dec</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>check(string)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>ENDCLASS xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>....</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>IMPLEMENT xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>FACTS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>single count(INTEGER)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  </blockquote>
+  <!--mstheme--></font><pre>CLAUSES</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <blockquote>
+    <!--mstheme--></font><pre>count(0).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <!--mstheme--></font><pre>inc:-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>count(X),!,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>X1=X+1,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>assert(count(X1)).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>dec:-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>count(X),!,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>X1=X-1,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>assert(count(X1)).</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+    <!--mstheme--></font><pre>check(Title):-</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    <blockquote>
+      <!--mstheme--></font><pre>count(Val),!,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <!--mstheme--></font><pre>write(Title, Val),nl.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+    </blockquote>
+  </blockquote>
+</blockquote>
+<!--mstheme--></font><pre>ENDCLASS xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>GOAL</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<blockquote>
+  <!--mstheme--></font><pre>O = xclass::new, % Creates a new object of the xclass</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:check(&quot;Initial value of counter: &quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:inc,</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:check(&quot;New value of counter: &quot;),</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+  <!--mstheme--></font><pre>O:delete.</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+<b>
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm">See also</a><!--mstheme--></font></h5>
+</b>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

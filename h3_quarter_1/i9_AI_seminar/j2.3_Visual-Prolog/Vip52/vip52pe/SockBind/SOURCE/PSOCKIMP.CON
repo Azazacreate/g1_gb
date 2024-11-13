@@ -1,0 +1,270 @@
+/***************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ FileName: PSOCKIMP.CON
+ PURPOSE: Interface to the native Sockets. Implementation's specific
+ Written by: Compiler Group, PDC Russia
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ        Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    08/05/97    บ  KI  บ  A support for WSAAsyncGetXByY and other Windows 
+    		บ      บ  specific routines was added.
+***************************************************************************/
+
+ifndef psockimp_con_included
+
+  ifndef ws_win
+    ifdef platform_32bit
+      ifndef os_os2
+	#error : Unsupported platform
+      enddef
+    elsedef
+      #error : Unsupported platform
+    enddef
+  enddef
+
+  CONSTANTS
+
+    psockimp_con_included = 1
+
+			/***************************/
+			/* Miscellaneous constants */
+			/***************************/
+  CONSTANTS
+
+    sockAddr_StructSize	= 16		/* Native struct sockaddr's size */
+    sckAddr_DataMaxSize	= 14		/* Data's size in struct sockaddr*/
+    sin_Zero_Size	= 8    		/* sockaddr_in.sin_zero's size	 */
+    totLingerOptFields	= 2		/* Total int's in struct linger	 */
+    servEnt_StructSize	= 14		/* Native struct servent's size	 */
+
+    ifndef os_os2
+
+      wsaDescript_Len		= 256		/* WSADESCRIPTION_LEN		 */
+      wsaSys_Status_Len		= 128           /* WSASYS_STATUS_LEN		 */
+
+    enddef
+
+    invalid_Socket	= -1		/* Native return: INVALID_SOCKET */
+    socket_Error	= -1		/* Native return: SOCKET_ERROR	 */
+    nativeCall_OK	= 0		/* Native return: SUCCESS	 */
+    inAddr_None		= 0xFFFFFFFF	/* Native return: INADDR_NONE	 */
+    native_NULL		= 0		/* NULL value for native Sockets */
+
+    is_RecvCall		= 1		/* Implementation's specific	 */
+    is_SendCall		= 0		/* Implementation's specific	 */
+
+    is_Recv_DataGram	= 1		/* Implementation's specific	 */
+    is_Recv_Stream	= 0		/* Implementation's specific	 */
+
+			/************************/
+			/* Names of C functions */
+			/************************/
+  CONSTANTS
+
+    ifdef os_os2
+
+      bsd_Accept_FNS			= "ACCEPT"
+      bsd_Bind_FNS			= "BIND"
+      bsd_CloseSocket_FNS		= "SOCLOSE"
+      bsd_Connect_FNS			= "CONNECT"
+      bsd_GetHostByAddr_FNS		= "GETHOSTBYADDR"
+      bsd_GetHostByName_FNS		= "GETHOSTBYNAME"
+      bsd_GetHostName_FNS		= "GETHOSTNAME"
+      bsd_GetPeerName_FNS		= "GETPEERNAME"
+      bsd_GetProtoByName_FNS		= "GETPROTOBYNAME"
+      bsd_GetProtoByNumber_FNS 		= "GETPROTOBYNUMBER"
+      bsd_GetServByName_FNS		= "GETSERVBYNAME"
+      bsd_GetServByPort_FNS		= "GETSERVBYPORT"
+      bsd_GetSockName_FNS		= "GETSOCKNAME"
+      bsd_GetSockOpt_FNS		= "GETSOCKOPT"
+      bsd_InetAddr_FNS			= "INET_ADDR"
+      bsd_InetNtoa_FNS			= "INET_NTOA"
+      bsd_IoCtl_FNS			= "IOCTL"
+      bsd_Listen_FNS			= "LISTEN"
+      bsd_Recv_FNS			= "RECV"
+      bsd_RecvFrom_FNS			= "RECVFROM"
+      bsd_Select_FNS			= "BSDSELECT"
+      bsd_Send_FNS			= "SEND"
+      bsd_SendTo_FNS			= "SENDTO"
+      bsd_SetSockOpt_FNS		= "SETSOCKOPT"
+      bsd_ShutDown_FNS			= "SHUTDOWN"
+      bsd_Socket_FNS			= "SOCKET"
+
+      bsd_SockInit_FNS			= "SOCK_INIT"
+
+    elsedef
+
+      ifdef platform_32bit
+
+	ifdef use_omf_objformat
+
+	  bsd_Accept_FNS		= "accept"
+	  bsd_Bind_FNS			= "bind"
+	  bsd_CloseSocket_FNS		= "closesocket"
+	  bsd_Connect_FNS		= "connect"
+	  bsd_GetHostByAddr_FNS		= "gethostbyaddr"
+	  bsd_GetHostByName_FNS		= "gethostbyname"
+	  bsd_GetHostName_FNS		= "gethostname"
+	  bsd_GetPeerName_FNS		= "getpeername"
+	  bsd_GetProtoByName_FNS	= "getprotobyname"
+	  bsd_GetProtoByNumber_FNS	= "getprotobynumber"
+	  bsd_GetServByName_FNS		= "getservbyname"
+	  bsd_GetServByPort_FNS		= "getservbyport"
+	  bsd_GetSockName_FNS		= "getsockname"
+	  bsd_GetSockOpt_FNS		= "getsockopt"
+	  bsd_InetAddr_FNS		= "inet_addr"
+	  bsd_InetNtoa_FNS		= "inet_ntoa"
+	  bsd_IoCtl_FNS			= "ioctlsocket"
+	  bsd_Listen_FNS		= "listen"
+	  bsd_Recv_FNS			= "recv"
+	  bsd_RecvFrom_FNS		= "recvfrom"
+	  bsd_Select_FNS		= "select"
+	  bsd_Send_FNS			= "send"
+	  bsd_SendTo_FNS		= "sendto"
+	  bsd_SetSockOpt_FNS		= "setsockopt"
+	  bsd_ShutDown_FNS		= "shutdown"
+	  bsd_Socket_FNS		= "socket"
+
+	  wsa_AsyncSelect_FNS		= "WSAAsyncSelect"
+	  wsa_AsyncGetHostByAddr_FNS	= "WSAAsyncGetHostByAddr"
+	  wsa_AsyncGetHostByName_FNS	= "WSAAsyncGetHostByName"
+	  wsa_AsyncGetProtoByName_FNS	= "WSAAsyncGetProtoByName"
+	  wsa_AsyncGetProtoByNumber_FNS	= "WSAAsyncGetProtoByNumber"
+	  wsa_AsyncGetServByName_FNS	= "WSAAsyncGetServByName"
+	  wsa_AsyncGetServByPort_FNS	= "WSAAsyncGetServByPort"
+	  wsa_CancelAsyncRequest_FNS	= "WSACancelAsyncRequest"
+	  wsa_CancelBlockingCall_FNS	= "WSACancelBlockingCall"
+	  wsa_SetBlockingHook_FNS	= "WSASetBlockingHook"
+	  wsa_UnhookBlockingHook_FNS	= "WSAUnhookBlockingHook"
+	  wsa_Cleanup_FNS		= "WSACleanup"
+	  wsa_Startup_FNS		= "WSAStartup"
+
+	  get_OS_Version_FNS		= "GetVersion"
+
+        elsedef
+
+	  bsd_Accept_FNS		= "_accept"
+	  bsd_Bind_FNS			= "_bind"
+	  bsd_CloseSocket_FNS		= "_closesocket"
+	  bsd_Connect_FNS		= "_connect"
+	  bsd_GetHostByAddr_FNS		= "_gethostbyaddr"
+	  bsd_GetHostByName_FNS		= "_gethostbyname"
+	  bsd_GetHostName_FNS		= "_gethostname"
+	  bsd_GetPeerName_FNS		= "_getpeername"
+	  bsd_GetProtoByName_FNS	= "_getprotobyname"
+	  bsd_GetProtoByNumber_FNS	= "_getprotobynumber"
+	  bsd_GetServByName_FNS		= "_getservbyname"
+	  bsd_GetServByPort_FNS		= "_getservbyport"
+	  bsd_GetSockName_FNS		= "_getsockname"
+	  bsd_GetSockOpt_FNS		= "_getsockopt"
+	  bsd_InetAddr_FNS		= "_inet_addr"
+	  bsd_InetNtoa_FNS		= "_inet_ntoa"
+	  bsd_IoCtl_FNS			= "_ioctlsocket"
+	  bsd_Listen_FNS		= "_listen"
+	  bsd_Recv_FNS			= "_recv"
+	  bsd_RecvFrom_FNS		= "_recvfrom"
+	  bsd_Select_FNS		= "_select"
+	  bsd_Send_FNS			= "_send"
+	  bsd_SendTo_FNS		= "_sendto"
+	  bsd_SetSockOpt_FNS		= "_setsockopt"
+	  bsd_ShutDown_FNS		= "_shutdown"
+	  bsd_Socket_FNS		= "_socket"
+
+	  wsa_AsyncSelect_FNS		= "_WSAAsyncSelect"
+  	  wsa_AsyncGetHostByAddr_FNS	= "_WSAAsyncGetHostByAddr"
+  	  wsa_AsyncGetHostByName_FNS	= "_WSAAsyncGetHostByName"
+  	  wsa_AsyncGetProtoByName_FNS	= "_WSAAsyncGetProtoByName"
+  	  wsa_AsyncGetProtoByNumber_FNS	= "_WSAAsyncGetProtoByNumber"
+  	  wsa_AsyncGetServByName_FNS	= "_WSAAsyncGetServByName"
+	  wsa_AsyncGetServByPort_FNS	= "_WSAAsyncGetServByPort"
+	  wsa_CancelAsyncRequest_FNS	= "_WSACancelAsyncRequest"
+	  wsa_CancelBlockingCall_FNS	= "_WSACancelBlockingCall"
+	  wsa_SetBlockingHook_FNS	= "_WSASetBlockingHook"
+	  wsa_UnhookBlockingHook_FNS	= "_WSAUnhookBlockingHook"
+	  wsa_Cleanup_FNS		= "_WSACleanup"
+	  wsa_Startup_FNS		= "_WSAStartup"
+
+	  get_OS_Version_FNS		= "_GetVersion"
+
+        enddef
+
+      elsedef
+
+	bsd_Accept_FNS			= "ACCEPT"
+	bsd_Bind_FNS			= "BIND"
+	bsd_CloseSocket_FNS		= "CLOSESOCKET"
+	bsd_Connect_FNS			= "CONNECT"
+	bsd_GetHostByAddr_FNS		= "GETHOSTBYADDR"
+	bsd_GetHostByName_FNS		= "GETHOSTBYNAME"
+	bsd_GetHostName_FNS		= "GETHOSTNAME"
+	bsd_GetPeerName_FNS		= "GETPEERNAME"
+	bsd_GetProtoByName_FNS		= "GETPROTOBYNAME"
+	bsd_GetProtoByNumber_FNS	= "GETPROTOBYNUMBER"
+	bsd_GetServByName_FNS		= "GETSERVBYNAME"
+	bsd_GetServByPort_FNS		= "GETSERVBYPORT"
+	bsd_GetSockName_FNS		= "GETSOCKNAME"
+	bsd_GetSockOpt_FNS		= "GETSOCKOPT"
+	bsd_InetAddr_FNS		= "INET_ADDR"
+	bsd_InetNtoa_FNS		= "INET_NTOA"
+	bsd_IoCtl_FNS			= "IOCTLSOCKET"
+	bsd_Listen_FNS			= "LISTEN"
+	bsd_Recv_FNS			= "RECV"
+	bsd_RecvFrom_FNS		= "RECVFROM"
+	bsd_Select_FNS			= "SELECT"
+	bsd_Send_FNS			= "SEND"
+	bsd_SendTo_FNS			= "SENDTO"
+	bsd_SetSockOpt_FNS		= "SETSOCKOPT"
+	bsd_ShutDown_FNS		= "SHUTDOWN"
+	bsd_Socket_FNS			= "SOCKET"
+
+	wsa_AsyncSelect_FNS		= "WSAASYNCSELECT"
+	wsa_AsyncGetHostByAddr_FNS	= "WSAASYNCGETHOSTBYADDR"
+	wsa_AsyncGetHostByName_FNS	= "WSAASYNCGETHOSTBYNAME"
+	wsa_AsyncGetProtoByName_FNS	= "WSAASYNCGETPROTOBYNAME"
+	wsa_AsyncGetProtoByNumber_FNS	= "WSAASYNCGETPROTOBYNUMBER"
+	wsa_AsyncGetServByName_FNS	= "WSAASYNCGETSERVBYNAME"
+	wsa_AsyncGetServByPort_FNS	= "WSAASYNCGETSERVBYPORT"
+	wsa_CancelAsyncRequest_FNS	= "WSACANCELASYNCREQUEST"
+	wsa_CancelBlockingCall_FNS	= "WSACANCELBLOCKINGCALL"
+	wsa_SetBlockingHook_FNS		= "WSASETBLOCKINGHOOK"
+	wsa_UnhookBlockingHook_FNS	= "WSAUNHOOKBLOCKINGHOOK"
+	wsa_Cleanup_FNS			= "WSACLEANUP"
+	wsa_Startup_FNS			= "WSASTARTUP"
+
+      enddef
+
+    enddef
+
+    c_MakeAListFromArray_FNS	= "_c_MakeAListFromArray"
+    c_MakeSListFromArray_FNS	= "_c_MakeSListFromArray"
+    c_MakeFdsFromSockList_FNS	= "_c_MakeFdsFromSockList"
+    c_MakeSockListFromFds_FNS	= "_c_MakeSockListFromFds"
+
+    ifdef os_os2
+
+      c_Os2_Initiate_FNS	= "_c_Os2_Initiate"
+      c_Os2_Terminate_FNS	= "_c_Os2_Terminate"
+      c_Os2_AsyncSelect_FNS	= "_c_Os2_AsyncSelect"
+      c_Os2_CheckAcception_FNS	= "_c_Os2_CheckAcception"
+      c_Os2_RegClose_FNS	= "_c_Os2_RegClose"
+      c_Os2_RegConnect_FNS	= "_c_Os2_RegConnect"
+      c_Os2_RegListen_FNS	= "_c_Os2_RegListen"
+      c_Os2_RegShutDown_FNS	= "_c_Os2_RegShutDown"
+      c_Os2_ResetFdRead_FNS	= "_c_Os2_ResetFdRead"
+      c_Os2_ResetFdWrite_FNS	= "_c_Os2_ResetFdWrite"
+      c_Os2_CheckConnect_FNS	= "_c_Os2_CheckConnect"
+
+    enddef
+
+    run_Error_FNS		= "_RUN_Error"
+    mem_MovMem_FNS		= "_MEM_MovMem"
+
+    get_MemWord_FNS		= "_BIT_MemWord_io"
+    get_MemDWord_FNS		= "_BIT_MemDWord_io"
+
+enddef	/* psockimp_con_included */

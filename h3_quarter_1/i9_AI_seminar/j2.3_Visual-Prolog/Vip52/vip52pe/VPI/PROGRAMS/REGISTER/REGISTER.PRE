@@ -1,0 +1,41 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  REGISTER
+ FileName: REGISTER.PRE
+ Purpose: Predicate definitions for REGISTER.PRO
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_person_info_Create(WINDOW Parent) - (i)
+  dlg_city_info_Create(WINDOW Parent) - (i)
+  dlg_printer_setup_Create(WINDOW Parent) - (i)
+  dlg_person_Create(WINDOW Parent) - (i)
+  dlg_city_Create(WINDOW Parent) - (i)
+  win_view_Create(WINDOW Parent) - (i)
+  win_print_preview_Create(WINDOW Parent) - (i)
+  dlg_page_setup_Create(WINDOW Parent) - (i)
+  dlg_city_information_Create(WINDOW Parent) - (i)
+  dlg_search_city_Create(WINDOW Parent) - (i)
+  dlg_person_information_Create(WINDOW Parent) - (i)
+  dlg_search_person_Create(WINDOW Parent) - (i)
+%END System Mark
+
+%Users Global Predicates
+GLOBAL PREDICATES
+  determ proces_u(BT_SELECTOR) - (i)
+  nondeterm proces_nr(BT_SELECTOR) - (i)
+  determ proces_rr(BT_SELECTOR) - (i)
+  determ proces_rp(BT_SELECTOR) - (i)
+  determ proces_d(BT_SELECTOR) - (i)
+  nondeterm proces_s
+  browse(RELATION) - (i)
+  nondeterm proces_cs
+  search_proces2_down
+  search_proces2_up

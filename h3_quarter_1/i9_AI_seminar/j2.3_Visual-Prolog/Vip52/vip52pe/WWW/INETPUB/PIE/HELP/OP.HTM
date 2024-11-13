@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="op">
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>op</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3 align="left"><font color="#0000FF" size="4" face="Arial">op/3</font><font
+color="#0000FF"> </font></h3>
+
+<p align="left">See also: <a href="Predefined_Operators.htm">Predefined
+Operators</a> </p>
+
+<p align="left"><b>op</b>(<i>Priority,Assoc,Op</i>) </p>
+
+<p align="left">Declares the predicate as operator. </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>op/3</b> allows to declare the new operators <i>Op</i>
+with given <i>Priority</i> and <i>Associativity</i>. </p>
+
+<p align="left"><i>Priority</i> is the integer from 1 through
+1200. The lower number corresponds to higher priority. </p>
+
+<p align="left"><i>Associativity</i> takes one of three forms: </p>
+
+<ul>
+    <li>Infix operators: <b>xfx xfy yfx</b>; </li>
+    <li>Prefix operators: <b>fx fy</b> </li>
+    <li>Postfix operators: <b>xf yf</b> </li>
+</ul>
+
+<p align="left">The letters <b>x</b> and <b>y</b> is used to
+define the <i>argument priority</i>. <b>x</b> determines the
+argument with priority higher than operator's one. <b>y</b>
+determines the argument with priority lower or equal than
+operator's one. For example: the operator '-' declared with
+associativity <b>yfx</b>. So, the expression <b>a-b-c</b> is
+equivalent to <b>(a-b)-c</b>, but not to <b>a-(b-c)</b>. </p>
+
+<p align="left"><b>The list of predifined operators</b> </p>
+
+<table border="0">
+    <tr>
+        <td>op(1200,xfx,&quot;:-&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(700,xfx,&quot;\==&quot;).</td>
+    </tr>
+    <tr>
+        <td>op(1100,xfy,&quot;;&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(700,xfx,&quot;=..&quot;). </td>
+    </tr>
+    <tr>
+        <td>op(1000,xfy,&quot;,&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(700,xfx,&quot;&lt;&gt;&quot;). </td>
+    </tr>
+    <tr>
+        <td>op(900,fy,&quot;not&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(700,xfx,&quot;&gt;&lt;&quot;).</td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;=&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(500,yfx,&quot;+&quot;).</td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;\=&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(500,yfx,&quot;-&quot;). </td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;is&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(400,yfx,&quot;*&quot;).</td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;&lt;&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(400,yfx,&quot;/&quot;). </td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;=&lt;&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(400,yfx,&quot;div&quot;).</td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;&gt;&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(300,xfx,&quot;mod&quot;).</td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;&gt;=&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(200,fx,&quot;+&quot;). </td>
+    </tr>
+    <tr>
+        <td>op(700,xfx,&quot;==&quot;).</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>op(200,fx,&quot;-&quot;).</td>
+    </tr>
+</table>
+
+<p align="left"><b>Example</b> </p>
+
+<pre>% define the operator has
+op(200,xfx,&quot;has&quot;).
+has(human,head).
+has(human,leg).
+has(dog,tail).
+has(dog,head).
+man has head
+Yes
+man has tail
+No
+Y has head
+Y=human
+Y=dog
+2 Solutions
+Yes
+</pre>
+</body>
+</html>

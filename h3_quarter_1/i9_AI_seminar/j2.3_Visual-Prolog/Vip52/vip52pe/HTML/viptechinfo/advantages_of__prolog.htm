@@ -1,0 +1,110 @@
+<html>
+
+<head>
+<title>Advantages of&nbsp; Prolog</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Advantages of&nbsp;Prolog<!--mstheme--></font></h1>
+
+<h3><!--mstheme--><font color="#000000">Short Development Time <!--mstheme--></font></h3>
+
+<p>In Prolog the number of program lines required to solve a given problem is typically
+only a fraction of that required by a procedural programming language like C or Pascal.
+Clearly this can reduce development costs considerably, and since the code is easier to
+modify, ongoing maintenance costs are often lower as well. <br>
+</p>
+
+<blockquote>
+  <!--mstheme--></font><pre><font size="2">        </font><img src="images/devtimes.gif" WIDTH="406" HEIGHT="214"></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<h3><!--mstheme--><font color="#000000"><small><a name="EasytoReadEasytoModify"></a></small>Easy to Read - Easy to Modify -
+Easy to learn<!--mstheme--></font></h3>
+
+<p>Many of the common programming errors in languages like C or Pascal -for example a loop
+that iterates one too many times or an uninitialized variable - are eliminated in Prolog.
+Prolog code can be thought of as a well-structured problem specification, in addition to
+being executable. Such code is easily read and easily modified when aspects of the domain
+in question change. </p>
+
+<p>The code explains the problem it solves; here it is a rule that says: a person is
+qualified for the job if he has a proper education and is above the minimum age for that
+job. </p>
+
+<blockquote>
+  <!--mstheme--></font><pre><small>/* Is the person qualified for the job? */
+person_qualified(PersonId,Job):
+  job_description(Job,Educations,MinAge),
+  person(PersonId,Education,Age),
+  member(Education,Educations),
+  Age &gt; MinAge.
+</small></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+</blockquote>
+
+<p>The code explains the problem it solves; here a person is qualified for the job if he
+has the proper education and is above a minimum age. This same code could be used either
+to test a particular person as being qualified, or to find a qualified person, where the
+mechanism of backtracking automatically generates possibilities to be tested against these
+constraints. </p>
+
+<h3><!--mstheme--><font color="#000000"><small><a name="EasyManipulation"></a></small>Easy Manipulation of Complex Data
+Structures <!--mstheme--></font></h3>
+
+<p>Working with complex data structures like trees, lists or graphs often means big and
+complex programs managing allocation and deallocation of memory. Procedures operating on
+such data structures are almost impossible to keep up to date when the design of the data
+structure is changed. By contrast, Prolog has a simple and elegant notation for
+recursively defining and accessing such data structures, shielding the programmer from all
+details of pointers and explicit storage management. </p>
+
+<p>&nbsp; 
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

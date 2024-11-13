@@ -1,0 +1,17 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName:	MAPCTRL.DOM
+ Purpose:	Map custom control template file
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a 
+ Comments:
+******************************************************************************/
+
+
+% Replace MAPCTRL_DIR with actual path to MAPCTRL tool:
+
+include "mapctrl\\mapctrl.pre"

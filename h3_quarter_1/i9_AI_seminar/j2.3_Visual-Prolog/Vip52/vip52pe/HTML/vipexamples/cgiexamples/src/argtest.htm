@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Source Code for Argument Test</title>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Author" CONTENT="Jonathan Lerwill">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Source Code for Argument Test<!--mstheme--></font></h2>
+
+<!--mstheme--></font><pre>include &quot;argtest.inc&quot;
+
+PREDICATES
+  member(parm,parmlist)
+CLAUSES
+  member(M,[M|_]):-!.
+  member(M,[_|T]):-member(M,T).
+PREDICATES
+  arg_value(string Name,parmlist,string Value)
+CLAUSES  
+   arg_value(Name,Parmlist,Value):-
+    member(parm(Name,Value),Parmlist),!.
+   arg_value(_,_,&quot;&quot;).
+     
+PREDICATES
+  showargs(ParmList,STRING AlignText)
+  show_args(ParmList)
+CLAUSES
+  showargs([parm(Name,Val)|Tail],AlignText):-!,
+    write(&quot;&lt;TR&gt;&lt;TD&gt;&quot;,Name,&quot;&lt;/TD&gt;&lt;TD&quot;,AlignText,&quot;&gt;&quot;,Val,&quot;&lt;/TD&gt;&lt;/TR&gt;\n&quot;),
+    showargs(Tail,AlignText).
+  showargs(_,_).  
+  
+  show_args(_ParmList):-
+    arg_value(&quot;justify&quot;,_ParmList,JTXT),
+    format(AlignText,&quot; ALIGN=\&quot;%\&quot;&quot;,JTXT),
+    write(&quot;&lt;TABLE BORDER=1&gt;&quot;,
+          &quot;&lt;CAPTION&gt;Test Arguments&lt;/CAPTION&gt;&quot;,
+          &quot;&lt;TR&gt;&lt;TH&gt;Name&lt;/TH&gt;&lt;TH&gt;Value&lt;/TH&gt;&lt;/TR&gt;\n&quot;),
+    showargs(_ParmList,AlignText),
+    write(&quot;&lt;/TABLE&gt;\n&quot;).
+
+PREDICATES
+
+  argtest()
+
+CLAUSES
+
+  argtest():-
+          ParmList = cgi_GetParmList(),
+          write(&quot;Content-type: text/html\n\n&quot;,
+                &quot;&lt;HTML&gt;\n&quot;,
+                &quot;&lt;HEAD&gt;\n&quot;,
+                &quot;&lt;META HTTP-EQUIV=\&quot;Content-Type\&quot; CONTENT=\&quot;text/html; charset=iso-8859-1\&quot;&gt;\n&quot;,
+                &quot;&lt;META NAME=\&quot;GENERATOR\&quot; CONTENT=\&quot;Visual Prolog\&quot;&gt;\n&quot;,
+                &quot;&lt;TITLE&gt;CGI Argument Test&lt;/TITLE&gt;\n&lt;/HEAD&gt;\n&quot;,
+                &quot;&lt;BODY&gt;\n&quot;,
+                &quot;&lt;IMG SRC=\&quot;logo.gif\&quot;&gt;&quot;,
+                &quot;&lt;H1&gt;CGI Argument Test&lt;/H1&gt;\n&quot;,
+                &quot;&lt;H2&gt;Received Data&lt;/h2&gt;\n&lt;BLOCKQUOTE&gt;\n&quot;,ParmList,&quot;&lt;/BLOCKQUOTE&gt;\n&quot;,
+                &quot;&lt;HR&gt;\n&quot;,
+                &quot;&lt;BLOCKQUOTE&gt;\n&quot;),
+          show_args(ParmList),
+          write(&quot;&lt;/BLOCKQUOTE&gt;\n&quot;,
+                &quot;&lt;HR&gt;\n&quot;,
+                &quot;&lt;/BODY&gt;\n&quot;,
+                &quot;&lt;HTML&gt;\n&quot;),
+          !.
+
+GOAL
+
+  argtest().
+  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

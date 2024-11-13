@@ -1,0 +1,40 @@
+PDC END USER SOFTWARE LICENSE AGREEMENT.
+
+This license applies to the Personal Edition of Visual Prolog. (See also the license for the Professional Edition.)
+
+READ CAREFULLY BEFORE INSTALLING! 
+Prolog Development Center A/S (PDC) grants, and by clicking the "Accept License Agreement" button, you accept a license to use the Software and Documentation on these terms.
+
+LICENSE AGREEMENT
+PDC grants to you a limited, nonexclusive license to install and use the Visual Prolog Personal Edition ("Software") for non-commercial and educational use only!
+
+This license will terminate automatically without notice from PDC if you fail to comply with any provisions of this license.  PDC retains all rights to the Software not expressly granted in the Agreement. This License shall be governed and construed in accordance with the laws of Denmark.
+
+Using the software
+The use of the Personal Edition is restricted to learning the Visual Prolog on a private basis or for teaching Prolog on Universities and other educational establishments. All other uses require that you obtain a license to the Visual Prolog Professional edition. 
+
+You MAY use the Personal Edition at home for learning Visual Prolog! 
+
+You MAY use the Personal Edition at educational institutions for teaching and learning Visual Prolog! 
+
+You are NOT allowed to distribute or give away any executables created with the Personal Edition! 
+
+You must NOT use the Personal Edition for any commercial purpose! 
+
+You must NOT use the Personal Edition in any entity, which has a commercial purpose! 
+
+You can NOT get free support for the Personal Edition! 
+
+You must NOT remove or attempt to remove the Freeware banner from the Prolog system or any executable it creates.
+
+Copyright
+This license is not a sale of the original Software or any copies. PDC or its suppliers retains the ownership of the Software and all subsequent copies of the Software, regardless of the form in which the copies may exist. The Software and accompanying manuals ("Documentation") are copyrighted works of authorship and may not be copied, without the express written permission of PDC. Any unauthorized copying is in violation of this License Agreement and may constitute a violation of the Copyright laws in your country.  You agree not to translate, modify, adapt, disassemble, decompile or reverse engineer the Software, or create derivative works based on the Software or Documentation, or any portions thereof except as provided by law. The Software is provided for your personal use and must remain so. You may not rent, lease, sublicense or pledge the Software.
+
+LIMITED WARRANTIES AND LIMITATION OF LIABILITY
+PDC MAKES NO WARRANTIES OR REPRESENTATIONS, EXPRESS OR IMPLIED, REGARDING THE SOFTWARE, MEDIA OR DOCUMENTATION AND HEREBY EXPRESSLY DISCLAIMS THE WARRANTIES OF MERCHANT ABILITY AND FITNESS FOR A PARTICULAR PURPOSE. PDC does not warrant the Software will meet your requirements or that its operation will be uninterrupted or error free.
+
+PDC or anyone involved in the creation or delivery of the Software or Documentation to you shall have no liability to you or any third party for special, incidental, or consequential damages arising from claims based in warranty, contract, tort (including negligence), strict tort, or otherwise even if PDC has been advised of the possibility of such claim of damage. 
+
+PDC's liability for direct damages shall not exceed the actual amount paid for the product.
+       
+

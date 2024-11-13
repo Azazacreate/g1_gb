@@ -1,0 +1,15 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  DBCLIENT
+ FileName: HEPLWIN.PRE
+ Purpose: Predicate definitions for HEPLWIN.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  win_help_Create(WINDOW Parent) - (i)
+%END_DECL

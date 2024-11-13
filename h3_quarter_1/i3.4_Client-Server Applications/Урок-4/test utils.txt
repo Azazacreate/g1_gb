@@ -1,0 +1,49 @@
+import unittest
+import socket
+import json
+from commonapp.variables import MAX_CONNECTIONS
+from commonapp.utils import BaseMessages
+from mainapp.server import Server
+from mainapp.client import Client, Messages
+
+
+class TestUtils(unittest.TestCase):
+    client_name = 'Guest'
+    IP = '127.0.0.1'
+    PORT = 8080
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    def setUp(self):
+        self.server_socket.bind((self.IP, self.PORT))
+        self.server_socket.listen(MAX_CONNECTIONS)
+        self.client_socket.connect((self.IP, self.PORT))
+
+    def tearDown(self):
+        self.server_socket.close()
+        self.client_socket.close()
+
+    def test_send_get_message(self):
+        ex_s = Server()
+
+        message_to_server = Messages.create_presence(self.client_name)
+        print('Подтверждение успешно отправлено', message_to_server)
+        BaseMessages.send_message(self.client_socket, message_to_server)
+
+        client, client_address = self.server_socket.accept()
+        with client as client:
+            message_from_cient = BaseMessages.get_message(client)
+            print('Первое сообщение от клиента', message_from_cient)
+            response = ex_s.process_client_message(message_from_cient)
+            BaseMessages.send_message(client, response)
+
+        answer = Client.process_ans(BaseMessages.get_message(self.client_socket))
+        print(answer)
+
+        self.assertEqual({'action': 'presence', 'time': message_from_cient['time'], 'user': {'account_name': 'Guest'}},
+                         message_from_cient)
+        self.assertEqual(answer, "200 : OK")
+
+
+if __name__ == '__main__':
+    unittest.main()

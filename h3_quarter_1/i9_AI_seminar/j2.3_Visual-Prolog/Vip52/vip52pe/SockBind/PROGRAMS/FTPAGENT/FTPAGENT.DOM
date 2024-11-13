@@ -1,0 +1,45 @@
+/*****************************************************************************
+
+                Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  FTPAgent
+ FileName: FTPAgent.DOM
+ Purpose: Domain definitions for FTPAgent.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+GLOBAL DOMAINS
+
+ REPLY=for_connect;login;syst;cwd;list;retr(STRING);stor(STRING);sendDel(STRING);quit
+ STATE_SOCKET=sstate_reply(REPLY)
+ STAMP=s(UNSIGNED Hour,UNSIGNED Min,UNSIGNED Sec,UNSIGNED Year,UNSIGNED Month,UNSIGNED Day,ULONG Size);dir
+ SERV_STAMP=ss(STRING Permis,STRING,STRING,STRING,STRING,STRING,STRING,STRING,STRING)
+ UPWD = pwd(BOOLEAN,BINARY Pwd)
+ FA_LOG = log(BOOLEAN,STRING)
+ FA_DEBUG = dbg(BOOLEAN,STRING)
+ PROXY = proxy(BOOLEAN,STRING,USHORT)
+ ADVANCED_OPTS = adv_opts(USHORT,PROXY,BOOLEAN Pasvmode,BOOLEAN InclSubdir,BOOLEAN UseFileNameOnly, BOOLEAN DoFullSynch ) %Remote Port,Proxy, Pasvmode, Include subdir
+ 
+ CONSTANTS
+  msg_is_on=0xC441
+  scan_mes=0xC440
+
+  GLOBAL DATABASE - whole
+  determ global_win(INTEGER,INTEGER)
+  determ scan_window(WINDOW)
+  determ on_work
+  determ log_wind(WINDOW)
+  entry_cur_retry(INTEGER,INTEGER,INTEGER)
+  determ adv_vals(ADVANCED_OPTS)
+  determ fa_dialog(WINDOW)
+  
+GLOBAL DATABASE - synch_els
+%Listbox code,Index,Status,From,To,Timer value,Delete?,User_ID,User_pwd,Current timer,Remote dir-ry, ...,ProfileName
+  list_entry(INTEGER,INTEGER,STRING,STRING,STRING,INTEGER,STRING,STRING,UPWD,INTEGER,STRING,ADVANCED_OPTS,STRING ProfileName)
+  determ options(FA_LOG, STRING E_mail, FA_DEBUG, INTEGER SynchRetry, INTEGER NetTmout)
+% ProfileName,From,To,Timer value,Delete,User_ID,User_pwd,Remote dir-ry, ...
+  profiles(STRING Name,STRING,STRING,INTEGER,BOOLEAN,STRING,UPWD,STRING,ADVANCED_OPTS)
+  %hidden options:
+  forcecheckatdisk_recv(INTEGER,INTEGER)	%"use filematch only" option should be turned on
+%  enableLogLog
+  disabledelindbifdirnotexist_recv(INTEGER,INTEGER)

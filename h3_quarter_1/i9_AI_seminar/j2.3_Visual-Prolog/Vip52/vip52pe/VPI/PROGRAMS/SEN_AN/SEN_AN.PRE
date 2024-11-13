@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SEN_AN
+ FileName: SEN_AN.PRE
+ Purpose: Predicate definitions for SEN_AN.PRO
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+
+%BEGIN System Mark, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_tree_sentence_Create(WINDOW Parent) - (i)
+  dlg_update_sentence_Create(WINDOW Parent) - (i)
+  dlg_sen_an_Create(WINDOW Parent) - (i)
+%END System Mark
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

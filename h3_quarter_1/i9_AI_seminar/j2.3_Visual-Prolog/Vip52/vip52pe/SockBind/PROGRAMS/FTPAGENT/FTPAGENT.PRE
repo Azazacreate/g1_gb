@@ -1,0 +1,78 @@
+/*****************************************************************************
+
+                Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  FTPAgent
+ FileName: FTPAgent.PRE
+ Purpose: Predicate definitions for FTPAgent.PRO
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+ifndef ws_win
+  #Error: This project for Windows platform only
+enddef
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  dlg_new_Create(WINDOW Parent) - (i)
+  dlg_browse_address_Create(WINDOW Parent) - (i)
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+  dlg_progrs_Create(WINDOW Parent) - (i)
+  dlg_options_Create(WINDOW Parent) - (i)
+  dlg_advanced_Create(WINDOW Parent,ADVANCED_OPTS) - (i,i)
+  dlg_ftpagent_Create(WINDOW Parent) - (i)
+%END_DECL
+
+GLOBAL PREDICATES
+  pfini_new(window)
+  pfini_save(window)
+  pfini_load(window)
+  pfini_load_item(window)
+  pfini_delete(window)
+  lbox_del_pos(integer, integer, string)
+  change_mode_to_dis(window, ilist)
+  change_mode_to_en(window, ilist)
+  common_FileErrorHandle(integer) - (i)  
+  is_md(string, unsigned) - (i,i)  
+  string form_str(integer, string, string, string, integer)
+  s_receive(socket, integer)
+  kill_sockets()
+  set_focus(window, integer)
+  s_send(socket, integer)
+  send_or_receive(integer, integer) - (i,i)
+  check_new_dialog(window,
+      string,
+      boolean,
+      integer,
+      string,
+      string,
+      string,
+      string) - (i,o,o,o,o,o,o,o)
+  fill_edit_dialog(integer,
+      window,
+      string,
+      boolean,
+      integer,
+      string,
+      string,
+      string,
+      string)
+  strip_leading_spaces(string, string) - (i,o)
+  check_null(string, string) - (i,i)
+  check_DirNull(string, string)	- (i,o)
+  scan_process_answer(socket, ftplay_reply)
+  slist form_fields(string)
+  log_win_eh : ehandler  
+  stop_entry(integer, integer) - (i,i)
+  code_base64(string, string) - (i,o),(o,i)
+  write_log_wnd(string, string) - (i,i)
+  setdir_handler : ehandler  
+  set_dir_set(window, string) - (i,i)
+  set_dir_get(window, string) - (i,o)
+  set_dir_set_kind(window, integer) - (i,i)
+  pwd_str_bin(string, binary) - (i,o),(o,i)
+  pwd_check(upwd, binary) - (i,o)
+

@@ -1,0 +1,14 @@
+productions
+SENTENCE = SUBJECT likes OBJECT ->likes(SUBJECT,OBJECT),
+	   does SUBJECT like OBJECT ->does_like(SUBJECT,OBJECT)
+
+SUBJECT	= john -> john,
+	  mary -> mary
+
+OBJECT = ADJECTIVE NOUN -> attribute(ADJECTIVE,NOUN)
+
+ADJECTIVE = big -> big,
+	    red -> red
+
+NOUN = books -> books,
+       cars -> cars

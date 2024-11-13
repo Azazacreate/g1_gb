@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<TITLE>Use of the Unknown</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Use of the Unknown'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Use of the Unknown</FONT>
+<P ALIGN=LEFT>One of the cornerstones of a good advisory system is a dialog using terms that the user can understand. If, for instance, a medical diagnostics expert system is used by a medically trained person, the questions may contain very technical terms giving a precise and efficient dialog. On the other hand, if a 'naive' person used such a diagnostic system, the very technical terms would be confusing. These two groups of users represent the extremes of the general situation when creating a dialog. 
+<P ALIGN=LEFT>Very often a user will answer <B>unknown</B> to a question posed by ESTA, hoping that the subsequent dialog will lead to a better understanding of the question. One way to handle this in ESTA is to arrange the dialog in 'levels,' with the number of levels needed in an application reflecting the range of knowledge of the expected users of the application. At the top level, more technical and precise terms are used. On each lower level, the dialog is composed of more non-technical terms nearer everyday language.  
+<P ALIGN=LEFT>As an example we shall consider part of a health evaluation expert system. One fundamental question in this case is: 
+<P ALIGN=LEFT><B>Are you overweight?</B>
+<P ALIGN=LEFT>This is a top level question. It may happen that the person involved doesn't know whether he or she is overweighted and thus will answer <B>unknown</B>. This then leads to a new dialog at a lower level, where questions about <B>sex</B>, <B>height</B> and <B>weight</B> are used to determine if the person is overweighted or not: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>section start  'section to deal with the answer''unknown''' 
+<P ALIGN=LEFT>if overweight advice 'You should go on a diet !' 
+<P ALIGN=LEFT>if not overweight advice 'You have no problems with your weight!' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>parameter overweight  'the person is overweighted' 
+<P ALIGN=LEFT>type boolean 
+<P ALIGN=LEFT>rules 
+<P ALIGN=LEFT>  true    if overweight_statement, 
+<P ALIGN=LEFT>  false   if not overweight_statement, 
+<P ALIGN=LEFT>  height - 100 &lt; weight  /* This is not an official rule! */ 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>parameter overweight_statement 'the person is overweighted' 
+<P ALIGN=LEFT>type boolean 
+<P ALIGN=LEFT>
+<P ALIGN=LEFT>question 'Are you overweight ?' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>parameter height  'the height of the person in cm' 
+<P ALIGN=LEFT>type number 
+<P ALIGN=LEFT>question 'What is your height in cm? ' 
+<P ALIGN=LEFT> 
+<P ALIGN=LEFT>parameter weight  'the weight of the person in kg' 
+<P ALIGN=LEFT>type number 
+<P ALIGN=LEFT>question 'What is your weight in kg? '</FONT>
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

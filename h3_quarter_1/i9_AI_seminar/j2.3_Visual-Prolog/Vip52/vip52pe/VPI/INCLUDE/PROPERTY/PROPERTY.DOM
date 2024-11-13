@@ -1,0 +1,110 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prolog
+
+ FileName:	PROPERTY.DOM
+ PURPOSE:	Domain declarations for Property Editor 
+ Written by:	Victor Yukhtenko
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+ Comments:	
+ 
+******************************************************************************/
+constants
+  property_dom_included = 1
+
+global domains
+
+Property_Sheet 	= Property_Table*
+% Table domain
+Property_Table	= pTbl(Property_TblID propertyTableID,STRING propertyTableTitle,Property_List)
+Property_List	= Property*
+% Property domain
+Property	= property(Property_Id,STRING propertyTitle,Property_Control,Property_ERROR_PROMPT,BOOLEAN useCallPushbutton)
+Property_TblID	= INTEGER 
+Property_Id	= INTEGER
+
+/************************* ERROR_PROMPT ******************
+	1) If ErrorPrompt is bound with user_prompt(PromptString) and  the value does not satisfy to a 
+validation rule (range, minimum, maximum, etc.) or the value is not consistent with field type, then 
+dialog with PromptString  appears,  the field remains active with the illegal value entered by user. 
+PromptString may contain a special symbol "%". When tool displays prompt dialog it replaces this special 
+symbol with the value entered by user.
+	2) If ErrorPrompt is bound with nopr and the value does not satisfy to a validation rule (range, 
+minimum or maximum), then Property editor returns the nearest legal value;
+	3) If ErrorPrompt is bound with nopr and the value is not consistent with field type, then 
+Property editor returnes the previous  value. 
+
+*********************************************************/
+Property_ERROR_PROMPT = user_prompt(STRING Prompt);
+                        nopr
+
+PROPERTY_INT  = void; i(INTEGER)
+
+PROPERTY_REAL = void; r(REAL)
+
+PROPERTY_LONG = void; l(LONG)
+
+PROPERTY_CONTROL	= editStr(STRING text,STR_PROPERTIES);
+			  editInt(PROPERTY_INT,INT_PROPERTIES);
+			  editLong(PROPERTY_LONG,LONG_PROPERTIES);
+			  editReal(PROPERTY_REAL,REAL_PROPERTIES);
+			  listButton(SLIST Elements,INTEGER Selected);
+			  listEdit(SLIST Elements, STRING InitialValue,STR_PROPERTIES)
+
+STR_PROPERTIES    = STR_PROPERTY*
+
+STR_PROPERTY =  ronly;			% Static
+		length(INTEGER Length);	% number of chars = Length
+		range(INTEGER Min,INTEGER Max); % Number of chars: From MIN To MAX
+		minimum(INTEGER Min);   % Number of chars: From .. 
+		maximum(INTEGER Max);   % Number of chars: .. To
+		upper;                  % Upper case
+		lower                   % Lower case
+               
+INT_PROPERTIES  = INT_PROPERTY*
+
+INT_PROPERTY = 	ronly;			% Static
+		range(INTEGER, INTEGER);% Range: From .. To
+		minimum(INTEGER);       % Open Range : From .. 
+		maximum(INTEGER)        % Open Range : .. To
+
+LONG_PROPERTIES = LONG_PROPERTY*
+
+LONG_PROPERTY =	ronly;			% Static
+		range(LONG, LONG);      % Range: From .. To
+		minimum(LONG);          % Open Range : From .. 
+		maximum(LONG)           % Open Range : .. To
+
+REAL_PROPERTIES = REAL_PROPERTY*
+
+REAL_PROPERTY =	ronly;			% Static
+                range(REAL, REAL);	% Range: From .. To
+                minimum(REAL);		% Open Range : From .. 
+                maximum(REAL)		% Open Range : .. To
+
+PROPERTY_EVENT = 
+   	created;			% Property Editor Created
+	is_ToBeDestroyed;		% Property Editor Destroed
+	callPBPressed(PROPERTY_ID);	% PushButton pressed
+	modified(PROPERTY_ID);		% Field modified
+	getFocus;			% Property Editor Get Focus
+	loseFocus			% Property Editor Lose Focus
+
+PROPERTY_CALLBACK = determ (WINDOW,PROPERTY_EVENT) - (i,i)
+
+/* Property Values */
+  
+PROPERTY_VAL_LIST	= PROPERTY_VAL*
+  
+PROPERTY_VAL 		= pv(PROPERTY_ID,PROPERTY_CTRLVAL)
+
+Property_CtrlVal	= editStr(STRING);
+			  editInt(PROPERTY_INT);
+			  editLong(PROPERTY_LONG);
+			  editReal(PROPERTY_REAL);
+			  listButton(INTEGER Selected);
+			  listEdit(STRING InitialValue)
+

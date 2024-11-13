@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>A Prolog starter:</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Family relations<!--mstheme--></font></h1>
+<p>Family relations are, a good way to show the strengths of Prolog's way of
+representing facts and rules for searching solutions.</p>
+<p>Here is a small example of such a program. The relations like sons, sister
+etc. can be handled like facts in Prolog. Facts and rules are specified in the
+clauses section of a Visual Prolog program:</p>
+<!--mstheme--></font><pre><em><strong>CLAUSES</strong>
+  son(&quot;John&quot;, &quot;Dan&quot;).
+  sister(&quot;Mary&quot;,&quot;Suzan&quot;).
+  brother(&quot;Harold&quot;, &quot;Larry&quot;).
+  married(&quot;John&quot;, &quot;Mary&quot;).
+  married(&quot;Larry&quot;, &quot;Sue&quot;).</em>      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>Note, that you also have to make some definitions (&quot;declarations&quot;)
+of predicates, to make the program work, this is done in a PREDICATES section of
+the program</p>
+<!--mstheme--></font><pre><strong>PREDICATES<em>
+</em></strong><em>  son(string,string).</em>      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p><em>etc.</em></p>
+<p>This small example can lead us to some more powerful abstractions in our
+family relations program.</p>
+<p><em>father(A,B):-son(B,A).</em></p>
+<p>and</p>
+<p><em>grandfather(A,B):-father(A,C), father(C,B).</em></p>
+<p>Father is of course the inverse of son.</p>
+<p>We can construct more complex relations, for instance, sister_in_law:</p>
+<p><em>sister_in_law(A,B):-married(A,C), sister(C,B).</em></p>
+<p>This leads us though to a problem, because a sister in law can also be the
+spouse of your brother. This is not really a problem, because if Prolog
+doesn’t find solutions for a predicate in its first clause, it tries again
+with the next. Therefore, we can just add another clause</p>
+<p><em>sister_in_law(A,B):-brother(A,C),</em></p>
+<p><em>married(C,B).</em></p>
+<p>If the first one doesn’t succeed, Prolog will backtrack and try the next.
+If you try the goal</p>
+<!--mstheme--></font><pre><em><strong>GOAL</strong>
+  sister_in_law(&quot;John&quot;,Z).</em>      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>Prolog will use the first predicate and answer       </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p><em>Z=&quot;Suzan&quot;.</em></p>
+<p>If we try</p>
+<!--mstheme--></font><pre><em><strong>GOAL</strong>
+  sister_in_law(&quot;Harold&quot;,Z).</em>      </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p>the first clause can’t succeed, because Harold isn't married, so the
+predicate 'married' will not succeed. But the next one can, because Harold has a
+brother, Larry, that is married to Sue.</p>
+<p>The list of predicates could be continued. Try to implement uncle, nephew,
+stepson and others, and try to input your own family.</p>
+<p><a href="../../examples/family.prj">FAMILY.PRJ (Using WIn32 VDE)</a></p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

@@ -1,0 +1,65 @@
+%  ****************************************************************************
+%                                 REPORT ENGINE
+%                         Report source text example
+%   		                  13-Oct-1997
+% *****************************************************************************
+
+report  Test
+    margins(0.5,1.0,0.5,1.0);
+    units logical(1150 900);
+    orientation=landscape;
+    defaulttabs=80
+    fontname=helvetica fontsize=7 alignment=left
+    leftindent=10
+    script gray:=0;
+	 Grouped_by := "by sort";  
+         init_main(Grouped_by);
+    end_script
+    header  fontsize=16 fontstyle=bold
+	text "Prolog Development Center - 1997" at(0,0,250,15) fontname=helvetica fontsize=8 fontstyle=normal;
+	text "Logistics Demo Example" 
+		at(900,0,1000,15)  fontname=helvetica fontsize=8 fontstyle = normal;
+        text "Transportation Overview"  at(480,15,650,40) forecolor=240;
+        text "grouped by goods" at(500,40,650,60) fontsize=14 forecolor= 32768;
+    end_header
+  
+  while get_first_loop(Grouped_by;P1,HeaderLine) do at(0,20,0,0) border=1
+     begin
+     text "Good : " + P1 at(0,10,150,40) border=0 recurrent
+	fontsize=10 fontstyle=bold forecolor= 12615680;
+     while get_second_loop(Grouped_by;P2,Line2) do at(0,50,0,0)
+     alignment=left clip
+	header keep_together
+	text "Manufacturers" at(0,0,200,30) fontsize=10 fontstyle=bold recurrent; 
+	text HeaderLine at(200,0,750,30) fontname=times fontsize=9 fontstyle=bold;
+	end_header
+     begin
+	block keep_together
+	begin
+	script 	
+	  get_sum_line(;Sum);
+	  get_sum_line1(;Sum1);
+	  get_nested_loop(;Line3);
+	end_script
+     text P2 at(0,0,120,40) fontstyle=bold recurrent;
+     text "Quantity" 	at(120,0,200,20) recurrent;
+     text "Cost"	at(120,20,200,40) recurrent;
+     text Line2 at(200,0,750,20) alignment=right;
+     text Line3 at(200,20,750,40) alignment=right;
+	end;
+     end;
+	block keep_together border=1 begin
+     text "Total for " + P1 at(0,40,120,80) recurrent fontstyle=bold backcolor= 16777113;
+     text "Quantity" 	at(120,40,200,60) recurrent fontstyle=bold backcolor= 16777113;
+     text "Cost"	at(120,60,200,80) recurrent fontstyle=bold backcolor=  10092441;
+     text Sum at(200,40,750,60) alignment=right border=1 fontstyle=bold backcolor= 16777113;
+     text Sum1 at(200,60,750,80) alignment=right border=1 fontstyle=bold backcolor= 10092441;
+	end;
+end;
+    footer fontsize=10 fontstyle=bold
+      script date(;D); page(;P); time(;T) end_script
+      text "Printed "+D at(0,20,300,50);
+      text T at(300,20,400,50);
+      text "Page "+P at(520,20,620,50) fontsize=10;
+    end_footer
+end_report

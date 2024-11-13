@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+<head>
+<title>Source Code for Semantic analyzer</title>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+
+
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h2><!--mstheme--><font color="#000000">Source Code for Semantic analyzer<!--mstheme--></font></h2>
+
+<!--mstheme--></font><pre>GLOBAL DATABASE
+  det( STRING )
+  noun( STRING )
+  rel( STRING )
+  verb( STRING )
+
+DOMAINS
+  DETERM   = none ; determ( STRING )
+  NOUNP    = nounp( DETERM, STRING, RELCL)
+  RELCL    = none ; relcl( STRING, VERBP )
+  SENTENCE = sent( NOUNP, VERBP )
+  VERBP    = verb( STRING ) ; verbp( STRING, NOUNP )
+  TOKL     = STRING*
+
+PREDICATES
+% Recognition of words in different forms
+  is_det( STRING )
+  is_noun( STRING )
+  is_rel( STRING )
+  is_verb( STRING )
+
+% Parser
+  nondeterm s_determ(   TOKL, TOKL, DETERM )
+  nondeterm s_nounp(    TOKL, TOKL, NOUNP )
+  nondeterm s_relcl(    TOKL, TOKL, RELCL )
+  nondeterm s_sentence( TOKL, TOKL, SENTENCE )
+  nondeterm s_verbp(    TOKL, TOKL, VERBP )
+
+% scanner
+  check(STRING)
+  tokl( STRING, TOKL )
+
+GOAL
+    consult(&quot;sen_an.dba&quot;),
+    write(&quot;Try: every man that lives loves a woman\n&quot;),
+    write(&quot;Write a sentence: &quot;),
+    readln(STR),
+    tokl(STR,TOKL),
+    s_sentence( TOKL, RESTTOKL, SENT ),
+    RESTTOKL = [],
+    write(SENT).
+
+CLAUSES
+
+s_sentence(TOKL,TOKL2,sent(NOUNP,VERBP)):-
+    s_nounp(TOKL,TOKL1,NOUNP),
+    s_verbp(TOKL1,TOKL2,VERBP),
+    TOKL2 = [] ,!.
+s_sentence(_,_,_):-
+    write(&quot;&gt;&gt; Sentence not recognized\n&quot;),fail.
+
+s_nounp(TOKL,TOKL2,nounp(DETERM,NOUN,RELCL)):-
+    s_determ(TOKL,[NOUN|TOKL1],DETERM),
+    is_noun(NOUN),
+    s_relcl(TOKL1,TOKL2,RELCL).
+
+s_determ([DETERM|TOKL],TOKL,determ(DETERM)):-
+    is_det(DETERM).
+s_determ(TOKL,TOKL,none).
+
+s_relcl([REL|TOKL],TOKL1,relcl(REL,VERBP)):-
+    is_rel(REL),
+    s_verbp(TOKL,TOKL1,VERBP).
+s_relcl(TOKL,TOKL,none).
+
+s_verbp([VERB|TOKL],TOKL1,verbp(VERB,NOUNP)):-
+    is_verb(VERB),
+    s_nounp(TOKL,TOKL1,NOUNP).
+s_verbp([VERB|TOKL],TOKL,verb(VERB)):-
+    is_verb(VERB).
+
+is_noun(X):-noun(X),!.
+is_noun(X):-noun(Y),concat(Y,&quot;s&quot;,X),!.
+
+is_det(X):-det(X),!.
+
+is_rel(X):-rel(X),!.
+
+is_verb(X):-verb(X),!.
+is_verb(X):-verb(Y),concat(Y,&quot;s&quot;,X),!.
+is_verb(X):-verb(Y),concat(Y,&quot;ed&quot;,X),!.
+is_verb(X):-verb(Y),concat(Y,&quot;es&quot;,X),!.
+is_verb(X):-verb(Y),concat(Y,&quot;ing&quot;,X),!.
+
+tokl(STR,[TOK|TOKL]) :-
+    fronttoken(STR,TOK,STR1),
+    check(TOK),!,
+    tokl(STR1,TOKL).
+tokl(_,[]).
+
+check(WORD):-is_noun(WORD),!.
+check(WORD):-is_det(WORD),!.
+check(WORD):-is_rel(WORD),!.
+check(WORD):-is_verb(WORD),!.
+check(WORD):- write(&quot;&gt;&gt; Unknown word: &quot;,WORD),nl.
+  </pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

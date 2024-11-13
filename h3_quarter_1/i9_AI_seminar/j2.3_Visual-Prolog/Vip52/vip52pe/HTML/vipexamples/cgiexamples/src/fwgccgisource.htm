@@ -1,0 +1,171 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) My Company<br>
+<br>
+Project: FWGC<br>
+FileName: FWGC.PRO<br>
+Purpose: No description<br>
+Written by: Visual Prolog<br>
+Comments:<br>
+<br>
+A farmer with his goat, wolf and cabbage come to a river that they<br>
+wish to cross. There is a boat, but it only has room for two, and<br>
+the farmer is the only one that can row. If the goat and cabbage<br>
+get in the boat at the same time, the cabbage gets eaten.<br>
+Similarly, if the wolf and goat are together without the farmer,<br>
+the goat is eaten. Devise a series of crossings of the river so that all<br>
+concerned make it across safely.<br>
+<br>
+The state of the system is indicated by a structure STATE stating where<br>
+the farmer, the goat the wolf and the cabbage are located. The goal is then<br>
+how to transform the start state to the endstate through a series of valid<br>
+states.<br>
+<br>
+The valid states are checked by the predicate 'unsafe'<br>
+<br>
+The problem is that a state must only be visited once, this is handled by<br>
+collecing the visited stetes in a list, and checking that a new state is<br>
+not already in the list.<br>
+<br>
+The Predicate &quot;go&quot; can be called with a start state and a final state<br>
+<br>
+go( state(east,east,east,east), state(west,west,west,west) ).<br>
+******************************************************************************/<br>
+<br>
+DOMAINS<br>
+LOC = east ; west<br>
+STATE = state(LOC farmer,LOC wolf,LOC goat,LOC cabbage)<br>
+PATH = STATE*<br>
+<br>
+PREDICATES<br>
+go(STATE,STATE)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Start of the algorithm<br>
+path(STATE,STATE,PATH,PATH)&nbsp;&nbsp;&nbsp; % Finds a path from one state to another<br>
+nondeterm move(STATE,STATE)&nbsp;&nbsp;&nbsp; % Transfer a system from one side to another<br>
+opposite(LOC,LOC)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Gives a location on the
+opposite side<br>
+nondeterm unsafe(STATE)&nbsp;&nbsp;&nbsp; % Gives the unsafe states<br>
+nondeterm member(STATE,PATH)&nbsp;&nbsp;&nbsp; % Checks if the state is already visited<br>
+write_path(PATH)<br>
+write_move(STATE,STATE)<br>
+<br>
+GOAL <br>
+&nbsp;&nbsp;&nbsp; write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+<br>
+&nbsp;&nbsp;&nbsp; go(state(east,east,east,east),state(west,west,west,west)),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;Solved\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).<br>
+<br>
+CLAUSES<br>
+go(StartState,GoalState):-<br>
+&nbsp;&nbsp;&nbsp; path(StartState,GoalState,[StartState],Path),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;p&gt;A solution is:\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write_path(Path).<br>
+<br>
+path(StartState,GoalState,VisitedPath,Path):-<br>
+&nbsp;&nbsp;&nbsp; move(StartState,NextState),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Find a move<br>
+&nbsp;&nbsp;&nbsp; not( unsafe(NextState) ),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Check that it is not
+unsage<br>
+&nbsp;&nbsp;&nbsp; not( member(NextState,VisitedPath) ),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % Check that we have not had this situation
+before<br>
+&nbsp;&nbsp;&nbsp; path( NextState,GoalState,[NextState|VisitedPath],Path),!.<br>
+path(GoalState,GoalState,Path,Path).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % The final state is
+reached<br>
+<br>
+move(state(X,X,G,C),state(Y,Y,G,C)):-opposite(X,Y). % Move FARMER + WOLF<br>
+move(state(X,W,X,C),state(Y,W,Y,C)):-opposite(X,Y). % Move FARMER + GOAT<br>
+move(state(X,W,G,X),state(Y,W,G,Y)):-opposite(X,Y). % Move FARMER + CABBAGE<br>
+move(state(X,W,G,C),state(Y,W,G,C)):-opposite(X,Y). % Move ONLY FARMER<br>
+<br>
+opposite(east,west).<br>
+opposite(west,east).<br>
+<br>
+unsafe( state(F,X,X,_) ):- opposite(F,X),!. % The wolf eats the goat<br>
+unsafe( state(F,_,X,X) ):- opposite(F,X),!. % The goat eats the cabbage<br>
+<br>
+member(X,[X|_]):-!.<br>
+member(X,[_|L]):-member(X,L).<br>
+<br>
+write_path( [] ).<br>
+write_path([H1,H2]) :-!,<br>
+&nbsp;&nbsp;&nbsp; write_move(H1,H2).<br>
+write_path( [H1,H2|T] ) :-<br>
+&nbsp;&nbsp;&nbsp; write_move(H1,H2),<br>
+&nbsp;&nbsp;&nbsp; write_path([H2|T]).<br>
+<br>
+write_move( state(X,W,G,C), state(Y,W,G,C) ) :-!,<br>
+write(&quot;&lt;br&gt;The farmer crosses the river from &quot;,X,&quot; to &quot;,Y),nl.<br>
+write_move( state(X,X,G,C), state(Y,Y,G,C) ) :-!,<br>
+write(&quot;&lt;br&gt;The farmer takes the Wolf from &quot;,X,&quot; of the river to
+&quot;,Y),nl.<br>
+write_move( state(X,W,X,C), state(Y,W,Y,C) ) :-!,<br>
+write(&quot;&lt;br&gt;The farmer takes the Goat from &quot;,X,&quot; of the river to
+&quot;,Y),nl.<br>
+write_move( state(X,W,G,X), state(Y,W,G,Y) ) :-!,<br>
+write(&quot;&lt;br&gt;The farmer takes the cabbage from &quot;,X,&quot; of the river to
+&quot;,Y),nl.<br>
+<br>
+</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>The Main Form</title>
+<base target="dialog">
+</head>
+
+<body bgcolor="#FFFFFF">
+<script language="JavaScript">
+<!--
+	//
+	//  Retrive the saved in frame "dialog" current PIE state
+	//  and put it in the hidden fields of "mainform"
+	//
+	function onRun (aForm)
+	{
+		var DlgForm;
+
+		DlgForm = top.frames[2].document.dlgform;
+
+		aForm.clauses.value = DlgForm.clauses.value;
+		aForm.vars.value    = DlgForm.vars.value;
+		aForm.ops.value     = DlgForm.ops.value;
+		aForm.trace.value   = DlgForm.trace.value;
+	}
+	//
+	//  Load Prolog Examples
+	//
+	function loadMember (aForm)
+	{
+		var nl = unescape("%0D%0A");
+
+		aForm.Goal.value = "member(X,[1,abc,\"Hello\"])";
+	
+		aForm.Text.value = "member(X,[X|_])."+nl+
+				   "member(X,[_|Y]):-member(X,Y).";
+	}
+	function loadFamily (aForm)
+	{
+		var nl = unescape("%0D%0A");
+
+		aForm.Goal.value = "sisterinlaw(X,Y).";
+		aForm.Text.value = 
+			"son(\"John\", \"Dan\")."+nl+
+  			"sister(\"Mary\",\"Suzan\")."+nl+
+  			"brother(\"Harold\", \"Larry\")."+nl+
+  			"married(\"John\", \"Mary\")."+nl+
+  			"married(\"Larry\", \"Sue\")."+nl+
+			nl+
+  			"father(A,B):-son(B,A)."+nl+
+  			"grandfather(A,B):-father(A,C),father(C,B)."+nl+
+			nl+
+  			"sisterinlaw(A,B):-married(A,C),sister(C,B)."+nl+
+  			"sisterinlaw(A,B):-brother(A,C),married(C,B).";
+		
+	}
+	function loadHanoi (aForm)
+	{
+		var nl = unescape("%0D%0A");
+
+		aForm.Goal.value = "hanoi(5).";
+		aForm.Text.value = 
+  			"hanoi(N):-move(N,left,middle,right)."+nl+
+			nl+
+			"move(1,A,_,C):-"+nl+
+			"   inform(A,C),!."+nl+
+  			"move(N,A,B,C):-"+nl+
+			"   N1 is N-1,"+nl+
+			"   move(N1,A,C,B),"+nl+
+			"   inform(A,C),"+nl+
+			"   move(N1,B,A,C)."+nl+
+			nl+
+  			"inform(Loc1, Loc2):-"+nl+
+			"   write(\"Move a disk from \", Loc1, \" to \", Loc2),nl.";
+	}
+
+//-->
+</script>
+
+<form action="pie.exe" method="POST" name="mainform">
+    <input type="hidden" name="clauses" value>
+    <input type="hidden" name="vars" value>
+    <input type="hidden" name="ops" value>
+    <input type="hidden" name="trace" value="0">
+    <p><strong>Goal: </strong>
+    <input type="text" size="58" name="Goal"> <br>
+    <strong>Prolog Text:</strong><br>
+    <textarea name="Text" rows="12" cols="70"></textarea></p>
+    <p>
+    <input type="submit" name="Run" value="Run" onclick="onRun(this.form)" alt="Run Goal"> 
+    <input type="submit" name="Reconsult" value="Reconsult" alt="Reconsult from editor"> 
+    <input type="submit" name="Reset" value="Reset" alt="Reset PIE engine">
+    <input type="reset" name="Clear" value="Clear" alt="Clear fields"> <br>
+    <hr><b>Examples</b>
+    <input type="button" name="Member" value="Member" onclick="loadMember(this.form)">
+    <input type="button" name="Family" value="Family" onClick="loadFamily(this.form)">
+    <input type="button" name="Hanoi" value="Hanoi" onClick="loadHanoi(this.form)">
+<!--    <select name="Example">
+	<option value="member">member
+	<option value="hanoi">hanoi
+	<option value="family">family
+    </select>
+
+	<input type="button" name="Load" value="Load"><input
+    type="button" name="Save" value="Save"></p>
+	-->    </p>
+</form>
+</body>
+</html>

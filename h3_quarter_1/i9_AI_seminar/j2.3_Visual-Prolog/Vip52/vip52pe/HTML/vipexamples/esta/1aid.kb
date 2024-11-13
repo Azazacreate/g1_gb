@@ -1,0 +1,17 @@
+vars("\nparameter in_danger 'Victim is in danger from the surroundings'\ntype boolean\nexplanation 'This fact is used to decide whether the victim must be rescued.'\nquestion 'Is the victim in danger from the surroundings ?'\n\n\n\n","in_danger","Victim is in danger from the surroundings",[c_str("This fact is used to decide whether the victim must be rescued.",93)],[c_str("Is the victim in danger from the surroundings ?",169)],fact,fact([]),"")
+vars("\nparameter conscious 'Victim is conscious'\ntype boolean\nquestion 'Is victim responding to you ?'\n\n\n\n","conscious","Victim is conscious",[],[c_str("Is victim responding to you ?",68)],fact,fact([]),"")
+section("section start 'Beginning of consultation'\n\ncall clear_dialog()\n\nadvice '\n			    THE FIRST AID''ER\n\n			An Expert System to teach\n		\n			 how to give first aid\n\n'\n\n\nif in_danger do chain_to_danger_surrounding\n\nif not(in_danger) and (conscious or not(conscious))\n		do chain_to_safe_surrounding\n\ndo chain_to_ending\n","start",[c_str("Beginning of consultation",14)])
+section("section chain_to_safe_surrounding 'chain to knowledge on safe_surroundings'\n\ncall save_values('1aid.dat')\n\nchain 'safe.kb'\n\n\n","chain_to_safe_surrounding",[c_str("chain to knowledge on safe_surroundings",34)])
+section("section chain_to_ending\n\nchain 'ending.kb'\n\n\n","chain_to_ending",[c_str("",0)])
+section("section chain_to_danger_surrounding 'chain to knowledge_on dangerous surrounding'\n\ncall save_values('1aid.dat')\n\nchain 'danger.kb'\n\n\n","chain_to_danger_surrounding",[c_str("chain to knowledge_on dangerous surrounding",36)])
+paragraph("chain_to_danger_surrounding",1,c_bool(true,0),[call("save_values",90,[c_str("1aid.dat",102)])])
+paragraph("chain_to_danger_surrounding",2,c_bool(true,0),[chain("danger.kb")])
+paragraph("chain_to_ending",1,c_bool(true,0),[chain("ending.kb")])
+paragraph("chain_to_safe_surrounding",1,c_bool(true,0),[call("save_values",84,[c_str("1aid.dat",96)])])
+paragraph("chain_to_safe_surrounding",2,c_bool(true,0),[chain("safe.kb")])
+paragraph("start",1,c_bool(true,0),[call("clear_dialog",50,[])])
+paragraph("start",2,c_bool(true,0),[display([c_str("\n			    THE FIRST AID'ER\n\n			An Expert System to teach\n		\n			 how to give first aid\n\n",75)])])
+paragraph("start",3,c_var("in_danger",179),[refer("chain_to_danger_surrounding",192)])
+paragraph("start",4,and_(not_(c_var("in_danger",230)),or_(c_var("conscious",246),not_(c_var("conscious",263)))),[refer("chain_to_safe_surrounding",281)])
+paragraph("start",5,c_bool(true,0),[refer("chain_to_ending",313)])
+title("\n\n	SIMPLE EXPERT SYSTEM TO ASSIST A FIRST AIDER\n\n	by K. Lavangnananda, University College, Cardiff\n	M.Sc. project 1986\n\n\n\n")

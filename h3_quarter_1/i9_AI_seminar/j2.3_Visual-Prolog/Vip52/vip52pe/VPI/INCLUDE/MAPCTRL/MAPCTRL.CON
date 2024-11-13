@@ -1,0 +1,218 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	MAPCTRL.CON
+ PURPOSE:	Map viewer/editor custom contol
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		008.981112
+ Tested with:   Visual Prolog v.5.1 build 555a
+Comments:
+
+******************************************************************************/
+ifndef language_english
+  ifndef language_danish
+    ifndef language_russian
+      >>>> Application must declare one of the constants below before including
+ 	   this file in order to select one of the languages for dialogs
+
+		language_english = 1
+	   or
+		language_danish  = 1
+	   or
+		language_russian = 1
+
+    enddef
+  enddef
+enddef
+
+constants
+
+ifdef language_english
+  %**************************
+  % Popup menu Texts
+  %**************************
+  zoomin_text = 	"Zoom in \t+"
+  zoomout_text = 	"Zoom out \t-"
+
+  menu_addobj_text = 	"&Add object"
+  menu_editobj_text = 	"&Edit object"
+  menu_removeobj_text = "&Remove object"
+
+  menu_poligon_text = 	"&Polygon"
+  menu_circle_text = 	"&Circle"
+  menu_arrow_text = 	"&Arrow"
+  menu_bitmap_text = 	"&Bitmap"
+  menu_savemap_text = 	"&Save map"
+
+  bitmap_select_text =  "Windows bitmap"
+  bitmap_select_title = "Select bitmap file:"
+  save_filename_text =  "Map data files"
+  save_filename_title = "Save Map data as..."
+
+  polygon_label =       "Polygon"
+  circle_label =        "Circle"
+  bitmap_label =        "Bitmap"
+  arrow_label =         "Arrow"
+
+/*****************************************
+	Object properties dialog texts
+******************************************/
+  editdlg_title = "Properties"
+  editdlg_txt1  = "Line:"
+  editdlg_txt2  = "Circle size:"
+  editdlg_txt3  = "Text:"
+  editdlg_txt4  = "Font:"
+  editdlg_txt5  = "Hor position:"
+  editdlg_txt6  = "Vert position:"
+  editdlg_txt7  = "Border:"
+  editdlg_txt8  = "Fill:"
+  editdlg_grb1  = "Object"
+  editdlg_grb2  = "Label"
+  editdlg_pb1   = "OK"
+  editdlg_pb2   = "Cancel"
+  
+  editdlg_colorlist = ["White","Black","Gray","LtGray","Red","DkRed","Green","DkGreen","Blue","DkBlue","Cyan","DkCyan","Magenta","DkMagenta","Yellow","DkYellow"]
+  editdlg_fslist = ["Normal","Bold","Italic","Underline","Bold + Italic","Bold + Underline","Italic + Underline"]
+  editdlg_lslist = ["Solid","Dash","Dot","DashDot","DashDotDot","Hollow"]
+  editdlg_fontlist = ["System","Courier","Times","Arial"]
+  editdlg_fontsizelist = ["6","10","16","25","40","64","100","160","250","400","640","1000"]
+
+  int_validation_message = "Wrong value - '%'. Should be an integer."
+
+enddef
+
+ifdef language_danish
+  %**************************
+  % Popup menu Texts
+  %**************************
+  zoomin_text = 	"Zoom ind \t+"
+  zoomout_text = 	"Zoom ud \t-"
+
+  menu_addobj_text = 	"&Tilfшj object"
+  menu_editobj_text = 	"&Editer object"
+  menu_removeobj_text = "&Fjern object"
+
+  menu_poligon_text = 	"&Polygon"
+  menu_circle_text = 	"&Cirkel"
+  menu_arrow_text = 	"&Pil"
+  menu_bitmap_text = 	"&Billede"
+  menu_savemap_text = 	"&Gem kort"
+
+  bitmap_select_text =  "Windows bitmap"
+  bitmap_select_title = "Udvжlg bitmap fil:"
+  save_filename_text =  "Kort filer"
+  save_filename_title = "Gem Kort som..."
+
+  polygon_label =       "Polygon"
+  circle_label =        "Cirkel"
+  bitmap_label =        "Bitmap"
+  arrow_label =         "Pil"
+
+/*****************************************
+	Object properties dialog texts
+******************************************/
+  editdlg_title = "Egenskaber"
+  editdlg_txt1  = "Linie:"
+  editdlg_txt2  = "Cirkel diameter:"
+  editdlg_txt3  = "Tekst:"
+  editdlg_txt4  = "Font:"
+  editdlg_txt5  = "Hor position:"
+  editdlg_txt6  = "Vert position:"
+  editdlg_txt7  = "Ramme:"
+  editdlg_txt8  = "Fill:"
+  editdlg_grb1  = "Objekt"
+  editdlg_grb2  = "Label"
+  editdlg_pb1   = "OK"
+  editdlg_pb2   = "Fortryd"
+  
+  editdlg_colorlist = ["Hvid","Sort","Grе","LGrе","Rшd","MRшd","Grшn","MGrшn","Blе","MBlе","Cyan","MCyan","Magenta","DkMagenta","Gul","MGul"]
+  editdlg_fslist = ["Normal","Fed","Kursiv","Understreg","Fed + Kursiv","Fed + Understreg","Kursiv + Understreg"]
+  editdlg_lslist = ["Hel","Streg","Prik","StregPrik","StregPrikPrik","Hul"]
+  editdlg_fontlist = ["System","Courier","Times","Arial"]
+  editdlg_fontsizelist = ["6","10","16","25","40","64","100","160","250","400","640","1000"]
+
+  int_validation_message = "Forkert vжrdi - '%'. Skal vжre et heltal."
+
+enddef
+
+ifdef language_russian
+  %**************************
+  % Popup menu Texts
+  %**************************
+  zoomin_text = 	"Увеличить\t+"
+  zoomout_text = 	"Уменьшить\t-"
+
+  menu_addobj_text = 	"Добавить объект"
+  menu_editobj_text = 	"Редактировать объект"
+  menu_removeobj_text = "Удалить объект"
+
+  menu_poligon_text = 	"Многоугольник"
+  menu_circle_text = 	"Круг"
+  menu_arrow_text = 	"Стрелка"
+  menu_bitmap_text = 	"Картинка"
+  menu_savemap_text = 	"Записать"
+
+  bitmap_select_text =  "Файлы Windows bitmap"
+  bitmap_select_title = "Выберите картинку:"
+  save_filename_text =  "Файлы данных карт"
+  save_filename_title = "Сохранить карту как..."
+
+  polygon_label =       "Многоугольник"
+  circle_label =        "Круг"
+  bitmap_label =        "Картинка"
+  arrow_label =         "Стрелка"
+
+/*****************************************
+	Object properties dialog texts
+******************************************/
+  editdlg_title = "Свойства"
+  editdlg_txt1  = "Линия:"
+  editdlg_txt2  = "Диаметр круга:"
+  editdlg_txt3  = "Текст:"
+  editdlg_txt4  = "Шрифт:"
+  editdlg_txt5  = "Гор. позиция:"
+  editdlg_txt6  = "Вер. позиция:"
+  editdlg_txt7  = "Обрамление:"
+  editdlg_txt8  = "Закраска:"
+  editdlg_grb1  = "Объект"
+  editdlg_grb2  = "Метка"
+  editdlg_pb1   = "OK"
+  editdlg_pb2   = "Отмена"
+  
+  editdlg_colorlist = ["Белый","Черный","Серый","Св. серый","Св. красный","Красный","Св. зеленый","Зеленый","Св. синий","Синий","Св. голубой","Голубой","Св. лиловый","Лиловый","Желтый","Коричневый"]
+  editdlg_fslist = ["Нормальный","Жирный","Курсив","Подчеркнутый","Жирный + Курсив","Жирный + Подчеркнутый","Курсив + Подчеркнутый"]
+  editdlg_lslist = ["Сплошная","Прерывистая","Пунктирная","Штрих-пунктирная 1","Штрих-пунктирная 2","Прозрачная"]
+  editdlg_fontlist = ["System","Courier","Times","Arial"]
+  editdlg_fontsizelist = ["6","10","16","25","40","64","100","160","250","400","640","1000"]
+
+  int_validation_message = "Неверное значение - '%'. Должно быть целое число."
+
+enddef
+
+/*********************************************************************
+	Control identifiers for 'Object properties' dyn dialog
+*********************************************************************/
+  idd_mapctrl_properties = 100
+  idct_3 = 101
+  idc_label = 102
+  idct_4 = 103
+  idct_5 = 104
+  idct_6 = 105
+  idc_hor_pos = 106
+  idc_vert_pos = 107
+  idc_gb2 = 108
+  idc_gb1 = 109
+  idc_font = 110
+  idc_fontsize = 111
+  idc_fontstyle = 112
+  idct_2 = 113
+  idc_circle_size = 114
+  idct_1 = 115
+  idc_linestyle = 116
+  idc_border_color = 117
+  idct_7 = 118
+  idct_8 = 119
+  idc_fill_color = 120
+  idc_color = 121

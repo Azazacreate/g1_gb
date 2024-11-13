@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<TITLE>Explanation Field</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Explanation Field'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Explanation Field</FONT>
+<P ALIGN=LEFT>The value of a parameter may be determined by the answer to a question. When such a question is posed during consultation, the expert system user will have the option to ask ESTA to '<A HREF='EXPLAIN_.HTM'>explain the question</A>'. This explanation must be provided by the knowledge engineer in the explanation field. This field consists of the keyword <B>explanation</B> followed by an explanatory text. The <A HREF='BNF_SYNT.HTM'>syntax</A> for the explanation field is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;explanation field&gt; ::= explanation &lt;<A HREF='TEXT_EXP.HTM'>text expression</A>&gt;</FONT> 
+<P ALIGN=LEFT><B>Examples</B> 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>parameter marital_status 'the people are married' 
+<P ALIGN=LEFT>type category 
+<P ALIGN=LEFT>explanation  
+<P ALIGN=LEFT>   'Marital status is determined by whether' &amp; 
+<P ALIGN=LEFT>   'there exists a marriage certificate for' &amp; 
+<P ALIGN=LEFT>    name ' and ' name_of_partner ' or not' 
+<P ALIGN=LEFT>options 
+<P ALIGN=LEFT>   married,  
+<P ALIGN=LEFT>   unmarried. 
+<P ALIGN=LEFT>question 'What is the marital status of ' name ' ?'</FONT> 
+<P ALIGN=LEFT>Notice that the explanatory text may contain parameters already associated with a value as well as parameters currently unevaluated. In the latter case ESTA will evaluate the parameter first and then use its value as part of the explanation. 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

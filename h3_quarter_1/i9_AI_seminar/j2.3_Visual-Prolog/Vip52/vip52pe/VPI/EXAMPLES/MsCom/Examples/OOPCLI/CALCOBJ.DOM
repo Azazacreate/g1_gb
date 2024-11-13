@@ -1,0 +1,35 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  CALCCLI
+ FileName: CALCOBJ.DOM
+ Purpose: Domain definitions for CALCOBJ.PRO
+ Written by: Visual Prolog
+ Comments: Definiftion of Class MSCalculator that represents automation controller object					
+
+ 	The methods that we are not interested in are named "dummy_n", 
+where n - method's index
+******************************************************************************/
+
+abstract class MSCalculator
+  predicates
+    dummy_0()
+    dummy_1()
+    dummy_2()
+    dummy_3()
+    dummy_4()
+    dummy_5()
+    dummy_6()
+    dummy_7()
+    get_Accum( long ) 	 - (o)  vpcC_StdCallType %as "_get_Accum@4"
+    dummy_9()
+    get_Opnd( long ) 	 - (o)  vpcC_StdCallType %as "_get_Opnd@4"
+    dummy_11()
+    get_Op( long )   	 - (o)  vpcC_StdCallType %as "_get_Op@4"
+    dummy_13()
+    get_Displ( long ) 	 - (o)  vpcC_StdCallType %as "_get_Displ@4"   
+    button ( vpcD_BSTR ) - (i) 	vpcC_StdCallType %as "_button@4"   
+    quit () 		 - 	vpcC_StdCallType %as "_quit@0"
+endclass MSCalculator
+

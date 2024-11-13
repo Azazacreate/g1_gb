@@ -1,0 +1,13 @@
+productions
+  EXPR		= EXPR plus EXPR	-> add(EXPR, EXPR),
+		  EXPR minus EXPR	-> subtract(EXPR, EXPR)
+		  --
+		  EXPR mult EXPR	-> multiply(EXPR, EXPR),
+		  EXPR div  EXPR	-> divide(EXPR, EXPR)
+		  --
+       rightassoc EXPR power EXPR	-> power(EXPR, EXPR)
+		  --
+		  lpar EXPR rpar	-> parenthetical(EXPR),
+		  number(REAL)		-> number(REAL)
+
+

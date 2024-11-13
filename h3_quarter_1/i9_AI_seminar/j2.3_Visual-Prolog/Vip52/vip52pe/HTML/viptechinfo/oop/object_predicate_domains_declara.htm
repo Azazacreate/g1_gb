@@ -1,0 +1,97 @@
+<html>
+
+<head>
+<title>Object Predicate Domains Declaration</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../";</script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000"><a name="46f51af0"></a><b>OBJECT Predicate Domain Declarations<!--mstheme--></font></h1>
+</b>An <b>object</b> <b>predicate domain</b> declares a<b> </b>type (or a group)
+of <b>object</b> (<a href="static_class_members.htm">non-static</a>) member
+predicates.
+<p>The <b>object</b> predicate domains can be used for declarations of object
+(non-static) predicates that can be used as <a href="predicate_values.htm#object predicate values">object
+predicate values</a>. These object predicate values can be passed as arguments
+to other predicates.
+<p>Object predicate domains can be declared both outside and inside classes, but
+in difference to &quot;ordinary&quot; predicate domains, <b>object </b>predicate
+domains can be used for declarations of object predicate values only <b>inside
+classes</b>. This is because, when an object predicate value is passed as an
+argument, it should carry the reference to the actual class instance (object) to
+which the predicate value belongs.
+<p>The declaration of an <b>object </b>predicate domain is of the form:
+<!--mstheme--></font><pre>[GLOBAL] DOMAINS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre><b>PredicateDom</b> = <b>object</b></pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>PredicateMode [ReturnDomain] (arglist) [- [flowpattern]] [language]</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+For example, the declaration of object predicate domain for a group of
+deterministic predicates taking an integer as argument and returning an integer,
+would be:
+<!--mstheme--></font><pre>DOMAINS</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><pre>LIST_PROCESS = object determ integer (integer) - (i)</pre><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>Comparison with declaration of predicates</b>
+<p>In contradistinction to predicate declarations, in declarations of object
+predicate domains:
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The keyword <b>object</b> is mandatory in declarations of object predicate
+    domains.
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Brackets of argument list should always be given.
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Only one <b><i>flowpattern</i></b> can be specified.
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If <b><i>flowpattern</i></b> is not specified then the default flow
+    pattern with all input arguments is accepted.
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The predicate mode declaration <b><i>PredicateMode</i></b> (keyword multi,
+    nondeterm, determ, procedure, failure or erroneous) should always be
+    specified directly after the keyword <b>object</b>. The predicate mode
+    cannot be redeclared before <b><i>flowpattern</i></b>.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<b>
+<h5><!--mstheme--><font color="#000000"><a href="toc.htm">See also</a><!--mstheme--></font></h5>
+</b>
+<p><a href="predicate_values.htm">Object Predicate Values</a>
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>

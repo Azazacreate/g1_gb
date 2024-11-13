@@ -1,0 +1,3 @@
+gen_from("VISUAL.EXE","VISUAL.PRO")
+includes("VISUAL.PRO","VISUAL.PRE")
+includes("VISUAL.PRO","VISUAL.DOM")

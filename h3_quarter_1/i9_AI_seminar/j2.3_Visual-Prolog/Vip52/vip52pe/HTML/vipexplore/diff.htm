@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Symbolic differentiation</title>
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<script language="JavaScript">var toRoot="../";</script>
+<script language="JavaScript" src="../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+    <td background="../vipmenu/images/topbar-alt.gif" nowrap valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <p><strong><font size="2"><br>
+                    <br>
+                    <br>
+                    <br>
+                    </font><a href="../vipmenu/navigationbar.htm"><font size="2"><br>
+                    Navigation&nbsp; without Java Scripts</font></a></strong></p>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<h1><!--mstheme--><font color="#000000">Symbolic Differentiation<!--mstheme--></font></h1>
+<p>Visual Prolog is well suited for symbolic mathematics because it is easy and
+elegant to handle expressions as Prolog structures.</p>
+<p>A typical dialog with the system could be</p>
+<p><em>write an expression: 10*x^4</em></p>
+<p><em>Differentiated expression:</em></p>
+<p><em>0*x^4+10*4*x^3*1</em></p>
+<p><em>Reduced expression:</em></p>
+<p><em>40*x^3</em></p>
+<p>The Diff program consist of the following parts:</p>
+<ol>
+  <li>Scanning and parsing a string into the EXPression structure.</li>
+  <li>The actual differentation</li>
+  <li>reducing an expression</li>
+  <li>converting an expression back to a string.</li>
+</ol>
+<p>Of these parts, the reducing of an expression is the most complicated. From
+the Goal-section, the main parts of the program, can be examined.</p>
+<p><em>tokl(STR,TOKL) </em>: converts the string to a list of tokens.</p>
+<p><em>s_exp(TOKL,OL,EXP) </em>: used by the parser.</p>
+<p><em>d(EXP,&quot;x&quot;,EXP1)</em> : differentiate the expression.</p>
+<p><em>reduce(EXP1,EXP2)</em> : the expression is reduced.</p>
+<p>&nbsp;</p>
+<p><a href="../../examples/diff.prj">Diff.PRJ</a> (Uses win32 VDE)</p>
+&nbsp;
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+
+</html>

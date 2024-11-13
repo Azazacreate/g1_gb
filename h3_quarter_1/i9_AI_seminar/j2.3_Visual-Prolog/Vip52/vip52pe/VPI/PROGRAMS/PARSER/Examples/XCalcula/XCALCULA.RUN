@@ -1,0 +1,228 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALCULA
+ FileName: XCALCULA.RUN
+ Purpose: Executing the compiled program
+ Written by: Eugene Akimov
+ Comments:
+ 	program_FreeAllVariables -	Free all variables
+ 	program_Run - 			Activite run process
+******************************************************************************/
+
+constants
+  no_error	= 0
+
+facts - execute
+  value(string Str,RESULT Result)
+
+predicates
+  program_FreeAllVariables - procedure ()
+  program_Run(WINDOW DialogWin,PROGRAM) - determ (i,i)
+  bind(VAR Variable,OPER Oper,EXPR Expression) - determ (i,i,i)
+  calculate(EXPR Expression,RESULT Result) - procedure (i,o)
+  condition_is_true(COND Condition) - determ (i)
+  do_while(WINDOW DialogWin,COND Condition,PROGRAM Statement) - determ (i,i,i)
+  execute_statement(WINDOW DialogWin,STMNT Statement) - determ (i,i)
+  execute_statement_aux(WINDOW DialogWin,STMNT Statement) - determ (i,i)
+  for(WINDOW DialogWin,VAR Variable,OPER Oper,EXPR Expression,EXPR Expression,PROGRAM Statement) - determ (i,i,i,i,i,i)
+  for_aux(WINDOW DialogWin,VAR Variable,RESULT Result,PROGRAM Statement) - determ (i,i,i,i)
+  get_value(VAR Variable,RESULT Result) - procedure (i,o)
+  handle_error(integer Error) - determ (i)
+  if_then(WINDOW DialogWin,COND Condition,PROGRAM Statement) - determ (i,i,i)
+  if_then_else(WINDOW DialogWin,COND Condition,PROGRAM Statement,PROGRAM Statement) - determ (i,i,i,i)
+  input(WINDOW DialogWin,VARS Variables) - determ (i,i)
+  is_true(real,OP,real) - determ (i,i,i)
+  output(WINDOW DialogWin,OUTPUT_TERMS OutputTerms) - procedure (i,i)
+  replace_value(VAR Variable,RESULT Result) - procedure (i,i)
+  write_output_term(WINDOW DialogWin,OUTPUT_TERM OutputTerms) - procedure (i,i)
+  
+CLAUSES
+  bind(_,operator(OP,Position),_):-
+	not(OP = eq),
+	!,
+	replace_error("Only equals (=) is allowed here.",Position),
+	fail.
+  bind(Var,_,Expr):- 
+  	calculate(Expr,Result), 
+  	replace_value(Var,Result).
+	
+  calculate(add(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 + Result2.
+  calculate(subtract(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 - Result2.
+  calculate(multiply(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 * Result2.
+  calculate(divide(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 / Result2.
+  calculate(power(Expr1,Expr2),Result):- 
+  	calculate(Expr1,Result1),
+  	calculate(Expr2,Result2),
+  	Result = exp(ln(Result1) * Result2).
+  calculate(parenthetical(Expr),Result):-
+	calculate(Expr,Result).
+  calculate(number(Result),Result).
+  calculate(var(Var),Result):-
+	get_value(Var,Result).
+  
+  condition_is_true(Cond):-
+	Cond = condition(Expr1,Oper,Expr2),
+  	calculate(Expr1,Result1),
+  	calculate(Expr2,Result2),
+  	Oper = operator(OP,_),
+  	is_true(Result1,OP,Result2).
+
+  do_while(DialogWin,Cond,Stmnts):- 
+  	condition_is_true(Cond),
+	!,
+  	program_Run(DialogWin,Stmnts),
+	do_while(DialogWin,Cond,Stmnts).
+  do_while(_,_,_).	
+  
+  execute_statement(_,_):-
+	stop_execute,
+	!.
+  execute_statement(DialogWin,Stmnt):- 
+      % This will catch get_value's *exit* (upon finding an 
+      % unbound variable) plus heap overflows.
+  	trap(execute_statement_aux(DialogWin,Stmnt),Error,handle_error(Error)).
+  	
+  execute_statement_aux(_,_):-
+	stop_execute,
+	!.
+  execute_statement_aux(_,bind(Var,Oper,Expr)):-
+	bind(Var,Oper,Expr).
+  execute_statement_aux(DialogWin,clear):-
+	edit_PasteStr(DialogWin,"").
+  execute_statement_aux(DialogWin,do_while(Cond,Stmnts)):-
+	do_while(DialogWin,Cond,Stmnts).
+  execute_statement_aux(DialogWin,for(Index,Oper,From_Expr,To_Expr,Stmnts)):-
+	for(DialogWin,Index,Oper,From_Expr,To_Expr,Stmnts).
+  execute_statement_aux(DialogWin,if_then(Cond,Stmnts)):-
+	if_then(DialogWin,Cond,Stmnts).
+  execute_statement_aux(DialogWin,if_then_else(Cond,Stmnts1,Stmnts2)):-
+	if_then_else(DialogWin,Cond,Stmnts1,Stmnts2).
+  execute_statement_aux(DialogWin,input(Vars)):-
+	input(DialogWin,Vars).
+  execute_statement_aux(DialogWin,memory):-
+  	storage(Stack,Heap,Trail),
+  	format(Msg,"\nStack: %, Heap: %, Trail: %",Stack,Heap,Trail),
+  	edit_AppendStr(DialogWin,Msg).
+  execute_statement_aux(DialogWin,nl):-
+	edit_AppendStr(DialogWin,"\n").
+  execute_statement_aux(DialogWin,output(Output_Terms)):-
+	output(DialogWin,Output_Terms).
+  execute_statement_aux(DialogWin,time):- 
+  	time(Hour,Minute,Second,Hundredth),
+  	format(Msg,"\nHour: %, Minute: %, Second: %, Hundredth: %",Hour,Minute,Second,Hundredth),
+  	edit_AppendStr(DialogWin,Msg).
+
+  for(DialogWin,Index,Oper,From_Expr,TO_Expr,STmnts):-
+  	bind(Index,Oper,From_Expr),			% Fails if OPER not eq.
+  	calculate(TO_Expr,TO_Result),
+  	for_aux(DialogWin,Index,TO_Result,Stmnts).
+
+  for_aux(DialogWin,Index,To,Stmnts):-
+	get_value(Index,Index_Value),
+	Index_Value <= To,
+	!,
+	program_Run(DialogWin,Stmnts),
+	New_Index_Value = Index_Value + 1,
+	replace_value(Index,New_Index_Value),
+	for_aux(DialogWin,Index,To,Stmnts).
+  for_aux(_,_,_,_).
+  
+  get_value(Var,Value):-
+	Var = var(Name,_),
+	value(Name,Value),
+	!.
+  get_value(Var,_):-
+  	Var = var(_,Position),
+	replace_error("This variable is not bound.",Position),
+	exit,
+	fail.		% Keep compiler happy about not binding 2nd argument.
+
+  handle_error(no_error):-!.	% get_value/2 found an unbound variable.
+  handle_error(Error):-
+	format(Message,"Error % occurred (too much iteration?).",Error),
+	replace_error(Message,0),
+	fail.
+  
+  if_then(DialogWin,Cond,Stmnts):- 
+  	condition_is_true(Cond), 
+  	!, 
+  	program_Run(DialogWin,Stmnts).
+  if_then(_,_,_).
+  
+  if_then_else(DialogWin,Cond,Stmnts,_):-
+	condition_is_true(Cond),
+	!,
+  	program_Run(DialogWin,Stmnts).
+  if_then_else(DialogWin,_,_,Stmnts):-
+	program_Run(DialogWin,Stmnts).
+
+  input(_,[]).
+  input(DialogWin,[Var|Rest_of_Vars]):-
+	StrValue=dlg_GetStr("Dialog","Enter Real",""),
+	edit_AppendStr(DialogWin,StrValue),
+	str_real(StrValue,Value),
+	replace_value(Var,Value),
+	input(DialogWin,Rest_of_Vars).
+
+  is_true(Result1,eq,Result2):- 	
+      % Handle floating-point error.
+  	(Result1/Result2) > 0.99999999,
+  	(Result1/Result2) < 1.00000001.
+  is_true(Result1,ne,Result2):-
+	not(is_true(Result1,eq,Result2)).
+  is_true(RESULT1,lt,RESULT2):-
+	RESULT1 < RESULT2.
+  is_true(RESULT1,gt,RESULT2):-
+	RESULT1 > RESULT2.
+  is_true(RESULT1,le,RESULT2):-
+	RESULT1 <= RESULT2.
+  is_true(RESULT1,ge,RESULT2):-
+	RESULT1 >= RESULT2.
+  
+  output(_,_):-stop_execute,!.
+  output(_,[]).
+  output(DialogWin,[Output_Term|Rest_of_Output_Terms]):-
+	vpi_ProcessEvents(),
+	write_output_term(DialogWin,Output_Term),
+	output(DialogWin,Rest_of_Output_Terms).
+
+  program_FreeAllVariables:-
+  	retractall(value(_,_)).
+
+  program_Run(_,_):-stop_execute,!.
+  program_Run(_,[]).
+  program_Run(DialogWin,[Stmnt|Rest_of_Stmnts]):-
+  	vpi_ProcessEvents(),
+  	execute_statement(DialogWin,Stmnt),
+  	program_Run(DialogWin,Rest_of_Stmnts).
+
+  replace_value(Var,Value):-
+  	Var = var(Name,_),
+  	retractall(value(Name,_)),
+  	assert(value(Name,Value)).
+
+  write_output_term(_,_):-
+	stop_execute,
+	!.
+  write_output_term(DialogWin,expr(Expr)):-
+	calculate(Expr,Result),
+	str_real(OutResult,Result),
+	vpi_ProcessEvents(),
+	edit_AppendStr(DialogWin,OutResult).
+  write_output_term(DialogWin,str(String)):-
+	edit_AppendStr(DialogWin,String).
+ 

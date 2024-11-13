@@ -1,0 +1,29 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  REGISTER
+ FileName: REGISTER.DOM
+ Purpose: Domains definitions for REGISTER.PRO
+ Written by: Eugene Akimov
+ Comments:
+
+******************************************************************************/
+
+%BEGIN System Mark, System generated global domains
+GLOBAL DOMAINS
+  INDEXNAME = person_name; person_adr; city_no
+  RELATION  = string 
+  VALUE = int(INTEGER); str(STRING); real(REAL)
+  VALUELIST = VALUE*
+  FNAME = STRING
+  FNAMELIST = FNAME*
+  dbdom = city(CITYNO,CITYNAME);
+  person(FIRSTNAME,LASTNAME,STREET,CITYNO,CODE)
+  CITYNO, CITYNAME, FIRSTNAME, LASTNAME, STREET, CODE = STRING
+  TYPE = int(); str(); real() ; cat()
+  ROW, COL, LEN = INTEGER
+  LOGDOM =
+	insert(RELATION,DBDOM,REF);
+	replace(RELATION,DBDOM,REF,DBDOM);
+	erase(RELATION,REF,DBDOM)

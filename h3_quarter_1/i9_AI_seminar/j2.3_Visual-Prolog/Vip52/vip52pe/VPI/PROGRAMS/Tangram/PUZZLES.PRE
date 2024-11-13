@@ -1,0 +1,22 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  TANGRAM
+ FileName: PUZZLES.PRE
+ Purpose: Predicate definitions for PUZZLES.PRO
+ Written by: Hans Dybkjær
+ Comments:
+******************************************************************************/
+
+global predicates
+	puzzleLoad(WINDOW,STRING)		- (i,i)
+	puzzleSave(WINDOW,SET,STRING,STRING)	- (i,i,i,i) % String1 is tanname
+	puzzleSave(WINDOW,SET,STRING)		- (i,i,i) % String1 is tanname
+	puzzleDlgLoadName(STRING)		- (o)
+	puzzleDlgSaveName(STRING) 		- (o)
+	puzzleDlgCreatorName(STRING) 		- (o)%BEGIN_DECL, System generated global predicates
+
+GLOBAL PREDICATES
+  dlg_puzzle_select_Create(WINDOW Parent) - (i)
+%END_DECL

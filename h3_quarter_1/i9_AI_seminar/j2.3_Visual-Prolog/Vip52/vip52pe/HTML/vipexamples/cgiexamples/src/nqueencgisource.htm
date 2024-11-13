@@ -1,0 +1,207 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>New Page </title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p>/*****************************************************************************<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copyright (c) My Company<br>
+<br>
+Project: NQUEEN<br>
+FileName: NQUEEN.PRO<br>
+Purpose: No description<br>
+Written by: Visual Prolog<br>
+Comments:<br>
+******************************************************************************/<br>
+include &quot;cgiexam.inc&quot;<br>
+<br>
+DOMAINS<br>
+queen = q(integer, integer)<br>
+queens = queen*<br>
+freelist = integer*<br>
+board = board(queens, freelist, freelist, freelist, freelist)<br>
+<br>
+PREDICATES<br>
+nondeterm placeN(integer, board, board)<br>
+nondeterm place_a_queen(integer, board, board)<br>
+nondeterm nqueens(integer)<br>
+nondeterm makelist(integer, freelist)<br>
+nondeterm findandremove(integer, freelist, freelist)<br>
+nextrow(integer, freelist, freelist)<br>
+make_HTML_ChessBoard (integer,board)<br>
+CLAUSES<br>
+nqueens(N):-<br>
+&nbsp;&nbsp;&nbsp; N&gt;1,N&lt;4,!,<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;p&gt;It is impossible to place &quot;,N,&quot; queens
+onto &quot;,N,&quot;x&quot;,N,&quot; board:\n&lt;p&gt;&quot;).<br>
+nqueens(N):-<br>
+&nbsp;&nbsp;&nbsp; makelist(N,L),<br>
+&nbsp;&nbsp;&nbsp; Diagonal=N*2-1,<br>
+&nbsp;&nbsp;&nbsp; makelist(Diagonal,LL),<br>
+&nbsp;&nbsp;&nbsp; placeN(N,board([],L,L,LL,LL),Final),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;p&gt;This is solution how to place &quot;,N,&quot;
+queens onto &quot;,N,&quot;x&quot;,N,&quot; board:\n&lt;p&gt;&quot;),<br>
+&nbsp;&nbsp;&nbsp; make_HTML_ChessBoard (N,Final).<br>
+&nbsp;&nbsp;&nbsp; <br>
+placeN(_,board(D,[],[],D1,D2),board(D,[],[],D1,D2)):-!.<br>
+placeN(N,Board1,Result):-<br>
+&nbsp;&nbsp;&nbsp; place_a_queen(N,Board1,Board2),<br>
+&nbsp;&nbsp;&nbsp; placeN(N,Board2,Result).<br>
+<br>
+place_a_queen(N,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; board(Queens,Rows,Columns,Diag1,Diag2),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; board([q(R,C)|Queens],NewR,NewC,NewD1,NewD2)):-<br>
+&nbsp;&nbsp;&nbsp; nextrow(R,Rows,NewR),<br>
+&nbsp;&nbsp;&nbsp; findandremove(C,Columns,NewC),<br>
+&nbsp;&nbsp;&nbsp; D1=N+C-R,findandremove(D1,Diag1,NewD1),<br>
+&nbsp;&nbsp;&nbsp; D2=R+C-1,findandremove(D2,Diag2,NewD2).<br>
+<br>
+findandremove(X,[X|Rest],Rest).<br>
+findandremove(X,[Y|Rest],[Y|Tail]):-<br>
+&nbsp;&nbsp;&nbsp; findandremove(X,Rest,Tail).<br>
+<br>
+makelist(1,[1]).<br>
+makelist(N,[N|Rest]) :-<br>
+&nbsp;&nbsp;&nbsp; N1=N-1,makelist(N1,Rest).<br>
+<br>
+nextrow(Row,[Row|Rest],Rest).<br>
+/******************************************************<br>
+Render the Solution as HTML table<br>
+******************************************************/<br>
+PREDICATES <br>
+render_Board(queens,integer)<br>
+letter(integer,char)<br>
+cell_color(integer,integer,string,string)<br>
+render_DigRow(integer,integer)<br>
+render_BoardRow(integer,integer,integer)<br>
+render_Cells(integer,integer,integer,integer)<br>
+CLAUSES<br>
+make_HTML_ChessBoard (N,Solution) :-<br>
+&nbsp;&nbsp;&nbsp; Solution = board(Queens,_,_,_,_),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;table&gt;\n&lt;tr&gt;&lt;td&gt; &quot;),<br>
+&nbsp;&nbsp;&nbsp; render_DigRow (1,N),<br>
+&nbsp;&nbsp;&nbsp; render_Board (Queens,N),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;/table&gt;\n&quot;).<br>
+% render digital marks<br>
+render_DigRow (N,N) :- !,write (&quot;&lt;td&gt;&quot;,N).<br>
+render_DigRow (X,N) :- write (&quot;&lt;td&gt;&quot;,X),<br>
+&nbsp;&nbsp;&nbsp; X1=X+1,<br>
+&nbsp;&nbsp;&nbsp; render_DigRow(X1,N).<br>
+% render chess board<br>
+render_Board ([],_).<br>
+render_Board ([q(Row,Col)|Rest],N) :-<br>
+&nbsp;&nbsp;&nbsp; render_BoardRow (Row,Col,N),<br>
+&nbsp;&nbsp;&nbsp; render_Board (Rest,N).<br>
+% render single row<br>
+render_BoardRow (Row,Col,N) :-<br>
+&nbsp;&nbsp;&nbsp; letter(Row,Letter),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;tr&gt;&lt;td&gt;&quot;,Letter),<br>
+&nbsp;&nbsp;&nbsp; render_Cells(Row,1,Col,N).<br>
+&nbsp;&nbsp;&nbsp; <br>
+letter (R,L) :- char_int('a',A),AA=A+R-1,char_int(L,AA).<br>
+<br>
+cell_color (R,C,&quot;#800000&quot;,&quot;#FFFFFF&quot;) :-<br>
+&nbsp;&nbsp;&nbsp; M=R+C,<br>
+&nbsp;&nbsp;&nbsp; Rem = M mod 2,<br>
+&nbsp;&nbsp;&nbsp; Rem &lt;&gt; 0,!.<br>
+cell_color (_,_,&quot;#FFFFFF&quot;,&quot;#800000&quot;).<br>
+&nbsp;&nbsp;&nbsp; <br>
+<br>
+render_Cells (Row,Col,Col,Col) :-!,<br>
+&nbsp;&nbsp;&nbsp; cell_color(Row,Col,B,F),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;td bgcolor=&quot;,B,&quot;&gt;&lt;font
+color=&quot;,F,&quot;&gt;&lt;b&gt;Q&lt;/b&gt;&lt;/font&gt;&lt;/tr&gt;&quot;).<br>
+render_Cells (Row,N,_Col,N) :-!,<br>
+&nbsp;&nbsp;&nbsp; cell_color(Row,N,B,_F),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;td bgcolor=&quot;,B,&quot;&gt;&lt;font
+color=&quot;,B,&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;/tr&gt;&quot;).<br>
+render_Cells (Row,X,Col,N) :-<br>
+&nbsp;&nbsp;&nbsp; X=Col,<br>
+&nbsp;&nbsp;&nbsp; cell_color(Row,X,B,F),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;td bgcolor=&quot;,B,&quot;&gt;&lt;font
+color=&quot;,F,&quot;&gt;&lt;b&gt;Q&lt;/b&gt;&lt;/font&gt;&quot;),<br>
+&nbsp;&nbsp;&nbsp; X1=X+1,!,<br>
+&nbsp;&nbsp;&nbsp; render_Cells (Row,X1,Col,N).<br>
+render_Cells (Row,X,Col,N) :-<br>
+&nbsp;&nbsp;&nbsp; cell_color(Row,X,B,_F),<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;td bgcolor=&quot;,B,&quot;&gt;&lt;font
+color=&quot;,B,&quot;&gt;&amp;nbsp;&lt;/font&gt;&quot;),<br>
+&nbsp;&nbsp;&nbsp; X1=X+1,!,<br>
+&nbsp;&nbsp;&nbsp; render_Cells (Row,X1,Col,N).<br>
+&nbsp;&nbsp;&nbsp; <br>
+<br>
+PREDICATES<br>
+nondeterm member(parm,parmlist)<br>
+runme(parmlist)<br>
+CLAUSES<br>
+member (X,[X|_]).<br>
+member (X,[_|Y]):-member(X,Y).<br>
+<br>
+runme (Parmlist) :-<br>
+&nbsp;&nbsp;&nbsp; member(parm(&quot;nq&quot;,NQS),Parmlist),<br>
+&nbsp;&nbsp;&nbsp; trap(str_int(NQS,NQ),_,fail),!,<br>
+&nbsp;&nbsp;&nbsp; nqueens(NQ),!.<br>
+runme (_) :-<br>
+&nbsp;&nbsp;&nbsp; write (&quot;&lt;p&gt;This is not a number\n&quot;).<br>
+&nbsp;&nbsp;&nbsp; <br>
+GOAL&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; write(&quot;Content-type: text/html\n\n&quot;),<br>
+write(&quot;&lt;html&gt;\n&quot;),<br>
+write(&quot;&lt;body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; ParmList = cgi_GetParmList(), <br>
+&nbsp;&nbsp;&nbsp; runme(Parmlist),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/body&gt;\n&quot;),<br>
+&nbsp;&nbsp;&nbsp; write(&quot;&lt;/html&gt;\n&quot;).<br>
+<br>
+</p>
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

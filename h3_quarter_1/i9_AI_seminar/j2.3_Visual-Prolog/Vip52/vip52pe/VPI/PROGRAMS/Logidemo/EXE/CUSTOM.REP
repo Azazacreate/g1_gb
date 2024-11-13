@@ -1,0 +1,41 @@
+%  ****************************************************************************
+%                                 REPORT ENGINE
+%                         Report source text example
+%   		                  13-Oct-1997
+% *****************************************************************************
+
+report  Test
+    margins(1.5,1.0,0.5,1.5);
+    units logical(1150 900);
+    orientation=portrait;
+    tabs=0,90,150
+    defaulttabs=80
+    fontname=helvetica fontsize=7 alignment=left
+    leftindent=10
+    script gray:=0;
+	 Grouped_by := "custom";  
+         init_main(Grouped_by);
+    end_script
+    header  fontsize=16 fontstyle=bold
+	text "Prolog Development Center - 1997" at(0,0,250,15) fontname=helvetica fontsize=8 fontstyle=normal;
+	text "Logistics Demo Example" 
+		at(700,0,800,15)  fontname=helvetica fontsize=8 fontstyle = normal;
+        text "Orders Overview"  at(400,15,650,40) forecolor=240;
+    end_header
+  
+  while get_next_customer(;HeaderLine,Customer,Line) do at(0,20,0,0) border=1
+	header backcolor =  16764057
+	text "Customers" at(0,0,150,30) fontsize=10 fontstyle=bold; 
+	text HeaderLine at(150,0,750,30) fontname=times fontsize=9 fontstyle=bold;
+	end_header
+     begin
+     text Customer at(0,0,150,30) fontstyle=bold;
+     text Line at(150,0,750,30) alignment=right;
+     end;
+    footer fontsize=10 fontstyle=bold
+      script date(;D); page(;P); time(;T) end_script
+      text "Printed "+D at(0,20,300,50);
+      text T at(300,20,400,50);
+      text "Page "+P at(520,20,620,50) fontsize=10;
+    end_footer
+end_report

@@ -1,0 +1,36 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  WINCTRLS
+ FileName: WINCTRLS.PRE
+ Purpose: Predicate definitions for WINCTRLS.PRO
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  tb_project_toolbar_Create(WINDOW Parent) - (i)
+  tb_help_line_Create(WINDOW Parent) - (i)
+  dlg_control_Create(WINDOW Parent) - (i)
+  win_tree_view_Create(WINDOW Parent) - (i)
+  INTEGER dlg_get_item_id_Create(WINDOW Parent) - (i)
+  determ dlg_set_item_status_Create(WINDOW Parent,STRING Text,ILIST StateList,INTEGER BitmapId) - (i,o,o,o)
+  determ dlg_insert_item_Create(WINDOW Parent,INTEGER ItemId,STRING Text,ILIST StateList,INTEGER BitmapId) - (i,o,o,o,o)
+  win_list_view_Create(WINDOW Parent) - (i)
+  determ dlg_sort_item_Create(WINDOW Parent,LV_ORDER,UNSIGNED ColumnNumber,UNSIGNED HeaderRows,UNSIGNED FooterRows) - (i,o,o,o,o)
+  determ dlg_set_item_Create(WINDOW Parent,STRING OldText,ILIST OldFlags,
+	RESID OldLargeBitmapId,RESID OldSmallBitmapId,SLIST OldSubItemText,
+  	STRING Text,ILIST StateList,RESID LargeBitmapId,RESID SmallBitmapId,
+  	SLIST SubText) - (i,i,i,i,i,i,o,o,o,o,o)
+  determ dlg_insert_item1_Create(WINDOW Parent,INTEGER ItemId,STRING Text,
+	ILIST StateList,RESID LargeBitmapId,RESID SmallBitmapId,SLIST SubText) - (i,o,o,o,o,o,o)
+  determ dlg_get_column_number_Create(WINDOW Parent,INTEGER Number) - (i,o)
+  determ dlg_set_column_Create(WINDOW Parent,INTEGER ColumnNum,STRING Text,INTEGER Width,LV_ALIGNMENT Align) - (i,o,o,o,o)
+  determ dlg_insert_column_Create(WINDOW Parent,INTEGER ColumnNum,STRING Text,INTEGER Width,LV_ALIGNMENT Align) - (i,o,o,o,o)
+  dlg_tab_control_Create(WINDOW Parent) - (i)
+%END_DECL

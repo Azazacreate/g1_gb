@@ -1,0 +1,16 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	DATE_CC.PRE
+ PURPOSE:	Predicate definitions for date custom control
+ Written by:	Alexander Butovsky
+ Version:	1.0
+ Build:		012.000316
+ Tested with:   Visual Prolog v.5.1 build 565
+ Comments:	
+
+******************************************************************************/
+
+% Replace DATECUST_DIR with actual path to DATECUST tool:
+include "DATECUST_DIR\\date_cc.pre"

@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<TITLE>Boolean Parameter</TITLE>
+<META HTTP-EQUIV='Keywords' CONTENT='Boolean Parameter'
+</HEAD>
+<BODY>
+<P ALIGN=LEFT><FONT FACE='Arial' SIZE=4>Boolean Parameter</FONT>
+<P ALIGN=LEFT>Boolean or logical parameters are used when a parameter is restricted to one of the values true, false or unknown - i.e. when the answer to a question is to be either Yes, No or Unknown. By default ESTA automatically generates a listbox corresponding to the values: true, false and unknown. Because of the special <A HREF='USE_OF_T.HTM'>use of the value unknown</A> and because in some <A HREF='BOOLEAN_.HTM'>boolean expressions</A> the unknown value is not appropriate, it is possible to declare a listbox where unknown is omitted. This kind of listbox declaration can be done in an options field attached to a <A HREF='CATEGORY.HTM'>category parameter</A>. 
+<P ALIGN=LEFT>The <A HREF='BNF_SYNT.HTM'>syntax</A> for a boolean parameter is: 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>&lt;boolean parameter&gt; ::=  
+<P ALIGN=LEFT>             &lt;<A HREF='DECLARAT.HTM'>declaration field</A>&gt; 
+<P ALIGN=LEFT>             type boolean 
+<P ALIGN=LEFT>             [&lt;<A HREF='EXPLANAT.HTM'>explanation field</A>&gt;] 
+<P ALIGN=LEFT>             [&lt;<A HREF='RULES_FI.HTM'>rules field</A> (with <A HREF='BOOLEAN_.HTM'>boolean expressions</A>)&gt;] 
+<P ALIGN=LEFT>             [&lt;<A HREF='QUESTION.HTM'>question field</A>&gt;] 
+<P ALIGN=LEFT>             [&lt;<A HREF='PICTURE_.HTM'>picture field</A>&gt;]</FONT> 
+<P ALIGN=LEFT><B>Examples</B> 
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>parameter gasoline_ok : 'there is gasoline in your car' 
+<P ALIGN=LEFT>type boolean 
+<P ALIGN=LEFT>explanation 'Turn on the ignition and look at the fuel gauge' 
+<P ALIGN=LEFT>question 'Is there any gasoline in your car ?' 
+<P ALIGN=LEFT>picture 'gasoline' </FONT>
+<P ALIGN=LEFT>The parameter gasoline_ok will look like this in a dialog: 
+<P ALIGN=LEFT>{bml BOOL_PAR.BMP}
+<P ALIGN=LEFT><FONT FACE='Courier' SIZE=2>parameter wet_weather 'the weather is wet' 
+<P ALIGN=LEFT>type boolean 
+<P ALIGN=LEFT>explanation 'It has been raining within the last few days or it is foggy' 
+<P ALIGN=LEFT>question 'Is the weather wet ?'</FONT>
+<P ALIGN=LEFT>The parameter wet_weather will look like this in a dialog: 
+<P ALIGN=LEFT>{bml BOOLPAR2.BMP} 
+<P ALIGN=LEFT>
+</BODY>
+</HTML>

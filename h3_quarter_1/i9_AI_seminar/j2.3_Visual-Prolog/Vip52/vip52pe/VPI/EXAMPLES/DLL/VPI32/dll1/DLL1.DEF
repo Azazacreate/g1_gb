@@ -1,0 +1,13 @@
+LIBRARY DLL1
+
+CODE	  PRELOAD MOVEABLE DISCARDABLE
+DATA	  PRELOAD SINGLE
+
+HEAPSIZE  1024
+
+EXPORTS
+  dll1_custom_Create
+  dll1_custom_Destroy
+  dll1_mark_gstack
+  dll1_release_gstack
+

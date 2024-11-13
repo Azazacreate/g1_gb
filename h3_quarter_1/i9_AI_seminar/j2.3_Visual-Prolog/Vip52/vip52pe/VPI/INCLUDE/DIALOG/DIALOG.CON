@@ -1,0 +1,30 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+				VISUAL Prolog
+
+ FileName: DIALOG.CON
+ PURPOSE: Constant definitions for dialog package
+ Written by:
+ Comments:
+
+******************************************************************************/
+
+constants
+
+dialog_con_included = 1
+
+dialog_const_error_create = "Error <dialog_Create>"
+dialog_const_error_init_field = "Illegal FIELD variant."
+dialog_const_error_init_value = "Illegal Value!"
+dialog_const_error_integer = "%s must be an integer%s"
+dialog_const_error_long_integer = "%s must be an integer (greater -32767 and less 32767)%s"
+dialog_const_error_length = "contains more than % characters"
+dialog_const_error_long = "%s must be a long%s"
+dialog_const_error_mandatory = "%s is mandatory%s"
+dialog_const_error_maximum = "must be less or equal than %"
+dialog_const_error_minimum = "must be greater or equal than %"
+dialog_const_error_range = "must be between % and %. Current value %"
+dialog_const_error_real = "%s must be an real%s"
+dialog_const_prompt_default = "???"

@@ -1,0 +1,697 @@
+<html>
+
+<head>
+<title>STUDY OF ROUTE SELECTION DYNAMICS AND LOCAL MIGRATION OF AVI</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<font SIZE="4"><b>
+
+<h1 ALIGN="CENTER"><!--mstheme--><font color="#000000"></b>STUDY OF ROUTE SELECTION DYNAMICS AND LOCAL MIGRATION OF AVI-FAUNA
+WITHIN A REAL ECOSYSTEM USING LEM MULTI-AGENT SIMULATOR</font><font SIZE="2"><!--mstheme--></font></h1>
+
+<p ALIGN="CENTER">Anju Dahiya* , Serguei Krivov** and Jaweed Ashraf * <br>
+$ * : Lab. 317, School of Life Sciences,<br>
+Jawaharlal Nehru University,<br>
+New Delhi-110067 INDIA e-mail: <a href="mailto:a_dahiya@hotmail.com">a_dahiya@hotmail.com</a><br>
+**: scholar of Intercultural Open University, The Netherlands<br>
+present add: Indian Inst. of Ecology and Environment<br>
+A-15, Paryavaran Complex,<br>
+New Delhi 110030 INDIA e-mail: <a href="mailto:s_krivov@hotmail.com">s_krivov@hotmail.com</a><br>
+$ : <i>address for correspondence</i></p>
+<b>
+
+<h2><!--mstheme--><font color="#000000">&nbsp;</b></font><b>Abstract<!--mstheme--></font></h2>
+</b>
+
+<p ALIGN="JUSTIFY">We present a multiagent model using LEM simulator that enables one to
+explore the influence of individual behavior on the dynamics and structural complexity of
+route selection and local migration of animals within a real ecosystem over real time. The
+individuals act according to simple, biologically plausible rules. Here we present the
+results of a series of simulation experiments on space utilization by peafowl that is also
+used to calibrate the simulator against real-world systems and to demonstrate the
+simulator's strength for ecological modeling. This work involved a qualitative analysis of
+local routes selected by the peafowl within the limited space. We also explored the
+consequences of allowing individuals to make active choices about space selection by
+assigning weights and found that individuals had to adapt realistic behavioral ecological
+strategies. Our results lead us to believe that a better understanding of space
+utilization in real-world systems will require new approaches that use all aspects of
+Ecology i.e. the animal behavioral ecology along with population and community ecology
+along with mathematical treatment of these aspects. </p>
+<b><i>
+
+<p ALIGN="JUSTIFY">Key Words:</i></b> route selection dynamics; individual-based behavior;
+multi-agent ecological simulator.</p>
+<b>
+
+<h3><!--mstheme--><font color="#000000">1. Introduction </b><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY">In our research work, we are trying the use of multi-agent simulation
+to study complex phenomena emerging in real ecological systems. The problem of analysis of
+ecosystem is a multifold one. It requires considerable efforts in experimental study of
+the ecosystem as well as theoretical work in the fields of ethology, mathematics, and
+computer science. Earlier we elaborated the main ethological principles in the context of
+computer modeling of adaptive behavior (Krivov et al. [5]). In this paper we present a
+multiagent simulation model of local migration of avi-fauna (Indian peafowl selected out
+of the survey of a number of birds) within the natural ecosystem of Jawharlal Nehru
+University (JNU), New Delhi Campus. </p>
+
+<p ALIGN="JUSTIFY">The dynamics of local migration of avi-fauna could be studied by
+creating an artificial universe of robotic birds and animals via computer simulation and
+conducting experiments in the so created universe. This approach is termed as
+&#145;multiagent system simulation&#146; or as &#145;individual based modeling&#146; and
+has emerged only during the last decade (see: Hraber et. al. [12]; Drogoul and Ferber
+[2]). A multiagent system typically consists of many dispersed agents acting in parallel
+with no global controller responsible for the behavior of all agents. Rather, the actions
+of each agent depend upon the states and actions of a limited number of other agents, and
+competition and coordination among the agents is subject to structural constraints. This
+complex determines the overall direction of the system. The behavior of the whole system
+tends to arise more from the interactions among the agents than from any constraints
+imposed into structure of the whole system as such. Moreover, the local interaction
+networks connecting the agents are continuously recombined and revised. In particular,
+niches that can be exploited by particular adaptations are continuously created, and their
+exploitation in turn leads to new niche creations, so that a perpetual novelty exists in
+the system. </p>
+
+<p ALIGN="JUSTIFY">The ant model &#150; MANTA by Drogoul and Ferber [2], generic ecosystem
+model ECHO by Hraber et al. [12] and Food web simulator &#150; GHEKO by Schmitz et al.
+[11] are examples of multiagent simulators. Usually a multiagent simulator has a target to
+reproduce some emergent patterns of behavior. For instance, MANTA was used for the study
+of labor separation in ant societies. ECHO was used for the study of abundance and
+distribution of species emerging in the process of Darwinian evolution. We are using our
+simulator LEM ( Logic for Ecological Modeling) (Krivov, [6]), to study route selection
+dynamics among Indian peafowl .</p>
+
+<p ALIGN="JUSTIFY">Route selection dynamics in an ecosystem is inherent in the
+multi-factorial nature of interaction of animals among themselves as well as with their
+environment. Many animal behavior patterns pertaining to their spatial movement occur on a
+periodic daily basis that are regular and are regulated by internal biological clocks of
+animals. It would be interesting to find out how the adult animals as well as their
+offspring react to the environmental factors and how the route selection process emerges.
+Very few efforts have been made to develop such simulation models. Route selection
+dynamics is one of the complex problems that zoologists, ethologists and animal ecologists
+are encountering in their field studies. &quot;Route selection&quot; is a complex
+phenomenon in nature that arises when the resources are limited or widely distributed
+within a spatially heterogeneous environment. </p>
+<b>
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000">2. LEM &#150; Tool for Ecological Modeling Implemented in Visual
+Prolog</b><font SIZE="3"><!--mstheme--></font></h3>
+<b>
+
+<p ALIGN="JUSTIFY">2.1 LEM characteristics</p>
+</b></font>
+
+<p>The overall structure of LEM models, syntax of model specification, language, and the
+functionality of LEM modules are now available on Internet at the URL: <b>http://geocities.com/SiliconValley/Cable/3109/
+</b>OR <b>http://www1.50megs.com/lem/</b></p>
+
+<p>OR <b>http://www.50megs.com/www1/lem/</b> site includes a provisional manual for LEM
+users:</p>
+
+<p ALIGN="JUSTIFY">LEM is a forward chaining rule-based system implemented in Visual
+Prolog (Krivov et al. [7]). The behavior of agents and reaction of environment on the
+actions of agent are specified by the sets of production rules. LEM models could be simple
+or evolutionary, time may be linear or cyclic. In evolutionary models, each agent has its
+own rule base that also serves as a set of chromosomes. In simple ecological models, the
+specie of agents shares the rule base and it should be preprogrammed. There is a special
+rule table that defines the reactions of the environment to the actions of agents. LEM
+supports interactive development of individual based ecological models. There is a special
+language for specification of models. No knowledge of computer languages is required for
+development of new models, and it seems that LEM is the first general-purpose
+individual-based modeling tool that could completely relieve ecologists and artificial
+life researchers from programming work. </p>
+
+<p ALIGN="JUSTIFY">LEM runs under Windows 95/98/NT. It could be ported to OS/2. It has
+professional quality visual interface that is comparable with the best examples of Windows
+programming. LEM is designed and implemented with the use of Object Oriented Paradigm. It
+has high performance. On Pentium 133 MHz, 32 Mb RAM LEM could handle population of 1000
+&#150;10000 agents with a reasonable speed (5-0.2 steps per one second). LEM comes with
+the set of tools that facilitate development of individual based models: <i>Text editor</i>
+with a set of standard Windows functions; fast <i>Data Base system</i> that could store
+the relevant elements of simulation either in RAM or on disk; <i>Data Base query system</i>;
+<i>Plotter</i> and <i>Pattern tracer</i>- a special tool for the monitoring of the
+evolution of system organization and emergence of novel organization. Pattern tracer
+directly uses the concepts of system organization. </p>
+
+<p ALIGN="JUSTIFY">Following are the characteristics of LEM: </p>
+<b>
+
+<p ALIGN="JUSTIFY">Ecosystem: </b>LEM ecosystem is a 2 dimensional grid of sites. It might
+be similar to ecosystem design in Echo, Gecko, and Manta. However, sites in LEM ecosystem
+have normal 2 dimensional topology. Each agent of LEM has double representation of its
+location. Agents know the site, where it is located; in addition, it knows its&#146;
+absolute position in the frame of reference of the ecosystem. The sites of ecosystem store
+information about agents, which are currently located there, plus information about
+actions of agents. <i>Monitor</i> is the part of LEM that displays the positions of agents
+on the screen. <i>The_Law</i> rule table of LEM plays the role of Fight Monitor<b> </b>of
+Gecko<b>.</b> <b>Agents: </b>Modeler could specify the behavior of LEM agents, number of
+their states and some other parameters in run time. LEM is object oriented forward
+chaining rule based system and thus has greater flexibility than simulators designed with
+traditional object oriented methodology. <b>Evolution: </b>The current implementation of
+LEM support study of behavioral evolution that can happen within in a relatively short
+time. <b>Simulation: </b>LEM was designed as a general-purpose tool for ecological
+modeling. Finally, it should be used for simulation of real ecosystems. All other
+simulators except some like SWARM does not pursue this objective. <b>Database: </b>Almost
+all multiagent simulators have some tools for monitoring the simulation. However, LEM
+database has unmatchable capacity for performing this task. <b>Pattern Tracer: </b>Pattern
+tracer is unique LEM tool for tracing possible patterns of interaction within ecosystem.</p>
+<font SIZE="3"><b>
+
+<p ALIGN="JUSTIFY"><a NAME="_Toc459114253"></a><a NAME="_Toc459115376">2.2 Models of
+Adaptation supported by LEM</a></b></font></p>
+
+<p ALIGN="JUSTIFY">The current version of LEM supports 2 models of adaptation &#150;
+Genetic Adaptation and Route Adaptation</p>
+<b>
+
+<p ALIGN="JUSTIFY">Genetic adaptation </b></p>
+
+<p ALIGN="JUSTIFY">Evolutionary models of LEM mimic natural evolution. Genetic adaptation
+is the most common to ALife simulators' way of adaptation. In evolutionary models any
+etho-agent possesses its private set of schema that are treated as chromosomes during the
+process of reproduction. Thus in this model of evolution only the schemata of agents are
+evolving. The evolution of schemata mimics evolution of agent&#146;s behavior.</p>
+
+<p ALIGN="JUSTIFY">Signature based evolutionary models allow to study evolution of the
+physical properties of agents. Although this option is implemented in the current version
+of LEM, it will not be discussed in the present paper.</p>
+<b>
+
+<p ALIGN="JUSTIFY">Route adaptation</b></p>
+
+<p ALIGN="JUSTIFY">Cyclic models of LEM which were designed during our study of
+Peafowl&#146;s daily migration mimic spatial and temporal adaptation of animals to the
+changing environment This is the kind of adaptation that is taking place during the life
+of individual. The gist of route adaptation is as follows:</p>
+
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">Each agent has in memory the preferred route. Route is a collection of triples <i>&lt;DayTime,
+    Place Weight&gt;,</i> Here <i>DayTime</i> is a member of the <i>DayTimeList </i>specified
+    in the term <i>dayandyear </i>(see Krivov [6]) for the description of model specification
+    terms); <i>Place</i> specifies some location in the ecosystem; <i>Weight </i>is an integer
+    that shows how much the agent likes to be in the given place <i>Place</i> at the time <i>DayTime</i>
+    .<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">The migration of agent according to its route is invoked when agent makes action <i>follow_route.
+    </i>When this action is executed, the agent follows with high speed to the location that
+    corresponds to the current time in agent&#146;s route.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">By default the weight of the route-slots for the current time slightly decrements at
+    every step. This means that by default agents have a tendency to forget their route.
+    However there are some actions that could reinforce positively or negatively the weight of
+    the current place in case it is a part of the route<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If the weight of some slot becomes less than 0, the slot should be removed from the
+    route.<!--mstheme--></font><!--msthemelist--></td></tr>
+  <!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">If during the stepwise decrement of the route-slots the slot for the current time is
+    missing, then new slot should be created for the present time and location. This slot will
+    have some intermediate value of weight.<!--mstheme--></font><!--msthemelist--></td></tr>
+<!--msthemelist--></table><!--mstheme--><font face="verdana, Arial, Helvetica">
+
+<p ALIGN="JUSTIFY">The route adaptation model should serve for study of spatial behavior.
+It may be relevant for the study of environmental impact assessments when effect of
+environmental changes on spatial distribution of animals or birds is to be evaluated.</p>
+<b>
+
+<h3><!--mstheme--><font color="#000000">3. Local Migration of Avi-Fauna in JNU Ecosystem</b><font SIZE="2"><!--mstheme--></font></h3>
+</font><a NAME="_Toc458792116"><font SIZE="3"><b>
+
+<p ALIGN="JUSTIFY">3.1 General Field Survey</b></font></p>
+
+<p ALIGN="JUSTIFY">Jawaharlal Nehru University Campus lies on the off-shoots of northern
+part of the Aravali hills locally known as Delhi Ridge in southern Delhi (28 deg 12&#146;
+&#150; 28 deg 53&#146; north latitudes and 76 deg 50&#146; &#150; 77 deg 23&#146; east
+longitudes; average altitude of Delhi is 213-219 meters above sea level. The campus is
+spread over an area of 412.54 hectares on South Central Ridge. This land belongs to the
+category of `<b>tropical thorn forest</b>&#146;. More than 50% of this land is covered
+with vegetation and has no major permanent water bodies; hence is dependent on monsoons
+for its water supply. The quartzite rocks form the base of the JNU campus. The soil cover
+on the lower areas is formed of weathered material. Tropical thorn forest is spread over
+this soil cover under semi-arid climatic conditions. Large parts of this land is now
+occupied by man made-structures .The mainland or macrohabitat is made of <b>Dense
+vegetation area, </b>seen in the lower parts of the Campus which consists of thick base of
+soil cover holding fast growing and drought resistant perennial species; <b>Woodland like
+area </b>i.e. the areas covered by widely spaced trees, or other vegetation and <b>Scrubland</b>
+that<b> covers </b>more than fifty percent of the total Campus area. It includes perennial
+drought resistant varieties of shrubs and bushes. </p>
+
+<p ALIGN="JUSTIFY">A survey was conducted on the Avi-fauna of the campus, and a checklist
+of birds was prepared (Dahiya and Krivov, [1]). From this list, Indian peafowl was
+selected as the animal model of the study. Knowledge about ecology and behavior of any
+peacock pheasant in the wild is very limited. This makes it difficult to establish a
+satisfactory regular pattern of field routine. The most fundamental field method used was
+the SURVEY WALKS. The area was walked along fixed paths and locations of peafowl were
+plotted on the gridded map of the study area, at set times for several consecutive days
+and the observations were made accordingly. </p>
+</a><b><font SIZE="3">
+
+<p ALIGN="JUSTIFY">3.2 Indian Peafowl<i>, Pavo cristatus </i>was selected mainly for the
+following reasons:</font></b></p>
+
+<p ALIGN="JUSTIFY">1. This specie could be easily recognized, especially the male, by its
+large size, iridescent colors, erect crest with unique display and its distinct loud call
+which could be easily heard and recognized over long distances.</p>
+
+<p ALIGN="JUSTIFY">2. Peafowl is gregarious in nature and flocks could be recognized which
+usually return to their resting sites every night.</p>
+
+<p ALIGN="JUSTIFY">3. The bird maintains its territory within limited space though home
+range may vary according to seasons.</p>
+
+<p ALIGN="JUSTIFY">4. Migration is generally limited to daily-migration for foraging if
+its habitat is not affected. Moreover it is sedentary and terrestrially adapted bird.<font SIZE="3"></p>
+
+<ol START="3">
+  <ol START="3">
+    <b>
+    <li>Habitat selection made by peafowl
+</b>
+
+    </font></li>
+  </ol>
+</ol>
+
+<p ALIGN="JUSTIFY">The observations supported with other relevant studies (cited as per
+the context) show following criteria in habitat selection made by the peafowl that
+influence its local migration:</p>
+
+<p ALIGN="JUSTIFY">1. Availability of water is their main requirement (Johnsingh and
+Murali [3]). For the present study, location of water bodies, and their relationship with
+the feeding or resting space is yet under observation. </p>
+
+<p ALIGN="JUSTIFY">2. Tall trees to roost on favorably near feeding space, dense bushes
+with open areas for breeding, and availability of adequate nest sites and feeding grounds
+(Johnsgard, [13]). </p>
+
+<p ALIGN="JUSTIFY">3.As peafowl is omnivorous and usually a primary consumer, the criteria
+of habitat selection based on availability of food is equally important. Its preference of
+feeding spaces is in the order of : containing grains&gt; human oriented food&gt; natural
+food. </p>
+
+<p ALIGN="JUSTIFY">Peafowl maintains its home-range and is a lek-breeding species (Rands
+et al., [9]; Ridley et al. [10]) and shows philopatry to their display site (tends to
+roost and rest near to display sites which are few meters apart over the whole breeding
+season) (Rands et al. [9]; Petrie et al. [8]). Such leks are situated apart from each
+other in woodland and more clumped in open land (Hillgarth [4]). Peafowl is normally
+attached to its traditional roosting site and usually returns to it on sunset. This site
+is near its feeding space and also the water source. It selects tall trees for roosting,
+especially the tree which contains the first branch considerably at a higher distance from
+the ground which helps escape from predators. In the present study, the primary roosting
+site was found around the three traditional feeding grounds. This area also contains
+higher density of peafowl population. </p>
+
+<p ALIGN="JUSTIFY">The field observations made in JNU campus on the habitat use by peafowl
+revealed some set patterns of its daily migration. The space is divided into 18 resting
+spaces and 21 feeding spaces (see screenshots a and b) in accordance with the movement of
+associations of peafowl. Each association could be of many flocks and some flock may
+behave differently in their movement and may explore entirely new feeding or resting space
+in the real ecosystem. This aspect we are keeping for our more complex models in order to
+make the present model simple. Likewise, 18 major associations were observed which
+generally move to feeding spaces at sunrise and return to its resting spaces at sunset.</p>
+
+<p ALIGN="JUSTIFY">Peafowl&#146;s daily migration is regulated by photoperiod. In the
+present field study it was observed that peafowl prefers seeds and other such food
+provided by the local residents in the feeding spaces nos. 1, 3 &amp; 4 (see screenshots-
+fig. 1 a&amp;b) which cites they visited regularly almost at the same time at sunrise and
+at sunset and would wait in the surroundings nearby if the human feeders were late. Some
+observations made on individual birds/flock suggest that peafowl has a very sharp
+biological clock. One hen and sometimes the whole flock was observed crossing the road
+between resting space number 12 to the feeding space number 14 exactly around 5.30 pm in
+the evening, which observation coincides with the clearing of Hostel mess (Godavari
+Hostel) and preparations for dinner. One peacock was observed moving from resting space
+no. 18 to feeding space no. 19 around 7.00 am in the morning and re-entering to the same
+resting space during 7.30 pm in the evening. One flock was seen moving and foraging during
+6.30 a.m. daily near the backside of School of International Studies, for few months
+repeatedly.<b></p>
+
+<h3><!--mstheme--><font color="#000000">4. Simulation of Peafowl Migration Using LEM<!--mstheme--></font></h3>
+<font SIZE="3">
+
+<p ALIGN="JUSTIFY"><a NAME="_Toc458673905"></a><a NAME="_Toc458792115">4.1 Specifications
+</a>
+
+</font></b></p>
+
+<p ALIGN="JUSTIFY">The model is simple (non-evolutionary) and cyclic. It is cyclic for the
+simple reason that time is cyclic; it is divided into days and years, while day is
+subdivided into periods. Specification of model is given in a file with extension <b>md</b>.
+The specification contains pointers to different files that comprise the model. Complete
+model specification requires one <b>md</b> file, which specifies the model; one <b>lw</b>
+file, which specify the law of interactions for the current model. It may also include one
+or several <b>esp</b> files, which specify different species of etho-agents; one <b>prs</b>
+file specifies all producers that may be included in the model; one <b>ens</b> file that
+specifies all types of environmental agents in the model. </p>
+
+<p ALIGN="JUSTIFY">In peafowl model we use the symbols for different species: Food types:
+&quot;w&quot;- grasses; &quot;m&quot;-herb; &quot;F&quot; small shrub; &quot;T&quot;-
+tree; &quot;&amp;&quot;-peafowl.</p>
+
+<p ALIGN="JUSTIFY">For peafowl model the Law table that define the outcomes for all
+interactions between these three species is as following: </p>
+<i>
+
+<p ALIGN="JUSTIFY">species([[&quot;&amp;&quot;,&quot;c&quot;],[&quot;w&quot;,&quot;m&quot;,&quot;F&quot;,&quot;T&quot;],[&quot;tree&quot;,&quot;roadv&quot;,&quot;build&quot;]])</p>
+
+<p ALIGN="JUSTIFY">rule([obj(2,&quot;w&quot;),action(1,&quot;&amp;&quot;,act2(&quot;eat&quot;,2))],s([re(1,income(10)),re(2,loss(10))]))</p>
+
+<p ALIGN="JUSTIFY">rule([obj(2,&quot;m&quot;),action(1,&quot;&amp;&quot;,act2(&quot;eat&quot;,2))],s([re(1,income(10)),re(2,loss(10))]))</p>
+
+<p ALIGN="JUSTIFY">rule([obj(2,&quot;F&quot;),action(1,&quot;&amp;&quot;,act2(&quot;eat&quot;,2))],s([re(1,income(10)),re(2,loss(10))]))</p>
+
+<p ALIGN="JUSTIFY">rule([obj(2,&quot;T&quot;),action(1,&quot;&amp;&quot;,act2(&quot;eat&quot;,2))],s([re(1,income(10)),re(2,loss(10))]))</p>
+
+<p ALIGN="JUSTIFY">rule([action(1,&quot;c&quot;,act2(&quot;atack&quot;,2)),obj(2,&quot;&amp;&quot;),far(1,2)],s([re(1,bad),re(2,ok)]))</p>
+
+<p ALIGN="JUSTIFY">rule([action(1,&quot;c&quot;,act2(&quot;atack&quot;,2)),obj(2,&quot;&amp;&quot;),near(1,2)],s([re(1,income(100)),re(2,death)]))</p>
+
+<p ALIGN="JUSTIFY">rule([action(1,&quot;c&quot;,act2(&quot;atack&quot;,2)),obj(2,&quot;&amp;&quot;)],case(0.3,[re(1,income(100)),re(2,death)],[re(1,bad),re(2,ok)]))</p>
+
+<p ALIGN="JUSTIFY">rule([action(1,&quot;&amp;&quot;,any)],s([re(1,ok)]))</i></p>
+
+<p ALIGN="JUSTIFY">rule([action(1,&quot;c&quot;,any)],s([re(1,ok)]))</p>
+
+<p ALIGN="JUSTIFY">In this table numbers are used as variables for agents, for example the
+rule:</p>
+
+<p ALIGN="JUSTIFY"><i>rule([obj(2,&quot;w&quot;),action(1,&quot;&amp;&quot;,act2(&quot;eat&quot;,2))],s([re(1,income(10)),re(2,loss(10))]))</i></p>
+
+<p ALIGN="JUSTIFY">could be interpreted in natural language as, &quot;if object 1 of
+specie &quot;&amp;&quot; (peafowl) performs an action &quot;eat&quot; on object 2 of
+specie &quot;w&quot; then they get the reaction in terms of income or loss. In this
+example object 1 gets an income of 10 and 2 a loss of 10.</p>
+
+<p ALIGN="JUSTIFY">The routes defined for the agents (placed in file having extension <b>ag</b>)
+are following:</p>
+<i>
+
+<p ALIGN="JUSTIFY">route(&quot;rt1&quot;,[s(&quot;night&quot;,&quot;lm1&quot;),s(&quot;sunrise&quot;,&quot;lm3&quot;),s(&quot;morning&quot;,&quot;lm5&quot;),s(&quot;early_noon&quot;,&quot;lm5&quot;),s(&quot;late_noon&quot;,&quot;lm7&quot;),s(&quot;sunset&quot;,&quot;lm3&quot;)])</p>
+
+<p ALIGN="JUSTIFY">route(&quot;rt2&quot;,[s(&quot;night&quot;,&quot;lm8&quot;),s(&quot;sunrise&quot;,&quot;lm7&quot;),s(&quot;morning&quot;,&quot;lm6&quot;),s(&quot;early_noon&quot;,&quot;lm4&quot;),s(&quot;late_noon&quot;,&quot;lm6&quot;),s(&quot;sunset&quot;,&quot;lm7&quot;)])</p>
+
+<p ALIGN="JUSTIFY">ag_route(&quot;&amp;&quot;,&quot;rt1&quot;)</p>
+
+<p ALIGN="JUSTIFY">ag_route(&quot;&amp;&quot;,&quot;rt1&quot;)</p>
+
+<p ALIGN="JUSTIFY">ag_route(&quot;&amp;&quot;,&quot;rt2&quot;)</i></p>
+
+<p ALIGN="JUSTIFY">ag_route(&quot;&amp;&quot;,&quot;rt2&quot;) <i>&#133;</i><b></p>
+</b>
+
+<p ALIGN="JUSTIFY">The species &quot;&amp;&quot; (peafowl) is defined in the following
+table. Number of states is defined by the predicate <i>number_of_states(3). </i>Peafowl
+has three state variables, each state variable have double representation as integer and
+symbol. The <i>state map</i> defines the transformation between the two representations.
+The first state in which the peafowl could be at one instance of time are either
+&quot;high&quot;, &quot;good&quot;, &quot;normal&quot;, &quot;low&quot;, &quot;bad&quot;,
+&quot;dead&quot;. The second state could be either &quot;neutral&quot;, &quot;sexy&quot;.
+The third state that represents the age of peafowl has symbolic values: &quot;baby&quot;,
+&quot;adult&quot;, &quot;matured&quot; or &quot;dead&quot;. The predicate <i>speed(6) </i>specifies
+the average speed of motion. The duration of pregnancy (gestation + hatching) of peafowl
+and the number of offspring are specified by the predicate <i>pregnancy(600,3).</i> The
+predicate <i>schema</i> specifies the behavior of peafowl and <i>staterule</i> specify
+numeric state updates. </p>
+<i>
+
+<p ALIGN="JUSTIFY">name(&quot;&amp;&quot;)</p>
+
+<p ALIGN="JUSTIFY">number_of_states(3)</p>
+
+<p ALIGN="JUSTIFY">state(1,[s(10000,15000,&quot;high&quot;),s(5000,10100,&quot;good&quot;),s(3000,5100,&quot;normal&quot;),s(1000,3100,&quot;low&quot;),s(0,500,&quot;bad&quot;),s(-100,1,&quot;dead&quot;)])</p>
+
+<p ALIGN="JUSTIFY">state(2,[s(0,50,&quot;neutral&quot;),s(49,70,&quot;sexy&quot;)])</p>
+
+<p ALIGN="JUSTIFY">state(3,[s(0,600,&quot;baby&quot;),s(550,1200,&quot;adult&quot;),s(1100,7000,&quot;matured&quot;),s(6700,12000,&quot;dead&quot;)])</p>
+
+<p ALIGN="JUSTIFY">shape(&quot;&amp;&quot;,0x00FF0000)</p>
+
+<p ALIGN="JUSTIFY">speed(6)</p>
+
+<p ALIGN="JUSTIFY">pregnancy(600,3)</p>
+
+<p ALIGN="JUSTIFY">route_update(1,3000)</p>
+
+<p ALIGN="JUSTIFY">schema(1,[obj(1,&quot;c&quot;)],act2(&quot;runfrom&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(2,[dtimeto(7),state(3,&quot;baby&quot;),hasleader],follow_leader)</p>
+
+<p ALIGN="JUSTIFY">schema(3,[dtimeto(7)],follow_route)</p>
+
+<p ALIGN="JUSTIFY">schema(4,[mysx(m),season(&quot;summer&quot;),my_state_g(1,&quot;&amp;&quot;,3),sm_sx(1,&quot;&amp;&quot;)],act2(&quot;threaten&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(4,[mysx(m),season(&quot;summer&quot;),my_state_l(1,&quot;&amp;&quot;,3),sm_sx(1,&quot;&amp;&quot;)],act2(&quot;runfrom&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(4,[season(&quot;summer&quot;),state(3,&quot;matured&quot;),state(2,&quot;sexy&quot;),opt_sx(1,&quot;&amp;&quot;)],act2(&quot;mating&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(9,[state(1,&quot;high&quot;)],act1(&quot;moverandom&quot;))</p>
+
+<p ALIGN="JUSTIFY">schema(5,[obj(1,&quot;w&quot;)],act2(&quot;eat&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(5,[obj(1,&quot;T&quot;)],act2(&quot;eat&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(6,[obj(1,&quot;m&quot;),state(1,&quot;normal&quot;)],act2(&quot;eat&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(7,[obj(1,&quot;m&quot;),state(1,&quot;bad&quot;)],act2(&quot;eat&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(8,[obj(1,&quot;F&quot;),state(1,&quot;bad&quot;)],act2(&quot;eat&quot;,1))</p>
+
+<p ALIGN="JUSTIFY">schema(9,[],act1(&quot;moverandom&quot;))</p>
+
+<p ALIGN="JUSTIFY">staterule(any,act2(&quot;eat&quot;,1),income(10),[d(0,100),d(1,10),d(2,1),d(3,1)])</p>
+
+<p ALIGN="JUSTIFY">staterule(any,act2(&quot;mating&quot;,1),ok,[d(0,100),d(1,-8),d(2,-40),d(3,10)])</p>
+
+<p ALIGN="JUSTIFY">staterule(any,act2(&quot;runfrom&quot;,1),ok,[d(0,-200),d(3,1)])</i></p>
+
+<p ALIGN="JUSTIFY">staterule(any,any,any,[d(1,-1),d(2,3),d(3,1)])</p>
+
+<p ALIGN="JUSTIFY">In specification of schema, numbers are used as variable names and also
+refer to states of agent. For example <i>schema(4,[season(&quot;summer&quot;),state(3,&quot;matured&quot;),state(2,&quot;sexy&quot;),opt_sx(1,&quot;&amp;&quot;)],act2(&quot;mating&quot;,1))</i></p>
+
+<p ALIGN="JUSTIFY">uses number 2 to refer to the second state of the agent <i>state(2,&quot;sexy&quot;)
+)</i> and to refer some agent which is situated at the same site <i>opt_sx(1,&quot;&amp;&quot;)</i>.
+The <i>schema </i>contains left-hand side and right hand side. If LHS is true then the
+action specified in RHS is performed. Here, in the RHS <i>act2(&quot;mating&quot;,1)</i>
+the variable 1 refer to the agent referred in LHS by variables with the same name
+&quot;1&quot;.</p>
+
+<p ALIGN="JUSTIFY">The <i>staterule </i>contains signatures and defines modification of
+agents state variables depending on action of the agent and reaction of the environment of
+this action. For example, <i>staterule(any,act2(&quot;eat&quot;,1),income(10),[d(0,100),d(1,10),d(2,1),d(3,1)])</i></p>
+
+<p ALIGN="JUSTIFY">states that if an agent with <i>any</i> signature agent performs action
+&quot;eat&quot; with reaction income(10) it gets updates of state 1 by 10,state 2 by 1,
+state 3 by 1, while <i>d(0,100)</i>  specifys
+route reinforcement for the current route slot. </p>
+
+<p ALIGN="JUSTIFY">The map of the Jawaharlal Nehru University (JNU) Campus is plotted on
+the lattice used for all these models (screen shots in figs.1. a and b). Ecosystem is
+defined in file named <i>JNUpeafowl.md</i> having dimensions <i>ecosystem(120,96,20) </i>that
+represent 412.54 hectares (43992894.314 sq. feet) of the land marked by the ecosystem. The
+day-length of 24 hours was divided into 6 intervals.</p>
+
+<font SIZE="2">
+
+<p ALIGN="JUSTIFY"><a href="lem-sc1.gif"><img src="lem-sc1_small.gif" alt="lem-sc1.gif (64695 bytes)" border="0" WIDTH="100" HEIGHT="57"></a></p>
+</font><font SIZE="3">
+
+<p><a href="lem-sc2.gif"><img src="lem-sc2_small.gif" alt="lem-sc2.gif (66453 bytes)" border="0" WIDTH="100" HEIGHT="55"></a></p>
+</font>
+
+<p ALIGN="JUSTIFY">(The abbreviations used in two screenshots are: <i>Academic complex</i>:
+SLS - School of Life Sciences, SC&amp;SS - School of Computer and System Science, SSS -
+School of Social Studies, SES - School of Environmental Studies, SIS - School of
+International Studies, SL - School of Language, Literature and Culture studies, Lib &#150;
+Library, BIC - Bioinformatic center, Admn - Administrative block; Prk - Parthasarthy rock;
+Prg - Parthasarthy rock ground; Prd1 - Parthasarthy rock depression number 1 (facing
+road); Prd2 - Parthasarthy rock depression number 2 (facing Prk); Kvs1- School named
+Kendriya Vidyalaya inside JNU campus; Kc - Kamal Complex shopping center; Gh - Godavari
+girls hostel; Sh - Sabarmati hostel; Oth - Open Theatre; OTS - Open theatre surroundings;
+Fs - Feeding space; Rs - Resting space.)</p>
+
+<p ALIGN="JUSTIFY">In this model, each association performs some action, which is time and
+space specific. Four categories of actions have been taken into account, moving, eating,
+resting, and mating. All these actions are goal-oriented. These actions in the real
+ecosystem may in turn be bound by many related actions. For instance &quot;moving&quot;
+means that some association is moving from one space to another for some goal (like feed,
+forage or roost). LEM supports wide range of actions pertained to moving. </p>
+<b>
+
+<h3 ALIGN="JUSTIFY"><!--mstheme--><font color="#000000">5. Observations and Discussion</b><!--mstheme--></font></h3>
+
+<p ALIGN="JUSTIFY">Offspring follow their parents for some time and then either get their
+own routes or move randomly. This route acquiring capacity is decreased in offspring after
+the increment in generations as per the observations made (figs. 2 a&amp;b). </p>
+
+<font SIZE="2">
+
+<p ALIGN="JUSTIFY"><a href="../../../vip/articles/lem/image14.gif"><img src="image14_small.gif" border="0" WIDTH="100" HEIGHT="56"></a></p>
+</font>
+
+<p ALIGN="JUSTIFY">Figure 2 (a). The population growth curve over a period of two years in
+approximately 4510 time steps with reproduction steps set at 600 steps and the initial
+population as w = 89, m = 52, F = 23, T = 26, &amp; = 6, c = 0.<font SIZE="3"></p>
+
+<p ALIGN="JUSTIFY"><a href="../../../vip/articles/lem/image15.gif"><img src="image15_small.gif" border="0" width="100" height="56"></a></font></p>
+
+<p ALIGN="JUSTIFY">Figure 2(b). The population growth curve over a period of two years in
+approximately 5490 time steps with reproduction steps (in the specification of
+&quot;&amp;&quot;) set at 600 steps and the initial population as w = 89, m = 52, F = 23,
+T = 26, &amp; = 6, c = 0.<font SIZE="2"></p>
+
+<p ALIGN="JUSTIFY"><a href="../../../vip/articles/lem/image16.gif"><img src="image16_small.gif" border="0" width="100" height="60"></a></font></p>
+
+<p ALIGN="JUSTIFY">Figure 3 (a) The screenshot of the prototype model of
+peafowl&#146;s local migration at the 0-time step</p>
+
+<p ALIGN="JUSTIFY"><a href="../../../vip/articles/lem/image17.gif"><img src="image17_small.gif" border="0" WIDTH="100" HEIGHT="60"></a></p>
+
+<p ALIGN="JUSTIFY">Figure 3 (b) The screenshot after the birth of offspring on completion
+of one whole year.</p>
+
+<p ALIGN="JUSTIFY">The observations in Fig. 2(a) show the population growth curve at 4510
+time steps when reproduction is completed in just 6 steps and fig. 2 (b) shows the
+population growth curve over a period of two years in approximately 5490 time steps with
+reproduction steps set at 600 steps and the initial population as w = 89, m = 52, F = 23,
+T = 26, &amp; = 6, c = 0. Seasonal dynamics may be noted here as &quot;&amp;&quot; is
+preprogrammed to reproduce only during summers. The rise of population is periodic. The
+offspring are able to inherit sometime whole route from the parents, or with reduced
+number of periods and sometimes having no period at all. Accordingly, offspring&#146;s
+route is defined. In Fig. 3 (a) shows a screenshot at the 0-time step and Fig. 3 (b) shows
+after the birth of offspring in on completion of one whole year. </p>
+
+<p ALIGN="JUSTIFY">This model presents a good example of artificial migration and
+artificial biological-rhythm and its dynamics that arise out of movement of
+&quot;&amp;&quot; from one point to another which is based on real observations. Many
+animal behavior patterns occur on a periodic daily basis that is regular. Biological
+rhythms are manifestations that are regulated by internal biological clocks of animals.
+These rhythms could be dependent upon the environmental factors or a self&#150;sustaining
+and adjustable pacemaker mechanism could be set up in accordance with the feed back from
+the environment. In nature, animals show different rhythms with periods ranging from few
+minutes to several years. An important observation noted by us is the fact that often
+offspring develop their own routes. However, with the rise of population the route
+selection also lowers down. Since the model of real ecosystem is in progress valuable,
+observations would come out after some more efforts that are in progress. </p>
+
+<p ALIGN="JUSTIFY">The route adaptation model should serve for study of spatial behavior.
+It may be relevant for study of environmental impact assessments when effect of
+environmental changes on spatial distribution of animals has to be evaluated.<i><font SIZE="3"></p>
+</font><b>
+
+<h2><!--mstheme--><font color="#000000">Acknowledgements</b></i><!--mstheme--></font></h2>
+
+<p ALIGN="JUSTIFY">The grants provided by Council of Scientific and Industrial Research
+(CSIR) , New Delhi India to Dr. Dahiya are greatly acknowledged. We are grateful to
+Carsten Cristoffersen from Prolog Development Center (PDC) Denmark for timely sending a
+complementary copy of Visual Prolog compiler. Outstanding features of Visual Prolog 5.1
+helped Dr. Krivov to implement the design of LEM in a very short time. Special thanks to
+Logic Programming Association (LPA), England for a complementary copy of LPA Prolog
+compiler that was used for prototyping and design of LEM. We would like to express our
+thanks to all the members of Nature Club ARANYAK, registered with WWF, New Delhi. We are
+grateful to Peter Van Wonterghem, Ph.D. Scholar of Jawaharlal Nehru University who lent us
+his laptop for typing this report</p>
+<b>
+
+<h2><!--mstheme--><font color="#000000">References</b><!--mstheme--></font></h2>
+
+<p>Journals &amp; Proccedings:</p>
+
+<p ALIGN="JUSTIFY">[1] Dahiya, Anju. and Serguei. Krivov (1999 March-April issue).
+Checklist of the birds of JNU campus, Jawaharlal Nehru University New Delhi India. <i>JNU
+News</i>. Vol. XVII No. 2: pp. 13-16.</p>
+
+<p ALIGN="JUSTIFY">[2] Drogoul, Alexis and Jacques Ferber (1992). &quot;Multi-agent
+simulation as a tool for modeling societies: application to social differentiation in ant
+colonies&quot;. Lecture notes in artificial intelligence, Cristiano Castelfranchi, Eric
+Werner (Eds.). <i>Artificial Social Systems 4th European workshop on modeling autonomous
+agents in a multi-agent world, MAAMAW&#146;92</i>, S. Martino al Cimino, Italy. Springer
+Verlag, 830, pp. 3-23.</p>
+
+<p ALIGN="JUSTIFY">[3] Johnsingh A.J.T. and S. Murali. 1978. The ecology and behavior of
+the Indian Peafowl <i>(Pavo cristatus)</i> of Injar. J. Bombay Natural History Society.
+75: 1069-79.</p>
+
+<p ALIGN="JUSTIFY">[4] Hillgarth N. 1984. Social organization of Peafowl in India. WPA
+Journal, 9: 47-56.</p>
+
+<p ALIGN="JUSTIFY">[5] Krivov, Serguei, Anju Dahiya and Jaweed Ashraf (1998).
+&quot;Ethological Principles and Architecture for Adaptive Autonomous Agents&quot;. In: <i>proceedings
+of The 4-Th International Conference On Cognitive Systems,</i> New Delhi, India. Vol. 2.:
+pp. 604-614. </p>
+
+<p ALIGN="JUSTIFY">[6] Krivov, Serguei (1999). <i>A logic based framework for artificial
+Life.</i> Ph.D. Thesis (submitted). The Inter-cultural Open University, The Netherlands.</p>
+
+<p ALIGN="JUSTIFY">(Web site: http://geocities.com/SiliconValley/Cable/3109/serguei.html</p>
+
+<p>[7] Krivov, Serguei, Anju Dahiya and Jaweed Ashraf (1999). &quot;LEM - Multi Agent
+Simulator Implemented In Visual Prolog&quot;. In: <i>proceedings of The 5-Th International
+Conference On Cognitive Systems,</i> New Delhi, India. </p>
+
+<p ALIGN="JUSTIFY">[8] Petrie M. 1992. Peahens prefer Peacocks with elaborate trains.
+Animal Behavior, 41: 323-32.</p>
+
+<p ALIGN="JUSTIFY">[9] Rands M.R.W., M.W. Ridley and A.D. Lelliot. 1984. The social
+organization of feral peafowl. Animal Behavior, 32: 830-35.</p>
+
+<p ALIGN="JUSTIFY">[10] Ridley M.W., A.D. Lelliot and M.R.W. Rands. 1984. The coutship
+display of feral peafowl. WPA Journal, 9:57-68 </p>
+
+<p ALIGN="JUSTIFY">[11] Schmitz, O.J. and G. Booth. (1996). &quot;Modeling food web
+complexity: the consequence of individual based spatially explicit behavioral ecology on
+trophic interactions&quot;.<i> Evolutionary Ecology</i> (in press).</p>
+
+<p>Books:</p>
+
+<p ALIGN="JUSTIFY">[12] Hraber, Peter T, Terry Jones and Stephanie Forrest (1996).
+&quot;The Ecology of ECHO&quot;. <i>Artificial Life</i> (in Press). </p>
+
+<p>[13] Johnsgard P.A. 1986. Pheasants of the world. Oxford University Press. London.</p>
+
+<p>&nbsp;<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

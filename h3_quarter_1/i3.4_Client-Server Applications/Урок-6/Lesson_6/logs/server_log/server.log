@@ -1,0 +1,98 @@
+2020-12-09 15:07:02,414 INFO server_v2.py Server logging started
+2020-12-09 15:07:02,440 DEBUG server_v2.py Starting the server at 2020-12-09 15:07:02.398337,
+Waiting for a client to call.
+2020-12-09 15:07:30,774 DEBUG server_v2.py At: 2020-12-09 15:07:02.398337 client: <socket.socket fd=460, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50570)>
+2020-12-09 15:07:30,774 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607515650.7544823, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:08:24,465 DEBUG server_v2.py At: 2020-12-09 15:07:02.398337 client: <socket.socket fd=460, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50581)>
+2020-12-09 15:08:24,466 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607515704.4456465, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:13:29,197 INFO server_v2.py Server logging started
+2020-12-09 15:13:29,221 DEBUG server_v2.py Starting the server at 2020-12-09 15:13:29.178574,
+Waiting for a client to call.
+2020-12-09 15:13:32,516 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50665)>
+2020-12-09 15:13:32,516 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607516012.495496, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:29:56,407 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:30:20,852 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=432, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50916)>
+2020-12-09 15:30:20,852 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607517020.831232, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:30:41,562 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=432, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50919)>
+2020-12-09 15:30:41,562 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607517041.5414546, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:31:18,911 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:32:06,734 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:32:43,567 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50947)>
+2020-12-09 15:32:43,567 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607517163.566423, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:34:17,880 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:37:12,672 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51007)>
+2020-12-09 15:37:12,672 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607517432.6723413, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:50:43,984 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:50:58,233 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:51:12,878 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 15:51:37,376 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51240)>
+2020-12-09 15:51:37,376 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607518297.3767917, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:51:53,095 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51246)>
+2020-12-09 15:51:53,095 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607518313.0958464, 'user': {'account_name': 'Guest'}}
+2020-12-09 15:53:08,713 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51258)>
+2020-12-09 15:53:08,713 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607518388.7138493, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:12:29,820 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51526)>
+2020-12-09 16:12:29,820 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607519549.8201482, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:15:44,774 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51576)>
+2020-12-09 16:15:44,775 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607519744.7747366, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:21:22,502 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 16:25:21,709 DEBUG server_v2.py Принято некорретное сообщение от клиента.
+2020-12-09 16:25:33,544 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51728)>
+2020-12-09 16:25:33,544 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607520333.5436537, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:27:41,539 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51755)>
+2020-12-09 16:27:41,540 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607520461.5383093, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:29:05,235 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51771)>
+2020-12-09 16:29:05,235 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607520545.2351978, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:36:37,472 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51869)>
+2020-12-09 16:36:37,474 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607520997.4717393, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:41:23,295 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 51986)>
+2020-12-09 16:41:23,296 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607521283.2938218, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:46:07,605 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52042)>
+2020-12-09 16:46:07,605 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607521567.604484, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:48:44,152 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52075)>
+2020-12-09 16:48:44,152 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607521724.1510139, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:49:21,085 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52082)>
+2020-12-09 16:49:21,085 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607521761.0840516, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:49:44,614 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52087)>
+2020-12-09 16:49:44,615 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607521784.614163, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:53:55,387 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52229)>
+2020-12-09 16:53:55,387 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522035.3859, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:55:00,992 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52244)>
+2020-12-09 16:55:00,993 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522100.9914327, 'user': {'account_name': 'Guest'}}
+2020-12-09 16:58:30,448 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52288)>
+2020-12-09 16:58:30,448 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522310.4474206, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:05:32,885 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52372)>
+2020-12-09 17:05:32,885 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522732.8841655, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:05:56,489 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52378)>
+2020-12-09 17:05:56,489 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522756.4879892, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:06:06,348 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52379)>
+2020-12-09 17:06:06,348 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522766.3478434, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:09:35,371 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52416)>
+2020-12-09 17:09:35,372 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522975.3710485, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:09:44,550 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52417)>
+2020-12-09 17:09:44,550 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607522984.5504684, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:11:06,300 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52439)>
+2020-12-09 17:11:06,300 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607523066.3008926, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:11:55,348 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52448)>
+2020-12-09 17:11:55,348 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607523115.347448, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:15:01,496 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52492)>
+2020-12-09 17:15:01,496 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607523301.494051, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:24:28,885 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52618)>
+2020-12-09 17:24:28,886 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607523868.8838058, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:24:39,720 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 52619)>
+2020-12-09 17:24:39,720 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607523879.7204068, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:29:58,890 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61271)>
+2020-12-09 17:29:58,890 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607524198.8900235, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:31:42,183 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=408, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61292)>
+2020-12-09 17:31:42,183 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607524302.183029, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:40:52,563 DEBUG server_v2.py At: 2020-12-09 15:13:29.178574 client: <socket.socket fd=436, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61558)>
+2020-12-09 17:40:52,563 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607524852.5629454, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:42:36,447 INFO server_v2.py Server logging started
+2020-12-09 17:42:36,448 DEBUG deco.py Была вызвана функция "start_server_logging" c параметрами "(<__main__.Server object at 0x00000233A9D35CD0>,), {}". Вызов произошел из функции "main" модуля "server_v2.py".
+2020-12-09 17:42:36,478 DEBUG deco.py Была вызвана функция "get_comand_prompt_parameters" c параметрами "(<__main__.Server object at 0x00000233A9D35CD0>,), {}". Вызов произошел из функции "main" модуля "server_v2.py".
+2020-12-09 17:42:36,478 DEBUG server_v2.py Starting the server at 2020-12-09 17:42:36.425430,
+Waiting for a client to call.
+2020-12-09 17:42:36,479 DEBUG deco.py Была вызвана функция "start_server" c параметрами "(<__main__.Server object at 0x00000233A9D35CD0>,), {}". Вызов произошел из функции "main" модуля "server_v2.py".
+2020-12-09 17:42:58,981 DEBUG server_v2.py At: 2020-12-09 17:42:36.425430 client: <socket.socket fd=316, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 61601)>
+2020-12-09 17:42:58,981 DEBUG server_v2.py Получено сообщение от клиента : {'action': 'presence', 'time': 1607524978.9812758, 'user': {'account_name': 'Guest'}}
+2020-12-09 17:42:58,982 DEBUG deco.py Была вызвана функция "process_client_message" c параметрами "(<__main__.Server object at 0x00000233A9D35CD0>, {'action': 'presence', 'time': 1607524978.9812758, 'user': {'account_name': 'Guest'}}), {}". Вызов произошел из функции "listen_server" модуля "server_v2.py".

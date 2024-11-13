@@ -1,0 +1,15 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ FileName: CGITOOLS.PRE
+ Purpose: Predicate definitions for CGITOOLS.PRO
+******************************************************************************/
+
+GLOBAL PREDICATES
+  procedure STRING cgi_GetString()-()
+  procedure ParmList cgi_GetParmList()-()
+  procedure lookupParm(string ParmName,parmList,string Default,string Value)-(i,i,i,o)
+  procedure remove_empty_params(parmList,parmList)-(i,o)
+  % Return all the body text from a HTML file
+  procedure STRING gethtmlfromfile(STRING FileName)-(i)

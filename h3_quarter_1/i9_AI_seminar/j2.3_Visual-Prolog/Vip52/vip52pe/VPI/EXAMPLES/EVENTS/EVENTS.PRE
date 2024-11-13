@@ -1,0 +1,21 @@
+/*****************************************************************************
+
+		 Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  EVENTS
+ FileName: EVENTS.PRE
+ Purpose: Predicate definitions for EVENTS.PRO
+ Written by: PDC
+ Comments:
+******************************************************************************/
+
+%BEGIN_DECL, System generated global predicates
+GLOBAL PREDICATES
+
+  project_ShowHelpContext(INTEGER Index) - (i)
+  dlg_about_dialog_Create(WINDOW Parent) - (i)
+  win_test_window_Create(WINDOW Parent) - (i)
+  dlg_test_dialog_Create(WINDOW Parent) - (i)
+  win_window_Create(WINDOW Parent) - (i)
+  dlg_dialog_Create(WINDOW Parent) - (i)
+%END_DECL

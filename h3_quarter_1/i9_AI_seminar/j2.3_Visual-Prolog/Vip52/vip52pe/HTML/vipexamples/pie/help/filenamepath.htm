@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>filenamepath</title>
+<meta HTTP-EQUIV="Keywords" CONTENT="filenamepath" </HEAD>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="verdana, Arial, Helvetica">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="verdana, Arial, Helvetica">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="verdana, Arial, Helvetica">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p ALIGN="LEFT"><font FACE="Arial" SIZE="4">filenamepath/3</font>
+<p ALIGN="LEFT"><b>filenamepath</b>(<i>QualName,Path,Name</i>)
+<p ALIGN="LEFT">Is used to compose and decompose a fully qualified OS file name around its path and file name.
+<p ALIGN="LEFT"><b>Remarks</b>
+<p ALIGN="LEFT"><b>filenamepath/3</b> converts between <i>QualName</i> on one side, and <i>Path</i> and <i>Name</i> on the other. 
+<p ALIGN="LEFT">(i,o,o) filenamepath with this flow pattern works simply. It just separates the specified string <i>QualName</i> into the couple of strings: <i>QualName = Path + Name</i> according to the following rule:
+</ol>
+<!--mstheme--></font><!--msthemelist--><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">String <i>Path</i> containing the beginning of the <i>QualName</i> string including the last backslash (doubled) character under DOS and OS/2 platforms, or including the last slash character under UNIX. 
+<!--msthemelist--><tr><td valign="baseline" width="42"><img src="../../_themes/prolog2/modbul1d.gif" width="14" height="13" hspace="14"></td><td valign="top" width="100%"><!--mstheme--><font face="verdana, Arial, Helvetica">String <i>Name</i> containing the tail of the <i>QualName</i> string after the last backslash character under DOS and OS/2 platforms, or after the last slash character under UNIX. 
+<!--msthemelist--></table msthemelist><!--mstheme--><font face="verdana, Arial, Helvetica">
+<p ALIGN="LEFT">For example, according to this rule, if one specifies: <i>QualName</i> = &quot;C:\VIP\INCLUDE\IODECL.CON&quot;, then <b>filenamepath</b> returns: <i>Path</i> =  &quot;C:\VIP\INCLUDE\&quot;, <i>Name</i> =  &quot;IODECL.CON&quot;
+<p ALIGN="LEFT">If one specifies: <i>QualName</i> = &quot;INCLUDE\IODECL.CON&quot;, then <b>filenamepath</b> returns: <i>Path</i> =  &quot;INCLUDE\&quot;, <i>Name</i> =  &quot;IODECL.CON&quot;
+<p ALIGN="LEFT">If one specifies: <i>QualName</i> = &quot;IODECL.CON&quot;, then <b>filenamepath</b> returns: <i>Path</i> =  &quot;&quot;, <i>Name</i> =  &quot;IODECL.CON&quot;
+<p ALIGN="LEFT">(o,i,i) <b>filenamepath</b> with this flow pattern works more tricky. The returned <i>QualName</i> string is not always a simple concatenation of the <i>Path</i> and <i>Name</i> strings.
+<p ALIGN="LEFT">Under DOS and OS/2 platforms there are the following rules:
+<p ALIGN="LEFT"><b>1.</b> String <i>Name</i> begins with a device name following by the backslash (doubled) character (i.e. C:\\, D:\, ...). Then string <i>Path</i> is ignored and
+<p ALIGN="LEFT"><i>QualName = Name </i>
+<p ALIGN="LEFT"><b>2.</b> String <i>Name</i> begins with a device name following by a file name that is not preceded by the backslash (doubled) character, that is: 
+<p ALIGN="LEFT"><i>Name = Dev:FileName </i>
+<p ALIGN="LEFT">This specification means that string <i>Name</i> refers to the file <i>FileName</i> in the current directory on the specified device <i>Dev</i> (A,B,C,...). For example, if the current directory on the drive C is \VIP\BIN, then <i>Name</i> = C:VIP.EXE specifies the file C:\VIP\BIN\VIP.EXE.
+<p ALIGN="LEFT">In this case <b>filenamepath</b> ignores string <i>Path</i> and uses the following formula:
+<p ALIGN="LEFT"><i>QualName = Dev: + CurrentDir + FileName</i>
+<p ALIGN="LEFT">where <i>CurrentDir</i> is the current directory on the specified device Dev (see also disk).
+<p ALIGN="LEFT">Notice that in this case you obtains the run-time error 7015 &quot;Invalid disk drive&quot; if a specified device is not accessible. 
+<p ALIGN="LEFT"><b>3.</b> String <i>Name</i> begins with the backslash (doubled) character (device root directory). Then string <i>Path</i> is ignored and the following formula is used:
+<p ALIGN="LEFT"><i>QualName = DeviceRoot + Name </i>
+<p ALIGN="LEFT">where <i>DeviceRoot</i> is the current device root directory (i.e. C:\, D:\, ...).
+<p ALIGN="LEFT"><b>4.</b> String <i>Path</i> begins with device name (i.e. C:, D:, ...). Then <i>QualName</i> is a concatenation of <i>Path</i> and <i>Name</i>, i.e. the following formula is used: 
+<p ALIGN="LEFT"><i>QualName = Path + Name </i>
+<p ALIGN="LEFT">Notice that if <i>Path</i> does not terminate with the backslash (doubled) character, then filenamepath adds it automatically, i.e. in this case the following formula is used: 
+<p ALIGN="LEFT"><i>QualName = Path + &quot;\&quot; + Name </i>
+<p ALIGN="LEFT"><b>5.</b> General case. In other cases the following formula is used:
+<p ALIGN="LEFT"><i>QualName = CurrentDir + Path + Name </i>
+<p ALIGN="LEFT">where <i>CurrentDir</i> is the current working directory (see also disk).
+<p ALIGN="LEFT">Notice that as in the previous case, <b>filenamepath</b> adds automatically the backslash character after <i>Path</i> and <i>CurrentDir</i> (if it is absent).
+<p ALIGN="LEFT">Notice that under DOS the string(s) returned will be in the upper case.
+<p ALIGN="LEFT">Remember that in the DOS-related versions the backslash character used to present subdirectories is an escape character. Because of this, you must always place two backslash characters when you use the backslash in a path that is written directly into the source text:&quot;C:\\VIP\\INCLUDE\\IODECL.CON&quot;
+<p ALIGN="LEFT">Notice that <b>filenamepath</b> does not check the correctness of the specified file and path names.Therefore, be careful specifying input strings to this predicate, otherwise you can obtain quite unusual results. For example, run the following program from the C:\WORKING directory (under DOS):
+<p ALIGN="LEFT"><b>Example</b>
+<p ALIGN="LEFT">Path = &quot;txtexamp&quot;,
+<p ALIGN="LEFT">Name =&quot;test\test.dat&quot;,
+<p ALIGN="LEFT">write(&quot;CurPath=&quot;,CurPath),nl,
+<p ALIGN="LEFT">write(&quot;Path=&quot;,Path),nl,
+<p ALIGN="LEFT">write(&quot;Name=&quot;,Name),nl,
+<p ALIGN="LEFT">FileNamePath(QualName,Path,Name),
+<p ALIGN="LEFT">write(&quot;QualName=&quot;,QualName),nl.
+<p ALIGN="LEFT">
+<p ALIGN="LEFT">You obtains the following program output:
+<p ALIGN="LEFT">
+<p ALIGN="LEFT">CurPath=C:\WORKING
+<p ALIGN="LEFT">Path=TXTEXAMP
+<p ALIGN="LEFT">Name=TEST\TEST.DAT
+<p ALIGN="LEFT">QualName=C:\WORKING\TXTEXAMP\TEST\TEST.DAT</font>
+<p ALIGN="LEFT">
+<p ALIGN="LEFT">
+<p ALIGN="LEFT">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

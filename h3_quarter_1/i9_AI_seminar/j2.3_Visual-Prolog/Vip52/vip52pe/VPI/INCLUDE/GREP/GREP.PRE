@@ -1,0 +1,23 @@
+/*****************************************************************************
+	
+	Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+			VISUAL Prpolog
+
+ Project:  GREP
+ FileName: GPEP.PRE
+ Purpose: Predicate definitions for GPEP.PRO
+ Written by: Maksim Avilov		
+ Comments:
+******************************************************************************/
+
+ifndef grep_dom_included
+ Error: this file requires include: grep.dom
+enddef 
+
+constants
+  grep_pre_included = 1
+
+global predicates
+
+  grep_Run(BOOLEAN DialogMode, WINDOW Parent, STRING SearchStr,STRING FileMask,STRING StartDir,BOOLEAN IncludeSub,BOOLEAN CaseSensitive,BOOLEAN WordOnly,GREP_HANDLER UserHandler)	- (i,i,i,i,i,i,i,i,i)

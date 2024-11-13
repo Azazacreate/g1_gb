@@ -1,0 +1,76 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S 
+
+ FileName:	ENGINE.CON
+ Purpose:	Report Engine Constants
+ Written by:	Alexander Grachev
+ Version:	1.3
+ Build:		019.990201
+ Tested with:	Visual Prolog v.5.1 build 563
+ Comments:
+*****************************************************************************/
+constants
+	% The Title of Dialog message
+re_dlg_title = "Parsing Message"
+	% The content of Dialog message
+re_dlg_Note = "%s Position %d"
+	% Syntax Error in ENGINE.PRO
+re_s01 = "\n BMP File %s not found"
+re_s02 = "\nTabulated text has no TABS Property"
+re_s03 = "Nondefined Predicate "
+re_s04 = "Syntax error in group %s, %s is invalid"
+re_s05 = "Expected %s Instead of %s"
+re_s06 = "Grammar Error in "
+re_s07 = "Unexpected end of stream!"
+re_s08 = "Printing Error"
+
+	% Strings for Built-in convers. predicate
+re_m01 = " Jan "
+re_m02 = " Feb "
+re_m03 = " Mar "
+re_m04 = " Apr "
+re_m05 = " May "
+re_m06 = " Jun "
+re_m07 = " Jul "
+re_m08 = " Aug "
+re_m09 = " Sep "
+re_m10 = " Oct "
+re_m11 = " Nov "
+re_m12 = " Dec "
+
+	% Run Time Errors in EXP_PRO.PRO
+re_r01 = "\nToo few or many Returned Variable"
+re_r02 = "\nVariable %s is free"
+re_r03 = "\nNot possibly to multiply different types: "
+re_r04 = "\nNot possibly to devide different types: "
+re_r05 = "\nExpression %s does not correspond to forecolor property"
+re_r06 = "\nExpression %s does not correspond to backcolor property"
+re_r07 = "\nExpression %s does not correspond to border property"
+re_r08 = "\nExpression %s does not correspond to font property"
+re_r09 = "\nProperty %s is not recognized"
+
+	% Panes printing errors
+re_pn01 = "There is no corresponding pane to \nSCHEME Block in the script"
+re_pn02 = "There is no corresponding pane to \nGANTT Block in the script"
+re_pn03 = " \nWindow %d has no any panes"
+
+	% Parser's errors
+re_p01 = "fontstyle"
+re_p02 = "alignment"
+re_p03 = "Orientation"
+re_p04 = "Plan Optional Properties"
+re_p05 = "Plan Period Mandatory Properties"
+re_p06 = "integer"
+re_p07 = "report"
+re_p08 = "name"
+re_p09 = "units"
+re_p10 = "planproperties"
+re_p11 = "mode"
+re_p12 = "step"
+re_p13 = "real"
+re_p14 = "real_with_sign"
+
+	% Scaner's and compiler's error
+re_sc01 = "\nIllegal token"
+re_sc02 = "Stream ain't empty "

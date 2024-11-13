@@ -1,0 +1,40 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:  XCALC
+ FileName: XCALC.RUN
+ Purpose: Solving the compiled equation for XCalc and XCalc2 examples
+ Written by: Eugene Akimov
+ Comments: Predicate used in this file:
+		calculate - Calculation of result
+******************************************************************************/
+  
+predicates
+  calculate(EXPR Expression,RESULT Result) - determ (i,o)
+
+clauses
+  calculate(add(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 + Result2.
+  calculate(subtract(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 - Result2.
+  calculate(multiply(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	Result = Result1 * Result2.
+  calculate(divide(Expr1,Expr2),Result):-
+	calculate(Expr1,Result1),
+	calculate(Expr2,Result2),
+	trap(Result = Result1 / Result2,_,true).
+  calculate(power(Expr1,Expr2),Result):- 
+  	calculate(Expr1,Result1),
+  	calculate(Expr2,Result2),
+	trap(Result = exp(ln(Result1) * Result2),_,true).
+  calculate(parenthetical(Expr),Result):-
+	calculate(Expr,Result).
+  calculate(number(Result),Result).
+ 

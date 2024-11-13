@@ -1,0 +1,19 @@
+/*****************************************************************************
+
+	(c) Copyright 1984 - 2000 Prolog Development Center A/S
+
+ Project:  SETUP
+ FileName: SPACE.PRE
+ Purpose: Predicate definitions for SPACE.PRO
+ Written by: Zaichenko Michael
+ Comments:
+******************************************************************************/
+
+global predicates
+  determ dlg_space_indicator_Create(WINDOW Parent) - (i)	% create invisible dlg
+  procedure space_register				
+  procedure space_unregister
+  determ space_setAvail(DWORD Total,DWORD Avail) - (i,i)	% set hard disk parameters
+  determ space_setRequest(DWORD) -(i)				% set requested size in bytes
+  procedure space_RemoveDlg
+  determ space_SetDialogVisible					% shows dialog

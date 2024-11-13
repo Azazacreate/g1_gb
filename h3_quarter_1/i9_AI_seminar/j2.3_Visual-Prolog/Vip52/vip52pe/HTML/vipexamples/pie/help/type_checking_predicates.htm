@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Keywords" content="var;nonvar;integer">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Type Checking Predicates</title>
+
+
+<meta name="Microsoft Theme" content="prolog2 000, default">
+<meta name="Microsoft Border" content="t, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#333333" link="#0000FF" vlink="#008080" alink="#00FFFF"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="Verdana">
+<script language="JavaScript">var toRoot="../../../";</script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbar.js"></script>
+<script language="JavaScript" src="../../../vipmenu/js/pdcbardef.js"></script>
+
+
+<!--mstheme--></font><table class="scrElem" border="0" width="853" height="122">
+  <tr>
+     <td background="../../../vipmenu/images/topbar-alt.gif" nowrap valign="top" ><!--mstheme--><font face="Verdana">
+                  <blockquote>
+                    <blockquote>
+                      <blockquote>
+                        <blockquote>
+                          <blockquote>
+                            <blockquote>
+                              <blockquote>
+                  <p>
+                      <strong>
+                    
+                      <font size="2">
+                    
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                      </font>
+                        <a href="../../../vipmenu/navigationbar.htm">
+                      <font size="2"><br>
+                      Navigation&nbsp; without Java Scripts</font></a></strong>
+                 </p>
+                              </blockquote>
+                            </blockquote>
+                          </blockquote>
+                        </blockquote>
+                      </blockquote>
+                    </blockquote>
+                  </blockquote>
+     <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana">
+</html>
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="Verdana">
+
+<h3 align="left"><!--mstheme--><font color="#000000"><font color="#0000FF" size="4" face="Arial">The
+type checking predicates </font><!--mstheme--></font></h3>
+
+<h3 align="left"><!--mstheme--><font color="#000000"><font color="#0000FF" size="4" face="Arial">integer/1,
+var/1, nonvar/1</font><font color="#0000FF"> </font><!--mstheme--></font></h3>
+
+<p align="left"><b>integer</b>(<i>Term</i>) <b><br>
+var</b>(<i>Term</i>) <br>
+<b>nonvar</b>(<i>Term</i>) </p>
+
+<p align="left">Check the type of a <i>Term</i> </p>
+
+<p align="left"><b>Remarks</b> </p>
+
+<p align="left"><b>integer</b>(<i>Term</i>) succeeds if the <i>Term</i>
+can be unified with integer value. </p>
+
+<p align="left"><b>var</b>(<i>Term</i>) succeeds if the <i>Term</i>
+is free variable. </p>
+
+<p align="left"><b>nonvar</b>(<i>Term</i>) succeeds if the <i>Term</i>
+is bound. </p>
+
+<p align="left"><b>Example</b> </p>
+
+<!--mstheme--></font><pre>A is 3
+var(A)
+No
+nonvar(A)
+Yes
+integer(A)
+Yes </pre><!--mstheme--><font face="Verdana">
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table></body>
+</html>

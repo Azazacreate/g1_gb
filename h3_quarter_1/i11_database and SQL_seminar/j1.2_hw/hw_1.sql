@@ -40,5 +40,3 @@ WHERE YEAR(OrderDate) = 2023 AND MONTH(OrderDate) = 9;
 SELECT COUNT(*)
 FROM Orders
 WHERE OrderDate LIKE '2023-09%';
-
-

@@ -14,7 +14,11 @@ FROM table1
  каждая служба доставки.
 Определите, сколько заказов доставила United
 Package в декабре 2023 года */
-SELECT YEAR(o.OrderDate), MONTH(o.OrderDate), shippername, COUNT(*)
+SELECT 
+	YEAR(o.OrderDate) 
+	,MONTH(o.OrderDate)
+	,shippername
+	,COUNT(*)
 FROM Orders o 
 JOIN Shippers s ON o.ShipperID = s.ShipperID 
 GROUP BY YEAR(o.OrderDate), MONTH(o.OrderDate), shippername
